@@ -1,0 +1,9 @@
+# Lake build artifacts
+.lake/
+
+# Claude Code personal files
+.claude/settings.local.json
+.claude/memory/
+
+# OS files
+.DS_Store

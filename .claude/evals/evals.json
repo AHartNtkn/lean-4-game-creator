@@ -1,0 +1,65 @@
+{
+  "skill_name": "lean4game-studio",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Design the first three worlds of a new lean4game course on metric spaces for math undergraduates who know proofs weakly and know no Lean.",
+      "expected_output": "A course plan with explicit coverage and granularity, including onboarding, first definitions, proof moves, and a world graph.",
+      "expectations": [
+        "The output separates macro mathematical coverage from micro proof-move coverage.",
+        "The output includes an explicit coverage map or equivalent tracking of introduction, practice, retrieval, integration, and transfer.",
+        "The output gives a world graph with distinct world archetypes rather than a flat list of theorems.",
+        "The output includes a novelty budget or equivalent granularity control.",
+        "The output identifies at least one misconception or notation hazard that deserves dedicated teaching."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Given an existing lean4game repo modeled on a historical narrative course, propose one new pset world and one new lecture world without breaking house style.",
+      "expected_output": "A style-preserving expansion plan grounded in the repo\u2019s existing rhythm, voice, coverage logic, and boss formula.",
+      "expectations": [
+        "The output infers local house style before proposing new content.",
+        "The output distinguishes lecture-world and pset-world behavior.",
+        "The output explains how the new worlds fit the repo\u2019s existing coverage and granularity.",
+        "The output updates dependencies or discusses dependency effects explicitly.",
+        "The output names specific regression risks created by inserting the new material."
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Audit a draft world containing 18 levels, three new tactics, and no pset follow-up.",
+      "expected_output": "A serious critique that flags world-size, granularity, novelty concentration, and missing transfer structure, with a split or redesign proposal.",
+      "expectations": [
+        "The output flags the world as too large or at least questions its granularity strongly.",
+        "The output identifies novelty concentration as a problem.",
+        "The output comments on missing transfer / pset closure.",
+        "The output proposes a concrete split, merge, or restructure plan.",
+        "The output does not confuse compilation or completeness with pedagogical quality."
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "Write a level introducing the definition of compactness for the first time, but do so at the right granularity for a lean4game audience.",
+      "expected_output": "A level plan or full level file that isolates the right dominant lesson, controls novelty, and explains why the chosen statement is the correct first-contact vehicle.",
+      "expectations": [
+        "The output states the dominant lesson explicitly.",
+        "The output explains the novelty budget.",
+        "The output chooses a statement shape that simplifies surrounding burdens so compactness itself can be seen.",
+        "The output provides a hint strategy suited to first contact.",
+        "The output includes a conclusion or equivalent consolidation step."
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "Perform a maintenance pass on a lean4game repo after users report missing tactic examples, missing familiar aliases, and a recently broken local setup.",
+      "expected_output": "A maintenance plan that treats the user reports as pedagogical evidence and addresses both technical and course-quality fallout.",
+      "expectations": [
+        "The output treats missing examples and aliases as learner-facing quality problems, not cosmetic issues.",
+        "The output includes a plan for docs or discoverability improvements.",
+        "The output includes a plan for alias support or an explicit rationale if aliases should remain hidden.",
+        "The output includes local-run / toolchain maintenance steps.",
+        "The output includes a post-patch playtest plan focused on the affected learner path."
+      ]
+    }
+  ]
+}
