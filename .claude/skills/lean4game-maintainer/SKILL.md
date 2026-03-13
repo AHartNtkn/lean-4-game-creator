@@ -87,7 +87,7 @@ Always check:
 - house style drift
 - dependency drift
 - coverage drift
-- world-size drift
+- world-scope drift (levels that no longer share the world's center of gravity)
 - doc drift
 - alias drift
 - boss integrity drift

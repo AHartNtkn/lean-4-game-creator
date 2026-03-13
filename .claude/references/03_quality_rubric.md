@@ -104,7 +104,7 @@ A 1 means it creates brittle command memorization.
 Questions:
 - Does the content compile and run cleanly?
 - Are dependencies sane?
-- Is the world size reasonable?
+- Does each world maintain a coherent center of gravity?
 - Is the repo easy to extend without style drift?
 
 A 4 means the technical layer supports the curriculum.  
@@ -115,7 +115,7 @@ A 1 means the technical layer is undermining it.
 Any of the following should block a “good” verdict until fixed:
 
 - a boss that depends on an untaught micro-skill
-- a world whose size makes the UI unwieldy with no split plan
+- a world that mixes unrelated theorem families or whose intro cannot coherently explain its purpose
 - missing docs for newly unlocked high-value inventory items
 - hints that do not match the actual failure states
 - psets that merely clone lecture examples

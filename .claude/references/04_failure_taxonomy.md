@@ -67,6 +67,25 @@ The boss is just a longer instance of one earlier move.
 Repair:
 - redesign the boss to require at least three distinct moves from the world’s repertoire.
 
+## 8b. Gauntlet boss
+The boss concatenates the previous levels’ proofs without requiring
+new integration. For example: three levels teach the three membership
+properties of a subgroup construction, and the boss is "prove it’s a
+subgroup" — the learner replays each property proof in sequence. The
+proof is longer but no harder to *plan* than any individual level,
+because there is no novel interaction between the parts.
+
+There is nothing wrong with a boss that includes content from earlier
+levels — that’s integration. The problem is when the boss is *only*
+that concatenation, with no additional planning challenge, no new
+interaction between the parts, and no moment where the learner must
+see the whole structure rather than just the pieces.
+
+Repair:
+- add a novel integration demand: the boss proof should require the
+  learner to combine moves in a way that creates a planning or
+  structural challenge beyond replaying individual levels in sequence.
+
 ## 9. Lottery boss
 The boss requires a trick that was never isolated or motivated.
 

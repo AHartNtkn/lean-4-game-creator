@@ -25,7 +25,7 @@ Inspect at least these layers:
 2. world files
    - lecture vs pset vs onboarding vs review
    - world introductions
-   - average number of levels
+   - structural rhythm (intro → practice → transfer → boss)
    - boss placement
 
 3. representative levels
@@ -63,7 +63,7 @@ Produce a **style map** containing:
 - how much tolerance the repo has for expert aliases
 - local notation conventions
 - dependency philosophy
-- world-size norms
+- world scoping logic (what determines a world boundary)
 
 ## Infer the hidden curriculum
 
@@ -112,7 +112,7 @@ Return these sections:
 
 ## Red flags to detect
 
-- worlds that became too large
+- worlds whose center of gravity has drifted (mixing unrelated theorem families, incoherent intro)
 - missing or thin docs for major inventory items
 - dependencies that no longer reflect conceptual prerequisites
 - a pset sequence that became clone-heavy

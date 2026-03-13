@@ -56,9 +56,13 @@ Flag any exploitable statement as a P0 (blocking) defect.
 
 ### 1c. Interactive proof quality
 
-For every level, check that the intended proof is a sequence of short,
-discrete tactic steps. Each step should be roughly 12 characters or
-fewer and should change the goal state visibly.
+For every level, check that the intended proof is a sequence of
+discrete tactic steps, where each step can be typed and submitted
+independently and produces a visible change in the goal state. The
+test: can the learner explore incrementally — type a step, see how
+the proof state changed, decide what to do next? Steps that require
+composing a complex expression before any feedback appears break this
+cycle.
 
 Red flags to check:
 - **Elaborate one-liners**: Any tactic call that spans multiple lines

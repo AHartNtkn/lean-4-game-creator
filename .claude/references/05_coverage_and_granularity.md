@@ -121,11 +121,21 @@ Track novelty on four dimensions:
 - new Lean move
 - new notation
 
-Rule of thumb:
-- early levels: at most one of these should be truly new
-- mid-course: two can be new if the other two are stable
-- bosses: should integrate prior novelty rather than introduce fresh novelty
-- psets: mostly reuse prior novelty, with only occasional low-load additions
+These courses assume the learner has completed the Natural Numbers
+Game (NNG4). Basic tactics (`rw`, `exact`, `apply`, `intro`, etc.),
+goal-reading, and tactic-mode interaction are baseline — they are
+never "new" for novelty-budget purposes.
+
+Each level should introduce at most one truly new burden. Everything
+else should be familiar enough to be automatic, so the learner's
+attention goes entirely to the new thing. If a level needs new math
+and a new proof move, split it into two levels — one that introduces
+the math on a familiar proof shape, and one that introduces the proof
+move on familiar math. This constraint is the same throughout the
+course; it does not relax as the learner progresses. Bosses should
+integrate prior novelty rather than introduce fresh novelty. Psets
+should mostly reuse prior novelty, with only occasional low-load
+additions.
 
 ## 7. Coverage closure before a boss
 

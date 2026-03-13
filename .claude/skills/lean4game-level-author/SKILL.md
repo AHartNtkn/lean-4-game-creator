@@ -39,7 +39,15 @@ Track whether the level introduces:
 - new Lean move
 - new notation
 
-Early and middle-course levels should rarely introduce more than one truly new burden at once.
+The learner has completed NNG4, so basic tactics (`rw`, `exact`,
+`apply`, `intro`, etc.) and tactic-mode interaction are baseline —
+never count these as new. Novelty is relative to what the course
+itself has taught so far, on top of that baseline.
+
+Each level should introduce at most one truly new burden. Everything
+else should be familiar enough to be automatic, so the learner's
+attention goes entirely to the new thing. This does not relax as the
+course progresses.
 
 If the theorem is mathematically deep but the Lean move is also new, cut the level or simplify the math.
 
@@ -139,10 +147,19 @@ The sample proof should be chosen to:
 It is not enough that it compiles.
 
 **Interactive proving principle**: lean4game is an interactive prover.
-The learner types one short tactic, sees the goal state change, decides
-what to do next, and repeats. The ideal proof is a sequence of many
-discrete steps, each roughly 12 characters or fewer. Each step should
-provide immediate visual feedback in the goal panel.
+The learner types one tactic, submits it, sees the goal state change,
+decides what to do next, and repeats. This try-observe-decide cycle is
+how learning happens — the learner builds understanding by watching how
+each move transforms the proof state. The ideal proof is a sequence of
+many discrete steps, where each step participates in this cycle: the
+learner can type and submit it independently, and the goal panel shows
+a meaningful change that informs the next decision.
+
+A step is bad when it breaks this cycle — when the learner must compose
+a complex expression (structure literals, nested angle brackets, long
+argument lists) and get it entirely right before anything happens. In
+those cases there is no way to explore incrementally; the learner
+either gets the whole thing right or gets nothing useful back.
 
 This means:
 - **Never use elaborate one-liners** like

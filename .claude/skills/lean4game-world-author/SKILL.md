@@ -125,9 +125,14 @@ sufficient. The type system or inventory must make the bypass impossible.
 ## Step 4c: verify proofs are interactive
 
 For each level in the ladder, check that the intended proof consists
-of many short, discrete tactic steps (~12 characters each). Each step
-should change the goal state visibly so the learner gets immediate
-feedback.
+of many discrete tactic steps, where each step can be typed and
+submitted independently and produces a visible change in the goal
+state. The test is whether the learner can explore incrementally: type
+a step, see how the proof state changed, decide what to do next. Steps
+that require composing a complex expression (structure literals, nested
+angle brackets, long argument lists) before any feedback appears break
+this cycle — the learner gets nothing useful until they get everything
+right.
 
 Red flags:
 - **Elaborate one-liners**: `refine ⟨{ field := ..., ... }, rfl⟩` or

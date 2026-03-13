@@ -109,14 +109,20 @@ Return:
 9. **Items that should be demoted, delayed, or hidden in the inventory**
 10. **Confidence notes**
 
-## Special instruction for real-analysis style courses
+## Granularity must come from proof moves, not from the syllabus
 
-When the mathematical syllabus is already known, do not use the syllabus itself as the granularity plan.
+When the mathematical syllabus is already known, do not use the
+syllabus itself as the granularity plan. Textbook sections and theorem
+lists are too coarse — they tell you what to prove, not what the
+learner needs to practice.
 
 Instead:
 1. keep the syllabus as macro coverage,
-2. derive theorem families,
+2. derive theorem families from the syllabus,
 3. derive proof-move clusters from those families,
 4. and cut levels around those clusters.
 
-That is the main lesson from the real-analysis example.
+This applies to any course where the mathematical content is
+predetermined — group theory, topology, linear algebra, or anything
+else. The syllabus determines *what* to cover; the proof-move analysis
+determines *how finely* to cut it.
