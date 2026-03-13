@@ -87,7 +87,8 @@ Check whether:
 - core items have closure,
 - proof moves are actually taught,
 - notation and misconceptions are covered,
-- and transfer exists.
+- transfer exists,
+- and major definitions are concretized on specific examples (not only exercised abstractly).
 
 ### 3. Granularity sanity
 Check whether:
@@ -140,9 +141,12 @@ Ask whether the level or world plays its intended role:
 - boss
 - pset
 - lecture
+- example / case-study
 
-A transfer level that behaves like a first-contact level is miscast.  
+A transfer level that behaves like a first-contact level is miscast.
 A boss that behaves like a worked example is miscast.
+An example world that introduces new abstract theory instead of exercising
+existing theory on concrete ground is miscast.
 
 ## Required checks for any boss
 

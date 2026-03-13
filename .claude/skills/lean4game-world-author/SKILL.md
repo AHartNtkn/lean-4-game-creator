@@ -30,6 +30,7 @@ Choose one of:
 - onboarding/tutorial
 - lecture
 - pset
+- example / case-study
 - review / consolidation
 
 This choice changes everything:
@@ -41,14 +42,35 @@ This choice changes everything:
 
 For proof-heavy mathematical courses, a lecture/pset alternation is a strong default:
 - lecture worlds introduce and model,
-- pset worlds re-cover at lower scaffolding and new surface forms.
+- pset worlds re-cover at lower scaffolding and new surface forms,
+- example worlds concretize abstract theory on specific objects.
+
+Example / case-study worlds are centered on a specific mathematical object
+(e.g., D₄, S₃, ℤ/6ℤ). Their levels explore different facets of that object
+rather than following a single theorem family. The intro should introduce the
+object concretely (with geometric, combinatorial, or structural motivation),
+and the boss should integrate multiple facets into a single result about the
+object. Hints may be lighter than lecture worlds since the object itself
+provides orientation. New abstract theory should not be introduced — the point
+is to exercise existing theory on concrete ground.
+
+**Examples can be revisited.** The same object (e.g., D₄) may appear in an
+early example world exploring its subgroups, then return in a later example
+world exploring its homomorphisms or quotients. Each visit uses a different
+theoretical lens. This is not redundancy — it is the concrete counterpart of
+the spiral curriculum.
+
+**There is no budget for examples.** If a concrete example would enrich the
+learner's understanding at a given point, include it. Do not ration examples
+or treat them as competing with abstract content.
 
 ## Step 3: set the world’s granularity
 
 A world should usually have one dominant center:
 - one theorem family,
 - one proof-shape family,
-- or one local conceptual block.
+- one local conceptual block,
+- or one specific mathematical object (for example/case-study worlds).
 
 Do not mix several unrelated centers unless the world is explicitly a review/integration world.
 

@@ -29,6 +29,7 @@ Track items on at least these axes:
 - `NOTATION`
 - `MISCONCEPTION`
 - `TRANSFER`
+- `EXAMPLE`
 
 For each important item, record:
 - importance,
@@ -75,6 +76,22 @@ For each core concept or move, decide whether closure is:
 - **weak**: barely introduced
 - **illusory**: appears covered only because it is mentioned, not because the learner practices it
 
+## Analyze example coverage
+
+For each major definition in the course, check whether it has been exercised
+on at least one concrete example. Flag definitions that are only used
+abstractly — the learner may be able to manipulate quantifiers without
+understanding what the definition looks like in practice.
+
+Specifically check:
+- Has the learner computed or verified this property for a specific object?
+- Has the learner seen a counterexample — an object that fails to satisfy
+  the definition — so they understand why the conditions matter?
+- Are example worlds placed so they concretize theory the learner has already
+  seen, rather than appearing before the abstract definitions?
+- Do the examples chosen cover enough variety (abelian vs non-abelian, finite
+  vs infinite, familiar vs exotic)?
+
 ## Analyze redundancy
 
 Find content that is:
@@ -101,13 +118,14 @@ Return:
 1. **Coverage matrix summary**
 2. **Core uncovered items**
 3. **Weakly covered items**
-4. **Redundant items**
-5. **Granularity defects**
-6. **Novelty hotspots**
-7. **Recommended splits/merges**
-8. **Recommended new levels or new worlds**
-9. **Items that should be demoted, delayed, or hidden in the inventory**
-10. **Confidence notes**
+4. **Example coverage gaps** — definitions exercised only abstractly, missing counterexamples
+5. **Redundant items**
+6. **Granularity defects**
+7. **Novelty hotspots**
+8. **Recommended splits/merges**
+9. **Recommended new levels or new worlds** (including example/case-study worlds)
+10. **Items that should be demoted, delayed, or hidden in the inventory**
+11. **Confidence notes**
 
 ## Granularity must come from proof moves, not from the syllabus
 

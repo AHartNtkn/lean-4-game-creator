@@ -151,3 +151,27 @@ When planning a new course, ask:
 7. Where should transfer happen under reduced scaffolding?
 
 If the answer starts from theorem statements alone, the course will usually be too coarse.
+
+## 10. Neither reference game models example worlds well
+
+NNG4 uses natural numbers as a substrate — the arithmetic is always the vehicle,
+never the destination. RealAnalysisGame follows an analysis syllabus and does
+not dedicate worlds to exploring specific sequences, specific functions, or
+specific metric spaces as concrete objects.
+
+This is a gap in the reference material, not a pattern to imitate. A good
+course in most mathematical subjects needs worlds where the learner works with
+a **specific object** — computing its properties, verifying definitions against
+it, and seeing counterexamples that break conditions. In group theory, this
+means worlds centered on D₄, S₃, ℤ/nℤ, the Klein four-group, etc. In
+analysis, it would mean worlds centered on specific sequences or functions.
+
+These example worlds serve purposes that no other archetype covers:
+concretization of abstract definitions, counterexample generation, intuition
+building, cross-topic integration on a single familiar object, and computation
+training. A course that only has lecture, pset, and review worlds produces
+learners with abstract fluency but no concrete intuition.
+
+Example worlds can and should revisit the same object as new theory becomes
+available. There is no budget for them — if a concrete example would enrich
+the learner at a given point, it should be included.

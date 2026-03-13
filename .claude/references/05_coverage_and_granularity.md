@@ -14,8 +14,27 @@ Track every important item on one of these axes:
 - **NOTATION**: syntax, coercions, binder forms, absolute values, function application, etc.
 - **MISCONCEPTION**: predictable false moves or confusions
 - **TRANSFER**: plain-language proof heuristics and recognizable patterns that should survive outside Lean
+- **EXAMPLE**: concrete mathematical objects that instantiate the theory — which specific groups, rings, spaces, sequences, etc. have been explored, and what role they play (concretization, counterexample, motivation, integration)
 
 A course has bad coverage if it only tracks MATH.
+
+A course also has bad coverage if major definitions are only exercised abstractly.
+For each important definition, at least one concrete example should appear in
+the course. A learner who can manipulate abstract quantifiers but has never
+computed the center of a specific group, or checked whether a specific subgroup
+is normal, has abstract fluency without intuition. Counterexamples deserve
+special attention: a learner cannot understand why a definition matters until
+they have seen something that fails to satisfy it.
+
+**Examples can and should be revisited.** The same concrete object (e.g., D₄)
+may first appear as an example of a finite group, then return when studying
+homomorphisms, then again when studying quotients. Each visit uses a different
+theoretical lens. This is not redundancy — it is the concrete counterpart of
+the spiral structure that lecture and pset worlds implement for abstract theory.
+
+**There is no budget for examples.** If a concrete example would enrich the
+learner's understanding at a given point, include it. Do not ration examples
+or treat them as competing with abstract content. They *are* content.
 
 ## 2. Granularity exists at three levels
 
@@ -90,6 +109,8 @@ Example rows:
 - `|a n - L|` syntax with no interior spaces at the bars — `NOTATION`
 - “strict inequalities do not transfer to the limit” — `MISCONCEPTION`
 - “state the proof in plain English after the Lean proof” — `TRANSFER`
+- D₄ as a concrete non-abelian group — `EXAMPLE` (concretization + counterexample)
+- ℤ/6ℤ as a cyclic group with non-trivial subgroup lattice — `EXAMPLE` (concretization)
 
 ## 5. Granularity tests
 

@@ -26,10 +26,23 @@ Choose exactly one primary type:
 - `retrieval`
 - `transfer`
 - `contrast / misconception`
+- `concrete-computation`
+- `counterexample`
 - `mini-integration`
 - `boss`
 
 You may have secondary effects, but the primary type must be clear.
+
+`concrete-computation`: compute or verify a property of a specific mathematical
+object (e.g., "find the center of D₄", "show that ℤ/6ℤ has exactly four
+subgroups"). The dominant lesson is applying an abstract definition to a
+concrete case and seeing what the answer looks like.
+
+`counterexample`: demonstrate that a condition, property, or converse fails for
+a specific object (e.g., "show that this subgroup of S₃ is not normal", "show
+that this map is not a homomorphism"). The dominant lesson is understanding
+*why* a definition has the conditions it has, by seeing what breaks without
+them.
 
 ## Step 2: set the novelty budget
 

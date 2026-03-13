@@ -56,6 +56,7 @@ Use a deliberate mix of world types. The default strong mix is:
 - **onboarding/tutorial**
 - **lecture worlds**
 - **pset worlds**
+- **example / case-study worlds**
 - **review or consolidation worlds** when needed
 
 ### Onboarding/tutorial
@@ -74,6 +75,44 @@ Use these for:
 - retrieval,
 - reduced scaffolding,
 - and proof fluency.
+
+### Example / case-study worlds
+Use these for:
+- making abstract definitions concrete on specific mathematical objects,
+- building geometric, combinatorial, or structural intuition,
+- providing counterexamples that motivate upcoming theory,
+- integrating material from multiple prior lecture worlds on a single object,
+- and training computation/decision skills alongside proof skills.
+
+An example world is centered on a **specific mathematical object** (e.g., D₄,
+S₃, ℤ/nℤ, the Klein four-group), not on a theorem family or proof shape. Its
+levels explore different facets of that object: constructing it, computing its
+properties, finding its subgroups, checking normality, building homomorphisms
+from or to it.
+
+Example worlds are not luxury enrichment. Learners who never work with concrete
+objects develop "abstract fluency without intuition" — they can manipulate
+quantifiers but cannot picture what a group looks like. Counterexample worlds
+specifically are critical: a learner cannot understand why a definition matters
+until they have seen something that fails to satisfy it.
+
+Place example worlds **after** the lecture worlds that introduce the relevant
+abstract theory, but **before** the theory that the example motivates. For
+instance, exploring D₄ after defining subgroups and normality but before
+quotient groups lets the learner see concretely why quotients are interesting.
+
+**Examples can and should be revisited.** The same mathematical object (e.g.,
+D₄) may appear in an early example world exploring its subgroups, then return
+in a later example world exploring its homomorphisms or quotients. Each visit
+exercises the object through a different lens of theory. This is not
+redundancy — it is the concrete counterpart of the spiral curriculum that
+lecture and pset worlds already implement for abstract theory.
+
+**There is no budget for examples.** If a concrete example would enrich the
+learner's understanding at a given point in the course, it should be included.
+Do not ration examples, compress them into fewer worlds than they need, or
+treat them as optional enrichment that competes with "real" content. Examples
+*are* real content.
 
 ### Review worlds
 Use these when the course has accumulated enough material that interleaving and retrieval should be made explicit rather than accidental.
@@ -126,16 +165,34 @@ For each tactic/theorem/definition:
 
 Treat this like release management for cognitive load.
 
+## Plan concrete examples
+
+For each major definition or theorem family in the content map, identify at
+least one concrete example that should appear in the course. For each example,
+decide:
+
+- Does it deserve its own world (because it touches enough facets to sustain
+  several levels)?
+- Can it be embedded in a lecture or pset world as one or two levels?
+- Does it serve as a counterexample for an upcoming concept?
+- Where in the world graph should it appear relative to the abstract theory it
+  concretizes?
+- What role does it play: concretization, counterexample, motivation for
+  upcoming theory, cross-topic integration, or computation training?
+
+Flag any major definition that has no concrete example anywhere in the course.
+A definition exercised only abstractly is a gap.
+
 ## Build the world graph
 
 For each world, specify:
 - world type,
 - world promise,
-- theorem families,
+- theorem families (or, for example worlds, the specific object and its facets),
 - proof-move goals,
 - inventory changes,
 - boss,
-- pset partner or review partner,
+- pset partner, review partner, or example partner,
 - and dependencies.
 
 Where conceptual prerequisites are not captured by the automatic graph, plan explicit `Dependency` edges.

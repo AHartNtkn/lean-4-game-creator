@@ -85,8 +85,10 @@ Questions:
 - Are the mathematical stakes and ideas clear?
 - Do intros and conclusions explain why the material matters?
 - Are warnings and intuitions mathematically honest?
+- Are major definitions concretized on specific examples, not only exercised abstractly?
+- Has the learner seen counterexamples that show why definitions have the conditions they have?
 
-A 4 means the learner feels they are learning mathematics, not arbitrary software rituals.  
+A 4 means the learner feels they are learning mathematics, not arbitrary software rituals.
 A 1 means the course is mechanically correct but conceptually empty.
 
 ## 8. Paper-proof transfer
@@ -120,5 +122,6 @@ Any of the following should block a “good” verdict until fixed:
 - hints that do not match the actual failure states
 - psets that merely clone lecture examples
 - a level that introduces too many new burdens at once
+- a major definition that is never exercised on a concrete example
 - unresolved local-run or publish breakage
 - issue reports revealing learner confusion that the course still ignores

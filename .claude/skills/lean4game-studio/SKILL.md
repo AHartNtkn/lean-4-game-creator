@@ -31,7 +31,7 @@ Before any authoring can happen, you need a style authority — a source of trut
 
 Run once at the start of a new course. Skip if the course architecture already exists.
 
-1. `lean4game-coverage-mapper` — establish what the course must cover across all four layers (syllabus, proof-move, Lean-expression, transfer).
+1. `lean4game-coverage-mapper` — establish what the course must cover across all five layers (syllabus, proof-move, Lean-expression, example, transfer).
 2. `lean4game-course-architect` — design the world graph, granularity plan, inventory release plan, boss map, and transfer plan.
 
 The course architect's output is the plan that governs all subsequent phases.
@@ -97,6 +97,7 @@ The enrichment reviewer exists to push the world closer to ideal. Its suggestion
 - Never author content without knowing local house style — but "knowing" means having established it or having mined it, not re-mining your own recent output.
 - Never call a draft "good" without checking coverage and granularity.
 - Never let theorem coverage substitute for proof-move coverage.
+- Never let abstract coverage substitute for concrete example coverage.
 - Never ignore pset/review structure; transfer matters.
 - Never output skeleton Lean code. If asked for code, write complete code or do not write code yet.
 
@@ -113,10 +114,17 @@ Treat the course as a layered object:
 3. **Lean-expression layer**
    What commands, syntax, notation, and inventory items must they control?
 
-4. **transfer layer**
+4. **example layer**
+   What concrete objects must the learner have worked with? Which definitions
+   have been concretized, and which counterexamples have been seen? Examples
+   can and should be revisited as new theory becomes available — the same
+   object through a different theoretical lens is not redundancy. There is
+   no budget for examples; if one would enrich the learner, include it.
+
+5. **transfer layer**
    What should still remain if Lean is removed and only ordinary proof writing remains?
 
-A good answer covers all four.
+A good answer covers all five.
 
 ## Required outputs
 
@@ -127,6 +135,7 @@ At the end of any nontrivial task, produce enough of the following to make the w
 - what style constraints were applied (and whether they were inferred or established),
 - what new inventory items were introduced or withheld,
 - where the main proof moves are taught,
+- where concrete examples and counterexamples appear,
 - where transfer happens,
 - what risks remain,
 - and what should be playtested next.

@@ -23,7 +23,7 @@ The game should teach those moves explicitly.
 
 ## 2. Track coverage on multiple axes
 
-A good course does not merely cover theorems. It tracks coverage across at least six axes:
+A good course does not merely cover theorems. It tracks coverage across at least seven axes:
 
 - **mathematical objects and definitions**
 - **theorem families**
@@ -31,8 +31,11 @@ A good course does not merely cover theorems. It tracks coverage across at least
 - **Lean tactics / commands / syntax**
 - **notation and coercions**
 - **misconceptions and failure modes**
+- **concrete examples and counterexamples**
 
 If an item matters, the course should know where it is first introduced, where it is practiced with scaffolding, where it is retrieved without scaffolding, where it is integrated into a larger proof, and where it is transferred to a fresh setting.
+
+For each major definition, the course should also know where it is concretized on a specific mathematical object, and where a counterexample shows why the definition's conditions matter. A learner who can manipulate abstract definitions but has never computed with a specific group, ring, or space has abstract fluency without intuition.
 
 ## 3. Choose good granularity
 
