@@ -43,7 +43,7 @@ Run for each world in sequence.
 1. `lean4game-world-author` — design the world: level ladder, coverage closure, inventory changes, boss, intro/conclusion.
 2. Write the code: world file, level files, Game.lean updates.
 3. `lake build` — verify compilation.
-4. `lean4game-enrichment-reviewer` — find ambitious improvements the auditor would miss (derivable results, missing examples, unnamed strategies, cross-world opportunities). Incorporate the ones worth adding before auditing.
+4. `lean4game-enrichment-reviewer` — find ambitious improvements the auditor would miss (derivable results, missing examples, unnamed strategies, cross-world opportunities). Incorporate suggestions before auditing. See **Enrichment advice policy** below.
 5. `lean4game-playtest-auditor` — red-team the world for coverage, granularity, recoverability, and learner simulation.
 6. Fix issues found in the audit.
 7. Rebuild and re-audit until the world passes.
@@ -77,6 +77,18 @@ Concretely:
 - When running `lean4game-pattern-miner` or `lean4game-maintainer`, spawn a subagent.
 
 The parent agent coordinates, provides context, and integrates results. The subagents do the actual skill work.
+
+## Enrichment advice policy
+
+The enrichment reviewer exists to push the world closer to ideal. Its suggestions are not decorative — they identify real gaps. The only valid reason to reject a suggestion is that implementing it would make the world *less* ideal (e.g., it introduces a pedagogical regression, contradicts the plan, or is factually wrong about the mathlib API).
+
+**You must NEVER reject an enrichment suggestion because:**
+- It would make the world "too big" or you want to "keep things lean"
+- The change would be "too large" (e.g., splitting a world, adding multiple levels, restructuring the level ladder)
+- You want to minimize effort or avoid rework
+- The world "already works" or "compiles fine"
+
+**The only standard is: does the change bring the world closer to ideal?** If yes, implement it. Size of change is irrelevant. A world that needs splitting should be split. A world that needs three extra levels should get them. The goal is the best possible course, not the smallest diff.
 
 ## Non-negotiable behavior
 

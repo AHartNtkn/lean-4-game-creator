@@ -12,6 +12,7 @@ Read:
 - `references/01_patterns_from_existing_games.md`
 - `references/05_coverage_and_granularity.md`
 - `references/02_technical_levers.md`
+- `references/07_operational_lessons.md`
 
 ## Start with four maps
 
@@ -161,6 +162,16 @@ Do not:
 - cut the course straight from textbook subsections,
 - dump all tactic teaching into a separate front block and never revisit it,
 - let psets become theorem clones,
-- or plan worlds without deciding the granularity of their levels.
+- plan worlds without deciding the granularity of their levels,
+- or impose level count targets or split triggers based on level count.
+
+**No level count limits.** A world exists to help the learner master its
+topic. It should contain as many levels as that requires — including
+thorough practice, coached retrieval, and fresh surface transfer. There
+is no target size. A world with 5 levels and a world with 20 levels can
+both be correctly scoped if each level belongs to the world's center of
+gravity. The only valid split triggers are semantic: unrelated theorem
+families, incoherent world intro, or cognitive overload from too many
+new burdens at once. Never suggest "this world has too many levels" as a defect.
 
 The architecture should make later authoring easier, not harder.

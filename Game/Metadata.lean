@@ -8,6 +8,12 @@ import Mathlib.Algebra.Group.Subgroup.ZPowers.Basic
 import Mathlib.GroupTheory.OrderOfElement
 import Mathlib.GroupTheory.SpecificGroups.Cyclic
 import Mathlib.Algebra.Group.Hom.Defs
+import Mathlib.GroupTheory.Coset.Basic
+
+-- lean4game server bug: `open scoped` in level files doesn't propagate to the
+-- interactive proof environment. Permanently activate the Pointwise instances
+-- that coset levels need (Set.smulSet provides `HSMul G (Set G) (Set G)`).
+attribute [instance] Set.smulSet
 
 /-- Build a subgroup with a specific carrier by proving three closure properties.
 After `apply Subgroup.mk_carrier`, you get three goals: `mul_mem`, `one_mem`,

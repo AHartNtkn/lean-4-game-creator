@@ -111,12 +111,13 @@ The intended authoring loop is:
 1. Infer local style (if extending an existing game)
 2. Map coverage
 3. Plan the course arc
-4. Author a world
-5. Build and fix compilation errors
-6. Run the playtest auditor (adversarial)
-7. Fix issues, rebuild, re-audit until passing
-8. Optionally run the enrichment reviewer
-9. Move to the next world
+4. Design a world (level ladder, coverage closure, inventory, boss)
+5. Write the code
+6. Build and fix compilation errors
+7. Run the enrichment reviewer (find ambitious improvements)
+8. Run the playtest auditor (adversarial red-team)
+9. Fix issues, rebuild, re-audit until passing
+10. Move to the next world
 
 ## License
 

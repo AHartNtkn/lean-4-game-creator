@@ -147,16 +147,17 @@ Use `Settings` to improve readability when the proof state format would otherwis
 Remember that world size and UI behavior matter. If a world is visually unwieldy, the curriculum is paying a cost.
 
 
-## 8.5 World size is part of pedagogy
+## 8.5 World size is semantic, not numeric
 
-If a world becomes visually unwieldy, the learner is paying for an authoring decision.
+World division is driven entirely by semantic coherence — whether the
+levels share a center of gravity — not by level count. A world with 5
+levels and a world with 20 levels can both be correctly scoped. The only
+valid split triggers are semantic: unrelated theorem families, incoherent
+world intro, or cognitive overload from too many new burdens at once.
 
-Strong default:
-- prefer worlds comfortably below the point where the UI becomes awkward,
-- split before the world tree becomes a spiral of tiny nodes,
-- and use additional worlds instead of one giant “chapter world.”
-
-A world that is too large is not only a UI problem. It is evidence that the granularity may be wrong.
+A world should contain as many levels as the learner needs to master its
+topic, including thorough practice, coached retrieval, and fresh surface
+transfer. Never suggest a world has “too many levels” as a defect.
 
 ## 9. Running locally, updating, and publishing are part of authorship
 

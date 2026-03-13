@@ -11,6 +11,7 @@ Read:
 - `references/03_quality_rubric.md`
 - `references/04_failure_taxonomy.md`
 - `references/05_coverage_and_granularity.md`
+- `references/07_operational_lessons.md`
 
 ## Audit in this order
 
@@ -88,7 +89,16 @@ Check whether:
 Check whether:
 - levels are overbroad or overfine,
 - the world center of gravity is stable,
-- and bosses are properly seeded.
+- bosses are properly seeded,
+- and the world provides enough practice for mastery.
+
+**No level count limits.** Never flag a world for having "too many levels."
+A world should contain as many levels as the learner needs to master its
+topic — including thorough practice, coached retrieval, and fresh surface
+transfer. The only valid split triggers are semantic: unrelated theorem
+families, incoherent world intro, or cognitive overload from too many
+new burdens at once. A world with 20 levels on a single coherent topic is fine.
+A world with 6 levels that skimps on practice is a defect.
 
 **Cognitive load principle**: If the world covers multiple unrelated theorem
 families or proof-shape families, flag it for splitting. The cost of

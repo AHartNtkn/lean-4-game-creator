@@ -11,6 +11,7 @@ Read:
 - `references/02_technical_levers.md`
 - `references/05_coverage_and_granularity.md`
 - `references/04_failure_taxonomy.md`
+- `references/07_operational_lessons.md`
 
 If editing a repo or world whose style is unknown to you, use the local style map from `lean4game-pattern-miner`. If you established the style yourself, you already have that context.
 

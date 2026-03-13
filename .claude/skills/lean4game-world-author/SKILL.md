@@ -12,6 +12,7 @@ Read:
 - `references/02_technical_levers.md`
 - `references/05_coverage_and_granularity.md`
 - `references/03_quality_rubric.md`
+- `references/07_operational_lessons.md`
 
 If editing a repo whose style is unknown to you, first obtain the output of `lean4game-pattern-miner`. If you established the style yourself, you already have that context.
 
@@ -50,6 +51,13 @@ A world should usually have one dominant center:
 - or one local conceptual block.
 
 Do not mix several unrelated centers unless the world is explicitly a review/integration world.
+
+**No level count limits.** A world should contain as many levels as the
+learner needs to master its topic — including thorough practice, coached
+retrieval, and fresh surface transfer. There is no target size and no
+maximum. Never trim levels to hit a number. The only valid split triggers
+are semantic: unrelated theorem families, incoherent world intro, or
+cognitive overload from too many new burdens at once.
 
 **Cognitive load principle**: Always err on the side of splitting a world
 rather than risking overload. If there is even a seeming risk that a world

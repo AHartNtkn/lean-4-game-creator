@@ -11,6 +11,11 @@ import Game.Levels.CyclicGroups
 import Game.Levels.HomDef
 import Game.Levels.HomBasics
 import Game.Levels.HomPset
+import Game.Levels.HomComposition
+import Game.Levels.HomSubgroups
+import Game.Levels.CosetBasics
+import Game.Levels.NormalDef
+import Game.Levels.NormalPset
 
 Title "Group Theory Game"
 Introduction
@@ -64,5 +69,12 @@ Dependency SubgroupBasics → CyclicGroups
 Dependency SubgroupPset → HomDef
 Dependency HomDef → HomBasics
 Dependency HomBasics → HomPset
+Dependency HomBasics → HomComposition
+Dependency HomComposition → HomSubgroups
+Dependency SubgroupBasics → HomSubgroups
+Dependency SubgroupPset → CosetBasics
+Dependency CosetBasics → NormalDef
+Dependency HomBasics → NormalDef
+Dependency NormalDef → NormalPset
 
 MakeGame
