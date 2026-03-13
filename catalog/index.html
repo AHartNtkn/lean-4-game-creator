@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lean 4 Mathematics Courses</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      background: #fafafa;
+      color: #333;
+    }
+
+    header {
+      text-align: center;
+      padding: 1.2rem 1rem 0.6rem;
+      background: #fff;
+      border-bottom: 1px solid #ddd;
+    }
+
+    header h1 {
+      font-size: 1.5rem;
+      font-weight: normal;
+      letter-spacing: 0.02em;
+      margin-bottom: 0.2rem;
+    }
+
+    header p {
+      font-size: 0.82rem;
+      color: #666;
+      font-style: italic;
+    }
+
+    #legend {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.7rem;
+      padding: 0.4rem 1rem;
+      background: #fff;
+      border-bottom: 1px solid #eee;
+      font-size: 0.72rem;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 0.2rem;
+    }
+
+    .legend-swatch {
+      width: 11px;
+      height: 11px;
+      border-radius: 2px;
+      border: 1px solid #bbb;
+    }
+
+    #graph-container {
+      display: flex;
+      justify-content: center;
+      padding: 1.5rem 1rem;
+      background: #fafafa;
+    }
+
+    .node rect {
+      stroke-width: 1.5;
+      rx: 4;
+      ry: 4;
+    }
+
+    .node text {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      font-size: 11px;
+      fill: #333;
+      text-anchor: middle;
+      dominant-baseline: central;
+      pointer-events: none;
+    }
+
+    .node.live { cursor: pointer; }
+    .node.live:hover rect { stroke-width: 2.5; }
+
+    .node.coming-soon { opacity: 0.45; }
+    .node.coming-soon rect { stroke-dasharray: 4 3; }
+
+    .edge line {
+      stroke: #ccc;
+      stroke-width: 0.8;
+    }
+
+    .arrowhead { fill: #ccc; }
+
+    .node.highlighted rect { stroke-width: 2.5; }
+    .node.faded { opacity: 0.12; }
+    .edge.faded line { stroke: #eee; }
+    .edge.highlighted line { stroke: #999; stroke-width: 1.2; }
+    .edge.highlighted .arrowhead { fill: #999; }
+
+    #tooltip {
+      display: none;
+      position: fixed;
+      background: #fff;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      padding: 0.5rem 0.7rem;
+      font-size: 0.72rem;
+      max-width: 260px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+      pointer-events: none;
+      z-index: 100;
+      font-family: 'Georgia', 'Times New Roman', serif;
+    }
+
+    #tooltip .tt-name { font-weight: bold; margin-bottom: 0.15rem; }
+    #tooltip .tt-section { font-size: 0.62rem; color: #888; margin-bottom: 0.2rem; }
+    #tooltip .tt-status { font-size: 0.62rem; margin-bottom: 0.15rem; }
+    #tooltip .tt-status.live { color: #2a7a2a; }
+    #tooltip .tt-status.coming-soon { color: #999; }
+    #tooltip .tt-prereqs {
+      font-size: 0.62rem;
+      color: #666;
+      margin-top: 0.2rem;
+      border-top: 1px solid #eee;
+      padding-top: 0.2rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 0.6rem;
+      font-size: 0.68rem;
+      color: #999;
+      border-top: 1px solid #eee;
+      background: #fff;
+    }
+
+    footer a { color: #666; }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Lean 4 Mathematics Courses</h1>
+  <p>Interactive proof-based courses covering the Mathlib library</p>
+</header>
+
+<div id="legend">
+  <div class="legend-item"><div class="legend-swatch" style="background:#f0f0f0"></div> Foundations</div>
+  <div class="legend-item"><div class="legend-swatch" style="background:#dce5f5"></div> Algebra</div>
+  <div class="legend-item"><div class="legend-swatch" style="background:#d8ead8"></div> Topology &amp; Analysis</div>
+  <div class="legend-item"><div class="legend-swatch" style="background:#f2ecd0"></div> Number Theory</div>
+  <div class="legend-item"><div class="legend-swatch" style="background:#e5d8ee"></div> Logic &amp; Set Theory</div>
+  <div class="legend-item"><div class="legend-swatch" style="background:#eed8d8"></div> Category Theory</div>
+  <div class="legend-item"><div class="legend-swatch" style="background:#f5f5f5; border-style:dashed"></div> Optional</div>
+</div>
+
+<div id="graph-container">
+  <svg id="graph"></svg>
+</div>
+
+<div id="tooltip">
+  <div class="tt-name"></div>
+  <div class="tt-section"></div>
+  <div class="tt-status"></div>
+  <div class="tt-prereqs"></div>
+</div>
+
+<footer>
+  Built with <a href="https://adam.math.hhu.de" target="_blank">Lean4Game</a>
+  &middot; <a href="https://leanprover.github.io/" target="_blank">Lean 4</a>
+  + <a href="https://leanprover-community.github.io/mathlib4_docs/" target="_blank">Mathlib</a>
+</footer>
+
+<script>
+(function() {
+  'use strict';
+
+  // ── Layout constants ──────────────────────────────────────────────
+
+  const NODE_W = 115;
+  const NODE_H = 30;
+  const COL_STEP = 135;  // node width + horizontal gap
+  const ROW_STEP = 55;   // node height + vertical gap
+  const PAD_X = 25;
+  const PAD_Y = 20;
+  const COLS = 8;
+  const ROWS = 8;
+
+  const SECTION_COLORS = {
+    foundations:      { fill: '#f0f0f0', stroke: '#aaa' },
+    algebra:          { fill: '#dce5f5', stroke: '#8098bb' },
+    topology:         { fill: '#d8ead8', stroke: '#80a880' },
+    'number-theory':  { fill: '#f2ecd0', stroke: '#bba870' },
+    logic:            { fill: '#e5d8ee', stroke: '#9878aa' },
+    category:         { fill: '#eed8d8', stroke: '#aa8080' },
+    optional:         { fill: '#f5f5f5', stroke: '#aaa' },
+  };
+
+  const SECTION_LABELS = {
+    foundations: 'Foundations',
+    algebra: 'Core Algebra',
+    topology: 'Topology, Analysis & Geometry',
+    'number-theory': 'Number Theory & Combinatorics',
+    logic: 'Logic, Computability & Set Theory',
+    category: 'Category Theory & Geometric Subjects',
+    optional: 'Optional',
+  };
+
+  // ── Manual layout: [col, row] for each course ─────────────────────
+  //
+  // 8 columns (0–7), 8 rows (0–7).
+  // All prerequisite edges point strictly downward (from lower row to higher).
+
+  const positions = {
+    // Row 0 — Foundations
+    'finite-math':            [0, 0],
+    'functions-relations':    [2, 0],
+    'orders-lattices':        [4, 0],
+    'algebraic-structures':   [6, 0],
+
+    // Row 1 — First dependents
+    'combinatorics':          [0, 1],
+    'computability':          [1, 1],
+    'model-theory-1':         [2, 1],
+    'set-theory-1':           [3, 1],
+    'general-topology':       [4, 1],
+    'category-theory-1':      [5, 1],
+    'group-theory-1':         [6, 1],
+    'ring-theory':            [7, 1],
+
+    // Row 2
+    'advanced-combinatorics': [0, 2],
+    'model-theory-2':         [1, 2],
+    'set-theory-2':           [2, 2],
+    'topological-algebra':    [3, 2],
+    'category-theory-2':      [4, 2],
+    'group-theory-2':         [5, 2],
+    'elementary-nt':          [6, 2],
+    'linear-algebra-1':       [7, 2],
+
+    // Row 3
+    'algebra-seminar':        [0, 3],
+    'convex-geometry':        [1, 3],
+    'descriptive-set':        [2, 3],
+    'real-analysis':          [3, 3],
+    'sheaves-topoi':          [4, 3],
+    'representation-theory':  [5, 3],
+    'field-galois':           [6, 3],
+    'commutative-algebra-1':  [7, 3],
+
+    // Row 4
+    'metamathematics':        [1, 4],
+    'complex-analysis':       [3, 4],
+    'algebraic-topology':     [4, 4],
+    'lie-algebras':           [5, 4],
+    'commutative-algebra-2':  [6, 4],
+    'linear-algebra-2':       [7, 4],
+
+    // Row 5
+    'measure-theory':         [2, 5],
+    'functional-analysis':    [3, 5],
+    'algebraic-geometry-1':   [4, 5],
+    'homological-algebra':    [5, 5],
+    'algebraic-nt':           [6, 5],
+    'manifolds':              [7, 5],
+
+    // Row 6
+    'probability':            [2, 6],
+    'fourier-odes':           [3, 6],
+    'condensed':              [4, 6],
+    'analytic-nt':            [6, 6],
+
+    // Row 7
+    'dynamics':               [2, 7],
+    'algebraic-geometry-2':   [4, 7],
+    'information-theory':     [5, 7],
+    'functors-monads':        [7, 7],
+  };
+
+  // ── Course data ───────────────────────────────────────────────────
+
+  // Directory name for each course (maps id → filesystem dir)
+  const DIR = {
+    'finite-math': 'finite_math',
+    'functions-relations': 'functions_relations',
+    'orders-lattices': 'orders_lattices',
+    'algebraic-structures': 'algebraic_structures',
+    'group-theory-1': 'group_theory_1',
+    'group-theory-2': 'group_theory_2',
+    'ring-theory': 'ring_theory',
+    'linear-algebra-1': 'linear_algebra_1',
+    'linear-algebra-2': 'linear_algebra_2',
+    'commutative-algebra-1': 'commutative_algebra_1',
+    'commutative-algebra-2': 'commutative_algebra_2',
+    'field-galois': 'field_galois',
+    'representation-theory': 'representation_theory',
+    'lie-algebras': 'lie_algebras',
+    'homological-algebra': 'homological_algebra',
+    'algebra-seminar': 'algebra_seminar',
+    'general-topology': 'general_topology',
+    'topological-algebra': 'topological_algebra',
+    'real-analysis': 'real_analysis',
+    'complex-analysis': 'complex_analysis',
+    'functional-analysis': 'functional_analysis',
+    'measure-theory': 'measure_theory',
+    'probability': 'probability',
+    'dynamics': 'dynamics',
+    'manifolds': 'manifolds',
+    'convex-geometry': 'convex_geometry',
+    'fourier-odes': 'fourier_odes',
+    'elementary-nt': 'elementary_nt',
+    'analytic-nt': 'analytic_nt',
+    'algebraic-nt': 'algebraic_nt',
+    'combinatorics': 'combinatorics',
+    'advanced-combinatorics': 'advanced_combinatorics',
+    'computability': 'computability',
+    'model-theory-1': 'model_theory_1',
+    'model-theory-2': 'model_theory_2',
+    'set-theory-1': 'set_theory_1',
+    'set-theory-2': 'set_theory_2',
+    'descriptive-set': 'descriptive_set',
+    'metamathematics': 'metamathematics',
+    'category-theory-1': 'category_theory_1',
+    'category-theory-2': 'category_theory_2',
+    'sheaves-topoi': 'sheaves_topoi',
+    'algebraic-topology': 'algebraic_topology',
+    'algebraic-geometry-1': 'algebraic_geometry_1',
+    'algebraic-geometry-2': 'algebraic_geometry_2',
+    'condensed': 'condensed',
+    'information-theory': 'information_theory',
+    'functors-monads': 'functors_monads',
+  };
+
+  // Change this port to match your lean4game dev server
+  const BASE_URL = 'http://localhost:3000/#/g/local/';
+
+  const courses = [
+    { id: 'finite-math',          name: 'Finite Math',          fullName: 'Finite Mathematics and Discrete Structures',                          section: 'foundations' },
+    { id: 'functions-relations',  name: 'Functions & Rel.',     fullName: 'Functions, Relations, Equivalences, and Encodability',                 section: 'foundations' },
+    { id: 'orders-lattices',      name: 'Orders & Lattices',    fullName: 'Orders, Lattices, Filters, and Galois Connections',                    section: 'foundations' },
+    { id: 'algebraic-structures', name: 'Alg. Structures',      fullName: 'Algebraic Structures and Modules',                                    section: 'foundations' },
+
+    { id: 'group-theory-1',       name: 'Group Theory I',       fullName: 'Group Theory I: Algebraic and Finite Group Theory',                   section: 'algebra' },
+    { id: 'group-theory-2',       name: 'Group Theory II',      fullName: 'Group Theory II: Combinatorial Group Theory and Group Constructions', section: 'algebra' },
+    { id: 'ring-theory',          name: 'Ring Theory',           fullName: 'Ring Theory',                                                        section: 'algebra' },
+    { id: 'linear-algebra-1',     name: 'Linear Algebra I',     fullName: 'Linear Algebra I',                                                   section: 'algebra' },
+    { id: 'linear-algebra-2',     name: 'Linear Algebra II',    fullName: 'Linear Algebra II: Bilinear Forms, Spectra, Exterior/Clifford',       section: 'algebra' },
+    { id: 'commutative-algebra-1',name: 'Comm. Algebra I',      fullName: 'Commutative Algebra I: Ideals, Quotients, Localization',               section: 'algebra' },
+    { id: 'commutative-algebra-2',name: 'Comm. Algebra II',     fullName: 'Commutative Algebra II: Local Algebra, Valuations, Smooth Methods',    section: 'algebra' },
+    { id: 'field-galois',         name: 'Field & Galois',       fullName: 'Field Theory and Galois Theory',                                      section: 'algebra' },
+    { id: 'representation-theory',name: 'Repr. Theory',         fullName: 'Representation Theory',                                               section: 'algebra' },
+    { id: 'lie-algebras',         name: 'Lie Algebras',         fullName: 'Lie Algebras and Root-Theoretic Structures',                           section: 'algebra' },
+    { id: 'homological-algebra',  name: 'Homological Alg.',     fullName: 'Homological Algebra and Derived Categories',                          section: 'algebra' },
+    { id: 'algebra-seminar',      name: 'Algebra Seminar',      fullName: 'Specialized Algebra Topics Seminar',                                  section: 'algebra' },
+
+    { id: 'general-topology',     name: 'Gen. Topology',        fullName: 'General Topology and Metric Spaces',                                  section: 'topology' },
+    { id: 'topological-algebra',  name: 'Top. Algebra',         fullName: 'Topological Algebra, Bundles, and Covering Spaces',                    section: 'topology' },
+    { id: 'real-analysis',        name: 'Real Analysis',        fullName: 'Real Analysis and Calculus',                                          section: 'topology' },
+    { id: 'complex-analysis',     name: 'Complex Analysis',     fullName: 'Complex Analysis and Analytic Functions',                             section: 'topology' },
+    { id: 'functional-analysis',  name: 'Functional Anal.',     fullName: 'Functional Analysis and Operator Algebras',                           section: 'topology' },
+    { id: 'measure-theory',       name: 'Measure Theory',       fullName: 'Measure Theory and Integration',                                     section: 'topology' },
+    { id: 'probability',          name: 'Probability',          fullName: 'Probability Theory',                                                 section: 'topology' },
+    { id: 'dynamics',             name: 'Dynamics',             fullName: 'Dynamics and Ergodic Theory',                                        section: 'topology' },
+    { id: 'manifolds',            name: 'Manifolds',            fullName: 'Manifolds and Differential Topology',                                section: 'topology' },
+    { id: 'convex-geometry',      name: 'Convex Geometry',      fullName: 'Convex and Euclidean Geometry',                                      section: 'topology' },
+    { id: 'fourier-odes',         name: 'Fourier & ODEs',       fullName: 'Fourier Analysis, Distributions, and ODEs',                           section: 'topology' },
+
+    { id: 'elementary-nt',        name: 'Elementary NT',        fullName: 'Elementary Number Theory',                                            section: 'number-theory' },
+    { id: 'analytic-nt',          name: 'Analytic NT',          fullName: 'Analytic and Multiplicative Number Theory',                           section: 'number-theory' },
+    { id: 'algebraic-nt',         name: 'Algebraic NT',         fullName: 'Algebraic Number Theory, p-adics, Local Fields, and Modular Forms',    section: 'number-theory' },
+    { id: 'combinatorics',        name: 'Combinatorics',        fullName: 'Combinatorics and Graph Theory',                                      section: 'number-theory' },
+    { id: 'advanced-combinatorics',name:'Adv. Combinatorics',   fullName: 'Advanced Combinatorics: Additive/Extremal Methods, Matroids, Tilings', section: 'number-theory' },
+
+    { id: 'computability',        name: 'Computability',        fullName: 'Computability and Automata',                                          section: 'logic' },
+    { id: 'model-theory-1',       name: 'Model Theory I',       fullName: 'Model Theory I',                                                    section: 'logic' },
+    { id: 'model-theory-2',       name: 'Model Theory II',      fullName: 'Model Theory II: ACF, Presburger, Ultraproducts, Fraisse',            section: 'logic' },
+    { id: 'set-theory-1',         name: 'Set Theory I',         fullName: 'Set Theory I: Cardinals and Ordinals',                                section: 'logic' },
+    { id: 'set-theory-2',         name: 'Set Theory II',        fullName: 'Set Theory II: ZFC and the Cumulative Hierarchy',                     section: 'logic' },
+    { id: 'descriptive-set',      name: 'Desc. Set Thy.',       fullName: 'Descriptive Set Theory',                                             section: 'logic' },
+    { id: 'metamathematics',      name: 'Metamathematics',      fullName: 'Metamathematics and Incompleteness',                                 section: 'logic' },
+
+    { id: 'category-theory-1',    name: 'Category Thy. I',      fullName: 'Category Theory I',                                                 section: 'category' },
+    { id: 'category-theory-2',    name: 'Category Thy. II',     fullName: 'Category Theory II: Limits, Adjunctions, Monoidal/Abelian/Bicategorical', section: 'category' },
+    { id: 'sheaves-topoi',        name: 'Sheaves & Topoi',      fullName: 'Sheaves, Sites, and Topoi',                                          section: 'category' },
+    { id: 'algebraic-topology',   name: 'Alg. Topology',        fullName: 'Algebraic Topology',                                                section: 'category' },
+    { id: 'algebraic-geometry-1', name: 'Alg. Geometry I',      fullName: 'Algebraic Geometry I: Affine Schemes and Schemes',                    section: 'category' },
+    { id: 'algebraic-geometry-2', name: 'Alg. Geometry II',     fullName: 'Algebraic Geometry II: Projective, Sheaf-Theoretic, Cohomological',   section: 'category' },
+    { id: 'condensed',            name: 'Condensed Math',       fullName: 'Condensed Mathematics',                                              section: 'category' },
+    { id: 'information-theory',   name: 'Info. Theory',         fullName: 'Information Theory and Coding',                                      section: 'category' },
+
+    { id: 'functors-monads',      name: 'Functors & Monads',    fullName: 'Functor, Applicative, Monad, and Traversable Patterns in Mathlib',   section: 'optional' },
+  ];
+
+  // Every course has a URL derived from its directory name
+  courses.forEach(c => { c.url = BASE_URL + DIR[c.id]; });
+
+  const edges = [
+    ['algebraic-structures', 'group-theory-1'],
+    ['algebraic-structures', 'ring-theory'],
+    ['algebraic-structures', 'linear-algebra-1'],
+    ['group-theory-1', 'group-theory-2'],
+    ['linear-algebra-1', 'linear-algebra-2'],
+    ['ring-theory', 'commutative-algebra-1'],
+    ['linear-algebra-1', 'commutative-algebra-1'],
+    ['commutative-algebra-1', 'commutative-algebra-2'],
+    ['ring-theory', 'field-galois'],
+    ['linear-algebra-1', 'field-galois'],
+    ['group-theory-1', 'representation-theory'],
+    ['ring-theory', 'representation-theory'],
+    ['linear-algebra-1', 'representation-theory'],
+    ['ring-theory', 'lie-algebras'],
+    ['linear-algebra-1', 'lie-algebras'],
+    ['linear-algebra-2', 'homological-algebra'],
+    ['category-theory-2', 'homological-algebra'],
+    ['ring-theory', 'algebra-seminar'],
+    ['linear-algebra-1', 'algebra-seminar'],
+
+    ['functions-relations', 'general-topology'],
+    ['orders-lattices', 'general-topology'],
+    ['group-theory-1', 'topological-algebra'],
+    ['algebraic-structures', 'topological-algebra'],
+    ['general-topology', 'topological-algebra'],
+    ['linear-algebra-1', 'real-analysis'],
+    ['general-topology', 'real-analysis'],
+    ['real-analysis', 'complex-analysis'],
+    ['linear-algebra-2', 'functional-analysis'],
+    ['real-analysis', 'functional-analysis'],
+    ['general-topology', 'measure-theory'],
+    ['real-analysis', 'measure-theory'],
+    ['linear-algebra-1', 'measure-theory'],
+    ['measure-theory', 'probability'],
+    ['general-topology', 'dynamics'],
+    ['measure-theory', 'dynamics'],
+    ['probability', 'dynamics'],
+    ['linear-algebra-2', 'manifolds'],
+    ['general-topology', 'manifolds'],
+    ['real-analysis', 'manifolds'],
+    ['linear-algebra-1', 'convex-geometry'],
+    ['general-topology', 'convex-geometry'],
+    ['real-analysis', 'fourier-odes'],
+    ['measure-theory', 'fourier-odes'],
+    ['functional-analysis', 'fourier-odes'],
+
+    ['ring-theory', 'elementary-nt'],
+    ['elementary-nt', 'analytic-nt'],
+    ['complex-analysis', 'analytic-nt'],
+    ['measure-theory', 'analytic-nt'],
+    ['commutative-algebra-1', 'algebraic-nt'],
+    ['field-galois', 'algebraic-nt'],
+    ['complex-analysis', 'algebraic-nt'],
+    ['elementary-nt', 'algebraic-nt'],
+    ['finite-math', 'combinatorics'],
+    ['functions-relations', 'combinatorics'],
+    ['combinatorics', 'advanced-combinatorics'],
+
+    ['finite-math', 'computability'],
+    ['functions-relations', 'computability'],
+    ['functions-relations', 'model-theory-1'],
+    ['model-theory-1', 'model-theory-2'],
+    ['functions-relations', 'set-theory-1'],
+    ['orders-lattices', 'set-theory-1'],
+    ['set-theory-1', 'set-theory-2'],
+    ['general-topology', 'descriptive-set'],
+    ['set-theory-1', 'descriptive-set'],
+    ['computability', 'metamathematics'],
+    ['model-theory-1', 'metamathematics'],
+    ['set-theory-2', 'metamathematics'],
+
+    ['functions-relations', 'category-theory-1'],
+    ['algebraic-structures', 'category-theory-1'],
+    ['category-theory-1', 'category-theory-2'],
+    ['general-topology', 'sheaves-topoi'],
+    ['category-theory-2', 'sheaves-topoi'],
+    ['general-topology', 'algebraic-topology'],
+    ['category-theory-2', 'algebraic-topology'],
+    ['commutative-algebra-2', 'algebraic-geometry-1'],
+    ['category-theory-2', 'algebraic-geometry-1'],
+    ['algebraic-geometry-1', 'algebraic-geometry-2'],
+    ['sheaves-topoi', 'algebraic-geometry-2'],
+    ['homological-algebra', 'algebraic-geometry-2'],
+    ['sheaves-topoi', 'condensed'],
+    ['measure-theory', 'condensed'],
+    ['category-theory-2', 'condensed'],
+    ['probability', 'information-theory'],
+    ['computability', 'information-theory'],
+  ];
+
+  // ── Compute pixel positions ───────────────────────────────────────
+
+  function nodeX(col) { return PAD_X + col * COL_STEP; }
+  function nodeY(row) { return PAD_Y + row * ROW_STEP; }
+  function nodeCX(col) { return nodeX(col) + NODE_W / 2; }
+  function nodeCY(row) { return nodeY(row) + NODE_H / 2; }
+
+  const graphW = PAD_X * 2 + (COLS - 1) * COL_STEP + NODE_W;
+  const graphH = PAD_Y * 2 + (ROWS - 1) * ROW_STEP + NODE_H;
+
+  // ── Build index ───────────────────────────────────────────────────
+
+  const courseMap = {};
+  courses.forEach(c => { courseMap[c.id] = c; });
+
+  const prereqsOf = {};
+  courses.forEach(c => { prereqsOf[c.id] = []; });
+  edges.forEach(([from, to]) => { prereqsOf[to].push(from); });
+
+  function getAncestors(id) {
+    const result = new Set();
+    const stack = [id];
+    while (stack.length) {
+      const cur = stack.pop();
+      prereqsOf[cur].forEach(p => {
+        if (!result.has(p)) { result.add(p); stack.push(p); }
+      });
+    }
+    return result;
+  }
+
+  const dependentsOf = {};
+  courses.forEach(c => { dependentsOf[c.id] = []; });
+  edges.forEach(([from, to]) => { dependentsOf[from].push(to); });
+
+  function getDescendants(id) {
+    const result = new Set();
+    const stack = [id];
+    while (stack.length) {
+      const cur = stack.pop();
+      dependentsOf[cur].forEach(d => {
+        if (!result.has(d)) { result.add(d); stack.push(d); }
+      });
+    }
+    return result;
+  }
+
+  // ── SVG rendering ─────────────────────────────────────────────────
+
+  const svg = document.getElementById('graph');
+  const tooltip = document.getElementById('tooltip');
+
+  svg.setAttribute('viewBox', `0 0 ${graphW} ${graphH}`);
+  svg.setAttribute('width', graphW);
+  svg.setAttribute('height', graphH);
+
+  const NS = 'http://www.w3.org/2000/svg';
+  function svgEl(tag, attrs) {
+    const el = document.createElementNS(NS, tag);
+    for (const [k, v] of Object.entries(attrs || {})) el.setAttribute(k, v);
+    return el;
+  }
+
+  // Arrow marker
+  const defs = svgEl('defs');
+  const marker = svgEl('marker', {
+    id: 'arrowhead', markerWidth: '5', markerHeight: '4',
+    refX: '5', refY: '2', orient: 'auto',
+  });
+  marker.appendChild(svgEl('polygon', { points: '0 0, 5 2, 0 4', class: 'arrowhead' }));
+  defs.appendChild(marker);
+  svg.appendChild(defs);
+
+  const edgeGroup = svgEl('g', { class: 'edges' });
+  svg.appendChild(edgeGroup);
+  const nodeGroup = svgEl('g', { class: 'nodes' });
+  svg.appendChild(nodeGroup);
+
+  // Draw edges as straight lines from bottom-center of source to top-center of target
+  const edgeElements = {};
+  edges.forEach(([from, to]) => {
+    const [fc, fr] = positions[from];
+    const [tc, tr] = positions[to];
+
+    const x1 = nodeCX(fc);
+    const y1 = nodeY(fr) + NODE_H;
+    const x2 = nodeCX(tc);
+    const y2 = nodeY(tr);
+
+    const edgeG = svgEl('g', { class: 'edge', 'data-from': from, 'data-to': to });
+    edgeG.appendChild(svgEl('line', {
+      x1, y1, x2, y2,
+      'marker-end': 'url(#arrowhead)',
+    }));
+    edgeGroup.appendChild(edgeG);
+    edgeElements[`${from}|${to}`] = edgeG;
+  });
+
+  // Draw nodes
+  const nodeElements = {};
+  courses.forEach(c => {
+    const [col, row] = positions[c.id];
+    const x = nodeX(col);
+    const y = nodeY(row);
+    const colors = SECTION_COLORS[c.section];
+    const status = c.url ? 'live' : 'coming-soon';
+
+    const group = svgEl('g', {
+      class: `node ${status}`,
+      'data-id': c.id,
+      transform: `translate(${x}, ${y})`,
+    });
+
+    group.appendChild(svgEl('rect', {
+      width: NODE_W, height: NODE_H,
+      fill: colors.fill, stroke: colors.stroke,
+    }));
+
+    const text = svgEl('text', { x: NODE_W / 2, y: NODE_H / 2 });
+    text.textContent = c.name;
+    group.appendChild(text);
+
+    group.addEventListener('mouseenter', (e) => onNodeEnter(c, e));
+    group.addEventListener('mouseleave', () => onNodeLeave());
+    group.addEventListener('click', () => onNodeClick(c));
+
+    nodeGroup.appendChild(group);
+    nodeElements[c.id] = group;
+  });
+
+  // ── Interaction ───────────────────────────────────────────────────
+
+  function onNodeEnter(course, event) {
+    const ancestors = getAncestors(course.id);
+    const descendants = getDescendants(course.id);
+    const related = new Set([course.id, ...ancestors, ...descendants]);
+
+    courses.forEach(c => {
+      const el = nodeElements[c.id];
+      if (related.has(c.id)) { el.classList.add('highlighted'); el.classList.remove('faded'); }
+      else { el.classList.add('faded'); el.classList.remove('highlighted'); }
+    });
+
+    edges.forEach(([from, to]) => {
+      const el = edgeElements[`${from}|${to}`];
+      if (related.has(from) && related.has(to)) { el.classList.add('highlighted'); el.classList.remove('faded'); }
+      else { el.classList.add('faded'); el.classList.remove('highlighted'); }
+    });
+
+    const prereqNames = prereqsOf[course.id].map(p => courseMap[p].name);
+    tooltip.querySelector('.tt-name').textContent = course.fullName;
+    tooltip.querySelector('.tt-section').textContent = SECTION_LABELS[course.section];
+
+    const ttStatus = tooltip.querySelector('.tt-status');
+    if (course.url) {
+      ttStatus.textContent = 'Available — click to play';
+      ttStatus.className = 'tt-status live';
+    } else {
+      ttStatus.textContent = 'Coming Soon';
+      ttStatus.className = 'tt-status coming-soon';
+    }
+
+    const ttPrereqs = tooltip.querySelector('.tt-prereqs');
+    ttPrereqs.textContent = prereqNames.length > 0
+      ? 'Prereqs: ' + prereqNames.join(', ')
+      : 'No prerequisites';
+
+    tooltip.style.display = 'block';
+    positionTooltip(event);
+  }
+
+  function positionTooltip(event) {
+    const x = event.clientX + 12;
+    const y = event.clientY + 12;
+    const ttRect = tooltip.getBoundingClientRect();
+    tooltip.style.left = Math.min(x, window.innerWidth - ttRect.width - 8) + 'px';
+    tooltip.style.top = Math.min(y, window.innerHeight - ttRect.height - 8) + 'px';
+  }
+
+  document.addEventListener('mousemove', (e) => {
+    if (tooltip.style.display === 'block') positionTooltip(e);
+  });
+
+  function onNodeLeave() {
+    courses.forEach(c => { nodeElements[c.id].classList.remove('highlighted', 'faded'); });
+    edges.forEach(([from, to]) => { edgeElements[`${from}|${to}`].classList.remove('highlighted', 'faded'); });
+    tooltip.style.display = 'none';
+  }
+
+  function onNodeClick(course) {
+    if (!course.url) return;
+    window.open(course.url, '_blank');
+  }
+
+})();
+</script>
+
+</body>
+</html>

@@ -1,5 +1,5 @@
-# Lake build artifacts
-.lake/
+# Lake build artifacts (each game has its own .lake/)
+**/.lake/
 
 # Claude Code personal files
 .claude/settings.local.json
@@ -7,3 +7,6 @@
 
 # OS files
 .DS_Store
+
+# Node modules (lean4game submodule)
+node_modules/

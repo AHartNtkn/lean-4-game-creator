@@ -1,0 +1,49 @@
+msgid ""
+msgstr "Project-Id-Version: Game v4.28.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-03-13\n"
+"Last-Translator: \n"
+"Language-Team: none\n"
+"Language: en\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit"
+
+#: GameServer.RpcHandlers
+msgid "level completed with warnings… 🎭"
+msgstr ""
+
+#: Game.Levels.Welcome.L01_Welcome
+msgid "Welcome"
+msgstr ""
+
+#: GameServer.RpcHandlers
+msgid "level completed! 🎉"
+msgstr ""
+
+#: GameServer.RpcHandlers
+msgid "intermediate goal solved! 🎉"
+msgstr ""
+
+#: Game
+msgid "# Orders & Lattices\n"
+"\n"
+"Orders, Lattices, Filters, and Galois Connections\n"
+"\n"
+"This course is under construction."
+msgstr ""
+
+#: Game.Levels.Welcome.L01_Welcome
+msgid "Welcome to Orders & Lattices!\n"
+"\n"
+"This course is under construction. Check back soon for new content.\n"
+"\n"
+"For now, try closing this trivial goal to make sure everything works."
+msgstr ""
+
+#: Game
+msgid "Orders & Lattices"
+msgstr ""
+
+#: Game.Levels.Welcome.L01_Welcome
+msgid "The course infrastructure is working. Content coming soon!"
+msgstr ""

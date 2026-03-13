@@ -1,0 +1,3 @@
+[submodule "lean4game"]
+	path = lean4game
+	url = https://github.com/leanprover-community/lean4game.git
