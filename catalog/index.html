@@ -176,16 +176,15 @@
 (function() {
   'use strict';
 
-  // ── Layout constants ──────────────────────────────────────────────
+  // ── Layout tuning ───────────────────────────────────────────────
 
   const NODE_W = 115;
   const NODE_H = 30;
-  const COL_STEP = 135;  // node width + horizontal gap
-  const ROW_STEP = 55;   // node height + vertical gap
+  const H_GAP = 20;
+  const V_GAP = 25;
   const PAD_X = 25;
   const PAD_Y = 20;
-  const COLS = 9;
-  const ROWS = 8;
+  const MAX_PER_ROW = 8;
 
   const SECTION_COLORS = {
     foundations:      { fill: '#f0f0f0', stroke: '#aaa' },
@@ -207,81 +206,8 @@
     optional: 'Optional',
   };
 
-  // ── Manual layout: [col, row] for each course ─────────────────────
-  //
-  // 8 columns (0–7), 8 rows (0–7).
-  // All prerequisite edges point strictly downward (from lower row to higher).
+  // ── Course data ─────────────────────────────────────────────────
 
-  const positions = {
-    // Row 0 — Foundations
-    'finite-math':            [0, 0],
-    'functions-relations':    [2, 0],
-    'orders-lattices':        [4, 0],
-    'algebraic-structures':   [6, 0],
-
-    // Row 1 — First dependents
-    'combinatorics':          [0, 1],
-    'computability':          [1, 1],
-    'model-theory-1':         [2, 1],
-    'set-theory-1':           [3, 1],
-    'general-topology':       [4, 1],
-    'category-theory-1':      [5, 1],
-    'group-theory-1':         [6, 1],
-    'ring-theory':            [7, 1],
-
-    // Row 2
-    'advanced-combinatorics': [0, 2],
-    'model-theory-2':         [1, 2],
-    'set-theory-2':           [2, 2],
-    'topological-algebra':    [3, 2],
-    'category-theory-2':      [4, 2],
-    'metric-spaces':          [5, 2],
-    'elementary-nt':          [6, 2],
-    'linear-algebra-1':       [7, 2],
-    'group-theory-2':         [8, 2],
-
-    // Row 3
-    'algebra-seminar':        [0, 3],
-    'convex-geometry':        [1, 3],
-    'descriptive-set':        [2, 3],
-    'real-analysis':          [3, 3],
-    'sheaves-topoi':          [4, 3],
-    'representation-theory':  [5, 3],
-    'field-galois':           [6, 3],
-    'commutative-algebra-1':  [7, 3],
-
-    // Row 4
-    'metamathematics':        [1, 4],
-    'complex-analysis':       [3, 4],
-    'algebraic-topology':     [4, 4],
-    'lie-algebras':           [5, 4],
-    'commutative-algebra-2':  [6, 4],
-    'linear-algebra-2':       [7, 4],
-
-    // Row 5
-    'measure-theory':         [2, 5],
-    'functional-analysis':    [3, 5],
-    'algebraic-geometry-1':   [4, 5],
-    'homological-algebra':    [5, 5],
-    'algebraic-nt':           [6, 5],
-    'manifolds':              [7, 5],
-
-    // Row 6
-    'probability':            [2, 6],
-    'fourier-odes':           [3, 6],
-    'condensed':              [4, 6],
-    'analytic-nt':            [6, 6],
-
-    // Row 7
-    'dynamics':               [2, 7],
-    'algebraic-geometry-2':   [4, 7],
-    'information-theory':     [5, 7],
-    'functors-monads':        [7, 7],
-  };
-
-  // ── Course data ───────────────────────────────────────────────────
-
-  // Directory name for each course (maps id → filesystem dir)
   const DIR = {
     'finite-math': 'finite_math',
     'functions-relations': 'functions_relations',
@@ -334,7 +260,6 @@
     'functors-monads': 'functors_monads',
   };
 
-  // Change this port to match your lean4game dev server
   const BASE_URL = 'http://localhost:3000/#/g/local/';
 
   const courses = [
@@ -395,7 +320,6 @@
     { id: 'functors-monads',      name: 'Functors & Monads',    fullName: 'Functor / Applicative / Monad / Traversable Patterns Used Across Mathlib', section: 'optional' },
   ];
 
-  // Every course has a URL derived from its directory name
   courses.forEach(c => { c.url = BASE_URL + DIR[c.id]; });
 
   const edges = [
@@ -490,17 +414,7 @@
     ['computability', 'information-theory'],
   ];
 
-  // ── Compute pixel positions ───────────────────────────────────────
-
-  function nodeX(col) { return PAD_X + col * COL_STEP; }
-  function nodeY(row) { return PAD_Y + row * ROW_STEP; }
-  function nodeCX(col) { return nodeX(col) + NODE_W / 2; }
-  function nodeCY(row) { return nodeY(row) + NODE_H / 2; }
-
-  const graphW = PAD_X * 2 + (COLS - 1) * COL_STEP + NODE_W;
-  const graphH = PAD_Y * 2 + (ROWS - 1) * ROW_STEP + NODE_H;
-
-  // ── Build index ───────────────────────────────────────────────────
+  // ── Graph index ─────────────────────────────────────────────────
 
   const courseMap = {};
   courses.forEach(c => { courseMap[c.id] = c; });
@@ -508,6 +422,10 @@
   const prereqsOf = {};
   courses.forEach(c => { prereqsOf[c.id] = []; });
   edges.forEach(([from, to]) => { prereqsOf[to].push(from); });
+
+  const dependentsOf = {};
+  courses.forEach(c => { dependentsOf[c.id] = []; });
+  edges.forEach(([from, to]) => { dependentsOf[from].push(to); });
 
   function getAncestors(id) {
     const result = new Set();
@@ -521,10 +439,6 @@
     return result;
   }
 
-  const dependentsOf = {};
-  courses.forEach(c => { dependentsOf[c.id] = []; });
-  edges.forEach(([from, to]) => { dependentsOf[from].push(to); });
-
   function getDescendants(id) {
     const result = new Set();
     const stack = [id];
@@ -537,7 +451,125 @@
     return result;
   }
 
-  // ── SVG rendering ─────────────────────────────────────────────────
+  // ── Auto-layout: width-constrained Sugiyama ─────────────────────
+
+  // Topological sort
+  const topoOrder = (function() {
+    const deg = {};
+    courses.forEach(c => { deg[c.id] = 0; });
+    edges.forEach(([, to]) => { deg[to]++; });
+    const q = courses.filter(c => deg[c.id] === 0).map(c => c.id);
+    const order = [];
+    let head = 0;
+    while (head < q.length) {
+      const cur = q[head++];
+      order.push(cur);
+      dependentsOf[cur].forEach(d => { if (--deg[d] === 0) q.push(d); });
+    }
+    return order;
+  })();
+
+  // Step 1: Layer assignment via longest path from sources
+  const layer = {};
+  topoOrder.forEach(id => {
+    const preds = prereqsOf[id];
+    layer[id] = preds.length === 0 ? 0 : Math.max(...preds.map(p => layer[p])) + 1;
+  });
+
+  // Step 2: Enforce width constraint by promoting overflow nodes
+  for (let iter = 0; iter < 300; iter++) {
+    const buckets = {};
+    courses.forEach(c => {
+      const l = layer[c.id];
+      if (!buckets[l]) buckets[l] = [];
+      buckets[l].push(c.id);
+    });
+
+    const lvls = Object.keys(buckets).map(Number).sort((a, b) => a - b);
+    const overflow = lvls.find(l => buckets[l].length > MAX_PER_ROW);
+    if (overflow === undefined) break;
+
+    // Pick the node with most slack (room to push down without cascade),
+    // breaking ties by fewest descendants (least cascade impact)
+    const candidates = buckets[overflow].map(id => {
+      const deps = dependentsOf[id];
+      const slack = deps.length > 0
+        ? Math.min(...deps.map(d => layer[d])) - layer[id] - 1
+        : 999;
+      return { id, slack, desc: getDescendants(id).size };
+    });
+    candidates.sort((a, b) => (b.slack - a.slack) || (a.desc - b.desc));
+
+    layer[candidates[0].id]++;
+
+    // Cascade: ensure all descendants still satisfy layer[child] > layer[parent]
+    topoOrder.forEach(id => {
+      const preds = prereqsOf[id];
+      if (preds.length > 0) {
+        const minReq = Math.max(...preds.map(p => layer[p])) + 1;
+        if (layer[id] < minReq) layer[id] = minReq;
+      }
+    });
+  }
+
+  // Step 3: Barycenter crossing minimization
+  const rowNodes = {};
+  courses.forEach(c => {
+    const l = layer[c.id];
+    if (!rowNodes[l]) rowNodes[l] = [];
+    rowNodes[l].push(c.id);
+  });
+  const sortedLevels = Object.keys(rowNodes).map(Number).sort((a, b) => a - b);
+
+  // Initialize column indices
+  const colIdx = {};
+  sortedLevels.forEach(l => { rowNodes[l].forEach((id, i) => { colIdx[id] = i; }); });
+
+  for (let iter = 0; iter < 30; iter++) {
+    // Down sweep: order each row by average position of predecessors
+    for (let li = 1; li < sortedLevels.length; li++) {
+      const l = sortedLevels[li];
+      rowNodes[l].forEach(id => {
+        const nbrs = prereqsOf[id].filter(p => layer[p] < l);
+        if (nbrs.length > 0) colIdx[id] = nbrs.reduce((s, p) => s + colIdx[p], 0) / nbrs.length;
+      });
+      rowNodes[l].sort((a, b) => colIdx[a] - colIdx[b]);
+      rowNodes[l].forEach((id, i) => { colIdx[id] = i; });
+    }
+    // Up sweep: order each row by average position of dependents
+    for (let li = sortedLevels.length - 2; li >= 0; li--) {
+      const l = sortedLevels[li];
+      rowNodes[l].forEach(id => {
+        const nbrs = dependentsOf[id].filter(d => layer[d] > l);
+        if (nbrs.length > 0) colIdx[id] = nbrs.reduce((s, d) => s + colIdx[d], 0) / nbrs.length;
+      });
+      rowNodes[l].sort((a, b) => colIdx[a] - colIdx[b]);
+      rowNodes[l].forEach((id, i) => { colIdx[id] = i; });
+    }
+  }
+
+  // Step 4: Final positions — center narrow rows within the widest row
+  const maxRowLen = Math.max(...sortedLevels.map(l => rowNodes[l].length));
+  const positions = {};
+  sortedLevels.forEach((l, ri) => {
+    const len = rowNodes[l].length;
+    const offset = (maxRowLen - len) / 2;
+    rowNodes[l].forEach((id, ci) => { positions[id] = [ci + offset, ri]; });
+  });
+
+  // ── Pixel coordinates ───────────────────────────────────────────
+
+  const COL_STEP = NODE_W + H_GAP;
+  const ROW_STEP = NODE_H + V_GAP;
+
+  function nodeX(c) { return PAD_X + c * COL_STEP; }
+  function nodeY(r) { return PAD_Y + r * ROW_STEP; }
+  function nodeCX(c) { return nodeX(c) + NODE_W / 2; }
+
+  const graphW = PAD_X * 2 + (maxRowLen - 1) * COL_STEP + NODE_W;
+  const graphH = PAD_Y * 2 + (sortedLevels.length - 1) * ROW_STEP + NODE_H;
+
+  // ── SVG rendering ───────────────────────────────────────────────
 
   const svg = document.getElementById('graph');
   const tooltip = document.getElementById('tooltip');
@@ -568,7 +600,7 @@
   const nodeGroup = svgEl('g', { class: 'nodes' });
   svg.appendChild(nodeGroup);
 
-  // Draw edges as straight lines from bottom-center of source to top-center of target
+  // Draw edges
   const edgeElements = {};
   edges.forEach(([from, to]) => {
     const [fc, fr] = positions[from];
@@ -620,7 +652,7 @@
     nodeElements[c.id] = group;
   });
 
-  // ── Interaction ───────────────────────────────────────────────────
+  // ── Interaction ─────────────────────────────────────────────────
 
   function onNodeEnter(course, event) {
     const ancestors = getAncestors(course.id);
