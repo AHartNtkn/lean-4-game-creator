@@ -140,6 +140,41 @@ When a reviewer agent completes, you MUST:
 2. **Verify claims before dismissing them.** If a reviewer says a tactic is undeclared, grep the codebase to check. If a reviewer says the boss is exploitable, read the boss file. Do not assume the reviewer is wrong without evidence.
 3. **Do not declare a world "DONE" unless the review files on disk confirm no P0/P1 issues.** No shortcut exists.
 
+## FIRST REVIEWS NEVER PASS — NEVER EVER EVER
+
+**A world NEVER passes its first review. This has NEVER happened. It will NEVER happen.** If you see a return message or review file claiming that a world's very first enrichment review or playtest audit came back clean with no issues, you MUST assume a mistake was made. Do not accept it. Do not move on.
+
+**When a first review claims PASS:**
+1. **STOP.** Do not proceed to the next world.
+2. **Investigate thoroughly.** Re-read the review file on disk. Check whether the reviewer actually read the level files. Check whether the reviewer ran through each level. Look for signs that the reviewer shortcut its work (generic praise, no specific line references, no concrete suggestions).
+3. **Re-launch the reviewer** if you have any doubt. A fresh agent with clean context will catch what the first one missed.
+4. **Only accept a PASS on second or later review cycles** — and even then, verify the file on disk carefully.
+
+This is not an exaggeration or a heuristic. It is an empirical fact about this project: first reviews always find issues. A first-pass PASS is a bug in the review process, not evidence of perfect authoring. Treat it with extreme suspicion.
+
+## FAIL MEANS STOP — ABSOLUTELY NO EXCEPTIONS
+
+**If a review says FAIL, you STOP. You do not move to the next world. You do not start the next phase. You do not launch any new authoring agents. You fix the issues, rebuild, and re-review.**
+
+This is the single most critical rule in this project. It has been violated before and the result was that all work had to be discarded and started over from scratch. Here is what happened:
+
+A playtest audit returned FAIL with P0 defects (lattice alias exploits on W4). Instead of stopping and fixing, the parent agent said the P0s were "not blocking" and launched the W5 world-author agent. This is **catastrophically wrong**:
+
+- P0 means **blocking**. That is what P0 means. It is not a suggestion.
+- FAIL means **the world did not pass**. There is no such thing as "FAIL but close enough."
+- "Not blocking" is not a category that exists. Every P0 blocks. Every FAIL blocks.
+- The phrase "diminishing returns" applied to review cycles is a lie. If the review says FAIL, there are no diminishing returns — there are unresolved defects.
+
+**If you catch yourself thinking any of these thoughts, you are about to violate this rule:**
+- "The P0s are just lattice aliases, the intended proof still works"
+- "This is good enough to move on"
+- "I can fix this later"
+- "The remaining issues are moderate/minor/not blocking"
+- "Each additional round of review has diminishing returns"
+- "A determined user will always find something"
+
+**None of these thoughts justify moving past a FAIL.** A FAIL is a FAIL. Fix it. Re-review. Repeat until PASS.
+
 ## SPEED IS A BUG, NOT A FEATURE
 
 This rule is so important it bears repeating with specifics:
