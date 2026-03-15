@@ -1,7 +1,7 @@
 msgid ""
 msgstr "Project-Id-Version: Game v4.28.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-13\n"
+"POT-Creation-Date: 2026-03-14\n"
 "Last-Translator: \n"
 "Language-Team: none\n"
 "Language: en\n"
@@ -13,37 +13,79 @@ msgid "level completed with warnings… 🎭"
 msgstr ""
 
 #: Game
-msgid "# Finite Mathematics\n"
-"\n"
-"Finite Mathematics and Discrete Structures\n"
-"\n"
-"This course is under construction."
-msgstr ""
-
-#: Game.Levels.Welcome.L01_Welcome
-msgid "Welcome to Finite Mathematics!\n"
-"\n"
-"This course is under construction. Check back soon for new content.\n"
-"\n"
-"For now, try closing this trivial goal to make sure everything works."
-msgstr ""
-
-#: Game
 msgid "Finite Mathematics"
-msgstr ""
-
-#: Game.Levels.Welcome.L01_Welcome
-msgid "Welcome"
 msgstr ""
 
 #: GameServer.RpcHandlers
 msgid "level completed! 🎉"
 msgstr ""
 
+#. §0: `decide`
+#: Game.Levels.Welcome.L01_Welcome
+msgid "§0 can verify concrete decidable propositions."
+msgstr ""
+
+#: Game.Levels.Welcome.L01_Welcome
+msgid "Welcome to Finite Mathematics"
+msgstr ""
+
 #: GameServer.RpcHandlers
 msgid "intermediate goal solved! 🎉"
 msgstr ""
 
+#. §0: `Fin`
+#. §1: `Fintype`
+#. §2: `Finset`
+#: Game
+msgid "# Finite Mathematics\n"
+"\n"
+"Finite sets, finsets, multisets, lists, and finite sums/products.\n"
+"\n"
+"This course covers the finite-object infrastructure: §0, §1, §2,\n"
+"finite sets as subtypes, lists versus multisets, permutations of lists, finitely\n"
+"supported functions, big operators, matrices over finite index types, binomial\n"
+"coefficients, factorials, and counting identities.\n"
+"\n"
+"This course is under construction."
+msgstr ""
+
+#. §0: `decide`
+#. §1: `decide`
 #: Game.Levels.Welcome.L01_Welcome
-msgid "The course infrastructure is working. Content coming soon!"
+msgid "Great! The §0 tactic works by computation: it evaluates both sides and\n"
+"checks they are equal. This is a powerful tool for concrete finite mathematics,\n"
+"but it only works when the proposition is *decidable* — meaning Lean can check\n"
+"it by running a program.\n"
+"\n"
+"In this course, you'll learn to combine §1 with structural reasoning\n"
+"about finite objects."
+msgstr ""
+
+#. §0: `Fin`
+#. §1: `Finset`
+#. §2: `List`
+#. §3: `Multiset`
+#. §4: `rw`
+#. §5: `exact`
+#. §6: `apply`
+#. §7: `intro`
+#. §8: `cases`
+#. §9: `constructor`
+#. §10: `decide`
+#: Game.Levels.Welcome.L01_Welcome
+msgid "# Welcome to Finite Mathematics!\n"
+"\n"
+"In this course you will learn about the finite-object infrastructure that\n"
+"underlies much of formalized mathematics: §0, §1, §2, §3,\n"
+"big operators, and the counting identities that power combinatorics and algebra.\n"
+"\n"
+"**What you need**: familiarity with Lean 4 at the level of the Natural Number\n"
+"Game. You should be comfortable with §4, §5, §6, §7, §8,\n"
+"and §9.\n"
+"\n"
+"Let's start with something simple to make sure everything works.\n"
+"The §10 tactic can automatically verify decidable propositions — including\n"
+"concrete statements about natural numbers and finite types.\n"
+"\n"
+"Try closing this goal:"
 msgstr ""
