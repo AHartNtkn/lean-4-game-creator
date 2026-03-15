@@ -1,0 +1,10 @@
+import Game.Levels.Capstone.L01_FinFinset
+import Game.Levels.Capstone.L02_CountingSum
+import Game.Levels.Capstone.L03_SumOverUniv
+import Game.Levels.Capstone.L04_PigeonholeProduct
+import Game.Levels.Capstone.L05_PowersetBinomial
+import Game.Levels.Capstone.L06_MatrixTrace
+import Game.Levels.Capstone.L07_FinsuppSum
+import Game.Levels.Capstone.L08_TransferToolkit
+import Game.Levels.Capstone.L09_TransferPaper
+import Game.Levels.Capstone.L10_Boss

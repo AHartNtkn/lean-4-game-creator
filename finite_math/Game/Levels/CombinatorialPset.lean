@@ -1,0 +1,7 @@
+import Game.Levels.CombinatorialPset.L01_FreshPascal
+import Game.Levels.CombinatorialPset.L02_FreshSymmetry
+import Game.Levels.CombinatorialPset.L03_SumInvolvingChoose
+import Game.Levels.CombinatorialPset.L04_BinomialSpecialization
+import Game.Levels.CombinatorialPset.L05_TransferCombinatorialProof
+import Game.Levels.CombinatorialPset.L06_TransferBinomialTool
+import Game.Levels.CombinatorialPset.L07_Boss

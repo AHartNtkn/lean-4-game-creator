@@ -1,0 +1,11 @@
+import Game.Levels.FinCompute.L01_FinCases
+import Game.Levels.FinCompute.L02_SemicolonCombinator
+import Game.Levels.FinCompute.L03_Decide
+import Game.Levels.FinCompute.L04_WhenDecideDoesntHelp
+import Game.Levels.FinCompute.L05_NormNum
+import Game.Levels.FinCompute.L06_NormNumPractice
+import Game.Levels.FinCompute.L07_ModularArithmetic
+import Game.Levels.FinCompute.L08_FunctionOnFin
+import Game.Levels.FinCompute.L09_ModularMultiplication
+import Game.Levels.FinCompute.L10_MixedTactics
+import Game.Levels.FinCompute.L11_Boss

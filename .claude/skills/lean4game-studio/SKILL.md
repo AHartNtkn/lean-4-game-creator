@@ -78,6 +78,8 @@ Concretely:
 
 The parent agent coordinates, provides context, and integrates results. The subagents do the actual skill work.
 
+**HARD RULE: One world per agent call.** Every world-author, enrichment-reviewer, and playtest-auditor agent must target exactly one world. Never combine two or more worlds into a single agent call. This is non-negotiable — combining worlds degrades the skill invocation, pollutes context, and produces garbage.
+
 ## Enrichment advice policy
 
 The enrichment reviewer exists to push the world closer to ideal. Its suggestions are not decorative — they identify real gaps. The only valid reason to reject a suggestion is that implementing it would make the world *less* ideal (e.g., it introduces a pedagogical regression, contradicts the plan, or is factually wrong about the mathlib API).

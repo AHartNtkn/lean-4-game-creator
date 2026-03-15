@@ -21,3 +21,5 @@ Conclusion
 "
 The course infrastructure is working. Content coming soon!
 "
+
+NewTactic trivial

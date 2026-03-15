@@ -1,0 +1,7 @@
+import Game.Levels.FinsetExploration.L01_BuildItThreeWays
+import Game.Levels.FinsetExploration.L02_MembershipChecks
+import Game.Levels.FinsetExploration.L03_FilterTheEvens
+import Game.Levels.FinsetExploration.L04_ImageUnderSquaring
+import Game.Levels.FinsetExploration.L05_PowerSet
+import Game.Levels.FinsetExploration.L06_Product
+import Game.Levels.FinsetExploration.L07_Boss
