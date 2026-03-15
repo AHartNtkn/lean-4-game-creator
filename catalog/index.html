@@ -260,7 +260,9 @@
     'functors-monads': 'functors_monads',
   };
 
-  const BASE_URL = 'http://localhost:3000/#/g/local/';
+  // Auto-detect port: use current window location if served, otherwise default to 3000
+  const CLIENT_PORT = window.location.port || '3000';
+  const BASE_URL = `http://localhost:${CLIENT_PORT}/#/g/local/`;
 
   const courses = [
     { id: 'finite-math',          name: 'Finite Math',          fullName: 'Finite Sets, Finsets, Multisets, Lists, and Finite Sums/Products',     section: 'foundations' },
@@ -713,7 +715,7 @@
 
   function onNodeClick(course) {
     if (!course.url) return;
-    window.open(course.url, '_blank');
+    window.location.href = course.url;
   }
 
 })();
