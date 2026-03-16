@@ -2,7 +2,7 @@
   "$schema": "https://unpkg.com/hankweave@latest/schemas/hank.schema.json",
   "meta": {
     "name": "Lean4Game Course Studio",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "description": "Automated lean4game course authoring pipeline with declarative quality gates. Converts 49 stub courses into complete, reviewed, playtested lean4game courses.",
     "author": "lean4game-studio"
   },
@@ -31,15 +31,13 @@
         "pipeline-state.json",
         "catalog-progress.json"
       ],
-      "budget": {
-        "maxTimeSeconds": 300
-      }
+      "budget": { "maxTimeSeconds": 300 }
     },
     {
       "type": "loop",
       "id": "main-pipeline",
       "name": "Main Course Production Pipeline",
-      "description": "Single flat loop implementing a state machine that handles course selection, design, world authoring, review cycles, and course completion for all 49 courses. Nested loops are not supported in hankweave, so this loop uses pipeline-state.json as a state machine to track progress across courses, worlds, and review rounds.",
+      "description": "Single flat loop with dispatch-based routing. The dispatch codon snapshots the active step to active-codon.txt at the start of each iteration. All other codons check active-codon.txt (not pipeline-state.json) to avoid state cascade within an iteration.",
       "terminateOn": {
         "type": "iterationLimit",
         "limit": 8000
@@ -49,6 +47,26 @@
         "onExceeded": "complete"
       },
       "codons": [
+        {
+          "id": "dispatch",
+          "name": "Dispatch: Route to Active Codon",
+          "description": "Reads pipeline-state.json.nextStep and writes it to active-codon.txt. This snapshot prevents state cascade — all other codons check active-codon.txt which is written ONCE at the start of each iteration.",
+          "model": "haiku",
+          "continuationMode": "fresh",
+          "promptFile": "./prompts/dispatch.md",
+          "rigSetup": [
+            {
+              "type": "command",
+              "command": {
+                "run": "python3 -c \"import json; s=json.load(open('pipeline-state.json')); open('active-codon.txt','w').write(s.get('nextStep','done'))\" 2>/dev/null || echo done > active-codon.txt",
+                "workingDirectory": "project"
+              },
+              "allowFailure": true
+            }
+          ],
+          "checkpointedFiles": ["active-codon.txt"],
+          "budget": { "maxTimeSeconds": 60 }
+        },
         {
           "id": "select-course",
           "name": "Select Next Course",
@@ -60,20 +78,14 @@
             {
               "type": "command",
               "command": {
-                "run": "STEP=$(python3 -c \"import json; print(json.load(open('pipeline-state.json')).get('nextStep',''))\" 2>/dev/null || echo none); [ \"$STEP\" = \"select-course\" ] && echo RUN > should-run.txt || echo SKIP > should-run.txt",
+                "run": "ACTIVE=$(cat active-codon.txt 2>/dev/null || echo none); [ \"$ACTIVE\" = \"select-course\" ] && echo RUN > should-run.txt || echo SKIP > should-run.txt",
                 "workingDirectory": "project"
               },
               "allowFailure": true
             }
           ],
-          "checkpointedFiles": [
-            "pipeline-state.json",
-            "catalog-progress.json",
-            "current-course.txt"
-          ],
-          "budget": {
-            "maxTimeSeconds": 300
-          }
+          "checkpointedFiles": ["pipeline-state.json", "catalog-progress.json", "current-course.txt"],
+          "budget": { "maxTimeSeconds": 300 }
         },
         {
           "id": "coverage-map",
@@ -91,19 +103,14 @@
             {
               "type": "command",
               "command": {
-                "run": "STEP=$(python3 -c \"import json; print(json.load(open('pipeline-state.json')).get('nextStep',''))\" 2>/dev/null || echo none); [ \"$STEP\" = \"coverage-map\" ] && echo RUN > should-run.txt || echo SKIP > should-run.txt",
+                "run": "ACTIVE=$(cat active-codon.txt 2>/dev/null || echo none); [ \"$ACTIVE\" = \"coverage-map\" ] && echo RUN > should-run.txt || echo SKIP > should-run.txt",
                 "workingDirectory": "project"
               },
               "allowFailure": true
             }
           ],
-          "checkpointedFiles": [
-            "pipeline-state.json",
-            "*/coverage-map.md"
-          ],
-          "budget": {
-            "maxTimeSeconds": 3600
-          }
+          "checkpointedFiles": ["pipeline-state.json", "*/coverage-map.md"],
+          "budget": { "maxTimeSeconds": 3600 }
         },
         {
           "id": "course-architect",
@@ -123,19 +130,14 @@
             {
               "type": "command",
               "command": {
-                "run": "STEP=$(python3 -c \"import json; print(json.load(open('pipeline-state.json')).get('nextStep',''))\" 2>/dev/null || echo none); [ \"$STEP\" = \"course-architect\" ] && echo RUN > should-run.txt || echo SKIP > should-run.txt",
+                "run": "ACTIVE=$(cat active-codon.txt 2>/dev/null || echo none); [ \"$ACTIVE\" = \"course-architect\" ] && echo RUN > should-run.txt || echo SKIP > should-run.txt",
                 "workingDirectory": "project"
               },
               "allowFailure": true
             }
           ],
-          "checkpointedFiles": [
-            "pipeline-state.json",
-            "*/PLAN.md"
-          ],
-          "budget": {
-            "maxTimeSeconds": 7200
-          }
+          "checkpointedFiles": ["pipeline-state.json", "*/PLAN.md"],
+          "budget": { "maxTimeSeconds": 7200 }
         },
         {
           "id": "world-author",
@@ -155,22 +157,14 @@
             {
               "type": "command",
               "command": {
-                "run": "STEP=$(python3 -c \"import json; print(json.load(open('pipeline-state.json')).get('nextStep',''))\" 2>/dev/null || echo none); [ \"$STEP\" = \"author-world\" ] && echo RUN > should-run.txt || echo SKIP > should-run.txt",
+                "run": "ACTIVE=$(cat active-codon.txt 2>/dev/null || echo none); [ \"$ACTIVE\" = \"author-world\" ] && echo RUN > should-run.txt || echo SKIP > should-run.txt",
                 "workingDirectory": "project"
               },
               "allowFailure": true
             }
           ],
-          "checkpointedFiles": [
-            "pipeline-state.json",
-            "*/Game.lean",
-            "*/Game/Levels/**/*.lean",
-            "current-world.txt",
-            "world-progress.json"
-          ],
-          "budget": {
-            "maxTimeSeconds": 7200
-          }
+          "checkpointedFiles": ["pipeline-state.json", "*/Game.lean", "*/Game/Levels/**/*.lean", "current-world.txt", "world-progress.json"],
+          "budget": { "maxTimeSeconds": 7200 }
         },
         {
           "id": "build-and-fix",
@@ -183,21 +177,14 @@
             {
               "type": "command",
               "command": {
-                "run": "STEP=$(python3 -c \"import json; print(json.load(open('pipeline-state.json')).get('nextStep',''))\" 2>/dev/null || echo none); if [ \"$STEP\" = \"build\" ]; then echo RUN > should-run.txt; lake build 2>&1 | tee build-log.txt; echo $? > build-exit-code.txt; else echo SKIP > should-run.txt; fi",
+                "run": "ACTIVE=$(cat active-codon.txt 2>/dev/null || echo none); if [ \"$ACTIVE\" = \"build\" ]; then echo RUN > should-run.txt; lake build 2>&1 | tee build-log.txt; echo $? > build-exit-code.txt; else echo SKIP > should-run.txt; fi",
                 "workingDirectory": "project"
               },
               "allowFailure": true
             }
           ],
-          "checkpointedFiles": [
-            "pipeline-state.json",
-            "*/Game/Levels/**/*.lean",
-            "*/Game.lean",
-            "build-log.txt"
-          ],
-          "budget": {
-            "maxTimeSeconds": 3600
-          }
+          "checkpointedFiles": ["pipeline-state.json", "*/Game/Levels/**/*.lean", "*/Game.lean", "build-log.txt"],
+          "budget": { "maxTimeSeconds": 3600 }
         },
         {
           "id": "enrichment-review",
@@ -210,19 +197,14 @@
             {
               "type": "command",
               "command": {
-                "run": "STEP=$(python3 -c \"import json; print(json.load(open('pipeline-state.json')).get('nextStep',''))\" 2>/dev/null || echo none); [ \"$STEP\" = \"enrichment-review\" ] && echo RUN > should-run.txt || echo SKIP > should-run.txt",
+                "run": "ACTIVE=$(cat active-codon.txt 2>/dev/null || echo none); [ \"$ACTIVE\" = \"enrichment-review\" ] && echo RUN > should-run.txt || echo SKIP > should-run.txt",
                 "workingDirectory": "project"
               },
               "allowFailure": true
             }
           ],
-          "checkpointedFiles": [
-            "pipeline-state.json",
-            "*/reviews/enrichment-current.md"
-          ],
-          "budget": {
-            "maxTimeSeconds": 5400
-          }
+          "checkpointedFiles": ["pipeline-state.json", "*/reviews/enrichment-current.md"],
+          "budget": { "maxTimeSeconds": 5400 }
         },
         {
           "id": "playtest-audit",
@@ -241,19 +223,14 @@
             {
               "type": "command",
               "command": {
-                "run": "STEP=$(python3 -c \"import json; print(json.load(open('pipeline-state.json')).get('nextStep',''))\" 2>/dev/null || echo none); [ \"$STEP\" = \"playtest-audit\" ] && echo RUN > should-run.txt || echo SKIP > should-run.txt",
+                "run": "ACTIVE=$(cat active-codon.txt 2>/dev/null || echo none); [ \"$ACTIVE\" = \"playtest-audit\" ] && echo RUN > should-run.txt || echo SKIP > should-run.txt",
                 "workingDirectory": "project"
               },
               "allowFailure": true
             }
           ],
-          "checkpointedFiles": [
-            "pipeline-state.json",
-            "*/reviews/playtest-current.md"
-          ],
-          "budget": {
-            "maxTimeSeconds": 5400
-          }
+          "checkpointedFiles": ["pipeline-state.json", "*/reviews/playtest-current.md"],
+          "budget": { "maxTimeSeconds": 5400 }
         },
         {
           "id": "review-gate",
@@ -270,19 +247,14 @@
             {
               "type": "command",
               "command": {
-                "run": "STEP=$(python3 -c \"import json; print(json.load(open('pipeline-state.json')).get('nextStep',''))\" 2>/dev/null || echo none); [ \"$STEP\" = \"review-gate\" ] && echo RUN > should-run.txt || echo SKIP > should-run.txt",
+                "run": "ACTIVE=$(cat active-codon.txt 2>/dev/null || echo none); [ \"$ACTIVE\" = \"review-gate\" ] && echo RUN > should-run.txt || echo SKIP > should-run.txt",
                 "workingDirectory": "project"
               },
               "allowFailure": true
             }
           ],
-          "checkpointedFiles": [
-            "pipeline-state.json",
-            "*/reviews/gate-decision.json"
-          ],
-          "budget": {
-            "maxTimeSeconds": 900
-          }
+          "checkpointedFiles": ["pipeline-state.json", "*/reviews/gate-decision.json"],
+          "budget": { "maxTimeSeconds": 900 }
         },
         {
           "id": "fix-issues",
@@ -299,21 +271,14 @@
             {
               "type": "command",
               "command": {
-                "run": "STEP=$(python3 -c \"import json; print(json.load(open('pipeline-state.json')).get('nextStep',''))\" 2>/dev/null || echo none); [ \"$STEP\" = \"fix-issues\" ] && echo RUN > should-run.txt || echo SKIP > should-run.txt",
+                "run": "ACTIVE=$(cat active-codon.txt 2>/dev/null || echo none); [ \"$ACTIVE\" = \"fix-issues\" ] && echo RUN > should-run.txt || echo SKIP > should-run.txt",
                 "workingDirectory": "project"
               },
               "allowFailure": true
             }
           ],
-          "checkpointedFiles": [
-            "pipeline-state.json",
-            "*/Game/Levels/**/*.lean",
-            "*/Game.lean",
-            "build-log.txt"
-          ],
-          "budget": {
-            "maxTimeSeconds": 5400
-          }
+          "checkpointedFiles": ["pipeline-state.json", "*/Game/Levels/**/*.lean", "*/Game.lean", "build-log.txt"],
+          "budget": { "maxTimeSeconds": 5400 }
         },
         {
           "id": "mark-world-complete",
@@ -326,20 +291,14 @@
             {
               "type": "command",
               "command": {
-                "run": "STEP=$(python3 -c \"import json; print(json.load(open('pipeline-state.json')).get('nextStep',''))\" 2>/dev/null || echo none); [ \"$STEP\" = \"mark-world\" ] && echo RUN > should-run.txt || echo SKIP > should-run.txt",
+                "run": "ACTIVE=$(cat active-codon.txt 2>/dev/null || echo none); [ \"$ACTIVE\" = \"mark-world\" ] && echo RUN > should-run.txt || echo SKIP > should-run.txt",
                 "workingDirectory": "project"
               },
               "allowFailure": true
             }
           ],
-          "checkpointedFiles": [
-            "pipeline-state.json",
-            "world-progress.json",
-            "*/reviews/**"
-          ],
-          "budget": {
-            "maxTimeSeconds": 300
-          }
+          "checkpointedFiles": ["pipeline-state.json", "world-progress.json", "*/reviews/**"],
+          "budget": { "maxTimeSeconds": 300 }
         },
         {
           "id": "cross-world-coverage",
@@ -356,20 +315,14 @@
             {
               "type": "command",
               "command": {
-                "run": "STEP=$(python3 -c \"import json; print(json.load(open('pipeline-state.json')).get('nextStep',''))\" 2>/dev/null || echo none); [ \"$STEP\" = \"cross-world-coverage\" ] && echo RUN > should-run.txt || echo SKIP > should-run.txt",
+                "run": "ACTIVE=$(cat active-codon.txt 2>/dev/null || echo none); [ \"$ACTIVE\" = \"cross-world-coverage\" ] && echo RUN > should-run.txt || echo SKIP > should-run.txt",
                 "workingDirectory": "project"
               },
               "allowFailure": true
             }
           ],
-          "checkpointedFiles": [
-            "pipeline-state.json",
-            "*/coverage-map-final.md",
-            "*/cross-world-issues.md"
-          ],
-          "budget": {
-            "maxTimeSeconds": 3600
-          }
+          "checkpointedFiles": ["pipeline-state.json", "*/coverage-map-final.md", "*/cross-world-issues.md"],
+          "budget": { "maxTimeSeconds": 3600 }
         },
         {
           "id": "cross-world-fix",
@@ -382,20 +335,14 @@
             {
               "type": "command",
               "command": {
-                "run": "STEP=$(python3 -c \"import json; print(json.load(open('pipeline-state.json')).get('nextStep',''))\" 2>/dev/null || echo none); [ \"$STEP\" = \"cross-world-fix\" ] && echo RUN > should-run.txt || echo SKIP > should-run.txt",
+                "run": "ACTIVE=$(cat active-codon.txt 2>/dev/null || echo none); [ \"$ACTIVE\" = \"cross-world-fix\" ] && echo RUN > should-run.txt || echo SKIP > should-run.txt",
                 "workingDirectory": "project"
               },
               "allowFailure": true
             }
           ],
-          "checkpointedFiles": [
-            "pipeline-state.json",
-            "*/Game/Levels/**/*.lean",
-            "*/Game.lean"
-          ],
-          "budget": {
-            "maxTimeSeconds": 5400
-          }
+          "checkpointedFiles": ["pipeline-state.json", "*/Game/Levels/**/*.lean", "*/Game.lean"],
+          "budget": { "maxTimeSeconds": 5400 }
         },
         {
           "id": "mark-course-complete",
@@ -408,19 +355,14 @@
             {
               "type": "command",
               "command": {
-                "run": "STEP=$(python3 -c \"import json; print(json.load(open('pipeline-state.json')).get('nextStep',''))\" 2>/dev/null || echo none); [ \"$STEP\" = \"mark-course\" ] && echo RUN > should-run.txt || echo SKIP > should-run.txt",
+                "run": "ACTIVE=$(cat active-codon.txt 2>/dev/null || echo none); [ \"$ACTIVE\" = \"mark-course\" ] && echo RUN > should-run.txt || echo SKIP > should-run.txt",
                 "workingDirectory": "project"
               },
               "allowFailure": true
             }
           ],
-          "checkpointedFiles": [
-            "pipeline-state.json",
-            "catalog-progress.json"
-          ],
-          "budget": {
-            "maxTimeSeconds": 600
-          },
+          "checkpointedFiles": ["pipeline-state.json", "catalog-progress.json"],
+          "budget": { "maxTimeSeconds": 600 },
           "sentinels": [
             {
               "sentinelConfig": "./sentinels/quality-watchdog.json"
