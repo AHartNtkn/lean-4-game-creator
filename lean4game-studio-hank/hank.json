@@ -1,0 +1,433 @@
+{
+  "$schema": "https://unpkg.com/hankweave@latest/schemas/hank.schema.json",
+  "meta": {
+    "name": "Lean4Game Course Studio",
+    "version": "1.0.0",
+    "description": "Automated lean4game course authoring pipeline with declarative quality gates. Converts 49 stub courses into complete, reviewed, playtested lean4game courses.",
+    "author": "lean4game-studio"
+  },
+  "requirements": {
+    "env": []
+  },
+  "hank": [
+    {
+      "id": "initialize",
+      "name": "Initialize Pipeline State",
+      "description": "Create initial pipeline-state.json and catalog-progress.json if they don't exist.",
+      "model": "haiku",
+      "continuationMode": "fresh",
+      "promptFile": "./prompts/initialize.md",
+      "rigSetup": [
+        {
+          "type": "command",
+          "command": {
+            "run": "test -f pipeline-state.json || echo '{\"nextStep\":\"select-course\",\"currentCourse\":null,\"currentWorld\":null,\"reviewRound\":0,\"coursesCompleted\":[],\"worldsCompleted\":[],\"reviewCycleCount\":0}' > pipeline-state.json; test -f catalog-progress.json || echo '{\"completed\":[]}' > catalog-progress.json",
+            "workingDirectory": "project"
+          },
+          "allowFailure": true
+        }
+      ],
+      "checkpointedFiles": [
+        "pipeline-state.json",
+        "catalog-progress.json"
+      ],
+      "budget": {
+        "maxTimeSeconds": 300
+      }
+    },
+    {
+      "type": "loop",
+      "id": "main-pipeline",
+      "name": "Main Course Production Pipeline",
+      "description": "Single flat loop implementing a state machine that handles course selection, design, world authoring, review cycles, and course completion for all 49 courses. Nested loops are not supported in hankweave, so this loop uses pipeline-state.json as a state machine to track progress across courses, worlds, and review rounds.",
+      "terminateOn": {
+        "type": "iterationLimit",
+        "limit": 8000
+      },
+      "budget": {
+        "maxTimeSeconds": 2592000,
+        "onExceeded": "complete"
+      },
+      "codons": [
+        {
+          "id": "select-course",
+          "name": "Select Next Course",
+          "description": "Pick the next stub course from the catalog, respecting prerequisites and priority ordering.",
+          "model": "haiku",
+          "continuationMode": "fresh",
+          "promptFile": "./prompts/select-course.md",
+          "rigSetup": [
+            {
+              "type": "command",
+              "command": {
+                "run": "STEP=$(python3 -c \"import json; print(json.load(open('pipeline-state.json')).get('nextStep',''))\" 2>/dev/null || echo none); [ \"$STEP\" = \"select-course\" ] && echo RUN > should-run.txt || echo SKIP > should-run.txt",
+                "workingDirectory": "project"
+              },
+              "allowFailure": true
+            }
+          ],
+          "checkpointedFiles": [
+            "pipeline-state.json",
+            "catalog-progress.json",
+            "current-course.txt"
+          ],
+          "budget": {
+            "maxTimeSeconds": 300
+          }
+        },
+        {
+          "id": "coverage-map",
+          "name": "Phase 1a: Coverage Mapping",
+          "description": "Build the 7-axis coverage map for the current course's mathematical content.",
+          "model": "opus",
+          "continuationMode": "fresh",
+          "promptFile": "./prompts/phase1-coverage-mapper.md",
+          "appendSystemPromptFile": [
+            "../.claude/references/05_coverage_and_granularity.md",
+            "../.claude/references/03_quality_rubric.md",
+            "../.claude/references/04_failure_taxonomy.md"
+          ],
+          "rigSetup": [
+            {
+              "type": "command",
+              "command": {
+                "run": "STEP=$(python3 -c \"import json; print(json.load(open('pipeline-state.json')).get('nextStep',''))\" 2>/dev/null || echo none); [ \"$STEP\" = \"coverage-map\" ] && echo RUN > should-run.txt || echo SKIP > should-run.txt",
+                "workingDirectory": "project"
+              },
+              "allowFailure": true
+            }
+          ],
+          "checkpointedFiles": [
+            "pipeline-state.json",
+            "*/coverage-map.md"
+          ],
+          "budget": {
+            "maxTimeSeconds": 3600
+          }
+        },
+        {
+          "id": "course-architect",
+          "name": "Phase 1b: Course Architecture",
+          "description": "Design the world graph, granularity plan, inventory release plan, boss map, and transfer plan.",
+          "model": "opus",
+          "continuationMode": "fresh",
+          "promptFile": "./prompts/phase1-course-architect.md",
+          "appendSystemPromptFile": [
+            "../.claude/references/00_what_good_looks_like.md",
+            "../.claude/references/01_patterns_from_existing_games.md",
+            "../.claude/references/05_coverage_and_granularity.md",
+            "../.claude/references/02_technical_levers.md",
+            "../.claude/references/07_operational_lessons.md"
+          ],
+          "rigSetup": [
+            {
+              "type": "command",
+              "command": {
+                "run": "STEP=$(python3 -c \"import json; print(json.load(open('pipeline-state.json')).get('nextStep',''))\" 2>/dev/null || echo none); [ \"$STEP\" = \"course-architect\" ] && echo RUN > should-run.txt || echo SKIP > should-run.txt",
+                "workingDirectory": "project"
+              },
+              "allowFailure": true
+            }
+          ],
+          "checkpointedFiles": [
+            "pipeline-state.json",
+            "*/PLAN.md"
+          ],
+          "budget": {
+            "maxTimeSeconds": 7200
+          }
+        },
+        {
+          "id": "world-author",
+          "name": "Phase 2a: Author Next World",
+          "description": "Design and write a complete world: all levels, hints, boss, intro/conclusion, inventory changes, Game.lean updates.",
+          "model": "opus",
+          "continuationMode": "fresh",
+          "promptFile": "./prompts/phase2-world-author.md",
+          "appendSystemPromptFile": [
+            "../.claude/references/01_patterns_from_existing_games.md",
+            "../.claude/references/02_technical_levers.md",
+            "../.claude/references/05_coverage_and_granularity.md",
+            "../.claude/references/03_quality_rubric.md",
+            "../.claude/references/07_operational_lessons.md"
+          ],
+          "rigSetup": [
+            {
+              "type": "command",
+              "command": {
+                "run": "STEP=$(python3 -c \"import json; print(json.load(open('pipeline-state.json')).get('nextStep',''))\" 2>/dev/null || echo none); [ \"$STEP\" = \"author-world\" ] && echo RUN > should-run.txt || echo SKIP > should-run.txt",
+                "workingDirectory": "project"
+              },
+              "allowFailure": true
+            }
+          ],
+          "checkpointedFiles": [
+            "pipeline-state.json",
+            "*/Game.lean",
+            "*/Game/Levels/**/*.lean",
+            "current-world.txt",
+            "world-progress.json"
+          ],
+          "budget": {
+            "maxTimeSeconds": 7200
+          }
+        },
+        {
+          "id": "build-and-fix",
+          "name": "Phase 2b: Build and Fix",
+          "description": "Run lake build, read errors, fix them, rebuild. Up to 3 internal attempts.",
+          "model": "opus",
+          "continuationMode": "fresh",
+          "promptFile": "./prompts/phase2-build.md",
+          "rigSetup": [
+            {
+              "type": "command",
+              "command": {
+                "run": "STEP=$(python3 -c \"import json; print(json.load(open('pipeline-state.json')).get('nextStep',''))\" 2>/dev/null || echo none); if [ \"$STEP\" = \"build\" ]; then echo RUN > should-run.txt; lake build 2>&1 | tee build-log.txt; echo $? > build-exit-code.txt; else echo SKIP > should-run.txt; fi",
+                "workingDirectory": "project"
+              },
+              "allowFailure": true
+            }
+          ],
+          "checkpointedFiles": [
+            "pipeline-state.json",
+            "*/Game/Levels/**/*.lean",
+            "*/Game.lean",
+            "build-log.txt"
+          ],
+          "budget": {
+            "maxTimeSeconds": 3600
+          }
+        },
+        {
+          "id": "enrichment-review",
+          "name": "Phase 2c: Enrichment Review",
+          "description": "Find ambitious improvements: derivable results, missing examples, unnamed strategies, cross-world opportunities.",
+          "model": "opus",
+          "continuationMode": "fresh",
+          "promptFile": "./prompts/phase2-enrichment-reviewer.md",
+          "rigSetup": [
+            {
+              "type": "command",
+              "command": {
+                "run": "STEP=$(python3 -c \"import json; print(json.load(open('pipeline-state.json')).get('nextStep',''))\" 2>/dev/null || echo none); [ \"$STEP\" = \"enrichment-review\" ] && echo RUN > should-run.txt || echo SKIP > should-run.txt",
+                "workingDirectory": "project"
+              },
+              "allowFailure": true
+            }
+          ],
+          "checkpointedFiles": [
+            "pipeline-state.json",
+            "*/reviews/enrichment-current.md"
+          ],
+          "budget": {
+            "maxTimeSeconds": 5400
+          }
+        },
+        {
+          "id": "playtest-audit",
+          "name": "Phase 2d: Playtest Audit",
+          "description": "Red-team the world for coverage, granularity, recoverability, exploitability, and learner simulation.",
+          "model": "opus",
+          "continuationMode": "fresh",
+          "promptFile": "./prompts/phase2-playtest-auditor.md",
+          "appendSystemPromptFile": [
+            "../.claude/references/03_quality_rubric.md",
+            "../.claude/references/04_failure_taxonomy.md",
+            "../.claude/references/05_coverage_and_granularity.md",
+            "../.claude/references/07_operational_lessons.md"
+          ],
+          "rigSetup": [
+            {
+              "type": "command",
+              "command": {
+                "run": "STEP=$(python3 -c \"import json; print(json.load(open('pipeline-state.json')).get('nextStep',''))\" 2>/dev/null || echo none); [ \"$STEP\" = \"playtest-audit\" ] && echo RUN > should-run.txt || echo SKIP > should-run.txt",
+                "workingDirectory": "project"
+              },
+              "allowFailure": true
+            }
+          ],
+          "checkpointedFiles": [
+            "pipeline-state.json",
+            "*/reviews/playtest-current.md"
+          ],
+          "budget": {
+            "maxTimeSeconds": 5400
+          }
+        },
+        {
+          "id": "review-gate",
+          "name": "Phase 2e: Review Gate",
+          "description": "THE CRITICAL CODON. Reads both review files, applies quality rubric, decides continue/done. Read-only — does not write code.",
+          "model": "opus",
+          "continuationMode": "fresh",
+          "promptFile": "./prompts/phase2-review-gate.md",
+          "appendSystemPromptFile": [
+            "../.claude/references/03_quality_rubric.md",
+            "../.claude/references/04_failure_taxonomy.md"
+          ],
+          "rigSetup": [
+            {
+              "type": "command",
+              "command": {
+                "run": "STEP=$(python3 -c \"import json; print(json.load(open('pipeline-state.json')).get('nextStep',''))\" 2>/dev/null || echo none); [ \"$STEP\" = \"review-gate\" ] && echo RUN > should-run.txt || echo SKIP > should-run.txt",
+                "workingDirectory": "project"
+              },
+              "allowFailure": true
+            }
+          ],
+          "checkpointedFiles": [
+            "pipeline-state.json",
+            "*/reviews/gate-decision.json"
+          ],
+          "budget": {
+            "maxTimeSeconds": 900
+          }
+        },
+        {
+          "id": "fix-issues",
+          "name": "Phase 2f: Fix Issues",
+          "description": "Implement ALL fixes from both reviews. Never reject enrichment because 'too much work'. Rebuild after fixing.",
+          "model": "opus",
+          "continuationMode": "fresh",
+          "promptFile": "./prompts/phase2-fix-issues.md",
+          "appendSystemPromptFile": [
+            "../.claude/references/02_technical_levers.md",
+            "../.claude/references/07_operational_lessons.md"
+          ],
+          "rigSetup": [
+            {
+              "type": "command",
+              "command": {
+                "run": "STEP=$(python3 -c \"import json; print(json.load(open('pipeline-state.json')).get('nextStep',''))\" 2>/dev/null || echo none); [ \"$STEP\" = \"fix-issues\" ] && echo RUN > should-run.txt || echo SKIP > should-run.txt",
+                "workingDirectory": "project"
+              },
+              "allowFailure": true
+            }
+          ],
+          "checkpointedFiles": [
+            "pipeline-state.json",
+            "*/Game/Levels/**/*.lean",
+            "*/Game.lean",
+            "build-log.txt"
+          ],
+          "budget": {
+            "maxTimeSeconds": 5400
+          }
+        },
+        {
+          "id": "mark-world-complete",
+          "name": "Phase 2g: Mark World Complete",
+          "description": "Update world-progress.json, archive review files, advance to next world or cross-world review.",
+          "model": "haiku",
+          "continuationMode": "fresh",
+          "promptFile": "./prompts/phase2-mark-complete.md",
+          "rigSetup": [
+            {
+              "type": "command",
+              "command": {
+                "run": "STEP=$(python3 -c \"import json; print(json.load(open('pipeline-state.json')).get('nextStep',''))\" 2>/dev/null || echo none); [ \"$STEP\" = \"mark-world\" ] && echo RUN > should-run.txt || echo SKIP > should-run.txt",
+                "workingDirectory": "project"
+              },
+              "allowFailure": true
+            }
+          ],
+          "checkpointedFiles": [
+            "pipeline-state.json",
+            "world-progress.json",
+            "*/reviews/**"
+          ],
+          "budget": {
+            "maxTimeSeconds": 300
+          }
+        },
+        {
+          "id": "cross-world-coverage",
+          "name": "Phase 3a: Cross-World Coverage Remap",
+          "description": "Re-map coverage across all completed worlds to check for drift, gaps, or redundancy.",
+          "model": "opus",
+          "continuationMode": "fresh",
+          "promptFile": "./prompts/phase3-coverage-remap.md",
+          "appendSystemPromptFile": [
+            "../.claude/references/05_coverage_and_granularity.md",
+            "../.claude/references/03_quality_rubric.md"
+          ],
+          "rigSetup": [
+            {
+              "type": "command",
+              "command": {
+                "run": "STEP=$(python3 -c \"import json; print(json.load(open('pipeline-state.json')).get('nextStep',''))\" 2>/dev/null || echo none); [ \"$STEP\" = \"cross-world-coverage\" ] && echo RUN > should-run.txt || echo SKIP > should-run.txt",
+                "workingDirectory": "project"
+              },
+              "allowFailure": true
+            }
+          ],
+          "checkpointedFiles": [
+            "pipeline-state.json",
+            "*/coverage-map-final.md",
+            "*/cross-world-issues.md"
+          ],
+          "budget": {
+            "maxTimeSeconds": 3600
+          }
+        },
+        {
+          "id": "cross-world-fix",
+          "name": "Phase 3b: Cross-World Fix",
+          "description": "Fix cross-world issues found in the coverage remap. Rebuild.",
+          "model": "opus",
+          "continuationMode": "fresh",
+          "promptFile": "./prompts/phase3-cross-world-fix.md",
+          "rigSetup": [
+            {
+              "type": "command",
+              "command": {
+                "run": "STEP=$(python3 -c \"import json; print(json.load(open('pipeline-state.json')).get('nextStep',''))\" 2>/dev/null || echo none); [ \"$STEP\" = \"cross-world-fix\" ] && echo RUN > should-run.txt || echo SKIP > should-run.txt",
+                "workingDirectory": "project"
+              },
+              "allowFailure": true
+            }
+          ],
+          "checkpointedFiles": [
+            "pipeline-state.json",
+            "*/Game/Levels/**/*.lean",
+            "*/Game.lean"
+          ],
+          "budget": {
+            "maxTimeSeconds": 5400
+          }
+        },
+        {
+          "id": "mark-course-complete",
+          "name": "Phase 4: Mark Course Complete",
+          "description": "Commit, push, update catalog-progress.json. Advance to next course.",
+          "model": "haiku",
+          "continuationMode": "fresh",
+          "promptFile": "./prompts/mark-course-complete.md",
+          "rigSetup": [
+            {
+              "type": "command",
+              "command": {
+                "run": "STEP=$(python3 -c \"import json; print(json.load(open('pipeline-state.json')).get('nextStep',''))\" 2>/dev/null || echo none); [ \"$STEP\" = \"mark-course\" ] && echo RUN > should-run.txt || echo SKIP > should-run.txt",
+                "workingDirectory": "project"
+              },
+              "allowFailure": true
+            }
+          ],
+          "checkpointedFiles": [
+            "pipeline-state.json",
+            "catalog-progress.json"
+          ],
+          "budget": {
+            "maxTimeSeconds": 600
+          },
+          "sentinels": [
+            {
+              "sentinelConfig": "./sentinels/quality-watchdog.json"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

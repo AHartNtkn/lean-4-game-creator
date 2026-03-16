@@ -1,0 +1,62 @@
+{
+  "id": "quality-watchdog",
+  "name": "Quality Watchdog",
+  "description": "Watches the event stream for quality red flags: P0 defects, FAIL verdicts, exploit mentions, and repeated build failures. Writes alerts that the review-gate codon reads.",
+  "model": "haiku",
+  "trigger": {
+    "type": "event",
+    "on": ["tool_result", "assistant_message"],
+    "conditions": [
+      {
+        "field": "content",
+        "operator": "matches_any",
+        "values": [
+          "P0",
+          "FAIL",
+          "blocking",
+          "exploit",
+          "one-shot",
+          "bypasses the intended",
+          "trivial proof",
+          "lattice alias",
+          "build failed",
+          "compilation error",
+          "stuck",
+          "abort"
+        ]
+      }
+    ]
+  },
+  "execution": {
+    "strategy": "debounce",
+    "milliseconds": 30000
+  },
+  "systemPromptText": "You are a quality watchdog for a lean4game course authoring pipeline. Your job is to flag quality concerns observed in the event stream. When you see mentions of P0 defects, FAIL verdicts, exploitable statements, repeated build failures, or other quality red flags, write a concise alert describing the concern. Each alert should be one line with a timestamp prefix. Append to the output file, never overwrite.",
+  "userPromptText": "Analyze the triggered events. If they indicate a genuine quality concern (P0 defect, FAIL verdict, exploitable level, repeated build failure, or attempt to skip/rationalize past a FAIL), write a one-line alert. If the event is routine (normal build output, non-critical discussion), write nothing.",
+  "output": {
+    "format": "text",
+    "file": "sentinel-alerts.txt"
+  },
+  "conversational": {
+    "trimmingStrategy": {
+      "type": "maxTurns",
+      "maxTurns": 10
+    },
+    "continueOnError": true
+  },
+  "llmParams": {
+    "temperature": 0,
+    "maxOutputTokens": 512,
+    "maxRetries": 2
+  },
+  "errorHandling": {
+    "maxConsecutiveFailures": 5,
+    "unloadOnFatalError": false
+  },
+  "reportToWebsocket": {
+    "lifecycle": true,
+    "errors": true,
+    "outputs": true,
+    "triggers": false
+  }
+}
