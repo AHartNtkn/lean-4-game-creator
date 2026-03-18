@@ -22,6 +22,8 @@ Select the next course that satisfies ALL of:
 
 ### Output
 
-1. Write the selected course's **directory name** to `current-course.txt`
-2. If ALL courses are complete, write `ALL_COURSES_COMPLETE` to `current-course.txt`
-3. Update `pipeline-state.json`: set `currentCourse` to the course name (or null if all complete), clear `currentWorld` to null, clear `worldsCompleted` to `[]`, reset `reviewRound` and `reviewCycleCount` to 0.
+Print ONLY the **exact directory name** of the selected course. This MUST be a directory that exists in the project root and contains a `Game.lean` file. Run `ls` to verify the directory exists. Do NOT invent a name — use the actual directory name from the filesystem.
+
+If ALL courses are complete, print `ALL_COURSES_COMPLETE`.
+
+Do NOT create any files. Do NOT write to `current-course.txt` or `pipeline-state.json`. Just print the directory name.

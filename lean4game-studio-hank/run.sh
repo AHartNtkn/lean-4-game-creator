@@ -100,17 +100,25 @@ while true; do
     # Write state files the select-course prompt needs
     cp "$STATE_DIR/catalog-progress.json" "$PROJECT_DIR/catalog-progress.json"
 
-    step "$PROMPTS/select-course.md" "select-course" --model haiku
-
-    # Read result
-    if [ -f "$PROJECT_DIR/current-course.txt" ]; then
-      COURSE=$(cat "$PROJECT_DIR/current-course.txt" | tr -d '[:space:]')
-    fi
+    # select-course prints the directory name to stdout
+    COURSE_OUTPUT=$(cd "$PROJECT_DIR" && claude -p "$(cat "$PROMPTS/select-course.md")" \
+      --allowedTools "Bash,Read,Glob,Grep" \
+      --model haiku 2>&1) || true
+    # Extract the last non-empty line (the directory name)
+    COURSE=$(echo "$COURSE_OUTPUT" | grep -v '^\s*$' | tail -1 | tr -d '[:space:]')
 
     if [ -z "$COURSE" ] || [ "$COURSE" = "ALL_COURSES_COMPLETE" ]; then
       echo ""
       echo "  ALL COURSES COMPLETE"
       break
+    fi
+
+    # Validate: the course must be an existing directory with Game.lean
+    if [ ! -f "$PROJECT_DIR/$COURSE/Game.lean" ]; then
+      echo "  ERROR: select-course wrote '$COURSE' but $PROJECT_DIR/$COURSE/Game.lean does not exist."
+      echo "  Available courses:"
+      ls -d "$PROJECT_DIR"/*/Game.lean 2>/dev/null | sed "s|$PROJECT_DIR/||;s|/Game.lean||" | sed 's/^/    /'
+      exit 1
     fi
 
     update_state "currentCourse" "\"$COURSE\""
