@@ -1,0 +1,19 @@
+{
+  "$schema": "https://unpkg.com/hankweave@latest/schemas/hank.schema.json",
+  "meta": {
+    "name": "Select Next Course",
+    "version": "2.0.0",
+    "description": "Pick the next course to work on from the catalog."
+  },
+  "hank": [
+    {
+      "id": "select-course",
+      "name": "Select Next Course",
+      "model": "haiku",
+      "continuationMode": "fresh",
+      "promptFile": "./prompts/select-course.md",
+      "checkpointedFiles": ["pipeline-state.json", "catalog-progress.json", "current-course.txt"],
+      "budget": { "maxTimeSeconds": 300 }
+    }
+  ]
+}
