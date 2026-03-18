@@ -20,14 +20,8 @@ Select the next course that satisfies ALL of:
 3. **Prefer "well covered"** over "needs extension"
 4. **Prefer "basic"** over advanced
 
-### CRITICAL: Use the exact directory name
-
-Run `ls` on the project root to see the actual course directories. Each course has a directory containing `Game.lean`. The directory name IS the course name. Do NOT invent names. Do NOT rename directories. Do NOT add prefixes like "lean4game-". Use the exact directory name as it appears on disk.
-
-For example, if `ls` shows `functions_relations/Game.lean`, the course name is `functions_relations`, not `lean4game-functions-relations` or anything else.
-
 ### Output
 
-1. Write the selected course's **exact directory name** (as shown by `ls`) to `current-course.txt`
+1. Write the selected course's **directory name** to `current-course.txt`
 2. If ALL courses are complete, write `ALL_COURSES_COMPLETE` to `current-course.txt`
-3. Update `pipeline-state.json`: set `currentCourse` to the exact same directory name, clear `currentWorld` to null, clear `worldsCompleted` to `[]`, reset `reviewRound` and `reviewCycleCount` to 0.
+3. Update `pipeline-state.json`: set `currentCourse` to the course name (or null if all complete), clear `currentWorld` to null, clear `worldsCompleted` to `[]`, reset `reviewRound` and `reviewCycleCount` to 0.
