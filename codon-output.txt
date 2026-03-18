@@ -1,0 +1,17 @@
+PLAN_FIXED
+
+Changes made to lean4game-functions-relations/PLAN.md:
+
+P1-2 FIXED: W12 boss replaced. Old: two alternatives (counterexample or calc chain) without committing. New: "Prove PER reflexivity on domain: symmetric + transitive → R x y → R x x." Integrates PER, symmetry, transitivity, definition-unfolding. Boss map entry updated to match.
+
+P1-1 FIXED: W24 (SubtypesCountabilityPset) added as pset/consolidation world for Cluster 5. Integrates subtypes, countability, encodability with concrete examples (ℤ countable, encode a pair, subtype countability). Fixes the missing retrieval practice for Cluster 5. Boss map and inventory release table updated.
+
+P2-1 FIXED: W6 left-inverse constructivity upgraded from "docstring or dedicated level" to "dedicated level" with explicit instructions for the learner to encounter Classical.choice.
+
+P2-2 FIXED: W23 proof-move goals now include explicit ℕ-induction requirement for encoding constructions, backing up the Section 3 proof-move map claim.
+
+P2-3 FIXED: Addressed by W24 addition (overlaps with P1-1). W24 includes concrete countability/encodability examples that were missing between the back-to-back lecture worlds W22 and W23.
+
+P2-4 FIXED: Section 3 proof-move table updated — well-definedness transfer column changed from "Boss levels" to "W19" to match Section 8's retrieval stage.
+
+No changes to coverage-map.md (plan changes do not reveal coverage map errors).
