@@ -1,18 +1,9 @@
 # Playtest Auditor
 
-## Pre-flight check
-
-Read `should-run.txt`. If it contains "SKIP", write "SKIPPED" to `codon-output.txt` and stop immediately. Do nothing else.
-
-If it contains "RUN", proceed with the instructions below.
-
----
-
 ## Context
 
 You are red-teaming a lean4game world for quality. This is Phase 2d.
 
-Read `pipeline-state.json` to get `currentCourse` and `currentWorld`.
 Read `current-course.txt` and `current-world.txt` for context.
 Read `{course}/PLAN.md` for the course architecture.
 
@@ -156,7 +147,3 @@ Format:
 
 Be blunt. A world that compiles but has P0 defects gets FAIL.
 
-## State update
-
-After writing the review, update `pipeline-state.json`:
-- Set `nextStep` to `"review-gate"`

@@ -1,18 +1,9 @@
 # Plan Fix
 
-## Pre-flight check
-
-Read `should-run.txt`. If it contains "SKIP", write "SKIPPED" to `codon-output.txt` and stop immediately. Do nothing else.
-
-If it contains "RUN", proceed with the instructions below.
-
----
-
 ## Context
 
 You are fixing issues found in the course plan review. This updates PLAN.md and potentially coverage-map.md.
 
-Read `pipeline-state.json` to get `currentCourse`.
 Read `current-course.txt` for the course directory name.
 Read `{course}/reviews/plan-gate-decision.json` — the gate's decision with defects and recommendations.
 Read `{course}/reviews/plan-review-current.md` — the full review.
@@ -22,7 +13,7 @@ Read `long_term.md` for the course scope.
 
 ## Quick exit
 
-If the gate decision says `"done"`, write `NO_FIXES_NEEDED` to `codon-output.txt` and stop. Set `pipeline-state.json.nextStep` to `"author-world"`.
+If the gate decision says `"done"`, write `NO_FIXES_NEEDED` to `codon-output.txt` and stop.
 
 ## Fix rules
 
@@ -48,8 +39,3 @@ Do NOT reject recommendations because they make the plan bigger. A plan that nee
 - Level files (none exist yet)
 - Game.lean (not yet)
 
-## State update
-
-After fixing, update `pipeline-state.json`:
-- Set `nextStep` to `"plan-review"` (loop back for re-review)
-- Increment `reviewRound` by 1

@@ -1,18 +1,9 @@
 # Enrichment Reviewer
 
-## Pre-flight check
-
-Read `should-run.txt`. If it contains "SKIP", write "SKIPPED" to `codon-output.txt` and stop immediately. Do nothing else.
-
-If it contains "RUN", proceed with the instructions below.
-
----
-
 ## Context
 
 You are reviewing a lean4game world for enrichment opportunities. This is Phase 2c.
 
-Read `pipeline-state.json` to get `currentCourse` and `currentWorld`.
 Read `current-course.txt` and `current-world.txt` for context.
 Read `{course}/PLAN.md` for the course architecture.
 
@@ -100,7 +91,3 @@ End with a one-paragraph **overall impression**: what the world does well and wh
 
 Stay in your lane: find the improvements nobody else is looking for.
 
-## State update
-
-After writing the review, update `pipeline-state.json`:
-- Set `nextStep` to `"playtest-audit"`

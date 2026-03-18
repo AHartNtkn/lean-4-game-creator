@@ -1,0 +1,50 @@
+{
+  "$schema": "https://unpkg.com/hankweave@latest/schemas/hank.schema.json",
+  "meta": {
+    "name": "Plan Review Cycle",
+    "version": "2.0.0",
+    "description": "One iteration of plan review: review, gate, fix. Bash script loops this."
+  },
+  "hank": [
+    {
+      "id": "plan-review",
+      "name": "Plan Review",
+      "model": "opus",
+      "continuationMode": "fresh",
+      "promptFile": "./prompts/phase1-plan-review.md",
+      "appendSystemPromptFile": [
+        "../.claude/references/00_what_good_looks_like.md",
+        "../.claude/references/05_coverage_and_granularity.md",
+        "../.claude/references/03_quality_rubric.md"
+      ],
+      "checkpointedFiles": ["*/reviews/plan-review-current.md"],
+      "budget": { "maxTimeSeconds": 5400 }
+    },
+    {
+      "id": "plan-gate",
+      "name": "Plan Gate",
+      "model": "opus",
+      "continuationMode": "fresh",
+      "promptFile": "./prompts/phase1-plan-gate.md",
+      "appendSystemPromptFile": [
+        "../.claude/references/03_quality_rubric.md"
+      ],
+      "checkpointedFiles": ["*/reviews/plan-gate-decision.json"],
+      "budget": { "maxTimeSeconds": 900 }
+    },
+    {
+      "id": "plan-fix",
+      "name": "Plan Fix",
+      "model": "opus",
+      "continuationMode": "fresh",
+      "promptFile": "./prompts/phase1-plan-fix.md",
+      "appendSystemPromptFile": [
+        "../.claude/references/00_what_good_looks_like.md",
+        "../.claude/references/05_coverage_and_granularity.md",
+        "../.claude/references/02_technical_levers.md"
+      ],
+      "checkpointedFiles": ["*/PLAN.md", "*/coverage-map.md"],
+      "budget": { "maxTimeSeconds": 5400 }
+    }
+  ]
+}

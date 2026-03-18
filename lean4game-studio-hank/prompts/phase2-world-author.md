@@ -1,32 +1,12 @@
 # World Author
 
-## Pre-flight check
-
-Read `should-run.txt`. If it contains "SKIP", write "SKIPPED" to `codon-output.txt` and stop immediately. Do nothing else.
-
-If it contains "RUN", proceed with the instructions below.
-
----
-
 ## Context
 
 You are authoring a complete world for a lean4game course. This is Phase 2a of the course production pipeline.
 
-Read `pipeline-state.json` to get `currentCourse`.
 Read `current-course.txt` for the course directory name.
+Read `current-world.txt` for the world you will author. Read the corresponding section of PLAN.md for that world's design spec.
 Read `{course}/PLAN.md` for the full course architecture.
-Read `world-progress.json` to see which worlds are already completed.
-
-## Selecting the next world
-
-Read the world graph from `PLAN.md`. Find the first world (in plan order) that is NOT listed in `world-progress.json.completed`. This is the world you will author.
-
-If ALL worlds from the plan are in the completed list:
-1. Write `ALL_WORLDS_COMPLETE` to `current-world.txt`
-2. Update `pipeline-state.json`: set `nextStep` to `"cross-world-coverage"`
-3. Stop. Do nothing else.
-
-Otherwise, write the world's identifier to `current-world.txt` and proceed.
 
 ## World authoring — a world is a chapter with a center of gravity
 
@@ -121,9 +101,3 @@ Write all files to the course directory:
 - `{course}/Game/Levels/{WorldName}.lean` — world base file
 - Update `{course}/Game.lean` — add imports and dependencies
 
-## State update
-
-After writing all files:
-1. Write the world identifier to `current-world.txt`
-2. Update `world-progress.json`: set `current` to the world identifier
-3. Update `pipeline-state.json`: set `nextStep` to `"build"`, set `currentWorld` to the world identifier, set `reviewRound` to `0`, set `reviewCycleCount` to `0`

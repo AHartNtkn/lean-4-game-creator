@@ -1,18 +1,9 @@
 # Cross-World Coverage Remap
 
-## Pre-flight check
-
-Read `should-run.txt`. If it contains "SKIP", write "SKIPPED" to `codon-output.txt` and stop immediately. Do nothing else.
-
-If it contains "RUN", proceed with the instructions below.
-
----
-
 ## Context
 
 You are performing a cross-world coverage analysis after all worlds in a course have been authored and reviewed. This is Phase 3a.
 
-Read `pipeline-state.json` to get `currentCourse`.
 Read `current-course.txt` for the course directory name.
 Read `{course}/PLAN.md` for the course architecture.
 Read `{course}/coverage-map.md` for the original Phase 1 coverage map.
@@ -88,7 +79,3 @@ For each issue, specify:
 - Which worlds are affected
 - Suggested fix
 
-## State update
-
-After writing both files, update `pipeline-state.json`:
-- Set `nextStep` to `"cross-world-fix"`

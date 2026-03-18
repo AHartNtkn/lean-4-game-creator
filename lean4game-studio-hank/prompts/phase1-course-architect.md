@@ -1,18 +1,9 @@
 # Course Architect
 
-## Pre-flight check
-
-Read `should-run.txt`. If it contains "SKIP", write "SKIPPED" to `codon-output.txt` and stop immediately. Do nothing else.
-
-If it contains "RUN", proceed with the instructions below.
-
----
-
 ## Context
 
 You are designing the architecture for a lean4game course. This is Phase 1b of the course production pipeline.
 
-Read `pipeline-state.json` to get `currentCourse`.
 Read `current-course.txt` for the course directory name.
 Read `{course}/coverage-map.md` — the coverage map produced by the previous codon.
 Read `long_term.md` for the course description, scope, and prerequisites.
@@ -123,6 +114,8 @@ The output must contain:
 10. **Major risks**
 11. **Recommended first three worlds to author**
 
+Also write `{course}/world-list.txt` containing one world identifier per line, in plan order. This file is read by the orchestration script to iterate over worlds.
+
 ## Anti-patterns to avoid
 
 - Do NOT cut the course straight from textbook subsections
@@ -131,19 +124,3 @@ The output must contain:
 - Do NOT plan worlds without deciding the granularity of their levels
 - Do NOT impose level count targets
 
-## State update
-
-After writing the plan, update `pipeline-state.json`:
-- Set `nextStep` to `"plan-review"`
-- Reset `worldsCompleted` to `[]`
-- Reset `reviewRound` to `0`
-- Reset `reviewCycleCount` to `0`
-- Reset `currentWorld` to `null`
-
-Also create or initialize `world-progress.json`:
-```json
-{
-  "completed": [],
-  "current": null
-}
-```

@@ -1,0 +1,40 @@
+{
+  "$schema": "https://unpkg.com/hankweave@latest/schemas/hank.schema.json",
+  "meta": {
+    "name": "Phase 1: Course Design",
+    "version": "2.0.0",
+    "description": "Coverage mapping and course architecture for a single course."
+  },
+  "hank": [
+    {
+      "id": "coverage-map",
+      "name": "Coverage Mapping",
+      "model": "opus",
+      "continuationMode": "fresh",
+      "promptFile": "./prompts/phase1-coverage-mapper.md",
+      "appendSystemPromptFile": [
+        "../.claude/references/05_coverage_and_granularity.md",
+        "../.claude/references/03_quality_rubric.md",
+        "../.claude/references/04_failure_taxonomy.md"
+      ],
+      "checkpointedFiles": ["pipeline-state.json", "*/coverage-map.md"],
+      "budget": { "maxTimeSeconds": 3600 }
+    },
+    {
+      "id": "course-architect",
+      "name": "Course Architecture",
+      "model": "opus",
+      "continuationMode": "fresh",
+      "promptFile": "./prompts/phase1-course-architect.md",
+      "appendSystemPromptFile": [
+        "../.claude/references/00_what_good_looks_like.md",
+        "../.claude/references/01_patterns_from_existing_games.md",
+        "../.claude/references/05_coverage_and_granularity.md",
+        "../.claude/references/02_technical_levers.md",
+        "../.claude/references/07_operational_lessons.md"
+      ],
+      "checkpointedFiles": ["pipeline-state.json", "*/PLAN.md", "*/world-list.txt"],
+      "budget": { "maxTimeSeconds": 7200 }
+    }
+  ]
+}

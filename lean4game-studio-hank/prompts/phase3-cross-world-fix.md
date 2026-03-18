@@ -1,18 +1,9 @@
 # Cross-World Fix
 
-## Pre-flight check
-
-Read `should-run.txt`. If it contains "SKIP", write "SKIPPED" to `codon-output.txt` and stop immediately. Do nothing else.
-
-If it contains "RUN", proceed with the instructions below.
-
----
-
 ## Context
 
 You are fixing cross-world issues found during the coverage remap. This is Phase 3b.
 
-Read `pipeline-state.json` to get `currentCourse`.
 Read `current-course.txt` for the course directory name.
 Read `{course}/cross-world-issues.md` for the list of issues.
 Read `{course}/PLAN.md` for the course architecture.
@@ -22,8 +13,6 @@ Read `{course}/PLAN.md` for the course architecture.
 ### If no issues found
 
 If `cross-world-issues.md` says "None" or has no P0/P1/P2 issues, write `NO_FIXES_NEEDED` to `codon-output.txt`.
-
-Update `pipeline-state.json`: set `nextStep` to `"mark-course"`.
 
 ### If issues exist
 
@@ -65,7 +54,3 @@ If the build fails, fix errors and rebuild (up to 3 attempts).
 - One `NewTheorem`/`NewTactic`/`NewDefinition` per type per level
 - `TacticDoc` before `DisabledTactic` in same file
 
-## State update
-
-After fixing and rebuilding, update `pipeline-state.json`:
-- Set `nextStep` to `"mark-course"`

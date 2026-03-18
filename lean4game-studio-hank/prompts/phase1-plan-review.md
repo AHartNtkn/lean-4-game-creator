@@ -1,20 +1,11 @@
 # Plan Review
 
-## Pre-flight check
-
-Read `should-run.txt`. If it contains "SKIP", write "SKIPPED" to `codon-output.txt` and stop immediately. Do nothing else.
-
-If it contains "RUN", proceed with the instructions below.
-
----
-
 ## Context
 
 You are reviewing the course plan (PLAN.md) for a lean4game course. This happens after the coverage mapper and course architect have produced their outputs, before any worlds are authored.
 
 A bad plan means every world built on it is wasted work. This review catches structural problems before they compound.
 
-Read `pipeline-state.json` to get `currentCourse`.
 Read `current-course.txt` for the course directory name.
 Read `{course}/PLAN.md` — the course plan to review.
 Read `{course}/coverage-map.md` — the coverage map it was built from.
@@ -102,7 +93,3 @@ A plan FAILS if:
 - The world graph has dependency errors
 - The transfer plan is absent
 
-## State update
-
-After writing the review, update `pipeline-state.json`:
-- Set `nextStep` to `"plan-gate"`

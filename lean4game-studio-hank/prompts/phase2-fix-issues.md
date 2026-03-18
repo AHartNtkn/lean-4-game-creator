@@ -1,18 +1,9 @@
 # Fix Issues
 
-## Pre-flight check
-
-Read `should-run.txt`. If it contains "SKIP", write "SKIPPED" to `codon-output.txt` and stop immediately. Do nothing else.
-
-If it contains "RUN", proceed with the instructions below.
-
----
-
 ## Context
 
 You are fixing issues found by the enrichment reviewer and playtest auditor. This is Phase 2f.
 
-Read `pipeline-state.json` to get `currentCourse`, `currentWorld`, `reviewRound`.
 Read `current-course.txt` and `current-world.txt` for context.
 
 ## Inputs to read
@@ -26,7 +17,7 @@ Read `current-course.txt` and `current-world.txt` for context.
 
 ## Quick exit
 
-Read `gate-decision.json`. If the `action` field is `"done"`, write `NO_FIXES_NEEDED` to `codon-output.txt` and stop immediately. Update `pipeline-state.json`: set `nextStep` to `"mark-world"`.
+Read `gate-decision.json`. If the `action` field is `"done"`, write `NO_FIXES_NEEDED` to `codon-output.txt` and stop immediately.
 
 ## Fix rules — THESE ARE NON-NEGOTIABLE
 
@@ -85,8 +76,3 @@ echo $? > build-exit-code.txt
 
 If the build fails, fix the errors and rebuild. Up to 3 attempts.
 
-## State update
-
-After fixing and rebuilding successfully:
-- Update `pipeline-state.json`: set `nextStep` to `"enrichment-review"` (loop back for re-review)
-- Increment `reviewRound` by 1

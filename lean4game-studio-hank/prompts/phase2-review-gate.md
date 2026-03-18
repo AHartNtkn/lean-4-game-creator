@@ -1,18 +1,9 @@
 # Review Gate
 
-## Pre-flight check
-
-Read `should-run.txt`. If it contains "SKIP", write "SKIPPED" to `codon-output.txt` and stop immediately. Do nothing else.
-
-If it contains "RUN", proceed with the instructions below.
-
----
-
 ## Context
 
 You are the quality gate for a lean4game world. This is THE CRITICAL CODON of the entire pipeline.
 
-Read `pipeline-state.json` to get `currentCourse`, `currentWorld`, `reviewRound`, and `reviewCycleCount`.
 Read `current-course.txt` and `current-world.txt` for context.
 
 ## Your role
@@ -118,10 +109,3 @@ The JSON must contain:
 4. **"Not blocking" is not a category.** Every P0 blocks. Every FAIL blocks.
 5. **"Diminishing returns" is not applicable.** If there are P0s, there are no diminishing returns.
 
-## State update
-
-After writing gate-decision.json, update `pipeline-state.json`:
-
-- If action is `"done"`: set `nextStep` to `"mark-world"`
-- If action is `"continue"`: set `nextStep` to `"fix-issues"`, increment `reviewCycleCount` by 1
-- If action is `"abort"`: set `nextStep` to `"done"` (halt the pipeline)

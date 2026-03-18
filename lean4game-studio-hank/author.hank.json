@@ -1,0 +1,45 @@
+{
+  "$schema": "https://unpkg.com/hankweave@latest/schemas/hank.schema.json",
+  "meta": {
+    "name": "World Authoring",
+    "version": "2.0.0",
+    "description": "Author a single world and build it."
+  },
+  "hank": [
+    {
+      "id": "world-author",
+      "name": "Author World",
+      "model": "opus",
+      "continuationMode": "fresh",
+      "promptFile": "./prompts/phase2-world-author.md",
+      "appendSystemPromptFile": [
+        "../.claude/references/01_patterns_from_existing_games.md",
+        "../.claude/references/02_technical_levers.md",
+        "../.claude/references/05_coverage_and_granularity.md",
+        "../.claude/references/03_quality_rubric.md",
+        "../.claude/references/07_operational_lessons.md"
+      ],
+      "checkpointedFiles": ["*/Game.lean", "*/Game/Levels/**/*.lean", "current-world.txt", "world-progress.json"],
+      "budget": { "maxTimeSeconds": 7200 }
+    },
+    {
+      "id": "build-and-fix",
+      "name": "Build and Fix",
+      "model": "opus",
+      "continuationMode": "fresh",
+      "promptFile": "./prompts/phase2-build.md",
+      "rigSetup": [
+        {
+          "type": "command",
+          "command": {
+            "run": "lake build 2>&1 | tee build-log.txt; echo $? > build-exit-code.txt",
+            "workingDirectory": "project"
+          },
+          "allowFailure": true
+        }
+      ],
+      "checkpointedFiles": ["*/Game/Levels/**/*.lean", "*/Game.lean", "build-log.txt"],
+      "budget": { "maxTimeSeconds": 3600 }
+    }
+  ]
+}

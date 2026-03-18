@@ -1,18 +1,8 @@
 # Coverage Mapper
 
-## Pre-flight check
-
-Read `should-run.txt`. If it contains "SKIP", write "SKIPPED" to `codon-output.txt` and stop immediately. Do nothing else.
-
-If it contains "RUN", proceed with the instructions below.
-
----
-
 ## Context
 
 You are building a coverage map for a lean4game course. This is Phase 1a of the course production pipeline.
-
-Read `pipeline-state.json` to get `currentCourse` — this is the course directory you are mapping.
 
 Read `current-course.txt` for the course directory name.
 
@@ -148,9 +138,3 @@ The output must contain these 11 sections:
 10. **Items that should be demoted, delayed, or hidden in the inventory**
 11. **Confidence notes**
 
-## State update
-
-After writing the coverage map, update `pipeline-state.json`:
-- Set `nextStep` to `"course-architect"`
-
-Do NOT modify any other fields in the state.

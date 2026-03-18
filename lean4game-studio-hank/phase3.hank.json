@@ -1,0 +1,32 @@
+{
+  "$schema": "https://unpkg.com/hankweave@latest/schemas/hank.schema.json",
+  "meta": {
+    "name": "Phase 3: Cross-World Review",
+    "version": "2.0.0",
+    "description": "Cross-world coverage remap and fix for a completed course."
+  },
+  "hank": [
+    {
+      "id": "cross-world-coverage",
+      "name": "Cross-World Coverage Remap",
+      "model": "opus",
+      "continuationMode": "fresh",
+      "promptFile": "./prompts/phase3-coverage-remap.md",
+      "appendSystemPromptFile": [
+        "../.claude/references/05_coverage_and_granularity.md",
+        "../.claude/references/03_quality_rubric.md"
+      ],
+      "checkpointedFiles": ["*/coverage-map-final.md", "*/cross-world-issues.md"],
+      "budget": { "maxTimeSeconds": 3600 }
+    },
+    {
+      "id": "cross-world-fix",
+      "name": "Cross-World Fix",
+      "model": "opus",
+      "continuationMode": "fresh",
+      "promptFile": "./prompts/phase3-cross-world-fix.md",
+      "checkpointedFiles": ["*/Game/Levels/**/*.lean", "*/Game.lean"],
+      "budget": { "maxTimeSeconds": 5400 }
+    }
+  ]
+}

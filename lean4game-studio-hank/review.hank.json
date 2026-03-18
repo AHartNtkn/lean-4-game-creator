@@ -1,0 +1,63 @@
+{
+  "$schema": "https://unpkg.com/hankweave@latest/schemas/hank.schema.json",
+  "meta": {
+    "name": "World Review Cycle",
+    "version": "2.0.0",
+    "description": "One iteration of world review: enrichment, playtest, gate, fix. Bash script loops this."
+  },
+  "hank": [
+    {
+      "id": "enrichment-review",
+      "name": "Enrichment Review",
+      "model": "opus",
+      "continuationMode": "fresh",
+      "promptFile": "./prompts/phase2-enrichment-reviewer.md",
+      "checkpointedFiles": ["*/reviews/enrichment-current.md"],
+      "budget": { "maxTimeSeconds": 5400 }
+    },
+    {
+      "id": "playtest-audit",
+      "name": "Playtest Audit",
+      "model": "opus",
+      "continuationMode": "fresh",
+      "promptFile": "./prompts/phase2-playtest-auditor.md",
+      "appendSystemPromptFile": [
+        "../.claude/references/03_quality_rubric.md",
+        "../.claude/references/04_failure_taxonomy.md",
+        "../.claude/references/05_coverage_and_granularity.md",
+        "../.claude/references/07_operational_lessons.md"
+      ],
+      "checkpointedFiles": ["*/reviews/playtest-current.md"],
+      "budget": { "maxTimeSeconds": 5400 }
+    },
+    {
+      "id": "review-gate",
+      "name": "Review Gate",
+      "model": "opus",
+      "continuationMode": "fresh",
+      "promptFile": "./prompts/phase2-review-gate.md",
+      "appendSystemPromptFile": [
+        "../.claude/references/03_quality_rubric.md",
+        "../.claude/references/04_failure_taxonomy.md"
+      ],
+      "checkpointedFiles": ["*/reviews/gate-decision.json"],
+      "budget": { "maxTimeSeconds": 900 },
+      "sentinels": [
+        { "sentinelConfig": "./sentinels/quality-watchdog.json" }
+      ]
+    },
+    {
+      "id": "fix-issues",
+      "name": "Fix Issues",
+      "model": "opus",
+      "continuationMode": "fresh",
+      "promptFile": "./prompts/phase2-fix-issues.md",
+      "appendSystemPromptFile": [
+        "../.claude/references/02_technical_levers.md",
+        "../.claude/references/07_operational_lessons.md"
+      ],
+      "checkpointedFiles": ["*/Game/Levels/**/*.lean", "*/Game.lean", "build-log.txt"],
+      "budget": { "maxTimeSeconds": 5400 }
+    }
+  ]
+}
