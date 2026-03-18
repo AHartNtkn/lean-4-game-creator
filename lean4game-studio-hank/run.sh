@@ -30,7 +30,6 @@ step() {
   local prompt_file="$1"
   local description="$2"
   shift 2
-  # Remaining args are extra flags to claude
   echo "  [$description]"
   cd "$PROJECT_DIR"
   claude -p "$(cat "$prompt_file")" \
