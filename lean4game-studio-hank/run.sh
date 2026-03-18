@@ -49,7 +49,8 @@ step() {
   cd "$PROJECT_DIR"
   codex exec \
     -m "$model" \
-    -c 'service_tier="xhigh"' \
+    -c 'model_reasoning_effort="xhigh"' \
+    -c 'service_tier="fast"' \
     --full-auto \
     --json \
     "$(cat "$prompt_file")" \
