@@ -134,9 +134,10 @@ The output must contain:
 ## State update
 
 After writing the plan, update `pipeline-state.json`:
-- Set `nextStep` to `"author-world"`
+- Set `nextStep` to `"plan-review"`
 - Reset `worldsCompleted` to `[]`
 - Reset `reviewRound` to `0`
+- Reset `reviewCycleCount` to `0`
 - Reset `currentWorld` to `null`
 
 Also create or initialize `world-progress.json`:

@@ -140,6 +140,79 @@
           "budget": { "maxTimeSeconds": 7200 }
         },
         {
+          "id": "plan-review",
+          "name": "Phase 1c: Plan Review",
+          "description": "Review the course plan for scope completeness, coverage alignment, world graph coherence, proof-move coverage, and example planning.",
+          "model": "opus",
+          "continuationMode": "fresh",
+          "promptFile": "./prompts/phase1-plan-review.md",
+          "appendSystemPromptFile": [
+            "../.claude/references/00_what_good_looks_like.md",
+            "../.claude/references/05_coverage_and_granularity.md",
+            "../.claude/references/03_quality_rubric.md"
+          ],
+          "rigSetup": [
+            {
+              "type": "command",
+              "command": {
+                "run": "ACTIVE=$(cat active-codon.txt 2>/dev/null || echo none); [ \"$ACTIVE\" = \"plan-review\" ] && echo RUN > should-run.txt || echo SKIP > should-run.txt",
+                "workingDirectory": "project"
+              },
+              "allowFailure": true
+            }
+          ],
+          "checkpointedFiles": ["pipeline-state.json", "*/reviews/plan-review-current.md"],
+          "budget": { "maxTimeSeconds": 5400 }
+        },
+        {
+          "id": "plan-gate",
+          "name": "Phase 1d: Plan Gate",
+          "description": "Quality gate for the course plan. Read-only — decides continue/done/abort.",
+          "model": "opus",
+          "continuationMode": "fresh",
+          "promptFile": "./prompts/phase1-plan-gate.md",
+          "appendSystemPromptFile": [
+            "../.claude/references/03_quality_rubric.md"
+          ],
+          "rigSetup": [
+            {
+              "type": "command",
+              "command": {
+                "run": "ACTIVE=$(cat active-codon.txt 2>/dev/null || echo none); [ \"$ACTIVE\" = \"plan-gate\" ] && echo RUN > should-run.txt || echo SKIP > should-run.txt",
+                "workingDirectory": "project"
+              },
+              "allowFailure": true
+            }
+          ],
+          "checkpointedFiles": ["pipeline-state.json", "*/reviews/plan-gate-decision.json"],
+          "budget": { "maxTimeSeconds": 900 }
+        },
+        {
+          "id": "plan-fix",
+          "name": "Phase 1e: Plan Fix",
+          "description": "Fix issues found in the plan review. Updates PLAN.md and coverage-map.md.",
+          "model": "opus",
+          "continuationMode": "fresh",
+          "promptFile": "./prompts/phase1-plan-fix.md",
+          "appendSystemPromptFile": [
+            "../.claude/references/00_what_good_looks_like.md",
+            "../.claude/references/05_coverage_and_granularity.md",
+            "../.claude/references/02_technical_levers.md"
+          ],
+          "rigSetup": [
+            {
+              "type": "command",
+              "command": {
+                "run": "ACTIVE=$(cat active-codon.txt 2>/dev/null || echo none); [ \"$ACTIVE\" = \"plan-fix\" ] && echo RUN > should-run.txt || echo SKIP > should-run.txt",
+                "workingDirectory": "project"
+              },
+              "allowFailure": true
+            }
+          ],
+          "checkpointedFiles": ["pipeline-state.json", "*/PLAN.md", "*/coverage-map.md"],
+          "budget": { "maxTimeSeconds": 5400 }
+        },
+        {
           "id": "world-author",
           "name": "Phase 2a: Author Next World",
           "description": "Design and write a complete world: all levels, hints, boss, intro/conclusion, inventory changes, Game.lean updates.",
