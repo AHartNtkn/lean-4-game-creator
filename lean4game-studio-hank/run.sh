@@ -74,7 +74,7 @@ update_state() {
 import json
 f = '$DATA_DIR/pipeline-state.json'
 s = json.load(open(f))
-s['$key'] = $value
+s['$key'] = json.loads('$value')
 json.dump(s, open(f, 'w'), indent=2)
 "
 }
