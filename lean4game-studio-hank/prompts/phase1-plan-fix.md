@@ -39,3 +39,14 @@ Do NOT reject recommendations because they make the plan bigger. A plan that nee
 - Level files (none exist yet)
 - Game.lean (not yet)
 
+## Clean up review files
+
+After all fixes are applied, delete the review files so the next review round starts fresh:
+
+```
+rm {course}/reviews/plan-review-current.md
+rm {course}/reviews/plan-gate-decision.json
+```
+
+This is mandatory. The next round's reviewer must evaluate the plan on its own merits.
+

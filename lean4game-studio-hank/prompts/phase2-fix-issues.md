@@ -76,3 +76,15 @@ echo $? > build-exit-code.txt
 
 If the build fails, fix the errors and rebuild. Up to 3 attempts.
 
+## Clean up review files
+
+After all fixes are applied and the build succeeds, delete the review files so the next review round starts fresh with no bias from previous reviews:
+
+```
+rm {course}/reviews/enrichment-current.md
+rm {course}/reviews/playtest-current.md
+rm {course}/reviews/gate-decision.json
+```
+
+This is mandatory. The next round's reviewers must evaluate the world on its own merits, not relative to what previous reviews said.
+
