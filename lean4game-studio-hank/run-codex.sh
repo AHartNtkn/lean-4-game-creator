@@ -56,45 +56,35 @@ for line in sys.stdin:
     try:
         e = json.loads(line)
         t = e.get('type','')
-        if t == 'message' and e.get('role') == 'assistant':
-            for c in e.get('content',[]):
-                if c.get('type') == 'output_text' and c.get('text','').strip():
-                    print(f\"    {c['text'][:200]}\", flush=True)
-                elif c.get('type') == 'tool_use':
-                    name = c.get('name','')
-                    inp = c.get('input',{})
-                    if name in ('read_file','write_file','edit_file'):
-                        print(f\"    [{name}] {inp.get('path', inp.get('file_path',''))}\", flush=True)
-                    elif name in ('shell','bash'):
-                        cmd = inp.get('command', inp.get('cmd',''))
-                        print(f\"    [shell] {str(cmd)[:100]}\", flush=True)
-                    else:
-                        print(f\"    [{name}]\", flush=True)
-        elif t == 'function_call':
-            name = e.get('name','')
-            args = e.get('arguments','')
-            if name in ('read_file','write_file','edit_file'):
-                try:
-                    a = json.loads(args) if isinstance(args,str) else args
-                    print(f\"    [{name}] {a.get('path', a.get('file_path',''))}\", flush=True)
-                except:
-                    print(f\"    [{name}]\", flush=True)
-            elif name in ('shell','bash'):
-                try:
-                    a = json.loads(args) if isinstance(args,str) else args
-                    print(f\"    [shell] {str(a.get('command', a.get('cmd','')))[:100]}\", flush=True)
-                except:
-                    print(f\"    [shell]\", flush=True)
-            else:
-                print(f\"    [{name}]\", flush=True)
-        elif t == 'completed':
-            dur = e.get('elapsed_ms', e.get('duration_ms', 0))
-            if dur:
-                print(f\"    -> done ({dur/1000:.0f}s)\", flush=True)
-            else:
-                print(f\"    -> done\", flush=True)
+        item = e.get('item', {})
+        itype = item.get('type','')
+        if t == 'item.completed' and itype == 'agent_message':
+            text = item.get('text','').strip()
+            if text:
+                print(f\"    {text[:200]}\", flush=True)
+        elif t == 'item.started' and itype == 'command_execution':
+            cmd = item.get('command','')
+            print(f\"    [shell] {cmd[:120]}\", flush=True)
+        elif t == 'item.completed' and itype == 'command_execution':
+            exit_code = item.get('exit_code')
+            if exit_code and exit_code != 0:
+                print(f\"    [shell exit={exit_code}]\", flush=True)
+        elif t == 'item.started' and itype == 'file_edit':
+            path = item.get('path', item.get('file',''))
+            print(f\"    [edit] {path}\", flush=True)
+        elif t == 'item.completed' and itype == 'file_edit':
+            path = item.get('path', item.get('file',''))
+            print(f\"    [edit done] {path}\", flush=True)
+        elif t == 'item.started' and itype == 'file_read':
+            path = item.get('path', item.get('file',''))
+            print(f\"    [read] {path}\", flush=True)
+        elif t == 'item.started' and itype == 'file_write':
+            path = item.get('path', item.get('file',''))
+            print(f\"    [write] {path}\", flush=True)
+        elif t == 'turn.completed':
+            print(f\"    -> turn done\", flush=True)
         elif t == 'error':
-            print(f\"    ERROR: {e.get('message','')[:200]}\", flush=True)
+            print(f\"    ERROR: {e.get('message',str(e)[:200])}\", flush=True)
     except:
         pass
 " \
