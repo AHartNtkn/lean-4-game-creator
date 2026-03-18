@@ -7,7 +7,10 @@ PROMPTS="$SCRIPT_DIR/prompts"
 STATE_DIR="$PROJECT_DIR/.studio-state"
 MAX_PLAN_ROUNDS=5
 MAX_REVIEW_ROUNDS=5
-ALLOWED_TOOLS="Read,Edit,Write,Bash,Glob,Grep,WebSearch,WebFetch"
+
+# Models
+MODEL="gpt-5.4"
+MODEL_SMALL="gpt-5.4-mini"
 
 # Parse flags
 NEW_RUN=false
@@ -20,7 +23,7 @@ done
 
 if [ "$NEW_RUN" = true ]; then
   echo "Starting fresh..."
-  rm -rf "$STATE_DIR"
+  rm -f "$STATE_DIR/state.json" "$STATE_DIR/catalog-progress.json" "$STATE_DIR/world-progress.json"
 fi
 mkdir -p "$STATE_DIR"
 
@@ -30,49 +33,81 @@ step() {
   local prompt_file="$1"
   local description="$2"
   shift 2
+  local model="${MODEL}"
+  # Check for --model override in remaining args
+  for arg in "$@"; do
+    if [ "$prev_was_model" = true ] 2>/dev/null; then
+      model="$arg"
+      break
+    fi
+    [ "$arg" = "--model" ] && prev_was_model=true || prev_was_model=false
+  done
+
   local log_file="$STATE_DIR/logs/${description//[ \/]/_}.jsonl"
   mkdir -p "$STATE_DIR/logs"
   echo "  [$description]"
   cd "$PROJECT_DIR"
-  claude -p "$(cat "$prompt_file")" \
-    --allowedTools "$ALLOWED_TOOLS" \
-    --model opus \
-    --output-format stream-json \
-    --verbose \
-    "$@" \
+  codex exec \
+    -m "$model" \
+    -c 'service_tier="xhigh"' \
+    --full-auto \
+    --json \
+    "$(cat "$prompt_file")" \
+    2>&1 \
     | tee "$log_file" \
-    | python3 -c "
+    | python3 -uc "
 import sys, json
 for line in sys.stdin:
+    line = line.strip()
+    if not line:
+        continue
     try:
-        e = json.loads(line.strip())
+        e = json.loads(line)
         t = e.get('type','')
-        if t == 'assistant':
-            for c in e.get('message',{}).get('content',[]):
-                if c.get('type') == 'text' and c.get('text','').strip():
-                    print(f\"    {c['text'][:200]}\")
+        if t == 'message' and e.get('role') == 'assistant':
+            for c in e.get('content',[]):
+                if c.get('type') == 'output_text' and c.get('text','').strip():
+                    print(f\"    {c['text'][:200]}\", flush=True)
                 elif c.get('type') == 'tool_use':
                     name = c.get('name','')
                     inp = c.get('input',{})
-                    if name in ('Read','Write','Edit'):
-                        print(f\"    [{name}] {inp.get('file_path','')}\")
-                    elif name == 'Bash':
-                        print(f\"    [Bash] {inp.get('command','')[:100]}\")
-                    elif name == 'Grep':
-                        print(f\"    [Grep] {inp.get('pattern','')[:60]}\")
-                    elif name == 'Glob':
-                        print(f\"    [Glob] {inp.get('pattern','')}\")
+                    if name in ('read_file','write_file','edit_file'):
+                        print(f\"    [{name}] {inp.get('path', inp.get('file_path',''))}\", flush=True)
+                    elif name in ('shell','bash'):
+                        cmd = inp.get('command', inp.get('cmd',''))
+                        print(f\"    [shell] {str(cmd)[:100]}\", flush=True)
                     else:
-                        print(f\"    [{name}]\")
-        elif t == 'result':
-            status = e.get('subtype','')
-            dur = e.get('duration_ms',0) / 1000
-            print(f\"    -> {status} ({dur:.0f}s)\")
+                        print(f\"    [{name}]\", flush=True)
+        elif t == 'function_call':
+            name = e.get('name','')
+            args = e.get('arguments','')
+            if name in ('read_file','write_file','edit_file'):
+                try:
+                    a = json.loads(args) if isinstance(args,str) else args
+                    print(f\"    [{name}] {a.get('path', a.get('file_path',''))}\", flush=True)
+                except:
+                    print(f\"    [{name}]\", flush=True)
+            elif name in ('shell','bash'):
+                try:
+                    a = json.loads(args) if isinstance(args,str) else args
+                    print(f\"    [shell] {str(a.get('command', a.get('cmd','')))[:100]}\", flush=True)
+                except:
+                    print(f\"    [shell]\", flush=True)
+            else:
+                print(f\"    [{name}]\", flush=True)
+        elif t == 'completed':
+            dur = e.get('elapsed_ms', e.get('duration_ms', 0))
+            if dur:
+                print(f\"    -> done ({dur/1000:.0f}s)\", flush=True)
+            else:
+                print(f\"    -> done\", flush=True)
+        elif t == 'error':
+            print(f\"    ERROR: {e.get('message','')[:200]}\", flush=True)
     except:
         pass
 " \
     || {
-      echo "  WARNING: claude exited with error during: $description"
+      echo "  WARNING: codex exited with error during: $description"
       return 1
     }
 }
@@ -135,7 +170,7 @@ while true; do
     # Write state files the select-course prompt needs
     cp "$STATE_DIR/catalog-progress.json" "$PROJECT_DIR/catalog-progress.json"
 
-    step "$PROMPTS/select-course.md" "select-course" --model haiku
+    step "$PROMPTS/select-course.md" "select-course" --model "$MODEL_SMALL"
 
     # Read result
     if [ -f "$PROJECT_DIR/current-course.txt" ]; then
@@ -318,7 +353,7 @@ json.dump(wp, open(f, 'w'), indent=2)
   git add -A
   git commit -m "Complete $COURSE course
 
-Co-Authored-By: Claude <noreply@anthropic.com>" || echo "  Nothing to commit"
+Co-Authored-By: Codex <noreply@openai.com>" || echo "  Nothing to commit"
   git push || echo "  Push failed"
 
   # Update progress
