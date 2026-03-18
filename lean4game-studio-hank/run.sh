@@ -30,12 +30,47 @@ step() {
   local prompt_file="$1"
   local description="$2"
   shift 2
+  local log_file="$STATE_DIR/logs/${description//[ \/]/_}.jsonl"
+  mkdir -p "$STATE_DIR/logs"
   echo "  [$description]"
   cd "$PROJECT_DIR"
   claude -p "$(cat "$prompt_file")" \
     --allowedTools "$ALLOWED_TOOLS" \
     --model opus \
+    --output-format stream-json \
+    --verbose \
     "$@" \
+    | tee "$log_file" \
+    | python3 -c "
+import sys, json
+for line in sys.stdin:
+    try:
+        e = json.loads(line.strip())
+        t = e.get('type','')
+        if t == 'assistant':
+            for c in e.get('message',{}).get('content',[]):
+                if c.get('type') == 'text' and c.get('text','').strip():
+                    print(f\"    {c['text'][:200]}\")
+                elif c.get('type') == 'tool_use':
+                    name = c.get('name','')
+                    inp = c.get('input',{})
+                    if name in ('Read','Write','Edit'):
+                        print(f\"    [{name}] {inp.get('file_path','')}\")
+                    elif name == 'Bash':
+                        print(f\"    [Bash] {inp.get('command','')[:100]}\")
+                    elif name == 'Grep':
+                        print(f\"    [Grep] {inp.get('pattern','')[:60]}\")
+                    elif name == 'Glob':
+                        print(f\"    [Glob] {inp.get('pattern','')}\")
+                    else:
+                        print(f\"    [{name}]\")
+        elif t == 'result':
+            status = e.get('subtype','')
+            dur = e.get('duration_ms',0) / 1000
+            print(f\"    -> {status} ({dur:.0f}s)\")
+    except:
+        pass
+" \
     || {
       echo "  WARNING: claude exited with error during: $description"
       return 1
