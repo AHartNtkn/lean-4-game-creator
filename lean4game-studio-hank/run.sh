@@ -32,16 +32,7 @@ mkdir -p "$STATE_DIR"
 step() {
   local prompt_file="$1"
   local description="$2"
-  shift 2
-  local model="${MODEL}"
-  # Check for --model override in remaining args
-  for arg in "$@"; do
-    if [ "$prev_was_model" = true ] 2>/dev/null; then
-      model="$arg"
-      break
-    fi
-    [ "$arg" = "--model" ] && prev_was_model=true || prev_was_model=false
-  done
+  local model="${3:-$MODEL}"
 
   local log_file="$STATE_DIR/logs/${description//[ \/]/_}.jsonl"
   mkdir -p "$STATE_DIR/logs"
@@ -171,7 +162,7 @@ while true; do
     # Write state files the select-course prompt needs
     cp "$STATE_DIR/catalog-progress.json" "$PROJECT_DIR/catalog-progress.json"
 
-    step "$PROMPTS/select-course.md" "select-course" --model "$MODEL_SMALL"
+    step "$PROMPTS/select-course.md" "select-course" "$MODEL_SMALL"
 
     # Read result
     if [ -f "$PROJECT_DIR/current-course.txt" ]; then
