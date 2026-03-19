@@ -186,6 +186,14 @@ while true; do
   echo "$COURSE" > "$PROJECT_DIR/current-course.txt"
   mkdir -p "$PROJECT_DIR/$COURSE/reviews"
 
+  # Remove stub Welcome level if it exists
+  if [ -d "$PROJECT_DIR/$COURSE/Game/Levels/Welcome" ]; then
+    rm "$PROJECT_DIR/$COURSE/Game/Levels/Welcome/L01_Welcome.lean" 2>/dev/null
+    rmdir "$PROJECT_DIR/$COURSE/Game/Levels/Welcome" 2>/dev/null
+    rm "$PROJECT_DIR/$COURSE/Game/Levels/Welcome.lean" 2>/dev/null
+    echo "  Removed Welcome stub"
+  fi
+
   PLAN_FILE="$PROJECT_DIR/$COURSE/PLAN.md"
   WORLD_LIST="$PROJECT_DIR/$COURSE/world-list.txt"
 
