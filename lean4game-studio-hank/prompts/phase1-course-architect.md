@@ -73,6 +73,11 @@ For each tactic/theorem/definition:
 - is it being taught or merely needed?
 - should it be visible or hidden?
 - does it need a theorem tab?
+- what doc standard is required?
+
+Treat this like release management for cognitive load.
+
+Where conceptual prerequisites are not captured by the automatic graph, plan explicit `Dependency` edges.
 
 ## Plan concrete examples
 
@@ -123,4 +128,6 @@ Also write `{course}/world-list.txt` containing one world identifier per line, i
 - Do NOT let psets become theorem clones
 - Do NOT plan worlds without deciding the granularity of their levels
 - Do NOT impose level count targets
+
+The architecture should make later authoring easier, not harder.
 
