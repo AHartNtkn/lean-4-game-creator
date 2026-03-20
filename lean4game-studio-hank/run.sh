@@ -190,6 +190,9 @@ while true; do
     rm "$PROJECT_DIR/$COURSE/Game/Levels/Welcome/L01_Welcome.lean" 2>/dev/null
     rmdir "$PROJECT_DIR/$COURSE/Game/Levels/Welcome" 2>/dev/null
     rm "$PROJECT_DIR/$COURSE/Game/Levels/Welcome.lean" 2>/dev/null
+    # Remove Welcome import and world reference from Game.lean
+    sed -i '/import Game\.Levels\.Welcome/d' "$PROJECT_DIR/$COURSE/Game.lean"
+    sed -i '/World.*Welcome/d' "$PROJECT_DIR/$COURSE/Game.lean"
     echo "  Removed Welcome stub"
   fi
 
