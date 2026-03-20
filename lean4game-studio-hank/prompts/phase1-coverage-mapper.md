@@ -23,10 +23,7 @@ Before writing the coverage map, use WebSearch and WebFetch to check the current
 
 Each course must be **full**, including advanced topics. Do not produce a shallow survey — cover the subject thoroughly, with depth proportional to what mathlib supports. Use the course description in `long_term.md` as the scope definition, and map everything within that scope.
 
-Map **what** the course covers and **how finely** it covers it.
-
-Coverage without granularity yields broad, frustrating levels.
-Granularity without coverage yields elegant fragments and an incomplete course.
+Map **what** the course needs to cover.
 
 ## Build the coverage map
 
@@ -52,7 +49,7 @@ If any core item would have missing coverage stages, say so plainly. Gaps are in
 
 ## Flag closure risks
 
-For each core item, note which coverage stages will be hard to achieve (e.g., "transfer for this concept requires a pset world with fresh surface forms — the architect should plan for this"). Do not rate closure — that is the plan reviewer's job after the architect assigns items to worlds.
+For each core item, note which coverage stages will be hard to achieve (e.g., "transfer for this concept requires fresh surface forms" or "retrieval is hard because the only natural context is the same as introduction").
 
 ## Plan example coverage
 

@@ -115,15 +115,14 @@ The output must contain:
 
 1. **Course promise**
 2. **Learner profile**
-3. **Coverage map** (summarized from Phase 1a output)
-4. **Granularity plan**
-5. **World graph** (ordered list of worlds with full specs)
+3. **Granularity plan**
+4. **World graph** (ordered list of worlds with full specs)
+5. **Coverage closure table** (every core item from coverage-map.md with its five stages mapped to specific worlds)
 6. **Inventory release plan**
 7. **Boss map**
 8. **Transfer and retrieval plan**
 9. **Misconception plan**
 10. **Major risks**
-11. **Recommended first three worlds to author**
 
 Also write `{course}/world-list.txt` containing one world identifier per line, in plan order. This file is read by the orchestration script to iterate over worlds.
 

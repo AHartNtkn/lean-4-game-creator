@@ -1,5 +1,9 @@
 # Review Gate
 
+## Context
+
+You are the quality gate for a lean4game world.
+
 ## Files to read FIRST
 
 1. `current-course.txt` — the course directory name

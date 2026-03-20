@@ -23,9 +23,9 @@ Does the plan cover everything described in `long_term.md` for this course? A "w
 ### 2. Coverage map alignment
 
 Does the plan actually address what the coverage map identified? Check:
-- Every core item from the coverage map — is there a world that covers it?
-- Items flagged as closure risks — does the plan address those risks?
-- Example plan — are example/case-study worlds planned for major definitions?
+- Every item listed under "Core items that must not be missed" — is there a world that covers it?
+- Items flagged under "closure risks" — does the plan address those risks?
+- The "Example plan" — are example/case-study worlds planned for the definitions listed?
 - Are counterexamples planned?
 
 ### 3. World graph coherence

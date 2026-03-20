@@ -121,9 +121,9 @@ Each level's proof must be a sequence of discrete tactic steps where each step c
 - Opaque goals (set-membership notation instead of concrete predicate)
 - Bundled rewrites (`rw [a, b, c, d, e]` — break into individual steps in early levels)
 
-### Step 5: Plan coverage closure
+### Step 5: Ensure coverage closure
 
-List the world's core items and show how each gets: introduction, supported use, retrieval, boss integration.
+The world's core items must each have introduction, supported use, retrieval, and boss integration within the world. If an item would skip from introduction straight to boss, add practice levels.
 
 ### Step 6: Write the world intro
 

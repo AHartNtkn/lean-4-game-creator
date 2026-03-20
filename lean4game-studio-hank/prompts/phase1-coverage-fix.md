@@ -8,6 +8,10 @@
 4. `{course}/coverage-map.md` — the current coverage map
 5. `long_term.md` — the course scope
 
+## Quick exit
+
+If the gate decision says `"done"`, stop immediately. Do nothing.
+
 ## Fix rules
 
 ### P0 defects: MUST fix all

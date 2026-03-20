@@ -62,7 +62,7 @@ Write two files:
 
 ### {course}/coverage-map-final.md
 
-Updated coverage map reflecting the actual state of all worlds. Same section format as the original coverage-map.md.
+Updated coverage map reflecting the actual state of all worlds. For each core item from the original coverage-map.md, record what actually happened: which world introduced it, where it was practiced, where it was retrieved, where it was integrated, where it was transferred. Rate closure as strong/partial/weak/illusory.
 
 ### {course}/cross-world-issues.md
 

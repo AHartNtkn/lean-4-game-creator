@@ -15,7 +15,7 @@ You are fixing cross-world issues found during the coverage remap. This is Phase
 
 ### If no issues found
 
-If `cross-world-issues.md` says "None" or has no P0/P1/P2 issues, write `NO_FIXES_NEEDED` to `codon-output.txt`.
+If `cross-world-issues.md` says "None" or has no P0/P1/P2 issues, stop immediately. Do nothing.
 
 ### If issues exist
 
