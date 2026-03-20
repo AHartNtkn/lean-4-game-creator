@@ -75,10 +75,6 @@ Granularity must come from proof moves, not from the syllabus. Textbook sections
 
 Include this analysis in the coverage map so the course architect can cut levels properly.
 
-## This is a PLANNING document, not a review
-
-You are mapping what the course SHOULD cover. No worlds or levels exist yet. Do not write post-hoc review sections (granularity defects, splits/merges of existing content). Those belong in Phase 3 after content exists.
-
 ## Output
 
 Write your output to `{course}/coverage-map.md` where `{course}` is the value from `current-course.txt`.
