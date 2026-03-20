@@ -1,0 +1,18 @@
+{
+  "action": "continue",
+  "p0Defects": [
+    "\"Finite sets as subtypes\" is listed as a core topic in long_term.md and the coverage map's own scope summary, but has zero coverage in the matrix. No entries for Set.Finite, Set.toFinset, Finset.toSet, or the subtype {x : α // x ∈ s}."
+  ],
+  "discrepancies": [
+    "Finset.erase (P1): fundamental Finset operation absent from coverage matrix — dual of insert, required for cardinality proofs",
+    "card_insert_of_not_mem may be card_insert_of_notMem in pinned mathlib — verify before authoring",
+    "W17 capstone theorems missing mathlib API names: add_pow (binomial theorem), Nat.add_choose_eq (Vandermonde)"
+  ],
+  "recommendations": [
+    "Add Finset.biUnion to MATH axis (W6 or W7)",
+    "If Vandermonde stays in W17 (even optional), add Finset.antidiagonal to MATH axis",
+    "Commit on Finset.subset_iff disable policy for W6",
+    "Add sum_boole proof-move pattern to Cluster K or L"
+  ],
+  "notes": "The P0 is unambiguous: the course scope explicitly includes finite sets as subtypes, and the coverage map repeats this in its own summary, yet the matrix has zero entries for it. Must either add coverage (likely a world between W8 and W9) or explicitly remove it from scope with justification."
+}
