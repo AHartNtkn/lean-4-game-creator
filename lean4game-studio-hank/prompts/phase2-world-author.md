@@ -4,9 +4,14 @@
 
 You are authoring a complete world for a lean4game course. This is Phase 2a of the course production pipeline.
 
-Read `current-course.txt` for the course directory name.
-Read `current-world.txt` for the world you will author. Read the corresponding section of PLAN.md for that world's design spec.
-Read `{course}/PLAN.md` for the full course architecture.
+## Files to read FIRST
+
+1. `current-course.txt` — the course directory name
+2. `current-world.txt` — the world you will author
+3. `{course}/PLAN.md` — full course architecture (read the section for your world)
+4. `{course}/Game.lean` — current game structure, imports, dependencies
+5. `{course}/Game/Levels/` — list existing world directories to understand what's already built
+6. `{course}/Game/Metadata.lean` — if it exists, read for shared definitions and instances
 
 ## Required mindset
 

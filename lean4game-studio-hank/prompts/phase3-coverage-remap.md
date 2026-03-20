@@ -4,9 +4,13 @@
 
 You are performing a cross-world coverage analysis after all worlds in a course have been authored and reviewed. This is Phase 3a.
 
-Read `current-course.txt` for the course directory name.
-Read `{course}/PLAN.md` for the course architecture.
-Read `{course}/coverage-map.md` for the original Phase 1 coverage map.
+## Files to read FIRST
+
+1. `current-course.txt` — the course directory name
+2. `{course}/PLAN.md` — the course architecture
+3. `{course}/coverage-map.md` — the original Phase 1 coverage map
+4. `{course}/Game/Levels/**/*.lean` — ALL level files across ALL worlds
+5. `{course}/Game.lean` — game structure and dependencies
 
 ## What to read
 

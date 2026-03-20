@@ -4,16 +4,16 @@
 
 You are fixing issues found by the enrichment reviewer and playtest auditor. This is Phase 2f.
 
-Read `current-course.txt` and `current-world.txt` for context.
+## Files to read FIRST
 
-## Inputs to read
-
-1. `{course}/reviews/gate-decision.json` — the gate's decision, including lists of defects and suggestions
-2. `{course}/reviews/enrichment-current.md` — the full enrichment review
-3. `{course}/reviews/playtest-current.md` — the full playtest audit
-4. All level files for the current world: `{course}/Game/Levels/{world}/*.lean`
-5. World base file: `{course}/Game/Levels/{world}.lean`
-6. `{course}/Game.lean` — game structure
+1. `current-course.txt` — the course directory name
+2. `current-world.txt` — the world to fix
+3. `{course}/reviews/gate-decision.json` — the gate's decision with defects and suggestions
+4. `{course}/reviews/enrichment-current.md` — the full enrichment review
+5. `{course}/reviews/playtest-current.md` — the full playtest audit
+6. `{course}/Game/Levels/{world}/*.lean` — ALL level files for this world
+7. `{course}/Game/Levels/{world}.lean` — world base file
+8. `{course}/Game.lean` — game structure
 
 ## Quick exit
 

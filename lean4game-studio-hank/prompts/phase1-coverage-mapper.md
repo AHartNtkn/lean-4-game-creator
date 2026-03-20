@@ -4,9 +4,12 @@
 
 You are building a coverage map for a lean4game course. This is Phase 1a of the course production pipeline.
 
-Read `current-course.txt` for the course directory name.
+## Files to read FIRST
 
-Read `long_term.md` for the course description, scope, prerequisites, and coverage tags.
+1. `current-course.txt` — the course directory name
+2. `long_term.md` — course description, scope, prerequisites, and coverage tags
+3. `{course}/Game.lean` — current game structure
+4. `{course}/Game/Levels/**/*.lean` — any existing level files
 
 ## Your role
 

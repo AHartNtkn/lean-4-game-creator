@@ -4,9 +4,12 @@
 
 You are building the lean4game project and fixing any compilation errors. This is Phase 2b.
 
-The rig has already run `lake build` and captured the output to `build-log.txt` with the exit code in `build-exit-code.txt`.
+## Files to read FIRST
 
-Read `current-course.txt` and `current-world.txt` for context.
+1. `current-course.txt` — the course directory name
+2. `current-world.txt` — the world that was just authored
+3. `build-log.txt` — the build output (already captured by the script)
+4. `build-exit-code.txt` — the build exit code
 
 ## Task
 

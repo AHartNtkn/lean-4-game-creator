@@ -4,9 +4,12 @@
 
 You are fixing cross-world issues found during the coverage remap. This is Phase 3b.
 
-Read `current-course.txt` for the course directory name.
-Read `{course}/cross-world-issues.md` for the list of issues.
-Read `{course}/PLAN.md` for the course architecture.
+## Files to read FIRST
+
+1. `current-course.txt` — the course directory name
+2. `{course}/cross-world-issues.md` — the list of issues from the coverage remap
+3. `{course}/PLAN.md` — the course architecture
+4. `{course}/Game.lean` — game structure
 
 ## Task
 

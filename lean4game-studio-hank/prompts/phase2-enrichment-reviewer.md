@@ -4,8 +4,13 @@
 
 You are reviewing a lean4game world for enrichment opportunities. This is Phase 2c.
 
-Read `current-course.txt` and `current-world.txt` for context.
-Read `{course}/PLAN.md` for the course architecture.
+## Files to read FIRST
+
+1. `current-course.txt` — the course directory name
+2. `current-world.txt` — the world to review
+3. `{course}/Game/Levels/{world}/*.lean` — ALL level files for this world
+4. `{course}/Game/Levels/{world}.lean` — the world base file
+5. `{course}/PLAN.md` — course architecture (for context, not compliance)
 
 ## Your role
 

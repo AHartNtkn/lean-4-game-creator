@@ -4,8 +4,13 @@
 
 You are red-teaming a lean4game world for quality. This is Phase 2d.
 
-Read `current-course.txt` and `current-world.txt` for context.
-Read `{course}/PLAN.md` for the course architecture.
+## Files to read FIRST
+
+1. `current-course.txt` — the course directory name
+2. `current-world.txt` — the world to audit
+3. `{course}/Game/Levels/{world}/*.lean` — ALL level files for this world
+4. `{course}/Game/Levels/{world}.lean` — the world base file
+5. `{course}/PLAN.md` — course architecture
 
 ## Your role
 
