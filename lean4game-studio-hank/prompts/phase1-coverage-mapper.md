@@ -90,54 +90,31 @@ Specifically check:
 - Are example worlds placed so they concretize theory the learner has already seen?
 - Do the examples chosen cover enough variety?
 
-## Analyze redundancy
+## Granularity guidance for the course architect
 
-Find content that is:
-- repeated with no new demand
-- repeated only at the surface level
-- or repeated so often that it consumes space needed for missing coverage
-
-## Analyze granularity defects
-
-Explicitly flag:
-- overbroad levels
-- overfine levels
-- worlds that should be split
-- worlds that should be merged
-- bosses that lack closure
-- theorem families whose micro-moves were never isolated
-
-## Granularity must come from proof moves, not from the syllabus
-
-When the mathematical syllabus is already known, do not use the syllabus itself as the granularity plan. Textbook sections and theorem lists are too coarse. Instead:
+Granularity must come from proof moves, not from the syllabus. Textbook sections and theorem lists are too coarse. Instead:
 1. Keep the syllabus as macro coverage
 2. Derive theorem families from the syllabus
 3. Derive proof-move clusters from those families
-4. Cut levels around those clusters
+4. Identify which clusters deserve their own levels
 
-## Reading the current course state
+Include this analysis in the coverage map so the course architect can cut levels properly.
 
-Since all courses start as stubs (Welcome level only), you are mapping what the course SHOULD cover, not what it currently contains. Use the course description from `long_term.md` and your knowledge of the mathematical content to build the map.
+## This is a PLANNING document, not a review
 
-Read the course's existing files:
-- `{course}/Game.lean` — current game structure
-- `{course}/Game/Levels/**/*.lean` — existing level files (likely just Welcome)
+You are mapping what the course SHOULD cover. No worlds or levels exist yet. Do not write post-hoc review sections (granularity defects, splits/merges of existing content). Those belong in Phase 3 after content exists.
 
 ## Output
 
 Write your output to `{course}/coverage-map.md` where `{course}` is the value from `current-course.txt`.
 
-The output must contain these 11 sections:
+The output must contain these sections:
 
-1. **Coverage matrix summary**
-2. **Core uncovered items**
-3. **Weakly covered items**
-4. **Example coverage gaps** — definitions exercised only abstractly, missing counterexamples
-5. **Redundant items**
-6. **Granularity defects**
-7. **Novelty hotspots**
-8. **Recommended splits/merges**
-9. **Recommended new levels or new worlds** (including example/case-study worlds)
-10. **Items that should be demoted, delayed, or hidden in the inventory**
-11. **Confidence notes**
+1. **Coverage matrix summary** — items across all 7 axes with importance and planned coverage stages
+2. **Core items that must not be missed** — the most important things the course must teach
+3. **Example plan** — which definitions need concrete examples, which need counterexamples, what objects to use
+4. **Proof-move clusters** — groups of related proof moves that should be taught together
+5. **Novelty hotspots** — places where too much novelty would concentrate if not carefully sequenced
+6. **Items to demote, delay, or hide** — what should be gated, deferred, or kept out of inventory
+7. **Confidence notes** — what you're sure about and what needs the architect's judgment
 
