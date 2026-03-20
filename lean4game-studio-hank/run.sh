@@ -8,7 +8,6 @@ STATE_DIR="$PROJECT_DIR/.studio-state"
 MAX_PLAN_ROUNDS=5
 MAX_REVIEW_ROUNDS=5
 TOOLS="Read,Edit,Write,Bash,Glob,Grep,WebSearch,WebFetch"
-export LAKE_ARTIFACT_CACHE=true
 REFS="$PROJECT_DIR/.claude/references"
 
 # Parse flags

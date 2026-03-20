@@ -1,7 +1,7 @@
 msgid ""
-msgstr "Project-Id-Version: Game v4.28.0\n"
+msgstr "Project-Id-Version: Game v4.29.0-rc6\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-13\n"
+"POT-Creation-Date: 2026-03-20\n"
 "Last-Translator: \n"
 "Language-Team: none\n"
 "Language: en\n"
@@ -13,19 +13,15 @@ msgid "level completed with warnings… 🎭"
 msgstr ""
 
 #: Game.Levels.Welcome.L01_Welcome
-msgid "Welcome to Group Theory I!\n"
-"\n"
-"This course is under construction. Check back soon for new content.\n"
-"\n"
-"For now, try closing this trivial goal to make sure everything works."
-msgstr ""
-
-#: Game.Levels.Welcome.L01_Welcome
 msgid "Welcome"
 msgstr ""
 
 #: GameServer.RpcHandlers
 msgid "level completed! 🎉"
+msgstr ""
+
+#: GameServer.RpcHandlers
+msgid "intermediate goal solved! 🎉"
 msgstr ""
 
 #: Game
@@ -36,14 +32,18 @@ msgid "# Group Theory I\n"
 "This course is under construction."
 msgstr ""
 
-#: GameServer.RpcHandlers
-msgid "intermediate goal solved! 🎉"
+#: Game.Levels.Welcome.L01_Welcome
+msgid "The course infrastructure is working. Content coming soon!"
+msgstr ""
+
+#: Game.Levels.Welcome.L01_Welcome
+msgid "Welcome to Group Theory I!\n"
+"\n"
+"This course is under construction. Check back soon for new content.\n"
+"\n"
+"For now, try closing this trivial goal to make sure everything works."
 msgstr ""
 
 #: Game
 msgid "Group Theory I"
-msgstr ""
-
-#: Game.Levels.Welcome.L01_Welcome
-msgid "The course infrastructure is working. Content coming soon!"
 msgstr ""

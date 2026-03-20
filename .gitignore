@@ -5,6 +5,9 @@
 .claude/settings.local.json
 .claude/memory/
 
+# Shared mathlib clone (fetched via setup, not checked in)
+mathlib4/
+
 # OS files
 .DS_Store
 

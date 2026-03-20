@@ -13,6 +13,14 @@ msgid "level completed with warnings… 🎭"
 msgstr ""
 
 #: Game.Levels.Welcome.L01_Welcome
+msgid "Welcome to Metric Spaces and Quantitative Topology!\n"
+"\n"
+"This course is under construction. Check back soon for new content.\n"
+"\n"
+"For now, try closing this trivial goal to make sure everything works."
+msgstr ""
+
+#: Game.Levels.Welcome.L01_Welcome
 msgid "Welcome"
 msgstr ""
 
@@ -20,22 +28,14 @@ msgstr ""
 msgid "level completed! 🎉"
 msgstr ""
 
-#: Game.Levels.Welcome.L01_Welcome
-msgid "Welcome to Descriptive Set Theory!\n"
-"\n"
-"This course is under construction. Check back soon for new content.\n"
-"\n"
-"For now, try closing this trivial goal to make sure everything works."
-msgstr ""
-
 #: GameServer.RpcHandlers
 msgid "intermediate goal solved! 🎉"
 msgstr ""
 
 #: Game
-msgid "# Descriptive Set Theory\n"
+msgid "# Metric Spaces and Quantitative Topology\n"
 "\n"
-"Descriptive Set Theory\n"
+"Metric spaces, Cauchy sequences, Lipschitz and Hölder maps, contraction mapping, Baire category, Arzelà–Ascoli, Hausdorff distance, and Gromov–Hausdorff space.\n"
 "\n"
 "This course is under construction."
 msgstr ""
@@ -45,5 +45,5 @@ msgid "The course infrastructure is working. Content coming soon!"
 msgstr ""
 
 #: Game
-msgid "Descriptive Set Theory"
+msgid "Metric Spaces"
 msgstr ""

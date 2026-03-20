@@ -2,7 +2,7 @@ import Lake
 open Lake DSL
 
 require GameServer from "../lean4game/server"
-require "leanprover-community" / mathlib @ git "v4.29.0-rc6"
+require mathlib from "../mathlib4"
 
 package Game where
   leanOptions := #[

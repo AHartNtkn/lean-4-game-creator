@@ -1,7 +1,7 @@
 msgid ""
-msgstr "Project-Id-Version: Game v4.28.0\n"
+msgstr "Project-Id-Version: Game v4.29.0-rc6\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-14\n"
+"POT-Creation-Date: 2026-03-20\n"
 "Last-Translator: \n"
 "Language-Team: none\n"
 "Language: en\n"
@@ -12,21 +12,24 @@ msgstr "Project-Id-Version: Game v4.28.0\n"
 msgid "level completed with warnings… 🎭"
 msgstr ""
 
+#: Game.Levels.Welcome.L01_Welcome
+msgid "Welcome to Finite Mathematics!\n"
+"\n"
+"This course is under construction. Check back soon for new content.\n"
+"\n"
+"For now, try closing this trivial goal to make sure everything works."
+msgstr ""
+
 #: Game
 msgid "Finite Mathematics"
 msgstr ""
 
+#: Game.Levels.Welcome.L01_Welcome
+msgid "Welcome"
+msgstr ""
+
 #: GameServer.RpcHandlers
 msgid "level completed! 🎉"
-msgstr ""
-
-#. §0: `decide`
-#: Game.Levels.Welcome.L01_Welcome
-msgid "§0 can verify concrete decidable propositions."
-msgstr ""
-
-#: Game.Levels.Welcome.L01_Welcome
-msgid "Welcome to Finite Mathematics"
 msgstr ""
 
 #: GameServer.RpcHandlers
@@ -49,43 +52,6 @@ msgid "# Finite Mathematics\n"
 "This course is under construction."
 msgstr ""
 
-#. §0: `decide`
-#. §1: `decide`
 #: Game.Levels.Welcome.L01_Welcome
-msgid "Great! The §0 tactic works by computation: it evaluates both sides and\n"
-"checks they are equal. This is a powerful tool for concrete finite mathematics,\n"
-"but it only works when the proposition is *decidable* — meaning Lean can check\n"
-"it by running a program.\n"
-"\n"
-"In this course, you'll learn to combine §1 with structural reasoning\n"
-"about finite objects."
-msgstr ""
-
-#. §0: `Fin`
-#. §1: `Finset`
-#. §2: `List`
-#. §3: `Multiset`
-#. §4: `rw`
-#. §5: `exact`
-#. §6: `apply`
-#. §7: `intro`
-#. §8: `cases`
-#. §9: `constructor`
-#. §10: `decide`
-#: Game.Levels.Welcome.L01_Welcome
-msgid "# Welcome to Finite Mathematics!\n"
-"\n"
-"In this course you will learn about the finite-object infrastructure that\n"
-"underlies much of formalized mathematics: §0, §1, §2, §3,\n"
-"big operators, and the counting identities that power combinatorics and algebra.\n"
-"\n"
-"**What you need**: familiarity with Lean 4 at the level of the Natural Number\n"
-"Game. You should be comfortable with §4, §5, §6, §7, §8,\n"
-"and §9.\n"
-"\n"
-"Let's start with something simple to make sure everything works.\n"
-"The §10 tactic can automatically verify decidable propositions — including\n"
-"concrete statements about natural numbers and finite types.\n"
-"\n"
-"Try closing this goal:"
+msgid "The course infrastructure is working. Content coming soon!"
 msgstr ""
