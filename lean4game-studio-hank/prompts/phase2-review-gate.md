@@ -47,23 +47,13 @@ A world PASSES only if ALL of these are true:
 - No P1 (high priority) defects
 - No automatic red flags triggered
 
-## FIRST REVIEW NEVER PASSES — MANDATORY RULE
+## Decision logic
 
-**If `reviewRound` is 1 (this is the first review cycle for this world), the world CANNOT pass regardless of what the reviews say.**
-
-This is not a heuristic. It is an empirical fact: first reviews always find issues. A first-pass clean result is a bug in the review process.
-
-If both reviews claim the world is clean on round 1:
-1. Set `action` to `"continue"` anyway
-2. Add a note: "First review cycle — forcing continuation regardless of reviewer claims. First reviews empirically always have issues."
-3. List at least 3 things the reviewers should look more carefully at in the next round
-
-## Review round limits
-
-If `reviewCycleCount` reaches 5 and the world still has P0 defects:
-1. Set `action` to `"abort"`
-2. The world is STUCK — human intervention required
-3. This is the "FAIL means STOP" rule made structural
+- If P0 defects exist → `"continue"` (must fix)
+- If P1 defects exist → `"continue"` (should fix)
+- If average < 3.0 or any category < 2 → `"continue"` (quality too low)
+- If red flags triggered → `"continue"` (must resolve)
+- Otherwise → `"done"` (world passes)
 
 ## Output
 

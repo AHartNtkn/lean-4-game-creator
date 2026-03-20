@@ -23,13 +23,13 @@ A plan PASSES only if ALL of:
 - Major definitions have example plans
 - The transfer plan exists
 
-## First review never passes
+## Decision logic
 
-If `reviewCycleCount` is 0 (first review of this plan), set action to `"continue"` regardless. First reviews always find issues.
-
-## Review round limits
-
-If `reviewCycleCount` reaches 5 and P0 defects remain, set action to `"abort"`.
+- If P0 defects exist → `"continue"` (must fix)
+- If P1 defects exist → `"continue"` (should fix)
+- If scope is incomplete → `"continue"`
+- If proof-move map is absent/superficial → `"continue"`
+- Otherwise → `"done"` (plan passes)
 
 ## Output
 

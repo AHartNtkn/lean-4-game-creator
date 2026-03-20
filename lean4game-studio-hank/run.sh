@@ -7,7 +7,8 @@ PROMPTS="$SCRIPT_DIR/prompts"
 STATE_DIR="$PROJECT_DIR/.studio-state"
 MAX_PLAN_ROUNDS=5
 MAX_REVIEW_ROUNDS=5
-ALLOWED_TOOLS="Read,Edit,Write,Bash,Glob,Grep,WebSearch,WebFetch"
+TOOLS="Read,Edit,Write,Bash,Glob,Grep,WebSearch,WebFetch"
+REFS="$PROJECT_DIR/.claude/references"
 
 # Parse flags
 NEW_RUN=false
@@ -26,22 +27,37 @@ mkdir -p "$STATE_DIR"
 
 # --- Helper functions ---
 
+# step PROMPT_FILE DESCRIPTION [MODEL] [REF_FILES...]
+# MODEL defaults to opus. REF_FILES are basenames from .claude/references/ to attach.
 step() {
   local prompt_file="$1"
   local description="$2"
-  shift 2
+  local model="${3:-opus}"
+  shift 3 2>/dev/null || shift 2
+
   local log_file="$STATE_DIR/logs/${description//[ \/]/_}.jsonl"
   mkdir -p "$STATE_DIR/logs"
   echo "  [$description]"
   cd "$PROJECT_DIR"
+
+  # Build reference file args
+  local ref_args=()
+  for ref in "$@"; do
+    if [ -f "$REFS/$ref" ]; then
+      ref_args+=(--append-system-prompt-file "$REFS/$ref")
+    fi
+  done
+
   claude -p "$(cat "$prompt_file")" \
-    --allowedTools "$ALLOWED_TOOLS" \
-    --model opus \
+    --model "$model" \
+    --tools "$TOOLS" \
+    --disallowedTools "Agent" \
+    --dangerously-skip-permissions \
     --output-format stream-json \
     --verbose \
-    "$@" \
+    "${ref_args[@]}" \
     | tee "$log_file" \
-    | python3 -c "
+    | python3 -uc "
 import sys, json
 for line in sys.stdin:
     try:
@@ -50,24 +66,24 @@ for line in sys.stdin:
         if t == 'assistant':
             for c in e.get('message',{}).get('content',[]):
                 if c.get('type') == 'text' and c.get('text','').strip():
-                    print(f\"    {c['text'][:200]}\")
+                    print(f\"    {c['text'][:200]}\", flush=True)
                 elif c.get('type') == 'tool_use':
                     name = c.get('name','')
                     inp = c.get('input',{})
                     if name in ('Read','Write','Edit'):
-                        print(f\"    [{name}] {inp.get('file_path','')}\")
+                        print(f\"    [{name}] {inp.get('file_path','')}\", flush=True)
                     elif name == 'Bash':
-                        print(f\"    [Bash] {inp.get('command','')[:100]}\")
+                        print(f\"    [Bash] {inp.get('command','')[:100]}\", flush=True)
                     elif name == 'Grep':
-                        print(f\"    [Grep] {inp.get('pattern','')[:60]}\")
+                        print(f\"    [Grep] {inp.get('pattern','')[:60]}\", flush=True)
                     elif name == 'Glob':
-                        print(f\"    [Glob] {inp.get('pattern','')}\")
+                        print(f\"    [Glob] {inp.get('pattern','')}\", flush=True)
                     else:
-                        print(f\"    [{name}]\")
+                        print(f\"    [{name}]\", flush=True)
         elif t == 'result':
             status = e.get('subtype','')
             dur = e.get('duration_ms',0) / 1000
-            print(f\"    -> {status} ({dur:.0f}s)\")
+            print(f\"    -> {status} ({dur:.0f}s)\", flush=True)
     except:
         pass
 " \
@@ -135,7 +151,7 @@ while true; do
     # Write state files the select-course prompt needs
     cp "$STATE_DIR/catalog-progress.json" "$PROJECT_DIR/catalog-progress.json"
 
-    step "$PROMPTS/select-course.md" "select-course" --model haiku
+    step "$PROMPTS/select-course.md" "select-course" haiku
 
     # Read result
     if [ -f "$PROJECT_DIR/current-course.txt" ]; then
@@ -184,8 +200,11 @@ while true; do
   if [ ! -f "$PLAN_FILE" ] || [ ! -f "$WORLD_LIST" ]; then
     echo ""
     echo "--- Phase 1: Design ---"
-    step "$PROMPTS/phase1-coverage-mapper.md" "coverage-map"
-    step "$PROMPTS/phase1-course-architect.md" "course-architect"
+    step "$PROMPTS/phase1-coverage-mapper.md" "coverage-map" opus \
+      05_coverage_and_granularity.md 03_quality_rubric.md 04_failure_taxonomy.md
+    step "$PROMPTS/phase1-course-architect.md" "course-architect" opus \
+      00_what_good_looks_like.md 01_patterns_from_existing_games.md \
+      05_coverage_and_granularity.md 02_technical_levers.md 07_operational_lessons.md
 
     # --- Plan review loop ---
     echo ""
@@ -194,8 +213,10 @@ while true; do
     for round in $(seq 1 $MAX_PLAN_ROUNDS); do
       echo "  Round $round/$MAX_PLAN_ROUNDS"
 
-      step "$PROMPTS/phase1-plan-review.md" "plan-review"
-      step "$PROMPTS/phase1-plan-gate.md" "plan-gate"
+      step "$PROMPTS/phase1-plan-review.md" "plan-review" opus \
+        00_what_good_looks_like.md 05_coverage_and_granularity.md 03_quality_rubric.md
+      step "$PROMPTS/phase1-plan-gate.md" "plan-gate" opus \
+        03_quality_rubric.md
 
       GATE_FILE="$PROJECT_DIR/$COURSE/reviews/plan-gate-decision.json"
       if [ ! -f "$GATE_FILE" ]; then
@@ -216,7 +237,8 @@ while true; do
       fi
 
       # Fix and loop
-      step "$PROMPTS/phase1-plan-fix.md" "plan-fix"
+      step "$PROMPTS/phase1-plan-fix.md" "plan-fix" opus \
+        00_what_good_looks_like.md 05_coverage_and_granularity.md 02_technical_levers.md
     done
 
     if [ "$PLAN_PASSED" = false ]; then
@@ -252,7 +274,9 @@ while true; do
     update_state "currentWorld" "\"$WORLD\""
 
     # Author + build
-    step "$PROMPTS/phase2-world-author.md" "author $WORLD"
+    step "$PROMPTS/phase2-world-author.md" "author $WORLD" opus \
+      01_patterns_from_existing_games.md 02_technical_levers.md \
+      05_coverage_and_granularity.md 03_quality_rubric.md 07_operational_lessons.md
 
     # Build
     cd "$PROJECT_DIR/$COURSE"
@@ -262,7 +286,7 @@ while true; do
 
     BUILD_EXIT=$(cat "$PROJECT_DIR/build-exit-code.txt")
     if [ "$BUILD_EXIT" != "0" ]; then
-      step "$PROMPTS/phase2-build.md" "build-fix $WORLD"
+      step "$PROMPTS/phase2-build.md" "build-fix $WORLD" opus
     fi
 
     # Review loop
@@ -270,9 +294,11 @@ while true; do
     for review_round in $(seq 1 $MAX_REVIEW_ROUNDS); do
       echo "  Review $review_round/$MAX_REVIEW_ROUNDS"
 
-      step "$PROMPTS/phase2-enrichment-reviewer.md" "enrichment $WORLD r$review_round"
-      step "$PROMPTS/phase2-playtest-auditor.md" "playtest $WORLD r$review_round"
-      step "$PROMPTS/phase2-review-gate.md" "gate $WORLD r$review_round"
+      step "$PROMPTS/phase2-enrichment-reviewer.md" "enrichment $WORLD r$review_round" opus
+      step "$PROMPTS/phase2-playtest-auditor.md" "playtest $WORLD r$review_round" opus \
+        03_quality_rubric.md 04_failure_taxonomy.md 05_coverage_and_granularity.md 07_operational_lessons.md
+      step "$PROMPTS/phase2-review-gate.md" "gate $WORLD r$review_round" opus \
+        03_quality_rubric.md 04_failure_taxonomy.md
 
       GATE_FILE="$PROJECT_DIR/$COURSE/reviews/gate-decision.json"
       if [ ! -f "$GATE_FILE" ]; then
@@ -292,7 +318,8 @@ while true; do
       fi
 
       # Fix and loop
-      step "$PROMPTS/phase2-fix-issues.md" "fix $WORLD r$review_round"
+      step "$PROMPTS/phase2-fix-issues.md" "fix $WORLD r$review_round" opus \
+        02_technical_levers.md 07_operational_lessons.md
     done
 
     if [ "$WORLD_PASSED" = false ]; then
@@ -316,8 +343,9 @@ json.dump(wp, open(f, 'w'), indent=2)
   # --- Phase 3: Cross-world review ---
   echo ""
   echo "--- Phase 3: Cross-World Review ---"
-  step "$PROMPTS/phase3-coverage-remap.md" "cross-world-coverage"
-  step "$PROMPTS/phase3-cross-world-fix.md" "cross-world-fix"
+  step "$PROMPTS/phase3-coverage-remap.md" "cross-world-coverage" opus \
+    05_coverage_and_granularity.md 03_quality_rubric.md
+  step "$PROMPTS/phase3-cross-world-fix.md" "cross-world-fix" opus
 
   # --- Commit + push ---
   echo ""
