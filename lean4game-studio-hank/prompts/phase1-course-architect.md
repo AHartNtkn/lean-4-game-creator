@@ -57,6 +57,23 @@ Every major lecture world should culminate in a boss that:
 
 Map each boss to the specific earlier levels that seeded its subskills.
 
+## Analyze coverage closure
+
+For each core item from the coverage map, verify that the world graph provides:
+- **introduction** — a world where it is first taught
+- **supported practice** — a world where it is used with scaffolding
+- **unsupported retrieval** — a world where it is needed without prompting
+- **integration** — a boss or later world where it combines with other skills
+- **transfer** — a world where it appears in a fresh surface form
+
+Rate each core item's closure as:
+- **strong**: all stages present
+- **partial**: some stages missing
+- **weak**: barely introduced
+- **illusory**: appears covered only because it is mentioned, not because the learner practices it
+
+Any core item with partial, weak, or illusory closure is a defect in the plan. Add worlds or levels to fix it.
+
 ## Build a transfer plan
 
 For each high-value move, specify:
