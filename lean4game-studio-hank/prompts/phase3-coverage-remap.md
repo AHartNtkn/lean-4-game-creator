@@ -68,7 +68,7 @@ Write two files:
 
 ### {course}/coverage-map-final.md
 
-Updated coverage map reflecting the actual state of all worlds. Same 11-section format as the original.
+Updated coverage map reflecting the actual state of all worlds. Same section format as the original coverage-map.md.
 
 ### {course}/cross-world-issues.md
 

@@ -50,13 +50,9 @@ Do NOT assign items to specific worlds or levels. That is the course architect's
 
 If any core item would have missing coverage stages, say so plainly. Gaps are information.
 
-## Analyze closure
+## Flag closure risks
 
-For each core concept or move, decide whether closure is:
-- **strong**: intro + support + retrieval + integration + transfer
-- **partial**: some stages present, some absent
-- **weak**: barely introduced
-- **illusory**: appears covered only because it is mentioned, not because the learner practices it
+For each core item, note which coverage stages will be hard to achieve (e.g., "transfer for this concept requires a pset world with fresh surface forms — the architect should plan for this"). Do not rate closure — that is the plan reviewer's job after the architect assigns items to worlds.
 
 ## Plan example coverage
 

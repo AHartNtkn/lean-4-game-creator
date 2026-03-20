@@ -8,8 +8,7 @@ Select the next course to build from the lean4game catalog.
 
 1. `long_term.md` — the course catalog with descriptions, prerequisites, and tags
 2. `catalog-progress.json` — tracks which courses are already complete
-3. `pipeline-state.json` — current pipeline state
-4. List the directories in the project root to see what courses exist
+3. List the directories in the project root to see what courses exist
 
 ### Selection rules
 

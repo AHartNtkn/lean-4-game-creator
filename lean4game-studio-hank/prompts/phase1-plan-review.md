@@ -23,9 +23,9 @@ Does the plan cover everything described in `long_term.md` for this course? A "w
 ### 2. Coverage map alignment
 
 Does the plan actually address what the coverage map identified? Check:
-- Every core uncovered item from the coverage map — is there a world that covers it?
-- Every weakly covered item — is there a plan to strengthen it?
-- Example coverage gaps — are example/case-study worlds planned for major definitions?
+- Every core item from the coverage map — is there a world that covers it?
+- Items flagged as closure risks — does the plan address those risks?
+- Example plan — are example/case-study worlds planned for major definitions?
 - Are counterexamples planned?
 
 ### 3. World graph coherence
@@ -58,7 +58,13 @@ For each core item in the coverage map, check that the world graph provides all 
 - **integration** — a boss or later world where it combines with other skills
 - **transfer** — a world where it appears in a fresh surface form
 
-Any core item missing stages is a defect. Items that are "mentioned" but never practiced have illusory coverage — flag these.
+Rate each core item's closure as:
+- **strong**: all five stages present
+- **partial**: some stages missing
+- **weak**: barely introduced
+- **illusory**: appears covered because it is mentioned, but never practiced
+
+Any core item rated partial, weak, or illusory is a defect.
 
 ### 7. Transfer plan
 

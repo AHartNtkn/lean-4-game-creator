@@ -50,6 +50,7 @@ Write your output to `{course}/reviews/gate-decision.json`.
 ```json
 {
   "action": "continue" | "done",
+  "reason": "brief explanation",
   "scores": {
     "coverageClosure": <0-4>,
     "granularityFit": <0-4>,

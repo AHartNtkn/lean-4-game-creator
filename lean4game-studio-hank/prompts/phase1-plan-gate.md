@@ -37,8 +37,8 @@ Write your output to `{course}/reviews/plan-gate-decision.json`.
 
 ```json
 {
-  "action": "continue" | "done" | "abort",
-  "reviewRound": <current round>,
+  "action": "continue" | "done",
+  "reason": "brief explanation",
   "p0Defects": ["list"],
   "p1Defects": ["list"],
   "p2Defects": ["list"],
