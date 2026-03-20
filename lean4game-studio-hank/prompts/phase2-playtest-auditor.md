@@ -10,7 +10,9 @@ You are red-teaming a lean4game world for quality. This is Phase 2d.
 2. `current-world.txt` — the world to audit
 3. `{course}/Game/Levels/{world}/*.lean` — ALL level files for this world
 4. `{course}/Game/Levels/{world}.lean` — the world base file
-5. `{course}/PLAN.md` — course architecture (for understanding the world's intended role, not for compliance checking)
+5. `{course}/Game/Levels/{world}/Imports.lean` — if it exists, shared imports
+6. `{course}/Game.lean` — game structure (for dependency and import checks)
+7. `{course}/PLAN.md` — course architecture (for understanding the world's intended role) (for understanding the world's intended role, not for compliance checking)
 
 ## Your role
 

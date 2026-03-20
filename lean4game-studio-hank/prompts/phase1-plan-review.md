@@ -88,21 +88,13 @@ Any core item rated partial, weak, or illusory is a defect.
 
 Write your output to `{course}/reviews/plan-review-current.md`.
 
-Format as:
+Format: for each of the 9 evaluation sections above, report findings. Then:
 
-1. **Scope assessment**: Does the plan cover the full scope? What's missing?
-2. **Coverage alignment**: Does it address the coverage map findings?
-3. **World graph issues**: Structural problems in the world graph
-4. **Proof-move gaps**: Proof moves that are listed but not actually taught
-5. **Granularity issues**: Worlds that are too broad, too thin, or badly cut
-6. **Coverage closure gaps**: Core items with missing coverage stages (intro/practice/retrieval/integration/transfer)
-7. **Transfer gaps**: High-value moves with no transfer plan
-8. **Example gaps**: Major definitions with no concrete example
-9. **P0 defects** (blocking): Fundamental plan problems that would waste all downstream work
-10. **P1 defects** (high): Significant gaps that would degrade the course
-11. **P2 defects** (medium): Improvements worth making
-12. **Specific recommendations**: Ranked list of changes to PLAN.md
-13. **Overall verdict**: PASS or FAIL
+- **P0 defects** (blocking): fundamental problems that would waste all downstream work
+- **P1 defects** (high): significant gaps that would degrade the course
+- **P2 defects** (medium): improvements worth making
+- **Specific recommendations**: ranked list of changes to PLAN.md
+- **Overall verdict**: PASS or FAIL
 
 A plan FAILS if:
 - Major topics from `long_term.md` are missing

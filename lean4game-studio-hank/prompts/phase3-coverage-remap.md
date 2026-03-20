@@ -12,12 +12,6 @@ You are performing a cross-world coverage analysis after all worlds in a course 
 4. `{course}/Game/Levels/**/*.lean` — ALL level files across ALL worlds
 5. `{course}/Game.lean` — game structure and dependencies
 
-## What to read
-
-Read ALL completed world files:
-- `{course}/Game/Levels/**/*.lean` — all level files across all worlds
-- `{course}/Game.lean` — game structure and dependencies
-
 ## Your task
 
 Re-map coverage across all completed worlds. You are looking for issues that only become visible when you see the whole course at once:

@@ -22,6 +22,7 @@ A plan PASSES only if ALL of:
 - The proof-move map exists and is substantive
 - Major definitions have example plans
 - The transfer plan exists
+- No core items have weak or illusory coverage closure
 
 ## Decision logic
 

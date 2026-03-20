@@ -4,12 +4,13 @@
 
 You are fixing issues found in the course plan review. This updates PLAN.md.
 
-Read `current-course.txt` for the course directory name.
-Read `{course}/reviews/plan-gate-decision.json` — the gate's decision with defects and recommendations.
-Read `{course}/reviews/plan-review-current.md` — the full review.
-Read `{course}/PLAN.md` — the current plan.
-Read `{course}/coverage-map.md` — the coverage map.
-Read `long_term.md` for the course scope.
+## Files to read FIRST
+
+1. `current-course.txt` — the course directory name
+2. `{course}/reviews/plan-gate-decision.json` — the gate's decision with defects and recommendations
+3. `{course}/PLAN.md` — the current plan
+4. `{course}/coverage-map.md` — the coverage map (read-only reference)
+5. `long_term.md` — the course scope
 
 ## Fix rules
 

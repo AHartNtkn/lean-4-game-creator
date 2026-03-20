@@ -14,16 +14,11 @@ You are designing a course that must both **cover** the mathematics and **teach 
 
 **Each course must be full, including advanced topics.** Do not produce a shallow survey or trim scope to keep the course small. The course should cover everything described in `long_term.md` for this subject, with depth proportional to mathlib support. A course on group theory should include Sylow theory, not stop at subgroups. A course on linear algebra should include eigenvalues and canonical forms, not stop at bases.
 
-## Start with four maps
+## Use the coverage map
 
-Before drafting worlds, build these four maps:
+The coverage map (`{course}/coverage-map.md`) already contains items across 7 axes: MATH, MOVE, LEAN, NOTATION, MISCONCEPTION, TRANSFER, EXAMPLE. It also contains proof-move clusters, example plans, novelty hotspots, and exploit vectors.
 
-1. **Content map** — definitions, theorem families, major examples and counterexamples
-2. **Proof-move map** — witness selection, contradiction, definition unfolding, rewriting strategy, auxiliary lemma construction, induction, bound manipulation, quantifier movement, case splitting, whatever else the subject requires
-3. **Lean map** — tactics/commands, notation burdens, coercions/typing hazards, local syntax conventions
-4. **Misconception map** — common false intuitions, tempting invalid inferences, places where notation or asymmetry bites
-
-If any map is missing, the architecture is premature.
+Use it directly. Do not rebuild these maps from scratch. Your job is to organize the coverage map's items into a world graph with proper sequencing, granularity, and closure — not to redo the coverage analysis.
 
 ## Choose world archetypes
 
