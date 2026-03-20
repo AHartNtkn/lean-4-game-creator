@@ -42,39 +42,13 @@ Track items on at least these axes:
 
 For each important item, record:
 - importance (core / supporting / optional)
-- what levels/worlds should introduce it
-- what levels/worlds should provide supported practice
-- what levels/worlds should require unsupported retrieval
-- what levels/worlds should integrate it into larger proofs
-- what levels/worlds should transfer it to a fresh surface form
+- what coverage stages it needs (introduction, supported practice, unsupported retrieval, integration, transfer)
+- which stages are likely to be hard to achieve and why
 - warning/misconception handling needs
 
-If any of these cells would be blank for a core item, say so plainly. Gaps are information.
+Do NOT assign items to specific worlds or levels. That is the course architect's job. Reference items by topic/concept only.
 
-## Build the granularity map
-
-At three scales:
-
-### Course scale
-What are the macro modules or world clusters?
-
-### World scale
-What is each world's single center of gravity?
-
-### Level scale
-What is each level's dominant lesson?
-
-If you cannot state a level's dominant lesson in one sentence, the level is probably badly cut.
-
-## Enforce novelty budgets
-
-For every level or world, track whether it introduces:
-- new mathematics
-- new proof move
-- new Lean move
-- new notation
-
-Flag any place where novelty is too concentrated.
+If any core item would have missing coverage stages, say so plainly. Gaps are information.
 
 ## Analyze closure
 
@@ -84,15 +58,12 @@ For each core concept or move, decide whether closure is:
 - **weak**: barely introduced
 - **illusory**: appears covered only because it is mentioned, not because the learner practices it
 
-## Analyze example coverage
+## Plan example coverage
 
-For each major definition in the course, check whether it has been exercised on at least one concrete example. Flag definitions that are only used abstractly.
-
-Specifically check:
-- Has the learner computed or verified this property for a specific object?
-- Has the learner seen a counterexample — an object that fails to satisfy the definition?
-- Are example worlds placed so they concretize theory the learner has already seen?
-- Do the examples chosen cover enough variety?
+For each major definition in the course, identify:
+- At least one concrete object that should be used as an example
+- At least one counterexample where relevant (an object that fails to satisfy the definition)
+- What variety of examples is needed (e.g., abelian vs non-abelian, finite vs infinite)
 
 ## Granularity guidance for the course architect
 
