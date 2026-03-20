@@ -15,6 +15,10 @@ You are building a coverage map for a lean4game course. This is Phase 1a of the 
 
 This skill exists because a course can have excellent individual levels and still be bad overall. You are building the map that prevents this.
 
+## Research requirement
+
+Before writing the coverage map, use WebSearch and WebFetch to check the current mathlib documentation for the topics in this course. Search `https://leanprover-community.github.io/mathlib4_docs/` for the relevant modules. Verify that the API names you use are current and that you haven't missed important definitions or theorem families that mathlib provides for this subject.
+
 ## Core principle
 
 Each course must be **full**, including advanced topics. Do not produce a shallow survey — cover the subject thoroughly, with depth proportional to what mathlib supports. Use the course description in `long_term.md` as the scope definition, and map everything within that scope.

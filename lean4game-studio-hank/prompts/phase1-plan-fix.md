@@ -2,7 +2,7 @@
 
 ## Context
 
-You are fixing issues found in the course plan review. This updates PLAN.md and potentially coverage-map.md.
+You are fixing issues found in the course plan review. This updates PLAN.md.
 
 Read `current-course.txt` for the course directory name.
 Read `{course}/reviews/plan-gate-decision.json` — the gate's decision with defects and recommendations.
@@ -29,13 +29,13 @@ Significant gaps in examples, transfer, granularity — fix them.
 
 Do NOT reject recommendations because they make the plan bigger. A plan that needs 20 worlds should have 20 worlds. A plan that needs example worlds for every major definition should have them.
 
-## What you may change
+## What you MUST change
 
-- `{course}/PLAN.md` — add worlds, restructure the graph, add proof-move coverage, add examples, fix dependencies, improve transfer plan
-- `{course}/coverage-map.md` — update if the plan changes reveal coverage map errors
+- `{course}/PLAN.md` — all fixes go here. Add worlds, restructure the graph, add proof-move coverage, add examples, fix dependencies, improve transfer plan.
 
-## What you may NOT change
+## What you MUST NOT change
 
+- `{course}/coverage-map.md` — the coverage map is finalized before planning. Do not modify it.
 - Level files (none exist yet)
 - Game.lean (not yet)
 

@@ -202,9 +202,47 @@ while true; do
   # --- Phase 1: Design ---
   if [ ! -f "$PLAN_FILE" ] || [ ! -f "$WORLD_LIST" ]; then
     echo ""
-    echo "--- Phase 1: Design ---"
+    echo "--- Phase 1a: Coverage Map ---"
     step "$PROMPTS/phase1-coverage-mapper.md" "coverage-map" opus \
-      05_coverage_and_granularity.md 03_quality_rubric.md 04_failure_taxonomy.md
+      05_coverage_and_granularity.md
+
+    # --- Coverage review loop ---
+    echo ""
+    echo "--- Coverage Review ---"
+    MAX_COVERAGE_ROUNDS=3
+    COV_PASSED=false
+    for round in $(seq 1 $MAX_COVERAGE_ROUNDS); do
+      echo "  Round $round/$MAX_COVERAGE_ROUNDS"
+
+      step "$PROMPTS/phase1-coverage-review.md" "coverage-review" opus
+      step "$PROMPTS/phase1-coverage-gate.md" "coverage-gate" opus
+
+      GATE_FILE="$PROJECT_DIR/$COURSE/reviews/coverage-gate-decision.json"
+      if [ ! -f "$GATE_FILE" ]; then
+        echo "  WARNING: coverage-gate-decision.json not found"
+        continue
+      fi
+
+      GATE_ACTION=$(read_json_field "$GATE_FILE" "action")
+      echo "  Gate: $GATE_ACTION"
+
+      if [ "$GATE_ACTION" = "done" ]; then
+        COV_PASSED=true
+        break
+      fi
+
+      # Fix and loop
+      step "$PROMPTS/phase1-coverage-fix.md" "coverage-fix" opus \
+        05_coverage_and_granularity.md
+    done
+
+    if [ "$COV_PASSED" = false ]; then
+      echo "FATAL: Coverage map did not pass after $MAX_COVERAGE_ROUNDS rounds"
+      exit 1
+    fi
+
+    echo ""
+    echo "--- Phase 1b: Course Architecture ---"
     step "$PROMPTS/phase1-course-architect.md" "course-architect" opus \
       00_what_good_looks_like.md 01_patterns_from_existing_games.md \
       05_coverage_and_granularity.md 02_technical_levers.md 07_operational_lessons.md
