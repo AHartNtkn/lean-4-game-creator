@@ -11,10 +11,6 @@ Read `{course}/PLAN.md` — the current plan.
 Read `{course}/coverage-map.md` — the coverage map.
 Read `long_term.md` for the course scope.
 
-## Quick exit
-
-If the gate decision says `"done"`, write `NO_FIXES_NEEDED` to `codon-output.txt` and stop.
-
 ## Fix rules
 
 ### P0 defects: MUST fix all

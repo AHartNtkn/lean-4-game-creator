@@ -16,12 +16,6 @@ You are red-teaming a lean4game world for quality. This is Phase 2d.
 
 Your job is to find the ways a draft can be **correct but bad**. "Compiles" is not a verdict.
 
-## What to read
-
-Read ALL level files for the current world:
-- `{course}/Game/Levels/{world}/*.lean` — all level files
-- `{course}/Game/Levels/{world}.lean` — world base file
-
 ## Audit in this order
 
 ### 1. Technical sanity

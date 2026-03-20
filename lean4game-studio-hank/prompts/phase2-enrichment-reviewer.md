@@ -20,14 +20,6 @@ You are not looking for bugs, coverage gaps, or granularity defects — the audi
 
 Your suggestions carry weight. The bar for rejecting one is that implementing it would make the world pedagogically worse — it introduces a regression, contradicts the course plan, or is factually wrong about the API. "Too much work" and "the world already compiles" are NOT valid reasons to reject.
 
-## What to read
-
-Read ALL level files for the current world:
-- `{course}/Game/Levels/{world}/*.lean` — all level files
-- `{course}/Game/Levels/{world}.lean` — world base file
-
-Read the course plan for context, but evaluate the world primarily on its own merits.
-
 ## Categories of enrichment
 
 Review through each of these lenses:

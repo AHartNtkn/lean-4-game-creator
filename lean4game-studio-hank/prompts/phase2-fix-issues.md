@@ -15,10 +15,6 @@ You are fixing issues found by the enrichment reviewer and playtest auditor. Thi
 7. `{course}/Game/Levels/{world}.lean` — world base file
 8. `{course}/Game.lean` — game structure
 
-## Quick exit
-
-Read `gate-decision.json`. If the `action` field is `"done"`, write `NO_FIXES_NEEDED` to `codon-output.txt` and stop immediately.
-
 ## Fix rules — THESE ARE NON-NEGOTIABLE
 
 ### P0 defects: MUST fix all

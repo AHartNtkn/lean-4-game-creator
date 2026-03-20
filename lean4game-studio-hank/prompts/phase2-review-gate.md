@@ -1,9 +1,5 @@
 # Review Gate
 
-## Context
-
-You are the quality gate for a lean4game world. This is THE CRITICAL CODON of the entire pipeline.
-
 ## Files to read FIRST
 
 1. `current-course.txt` — the course directory name
@@ -17,14 +13,6 @@ You MUST read BOTH review files completely. Do not skim. Do not summarize from m
 ## Your role
 
 You are a READ-ONLY gate. You do NOT write code. You do NOT fix anything. You read both review files, evaluate them against the quality rubric, and write a structured decision.
-
-## Inputs to read
-
-1. `{course}/reviews/enrichment-current.md` — the enrichment reviewer's output
-2. `{course}/reviews/playtest-current.md` — the playtest auditor's output
-3. `sentinel-alerts.txt` (if it exists) — quality watchdog alerts
-
-You MUST read BOTH review files completely. Do not skim. Do not summarize from memory. Read every line.
 
 ## Quality rubric (9 categories, 0-4 scale)
 
@@ -49,22 +37,19 @@ A world PASSES only if ALL of these are true:
 
 ## Decision logic
 
-- If P0 defects exist → `"continue"` (must fix)
-- If P1 defects exist → `"continue"` (should fix)
-- If average < 3.0 or any category < 2 → `"continue"` (quality too low)
-- If red flags triggered → `"continue"` (must resolve)
-- Otherwise → `"done"` (world passes)
+- If P0 defects exist → `"continue"`
+- If P1 defects exist → `"continue"`
+- If average < 3.0 or any category < 2 → `"continue"`
+- If red flags triggered → `"continue"`
+- Otherwise → `"done"`
 
 ## Output
 
 Write your output to `{course}/reviews/gate-decision.json`.
 
-The JSON must contain:
-
 ```json
 {
-  "action": "continue" | "done" | "abort",
-  "reviewRound": <current round number>,
+  "action": "continue" | "done",
   "scores": {
     "coverageClosure": <0-4>,
     "granularityFit": <0-4>,
@@ -82,28 +67,15 @@ The JSON must contain:
   "p1Defects": ["list of P1 defects"],
   "p2Defects": ["list of P2 defects"],
   "redFlags": ["list of triggered red flags"],
-  "enrichmentSuggestionsToImplement": ["ranked list of enrichment suggestions that should be implemented"],
-  "playtestFixesRequired": ["ranked list of playtest fixes required"],
-  "sentinelAlerts": ["any alerts from sentinel-alerts.txt"],
-  "notes": "free-form notes about the decision"
+  "enrichmentSuggestionsToImplement": ["ranked list"],
+  "playtestFixesRequired": ["ranked list"],
+  "notes": "free-form"
 }
 ```
 
-### Decision logic
+## Rules
 
-- If first review round AND both reviews say everything is fine → `"continue"` (force second round)
-- If P0 defects exist → `"continue"` (must fix)
-- If P1 defects exist → `"continue"` (should fix)
-- If average < 3.0 or any category < 2 → `"continue"` (quality too low)
-- If red flags triggered → `"continue"` (must resolve)
-- If reviewCycleCount ≥ 5 AND P0 defects still exist → `"abort"` (stuck)
-- Otherwise → `"done"` (world passes)
-
-## CRITICAL RULES
-
-1. **You do NOT write code.** You are read-only. Your output is ONLY the gate-decision.json file.
-2. **You do NOT rationalize.** If a reviewer says FAIL, you do not argue it's "close enough."
-3. **P0 means blocking.** There is no "P0 but not blocking." If a P0 exists, action is "continue."
-4. **"Not blocking" is not a category.** Every P0 blocks. Every FAIL blocks.
-5. **"Diminishing returns" is not applicable.** If there are P0s, there are no diminishing returns.
-
+1. You do NOT write code. Your output is ONLY gate-decision.json.
+2. You do NOT rationalize. If a reviewer says FAIL, you do not argue it's "close enough."
+3. P0 means blocking. There is no "P0 but not blocking."
+4. "Diminishing returns" is not applicable. If there are P0s, there are no diminishing returns.

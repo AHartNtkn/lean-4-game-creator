@@ -49,19 +49,30 @@ Does the plan actually address what the coverage map identified? Check:
 - Are novelty budgets reasonable (at most 1 new burden per level)?
 - Are bosses mapped to their seeded subskills?
 
-### 6. Transfer plan
+### 6. Coverage closure
+
+For each core item in the coverage map, check that the world graph provides all five stages:
+- **introduction** — a world where it is first taught
+- **supported practice** — a world where it is used with scaffolding
+- **unsupported retrieval** — a world where it is needed without prompting
+- **integration** — a boss or later world where it combines with other skills
+- **transfer** — a world where it appears in a fresh surface form
+
+Any core item missing stages is a defect. Items that are "mentioned" but never practiced have illusory coverage — flag these.
+
+### 7. Transfer plan
 
 - Is there a real transfer plan (not just "psets exist")?
 - For each high-value move: where introduced, where practiced, where retrieved, where transferred?
 - Are there review/consolidation worlds where needed?
 
-### 7. Inventory release plan
+### 8. Inventory release plan
 
 - Are tactics/theorems/definitions released at appropriate times?
 - Is there a deliberate progression from restricted to full inventory?
 - Are dangerous automation tactics (simp, decide, omega) gated?
 
-### 8. Example and counterexample plan
+### 9. Example and counterexample plan
 
 - Does every major definition have at least one planned concrete example?
 - Are counterexamples planned for important theorems?
@@ -78,17 +89,19 @@ Format as:
 3. **World graph issues**: Structural problems in the world graph
 4. **Proof-move gaps**: Proof moves that are listed but not actually taught
 5. **Granularity issues**: Worlds that are too broad, too thin, or badly cut
-6. **Transfer gaps**: High-value moves with no transfer plan
-7. **Example gaps**: Major definitions with no concrete example
-8. **P0 defects** (blocking): Fundamental plan problems that would waste all downstream work
-9. **P1 defects** (high): Significant gaps that would degrade the course
-10. **P2 defects** (medium): Improvements worth making
-11. **Specific recommendations**: Ranked list of changes to PLAN.md
-12. **Overall verdict**: PASS or FAIL
+6. **Coverage closure gaps**: Core items with missing coverage stages (intro/practice/retrieval/integration/transfer)
+7. **Transfer gaps**: High-value moves with no transfer plan
+8. **Example gaps**: Major definitions with no concrete example
+9. **P0 defects** (blocking): Fundamental plan problems that would waste all downstream work
+10. **P1 defects** (high): Significant gaps that would degrade the course
+11. **P2 defects** (medium): Improvements worth making
+12. **Specific recommendations**: Ranked list of changes to PLAN.md
+13. **Overall verdict**: PASS or FAIL
 
 A plan FAILS if:
 - Major topics from `long_term.md` are missing
 - The proof-move map is absent or superficial
+- Core items have missing coverage stages (illusory or weak closure)
 - More than 3 major definitions have no example plan
 - The world graph has dependency errors
 - The transfer plan is absent
