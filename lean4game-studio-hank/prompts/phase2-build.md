@@ -2,14 +2,14 @@
 
 ## Context
 
-You are fixing compilation errors for a lean4game world. The script has already run `lake build` and captured the output.
+You are fixing compilation errors for a lean4game world.
 
 ## Files to read FIRST
 
 1. `current-course.txt` — the course directory name
 2. `current-world.txt` — the world that was just authored
-3. `build-log.txt` — the build output
-4. `build-exit-code.txt` — the build exit code
+3. `build-log.txt` — build output (created by the script before calling you)
+4. `build-exit-code.txt` — build exit code (0 = success, non-zero = failure)
 
 ## Task
 

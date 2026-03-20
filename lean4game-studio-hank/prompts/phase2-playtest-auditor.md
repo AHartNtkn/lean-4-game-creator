@@ -12,7 +12,8 @@ You are red-teaming a lean4game world for quality. This is Phase 2d.
 4. `{course}/Game/Levels/{world}.lean` — the world base file
 5. `{course}/Game/Levels/{world}/Imports.lean` — if it exists, shared imports
 6. `{course}/Game.lean` — game structure (for dependency and import checks)
-7. `{course}/PLAN.md` — course architecture (for understanding the world's intended role) (for understanding the world's intended role, not for compliance checking)
+7. `{course}/PLAN.md` — course architecture (check this world's spec: does the implementation match what was planned?)
+8. `{course}/coverage-map.md` — coverage map (check: does this world cover what it's supposed to?)
 
 ## Your role
 

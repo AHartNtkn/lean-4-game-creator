@@ -6,6 +6,8 @@ This project uses a bash script (`lean4game-studio-hank/run.sh`) to orchestrate 
 
 **If you are being called by the script**: you receive ONE task via the prompt. Do that task. Do not do anything else. Do not spawn subagents. Do not run the full pipeline. Do not author multiple worlds. Do not run reviews unless the prompt tells you to review.
 
+**Placeholders in prompts**: `{course}` means the directory name from `current-course.txt`. `{world}` means the world name from `current-world.txt`. Read those files first to resolve the placeholders.
+
 **If you are in an interactive session**: the `.claude/commands/` slash commands are available for manual use.
 
 ## QUALITY RULES (apply to all contexts)
