@@ -22,6 +22,7 @@ import Game.Levels.BinomialCoefficients
 import Game.Levels.Powerset
 import Game.Levels.BinomialTheorem
 import Game.Levels.PascalsTriangle
+import Game.Levels.PsetCombinatorics
 
 Title "Finite Mathematics"
 Introduction
@@ -67,5 +68,11 @@ Dependency BinomialCoefficients → Powerset
 Dependency Powerset → BinomialTheorem
 Dependency BigOpAlgebra → BinomialTheorem
 Dependency BinomialTheorem → PascalsTriangle
+
+-- Phase 5 Pset: Combinatorics
+Dependency BinomialCoefficients → PsetCombinatorics
+Dependency Powerset → PsetCombinatorics
+Dependency BinomialTheorem → PsetCombinatorics
+Dependency PascalsTriangle → PsetCombinatorics
 
 MakeGame

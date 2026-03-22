@@ -59,6 +59,8 @@ This is exactly the base case of the hockey stick identity coming up next.
 By practicing it here, you can focus on the inductive step in the next level.
 "
 
+NewTheorem zero_add add_comm
+
 TheoremTab "Choose"
 
 DisabledTactic trivial «decide» native_decide simp aesop simp_all norm_num rfl fin_cases interval_cases by_cases tauto linarith nlinarith

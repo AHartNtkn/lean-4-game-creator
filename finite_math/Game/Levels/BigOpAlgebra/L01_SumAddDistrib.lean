@@ -80,7 +80,7 @@ exact Finset.sum_add_distrib
 TheoremDoc Finset.sum_add_distrib as "Finset.sum_add_distrib" in "BigOp"
 
 TheoremTab "BigOp"
-NewTheorem Finset.sum_add_distrib
+NewTheorem Finset.sum_add_distrib Finset.mul_sum Finset.sum_mul
 
 DisabledTactic trivial «decide» native_decide simp aesop simp_all fin_cases interval_cases norm_num by_cases tauto linarith ring ring_nf omega
 DisabledTheorem Finset.sum_pair Finset.prod_pair Finset.sum_eq_card_nsmul Finset.sum_nsmul

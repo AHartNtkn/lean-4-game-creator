@@ -90,7 +90,7 @@ the last.
 -/
 TheoremDoc Finset.sum_range_succ as "Finset.sum_range_succ" in "BigOp"
 
-NewTheorem Finset.sum_range_succ
+NewTheorem Finset.sum_range_succ Finset.sum_range_succ'
 
 DisabledTactic trivial «decide» native_decide simp aesop simp_all fin_cases interval_cases norm_num by_cases tauto linarith ring ring_nf omega
 DisabledTheorem Finset.sum_pair Finset.prod_pair Finset.sum_eq_card_nsmul Finset.sum_nsmul

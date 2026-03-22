@@ -631,6 +631,10 @@ msgid "This is the **explosion principle**: from a contradiction, you can\n"
 "It's the canonical way experienced Lean users handle §6."
 msgstr ""
 
+#: Game.Levels.PsetCombinatorics.L05_AbsorptionIdentity
+msgid "The absorption identity through powerset counting."
+msgstr ""
+
 #. §0: `x ∈ s`
 #. §1: `«{hx}» : x ∈ s`
 #: Game.Levels.FinsetBasics.L15_NonemptyFinsets
@@ -932,6 +936,11 @@ msgid "This is the fundamental property of §0 as an index type: since\n"
 "are *not* equal — the inequality pattern."
 msgstr ""
 
+#: Game.Levels.PsetCombinatorics.L07_HockeyStickRetrieval
+msgid "**Inductive step**: Peel the last term, substitute the IH,\n"
+"commute, and fold with backward Pascal."
+msgstr ""
+
 #. §0: $$(s \\cup t) \\cup u = s \\cup (t \\cup u)$$
 #. §1: `ext x`
 #. §2: `rw [Finset.mem_union]`
@@ -1024,6 +1033,24 @@ msgid "# Counting by Splitting\n"
 "\n"
 "**Your task**: Given §13 and §14, compute\n"
 "§15."
+msgstr ""
+
+#. §0: $2$
+#. §1: $(n-2)$
+#. §2: $2 \\cdot \\binom{n}{2}$
+#. §3: `Finset.card_powersetCard`
+#. §4: `rw [hs]`
+#. §5: `choose_symm`
+#: Game.Levels.PsetCombinatorics.L02_PowersetSymmetry
+msgid "You proved that counting §0-element and §1-element subsets\n"
+"gives §2.\n"
+"\n"
+"This proof demonstrates the **strip-and-apply** pattern you will\n"
+"use throughout this problem set: **strip** the powerset layer\n"
+"with §3 + §4 to get binomial\n"
+"coefficients, then **apply** an algebraic identity (§5\n"
+"here). Choosing which elements to include is the same as choosing\n"
+"which to exclude — that bijection is why symmetry holds."
 msgstr ""
 
 #. §0: `ha`
@@ -1221,6 +1248,11 @@ msgstr ""
 msgid "The goal is now pure arithmetic. Close with §0."
 msgstr ""
 
+#. §0: `induction n`
+#: Game.Levels.PsetCombinatorics.L07_HockeyStickRetrieval
+msgid "Type §0."
+msgstr ""
+
 #. §0: `f 0`
 #. §1: `f 1`
 #. §2: `have h0 := classify (f 0)`
@@ -1234,12 +1266,24 @@ msgstr ""
 msgid "Powerset of a Singleton"
 msgstr ""
 
+#: Game.Levels.PsetCombinatorics.L13_SumCongrWarmup
+msgid "Strip powerset counts inside a sum using sum_congr rfl."
+msgstr ""
+
 #. §0: `card_fin`
 #. §1: `card_bool`
 #. §2: `hp`
 #: Game.Levels.Fintype.L15_Boss
 msgid "Evaluate the individual type cardinalities with §0,\n"
 "§1, and the hypothesis §2."
+msgstr ""
+
+#. §0: $(m + 1)$
+#. §1: `← Finset.mul_sum`
+#. §2: `Nat.sum_range_choose`
+#: Game.Levels.PsetCombinatorics.L11_WeightedBinomialSum
+msgid "Factor out §0 from the sum using §1,\n"
+"then apply the row sum identity §2."
 msgstr ""
 
 #: Game.Levels.FinsetBasics.L18_Boss
@@ -1311,6 +1355,16 @@ msgstr ""
 #: Game.Levels.Fintype.L15_Boss
 msgid "The number of functions from {x : α // ¬P x} to Fin 2 ⊕ Fin 3 is 125,\n"
 "    given that α ≃ Fin 2 × Bool and card P = 1."
+msgstr ""
+
+#. §0: `choose n (n-2) = choose n 2`
+#. §1: `(n+1) * choose n 2 = choose (n+1) 3 * 3`
+#: Game.Levels.PsetCombinatorics.L10_TwoIdentityChain
+msgid "You chained three moves: **strip** (powerset to choose),\n"
+"**symmetry** (§0), then\n"
+"**absorption** (§1).\n"
+"Recognizing that symmetry was needed before absorption could\n"
+"apply is the key transfer skill."
 msgstr ""
 
 #. §0: `use`
@@ -1751,10 +1805,28 @@ msgstr ""
 msgid "Now prove §0 for each §1. Start with §2."
 msgstr ""
 
+#. §0: `2 ^ (m + 1 - 1)`
+#. §1: `(m + 1) - 1 = m`
+#. §2: `2 ^ m`
+#. §3: `show`
+#. §4: `show`
+#: Game.Levels.PsetCombinatorics.L11_WeightedBinomialSum
+msgid "The goal shows §0 on the right. In natural\n"
+"numbers, §1, so this is really §2. Use\n"
+"§3 to restate the goal with the simplified exponent.\n"
+"\n"
+"The §4 tactic lets you replace the current goal with an\n"
+"equivalent statement — here, normalizing the subtraction."
+msgstr ""
+
 #. §0: `v = n + 1`
 #. §1: `n`
 #: Game.Levels.MeetFin.L18_CaseAnalysisPractice
 msgid "Now §0. Case-split again on §1."
+msgstr ""
+
+#: Game.Levels.PsetCombinatorics.L10_TwoIdentityChain
+msgid "Two-Identity Chain"
 msgstr ""
 
 #. §0: `sq`
@@ -3004,6 +3076,13 @@ msgstr ""
 msgid "Product Induction"
 msgstr ""
 
+#. §0: `cases n`
+#. §1: `zero`
+#. §2: `succ m`
+#: Game.Levels.PsetCombinatorics.L11_WeightedBinomialSum
+msgid "Try §0 — this creates two goals, one for §1 and one for §2."
+msgstr ""
+
 #. §0: `{a}`
 #. §1: $$|\\{a\\}| = 1$$
 #. §2: `Finset.card_singleton a : ({a} : Finset α).card = 1`
@@ -3659,6 +3738,55 @@ msgid "# What Does a Powerset Look Like?\n"
 "exactly 4 elements. Lean can compute this directly."
 msgstr ""
 
+#. §0: $\\mathbb{Z}$
+#. §1: `add_pow_nat`
+#. §2: $\\mathbb{N}$
+#. §3: $\\mathbb{Z}$
+#. §4: `add_pow`
+#. §5: `add_pow_nat`
+#. §6: $x = -1, y = 1$
+#. §7: $\\mathbb{Z}$
+#. §8: $x = -1, y = 3$
+#. §9: $$\\sum_{m=0}^{n} (-1)^m \\cdot 3^{n-m} \\cdot \\binom{n}{m} = 2^n$$
+#. §10: $\\mathbb{N}$
+#. §11: `add_pow`
+#. §12: `add_pow_nat`
+#. §13: $\\mathbb{Z}$
+#. §14: $x = -1$
+#. §15: `\\uparrow(\\text{choose } n\\ m)`
+#. §16: $\\mathbb{N}$
+#. §17: $\\mathbb{Z}$
+#. §18: `omega`
+#. §19: $\\mathbb{Z}$
+#. §20: `have h := add_pow (-1 : \\mathbb{Z}) 3 n`
+#. §21: $(-1 + 3) = 2$
+#. §22: `omega`
+#: Game.Levels.PsetCombinatorics.L03_WeightedRowSum
+msgid "# The Identity Machine Over §0\n"
+"\n"
+"In BinomialTheorem, you used the **specialize-simplify-rewrite**\n"
+"pattern to derive identities from §1 (over §2).\n"
+"\n"
+"But you also learned to specialize over §3, using\n"
+"§4 (not §5) to allow negative values. The\n"
+"alternating sum identity (BinomialTheorem Level 15) used §6.\n"
+"\n"
+"Now try a different §7 specialization: §8.\n"
+"\n"
+"§9\n"
+"\n"
+"**Key differences from §10 specializations**:\n"
+"- Use §11 (not §12) — we need §13 for §14\n"
+"- The coercion §15 appears automatically\n"
+"  (Lean casts §16 values to §17)\n"
+"- The LHS simplification uses §18 for §19 arithmetic\n"
+"\n"
+"**Strategy**:\n"
+"1. §20\n"
+"2. Simplify the LHS: §21 via §22\n"
+"3. Rewrite and close"
+msgstr ""
+
 #. §0: $y \\in f(S)$
 #. §1: $y \\in f(S \\cup T)$
 #. §2: $f$
@@ -3999,6 +4127,14 @@ msgstr ""
 
 #: Game.Levels.PsetFin.L13_SuccAboveUnification
 msgid "succAbove at last is castSucc, and succAbove at 0 is succ."
+msgstr ""
+
+#. §0: `MulZeroClass.zero_mul`
+#. §1: `0 * a = 0`
+#: Game.Metadata
+msgid "§0 states that §1.\n"
+"\n"
+"Basic arithmetic fact: multiplying zero by anything gives zero."
 msgstr ""
 
 #. §0: `card_image_of_injective`
@@ -4912,6 +5048,10 @@ msgid "You have:\n"
 "bound, then §5 sees that §6 and §7 is impossible."
 msgstr ""
 
+#: Game.Levels.PsetCombinatorics.L01_BackwardPascal
+msgid "Backward Pascal"
+msgstr ""
+
 #. §0: `funext`
 #. §1: `ext`
 #: Game.Metadata
@@ -5087,6 +5227,15 @@ msgid "The goal is §0.\n"
 "This involves natural number subtraction, so §1 can't close it\n"
 "directly. Use §2: establish §3\n"
 "with §4, then §5 handles the subtraction arithmetic."
+msgstr ""
+
+#. §0: `h`
+#. §1: `(2 : ℤ)^n = ∑ m, (-1)^m * 3^(n-m) * ↑(choose n m)`
+#. §2: `∑ ... = (2 : ℤ)^n`
+#. §3: `h`
+#: Game.Levels.PsetCombinatorics.L03_WeightedRowSum
+msgid "Now §0 says §1.\n"
+"The goal is §2. Flip §3 and close."
 msgstr ""
 
 #. §0: `t ⊆ s`
@@ -5580,6 +5729,10 @@ msgid "You have §0 (since the function maps everything to 0).\n"
 "to convert to §3, then close with §4."
 msgstr ""
 
+#: Game.Levels.PsetCombinatorics.L02_PowersetSymmetry
+msgid "Powerset Symmetry"
+msgstr ""
+
 #: Game.Levels.PsetBigOp.L06_ProductInduction
 msgid "Product Induction: Pulling Out a Constant"
 msgstr ""
@@ -5648,6 +5801,7 @@ msgstr ""
 #: Game.Levels.Cardinality.L20_SubsetUniv
 #: Game.Levels.BinomialCoefficients.L14_GaussSum
 #: Game.Levels.PascalsTriangle.L15_SquaredBinomials
+#: Game.Levels.PsetCombinatorics.L13_SumCongrWarmup
 msgid "Try:\n"
 "§0\n"
 "§1\n"
@@ -5956,6 +6110,20 @@ msgid "# Two Decompositions, One Operation\n"
 "**Your task**: Prove both equalities."
 msgstr ""
 
+#. §0: $(n+1) \\cdot C(n, k) = C(n+1, k+1) \\cdot (k+1)$
+#. §1: $5 \\cdot 6 = 10 \\cdot 3 = 30$
+#. §2: $n$
+#: Game.Levels.PsetCombinatorics.L09_ConcreteVerification
+msgid "Both sides are 30. The absorption identity\n"
+"§0 passes the\n"
+"sanity check: §1.\n"
+"\n"
+"Concrete verification builds trust in symbolic proofs. When you\n"
+"prove an identity for all §2, checking a specific case confirms\n"
+"you haven't made a sign error or an off-by-one mistake. The next\n"
+"levels return to symbolic proofs with this grounding in place."
+msgstr ""
+
 #: Game.Levels.SummationFormulas.L10_FactorialCompute
 msgid "Three factorial equals 3 * (2 * (1 * 1)), showing the recursive structure."
 msgstr ""
@@ -6241,6 +6409,15 @@ msgid "§0 organizes multi-step equality proofs into readable chains.\n"
 "- §2 refers to the RHS of the previous step\n"
 "- Each §3 opens tactic mode; you can also use term proofs\n"
 "- §4 also works with §5, §6, and mixed relations"
+msgstr ""
+
+#. §0: `Nat.add_one_mul_choose_eq`
+#. §1: `(n+1) * choose n k = choose (n+1) (k+1) * (k+1)`
+#. §2: `rw [Nat.add_one_mul_choose_eq]`
+#: Game.Levels.PsetCombinatorics.L08_RecognitionChallenge
+msgid "This is the **absorption identity**:\n"
+"§0 says §1.\n"
+"Try §2."
 msgstr ""
 
 #. §0: `Finset.Nonempty s`
@@ -6882,6 +7059,11 @@ msgstr ""
 msgid "Swapping the first two elements gives a permutation."
 msgstr ""
 
+#. §0: `rfl`
+#: Game.Levels.PsetCombinatorics.L09_ConcreteVerification
+msgid "Both sides reduce to 30. Try §0."
+msgstr ""
+
 #: Game.Levels.Cardinality.L04_NonemptyFromCard
 msgid "Positive Cardinality Means Nonempty"
 msgstr ""
@@ -6893,6 +7075,18 @@ msgstr ""
 msgid "§0 proves §1 when §2.\n"
 "\n"
 "Disabled to prevent shortcutting the capstone proof."
+msgstr ""
+
+#. §0: `have h2 : ∑ p ∈ Finset.antidiagonal n, Nat.choose n p.2 = 2 ^ n := by`
+#. §1: `rw [← Finset.Nat.sum_antidiagonal_swap, Finset.Nat.sum_antidiagonal_eq_sum_range_succ_mk]`
+#. §2: `exact Nat.sum_range_choose n`
+#: Game.Levels.PsetCombinatorics.L12_AntidiagonalDoubleSum
+msgid "Declare:\n"
+"§0\n"
+"\n"
+"Then:\n"
+"§1\n"
+"§2"
 msgstr ""
 
 #. §0: `i`
@@ -7201,6 +7395,24 @@ msgid "# Meet the Binomial Coefficient\n"
 "**Your task**: Prove both boundary values for §7:\n"
 "- §8 using §9\n"
 "- §10 using §11"
+msgstr ""
+
+#. §0: `card_powersetCard`
+#. §1: `add_one_mul_choose_eq`
+#. §2: `add_one_mul_choose_eq`
+#. §3: $n + 1$
+#: Game.Levels.PsetCombinatorics.L05_AbsorptionIdentity
+msgid "Another instance of **strip-and-apply**: strip with\n"
+"§0, then apply §1.\n"
+"\n"
+"The formal proof delegates the double counting argument to\n"
+"Mathlib's §2, which encapsulates it\n"
+"algebraically. The combinatorial meaning: both sides count\n"
+"(designated person, team of 2) triples from §3 people.\n"
+"\n"
+"This technique — counting the same quantity in two different\n"
+"ways — is called **double counting**. It will return as a formal\n"
+"proof technique in the CountingTechniques world."
 msgstr ""
 
 #. §0: `have`
@@ -8052,6 +8264,10 @@ msgid "Now you have §0 and\n"
 "§1. Chain them with §2."
 msgstr ""
 
+#: Game.Levels.PsetCombinatorics
+msgid "Problem Set: Combinatorics"
+msgstr ""
+
 #: Game.Levels.SummationFormulas.L03_OddNumbers
 msgid "The sum of the first n odd numbers equals n squared."
 msgstr ""
@@ -8319,6 +8535,14 @@ msgstr ""
 msgid "A singleton finset has cardinality 1."
 msgstr ""
 
+#. §0: `add_pow`
+#. §1: `add_pow_nat`
+#. §2: `x = -1, y = 3`
+#: Game.Levels.PsetCombinatorics.L03_WeightedRowSum
+msgid "Start by specializing §0 (not §1!) to\n"
+"§2 over ℤ."
+msgstr ""
+
 #. §0: `at`
 #. §1: `rw [Fin.ext_iff]`
 #. §2: `rw`
@@ -8501,6 +8725,14 @@ msgid "Lean can compute the cardinality of a concrete finset's powerset\n"
 "directly. Use §0 to let Lean verify this by computation."
 msgstr ""
 
+#. §0: `Nat.choose_one_right`
+#. §1: `Nat.choose n 1 = n`
+#: Game.Levels.PsetCombinatorics.L08_RecognitionChallenge
+msgid "§0 gives §1.\n"
+"\n"
+"Disabled here to force recognition of the absorption pattern."
+msgstr ""
+
 #. §0: `s = {1, 2, 3}`
 #. §1: `t = {2, 3, 4}`
 #. §2: $|s| = 3$
@@ -8576,6 +8808,20 @@ msgstr ""
 #: Game.Levels.PsetBigOp.L02_UnionConstantSum
 msgid "Use §0 to split\n"
 "§1 into two separate sums."
+msgstr ""
+
+#. §0: `h`
+#. §1: `(-1 + 3)^n = ∑ m, (-1)^m * 3^(n-m) * ↑(choose n m)`
+#. §2: `h`
+#. §3: `(-1 : ℤ) + 3 = 2`
+#. §4: `omega`
+#: Game.Levels.PsetCombinatorics.L03_WeightedRowSum
+msgid "Now §0 says §1.\n"
+"\n"
+"The right side of §2 matches the goal's left side. You need to\n"
+"simplify the left side: §3.\n"
+"\n"
+"Establish this with §4 and rewrite."
 msgstr ""
 
 #. §0: `∃ x ∈ Finset.range 4, x + 1 = 3`
@@ -9307,6 +9553,51 @@ msgid "# Subset: Every Element of One is in the Other\n"
 "element §11 and a hypothesis §12, and you must prove §13.\n"
 "\n"
 "**Your task**: Prove that §14."
+msgstr ""
+
+#. §0: $$\\sum_{i=0}^{n} i \\cdot \\binom{n}{i} = n \\cdot 2^{n-1}$$
+#. §1: $n$
+#. §2: $n \\cdot 2^{n-1}$
+#. §3: `cases`
+#. §4: `induction`
+#. §5: `induction n`
+#. §6: $n = 0$
+#. §7: $n = m + 1$
+#. §8: `cases`
+#. §9: `ih`
+#. §10: $n = 0$
+#. §11: $0$
+#. §12: $n = m + 1$
+#. §13: $i = 0$
+#. §14: $0$
+#. §15: $(i+1) \\cdot \\binom{m+1}{i+1} = (m+1) \\cdot \\binom{m}{i}$
+#. §16: $(m + 1)$
+#: Game.Levels.PsetCombinatorics.L11_WeightedBinomialSum
+msgid "# Absorption Inside a Sum\n"
+"\n"
+"You've used the absorption identity to prove equalities between\n"
+"single expressions. Now use it **inside a sum** to derive:\n"
+"\n"
+"§0\n"
+"\n"
+"This identity says: if each element of an §1-element set\n"
+"contributes its 'weight' (its index in the sum) times the number\n"
+"of subsets containing it, the total weight is §2.\n"
+"\n"
+"**Why §3 instead of §4?** The hockey stick (Level 7)\n"
+"used §5 because the inductive step *depends on* the\n"
+"previous case via the induction hypothesis. Here the two branches\n"
+"(§6 and §7) have completely independent structures —\n"
+"the successor case does **not** use the zero case. When you don't\n"
+"need an induction hypothesis, §8 is the right tool: it splits\n"
+"without creating an §9 you'd never use.\n"
+"\n"
+"**Strategy**:\n"
+"1. Handle the §10 case (both sides are §11)\n"
+"2. For §12: split off the §13 term (which is §14)\n"
+"3. Apply absorption to transform each remaining summand:\n"
+"   §15\n"
+"4. Factor out §16 and apply the row sum"
 msgstr ""
 
 #. §0: `simp_all`
@@ -11252,6 +11543,13 @@ msgid "Now convert both to equations:\n"
 "These contradict each other — §3 closes it."
 msgstr ""
 
+#. §0: `choose (n + 1) 3 * 3 = 3 * choose (n + 1) 3`
+#. §1: `ring`
+#: Game.Levels.PsetCombinatorics.L05_AbsorptionIdentity
+msgid "The goal is §0.\n"
+"Close with §1 (multiplication is commutative)."
+msgstr ""
+
 #: Game.Levels.BinomialTheorem.L07_RewritingHypotheses
 msgid "Rewriting Inside a Hypothesis"
 msgstr ""
@@ -11846,6 +12144,40 @@ msgstr ""
 msgid "Dual Distributivity"
 msgstr ""
 
+#. §0: $$(n + 1) \\cdot \\binom{n}{k} = (k + 1) \\cdot \\binom{n+1}{k+1}$$
+#. §1: $s$
+#. §2: $|s| = n$
+#. §3: $2$
+#. §4: $\\binom{n}{2}$
+#. §5: $$(n + 1) \\cdot |\\text{powersetCard } 2\\ s| = 3 \\cdot \\binom{n+1}{3}$$
+#. §6: `Finset.card_powersetCard`
+#. §7: `hs`
+#. §8: `Nat.add_one_mul_choose_eq`
+#. §9: $k = 2$
+#. §10: `ring`
+#: Game.Levels.PsetCombinatorics.L05_AbsorptionIdentity
+msgid "# The Absorption Identity via Subsets\n"
+"\n"
+"In the BinomialCoefficients world (Level 10), you proved the\n"
+"**absorption identity**:\n"
+"\n"
+"§0\n"
+"\n"
+"with the **committee chair** double counting argument: both sides\n"
+"count the number of committees with a designated chair.\n"
+"\n"
+"Now apply it with a **powerset layer**: given a finset §1 with\n"
+"§2, the number of §3-element subsets is §4.\n"
+"Prove:\n"
+"\n"
+"§5\n"
+"\n"
+"**Strategy**:\n"
+"1. Strip the powerset layer with §6 and §7\n"
+"2. Apply §8 (absorption with §9)\n"
+"3. Close with §10"
+msgstr ""
+
 #. §0: $(s \\cup t).\\text{card}$
 #. §1: $l.\\text{toFinset}.\\text{card}$
 #. §2: $\\text{Fintype.card}\\;\\alpha$
@@ -12173,6 +12505,13 @@ msgstr ""
 msgid "If two cons'd tuples are equal, their heads and tails match."
 msgstr ""
 
+#. §0: $i = 0$
+#: Game.Levels.PsetCombinatorics.L07_HockeyStickRetrieval
+msgid "**Base case** (n = 0): The sum has one term at §0.\n"
+"Simplify the sum structure first: peel the single term and\n"
+"remove the empty sum."
+msgstr ""
+
 #. §0: `Finset.sum_pair`
 #. §1: `sum_insert`
 #. §2: `sum_singleton`
@@ -12202,6 +12541,16 @@ msgstr ""
 msgid "Good — the sum equals §0.\n"
 "Now apply Pascal's identity §1 to expand\n"
 "§2."
+msgstr ""
+
+#. §0: $(i, j)$
+#. §1: $i + j = n$
+#. §2: $(1+x)^n$
+#: Game.Levels.PsetCombinatorics.L12_AntidiagonalDoubleSum
+msgid "Split, evaluate each half, combine. The antidiagonal indexes\n"
+"pairs §0 with §1 — exactly the Cauchy product\n"
+"index set. The boss uses this: Vandermonde is a Cauchy product\n"
+"of §2 with itself."
 msgstr ""
 
 #. §0: $y = 1$
@@ -12437,6 +12786,10 @@ msgid "The proof has exactly the same structure as Level 21.\n"
 "Start by assuming §0 is injective: §1."
 msgstr ""
 
+#: Game.Levels.PsetCombinatorics.L07_HockeyStickRetrieval
+msgid "The hockey stick identity for k = 2."
+msgstr ""
+
 #: Game.Levels.BinomialTheorem.L15_Boss
 msgid "Boss: The Alternating Sum"
 msgstr ""
@@ -12597,6 +12950,16 @@ msgstr ""
 #: Game.Levels.FinNavigation.L16_Boss
 msgid "Here §0. Choose §1,\n"
 "then §2."
+msgstr ""
+
+#. §0: `Finset.card_powersetCard`
+#. §1: `s.card`
+#. §2: `n`
+#. §3: `hs`
+#: Game.Levels.PsetCombinatorics.L02_PowersetSymmetry
+msgid "First, convert both powerset cardinalities to binomial\n"
+"coefficients using §0, then substitute\n"
+"§1 with §2 using §3."
 msgstr ""
 
 #. §0: `one_pow`
@@ -12997,6 +13360,33 @@ msgid "§0 is the workhorse of concrete sum computation.\n"
 "made precise in a later level."
 msgstr ""
 
+#. §0: $$\\binom{n+1}{k+1} = \\binom{n}{k} + \\binom{n}{k+1}$$
+#. §1: $$\\binom{n}{k} + \\binom{n}{k+1} + \\binom{n+1}{k+2} = \\binom{n+2}{k+2}$$
+#. §2: `← Nat.choose_succ_succ`
+#. §3: `choose (n+1) (k+1)`
+#. §4: `choose (n+2) (k+2)`
+#: Game.Levels.PsetCombinatorics.L01_BackwardPascal
+msgid "# Warm-Up: Backward Pascal\n"
+"\n"
+"In the BinomialCoefficients world, you used Pascal's identity to\n"
+"**expand** a binomial coefficient:\n"
+"\n"
+"§0\n"
+"\n"
+"Here you need the **reverse** direction: given a sum of two\n"
+"binomial coefficients, **fold** them into one.\n"
+"\n"
+"Prove that three consecutive entries from two adjacent rows\n"
+"telescope:\n"
+"\n"
+"§1\n"
+"\n"
+"**Strategy**: Apply §2 twice.\n"
+"The first application folds the first two terms into\n"
+"§3. The second folds the result with the\n"
+"third term into §4."
+msgstr ""
+
 #. §0: `have h1 : ∑ p ∈ Finset.antidiagonal n, Nat.choose n p.1 = 2 ^ n := by`
 #. §1: `rw [Finset.Nat.sum_antidiagonal_eq_sum_range_succ_mk]`
 #. §2: `exact Nat.sum_range_choose n`
@@ -13337,6 +13727,10 @@ msgid "The proof pattern:\n"
 "containment directly."
 msgstr ""
 
+#: Game.Levels.PsetCombinatorics.L08_RecognitionChallenge
+msgid "Recognition Challenge"
+msgstr ""
+
 #. §0: `inf_sup_right`
 #. §1: `(a ⊔ b) ⊓ c = (a ⊓ c) ⊔ (b ⊓ c)`
 #. §2: `(s ∪ t) ∩ u = (s ∩ u) ∪ (t ∩ u)`
@@ -13584,6 +13978,15 @@ msgid "§0 lets you convert freely between filtered-finset sums\n"
 "decomposition, and §8 handles the representation."
 msgstr ""
 
+#. §0: `have h1 : ∑ p ∈ Finset.antidiagonal n, Nat.choose n p.1 = 2 ^ n := by`
+#. §1: `rw [Finset.Nat.sum_antidiagonal_eq_sum_range_succ_mk, Nat.sum_range_choose]`
+#: Game.Levels.PsetCombinatorics.L12_AntidiagonalDoubleSum
+msgid "Declare:\n"
+"§0\n"
+"\n"
+"Then: §1."
+msgstr ""
+
 #. §0: $|f(S)| \\leq |S|$
 #. §1: $f$
 #. §2: $$f(a) = f(b) \\implies a = b$$
@@ -13698,6 +14101,10 @@ msgid "# Practice: Combining card_* Lemmas\n"
 "§10 followed by §11 and §12."
 msgstr ""
 
+#: Game.Levels.PsetCombinatorics.L05_AbsorptionIdentity
+msgid "Absorption Through Powerset"
+msgstr ""
+
 #. §0: `Finset.mem_sdiff`
 #. §1: `a ∈ s \\ t ↔ a ∈ s ∧ a ∉ t`
 #. §2: ```
@@ -13780,6 +14187,19 @@ msgstr ""
 #. §0: `cases i with | mk v hv`
 #: Game.Levels.FinNavigation.L16_Boss
 msgid "Destructure: §0"
+msgstr ""
+
+#. §0: `∑ p ∈ antidiagonal n, choose n p.1 * choose n p.2 = choose (2 * n) n`
+#. §1: `Nat.add_choose_eq n n n`
+#. §2: `2 * n`
+#. §3: `n + n`
+#: Game.Levels.PsetCombinatorics.L14_Boss
+msgid "The goal is now:\n"
+"§0\n"
+"\n"
+"This is the Vandermonde identity §1,\n"
+"but the RHS has §2 where Vandermonde gives §3.\n"
+"Reshape first."
 msgstr ""
 
 #. §0: `have h := Finset.card_image_of_injective (Finset.range n) hf`
@@ -14018,6 +14438,39 @@ msgstr ""
 #: Game.Levels.MeetFin.L23_Boss
 msgid "The goal is a conjunction. Use §0 to split it\n"
 "into two sub-goals."
+msgstr ""
+
+#. §0: $k = 2$
+#. §1: $$\\sum_{i=0}^{n} \\binom{i}{k} = \\binom{n+1}{k+1}$$
+#. §2: `choose_eq_zero_of_lt`
+#. §3: `sum_range_succ`
+#. §4: `← choose_succ_succ`
+#. §5: $k = 2$
+#. §6: $$\\sum_{i=0}^{n} \\binom{i}{2} = \\binom{n+1}{3}$$
+#. §7: $0 + 0 + 1 + 3 + 6 + 10 + \\cdots = \\binom{n+1}{3}$
+#. §8: $n$
+#: Game.Levels.PsetCombinatorics.L07_HockeyStickRetrieval
+msgid "# The Hockey Stick for §0\n"
+"\n"
+"In BinomialCoefficients (Level 15), you proved the **hockey stick\n"
+"identity** by induction:\n"
+"\n"
+"§1\n"
+"\n"
+"The proof technique was:\n"
+"- **Base case**: simplify the single-term sum, show both sides\n"
+"  are zero using §2\n"
+"- **Inductive step**: peel off the last term with §3,\n"
+"  substitute the IH, commute, and fold with §4\n"
+"\n"
+"Now re-derive the §5 case:\n"
+"\n"
+"§6\n"
+"\n"
+"This is the identity §7:\n"
+"summing triangular numbers gives a tetrahedral number.\n"
+"\n"
+"**Strategy**: Induction on §8, following the Level 15 pattern."
 msgstr ""
 
 #. §0: `l₁`
@@ -15102,6 +15555,10 @@ msgid "The goal is §0. Assume §1,\n"
 "extract a witness §2, and use injectivity to derive §3."
 msgstr ""
 
+#: Game.Levels.PsetCombinatorics.L11_WeightedBinomialSum
+msgid "The weighted binomial sum: ∑ i * C(n,i) = n * 2^(n-1)."
+msgstr ""
+
 #. §0: `x ∈ s`
 #. §1: `h.1`
 #. §2: `h.2`
@@ -15560,6 +16017,14 @@ msgstr ""
 
 #: Game.Levels.FinsetOperations.L20_ComplementViaSdiff
 msgid "Complement via Set Difference"
+msgstr ""
+
+#. §0: `sum_congr rfl`
+#. §1: `card_powersetCard`
+#: Game.Levels.PsetCombinatorics.L13_SumCongrWarmup
+msgid "You used §0 to strip §1 inside\n"
+"a sum — the same pattern the boss requires, but there you will\n"
+"strip *products* of powerset counts pointwise."
 msgstr ""
 
 #. §0: `i + 3 = i + 8`
@@ -16111,6 +16576,10 @@ msgid "§0 — choosing one is just picking any element.\n"
 "§4, we need **Pascal's identity** — coming up next."
 msgstr ""
 
+#: Game.Levels.PsetCombinatorics.L10_TwoIdentityChain
+msgid "Chain strip → symmetry → absorption to prove the identity."
+msgstr ""
+
 #. §0: `ext x`
 #. §1: `constructor`
 #: Game.Levels.FinsetOperations.L11_DisjointFinsets
@@ -16496,6 +16965,10 @@ msgid "§0 states that if §1 and §2,\n"
 "## When to use it\n"
 "When you need to rewrite the function inside a product. This is the\n"
 "multiplicative analogue of §5."
+msgstr ""
+
+#: Game.Levels.PsetCombinatorics.L09_ConcreteVerification
+msgid "Concrete Verification"
 msgstr ""
 
 #. §0: `constructor`
@@ -18474,6 +18947,36 @@ msgstr ""
 msgid "The Round Trip"
 msgstr ""
 
+#. §0: `Finset.card_powersetCard`
+#. §1: $$|\\text{powersetCard } k\\ s| = \\binom{|s|}{k}$$
+#. §2: $$\\binom{n}{k} = \\binom{n}{n-k}$$
+#. §3: $k$
+#. §4: $(n-k)$
+#. §5: $s$
+#. §6: $|s| = n$
+#. §7: $2 \\le n$
+#. §8: $$|\\text{powersetCard } 2\\ s| + |\\text{powersetCard } (n - 2)\\ s|
+#. = 2 \\cdot \\binom{n}{2}$$
+#: Game.Levels.PsetCombinatorics.L02_PowersetSymmetry
+msgid "# Subset Counting via Symmetry\n"
+"\n"
+"In the Powerset world, you learned that §0\n"
+"converts a subset count to a binomial coefficient:\n"
+"\n"
+"§1\n"
+"\n"
+"In the BinomialCoefficients world, you learned the symmetry identity:\n"
+"\n"
+"§2\n"
+"\n"
+"Now combine them: show that counting §3-element subsets and\n"
+"§4-element subsets gives twice the binomial coefficient.\n"
+"\n"
+"Given a finset §5 with §6 and §7, prove:\n"
+"\n"
+"§8"
+msgstr ""
+
 #. §0: `use 1`
 #. §1: `1 ∈ ...`
 #. §2: `0 = x`
@@ -19344,6 +19847,10 @@ msgid "Unfold §0 with §1,\n"
 "extract §5. In the §6 case, §7 maps directly."
 msgstr ""
 
+#: Game.Levels.PsetCombinatorics.L11_WeightedBinomialSum
+msgid "Weighted Binomial Sum"
+msgstr ""
+
 #. §0: `Fin.cons`
 #. §1: `Fin.tail`
 #. §2: `f : Fin (n + 1) → α`
@@ -19451,6 +19958,16 @@ msgid "§0 states that §1\n"
 "for elements of §2. In other words, §3 is injective."
 msgstr ""
 
+#. §0: $n = m + 1$
+#. §1: $i = 0$
+#. §2: `Finset.sum_range_succ'`
+#. §3: $f(0)$
+#: Game.Levels.PsetCombinatorics.L11_WeightedBinomialSum
+msgid "For §0: split off the §1 term using\n"
+"§2, which separates §3 from the rest\n"
+"of the sum."
+msgstr ""
+
 #: Game.Levels.BigOpIntro.L03_SumInsert
 msgid "Peeling Off One Element"
 msgstr ""
@@ -19501,6 +20018,7 @@ msgstr ""
 #. §0: `n`
 #: Game.Levels.BinomialCoefficients.L14_GaussSum
 #: Game.Levels.BinomialCoefficients.L15_HockeyStick
+#: Game.Levels.PsetCombinatorics.L07_HockeyStickRetrieval
 msgid "Use **induction** on §0."
 msgstr ""
 
@@ -19712,6 +20230,10 @@ msgstr ""
 msgid "The goal involves a function type. Decompose it first."
 msgstr ""
 
+#: Game.Levels.PsetCombinatorics.L09_ConcreteVerification
+msgid "Strip the powerset layer as usual."
+msgstr ""
+
 #. §0: `hs : x ∈ s`
 #. §1: `x ∈ t`
 #. §2: `x ∉ t`
@@ -19798,6 +20320,15 @@ msgid "# The Bridge: Counting Is Summing\n"
 "\"how much\" where every element contributes equally.\n"
 "\n"
 "**Your task**: Prove that §4."
+msgstr ""
+
+#. §0: `(n+1) * choose n (n-2) = 3 * choose (n+1) 3`
+#. §1: `choose n (n-2)`
+#: Game.Levels.PsetCombinatorics.L10_TwoIdentityChain
+msgid "The goal is §0.\n"
+"\n"
+"Does §1 match any identity directly? Or do you\n"
+"need to transform it first?"
 msgstr ""
 
 #. §0: $s \\cup \\varnothing = s$
@@ -19887,6 +20418,19 @@ msgstr ""
 #: Game.Levels.FinsetBasics.L05_TheRangeBoundary
 msgid "Now §0 is contradictory. §1 sees this\n"
 "and closes the goal."
+msgstr ""
+
+#. §0: `have hab : ∀ i ∈ Finset.range (m + 1), (i + 1) * Nat.choose (m + 1) (i + 1) = (m + 1) * Nat.choose m i := by`
+#. §1: `intro i _`
+#. §2: `rw [mul_comm (i + 1)]`
+#. §3: `exact (Nat.add_one_mul_choose_eq m i).symm`
+#: Game.Levels.PsetCombinatorics.L11_WeightedBinomialSum
+msgid "Declare:\n"
+"§0\n"
+"\n"
+"Then: §1 followed by\n"
+"§2\n"
+"§3"
 msgstr ""
 
 #. §0: `Finset.Nonempty`
@@ -20198,6 +20742,7 @@ msgstr ""
 
 #. §0: `1 + n`
 #: Game.Levels.PascalsTriangle.L12_PascalFromVandermonde
+#: Game.Levels.PsetCombinatorics.L14_Boss
 msgid "Rewrite the goal to use §0."
 msgstr ""
 
@@ -20681,6 +21226,20 @@ msgid "You've learned the §0 modifier for §1:\n"
 "In the next level, you'll see §16 used as a proof technique:\n"
 "converting an injectivity goal into a cardinality equation that\n"
 "Lean can verify computationally."
+msgstr ""
+
+#. §0: `(n + 1) * choose n 2 = 3 * choose (n + 1) 3`
+#. §1: `Nat.add_one_mul_choose_eq`
+#. §2: `k = 2`
+#. §3: `(n + 1) * choose n 2 = choose (n + 1) 3 * 3`
+#: Game.Levels.PsetCombinatorics.L05_AbsorptionIdentity
+msgid "The goal is §0.\n"
+"\n"
+"The left side is an instance of the absorption identity\n"
+"§1 with §2:\n"
+"§3.\n"
+"\n"
+"Apply it to rewrite the left side."
 msgstr ""
 
 #: Game.Levels.Powerset.L12_CardPowerset
@@ -21301,6 +21860,25 @@ msgid "The variable §0 blocks computation. Replace it with its\n"
 "concrete value first."
 msgstr ""
 
+#. §0: `choose n 2 + choose n (n - 2) = 2 * choose n 2`
+#. §1: `choose n (n - 2) = choose n 2`
+#. §2: $n - 2$
+#. §3: $2$
+#. §4: `Nat.choose_symm h`
+#. §5: `choose n (n - 2)`
+#. §6: `choose n 2`
+#: Game.Levels.PsetCombinatorics.L02_PowersetSymmetry
+msgid "The goal is §0.\n"
+"\n"
+"The two terms on the left are the **same** by symmetry:\n"
+"§1 because choosing which\n"
+"§2 elements to **include** is the same as choosing which\n"
+"§3 to **exclude**.\n"
+"\n"
+"Use §4 to rewrite §5 to\n"
+"§6."
+msgstr ""
+
 #. §0: `(8 : Fin 5) = (3 : Fin 5)`
 #. §1: `rfl`
 #: Game.Levels.PsetFin.L10_ModularEquality
@@ -21748,6 +22326,10 @@ msgid "§0 states that\n"
 "This is the range-based analogue of §5.\n"
 "Both say \\\\\"summing over nothing gives 0\\\\\" — §6\n"
 "is specialized to §7, while §8 works for any §9."
+msgstr ""
+
+#: Game.Levels.PsetCombinatorics.L03_WeightedRowSum
+msgid "The weighted alternating sum with x = -1, y = 3 over Z."
 msgstr ""
 
 #: Game.Levels.CountingTypes.L03_LabelingAGrid
@@ -22206,6 +22788,14 @@ msgstr ""
 msgid "Sum Types"
 msgstr ""
 
+#. §0: `(n + 1) * choose n k`
+#. §1: `k = 1`
+#: Game.Levels.PsetCombinatorics.L08_RecognitionChallenge
+msgid "Look at the left side: §0 with §1.\n"
+"Which identity from BinomialCoefficients has this shape on one\n"
+"side?"
+msgstr ""
+
 #. §0: `List α`
 #. §1: `Multiset α`
 #. §2: `Finset α`
@@ -22607,6 +23197,80 @@ msgid "# Lists Care About Order\n"
 "§5 would force §6 — which is absurd.\n"
 "\n"
 "**Your task**: Prove that §7."
+msgstr ""
+
+#. §0: `choose_zero_right`
+#. §1: `choose_self`
+#. §2: `choose_succ_succ`
+#. §3: `choose_symm`
+#. §4: `choose_eq_zero_of_lt`
+#. §5: `choose_one_right`
+#. §6: `choose_mul_factorial_mul_factorial`
+#. §7: `add_one_mul_choose_eq`
+#. §8: `mem_powerset`
+#. §9: `card_powerset`
+#. §10: $2^n$
+#. §11: `card_powersetCard`
+#. §12: $\\binom{n}{k}$
+#. §13: $k$
+#. §14: `powerset_mono`
+#. §15: `add_pow_nat`
+#. §16: $\\sum \\binom{n}{m} = 2^n$
+#. §17: $\\mathbb{Z}$
+#. §18: `antidiagonal`
+#. §19: `mem_antidiagonal`
+#. §20: `sum_antidiagonal_eq_sum_range_succ_mk`
+#. §21: `sum_antidiagonal_swap`
+#. §22: `add_choose_eq`
+#. §23: $\\mathbb{Z}$
+#. §24: $x = 3, y = 2$
+#. §25: $k = 2$
+#. §26: `sum_congr rfl`
+#: Game.Levels.PsetCombinatorics
+msgid "# Problem Set: Combinatorics\n"
+"\n"
+"You've completed four worlds on combinatorics:\n"
+"\n"
+"- **BinomialCoefficients**: §0, §1,\n"
+"  §2 (Pascal's identity), §3,\n"
+"  §4, §5,\n"
+"  §6, §7,\n"
+"  the hockey stick identity by induction\n"
+"\n"
+"- **Powerset**: §8, §9 (§10 subsets),\n"
+"  §11 (§12 subsets of size §13),\n"
+"  §14, complement counting\n"
+"\n"
+"- **BinomialTheorem**: §15, the specialize-simplify-rewrite\n"
+"  pattern, row sum (§16), weighted row sum,\n"
+"  alternating sum over §17\n"
+"\n"
+"- **PascalsTriangle**: §18, §19,\n"
+"  §20 (reindexing),\n"
+"  §21 (coordinate symmetry),\n"
+"  §22 (Vandermonde), the sum of squared binomials\n"
+"\n"
+"In the lecture worlds, each level told you which identity to apply.\n"
+"Here, **choosing the right identity is part of the problem**. The\n"
+"core skill shifts from *how to use a tool* to *which tool to reach\n"
+"for* — retrieval and recognition under reduced scaffolding.\n"
+"\n"
+"The levels progress from retrieval to transfer to integration:\n"
+"\n"
+"1. Backward Pascal telescoping\n"
+"2. Powerset symmetry counting\n"
+"3. Weighted alternating sum over §23\n"
+"4. Binomial theorem retrieval (§24)\n"
+"5. Absorption identity through powerset\n"
+"6. Factorial formula through powerset\n"
+"7. Hockey stick retrieval (§25)\n"
+"8. Recognition challenge: identify the identity\n"
+"9. Concrete verification: check the numbers\n"
+"10. Two-identity chain: symmetry meets absorption\n"
+"11. Weighted binomial sum: absorption inside a sum\n"
+"12. Antidiagonal double row sum\n"
+"13. Pointwise rewriting with §26\n"
+"14. Boss: Vandermonde through powerset"
 msgstr ""
 
 #. §0: `f = vecSnoc (Fin.init f) (f (Fin.last 2))`
@@ -23201,6 +23865,10 @@ msgstr ""
 msgid "Now bound the image size using §0 and §1."
 msgstr ""
 
+#: Game.Levels.PsetCombinatorics.L04_BinomialTheoremRetrieval
+msgid "Binomial Theorem Retrieval"
+msgstr ""
+
 #: Game.Levels.BigOpAlgebra.L08_SumComm
 msgid "Interchanging Double Sums"
 msgstr ""
@@ -23429,6 +24097,39 @@ msgid "You used both cardinality lemmas in sequence:\n"
 "bridge §7 says these always agree: coercing a list to a\n"
 "multiset doesn't change the count. The count only changes when\n"
 "we climb to finsets (where duplicates are removed)."
+msgstr ""
+
+#. §0: $\\sum i \\cdot \\binom{n}{i} = n \\cdot 2^{n-1}$
+#. §1: $n \\cdot 2^{{n-1}}$
+#. §2: $2^n$
+#. §3: $n$
+#. §4: $n$
+#. §5: $2^{{n-1}}$
+#. §6: $2^n$
+#. §7: $2^{{n-1}}$
+#. §8: $n$
+#. §9: $n \\cdot 2^{{n-1}}$
+#. §10: `sum_congr rfl`
+#. §11: `← Finset.mul_sum`
+#: Game.Levels.PsetCombinatorics.L11_WeightedBinomialSum
+msgid "You derived §0 by\n"
+"using absorption **as a transformation inside a sum** — a\n"
+"qualitatively different move from applying it to a single\n"
+"expression.\n"
+"\n"
+"**Why §1?** Think of it this way: there are §2\n"
+"subsets of an §3-element set. Each of the §4 elements belongs to\n"
+"exactly half of those subsets — the §5 subsets that\n"
+"include it. If you sum 'how many elements does each subset\n"
+"contain?' across all §6 subsets, each element contributes\n"
+"§7 (once per subset containing it), and there are §8\n"
+"elements, giving §9 total.\n"
+"\n"
+"The proof technique: split off the zero term, apply absorption\n"
+"pointwise via §10, factor out the constant with\n"
+"§11, and finish with the row sum. This technique\n"
+"of transforming summands pointwise before evaluating is one the\n"
+"boss also requires."
 msgstr ""
 
 #. §0: `ext`
@@ -23972,6 +24673,10 @@ msgstr ""
 msgid "Union and Intersection Subset"
 msgstr ""
 
+#: Game.Levels.PsetCombinatorics.L14_Boss
+msgid "The Vandermonde convolution through powerset counting."
+msgstr ""
+
 #. §0: `j.castSucc ≠ Fin.last n`
 #. §1: `j.val < n`
 #. §2: `n`
@@ -24263,6 +24968,12 @@ msgid "The goal is §0. From the\n"
 "§2 for all §3."
 msgstr ""
 
+#. §0: `rw [Nat.add_one_mul_choose_eq]`
+#. §1: `ring`
+#: Game.Levels.PsetCombinatorics.L10_TwoIdentityChain
+msgid "Now apply §0 and close with §1."
+msgstr ""
+
 #. §0: `x.val = 0`
 #. §1: `x : Fin 1`
 #. §2: `x.val < 1`
@@ -24356,6 +25067,12 @@ msgstr ""
 
 #: Game.Levels.FinsetInduction.L08_ProductPractice
 msgid "Product distributes over pointwise multiplication."
+msgstr ""
+
+#. §0: `Finset.sum_add_distrib`
+#: Game.Levels.PsetCombinatorics.L12_AntidiagonalDoubleSum
+msgid "The summand is a sum of two terms. Split into two separate\n"
+"sums using §0."
 msgstr ""
 
 #. §0: `exact List.Perm.swap 1 2 [3]`
@@ -24731,11 +25448,19 @@ msgid "§0 states that §1.\n"
 "§5"
 msgstr ""
 
+#: Game.Levels.PsetCombinatorics.L02_PowersetSymmetry
+msgid "Subset symmetry: 2-element and (n-2)-element subsets."
+msgstr ""
+
 #. §0: `4 ∈ Finset.range 6 ∧ 4 % 2 = 0`
 #. §1: `constructor`
 #: Game.Levels.FinsetOperations.L04_FilterByPredicate
 msgid "The goal is §0. Use\n"
 "§1 to split it."
+msgstr ""
+
+#: Game.Levels.PsetCombinatorics.L04_BinomialTheoremRetrieval
+msgid "The binomial theorem specialized to x = 3, y = 2."
 msgstr ""
 
 #. §0: `Finset.card_range`
@@ -24827,6 +25552,15 @@ msgstr ""
 #: Game.Levels.FinsetImage.L06_ImageUnionEquality
 msgid "Try §0 then use §1/§2\n"
 "with §3."
+msgstr ""
+
+#. §0: `5 * Nat.choose 4 2 = 3 * 10`
+#: Game.Levels.PsetCombinatorics.L09_ConcreteVerification
+msgid "The goal is §0.\n"
+"\n"
+"Both sides are concrete numbers. You could apply the absorption\n"
+"identity, but here the values are small enough that the kernel\n"
+"reduces them directly."
 msgstr ""
 
 #. §0: $$\\Bigl(\\sum_{x \\in s} (f(x) + g(x))\\Bigr) \\cdot \\Bigl(\\prod_{x \\in s} (f(x) \\cdot g(x))\\Bigr) = 360$$
@@ -24978,6 +25712,14 @@ msgid "§0 states that\n"
 "\n"
 "## When to use it\n"
 "When simplifying §3 of a cons'd list."
+msgstr ""
+
+#. §0: `add_zero`
+#. §1: `a + 0 = a`
+#: Game.Metadata
+msgid "§0 states that §1.\n"
+"\n"
+"Basic arithmetic fact: adding zero changes nothing."
 msgstr ""
 
 #: Game.Levels.PascalsTriangle.L03_MeetAntidiagonal
@@ -25173,6 +25915,12 @@ msgstr ""
 
 #: Game.Levels.FinsetInduction.L06_MixedInduction
 msgid "A sum mixing f(x) and a constant relates to the sum of f plus card."
+msgstr ""
+
+#. §0: `rw [Finset.sum_range_succ']`
+#. §1: $f(0) = 0$
+#: Game.Levels.PsetCombinatorics.L11_WeightedBinomialSum
+msgid "Try §0 then simplify the §1 term."
 msgstr ""
 
 #: Game.Levels.FinsetOperations
@@ -27180,6 +27928,18 @@ msgid "The lists §0 and §1 differ only in the order\n"
 "of the first two elements. This is exactly §2."
 msgstr ""
 
+#. §0: `Int.alternating_sum_range_choose`
+#. §1: `∑ m, (-1)^m * choose n m = 0`
+#. §2: `n > 0`
+#. §3: `add_pow`
+#: Game.Levels.PsetCombinatorics.L03_WeightedRowSum
+msgid "§0 gives the alternating row sum\n"
+"§1 (for §2).\n"
+"\n"
+"We disable it to prevent one-shotting the weighted sum identity.\n"
+"The student should derive this specialization from §3 directly."
+msgstr ""
+
 #. §0: `trivial`
 #. §1: `rfl`
 #. §2: `exact True.intro`
@@ -27273,12 +28033,31 @@ msgid "§0 performs structural induction on an inductive type.\n"
 "Without §4, Lean picks the default recursor for the type."
 msgstr ""
 
+#: Game.Levels.PsetCombinatorics.L08_RecognitionChallenge
+msgid "A recognition challenge: identify and apply the right identity."
+msgstr ""
+
 #. §0: `h`
 #. §1: `2 ^ 0`
 #. §2: `1`
 #: Game.Levels.Powerset.L13_PowersetEmptySet
 msgid "Now §0 says the count equals §1, which Lean reduces\n"
 "to §2. The hypothesis matches the goal."
+msgstr ""
+
+#. §0: $x^m \\cdot y^(n-m) \\cdot C(n, m)$
+#. §1: $x$
+#. §2: $y$
+#. §3: $3$
+#. §4: $2$
+#. §5: $(3 + 2)^n = 5^n$
+#. §6: `add_pow_nat`
+#: Game.Levels.PsetCombinatorics.L04_BinomialTheoremRetrieval
+msgid "The summand has the form §0.\n"
+"What are §1 and §2? They are §3 and §4, giving\n"
+"§5.\n"
+"\n"
+"Specialize §6 and close."
 msgstr ""
 
 #. §0: `h0`
@@ -27460,6 +28239,14 @@ msgstr ""
 #: Game.Levels.Powerset.L01_EmptyInPowerset
 msgid "Now the goal is §0 — the empty set is a subset of\n"
 "everything. The lemma §1 says exactly this."
+msgstr ""
+
+#. §0: `∑ p, choose n p.1 * choose n p.2 = (n + n).choose n`
+#: Game.Levels.PsetCombinatorics.L14_Boss
+msgid "The goal is\n"
+"§0.\n"
+"\n"
+"Flip the equation and apply the Vandermonde identity."
 msgstr ""
 
 #. §0: `Finset.mem_antidiagonal`
@@ -28178,6 +28965,30 @@ msgstr ""
 msgid "Split a sum over a disjoint union into two parts."
 msgstr ""
 
+#. §0: `∑ p ∈ S, f(p) = ∑ p ∈ S, g(p)`
+#. §1: `∀ p ∈ S, f(p) = g(p)`
+#. §2: `Finset.sum_congr rfl`
+#. §3: `have`
+#. §4: `rw [Finset.sum_congr rfl ...]`
+#. §5: $2^n$
+#. §6: $$\\sum_{(i,j) \\in \\text{antidiagonal}(n)}
+#. |\\text{powersetCard } i\\ s| = 2^n$$
+#: Game.Levels.PsetCombinatorics.L13_SumCongrWarmup
+msgid "# Rewriting Inside a Sum\n"
+"\n"
+"When your goal has §0, you can\n"
+"reduce it to a pointwise proof §1 using\n"
+"§2.\n"
+"\n"
+"The pattern:\n"
+"1. Declare a §3 proving the pointwise equality\n"
+"2. Apply §4 to transform the sum\n"
+"\n"
+"Prove that summing subset counts over the antidiagonal gives §5:\n"
+"\n"
+"§6"
+msgstr ""
+
 #. §0: `f x + f x`
 #. §1: `sum_add_distrib`
 #: Game.Levels.BigOpAlgebra.L18_Boss
@@ -28249,6 +29060,15 @@ msgid "§0 proves equality by reducing to equality of subexpressions.\n"
 "In this level, §1 is disabled because the goal is to learn\n"
 "§2 / §3 — the big-operator-specific way to\n"
 "prove equality of sums by rewriting the summand."
+msgstr ""
+
+#. §0: `Finset.sum_congr rfl`
+#. §1: `(powersetCard _ s).card`
+#. §2: `choose n _`
+#: Game.Levels.PsetCombinatorics.L14_Boss
+msgid "Strip the powerset layer from each summand. Use\n"
+"§0 with a pointwise proof that converts\n"
+"§1 to §2."
 msgstr ""
 
 #. §0: `obtain ⟨h0, h1⟩ := hx`
@@ -28400,6 +29220,36 @@ msgid "# Problem Set: Cardinality and Counting\n"
 "\n"
 "Bring both facts into context with §12, then let §13 combine\n"
 "them with the given sizes."
+msgstr ""
+
+#. §0: $0 + 0 + 1 + 3 + 6 + 10 + \\cdots$
+#. §1: $\\binom{n+1}{3}$
+#. §2: `add_comm`
+#. §3: `← choose_succ_succ`
+#. §4: $\\sum_k C(n, k) = 2^n$
+#. §5: $n$
+#. §6: $k$
+#. §7: $k$
+#. §8: $i$
+#: Game.Levels.PsetCombinatorics.L07_HockeyStickRetrieval
+msgid "The same induction pattern from BinomialCoefficients Level 15:\n"
+"peel, substitute, commute, fold. The sum\n"
+"§0 of triangular numbers gives\n"
+"the tetrahedral number §1.\n"
+"\n"
+"Notice that the inductive step — §2 then\n"
+"§3 — is exactly the backward Pascal fold from\n"
+"Level 1. The hockey stick identity can be read as a\n"
+"**telescoping sum**: each application of backward Pascal collapses\n"
+"one term, and iterating this across the entire sum gives the\n"
+"hockey stick. Induction formalizes this telescoping argument.\n"
+"\n"
+"**Row sum vs column sum**: Compare this with the row sum identity\n"
+"§4 from BinomialTheorem. The row sum fixes\n"
+"§5 and sums over §6 (across a row of Pascal's triangle). The\n"
+"hockey stick fixes §7 and sums over §8 (down a diagonal). Both\n"
+"are sums of binomial coefficients, but they sum in different\n"
+"directions — confusing which index varies is a common mistake."
 msgstr ""
 
 #: Game.Levels.CountingTypes.L04_FunctionsFromASum
@@ -28944,6 +29794,49 @@ msgid "§0\n"
 "gives §2."
 msgstr ""
 
+#. §0: $$\\binom{2n}{n} = \\sum_{(i,j) \\in \\text{antidiagonal}(n)}
+#. \\binom{n}{i} \\cdot \\binom{n}{j}$$
+#. §1: `Nat.add_choose_eq`
+#. §2: $$\\sum_{(i,j) \\in \\text{antidiagonal}(n)}
+#. |\\text{powersetCard } i\\ s| \\cdot |\\text{powersetCard } j\\ s|
+#. = \\binom{2n}{n}$$
+#. §3: `Finset.card_powersetCard`
+#. §4: `Finset.sum_congr rfl`
+#. §5: `2 * n = n + n`
+#. §6: `ring`
+#. §7: `Nat.add_choose_eq n n n`
+#. §8: `symm`
+#. §9: `(powersetCard _ s).card`
+#. §10: `choose n _`
+#. §11: `sum_congr rfl`
+#. §12: `2 * n`
+#. §13: `n + n`
+#: Game.Levels.PsetCombinatorics.L14_Boss
+msgid "# Boss: The Vandermonde Convolution via Subsets\n"
+"\n"
+"The Vandermonde identity says:\n"
+"\n"
+"§0\n"
+"\n"
+"You proved this algebraically in PascalsTriangle (Level 11)\n"
+"using §1. Now prove it with a **powerset layer**:\n"
+"\n"
+"§2\n"
+"\n"
+"**What you need** (all from prior worlds):\n"
+"- §3 — strip the powerset layer (Powerset)\n"
+"- §4 — rewrite summands pointwise (BigOpAlgebra)\n"
+"- §5 via §6 — reshape for Vandermonde\n"
+"- §7 — the Vandermonde identity (PascalsTriangle)\n"
+"- §8 — flip and close (BinomialTheorem pattern)\n"
+"\n"
+"**Proof plan**:\n"
+"1. Convert each §9 to §10\n"
+"2. Apply §11 to rewrite the whole sum\n"
+"3. Reshape §12 as §13\n"
+"4. Flip and apply Vandermonde"
+msgstr ""
+
 #. §0: `Fin 1`
 #. §1: `0`
 #. §2: `v < 1`
@@ -29003,6 +29896,34 @@ msgstr ""
 #: Game.Levels.PsetBigOp.L01_ConcreteSum
 msgid "The remaining arithmetic §0\n"
 "is closed by §1."
+msgstr ""
+
+#. §0: $n = 4, k = 2$
+#. §1: $$(n + 1) \\cdot \\binom{n}{k} = \\binom{n+1}{k+1} \\cdot (k + 1)$$
+#. §2: $n = 4, k = 2$
+#. §3: $5 \\cdot \\binom{4}{2} = 5 \\cdot 6 = 30$
+#. §4: $\\binom{5}{3} \\cdot 3 = 10 \\cdot 3 = 30$
+#. §5: $|s| = 4$
+#. §6: $5 \\cdot |\\text{powersetCard } 2\\ s| = 3 \\cdot 10$
+#: Game.Levels.PsetCombinatorics.L09_ConcreteVerification
+msgid "# Check the Numbers\n"
+"\n"
+"You've proved several identities symbolically. Now **verify**\n"
+"one concretely: check that the absorption identity holds for\n"
+"§0 by computing both sides.\n"
+"\n"
+"§1\n"
+"\n"
+"For §2:\n"
+"- LHS: §3\n"
+"- RHS: §4 ✓\n"
+"\n"
+"But we add a powerset layer: given §5, prove that\n"
+"§6.\n"
+"\n"
+"The concrete values force you through the strip-and-apply\n"
+"pattern one more time, but now you can **predict** the answer\n"
+"before Lean confirms it."
 msgstr ""
 
 #: Game.Levels.PascalsTriangle.L12_PascalFromVandermonde
@@ -30034,6 +30955,13 @@ msgstr ""
 
 #: Game.Levels.MeetFin.L20_ConcreteApplication
 msgid "Using Fin as an Index"
+msgstr ""
+
+#. §0: `choose n 2 + choose n 2 = 2 * choose n 2`
+#. §1: `ring`
+#: Game.Levels.PsetCombinatorics.L02_PowersetSymmetry
+msgid "The goal is §0.\n"
+"Close with §1."
 msgstr ""
 
 #. §0: `∏ x ∈ s, f x`
@@ -31220,6 +32148,40 @@ msgid "This was definitionally true — which is exactly the point. When you\n"
 "requirement on §12 guarantees that §13, which is\n"
 "exactly what makes the multiset-level sum independent of which\n"
 "representative list you pick."
+msgstr ""
+
+#. §0: $$\\binom{n}{k} \\cdot k! \\cdot (n-k)! = n!$$
+#. §1: $k$
+#. §2: $k$
+#. §3: $n-k$
+#. §4: $n$
+#. §5: $s$
+#. §6: $|s| = n$
+#. §7: $3 \\le n$
+#. §8: $$|\\text{powersetCard } 3\\ s| \\cdot 3! \\cdot (n - 3)! = n!$$
+#. §9: `Finset.card_powersetCard`
+#. §10: `hs`
+#. §11: `Nat.choose_mul_factorial_mul_factorial`
+#: Game.Levels.PsetCombinatorics.L06_FactorialFormula
+msgid "# The Factorial Connection via Subsets\n"
+"\n"
+"In BinomialCoefficients (Level 9), you proved the **factorial formula**:\n"
+"\n"
+"§0\n"
+"\n"
+"This says: the number of §1-element subsets times the ways to\n"
+"arrange those §2 elements times the ways to arrange the remaining\n"
+"§3 elements equals the total number of arrangements of all §4\n"
+"elements.\n"
+"\n"
+"Now apply it with a **powerset layer**: given a finset §5 with\n"
+"§6 and §7, prove:\n"
+"\n"
+"§8\n"
+"\n"
+"**Strategy**:\n"
+"1. Strip the powerset layer with §9 and §10\n"
+"2. Apply §11"
 msgstr ""
 
 #. §0: `α × β ≃ β × α`
@@ -33015,6 +33977,10 @@ msgid "Three Multiset lemmas from the Abstraction Ladder, applied in a\n"
 "layer of the abstraction ladder."
 msgstr ""
 
+#: Game.Levels.PsetCombinatorics.L11_WeightedBinomialSum
+msgid "Apply the pointwise transformation to the whole sum."
+msgstr ""
+
 #. §0: `obtain ⟨a, _, ha⟩ := hx`
 #. §1: `_`
 #: Game.Levels.FinsetImage.L11_ConstantFunctionForward
@@ -33287,6 +34253,7 @@ msgstr ""
 #: Game.Levels.BinomialCoefficients.L13_SumSimplification
 #: Game.Levels.BinomialCoefficients.L15_HockeyStick
 #: Game.Levels.BinomialTheorem.L15_Boss
+#: Game.Levels.PsetCombinatorics.L03_WeightedRowSum
 msgid "Try:\n"
 "§0\n"
 "§1"
@@ -33592,6 +34559,14 @@ msgid "# The Punchline: Vandermonde Subsumes Pascal\n"
 "This uses the same reshape-flip-apply pattern from Level 10."
 msgstr ""
 
+#. §0: `h`
+#. §1: `2 ^ n = ∑ m, choose n m`
+#. §2: `exact h`
+#: Game.Levels.BinomialTheorem.L07_RewritingHypotheses
+msgid "Now §0 says §1 — exactly the goal.\n"
+"Close with §2."
+msgstr ""
+
 #. §0: `Finset.sum_insert`
 #. §1: `h : 5 ∉ s`
 #. §2: `rw [Finset.sum_insert h]`
@@ -33599,14 +34574,6 @@ msgstr ""
 msgid "The goal matches the shape of §0. You have the\n"
 "hypothesis §1 ready to use.\n"
 "Try §2."
-msgstr ""
-
-#. §0: `h`
-#. §1: `2 ^ n = ∑ m, choose n m`
-#. §2: `exact h`
-#: Game.Levels.BinomialTheorem.L07_RewritingHypotheses
-msgid "Now §0 says §1 — exactly the goal.\n"
-"Close with §2."
 msgstr ""
 
 #. §0: `0 < s.card`
@@ -33761,6 +34728,13 @@ msgid "§0 states that\n"
 "## When to use it\n"
 "When you have a nodup list and need to connect finset cardinality\n"
 "to list length."
+msgstr ""
+
+#. §0: $0$
+#. §1: $n = 0$
+#: Game.Levels.PsetCombinatorics.L11_WeightedBinomialSum
+msgid "Both sides are §0 when §1. Unfold the sum and\n"
+"simplify."
 msgstr ""
 
 #: Game.Levels.FinTuples.L18_ProvingTupleEquality
@@ -33985,6 +34959,13 @@ msgstr ""
 
 #: Game.Levels.FinsetBasics.L05_TheRangeBoundary
 msgid "5 is NOT in the range {0, 1, 2, 3, 4}."
+msgstr ""
+
+#. §0: `(powersetCard 3 s).card`
+#. §1: `choose n 3`
+#: Game.Levels.PsetCombinatorics.L06_FactorialFormula
+msgid "Strip the powerset layer: convert\n"
+"§0 to §1."
 msgstr ""
 
 #. §0: `(x + 1) ^ n`
@@ -34480,6 +35461,22 @@ msgid "Try\n"
 "then §2, §3, §4."
 msgstr ""
 
+#. §0: $x = 3, y = 2$
+#. §1: $(3 + 2)^n = 5^n$
+#. §2: `add_pow_nat`
+#. §3: $x^m \\cdot y^{{n-m}} \\cdot C(n,m)$
+#. §4: $x$
+#. §5: $y$
+#: Game.Levels.PsetCombinatorics.L04_BinomialTheoremRetrieval
+msgid "You recognized the binomial theorem pattern and chose the right\n"
+"values: §0 gives §1.\n"
+"\n"
+"Every specialization of §2 produces a different\n"
+"identity. The core retrieval skill: given a sum involving\n"
+"§3, read off §4 and §5 from\n"
+"the summand and specialize."
+msgstr ""
+
 #. §0: `t ⊆ s`
 #. §1: `mem_powerset`
 #: Game.Levels.Powerset.L10_ComplementCard
@@ -34513,6 +35510,10 @@ msgstr ""
 #. §0: `m`
 #: Game.Levels.FinTuples.L18_ProvingTupleEquality
 msgid "Split once more on §0."
+msgstr ""
+
+#: Game.Levels.PsetCombinatorics.L07_HockeyStickRetrieval
+msgid "Hockey Stick Retrieval"
 msgstr ""
 
 #. §0: `∑ k, choose n k = 2 ^ n`
@@ -34608,6 +35609,13 @@ msgid "# The §0 + §1 + §2 Pattern\n"
 "\n"
 "In Level 8, you will create §14 yourself using §15. Here,\n"
 "focus on the mechanics of simplifying a sum inside a hypothesis."
+msgstr ""
+
+#. §0: $i = 0$
+#. §1: $0 \\cdot C(m+1, 0) = 0$
+#: Game.Levels.PsetCombinatorics.L11_WeightedBinomialSum
+msgid "The §0 term is §1.\n"
+"Simplify it away."
 msgstr ""
 
 #: Game.Levels.FinsetImage.L03_NotInTheImage
@@ -35587,6 +36595,20 @@ msgid "Use §0 to convert §1\n"
 "into §2. Then §3 and §4."
 msgstr ""
 
+#. §0: `p.2`
+#. §1: `2^n`
+#. §2: `← sum_antidiagonal_swap`
+#. §3: `p.2`
+#. §4: `p.1`
+#. §5: `p.swap`
+#: Game.Levels.PsetCombinatorics.L12_AntidiagonalDoubleSum
+msgid "Now show the second sum (§0) also equals §1.\n"
+"\n"
+"Use the **swap-reindex** pattern from PascalsTriangle Level 8:\n"
+"§2 converts §3 into §4 (via\n"
+"§5), then reindex and apply the row sum."
+msgstr ""
+
 #. §0: `Fin n`
 #. §1: $\\{0, 1, 2, 3, 4\\}$
 #. §2: $n$
@@ -35749,6 +36771,10 @@ msgstr ""
 
 #: Game.Levels.PsetFin.L08_ObtainDestructure
 msgid "Obtain: Existential Destructuring"
+msgstr ""
+
+#: Game.Levels.PsetCombinatorics.L12_AntidiagonalDoubleSum
+msgid "Antidiagonal Double Sum"
 msgstr ""
 
 #. §0: `intro j h`
@@ -36013,6 +37039,24 @@ msgid "§0 closes a goal of the form §1 (reflexivity).\n"
 "\n"
 "## When to use it\n"
 "When both sides of an equality are definitionally equal."
+msgstr ""
+
+#. §0: `Finset.sum_range_succ'`
+#. §1: `∑ i ∈ range (n + 1), f i = f 0 + ∑ i ∈ range n, f (i + 1)`
+#. §2: `Finset.range`
+#. §3: `sum_range_succ`
+#. §4: `f 0`
+#. §5: `range (n + 1)`
+#: Game.Metadata
+msgid "§0 states that\n"
+"§1.\n"
+"\n"
+"Peels off the **first** term of a sum over §2.\n"
+"Compare with §3 which peels off the **last** term.\n"
+"\n"
+"## When to use it\n"
+"When you want to split off §4 from a sum over §5.\n"
+"Useful when the first term is zero or has special structure."
 msgstr ""
 
 #. §0: `rfl`
@@ -36591,6 +37635,15 @@ msgstr ""
 msgid "The Pigeonhole Principle (Concrete)"
 msgstr ""
 
+#. §0: `choose n k + choose n (k+1)`
+#. §1: `← Nat.choose_succ_succ`
+#. §2: `choose (n+1) (k+1)`
+#: Game.Levels.PsetCombinatorics.L01_BackwardPascal
+msgid "The first two terms §0 match\n"
+"Pascal's identity read backwards. Use §1\n"
+"to fold them into §2."
+msgstr ""
+
 #. §0: `omega`
 #: Game.Levels.SummationFormulas.L08_ExponentialBound
 msgid "Now §0 has all the linear facts it needs."
@@ -37080,6 +38133,59 @@ msgstr ""
 msgid "Compute a product by simplifying and unfolding."
 msgstr ""
 
+#. §0: $\\binom{m+n}{k} = \\sum_{i+j=k} \\binom{m}{i} \\binom{n}{j}$
+#. §1: $k$
+#. §2: $m + n$
+#. §3: $i$
+#. §4: $m$
+#. §5: $j = k - i$
+#. §6: $n$
+#. §7: $m = n = k$
+#. §8: $n$
+#. §9: $n$
+#. §10: $i$
+#. §11: $n - i$
+#. §12: $\\binom{m+n}{k} = \\binom{m}{k} \\cdot \\binom{n}{k}$
+#. §13: $\\sum \\binom{m}{i} \\binom{n}{k-i}$
+#. §14: $\\binom{2n}{n}$
+#. §15: $2n$
+#. §16: $\\binom{2n}{n}$
+#. §17: $(0,0)$
+#. §18: $(n,n)$
+#. §19: $n$
+#. §20: $2n$
+#. §21: `sum_congr rfl`
+#. §22: $2n = n + n$
+#: Game.Levels.PsetCombinatorics.L14_Boss
+msgid "Congratulations! You completed the **Combinatorics Problem Set**.\n"
+"\n"
+"**Why this identity is natural**: The Vandermonde convolution\n"
+"§0\n"
+"counts choosing §1 elements from a group of §2 by\n"
+"partitioning: choose §3 from the first §4 and §5 from\n"
+"the second §6. In our case §7, so we are choosing §8\n"
+"people from two groups of §9: pick §10 from the first group and\n"
+"§11 from the second.\n"
+"\n"
+"**A common false belief**: One might guess that\n"
+"§12, but this\n"
+"is wrong — the correct form is a **sum** of products\n"
+"§13, not a single product. You\n"
+"just proved why.\n"
+"\n"
+"The result §14 is the **central binomial coefficient**\n"
+"— the largest entry in row §15 of Pascal's triangle. Concretely,\n"
+"§16 counts **lattice paths** from §17 to §18\n"
+"using unit right and up steps: choose which §19 of the §20 total\n"
+"steps go right. It also appears in Catalan numbers and probability.\n"
+"\n"
+"The proof integrates all four Phase 5 worlds: strip inside a sum\n"
+"via §21 (practiced in Level 11), reshape §22,\n"
+"then apply Vandermonde. The strip-and-apply pattern, named in\n"
+"Level 2 and used throughout, reaches its final form here —\n"
+"stripping *inside* a sum via pointwise rewriting."
+msgstr ""
+
 #. §0: `3`
 #. §1: `rw [Finset.mem_insert]`
 #: Game.Levels.FinsetBasics.L02_FindingDeeperElements
@@ -37385,6 +38491,10 @@ msgid "# Deriving §0 from Symmetry\n"
 "and §20 — without using §21."
 msgstr ""
 
+#: Game.Levels.PsetCombinatorics.L09_ConcreteVerification
+msgid "Verify the absorption identity concretely for n = 4, k = 2."
+msgstr ""
+
 #. §0: `∑ i in range 1, choose i k = choose 1 (k + 1)`
 #. §1: `range 1`
 #. §2: $i = 0$
@@ -37631,6 +38741,14 @@ msgstr ""
 msgid "The goal is now §0.\n"
 "This is exactly what symmetry says (with k = 0).\n"
 "Create a proof that §1 with §2, then apply symmetry."
+msgstr ""
+
+#. §0: `Nat.choose_two_right`
+#. §1: `Nat.choose n 2 = n * (n - 1) / 2`
+#: Game.Metadata
+msgid "Disabled: §0 gives the closed form\n"
+"§1. Bypasses subset counting\n"
+"and symmetry arguments."
 msgstr ""
 
 #. §0: `use ⟨k, by omega⟩`
@@ -38050,6 +39168,10 @@ msgstr ""
 #: Game.Levels.MeetFin.L16_DestructuringFin
 msgid "Destructure §0 into its components:\n"
 "§1"
+msgstr ""
+
+#: Game.Levels.PsetCombinatorics.L14_Boss
+msgid "Apply the pointwise simplification to the whole sum."
 msgstr ""
 
 #. §0: `Nat.add_one_mul_choose_eq`
@@ -38512,6 +39634,33 @@ msgstr ""
 #: Game.Levels.PascalsTriangle.L16_Boss
 #: Game.Levels.PascalsTriangle.L16_Boss
 #: Game.Levels.PascalsTriangle.L16_Boss
+#: Game.Levels.PsetCombinatorics.L01_BackwardPascal
+#: Game.Levels.PsetCombinatorics.L02_PowersetSymmetry
+#: Game.Levels.PsetCombinatorics.L02_PowersetSymmetry
+#: Game.Levels.PsetCombinatorics.L02_PowersetSymmetry
+#: Game.Levels.PsetCombinatorics.L03_WeightedRowSum
+#: Game.Levels.PsetCombinatorics.L03_WeightedRowSum
+#: Game.Levels.PsetCombinatorics.L05_AbsorptionIdentity
+#: Game.Levels.PsetCombinatorics.L05_AbsorptionIdentity
+#: Game.Levels.PsetCombinatorics.L05_AbsorptionIdentity
+#: Game.Levels.PsetCombinatorics.L06_FactorialFormula
+#: Game.Levels.PsetCombinatorics.L06_FactorialFormula
+#: Game.Levels.PsetCombinatorics.L07_HockeyStickRetrieval
+#: Game.Levels.PsetCombinatorics.L07_HockeyStickRetrieval
+#: Game.Levels.PsetCombinatorics.L07_HockeyStickRetrieval
+#: Game.Levels.PsetCombinatorics.L09_ConcreteVerification
+#: Game.Levels.PsetCombinatorics.L10_TwoIdentityChain
+#: Game.Levels.PsetCombinatorics.L11_WeightedBinomialSum
+#: Game.Levels.PsetCombinatorics.L11_WeightedBinomialSum
+#: Game.Levels.PsetCombinatorics.L11_WeightedBinomialSum
+#: Game.Levels.PsetCombinatorics.L11_WeightedBinomialSum
+#: Game.Levels.PsetCombinatorics.L11_WeightedBinomialSum
+#: Game.Levels.PsetCombinatorics.L12_AntidiagonalDoubleSum
+#: Game.Levels.PsetCombinatorics.L13_SumCongrWarmup
+#: Game.Levels.PsetCombinatorics.L13_SumCongrWarmup
+#: Game.Levels.PsetCombinatorics.L14_Boss
+#: Game.Levels.PsetCombinatorics.L14_Boss
+#: Game.Levels.PsetCombinatorics.L14_Boss
 msgid "Try §0."
 msgstr ""
 
@@ -38534,6 +39683,15 @@ msgstr ""
 msgid "Close the algebra with §0. The multiplication by\n"
 "§1 makes this a nonlinear identity that only\n"
 "§2 can handle."
+msgstr ""
+
+#. §0: `choose (n+1) (k+1) + choose (n+1) (k+2) = choose (n+2) (k+2)`
+#: Game.Levels.PsetCombinatorics.L01_BackwardPascal
+msgid "Now the goal is\n"
+"§0.\n"
+"\n"
+"This is again Pascal's identity read backwards. Apply the same\n"
+"rewrite one more time."
 msgstr ""
 
 #. §0: `h`
@@ -39165,6 +40323,14 @@ msgid "Here §0, so the element is a §1 image.\n"
 "Choose §2 and provide the witness."
 msgstr ""
 
+#. §0: `choose n (n-2)`
+#. §1: `choose n 2`
+#. §2: `rw [Nat.choose_symm h]`
+#: Game.Levels.PsetCombinatorics.L10_TwoIdentityChain
+msgid "Use symmetry to convert §0 to §1:\n"
+"§2. Then apply absorption."
+msgstr ""
+
 #. §0: `← hp.length_eq`
 #. §1: `hp.length_eq : l₁.length = l₂.length`
 #. §2: `l₂.length`
@@ -39598,6 +40764,12 @@ msgid "Subtypes are the fourth composition rule:\n"
 "Next: practice combining subtype counting with products."
 msgstr ""
 
+#. §0: `Finset.sum_congr rfl`
+#: Game.Levels.PsetCombinatorics.L13_SumCongrWarmup
+msgid "Now apply §0 to rewrite the whole sum,\n"
+"then reindex and apply the row sum identity."
+msgstr ""
+
 #. §0: `Fin.tail ![a, b, c] = ![b, c]`
 #. §1: `rfl`
 #: Game.Levels.FinTuples.L06_DroppingTheHead
@@ -39999,6 +41171,17 @@ msgstr ""
 msgid "Injective Implies Surjective (Finite Types)"
 msgstr ""
 
+#. §0: `have simpl : ∀ p ∈ Finset.antidiagonal n, (Finset.powersetCard p.1 s).card * (Finset.powersetCard p.2 s).card = Nat.choose n p.1 * Nat.choose n p.2 := by`
+#. §1: `intro p _`
+#. §2: `rw [Finset.card_powersetCard, Finset.card_powersetCard, hs]`
+#: Game.Levels.PsetCombinatorics.L14_Boss
+msgid "Declare:\n"
+"§0\n"
+"\n"
+"Then: §1 followed by\n"
+"§2."
+msgstr ""
+
 #. §0: `Fin`
 #. §1: `succ`
 #. §2: `castSucc`
@@ -40333,6 +41516,11 @@ msgid "Congratulations — you've completed the **Finset Problem Set**!\n"
 "**What's next**: The next world introduces **cardinality** —\n"
 "the number of elements in a finset — and the fundamental\n"
 "counting identities."
+msgstr ""
+
+#: Game.Levels.PsetCombinatorics.L10_TwoIdentityChain
+msgid "Start with the strip-and-apply pattern: convert the\n"
+"powerset cardinality to a binomial coefficient."
 msgstr ""
 
 #. §0: `mul_comm`
@@ -41138,6 +42326,41 @@ msgid "Now §0. The witness for the goal is §1, which\n"
 "Use §8 to convert the goal."
 msgstr ""
 
+#. §0: $(i, j)$
+#. §1: $i + j = n$
+#. §2: $$\\sum_{(i,j) \\in \\text{antidiagonal}(n)}
+#. \\left(\\binom{n}{i} + \\binom{n}{j}\\right) = 2 \\cdot 2^n$$
+#. §3: `Finset.sum_add_distrib`
+#. §4: $2^n$
+#: Game.Levels.PsetCombinatorics.L12_AntidiagonalDoubleSum
+msgid "# Both Coordinates at Once\n"
+"\n"
+"In the PascalsTriangle world, you learned that the antidiagonal\n"
+"indexes pairs §0 with §1, and that the **swap\n"
+"lemma** lets you exchange the roles of the two coordinates.\n"
+"\n"
+"Use these tools to evaluate the double row sum:\n"
+"\n"
+"§2\n"
+"\n"
+"**Strategy** (split-and-evaluate):\n"
+"1. Split the sum of sums with §3\n"
+"2. Show each half equals §4 (the first via reindexing, the\n"
+"   second via swap-reindex from PascalsTriangle Level 8)\n"
+"3. Substitute and close"
+msgstr ""
+
+#. §0: `(powersetCard 2 s).card`
+#. §1: `choose n 2`
+#. §2: `Finset.card_powersetCard`
+#. §3: `s.card`
+#. §4: `n`
+#: Game.Levels.PsetCombinatorics.L05_AbsorptionIdentity
+msgid "First, strip the powerset layer: convert\n"
+"§0 to §1 using\n"
+"§2, then substitute §3 with §4."
+msgstr ""
+
 #: Game.Levels.Powerset.L07_PowersetMonoConverse
 msgid "If s.powerset ⊆ t.powerset, then s ⊆ t."
 msgstr ""
@@ -41263,6 +42486,11 @@ msgid "Type:\n"
 "Then replace each §5 with the actual proof."
 msgstr ""
 
+#. §0: `2^n`
+#: Game.Levels.PsetCombinatorics.L12_AntidiagonalDoubleSum
+msgid "Both sums are §0. Substitute and close."
+msgstr ""
+
 #. §0: `List.toFinset_eq_of_perm`
 #. §1: `apply List.toFinset_eq_of_perm`
 #: Game.Levels.AbstractionLadder.L16_PermToFinset
@@ -41277,6 +42505,12 @@ msgstr ""
 #: Game.Levels.BinomialTheorem.L13_WorkingOverIntegers
 msgid "The expression §0 equals §1. Establish this as\n"
 "a rewrite lemma using §2."
+msgstr ""
+
+#. §0: $n = 0$
+#. §1: `cases n`
+#: Game.Levels.PsetCombinatorics.L11_WeightedBinomialSum
+msgid "Handle the §0 case separately. Use §1."
 msgstr ""
 
 #. §0: `3 = 3 ∨ 3 ∈ singleton 4`
@@ -41536,6 +42770,17 @@ msgid "Congratulations — you've completed **Finset Basics**!\n"
 "membership. Next: what happens when you *combine* finsets? Union\n"
 "(§30), intersection (§31), and set difference (§32ext` tactic lets you prove two\n"
 "finsets are equal by showing they have the same members."
+msgstr ""
+
+#. §0: `choose n 3 * 3! * (n - 3)! = n!`
+#. §1: `Nat.choose_mul_factorial_mul_factorial`
+#. §2: `k = 3`
+#. §3: `3 ≤ n`
+#: Game.Levels.PsetCombinatorics.L06_FactorialFormula
+msgid "The goal is §0.\n"
+"\n"
+"This is the factorial formula §1\n"
+"with §2. It needs a proof that §3."
 msgstr ""
 
 #. §0: `Finset.Nonempty s`
@@ -42021,6 +43266,10 @@ msgstr ""
 msgid "Swap to convert §0 to §1, then reindex."
 msgstr ""
 
+#: Game.Levels.PsetCombinatorics.L01_BackwardPascal
+msgid "Three-term Pascal telescoping."
+msgstr ""
+
 #: Game.Levels.FinNavigation.L05_CastSuccBelowSucc
 msgid "castSucc is Below succ"
 msgstr ""
@@ -42174,6 +43423,26 @@ msgid "§0 states that §1.\n"
 "When you need to simplify §2 to §3 using §4."
 msgstr ""
 
+#. §0: $\\mathbb{Z}$
+#. §1: $x = -1, y = 3$
+#. §2: $\\mathbb{N}$
+#. §3: `add_pow`
+#. §4: `add_pow_nat`
+#. §5: `omega`
+#. §6: $\\mathbb{Z}$
+#. §7: `\\uparrow(\\text{choose})`
+#. §8: $(x + y)^n$
+#. §9: $((-1) + 3)^n = 2^n$
+#: Game.Levels.PsetCombinatorics.L03_WeightedRowSum
+msgid "You proved the §0 specialization §1.\n"
+"\n"
+"The key differences from §2: use §3 (not\n"
+"§4), §5 for §6 arithmetic, and\n"
+"the coercion §7 appears automatically.\n"
+"Each specialization evaluates §8 at specific values —\n"
+"this one gives §9."
+msgstr ""
+
 #: Game.Levels.PsetFinset.L03_FilterSubset
 msgid "Filter Preserves Containment"
 msgstr ""
@@ -42185,6 +43454,19 @@ msgid "§0 proves that for §1 on a\n"
 "finite type, injectivity implies surjectivity.\n"
 "\n"
 "Disabled in the capstone level where the learner should derive this."
+msgstr ""
+
+#. §0: `card_powersetCard`
+#. §1: `choose n 3`
+#. §2: `choose_mul_factorial_mul_factorial`
+#. §3: $3!$
+#. §4: $(n-3)!$
+#: Game.Levels.PsetCombinatorics.L06_FactorialFormula
+msgid "Strip-and-apply again: §0 converts the subset\n"
+"count to §1, then §2\n"
+"closes it. The factorial formula says: choose 3 elements, arrange\n"
+"them (§3 ways), arrange the rest (§4 ways) — every\n"
+"permutation counted exactly once."
 msgstr ""
 
 #. §0: `ext`
@@ -42531,6 +43813,9 @@ msgstr ""
 #: Game.Levels.PascalsTriangle.L13_TheCircleCloses
 #: Game.Levels.PascalsTriangle.L16_Boss
 #: Game.Levels.PascalsTriangle.L16_Boss
+#: Game.Levels.PsetCombinatorics.L04_BinomialTheoremRetrieval
+#: Game.Levels.PsetCombinatorics.L12_AntidiagonalDoubleSum
+#: Game.Levels.PsetCombinatorics.L14_Boss
 msgid "Try §0 then §1."
 msgstr ""
 
@@ -42541,6 +43826,10 @@ msgstr ""
 msgid "Prove non-membership and peel with §0.\n"
 "Pattern: §1\n"
 "then §2."
+msgstr ""
+
+#: Game.Levels.PsetCombinatorics.L13_SumCongrWarmup
+msgid "Pointwise Rewriting in Sums"
 msgstr ""
 
 #: Game.Levels.Fintype.L09_SubtypePractice
@@ -42611,6 +43900,10 @@ msgstr ""
 #: Game.Levels.FinsetImage.L10_ImageIntersectionCounterexample
 msgid "Prove §0. Use\n"
 "§1 then provide the witness."
+msgstr ""
+
+#: Game.Levels.PsetCombinatorics.L14_Boss
+msgid "Boss: Vandermonde Through Powerset"
 msgstr ""
 
 #. §0: `rw [Finset.sum_add_distrib]`
@@ -43132,6 +44425,10 @@ msgstr ""
 #: Game.Levels.BigOpAlgebra.L10_ReorderingForSimplification
 msgid "The sum is now §0 — a constant sum. Use\n"
 "§1."
+msgstr ""
+
+#: Game.Levels.PsetCombinatorics.L06_FactorialFormula
+msgid "The factorial formula through powerset counting."
 msgstr ""
 
 #. §0: `rw [Fintype.card_congr e]`
@@ -44753,6 +46050,19 @@ msgstr ""
 msgid "C(10, 8) = C(10, 2): symmetry of binomial coefficients."
 msgstr ""
 
+#. §0: $$(n + 1) \\cdot \\binom{n}{1} = \\binom{n+1}{2} \\cdot 2$$
+#: Game.Levels.PsetCombinatorics.L08_RecognitionChallenge
+msgid "# Which Identity?\n"
+"\n"
+"Prove the following without being told which identity to use:\n"
+"\n"
+"§0\n"
+"\n"
+"Your toolkit includes every identity from BinomialCoefficients.\n"
+"Look at the structure of both sides. What pattern do you\n"
+"recognize?"
+msgstr ""
+
 #: Game.Levels.PsetFinset.L06_ImageNonempty
 msgid "The image of a nonempty finset is nonempty."
 msgstr ""
@@ -44984,6 +46294,7 @@ msgstr ""
 
 #. §0: `rw [Nat.factorial_succ]`
 #: Game.Levels.SummationFormulas.L10_FactorialCompute
+#: Game.Levels.PsetCombinatorics.L01_BackwardPascal
 msgid "Try §0 again."
 msgstr ""
 
@@ -45211,6 +46522,20 @@ msgid "Here §0, so the element IS §1.\n"
 "Choose §2 and prove the equality."
 msgstr ""
 
+#. §0: `Nat.add_one_mul_choose_eq m i`
+#. §1: $(m+1) \\cdot C(m, i) = C(m+1, i+1) \\cdot (i+1)$
+#. §2: $(i+1) \\cdot C(m+1, i+1) = (m+1) \\cdot C(m, i)$
+#. §3: `Finset.sum_congr rfl`
+#: Game.Levels.PsetCombinatorics.L11_WeightedBinomialSum
+msgid "Now apply absorption to each summand. The absorption\n"
+"identity §0 says:\n"
+"§1\n"
+"\n"
+"Read right-to-left: §2.\n"
+"\n"
+"Prove this pointwise, then apply §3."
+msgstr ""
+
 #. §0: `Nat.choose s.card k = 0`
 #. §1: `Nat.choose_eq_zero_of_lt`
 #. §2: `Nat.choose n k = 0`
@@ -45382,6 +46707,18 @@ msgid "§0 states that\n"
 "\n"
 "## Syntax\n"
 "§3"
+msgstr ""
+
+#. §0: `← Nat.choose_succ_succ`
+#. §1: `choose n k + choose n (k+1)`
+#. §2: `choose (n+1) (k+1)`
+#: Game.Levels.PsetCombinatorics.L01_BackwardPascal
+msgid "Two backward rewrites, and three terms collapse to one.\n"
+"\n"
+"§0 folds §1\n"
+"into §2. Pascal's identity reads in both\n"
+"directions: forward *expands*, backward *folds*. Repeated\n"
+"folding produces telescoping identities like this one."
 msgstr ""
 
 #. §0: `rw [Finset.mem_singleton]`
@@ -45774,6 +47111,19 @@ msgid "# Reconstructing from a Formula\n"
 "   §6, then §7 known values"
 msgstr ""
 
+#. §0: `(∑ p, choose n p.1) + (∑ p, choose n p.2) = 2 * 2^n`
+#. §1: `2^n`
+#. §2: `p.1`
+#: Game.Levels.PsetCombinatorics.L12_AntidiagonalDoubleSum
+msgid "The goal is\n"
+"§0.\n"
+"\n"
+"Show each sum equals §1 separately, then combine.\n"
+"\n"
+"For the first sum (§2): reindex to a range sum and apply\n"
+"the row sum identity."
+msgstr ""
+
 #. §0: $s \\cap t = t \\cap s$
 #. §1: `ext`
 #. §2: `.1`
@@ -45931,6 +47281,10 @@ msgstr ""
 msgid "Binomial Theorem"
 msgstr ""
 
+#: Game.Levels.PsetCombinatorics.L06_FactorialFormula
+msgid "Factorial Formula Through Powerset"
+msgstr ""
+
 #. §0: `Fin 5`
 #: Game.Levels.MeetFin.L05_FinEquality
 msgid "Two §0 elements with the same value are equal."
@@ -45938,6 +47292,13 @@ msgstr ""
 
 #: Game.Levels.PsetFinset.L08_FilterImageContainment
 msgid "Filter Image Containment"
+msgstr ""
+
+#. §0: `(n+1) * choose n k`
+#: Game.Levels.PsetCombinatorics.L08_RecognitionChallenge
+msgid "You recognized the absorption identity by its shape:\n"
+"§0 on one side. Pattern recognition — knowing\n"
+"*which* tool to reach for — is the core pset skill."
 msgstr ""
 
 #. §0: `hl : a ∈ s`
@@ -46564,6 +47925,16 @@ msgstr ""
 msgid "There are 25 functions from Bool to Fin 2 ⊕ Fin 3."
 msgstr ""
 
+#. §0: `choose 0 2 = choose 1 3`
+#. §1: $0 < 2$
+#. §2: $1 < 3$
+#. §3: `Nat.choose_eq_zero_of_lt`
+#: Game.Levels.PsetCombinatorics.L07_HockeyStickRetrieval
+msgid "The goal is §0. Both sides are\n"
+"zero because §1 and §2. Use §3\n"
+"with explicit proofs."
+msgstr ""
+
 #. §0: `hα`
 #. §1: `card_*`
 #. §2: `hα`
@@ -47165,6 +48536,33 @@ msgid "You proved powerset monotonicity: if §0, then\n"
 "you just proved a real library theorem from first principles!"
 msgstr ""
 
+#. §0: `add_pow_nat`
+#. §1: $$\\text{add\\_pow\\_nat}(x, y, n) : (x + y)^n = \\sum_{{m=0}}^{{n}} x^m \\cdot y^{{n-m}} \\cdot \\binom{{n}}{{m}}$$
+#. §2: $x$
+#. §3: $y$
+#. §4: $\\mathbb{Z}$
+#. §5: $x = -1, y = 3$
+#. §6: $\\mathbb{N}$
+#. §7: $$\\sum_{{m=0}}^{{n}} 3^m \\cdot 2^{{n-m}} \\cdot \\binom{{n}}{{m}} = 5^n$$
+#. §8: $x$
+#. §9: $y$
+#: Game.Levels.PsetCombinatorics.L04_BinomialTheoremRetrieval
+msgid "# Recognize the Pattern\n"
+"\n"
+"In BinomialTheorem, you learned to specialize §0:\n"
+"\n"
+"§1\n"
+"\n"
+"Each choice of §2 and §3 produces a different identity.\n"
+"Level 3 used §4 specialization (§5).\n"
+"\n"
+"Now try an §6 specialization. Prove:\n"
+"\n"
+"§7\n"
+"\n"
+"**Which values of §8 and §9 give this identity?**"
+msgstr ""
+
 #: Game.Levels.Fintype.L08_SubtypeCounting
 msgid "Subtype Counting"
 msgstr ""
@@ -47512,6 +48910,10 @@ msgid "§0 is an ordered sequence of elements built from §1 (empty)\n"
 "\n"
 "## Notation\n"
 "§3"
+msgstr ""
+
+#: Game.Levels.PsetCombinatorics.L12_AntidiagonalDoubleSum
+msgid "The antidiagonal double row sum: ∑ (choose n p.1 + choose n p.2) = 2 * 2^n."
 msgstr ""
 
 #: Game.Levels.SummationFormulas.L13_SumComm
@@ -47886,6 +49288,15 @@ msgid "The **peel-IH-ring** pattern is the standard approach for algebraic\n"
 "in the SummationFormulas world that follows."
 msgstr ""
 
+#. §0: `choose n p.1`
+#. §1: `have`
+#. §2: `∀ p ∈ Finset.antidiagonal n, ... = Nat.choose n p.1`
+#: Game.Levels.PsetCombinatorics.L13_SumCongrWarmup
+msgid "First, prove that each summand equals §0.\n"
+"Declare a §1 with type\n"
+"§2."
+msgstr ""
+
 #. §0: `s`
 #. §1: `p`
 #. §2: `p`
@@ -47928,6 +49339,10 @@ msgstr ""
 #: Game.Levels.BinomialCoefficients.L02_ChoosingOne
 msgid "There are §0 ways to choose 1 from §1.\n"
 "Use §2."
+msgstr ""
+
+#: Game.Levels.PsetCombinatorics.L03_WeightedRowSum
+msgid "Weighted Alternating Sum Over Z"
 msgstr ""
 
 #. §0: `card_union_add_card_inter`
@@ -49293,6 +50708,23 @@ msgid "# Powerset: All Subsets of a Set\n"
 "\n"
 "**Prerequisites**: §22 for subset reasoning, §23 from\n"
 "Cardinality, and §24 identities from BinomialCoefficients."
+msgstr ""
+
+#. §0: $$(n + 1) \\cdot |\\text{powersetCard } (n - 2)\\ s|
+#. = 3 \\cdot \\binom{n+1}{3}$$
+#: Game.Levels.PsetCombinatorics.L10_TwoIdentityChain
+msgid "# Chaining Identities\n"
+"\n"
+"Prove:\n"
+"\n"
+"§0\n"
+"\n"
+"This requires chaining multiple identities. The first step is\n"
+"familiar from previous levels. After that, the resulting\n"
+"expression does not directly match any single identity — you\n"
+"need to transform it first.\n"
+"\n"
+"Only a starting hint is provided. Find the path yourself."
 msgstr ""
 
 #. §0: `rw [Finset.mem_image] at hy`

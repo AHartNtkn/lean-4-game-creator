@@ -60,5 +60,7 @@ algebraic decomposition is the same — you just have more pieces
 to manage.
 "
 
+NewTheorem MulZeroClass.zero_mul add_zero
+
 DisabledTactic trivial «decide» native_decide simp aesop simp_all fin_cases interval_cases norm_num by_cases tauto linarith ring ring_nf omega
 DisabledTheorem Finset.sum_pair Finset.prod_pair Finset.sum_eq_card_nsmul Finset.sum_nsmul

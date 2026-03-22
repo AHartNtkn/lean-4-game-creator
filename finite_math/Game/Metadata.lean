@@ -650,6 +650,30 @@ algebraic rearrangement.
 -/
 TheoremDoc Finset.sum_mul as "Finset.sum_mul" in "BigOp"
 
+/-- `Finset.sum_range_succ'` states that
+`∑ i ∈ range (n + 1), f i = f 0 + ∑ i ∈ range n, f (i + 1)`.
+
+Peels off the **first** term of a sum over `Finset.range`.
+Compare with `sum_range_succ` which peels off the **last** term.
+
+## When to use it
+When you want to split off `f 0` from a sum over `range (n + 1)`.
+Useful when the first term is zero or has special structure.
+-/
+TheoremDoc Finset.sum_range_succ' as "Finset.sum_range_succ'" in "BigOp"
+
+/-- `MulZeroClass.zero_mul` states that `0 * a = 0`.
+
+Basic arithmetic fact: multiplying zero by anything gives zero.
+-/
+TheoremDoc MulZeroClass.zero_mul as "MulZeroClass.zero_mul" in "Arith"
+
+/-- `add_zero` states that `a + 0 = a`.
+
+Basic arithmetic fact: adding zero changes nothing.
+-/
+TheoremDoc add_zero as "add_zero" in "Arith"
+
 /-- `Finset.sum_sub_distrib` states that
 `∑ x ∈ s, (f x - g x) = (∑ x ∈ s, f x) - (∑ x ∈ s, g x)`.
 
@@ -1412,3 +1436,8 @@ TheoremDoc Nat.choose_succ_self_right as "Nat.choose_succ_self_right" in "Choose
 /-- Disabled: `Nat.choose_eq_one_iff` characterizes when `choose n k = 1`.
 Trivializes boundary-value exercises. -/
 TheoremDoc Nat.choose_eq_one_iff as "Nat.choose_eq_one_iff" in "Choose"
+
+/-- Disabled: `Nat.choose_two_right` gives the closed form
+`Nat.choose n 2 = n * (n - 1) / 2`. Bypasses subset counting
+and symmetry arguments. -/
+TheoremDoc Nat.choose_two_right as "Nat.choose_two_right" in "Choose"
