@@ -174,5 +174,5 @@ Produce COMPLETE files:
 Write all files to the course directory:
 - `{course}/Game/Levels/{WorldName}/*.lean` — level files
 - `{course}/Game/Levels/{WorldName}.lean` — world base file
-- Update `{course}/Game.lean` — add imports and dependencies
+- Update `{course}/Game.lean` — add imports and dependencies. **For dependencies: read the "World Dependency DAG" section in PLAN.md and use exactly the edges specified there.** Do NOT chain your world onto the previous world by default. The DAG has parallel paths and cross-phase edges — follow them precisely.
 
