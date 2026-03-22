@@ -19,6 +19,7 @@ import Game.Levels.FinsetInduction
 import Game.Levels.SummationFormulas
 import Game.Levels.PsetBigOp
 import Game.Levels.BinomialCoefficients
+import Game.Levels.Powerset
 
 Title "Finite Mathematics"
 Introduction
@@ -60,5 +61,6 @@ Dependency FinsetInduction → PsetBigOp
 -- Phase 5: Combinatorics (cross-phase dependencies)
 Dependency SummationFormulas → BinomialCoefficients
 Dependency Cardinality → BinomialCoefficients
+Dependency BinomialCoefficients → Powerset
 
 MakeGame

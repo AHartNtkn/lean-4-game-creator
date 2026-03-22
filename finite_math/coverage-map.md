@@ -27,7 +27,7 @@ Prerequisite: NNG4-level Lean fluency (`rw`, `exact`, `apply`, `intro`, `inducti
 | `Finset.image`, `Finset.map` | core | I S R G | Forward images |
 | `Finset.card` — cardinality | core | I S R G T | Counting |
 | `Finset.range n` | core | I S R G | The finset `{0, ..., n-1}` |
-| `Finset.powerset`, `Finset.powersetCard` | core | I S R G | Subsets and k-subsets |
+| `Finset.powerset`, `Finset.powersetCard` | core | I S R G | Subsets and k-subsets. **Covered in Powerset world (W20, 27 levels)**: `Finset.powerset` (L01), `mem_powerset` (L01-L09, L24, L27), `card_powerset` (L12-L13), `powersetCard` (L15), `mem_powersetCard` (L15-L16), `card_powersetCard` (L17-L23, L25, L27), `sdiff_subset` (L09), `card_sdiff_of_subset` (L10), `sdiff_sdiff_eq_self` (L11), `powersetCard_zero` (L20) |
 | `Finset.product` — cartesian product | core | I S R G | Product constructions |
 | `Finset.sigma` — dependent product | supporting | I S R | Dependent pairs over finsets |
 | `Finset.diag`, `Finset.offDiag` | supporting | I S | Diagonal/off-diagonal pairs |

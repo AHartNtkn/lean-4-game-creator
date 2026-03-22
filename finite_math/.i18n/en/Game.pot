@@ -118,6 +118,10 @@ msgid "First, extract the witness from §0. Use\n"
 "§1 to unwrap the existential."
 msgstr ""
 
+#: Game.Levels.Powerset.L16_PowersetCardExtract
+msgid "A member of powersetCard k s is also in the powerset of s."
+msgstr ""
+
 #: Game.Levels.Cardinality.L20_SubsetUniv
 msgid "Any finset of Fin 4 has at most 4 elements."
 msgstr ""
@@ -242,6 +246,12 @@ msgid "§0 then unfold sdiff in each case.\n"
 "In §6: same pattern with §7."
 msgstr ""
 
+#. §0: `h : s ⊆ t`
+#: Game.Levels.Powerset.L05_MemberImpliesSubset
+#: Game.Levels.Powerset.L07_PowersetMonoConverse
+msgid "Now §0, which is exactly the goal."
+msgstr ""
+
 #. §0: `0 = Nat.choose 1 2`
 #. §1: $1 < 2$
 #. §2: `Nat.choose 1 2 = 0`
@@ -262,6 +272,14 @@ msgid "§0 proves that for §1 on a\n"
 "finite type, injectivity is equivalent to surjectivity.\n"
 "\n"
 "Disabled in the capstone level where the learner should derive this."
+msgstr ""
+
+#. §0: `s ∈ s.powerset`
+#. §1: `have`
+#. §2: `rw [Finset.mem_powerset]`
+#: Game.Levels.Powerset.L07_PowersetMonoConverse
+msgid "First, establish that §0. Use §1 to state\n"
+"this and prove it with §2 (the Level 2 pattern)."
 msgstr ""
 
 #. §0: `0`
@@ -570,6 +588,16 @@ msgid "# The Sum of Squares Formula\n"
 "is heavier, but §6 handles it all."
 msgstr ""
 
+#. §0: `Finset.mem_powerset_self s`
+#. §1: `s ∈ s.powerset`
+#. §2: `mem_powerset`
+#: Game.Metadata
+msgid "§0 proves §1 directly.\n"
+"\n"
+"Disabled in levels where the learner should prove this by rewriting with\n"
+"§2."
+msgstr ""
+
 #. §0: `use 2; rw [Finset.mem_insert]; left; rfl`
 #: Game.Levels.FinsetBasics.L18_Boss
 msgid "§0\n"
@@ -669,6 +697,13 @@ msgid "# Cardinality of Range\n"
 "**Your task**: Prove that §4 has 3 more elements than §5."
 msgstr ""
 
+#. §0: `h : s ∈ t.powerset`
+#. §1: `rw [Finset.mem_powerset] at h`
+#: Game.Levels.Powerset.L05_MemberImpliesSubset
+msgid "The hypothesis §0 contains a subset fact\n"
+"in disguise. Use §1 to unwrap it."
+msgstr ""
+
 #. §0: `2 = 2 ∨ 2 ∈ [3]`
 #: Game.Levels.AbstractionLadder.L03_ListMembership
 msgid "The goal is §0. The left branch is immediate."
@@ -718,6 +753,49 @@ msgstr ""
 
 #: Game.Levels.BigOpIntro.L05_ThreeElementSum
 msgid "A Three-Element Sum"
+msgstr ""
+
+#. §0: `s \\ t`
+#. §1: `s`
+#. §2: `t`
+#. §3: `k`
+#. §4: `t ⊆ s`
+#. §5: `s \\ t`
+#. §6: `s.card - t.card`
+#. §7: `k`
+#. §8: `n`
+#. §9: `n - k`
+#. §10: `k`
+#. §11: `(n-k)`
+#. §12: `k`
+#. §13: `n-k`
+#. §14: `ht : t ∈ s.powerset`
+#. §15: `(s \\ t).card = s.card - t.card`
+#. §16: `t ⊆ s`
+#. §17: `Finset.card_sdiff_of_subset`
+#: Game.Levels.Powerset.L10_ComplementCard
+msgid "# How Big Is the Complement?\n"
+"\n"
+"In Level 9, you proved that the complement §0 is in the powerset\n"
+"of §1. Now let's count: how many elements does the complement have?\n"
+"\n"
+"If §2 has §3 elements and §4, then §5 has §6\n"
+"elements — you remove §7 elements from an §8-element set, leaving\n"
+"§9.\n"
+"\n"
+"This is the counting fact that makes the complement map work as a\n"
+"bijection: it pairs each §10-element subset with an §11-element\n"
+"subset. Without this cardinality result, the claim that 'choosing\n"
+"§12 to include is the same as choosing §13 to exclude' is just\n"
+"hand-waving.\n"
+"\n"
+"**Your task**: Given §14, prove\n"
+"§15.\n"
+"\n"
+"Strategy:\n"
+"1. Extract §16 from powerset membership (Level 5 pattern)\n"
+"2. Apply §17 — the cardinality of a set\n"
+"   difference when the subtracted set is a subset"
 msgstr ""
 
 #. §0: `hy : y ∈ (s ∩ t).image f`
@@ -941,6 +1019,12 @@ msgstr ""
 #. §0: `n`
 #: Game.Levels.SummationFormulas.L01_ConstantSum
 msgid "This is a natural number induction proof. Induct on §0."
+msgstr ""
+
+#. §0: `s ⊆ t`
+#. §1: `hsub`
+#: Game.Levels.Powerset.L15_MeetPowersetCard
+msgid "**Left goal**: §0. This is your hypothesis §1."
 msgstr ""
 
 #. §0: `prod_insert`
@@ -1285,6 +1369,35 @@ msgstr ""
 msgid "Permuted nodup lists give finsets with card equal to the original length."
 msgstr ""
 
+#. §0: `t`
+#. §1: `s`
+#. §2: `t`
+#. §3: `s`
+#. §4: `t`
+#. §5: `s`
+#. §6: $$t \\in \\mathcal{P}(s) \\implies |t| \\leq |s|$$
+#. §7: `mem_powerset`
+#. §8: `t ⊆ s`
+#. §9: `Finset.card_le_card`
+#. §10: `t.card ≤ s.card`
+#. §11: `ht : t ∈ s.powerset`
+#. §12: `t.card ≤ s.card`
+#: Game.Levels.Powerset.L24_SubsetBound
+msgid "# Subset Cardinality Bound\n"
+"\n"
+"If §0 is in the powerset of §1, then §2 is a subset of §3,\n"
+"so §4 can't have more elements than §5. This is the bound:\n"
+"\n"
+"§6\n"
+"\n"
+"This combines two things you know:\n"
+"- §7 to extract §8\n"
+"- §9 (from the Cardinality world) to conclude\n"
+"  §10\n"
+"\n"
+"**Your task**: Given §11, prove §12."
+msgstr ""
+
 #. §0: `Fin.lastCases`
 #. §1: `Fin (n + 1)`
 #. §2: `Fin.last n`
@@ -1463,6 +1576,65 @@ msgstr ""
 #. §1: `m`
 #: Game.Levels.MeetFin.L18_CaseAnalysisPractice
 msgid "Now §0. One more case split on §1."
+msgstr ""
+
+#. §0: `card_powersetCard`
+#. §1: `choose_self`
+#. §2: $n$
+#. §3: $n$
+#. §4: $\\binom{n}{n} = 1$
+#. §5: $k$
+#. §6: $\\binom{n}{k}$
+#. §7: `∅`
+#. §8: $n$
+#. §9: $n$
+#. §10: `s`
+#. §11: $n$
+#. §12: $\\binom{n}{k}$
+#. §13: $\\binom{n}{0} = \\binom{n}{n} = 1$
+#. §14: $\\binom{n}{k} = \\binom{n}{n-k}$
+#. §15: $s$
+#. §16: `powersetCard 0 s`
+#. §17: `powersetCard 1 s`
+#. §18: `powersetCard n s`
+#. §19: $$\\sum_{k=0}^{n} \\binom{n}{k} = 2^n$$
+#. §20: `card_powerset`
+#. §21: $2^n$
+#. §22: `card_powersetCard`
+#. §23: $\\binom{n}{k}$
+#. §24: $k$
+#. §25: $2^n$
+#: Game.Levels.Powerset.L22_FullSetSubset
+msgid "Two rewrites: §0 then §1.\n"
+"\n"
+"The only §2-element subset of an §3-element set is the set itself.\n"
+"This gives the boundary value §4.\n"
+"\n"
+"**Boundary trio complete**:\n"
+"| §5 | §6 | Meaning |\n"
+"|:-:|:-:|:--|\n"
+"| 0 | 1 | Only §7 has 0 elements (Level 19) |\n"
+"| 1 | §8 | Each element gives one singleton (Level 21) |\n"
+"| §9 | 1 | Only §10 itself has §11 elements (this level) |\n"
+"\n"
+"These three anchor points — the two endpoints and the linear case —\n"
+"ground the general formula §12 in concrete intuition.\n"
+"\n"
+"**Symmetry connection**: Notice that §13.\n"
+"This is an instance of the symmetry §14\n"
+"that the boss will use.\n"
+"\n"
+"**The powerset decomposes by size**: The powerset of §15 is the\n"
+"disjoint union of the sets §16, §17,\n"
+"..., §18 — one layer for each possible subset size.\n"
+"Adding up the sizes of these layers gives:\n"
+"\n"
+"§19\n"
+"\n"
+"This connects §20 (Level 12: §21 total subsets) to\n"
+"§22 (Level 17: §23 subsets of size §24).\n"
+"The total count §25 is the sum of the layer counts. You will\n"
+"prove this identity formally in the BinomialTheorem world."
 msgstr ""
 
 #. §0: `rw [Finset.mem_insert]`
@@ -2018,6 +2190,10 @@ msgid "§0 states that\n"
 "separate. Compare with §6 which deduplicates."
 msgstr ""
 
+#: Game.Levels.Powerset.L14_SingletonPowerset
+msgid "Powerset of a Singleton"
+msgstr ""
+
 #. §0: `Finset.prod_singleton`
 #. §1: `∏ x ∈ {a}, f x = f a`
 #. §2: ```
@@ -2265,6 +2441,24 @@ msgid "# Proving Nonempty\n"
 "from earlier levels.\n"
 "\n"
 "**Your task**: Prove that §10 is nonempty."
+msgstr ""
+
+#. §0: `s`
+#. §1: `s ⊆ s`
+#. §2: `s ∈ s.powerset`
+#. §3: `s ⊆ s`
+#: Game.Levels.Powerset.L02_SelfMembership
+msgid "# Self-Membership\n"
+"\n"
+"Level 1 showed that the empty set is always in the powerset.\n"
+"The other natural endpoint is the set itself: every set §0\n"
+"is a member of its own powerset, because §1.\n"
+"\n"
+"**Your task**: Prove §2.\n"
+"\n"
+"Strategy: rewrite powerset membership into a subset claim\n"
+"(as in Level 1). This time, the subset claim §3 is\n"
+"reflexively true — Lean closes it automatically."
 msgstr ""
 
 #: Game.Levels.SummationFormulas.L09_ProductBasics
@@ -2552,6 +2746,26 @@ msgid "Resolve the abstract domain and decompose the product:\n"
 "§0."
 msgstr ""
 
+#. §0: `∅ ∈ s.powerset`
+#. §1: `mem_powerset`
+#. §2: `∅ ⊆ s`
+#. §3: `empty_subset`
+#. §4: `t ∈ s.powerset`
+#. §5: `mem_powerset`
+#. §6: `t ⊆ s`
+#: Game.Levels.Powerset.L01_EmptyInPowerset
+msgid "You proved §0 by:\n"
+"1. Rewriting with §1 to get §2\n"
+"2. Applying §3\n"
+"\n"
+"**Reusable recipe**: To prove §4, rewrite with\n"
+"§5 to convert to §6, then prove the subset claim.\n"
+"This is the fundamental pattern for all powerset reasoning.\n"
+"\n"
+"In ordinary math: the empty set is a subset of every set, so it\n"
+"appears in every powerset."
+msgstr ""
+
 #: Game.Levels.FinsetBasics.L17_DecideShortcut
 msgid "Decide closes concrete membership goals automatically."
 msgstr ""
@@ -2593,6 +2807,32 @@ msgid "§0 is empty — it has no members. This directly\n"
 "induction on finset ranges."
 msgstr ""
 
+#. §0: $\\binom{n}{0} = 1$
+#. §1: $\\binom{n}{1} = n$
+#. §2: $\\binom{n}{n} = 1$
+#. §3: $n$
+#. §4: $n$
+#. §5: `(Finset.powersetCard s.card s).card = 1`
+#. §6: `card_powersetCard`
+#. §7: `Nat.choose`
+#. §8: `Nat.choose_self`
+#. §9: $\\binom{n}{n} = 1$
+#: Game.Levels.Powerset.L22_FullSetSubset
+msgid "# The k=n Boundary\n"
+"\n"
+"Level 19 showed §0: only the empty set has 0 elements.\n"
+"Level 21 showed §1: each element gives one singleton.\n"
+"\n"
+"Now complete the boundary trio with §2: the only\n"
+"§3-element subset of an §4-element set is the set itself.\n"
+"\n"
+"**Your task**: Prove §5.\n"
+"\n"
+"This follows the same two-rewrite pattern as Levels 19 and 21:\n"
+"- §6 to convert to §7\n"
+"- §8 to simplify §9"
+msgstr ""
+
 #. §0: `α ⊕ β → γ`
 #. §1: $$|\\alpha \\oplus \\beta \\to \\gamma| = |\\gamma|^{|\\alpha| + |\\beta|}$$
 #. §2: `m = 2`
@@ -2631,6 +2871,35 @@ msgstr ""
 #: Game.Levels.FinsetBasics.L10_FinsetToFinBridge
 msgid "Convert §0 from set membership to an inequality:\n"
 "§1."
+msgstr ""
+
+#. §0: $n$
+#. §1: $2^n$
+#. §2: $n$
+#. §3: $2 \\times 2 \\times \\cdots \\times 2 = 2^n$
+#. §4: `Finset.card_powerset : (s.powerset).card = 2 ^ s.card`
+#. §5: `s`
+#. §6: `s.card = 3`
+#. §7: `s.powerset`
+#. §8: `card_powerset`
+#. §9: $2^n$
+#: Game.Levels.Powerset.L12_CardPowerset
+msgid "# How Many Subsets?\n"
+"\n"
+"A set with §0 elements has §1 subsets. This is one of the most\n"
+"fundamental facts in combinatorics.\n"
+"\n"
+"The intuition: for each of the §2 elements, you independently\n"
+"choose *in* or *out* — that's 2 choices per element, giving\n"
+"§3 total subsets.\n"
+"\n"
+"In Lean, this is:\n"
+"\n"
+"§4\n"
+"\n"
+"**Your task**: Given a finset §5 with §6, prove that\n"
+"§7 has 8 elements. Use §8 to relate the\n"
+"powerset size to §9, then substitute the card."
 msgstr ""
 
 #. §0: `rw [Finset.sum_insert ha, Finset.sum_insert ha,`
@@ -3172,6 +3441,12 @@ msgid "# Bounding Cardinality via Univ\n"
 "4 elements."
 msgstr ""
 
+#. §0: `rw [Finset.card_insert_of_notMem h1]`
+#: Game.Levels.Cardinality.L08_ConcreteCardinality
+msgid "Now peel the insert layers using the non-membership proofs.\n"
+"§0."
+msgstr ""
+
 #. §0: `cases v with | zero | succ n`
 #. §1: `n`
 #: Game.Levels.FinTuples.L14_TuplesAsData
@@ -3236,12 +3511,6 @@ msgid "You've proved the **0/succ decomposition**: every element of\n"
 "(which handles §24 and §25 separately) is the natural way to\n"
 "define functions on §26, just as recursion on §27 and\n"
 "§28 is the natural way to define functions on §29."
-msgstr ""
-
-#. §0: `rw [Finset.card_insert_of_notMem h1]`
-#: Game.Levels.Cardinality.L08_ConcreteCardinality
-msgid "Now peel the insert layers using the non-membership proofs.\n"
-"§0."
 msgstr ""
 
 #: Game.Levels.FinsetOperations.L07_EqualityByAntisymmetry
@@ -3477,6 +3746,31 @@ msgid "Prove §0.\n"
 "with the function applied, then §2."
 msgstr ""
 
+#. §0: $$s \\subseteq t \\implies \\mathcal{P}(s) \\subseteq \\mathcal{P}(t)$$
+#. §1: $$\\mathcal{P}(s) \\subseteq \\mathcal{P}(t) \\implies s \\subseteq t$$
+#. §2: `constructor`
+#. §3: `iff`
+#. §4: `s.powerset ⊆ t.powerset ↔ s ⊆ t`
+#. §5: `constructor`
+#: Game.Levels.Powerset.L08_PowersetMonoIff
+msgid "# Combining Both Directions\n"
+"\n"
+"Level 6 proved the forward direction:\n"
+"§0\n"
+"\n"
+"Level 7 proved the converse:\n"
+"§1\n"
+"\n"
+"Now combine them into the full equivalence using §2\n"
+"to split an §3 goal into its two directions.\n"
+"\n"
+"**Your task**: Prove §4.\n"
+"\n"
+"The two directions are exactly the proofs from Level 7 (first)\n"
+"and Level 6 (second). Use §5 to split, then reproduce\n"
+"each direction."
+msgstr ""
+
 #. §0: `Fintype.card`
 #. §1: `card_fin`
 #. §2: `card (Fin n) = n`
@@ -3681,6 +3975,10 @@ msgid "The four pieces decompose as:\n"
 "Compute each in a §0 block, then §1."
 msgstr ""
 
+#: Game.Levels.Powerset.L15_MeetPowersetCard
+msgid "Subsets of a Given Size"
+msgstr ""
+
 #. §0: `card_union_add_card_inter`
 #. §1: `omega`
 #. §2: `decide`
@@ -3801,6 +4099,10 @@ msgstr ""
 #. §1: `constructor`
 #: Game.Levels.FinsetOperations.L25_Boss
 msgid "The goal is §0. Use §1 to split it."
+msgstr ""
+
+#: Game.Levels.Powerset.L05_MemberImpliesSubset
+msgid "Powerset Membership → Subset"
 msgstr ""
 
 #. §0: `.isLt`
@@ -4075,6 +4377,13 @@ msgstr ""
 
 #: Game.Levels.BinomialCoefficients.L01_BoundaryValues
 msgid "The boundary values: C(5,0) = 1 and C(5,5) = 1."
+msgstr ""
+
+#. §0: `s ⊆ t → s.powerset ⊆ t.powerset`
+#. §1: `intro h`
+#: Game.Levels.Powerset.L08_PowersetMonoIff
+msgid "**Backward direction**: Prove §0.\n"
+"Start with §1 to assume the subset."
 msgstr ""
 
 #. §0: `(l₁ ++ l₂).length = 7`
@@ -4438,6 +4747,10 @@ msgid "The double sum has §0 first, §1 second. But\n"
 "§2 has §3 first. Use §4 to swap."
 msgstr ""
 
+#: Game.Levels.Powerset.L10_ComplementCard
+msgid "The complement of a subset has the expected cardinality."
+msgstr ""
+
 #. §0: `sup_inf_self`
 #. §1: `a ⊔ (a ⊓ b) = a`
 #. §2: `s ∪ (s ∩ t) = s`
@@ -4597,6 +4910,37 @@ msgstr ""
 msgid "C(7, 1) = 7: there are 7 ways to choose 1 item from 7."
 msgstr ""
 
+#. §0: `Finset.powersetCard_zero`
+#: Game.Levels.Powerset.L20_PowersetCardZero
+msgid "The Mathlib lemma §0 states this\n"
+"directly. Apply it."
+msgstr ""
+
+#. §0: $(\\text{powersetCard}\\ 0\\ s).\\text{card} = 1$
+#. §1: `∅`
+#. §2: `Finset.powersetCard_zero : powersetCard 0 s = {∅}`
+#. §3: `∅`
+#. §4: `Finset.powersetCard 0 s = {∅}`
+#: Game.Levels.Powerset.L20_PowersetCardZero
+msgid "# What Is the Only 0-Element Subset?\n"
+"\n"
+"Level 19 proved that there is exactly one 0-element subset of any\n"
+"set: §0.\n"
+"\n"
+"But *which* subset is it? The empty set §1, of course — it is the\n"
+"only set with zero elements. The formal statement is:\n"
+"\n"
+"§2\n"
+"\n"
+"This identifies the unique element (not just counts to 1). The\n"
+"distinction matters: *counting* tells you 'there is exactly one,'\n"
+"while *identifying* tells you 'and it is §3.'\n"
+"\n"
+"**Your task**: Prove §4.\n"
+"\n"
+"This is a retrieval level: find the right lemma and apply it."
+msgstr ""
+
 #. §0: `le_antisymm`
 #. §1: `a ≤ b → b ≤ a → a = b`
 #. §2: `≤`
@@ -4631,6 +4975,29 @@ msgstr ""
 
 #: Game.Levels.BinomialCoefficients.L09_FactorialFormula
 msgid "The factorial formula: C(5,2) * 2! * 3! = 5!."
+msgstr ""
+
+#. §0: `exact Finset.powersetCard_zero s`
+#. §1: `∅`
+#. §2: $\\binom{n}{0} = 1$
+#. §3: `powersetCard 0 s = {∅}`
+#. §4: $\\binom{n}{n} = 1$
+#. §5: $n$
+#. §6: $s$
+#: Game.Levels.Powerset.L20_PowersetCardZero
+msgid "One step: §0.\n"
+"\n"
+"Level 19 told you *how many* 0-element subsets there are (one).\n"
+"This level tells you *which one* it is (§1).\n"
+"\n"
+"This distinction between counting and identifying recurs throughout\n"
+"combinatorics:\n"
+"- §2 (count) vs §3 (identity)\n"
+"- §4 (count) vs 'the only §5-element subset is §6 itself' (identity)\n"
+"\n"
+"The counting facts are what the boss needs for arithmetic. The\n"
+"identification facts are what you need for understanding *why*\n"
+"the arithmetic works."
 msgstr ""
 
 #. §0: `Finset.mem_image_of_mem f h`
@@ -4990,6 +5357,10 @@ msgid "§0 states that §1:\n"
 "the cardinality of the universal finset equals the type's cardinality."
 msgstr ""
 
+#: Game.Levels.Powerset.L11_ComplementInvolution
+msgid "The double complement of a subset of s returns the original set."
+msgstr ""
+
 #. §0: `trivial`
 #. §1: `rfl`
 #. §2: `exact True.intro`
@@ -5156,6 +5527,14 @@ msgid "§0 performs structural induction on an inductive type.\n"
 "## Key detail\n"
 "The §3 clause selects which induction principle to use.\n"
 "Without §4, Lean picks the default recursor for the type."
+msgstr ""
+
+#. §0: `h`
+#. §1: `2 ^ 0`
+#. §2: `1`
+#: Game.Levels.Powerset.L13_PowersetEmptySet
+msgid "Now §0 says the count equals §1, which Lean reduces\n"
+"to §2. The hypothesis matches the goal."
 msgstr ""
 
 #. §0: `absurd`
@@ -5394,6 +5773,13 @@ msgstr ""
 msgid "The goal is §0. Use §1 since §2."
 msgstr ""
 
+#. §0: `∅ ⊆ s`
+#. §1: `Finset.empty_subset`
+#: Game.Levels.Powerset.L01_EmptyInPowerset
+msgid "Now the goal is §0 — the empty set is a subset of\n"
+"everything. The lemma §1 says exactly this."
+msgstr ""
+
 #. §0: `have hsimp : ∏ x ∈ (... : Finset ℕ), f x = ∏ x ∈ (... : Finset ℕ), x := by
 #. apply Finset.prod_congr rfl; exact hf`
 #. §1: `rw [hsimp]`
@@ -5515,6 +5901,13 @@ msgid "Part 1: determine §0 using cons reconstruction.\n"
 "followed by §3 and §4."
 msgstr ""
 
+#. §0: `Finset.card_powersetCard`
+#. §1: `exact`
+#: Game.Levels.Powerset.L17_CardPowersetCard
+msgid "The goal directly matches the statement of\n"
+"§0. You can close it with §1."
+msgstr ""
+
 #. §0: `rw [hf, hg]`
 #. §1: `(3 : Fin 5) = (8 : Fin 5)`
 #: Game.Levels.PsetFin.L10_ModularEquality
@@ -5608,6 +6001,15 @@ msgstr ""
 msgid "Algebraic Simplification with ring"
 msgstr ""
 
+#. §0: `ht : t ⊆ s`
+#. §1: `(s \\ t).card = s.card - t.card`
+#. §2: `Finset.card_sdiff_of_subset`
+#: Game.Levels.Powerset.L10_ComplementCard
+msgid "Now §0. The goal is §1.\n"
+"The lemma §2 gives exactly this when the\n"
+"subtracted set is a subset."
+msgstr ""
+
 #: Game.Levels.BigOpAlgebra.L02_ProdMulDistrib
 msgid "Now substitute the known values."
 msgstr ""
@@ -5677,6 +6079,15 @@ msgstr ""
 #: Game.Levels.MeetFin.L17_TwoElements
 msgid "Now §0. Choose the right disjunct with §1,\n"
 "then close with §2."
+msgstr ""
+
+#. §0: `∅ ∈ s.powerset`
+#. §1: `s`
+#. §2: `Finset.mem_powerset`
+#: Game.Levels.Powerset.L01_EmptyInPowerset
+msgid "The goal is §0. This asks: is the empty set a\n"
+"subset of §1? Use §2 to convert the powerset\n"
+"membership into a subset statement."
 msgstr ""
 
 #. §0: `rw [Finset.sum_singleton]`
@@ -5938,6 +6349,41 @@ msgid "§0 peels one term off the top of a range sum:\n"
 "SummationFormulas worlds."
 msgstr ""
 
+#. §0: $s = \\{1, 2\\}$
+#. §1: $\\emptyset$
+#. §2: $\\{1\\}$
+#. §3: $\\{2\\}$
+#. §4: $\\{1, 2\\}$
+#. §5: $2^2 = 4$
+#. §6: $2 \\times 2 = 4$
+#. §7: `({1, 2} : Finset Nat).powerset`
+#: Game.Levels.Powerset.L03_ConcretePowerset
+msgid "# What Does a Powerset Look Like?\n"
+"\n"
+"Before diving deeper into abstract proofs, let's ground the powerset\n"
+"in a concrete example.\n"
+"\n"
+"Consider §0. Its powerset contains every possible\n"
+"sub-collection:\n"
+"\n"
+"| Subset | Size |\n"
+"|:-:|:-:|\n"
+"| §1 | 0 |\n"
+"| §2 | 1 |\n"
+"| §3 | 1 |\n"
+"| §4 | 2 |\n"
+"\n"
+"That's 4 subsets total — matching the formula §5.\n"
+"\n"
+"For each element, you independently choose *in* or *out*:\n"
+"- Element 1: in or out (2 choices)\n"
+"- Element 2: in or out (2 choices)\n"
+"- Total: §6 subsets\n"
+"\n"
+"**Your task**: Verify that §7 has\n"
+"exactly 4 elements. Lean can compute this directly."
+msgstr ""
+
 #. §0: `sum_range_succ`
 #. §1: `range (n+2)`
 #. §2: `(∑ range (n+1)) + (n+1)`
@@ -5992,6 +6438,40 @@ msgstr ""
 #. §0: `cases n with | zero | succ m`
 #: Game.Levels.FinTuples.L18_ProvingTupleEquality
 msgid "Continue splitting: §0"
+msgstr ""
+
+#. §0: `have h := card_powersetCard 2 s`
+#. §1: `rw [hs] at h`
+#. §2: `exact h`
+#. §3: `have`
+#. §4: `rw at h`
+#. §5: `exact h`
+#. §6: `have h := structure_lemma args`
+#. §7: `rw [known_value] at h`
+#. §8: `exact h`
+#. §9: $\\binom{5}{2} = \\frac{5!}{2! \\cdot 3!} = \\frac{120}{2 \\cdot 6} = 10$
+#: Game.Levels.Powerset.L25_ConcreteCount
+msgid "Three steps: §0, §1, §2.\n"
+"\n"
+"This is the same §3 + §4 + §5 pattern from\n"
+"Level 12 (counting all subsets). This pattern has appeared three\n"
+"times now (Levels 12, 13, and this level). Let's name it:\n"
+"\n"
+"**The instantiate-and-rewrite pattern**:\n"
+"1. §6 — bring a general identity\n"
+"   into the context as a concrete hypothesis\n"
+"2. §7 — specialize it using known data\n"
+"3. §8 — close the goal with the specialized hypothesis\n"
+"\n"
+"Use this pattern whenever the structure lemma does not directly\n"
+"match the goal (because the goal has concrete values while the\n"
+"lemma is stated generally). It is the workhorse for computing\n"
+"specific counts from general formulas.\n"
+"\n"
+"**Sanity check**: §9. ✓\n"
+"\n"
+"The boss uses this pattern but also applies identities from the\n"
+"BinomialCoefficients world."
 msgstr ""
 
 #. §0: $$\\sum_{x \\in s} \\bigl(f(x) + g(x)\\bigr) = \\sum_{x \\in s} f(x) + \\sum_{x \\in s} g(x)$$
@@ -6089,6 +6569,38 @@ msgid "# Fin in Action: Indexing Concrete Data\n"
 "determine which of the three hypotheses closes the goal."
 msgstr ""
 
+#. §0: `decide`
+#. §1: $\\{1, 2, 3\\}$
+#. §2: `powersetCard 2 {1, 2, 3} = {{1, 2}, {1, 3}, {2, 3}}`
+#. §3: $\\binom{3}{2} = 3$
+#. §4: `card_powersetCard`
+#. §5: `powerset`
+#. §6: `powersetCard`
+#. §7: `powerset {1,2,3}`
+#. §8: $2^3 = 8$
+#. §9: `powersetCard 2 {1,2,3}`
+#. §10: $\\binom{3}{2} = 3$
+#. §11: $|\\mathcal{P}(s)| = \\sum_{k=0}^{n} |\\text{powersetCard}\\ k\\ s|
+#. = \\sum_{k=0}^{n} \\binom{n}{k} = 2^n$
+#: Game.Levels.Powerset.L18_ConcretePowersetCard
+msgid "One step: §0.\n"
+"\n"
+"Lean computed the 2-element subsets of §1:\n"
+"- §2\n"
+"- Count: 3 = 3. ✓\n"
+"\n"
+"This matches §3, which §4 (Level 17)\n"
+"stated abstractly. Now you have seen both the abstract formula and the\n"
+"concrete enumeration.\n"
+"\n"
+"**Comparing §5 and §6**:\n"
+"- §7 has §8 elements (all subsets, any size)\n"
+"- §9 has §10 elements (only size-2 subsets)\n"
+"\n"
+"The powerset is the union of all powersetCard layers:\n"
+"§11"
+msgstr ""
+
 #. §0: `sum_add_distrib`
 #. §1: `← card_eq_sum_ones`
 #. §2: `∑ 1`
@@ -6116,6 +6628,14 @@ msgstr ""
 #: Game.Levels.PsetFin.L17_Pigeonhole
 msgid "Both §0 and §1 map to §2 — collision at indices 0 and 1.\n"
 "Provide the witnesses and prove the conjunction."
+msgstr ""
+
+#. §0: `ht : t ⊆ s ∧ t.card = 2`
+#. §1: `t ∈ s.powerset`
+#. §2: `mem_powerset`
+#: Game.Levels.Powerset.L16_PowersetCardExtract
+msgid "Now §0. The goal is §1.\n"
+"Rewrite the goal to a subset claim using §2."
 msgstr ""
 
 #: Game.Levels.MeetFin
@@ -6638,6 +7158,12 @@ msgstr ""
 msgid "Every tuple equals its head prepended to its tail."
 msgstr ""
 
+#. §0: `s.card = 2`
+#. §1: `hcard`
+#: Game.Levels.Powerset.L15_MeetPowersetCard
+msgid "**Right goal**: §0. This is your hypothesis §1."
+msgstr ""
+
 #. §0: `hg`
 #. §1: `rw [hg, Fin.cons_val_succ]`
 #: Game.Levels.FinTuples.L05_ConsAccessLemmas
@@ -6804,6 +7330,14 @@ msgid "You just proved that §0 is a **consequence** of\n"
 "true gives you deeper understanding."
 msgstr ""
 
+#. §0: `s \\ t ⊆ s`
+#. §1: `s`
+#. §2: `Finset.sdiff_subset`
+#: Game.Levels.Powerset.L09_ComplementInPowerset
+msgid "The goal is §0. The set difference removes elements\n"
+"from §1, so the result is always a subset. Use §2."
+msgstr ""
+
 #. §0: `hfun : ... = 625`
 #. §1: `hinj : ... = 120`
 #. §2: `omega`
@@ -6840,6 +7374,12 @@ msgid "# When There Are No Cases\n"
 "**Your task**: Prove that every element of §4 satisfies an\n"
 "arbitrary predicate §5. Since there are no elements, there's\n"
 "nothing to verify."
+msgstr ""
+
+#. §0: `powersetCard`
+#: Game.Levels.Powerset.L27_Boss
+msgid "Now convert the first §0 cardinality to a\n"
+"binomial coefficient."
 msgstr ""
 
 #: Game.Levels.FinTuples.L05_ConsAccessLemmas
@@ -7082,6 +7622,36 @@ msgstr ""
 msgid "{1, 2, 3} has exactly 3 elements."
 msgstr ""
 
+#. §0: `{1, 2}`
+#. §1: $2^2 = 4$
+#. §2: `∅`
+#. §3: $2^0 = 1$
+#. §4: `{1}`
+#. §5: $2^1 = 2$
+#. §6: `(({1} : Finset ℕ).powerset).card = 2`
+#: Game.Levels.Powerset.L14_SingletonPowerset
+msgid "# Base Case: 1 Element, 2 Subsets\n"
+"\n"
+"Level 3 showed that §0 has 4 subsets (§1).\n"
+"Level 13 showed that §2 has 1 subset (§3).\n"
+"\n"
+"Now fill in the gap: a singleton set §4 has exactly 2 subsets\n"
+"(§5) — the empty set and the set itself.\n"
+"\n"
+"This completes the base-case picture:\n"
+"| Elements | Subsets |\n"
+"|:-:|:-:|\n"
+"| 0 | 1 |\n"
+"| 1 | 2 |\n"
+"| 2 | 4 |\n"
+"\n"
+"Each time you add an element, the subset count doubles — every\n"
+"existing subset either includes or excludes the new element.\n"
+"\n"
+"**Your task**: Prove §6.\n"
+"Lean can compute this directly."
+msgstr ""
+
 #. §0: `rw [Fintype.card_fun]`
 #: Game.Levels.CountingTypes.L02_EquivWarmUp
 msgid "Start with §0 to decompose the function type."
@@ -7176,6 +7746,10 @@ msgid "If §0, choose the left side:\n"
 "§1."
 msgstr ""
 
+#: Game.Levels.Powerset.L22_FullSetSubset
+msgid "Every finset has exactly one subset of the same size: itself."
+msgstr ""
+
 #. §0: `Finset.prod_range_zero`
 #. §1: `∏ k ∈ Finset.range 0, f k = 1`
 #. §2: ```
@@ -7212,6 +7786,38 @@ msgstr ""
 msgid "Under injectivity, the intersection of images is contained in the image of intersection."
 msgstr ""
 
+#. §0: $$s \\subseteq t \\iff \\mathcal{P}(s) \\subseteq \\mathcal{P}(t)$$
+#. §1: `constructor`
+#. §2: `constructor`
+#. §3: `Finset.powerset_mono`
+#. §4: `s ∈ s.powerset`
+#: Game.Levels.Powerset.L08_PowersetMonoIff
+msgid "You proved the full equivalence:\n"
+"\n"
+"§0\n"
+"\n"
+"The powerset operation is an **order embedding**: it exactly\n"
+"preserves the subset ordering. This is a deeper structural fact\n"
+"than either direction alone.\n"
+"\n"
+"**Proof structure**:\n"
+"- §1 splits the iff into two implications\n"
+"- Forward direction: the Level 7 witness argument\n"
+"- Backward direction: the Level 6 monotonicity argument\n"
+"\n"
+"**Pattern**: When you've proved both directions of an equivalence\n"
+"in separate levels, §2 lets you combine them. This\n"
+"pattern appears throughout mathematics: prove the forward and\n"
+"reverse implications, then package them as an iff.\n"
+"\n"
+"**Library comparison**: Mathlib packages this equivalence as\n"
+"§3. Your multi-step proof established both\n"
+"directions from first principles. The library version is the\n"
+"one-liner, but now you understand *why* it's true — the forward\n"
+"direction chains subset hypotheses, and the converse uses the\n"
+"witness §4."
+msgstr ""
+
 #. §0: `f`
 #. §1: `prod_congr`
 #. §2: `f x`
@@ -7236,6 +7842,41 @@ msgstr ""
 
 #: Game.Levels.AbstractionLadder.L13_NodupDistinct
 msgid "Nodup: Two Distinct Elements"
+msgstr ""
+
+#. §0: `t`
+#. §1: `t.card`
+#. §2: `(n - t.card)`
+#. §3: $$|\\text{powersetCard}\\ (\\text{t.card})\\ s| + |\\text{powersetCard}\\ (n - \\text{t.card})\\ s| = 2 \\cdot \\binom{n}{\\text{t.card}}$$
+#. §4: `rw [Finset.mem_powerset] at ...`
+#. §5: `t ⊆ s`
+#. §6: `Finset.card_le_card`
+#. §7: `t.card`
+#. §8: `s.card`
+#. §9: `rw [hs] at ...`
+#. §10: `Finset.card_powersetCard`
+#. §11: `choose`
+#. §12: `Nat.choose_symm ...`
+#. §13: `ring`
+#: Game.Levels.Powerset.L27_Boss
+msgid "# Boss: Counting Complements\n"
+"\n"
+"Given a powerset member §0, its cardinality is bounded by the set\n"
+"size. This bound is the key to the symmetry identity: the number of\n"
+"§1-element subsets equals the number of §2-element\n"
+"subsets.\n"
+"\n"
+"Prove the formal version:\n"
+"\n"
+"§3\n"
+"\n"
+"**What you need** (all from this world and prior worlds):\n"
+"- §4 — extract §5 (Level 5)\n"
+"- §6 — bound §7 by §8 (Level 24)\n"
+"- §9 — substitute card value\n"
+"- §10 — convert subset counts to §11 (Level 17)\n"
+"- §12 — the binomial symmetry (Level 26)\n"
+"- §13 — close the arithmetic (BigOpAlgebra)"
 msgstr ""
 
 #. §0: `f`
@@ -7357,6 +7998,31 @@ msgid "Provide the witness §0 with §1.\n"
 "§3."
 msgstr ""
 
+#. §0: `powerset`
+#. §1: `powersetCard`
+#. §2: $\\{1, 2, 3\\}$
+#. §3: $\\{1, 2\\}$
+#. §4: $\\{1, 3\\}$
+#. §5: $\\{2, 3\\}$
+#. §6: $\\binom{3}{2} = 3$
+#. §7: `(Finset.powersetCard 2 ({1, 2, 3} : Finset ℕ)).card = 3`
+#: Game.Levels.Powerset.L18_ConcretePowersetCard
+msgid "# What Does PowersetCard Look Like?\n"
+"\n"
+"Level 3 grounded §0 with a concrete computation. Now do the\n"
+"same for §1.\n"
+"\n"
+"Consider the set §2. Its 2-element subsets are:\n"
+"- §3\n"
+"- §4\n"
+"- §5\n"
+"\n"
+"That is 3 subsets, matching §6.\n"
+"\n"
+"**Your task**: Verify that §7.\n"
+"Lean can compute this directly."
+msgstr ""
+
 #: Game.Levels.FinNavigation.L14_Surjectivity
 msgid "castSucc Surjectivity"
 msgstr ""
@@ -7422,6 +8088,28 @@ msgstr ""
 #: Game.Levels.MeetFin.L12_BeyondConcreteTypes
 msgid "Now §0 says §1, which means §2.\n"
 "§3 handles this conversion."
+msgstr ""
+
+#. §0: `card_powersetCard`
+#. §1: `choose_one_right`
+#. §2: $\\binom{n}{1} = n$
+#. §3: `choose_one_right`
+#. §4: $n$
+#. §5: $n$
+#. §6: $$|\\text{powersetCard}\\ k\\ s| = \\binom{|s|}{k}$$
+#: Game.Levels.Powerset.L21_SingletonSubsets
+msgid "Two rewrites: §0 then §1.\n"
+"\n"
+"This connects the **set-theoretic** fact (each element gives one\n"
+"singleton subset) to the **combinatorial** fact (§2).\n"
+"\n"
+"**Cross-world connection**: In the BinomialCoefficients world,\n"
+"§3 was a purely algebraic fact about the recursive\n"
+"definition. Now you see its counting meaning: choosing 1 item from\n"
+"§4 items can be done in §5 ways.\n"
+"\n"
+"This is the k=1 case of the general pattern:\n"
+"§6"
 msgstr ""
 
 #. §0: `aesop`
@@ -8111,6 +8799,11 @@ msgstr ""
 msgid "De Morgan's law: s \\\\ (t ∪ u) = (s \\\\ t) ∩ (s \\\\ u)."
 msgstr ""
 
+#. §0: `t ⊆ s`
+#: Game.Levels.Powerset.L11_ComplementInvolution
+msgid "First, extract §0 from powerset membership."
+msgstr ""
+
 #: Game.Levels.BigOpIntro.L10_CardAsSum
 msgid "Cardinality equals the sum of the constant function 1."
 msgstr ""
@@ -8210,6 +8903,10 @@ msgid "§0 states that §1 in any commutative monoid.\n"
 "\n"
 "Disabled in levels where the learner should use bijective counting\n"
 "(§2 + §3) rather than arithmetic commutativity."
+msgstr ""
+
+#: Game.Levels.Powerset.L06_PowersetMonotonicity
+msgid "Powerset Monotonicity"
 msgstr ""
 
 #. §0: `rw [Finset.mem_image] at hys`
@@ -8440,6 +9137,10 @@ msgstr ""
 msgid "castSucc and succ Never Agree"
 msgstr ""
 
+#: Game.Levels.Powerset.L16_PowersetCardExtract
+msgid "Extracting from PowersetCard"
+msgstr ""
+
 #. §0: `vecSnoc_last f x`
 #. §1: `vecSnoc f x (Fin.last n) = x`
 #: Game.Levels.FinTuples.L09_AppendingWithSnoc
@@ -8528,6 +9229,10 @@ msgstr ""
 msgid "The Gap: Non-Injective Functions"
 msgstr ""
 
+#: Game.Levels.Powerset.L20_PowersetCardZero
+msgid "The Unique Zero-Element Subset"
+msgstr ""
+
 #: Game.Levels.FinTuples.L11_InitSnocReconstruction
 msgid "Every tuple equals its init snoc'd with its last element."
 msgstr ""
@@ -8574,6 +9279,10 @@ msgid "§0 states that if §1 is\n"
 "\n"
 "Disabled in levels where the learner should derive cardinality bounds\n"
 "from explicit card_* lemmas rather than using injection shortcuts."
+msgstr ""
+
+#: Game.Levels.Powerset.L07_PowersetMonoConverse
+msgid "Powerset Monotonicity: The Converse"
 msgstr ""
 
 #. §0: `rw [← Finset.card_eq_sum_ones]`
@@ -8846,6 +9555,13 @@ msgstr ""
 msgid "Product Induction: Pulling Out a Constant"
 msgstr ""
 
+#. §0: `u`
+#. §1: `s.powerset`
+#: Game.Levels.Powerset.L08_PowersetMonoIff
+msgid "Now use the Level 6 pattern: introduce an element §0 of\n"
+"§1, convert both sides to subset claims, then chain."
+msgstr ""
+
 #. §0: `s`
 #. §1: `t`
 #. §2: `s`
@@ -8941,6 +9657,16 @@ msgid "§0\n"
 "\n"
 "This pattern — using §8 mid-computation — will return in the\n"
 "boss level, where the domain requires an equivalence to decompose."
+msgstr ""
+
+#. §0: `choose n t.card + choose n (n - t.card) = 2 * choose n t.card`
+#. §1: `Nat.choose_symm hle`
+#. §2: `choose n (n - t.card)`
+#. §3: `choose n t.card`
+#: Game.Levels.Powerset.L27_Boss
+msgid "The goal is §0.\n"
+"Use §1 to rewrite §2 to\n"
+"§3. This is the Level 26 pattern."
 msgstr ""
 
 #. §0: `have h1 := i.isLt`
@@ -9097,8 +9823,31 @@ msgstr ""
 msgid "level completed! 🎉"
 msgstr ""
 
+#: Game.Levels.Powerset.L27_Boss
+msgid "The count of t.card-element and (n - t.card)-element subsets is\n"
+"twice the binomial coefficient."
+msgstr ""
+
 #: Game.Levels.PsetFin.L16_SimplePigeonhole
 msgid "Any function from Fin 2 to Fin 1 has a collision."
+msgstr ""
+
+#. §0: `s ⊆ t`
+#. §1: `s`
+#. §2: `t`
+#. §3: `h : s ⊆ t`
+#. §4: `s ∈ t.powerset`
+#. §5: `mem_powerset`
+#: Game.Levels.Powerset.L04_SubsetImpliesMember
+msgid "# Subset → Powerset Membership\n"
+"\n"
+"If you already know that §0, you can immediately conclude\n"
+"that §1 is in the powerset of §2.\n"
+"\n"
+"**Your task**: Given §3, prove §4.\n"
+"\n"
+"The strategy is the same as Level 1: rewrite with §5,\n"
+"then use your hypothesis."
 msgstr ""
 
 #. §0: `intro h`
@@ -9520,6 +10269,53 @@ msgid "# Simplifying a Single-Term Sum\n"
 "simplify with §11."
 msgstr ""
 
+#. §0: `t`
+#. §1: `s`
+#. §2: `t`
+#. §3: `s`
+#. §4: `s \\ t`
+#. §5: `s`
+#. §6: `t`
+#. §7: `s`
+#. §8: $$t \\in \\mathcal{P}(s) \\implies s \\setminus t \\in \\mathcal{P}(s)$$
+#. §9: $\\binom{n}{k} = \\binom{n}{n-k}$
+#. §10: $k$
+#. §11: $n - k$
+#. §12: `ht : t ∈ s.powerset`
+#. §13: `s \\ t ∈ s.powerset`
+#. §14: `mem_powerset`
+#. §15: `mem_powerset`
+#. §16: `Finset.sdiff_subset`
+#. §17: `ht`
+#: Game.Levels.Powerset.L09_ComplementInPowerset
+msgid "# The Complement Map\n"
+"\n"
+"If §0 is a subset of §1, then removing §2 from §3 gives the\n"
+"**complement** §4 — the elements of §5 that are *not* in §6.\n"
+"This complement is also a subset of §7, so it is also in the\n"
+"powerset.\n"
+"\n"
+"This means the powerset is closed under complementation:\n"
+"§8\n"
+"\n"
+"This is the structural explanation behind the symmetry\n"
+"§9 that you will prove in the boss:\n"
+"choosing which §10 elements to *include* is the same as choosing\n"
+"which §11 elements to *exclude*. The complement map is the\n"
+"bijection that witnesses this symmetry.\n"
+"\n"
+"**Your task**: Given §12, prove §13.\n"
+"\n"
+"Strategy:\n"
+"1. Convert the hypothesis using §14 (Level 5 pattern)\n"
+"2. Convert the goal using §15\n"
+"3. Close with §16 — the set difference is always\n"
+"   a subset of the parent set\n"
+"\n"
+"**A question to keep in mind**: Does the proof actually need the\n"
+"hypothesis §17? Watch for whether you use it or not."
+msgstr ""
+
 #: Game.Levels.FinsetBasics.L12_ProvingNonMembership
 msgid "4 is not an element of {1, 2, 3}."
 msgstr ""
@@ -9548,6 +10344,36 @@ msgstr ""
 
 #: Game.Levels.AbstractionLadder
 msgid "Abstraction Ladder"
+msgstr ""
+
+#. §0: $k = 0$
+#. §1: $k = 1$
+#. §2: $k = n$
+#. §3: $k > n$
+#. §4: $\\binom{n}{k} = 0$
+#. §5: $k > n$
+#. §6: `hk : s.card < k`
+#. §7: `(Finset.powersetCard k s).card = 0`
+#. §8: `card_powersetCard`
+#. §9: `Nat.choose_eq_zero_of_lt`
+#: Game.Levels.Powerset.L23_TooManyElements
+msgid "# When k Exceeds the Set Size\n"
+"\n"
+"Levels 19-22 covered the boundary cases §0, §1, and\n"
+"§2. Now consider the fourth boundary: what happens when\n"
+"§3?\n"
+"\n"
+"If you want more elements than the set has, there are no such\n"
+"subsets. The answer is zero: §4 when §5.\n"
+"\n"
+"This makes intuitive sense: you can't choose 5 toppings from\n"
+"a menu of 3. There are zero ways to do that.\n"
+"\n"
+"**Your task**: Given §6, prove that\n"
+"§7.\n"
+"\n"
+"Chain §8 with §9\n"
+"(from BinomialCoefficients)."
 msgstr ""
 
 #. §0: `rw [Finset.mem_filter]`
@@ -9612,6 +10438,13 @@ msgid "You proved that the cyclic permutation §0 has no fixed\n"
 "- §6 evaluation (FinTuples) — reading §7 at each index\n"
 "- Case analysis on §8 (MeetFin) — enumerating all elements\n"
 "- Inequality via §9 (MeetFin) — proving the output differs"
+msgstr ""
+
+#. §0: `s.card`
+#. §1: `n`
+#. §2: `hs`
+#: Game.Levels.Powerset.L26_ChooseSymmCoaching
+msgid "Now substitute §0 with §1 using §2."
 msgstr ""
 
 #. §0: `rw [Fintype.card_embedding_eq, Fintype.card_congr e, Fintype.card_fin, Fintype.card_fin, Nat.descFactorial_succ, Nat.descFactorial_succ, Nat.descFactorial_succ, Nat.descFactorial_zero]`
@@ -9766,6 +10599,10 @@ msgid "§0 selects the right disjunct of a goal §1.\n"
 "\n"
 "## When to use it\n"
 "When the goal is §3 and you want to prove §4."
+msgstr ""
+
+#: Game.Levels.Powerset.L02_SelfMembership
+msgid "Every Set Is in Its Own Powerset"
 msgstr ""
 
 #: Game.Levels.PsetFinset.L08_FilterImageContainment
@@ -10217,6 +11054,33 @@ msgstr ""
 
 #: Game.Levels.FinsetOperations.L05_Subset
 msgid "{1, 2} is a subset of {1, 2, 3}."
+msgstr ""
+
+#. §0: `have h := card_powerset ∅`
+#. §1: `rw [card_empty] at h`
+#. §2: `exact h`
+#. §3: `∅`
+#. §4: `∅`
+#. §5: $2^0 = 1$
+#. §6: $2^0 = 1$
+#. §7: $0! = 1$
+#. §8: $\\binom{0}{0} = 1$
+#. §9: `card_powerset`
+#. §10: `card_empty`
+#: Game.Levels.Powerset.L13_PowersetEmptySet
+msgid "Three steps: §0, §1, §2.\n"
+"\n"
+"The powerset of §3 is the set containing only §4 itself — one element.\n"
+"This matches the formula: §5.\n"
+"\n"
+"Why does this matter? The convention §6 sometimes feels\n"
+"arbitrary in algebra. Here it has a concrete meaning: there is\n"
+"exactly one way to choose a subset of nothing — choose nothing.\n"
+"This is the same reasoning behind §7 and §8.\n"
+"\n"
+"This level retrieved §9 from Level 12 and combined\n"
+"it with §10 from the Cardinality world — the pattern\n"
+"of chaining a structure lemma with a known value."
 msgstr ""
 
 #. §0: `Finset.card_sdiff_add_card_inter s t`
@@ -10937,6 +11801,10 @@ msgstr ""
 msgid "Union Commutativity"
 msgstr ""
 
+#: Game.Levels.Powerset.L21_SingletonSubsets
+msgid "Singleton Subsets: Choose 1"
+msgstr ""
+
 #: Game.Levels.PsetCardinality.L09_SubtypeComplement
 msgid "Resolve α via the equivalence, then decompose the product."
 msgstr ""
@@ -10988,6 +11856,26 @@ msgid "# Swapping a Double Sum\n"
 "- Hypothesis substitution to close"
 msgstr ""
 
+#. §0: $2^0 = 1$
+#. §1: `((∅ : Finset ℕ).powerset).card = 1`
+#. §2: `card_powerset`
+#. §3: `Finset.card_empty`
+#. §4: `have`
+#. §5: $2^0 = 1$
+#: Game.Levels.Powerset.L13_PowersetEmptySet
+msgid "# Edge Case: 2^0 = 1\n"
+"\n"
+"The empty set has exactly one subset: itself. So its powerset\n"
+"has one element. This is the edge case §0 for the\n"
+"powerset cardinality formula.\n"
+"\n"
+"**Your task**: Prove §1.\n"
+"\n"
+"This uses §2 (from Level 12) together with\n"
+"§3 (from Cardinality). The §4 pattern\n"
+"lets Lean compute §5 automatically."
+msgstr ""
+
 #: Game.Levels.BigOpIntro.L01_SumEmpty
 msgid "The sum of any function over the empty finset is zero."
 msgstr ""
@@ -11035,6 +11923,45 @@ msgid "# Fin.cons Determines Its Inputs\n"
 "§17.\n"
 "\n"
 "**Your task**: Prove that §18 is injective."
+msgstr ""
+
+#. §0: `s ⊆ t`
+#. §1: `s`
+#. §2: `t`
+#. §3: `s.powerset ⊆ t.powerset`
+#. §4: `s.powerset ⊆ t.powerset`
+#. §5: `h : s ⊆ t`
+#. §6: `s.powerset ⊆ t.powerset`
+#. §7: `u`
+#. §8: `u ∈ s.powerset`
+#. §9: `u ∈ t.powerset`
+#. §10: `u`
+#. §11: `u ∈ s.powerset`
+#. §12: `mem_powerset`
+#. §13: `u ⊆ t`
+#. §14: `u ⊆ s`
+#. §15: `s ⊆ t`
+#. §16: `rw [...] at hu ⊢`
+#. §17: `⊢`
+#. §18: `hu`
+#: Game.Levels.Powerset.L06_PowersetMonotonicity
+msgid "# Bigger Set, Bigger Powerset\n"
+"\n"
+"If §0, then every subset of §1 is also a subset of §2.\n"
+"This means §3 — the powerset operation\n"
+"is **monotone**.\n"
+"\n"
+"**Your task**: Prove that §4 given §5.\n"
+"\n"
+"The statement §6 means: for every finset §7,\n"
+"if §8 then §9. So you'll need to:\n"
+"1. Introduce §10 and the hypothesis §11\n"
+"2. Use §12 to convert both sides to subset claims\n"
+"3. Prove §13 from §14 and §15 by chaining\n"
+"\n"
+"**New syntax**: You can rewrite in multiple places at once using\n"
+"§16, where §17 refers to the goal. This rewrites\n"
+"both the hypothesis §18 and the goal in one step."
 msgstr ""
 
 #. §0: `card_insert_of_notMem`
@@ -11085,6 +12012,14 @@ msgstr ""
 #. §0: `ring`
 #: Game.Levels.BinomialCoefficients.L12_CoachingBossPattern
 msgid "The goal is now a pure arithmetic identity. Use §0."
+msgstr ""
+
+#. §0: `t ⊆ s`
+#. §1: `ht : t ⊆ s ∧ t.card = 2`
+#. §2: `ht.1`
+#: Game.Levels.Powerset.L16_PowersetCardExtract
+msgid "The goal is §0. You have §1.\n"
+"Use §2 to extract the left component of the conjunction."
 msgstr ""
 
 #. §0: `sum_add_distrib`
@@ -11350,6 +12285,61 @@ msgstr ""
 #. §0: `card_image_of_injective`
 #: Game.Levels.PsetFinset.L09_CardinalityRange
 msgid "What does §0 tell you about the left side?"
+msgstr ""
+
+#. §0: `rw [mem_powerset] at ht`
+#. §1: `Finset.card_le_card ht`
+#. §2: `Finset.card_powersetCard`
+#. §3: `choose`
+#. §4: `rw [hs]`
+#. §5: `Nat.choose_symm hle`
+#. §6: `ring`
+#. §7: `t ⊆ s`
+#. §8: `t ∈ s.powerset`
+#. §9: `t`
+#. §10: `t.card ≤ n`
+#. §11: `t.card`
+#. §12: `n - t.card`
+#. §13: $\\binom{n}{k} = \\binom{n}{n-k}$
+#. §14: $s$
+#. §15: $\\binom{n}{k}$
+#. §16: $k$
+#. §17: $0$
+#. §18: $n$
+#. §19: $2^n$
+#. §20: `card_powerset`
+#. §21: `card_powersetCard`
+#: Game.Levels.Powerset.L27_Boss
+msgid "Congratulations! You proved the symmetry identity for powersetCard,\n"
+"integrating skills from across the entire world:\n"
+"\n"
+"**Skills from the membership branch (Levels 1-11)**:\n"
+"- §0 — extracting a subset from powerset membership\n"
+"- §1 — bounding cardinality via subset\n"
+"\n"
+"**Skills from the counting branch (Levels 12-25)**:\n"
+"- §2 — converting subset counts to §3\n"
+"- §4 — substituting a known card value\n"
+"\n"
+"**Skills from BinomialCoefficients and Level 26**:\n"
+"- §5 — rewriting with a proof argument\n"
+"- §6 — closing arithmetic\n"
+"\n"
+"**The mathematical insight**: The proof required extracting §7\n"
+"from §8 — not because we need to know anything about\n"
+"§9 specifically, but because we need the *bound* §10 to\n"
+"justify the symmetry identity. The membership branch provides the\n"
+"inequality that the counting branch consumes.\n"
+"\n"
+"**Why complement symmetry holds**: Choosing which §11 elements\n"
+"to *include* in a subset is the same as choosing which §12\n"
+"elements to *exclude*. This bijection between a subset and its\n"
+"complement is why §13.\n"
+"\n"
+"**Looking ahead**: The powerset of §14 decomposes into layers by\n"
+"size. Summing §15 over all §16 from §17 to §18 gives\n"
+"§19 — connecting §20 to §21. You'll\n"
+"prove this identity formally in the BinomialTheorem world."
 msgstr ""
 
 #: Game.Levels.SummationFormulas.L04_SumOfSquares
@@ -11699,6 +12689,38 @@ msgstr ""
 msgid "Elements in the image of a union but not in the image of s must come from t."
 msgstr ""
 
+#. §0: $$s.\\text{powerset} \\subseteq t.\\text{powerset} \\implies s \\subseteq t$$
+#. §1: `s`
+#. §2: `s.powerset`
+#. §3: `t.powerset`
+#. §4: `s ⊆ t`
+#. §5: `have hs : s ∈ s.powerset := by rw [mem_powerset]`
+#. §6: `have ht := h hs`
+#. §7: `rw [mem_powerset] at ht`
+#. §8: `exact ht`
+#. §9: $$s \\subseteq t \\iff \\mathcal{P}(s) \\subseteq \\mathcal{P}(t)$$
+#: Game.Levels.Powerset.L07_PowersetMonoConverse
+msgid "You proved the converse of powerset monotonicity:\n"
+"\n"
+"§0\n"
+"\n"
+"**The insight**: The set §1 *witnesses* the inclusion — it is in\n"
+"§2, so it must be in §3, which means §4.\n"
+"\n"
+"**Proof recipe**:\n"
+"1. §5 — witness\n"
+"2. §6 — transport via the inclusion\n"
+"3. §7 — extract the subset\n"
+"4. §8 — close\n"
+"\n"
+"Combined with Level 6, this gives an **equivalence**:\n"
+"\n"
+"§9\n"
+"\n"
+"The powerset operation is an *order embedding*: it exactly preserves\n"
+"the subset ordering. This is a deeper fact than either direction alone."
+msgstr ""
+
 #: Game.Levels.CountingTypes.L05_FallingFactorials
 msgid "The falling factorial 5 * 4 * 3 = 60."
 msgstr ""
@@ -11728,6 +12750,12 @@ msgid "Complement counting is the 'sibling' of inclusion-exclusion:\n"
 "\n"
 "In plain math, this is the strategy 'count the complement':\n"
 "if you want §3, compute §4."
+msgstr ""
+
+#. §0: `s.card`
+#. §1: `n`
+#: Game.Levels.Powerset.L27_Boss
+msgid "Substitute §0 with §1."
 msgstr ""
 
 #. §0: `omega`
@@ -12711,6 +13739,10 @@ msgid "§0 proves §1 directly.\n"
 "Disabled to force manual proof using §2."
 msgstr ""
 
+#: Game.Levels.Powerset.L01_EmptyInPowerset
+msgid "The Empty Set Is Always a Subset"
+msgstr ""
+
 #. §0: `Fin 2`
 #. §1: `0`
 #. §2: `1`
@@ -12724,6 +13756,13 @@ msgstr ""
 #: Game.Levels.BigOpAlgebra.L07_SumFilter
 #: Game.Levels.BigOpAlgebra.L08_SumComm
 msgid "The goal now matches hypothesis §0."
+msgstr ""
+
+#. §0: `ht`
+#. §1: `Finset.mem_powerset`
+#: Game.Levels.Powerset.L09_ComplementInPowerset
+msgid "First, convert §0 from powerset membership to a subset\n"
+"claim using §1. This is the Level 5 pattern."
 msgstr ""
 
 #: Game.Levels.FinsetOperations.L21_PartitionIdentity
@@ -13475,6 +14514,7 @@ msgid "# Fin.last: The Boundary Element\n"
 msgstr ""
 
 #: Game.Levels.Cardinality.L11_SubsetsCantBeBigger
+#: Game.Levels.Powerset.L24_SubsetBound
 msgid "Subsets Can't Be Bigger"
 msgstr ""
 
@@ -13691,6 +14731,13 @@ msgid "For each valid value, the output differs\n"
 "from the input. Close with §0 for the contradiction."
 msgstr ""
 
+#. §0: `decide`
+#: Game.Levels.Powerset.L03_ConcretePowerset
+#: Game.Levels.Powerset.L14_SingletonPowerset
+msgid "Lean can compute the cardinality of a concrete finset's powerset\n"
+"directly. Use §0 to let Lean verify this by computation."
+msgstr ""
+
 #. §0: `Nat.choose_zero_right`
 #. §1: $\\binom{n}{0} = 1$
 #. §2: `Nat.choose_one_right`
@@ -13865,6 +14912,15 @@ msgid "§0 states that §1.\n"
 "original, typically as a step toward a cardinality bound."
 msgstr ""
 
+#. §0: `s ∈ s.powerset`
+#. §1: `Finset.mem_powerset`
+#. §2: `s ⊆ s`
+#: Game.Levels.Powerset.L02_SelfMembership
+msgid "The goal is §0. Convert this to a subset claim\n"
+"using §1, just like in Level 1.\n"
+"Since §2 is reflexively true, the rewrite closes the goal."
+msgstr ""
+
 #. §0: `∃ x ∈ Finset.range 4, x + 1 = 3`
 #. §1: `x`
 #. §2: `x + 1 = 3`
@@ -13885,6 +14941,28 @@ msgstr ""
 #: Game.Levels.AbstractionLadder.L13_NodupDistinct
 msgid "Second goal: §0. You proved this in the previous level.\n"
 "The same pattern works: §1, then close."
+msgstr ""
+
+#. §0: $\\binom{5}{2} = 10$
+#. §1: `hs : s.card = 5`
+#. §2: `(powersetCard 2 s).card = 10`
+#. §3: `card_powersetCard`
+#. §4: `Nat.choose`
+#. §5: `hs`
+#. §6: `Nat.choose 5 2 = 10`
+#: Game.Levels.Powerset.L25_ConcreteCount
+msgid "# Concrete Counting with PowersetCard\n"
+"\n"
+"A 5-element set has §0 two-element subsets. Let's\n"
+"prove this formally.\n"
+"\n"
+"**Your task**: Given §1, prove that\n"
+"§2.\n"
+"\n"
+"You'll need:\n"
+"- §3 to convert to §4\n"
+"- §5 to substitute the card value\n"
+"- The fact that §6 (which Lean computes automatically)"
 msgstr ""
 
 #. §0: `∑ x ∈ s, f x`
@@ -14058,6 +15136,16 @@ msgstr ""
 #: Game.Levels.FinNavigation.L12_RecognizingLast
 #: Game.Levels.FinsetBasics.L07_VariableRange
 msgid "The goal is §0, which is exactly §1."
+msgstr ""
+
+#. §0: `hle : t.card ≤ s.card`
+#. §1: `s.card`
+#. §2: `n`
+#. §3: `hs`
+#. §4: `choose_symm`
+#: Game.Levels.Powerset.L27_Boss
+msgid "Now §0. Substitute §1 with §2\n"
+"using §3 so the bound matches what §4 needs."
 msgstr ""
 
 #. §0: `l₁.length + l₂.length = 7`
@@ -14615,6 +15703,10 @@ msgid "§0 states that when §1,\n"
 "so this subtraction is exact."
 msgstr ""
 
+#: Game.Levels.Powerset.L27_Boss
+msgid "Boss: Subset Symmetry"
+msgstr ""
+
 #. §0: `constructor`
 #. §1: `rw [Finset.mem_inter]; constructor; exact has; rw [hab]; exact hbt`
 #. §2: `exact hfa`
@@ -14622,6 +15714,10 @@ msgstr ""
 msgid "Try §0 then:\n"
 "- §1\n"
 "- §2"
+msgstr ""
+
+#: Game.Levels.Powerset.L03_ConcretePowerset
+msgid "Seeing the Powerset: A Concrete Example"
 msgstr ""
 
 #. §0: `toFinset_card_of_nodup`
@@ -14704,6 +15800,28 @@ msgstr ""
 msgid "Producing an Equiv"
 msgstr ""
 
+#. §0: $a$
+#. §1: $\\{a\\}$
+#. §2: `(powersetCard 1 s).card = s.card`
+#. §3: `card_powersetCard`
+#. §4: `Nat.choose s.card 1`
+#. §5: `Nat.choose_one_right`
+#. §6: `Nat.choose n 1 = n`
+#: Game.Levels.Powerset.L21_SingletonSubsets
+msgid "# Each Element Gives One Singleton Subset\n"
+"\n"
+"How many 1-element subsets does a set have? Exactly as many as it\n"
+"has elements: each element §0 gives the singleton subset §1.\n"
+"\n"
+"In Lean terms: §2.\n"
+"\n"
+"This follows from two facts you already know:\n"
+"- §3: the count is §4\n"
+"- §5: §6\n"
+"\n"
+"**Your task**: Chain these two rewrites to prove the result."
+msgstr ""
+
 #: Game.Levels.MeetFin.L11_ProofIrrelevance
 msgid "Only the Value Matters"
 msgstr ""
@@ -14750,6 +15868,10 @@ msgid "# Fin 5 Does Not Contain 5\n"
 "2. §15 — assumes §16 (since §17 means §18)\n"
 "3. §19 — extracts the bound §20\n"
 "4. §21 — sees §22 and §23 are contradictory"
+msgstr ""
+
+#: Game.Levels.Powerset.L18_ConcretePowersetCard
+msgid "The number of 2-element subsets of {1, 2, 3} is 3."
 msgstr ""
 
 #: Game.Levels.PsetFin.L03_SnocReconstruction
@@ -14844,6 +15966,10 @@ msgstr ""
 #: Game.Levels.FinsetOperations.L10_EmptySetIdentity
 #: Game.Levels.FinsetOperations.L12_Idempotency
 msgid "Use §0 to unfold the union."
+msgstr ""
+
+#: Game.Levels.Powerset.L13_PowersetEmptySet
+msgid "The Powerset of the Empty Set"
 msgstr ""
 
 #. §0: `Fin`
@@ -15785,6 +16911,10 @@ msgid "The pattern is the same as for sums. Prove that 2 is\n"
 "not in the singleton containing 3."
 msgstr ""
 
+#: Game.Levels.Powerset.L15_MeetPowersetCard
+msgid "A 2-element subset of t is in powersetCard 2 t."
+msgstr ""
+
 #. §0: `Finset.card_image_of_injective`
 #: Game.Levels.FinsetImage.L23_Boss
 msgid "Now prove the exact count. Apply\n"
@@ -16473,6 +17603,87 @@ msgstr ""
 msgid "Idempotency"
 msgstr ""
 
+#. §0: `∅`
+#. §1: $\\binom{n}{0} = 1$
+#. §2: $n$
+#. §3: $\\binom{n}{1} = n$
+#. §4: `(Finset.powersetCard 0 s).card = 1`
+#. §5: `card_powersetCard`
+#. §6: `Nat.choose_zero_right`
+#: Game.Levels.Powerset.L19_ZeroElementSubsets
+msgid "# The k=0 Boundary\n"
+"\n"
+"How many 0-element subsets does any set have? Exactly one: the\n"
+"empty set §0. This gives §1 for all §2.\n"
+"\n"
+"Together with the k=1 case (Level 21: §3), this\n"
+"grounds the binomial coefficient at its two simplest boundary values.\n"
+"\n"
+"**Your task**: Prove §4.\n"
+"\n"
+"Chain §5 with §6 (from\n"
+"BinomialCoefficients)."
+msgstr ""
+
+#. §0: `have h := card_powerset s`
+#. §1: `rw [hs] at h`
+#. §2: `exact h`
+#. §3: `have`
+#. §4: `card_powerset`
+#. §5: `rw [hs] at h`
+#. §6: `exact h`
+#. §7: $2^3 = 8$
+#. §8: $n$
+#. §9: $2^n$
+#. §10: `rw [Finset.card_powerset, hs]`
+#. §11: `card_powerset`
+#. §12: `hs`
+#. §13: `have`
+#. §14: `rw`
+#. §15: $2^n$
+#. §16: $s$
+#. §17: $n$
+#. §18: $2^n$
+#. §19: `s -> Fin 2`
+#. §20: `2 ^ s.card`
+#: Game.Levels.Powerset.L12_CardPowerset
+msgid "Three steps: §0, §1, §2.\n"
+"\n"
+"The §3 brings §4 into the context. Then §5\n"
+"substitutes the known card value. Finally §6 closes the goal\n"
+"because Lean computes §7 automatically.\n"
+"\n"
+"**A useful table**:\n"
+"| Elements (§8) | Subsets (§9) |\n"
+"|:-:|:-:|\n"
+"| 0 | 1 |\n"
+"| 1 | 2 |\n"
+"| 2 | 4 |\n"
+"| 3 | 8 |\n"
+"| 4 | 16 |\n"
+"| 5 | 32 |\n"
+"\n"
+"This exponential growth is why brute-force subset enumeration\n"
+"quickly becomes impractical — and why we need structural results\n"
+"like the binomial coefficient to count subsets of a specific size.\n"
+"\n"
+"**Shortcut**: You can also do this in one step with\n"
+"§10 — a single rewrite that applies\n"
+"§11 and then substitutes §12 in one go. The §13\n"
+"pattern is more general (you'll use it whenever the rewrite target\n"
+"is buried inside a larger expression), but the direct §14 is\n"
+"sometimes simpler.\n"
+"\n"
+"**Why §15?** Each subset corresponds to a function from §16 to\n"
+"'in or out' — a binary choice per element. These functions are\n"
+"called **indicator functions** (or characteristic functions).\n"
+"The set of all indicator functions on an §17-element set has\n"
+"§18 elements, one for each possible subset. In the\n"
+"CountingTechniques world, you will formalize this bijection by\n"
+"proving that the set of functions §19 has cardinality\n"
+"§20."
+msgstr ""
+
 #: Game.Levels.PsetFinset.L04_UnionSubset
 msgid "Intersecting before taking a union can only shrink the first component."
 msgstr ""
@@ -16662,6 +17873,45 @@ msgid "**Backward direction**: assume §0\n"
 "Provide a witness from the input set."
 msgstr ""
 
+#. §0: `Finset.powersetCard k s`
+#. §1: `s`
+#. §2: `k`
+#. §3: `Finset.mem_powersetCard : t ∈ powersetCard k s ↔ t ⊆ s ∧ t.card = k`
+#. §4: `t`
+#. §5: `powersetCard k s`
+#. §6: `t`
+#. §7: `s`
+#. §8: `k`
+#. §9: `hsub : s ⊆ t`
+#. §10: `hcard : s.card = 2`
+#. §11: `s ∈ powersetCard 2 t`
+#: Game.Levels.Powerset.L15_MeetPowersetCard
+msgid "# PowersetCard: Subsets of Size k\n"
+"\n"
+"The full powerset contains *all* subsets. But often you want just\n"
+"the subsets of a specific size: the 2-element subsets, the 3-element\n"
+"subsets, etc.\n"
+"\n"
+"§0 is the finset of all subsets of §1 that\n"
+"have exactly §2 elements.\n"
+"\n"
+"The membership characterization is:\n"
+"\n"
+"§3\n"
+"\n"
+"So §4 is in §5 exactly when §6 is a subset of §7\n"
+"**and** has cardinality §8. Two conditions — a conjunction.\n"
+"\n"
+"**Your task**: Given §9 and §10, prove\n"
+"that §11."
+msgstr ""
+
+#. §0: `s ⊆ t`
+#. §1: `h`
+#: Game.Levels.Powerset.L04_SubsetImpliesMember
+msgid "The goal is now §0, which is exactly your hypothesis §1."
+msgstr ""
+
 #: Game.Levels.SummationFormulas.L10_FactorialCompute
 msgid "Computing a Factorial"
 msgstr ""
@@ -16692,6 +17942,38 @@ msgstr ""
 
 #: Game.Levels.PsetFinset.L06_ImageNonempty
 msgid "Image of a Nonempty Set"
+msgstr ""
+
+#. §0: `rw [mem_powerset] at ht`
+#. §1: `exact sdiff_sdiff_eq_self ht`
+#. §2: `t ∈ s.powerset → s \\ t ∈ s.powerset`
+#. §3: `(s \\ t).card = s.card - t.card`
+#. §4: `s \\ (s \\ t) = t`
+#. §5: `k`
+#. §6: `(n-k)`
+#. §7: $\\binom{n}{k} = \\binom{n}{n-k}$
+#. §8: `sdiff_sdiff_eq_self`
+#. §9: `Finset.`
+#: Game.Levels.Powerset.L11_ComplementInvolution
+msgid "Two steps: §0 then §1.\n"
+"\n"
+"**The complement bijection is now complete**:\n"
+"- Level 9: §2 (closure)\n"
+"- Level 10: §3 (size)\n"
+"- This level: §4 (involution)\n"
+"\n"
+"The complement map is an involution on the powerset that swaps\n"
+"§5-element subsets with §6-element subsets. Since it is its\n"
+"own inverse, it is a bijection, which means the two sets have the\n"
+"same cardinality: §7.\n"
+"\n"
+"**Note on the Lean proof**: §8 works at the\n"
+"*lattice* level — it holds in any generalized Boolean algebra, not\n"
+"just for finsets. Finsets form such an algebra, so the general lemma\n"
+"applies. You will sometimes see lattice-level lemmas (without the\n"
+"§9 prefix) being used for finset goals; this is because\n"
+"Lean's typeclass system automatically applies the right algebraic\n"
+"structure."
 msgstr ""
 
 #. §0: `Fintype.card α`
@@ -16854,6 +18136,30 @@ msgid "# Boss: Set Difference Distributes Over Intersection\n"
 "- **by_contra** (Level 18): assume the negation and derive contradiction\n"
 "- **have** (from NNG4): build intermediate results\n"
 "- **constructor, cases, .1, .2, left, right**: standard logic handling"
+msgstr ""
+
+#. §0: $\\binom{5}{2} = 10$
+#. §1: `Finset.card_powersetCard : (powersetCard k s).card = Nat.choose s.card k`
+#. §2: `k`
+#. §3: `s`
+#. §4: `Nat.choose (s.card) k`
+#. §5: `card_powersetCard`
+#: Game.Levels.Powerset.L17_CardPowersetCard
+msgid "# C(n, k) Counts k-Element Subsets\n"
+"\n"
+"How many 2-element subsets does a 5-element set have? The answer\n"
+"is §0. This is the **combinatorial meaning** of\n"
+"the binomial coefficient that you proved identities for in the\n"
+"BinomialCoefficients world.\n"
+"\n"
+"The formal connection is:\n"
+"\n"
+"§1\n"
+"\n"
+"The number of §2-element subsets of §3 is exactly §4.\n"
+"\n"
+"**Your task**: Apply §5 directly to state this\n"
+"connection."
 msgstr ""
 
 #: Game.Levels.Fintype.L13_ProducingEquiv
@@ -17222,6 +18528,45 @@ msgid "§0\n"
 "principle — if you have more pigeons than holes, no injection exists."
 msgstr ""
 
+#. §0: `Finset.card_sdiff_of_subset`
+#. §1: `(s \\ t).card = s.card - t.card`
+#. §2: `t ⊆ s`
+#. §3: ```
+#. exact Finset.card_sdiff_of_subset h
+#. ```
+#. §4: `h : t ⊆ s`
+#. §5: `(s \\ t).card = s.card - t.card`
+#. §6: `t ⊆ s`
+#. §7: `s ∩ t`
+#. §8: `t`
+#. §9: `card_sdiff_add_card_inter`
+#. §10: `(s \\ t).card + (s ∩ t).card = s.card`
+#. §11: `t ⊆ s`
+#. §12: `s ∩ t = t`
+#. §13: `card_sdiff_of_subset`
+#: Game.Levels.Powerset.L10_ComplementCard
+msgid "§0 states that\n"
+"§1 when §2.\n"
+"\n"
+"## Syntax\n"
+"§3\n"
+"where §4.\n"
+"\n"
+"## When to use it\n"
+"When the goal is §5 and you know\n"
+"§6. Without the subset assumption, the identity does not hold\n"
+"in the same form because §7 might be smaller than §8.\n"
+"\n"
+"## Relationship to card_sdiff_add_card_inter\n"
+"§9 works without a subset assumption but\n"
+"gives §10. When §11,\n"
+"§12, so §13 is the cleaner version."
+msgstr ""
+
+#: Game.Levels.Powerset.L08_PowersetMonoIff
+msgid "Powerset Monotonicity: The Equivalence"
+msgstr ""
+
 #. §0: $$\\sum_{i=0}^{n} \\binom{i}{k} = \\binom{n+1}{k+1}$$
 #. §1: `induction n with`
 #. §2: `Finset.sum_range_succ`
@@ -17430,8 +18775,43 @@ msgstr ""
 msgid "If s has at most n elements, so does its image under f."
 msgstr ""
 
+#. §0: `rw [Finset.mem_powerset] at h`
+#. §1: `exact h`
+#. §2: `at h`
+#. §3: `rw`
+#. §4: `h`
+#. §5: `mem_powerset`
+#. §6: `∈ powerset`
+#. §7: `rw [mem_powerset]`
+#. §8: `∈ powerset`
+#. §9: `rw [mem_powerset] at h`
+#. §10: $s$
+#. §11: $t$
+#. §12: $s \\subseteq t$
+#. §13: `mem_powerset`
+#: Game.Levels.Powerset.L05_MemberImpliesSubset
+msgid "Two steps: §0 then §1.\n"
+"\n"
+"The §2 suffix tells §3 to rewrite inside the hypothesis §4\n"
+"rather than in the goal. This is the **reverse direction** of\n"
+"§5: extracting a subset fact from powerset membership.\n"
+"\n"
+"**Pattern summary**:\n"
+"- Goal contains §6: use §7 (Level 4)\n"
+"- Hypothesis contains §8: use §9 (this level)\n"
+"\n"
+"In ordinary math: saying '§10 is in the powerset of §11' and\n"
+"saying '§12' are the same thing. §13 is\n"
+"the formal bridge between these two phrasings."
+msgstr ""
+
 #: Game.Levels.PsetFin.L15_ObtainMeetsDecomposition
 msgid "Obtain Meets Decomposition"
+msgstr ""
+
+#. §0: `ht : t ⊆ s`
+#: Game.Levels.Powerset.L09_ComplementInPowerset
+msgid "Now §0. Convert the goal to a subset claim too."
 msgstr ""
 
 #. §0: `v = 1`
@@ -17520,6 +18900,10 @@ msgstr ""
 
 #: Game.Levels.PsetFin.L07_SuccNeverZero
 msgid "No successor equals zero, for any Fin type."
+msgstr ""
+
+#: Game.Levels.Powerset.L24_SubsetBound
+msgid "A member of the powerset has bounded cardinality."
 msgstr ""
 
 #. §0: `rw [Finset.sum_filter]`
@@ -17722,6 +19106,13 @@ msgstr ""
 
 #: Game.Levels.BigOpIntro.L14_ProdIntegration
 msgid "Product: Congr + Peel"
+msgstr ""
+
+#. §0: `t ⊆ s`
+#. §1: `mem_powerset`
+#: Game.Levels.Powerset.L10_ComplementCard
+msgid "Extract §0 from the powerset membership. This is the\n"
+"Level 5 pattern: rewrite §1 in a hypothesis."
 msgstr ""
 
 #. §0: `i.val < n`
@@ -18228,6 +19619,35 @@ msgid "Use §0. In §1, you have\n"
 "contradicting §5 — use §6."
 msgstr ""
 
+#. §0: `card_powersetCard`
+#. §1: `rw [hs]`
+#. §2: `rw [choose_symm hk]`
+#. §3: `rw [Nat.choose_symm hk]`
+#. §4: `hk : k <= n`
+#. §5: `choose_symm`
+#. §6: `n - k`
+#. §7: `rw [Nat.choose_symm ...]`
+#. §8: $k$
+#. §9: $n - k$
+#. §10: $\\binom{n}{k} = \\binom{n}{n-k}$
+#: Game.Levels.Powerset.L26_ChooseSymmCoaching
+msgid "Three steps: §0, §1, §2.\n"
+"\n"
+"**The new pattern**: §3 passes a **proof\n"
+"argument** inside the rewrite. The §4 is needed because\n"
+"§5 requires evidence that the subtraction §6 is\n"
+"well-defined (in natural numbers, subtraction truncates to 0).\n"
+"\n"
+"**Why this matters for the boss**: The boss will use this exact\n"
+"pattern — §7 with a proof argument — as\n"
+"part of a larger proof. Practicing it here in isolation makes the\n"
+"boss move familiar rather than surprising.\n"
+"\n"
+"**Combinatorial meaning**: Choosing which §8 elements to *include*\n"
+"is the same as choosing which §9 elements to *exclude*. So\n"
+"§10."
+msgstr ""
+
 #. §0: $k = 2$
 #. §1: `Nat.add_one_mul_choose_eq`
 #: Game.Levels.BinomialCoefficients.L10_AbsorptionIdentity
@@ -18601,6 +20021,17 @@ msgid "You just proved an abstract set identity! The proof structure:\n"
 "gives §16, and the proof becomes a logic exercise."
 msgstr ""
 
+#. §0: `hu : u ⊆ s`
+#. §1: `u ⊆ t`
+#. §2: `⊆`
+#. §3: `x`
+#. §4: `hx : x ∈ u`
+#: Game.Levels.Powerset.L06_PowersetMonotonicity
+msgid "Now §0 and the goal is §1. Since §2 means\n"
+"'every element of the left is in the right', introduce an element\n"
+"§3 and its membership proof §4."
+msgstr ""
+
 #. §0: $$|s \\cup t| + |s \\cap t| = |s| + |t|$$
 #. §1: ```
 #. Finset.card_union_add_card_inter s t :
@@ -18630,6 +20061,13 @@ msgid "# The Fundamental Counting Identity\n"
 "\n"
 "**Your task**: Given the sizes of §3, §4, and their intersection,\n"
 "compute the size of their union."
+msgstr ""
+
+#. §0: `s.powerset ⊆ t.powerset → s ⊆ t`
+#. §1: `intro h`
+#: Game.Levels.Powerset.L08_PowersetMonoIff
+msgid "**Forward direction**: Prove §0.\n"
+"Start with §1 to assume the powerset inclusion."
 msgstr ""
 
 #. §0: `h1`
@@ -19374,6 +20812,16 @@ msgid "Now you have §0 and\n"
 "§1. The arithmetic §2 is handled by §3."
 msgstr ""
 
+#. §0: `Finset.powerset_mono`
+#. §1: `s.powerset ⊆ t.powerset ↔ s ⊆ t`
+#. §2: `mem_powerset`
+#: Game.Metadata
+msgid "§0 states that §1.\n"
+"\n"
+"Disabled in levels where the learner should prove monotonicity manually\n"
+"using §2 and subset transitivity."
+msgstr ""
+
 #. §0: `5 ∉ Finset.range 5`
 #. §1: `¬ (5 ∈ Finset.range 5)`
 #. §2: `intro h`
@@ -19532,6 +20980,10 @@ msgid "# Big Products: ∏\n"
 "\n"
 "**Your task**: You know §12 is empty. Prove that the product of any\n"
 "function over §13 is 1."
+msgstr ""
+
+#: Game.Levels.Powerset.L17_CardPowersetCard
+msgid "The number of k-element subsets equals choose(n, k)."
 msgstr ""
 
 #: Game.Levels.BigOpAlgebra.L14_CalcBlocks
@@ -19814,6 +21266,16 @@ msgstr ""
 msgid "Obtain: Existential Destructuring"
 msgstr ""
 
+#. §0: `Nat.choose s.card 1 = s.card`
+#. §1: `n`
+#. §2: `n`
+#. §3: `Nat.choose_one_right`
+#: Game.Levels.Powerset.L21_SingletonSubsets
+msgid "The goal is §0.\n"
+"From the BinomialCoefficients world, you know that choosing\n"
+"1 from §1 gives §2. Use §3."
+msgstr ""
+
 #. §0: `intro j h`
 #: Game.Levels.FinNavigation.L07_CastSuccNeverLast
 msgid "Start with §0 to assume equality for contradiction."
@@ -20012,6 +21474,13 @@ msgid "Now §0 says §1, but §2 means\n"
 "§3. §4 sees the contradiction."
 msgstr ""
 
+#. §0: `s ∈ s.powerset`
+#. §1: `h`
+#: Game.Levels.Powerset.L08_PowersetMonoIff
+msgid "Now use the Level 7 pattern: establish §0,\n"
+"transport via §1, then extract the subset fact."
+msgstr ""
+
 #. §0: `n`
 #: Game.Levels.SummationFormulas.L11_Factorial
 msgid "Induct on §0. You'll combine product-range tools with\n"
@@ -20040,10 +21509,51 @@ msgid "§0, then\n"
 "§1."
 msgstr ""
 
+#. §0: `Finset.powersetCard k s`
+#. §1: `k`
+#. §2: `s`
+#. §3: `Finset.powersetCard : ℕ → Finset α → Finset (Finset α)`
+#. §4: `Finset.mem_powersetCard : t ∈ powersetCard k s ↔ t ⊆ s ∧ t.card = k`
+#. §5: `Finset.card_powersetCard : (powersetCard k s).card = Nat.choose s.card k`
+#. §6: `k`
+#. §7: `n`
+#. §8: $\\binom{n}{k}$
+#. §9: `{1, 2, 3}`
+#. §10: `{1,2}`
+#. §11: `{1,3}`
+#. §12: `{2,3}`
+#. §13: $\\binom{3}{2} = 3$
+#: Game.Levels.Powerset.L15_MeetPowersetCard
+msgid "§0 is the finset of all §1-element subsets of §2.\n"
+"\n"
+"## Type\n"
+"§3\n"
+"\n"
+"## Key characterization\n"
+"§4\n"
+"\n"
+"## Cardinality\n"
+"§5\n"
+"\n"
+"The number of §6-element subsets of an §7-element set is §8.\n"
+"\n"
+"## Example\n"
+"The 2-element subsets of §9 are §10, §11, §12 —\n"
+"three subsets, matching §13."
+msgstr ""
+
 #. §0: `3.descFactorial 3 = 6`
 #: Game.Levels.CountingTypes.L06_FallingFactorialIdentity
 msgid "The goal is §0. Unfold the falling factorial\n"
 "one factor at a time — three unfolding steps to reach the base case."
+msgstr ""
+
+#. §0: `ht : t ⊆ s`
+#. §1: `Finset.card_le_card`
+#. §2: `t ⊆ s → t.card ≤ s.card`
+#: Game.Levels.Powerset.L24_SubsetBound
+msgid "Now §0. From the Cardinality world, you know that\n"
+"subsets can't be bigger: §1 says §2."
 msgstr ""
 
 #. §0: $s$
@@ -20744,6 +22254,10 @@ msgstr ""
 msgid "Reverse rewriting converts between equivalent formulations."
 msgstr ""
 
+#: Game.Levels.Powerset.L23_TooManyElements
+msgid "Too Many Elements: The k > n Boundary"
+msgstr ""
+
 #. §0: $$3^{\\underline{3}} = 3 \\times 2 \\times 1 = 6 = 3!$$
 #. §1: `k = n`
 #. §2: $$n^{\\underline{n}} = n!$$
@@ -20945,6 +22459,46 @@ msgid "Use §0 to rewrite the summand.\n"
 "§3 becomes §4."
 msgstr ""
 
+#. §0: `t`
+#. §1: `s \\ t`
+#. §2: `t`
+#. §3: $$s \\setminus (s \\setminus t) = t \\quad \\text{when } t \\subseteq s$$
+#. §4: `k`
+#. §5: `(n-k)`
+#. §6: `s`
+#. §7: $\\binom{n}{k} = \\binom{n}{n-k}$
+#. §8: `k`
+#. §9: `(n-k)`
+#. §10: `ht : t ∈ s.powerset`
+#. §11: `s \\ (s \\ t) = t`
+#. §12: `sdiff_sdiff_eq_self`
+#. §13: `Finset`
+#: Game.Levels.Powerset.L11_ComplementInvolution
+msgid "# Complement Involution\n"
+"\n"
+"The complement map sends §0 to §1. What happens if you\n"
+"complement *again*? You get back to §2:\n"
+"\n"
+"§3\n"
+"\n"
+"This means the complement map is an **involution** — applying it\n"
+"twice returns you to where you started. An involution is automatically\n"
+"a bijection (it is its own inverse), so the complement map gives a\n"
+"one-to-one correspondence between §4-element and §5-element\n"
+"subsets of §6.\n"
+"\n"
+"Combined with Level 10 (complement cardinality), this completes the\n"
+"bijective proof of §7:\n"
+"1. The complement maps subsets to subsets (Level 9)\n"
+"2. It sends §8-element subsets to §9-element subsets (Level 10)\n"
+"3. It is its own inverse, hence a bijection (this level)\n"
+"\n"
+"**Your task**: Given §10, prove §11.\n"
+"\n"
+"The Mathlib lemma §12 proves exactly this for any\n"
+"structure where set difference is well-behaved (including §13)."
+msgstr ""
+
 #: Game.Levels.PsetFin.L17_Pigeonhole
 msgid "The Pigeonhole Principle (Concrete)"
 msgstr ""
@@ -20978,8 +22532,46 @@ msgstr ""
 msgid "Every element in the image of a singleton equals f applied to that element."
 msgstr ""
 
+#. §0: `rw [mem_powersetCard] at ht`
+#. §1: `t ⊆ s ∧ t.card = 2`
+#. §2: `rw [mem_powerset]`
+#. §3: `t ⊆ s`
+#. §4: `exact ht.1`
+#. §5: `h : A ∧ B`
+#. §6: `h.1`
+#. §7: `A`
+#. §8: `h.2`
+#. §9: `B`
+#. §10: `constructor`
+#. §11: `powersetCard`
+#. §12: `powerset`
+#. §13: `powersetCard k s`
+#. §14: `s.powerset`
+#. §15: `.2`
+#: Game.Levels.Powerset.L16_PowersetCardExtract
+msgid "Three steps:\n"
+"1. §0 — unwrap to §1\n"
+"2. §2 — convert goal to §3\n"
+"3. §4 — extract the subset component\n"
+"\n"
+"**Projection notation**: For §5:\n"
+"- §6 is the left part (type §7)\n"
+"- §8 is the right part (type §9)\n"
+"\n"
+"This is the natural counterpart to §10, which *builds*\n"
+"a conjunction. Projection notation *deconstructs* one.\n"
+"\n"
+"**Bridge level**: This connects §11 back to §12 —\n"
+"every member of §13 is automatically in §14.\n"
+"The extra information (cardinality = k) is carried by §15."
+msgstr ""
+
 #: Game.Levels.FinsetOperations.L20_ComplementViaSdiff
 msgid "Double set difference recovers intersection: s \\\\ (s \\\\ t) = s ∩ t."
+msgstr ""
+
+#: Game.Levels.Powerset.L04_SubsetImpliesMember
+msgid "If s ⊆ t, then s ∈ t.powerset."
 msgstr ""
 
 #. §0: `have`
@@ -22363,6 +23955,14 @@ msgstr ""
 msgid "The sum of 0 over any finset is 0, proved by finset induction."
 msgstr ""
 
+#. §0: `s.powerset`
+#. §1: `have`
+#. §2: `card_powerset`
+#: Game.Levels.Powerset.L12_CardPowerset
+msgid "The goal asks for the cardinality of §0. Use §1\n"
+"to bring §2 into the context as a hypothesis."
+msgstr ""
+
 #. §0: `List.Perm.nodup_iff : l₁.Perm l₂ → (l₁.Nodup ↔ l₂.Nodup)`
 #. §1: `hp : l₁.Perm l₂`
 #. §2: `hp.nodup_iff.mp hnd`
@@ -22446,6 +24046,12 @@ msgstr ""
 #: Game.Levels.PsetFin.L16_SimplePigeonhole
 msgid "Now provide the witnesses. §0 says: the collision\n"
 "is between inputs §1 and §2."
+msgstr ""
+
+#. §0: `ht`
+#. §1: `mem_powerset`
+#: Game.Levels.Powerset.L24_SubsetBound
+msgid "First, extract the subset fact from §0 using §1."
 msgstr ""
 
 #. §0: `Nat.choose_succ_succ`
@@ -22798,6 +24404,12 @@ msgstr ""
 msgid "Cardinality of an Injective Image"
 msgstr ""
 
+#. §0: `Finset.card_powersetCard`
+#: Game.Levels.Powerset.L26_ChooseSymmCoaching
+msgid "Start by converting the powersetCard cardinality to a binomial\n"
+"coefficient using §0."
+msgstr ""
+
 #. §0: `use ⟨k, by omega⟩`
 #. §1: `intro h; cases h`
 #. §2: `use`
@@ -22905,6 +24517,44 @@ msgstr ""
 
 #: Game.Levels.MeetFin.L14_ExplosionPrinciple
 msgid "From Nothing, Everything"
+msgstr ""
+
+#. §0: $s \\subseteq t$
+#. §1: $\\mathcal{P}(s) \\subseteq \\mathcal{P}(t)$
+#. §2: $$s.\\text{powerset} \\subseteq t.\\text{powerset} \\implies s \\subseteq t$$
+#. §3: `s`
+#. §4: `s.powerset`
+#. §5: `s.powerset ⊆ t.powerset`
+#. §6: `s`
+#. §7: `t.powerset`
+#. §8: `s ⊆ t`
+#. §9: `h : s.powerset ⊆ t.powerset`
+#. §10: `s ⊆ t`
+#. §11: `have`
+#. §12: `s ∈ s.powerset`
+#. §13: `s ∈ t.powerset`
+#. §14: `rw [mem_powerset] at ...`
+#: Game.Levels.Powerset.L07_PowersetMonoConverse
+msgid "# Bigger Powerset Means Bigger Set\n"
+"\n"
+"Level 6 proved the forward direction: if §0 then\n"
+"§1. Now prove the **converse**:\n"
+"\n"
+"§2\n"
+"\n"
+"This means powerset monotonicity is an equivalence — the powerset\n"
+"*exactly reflects* the subset ordering.\n"
+"\n"
+"**Key insight**: The set §3 itself is a member of §4\n"
+"(Level 2). If §5, then §6 must also be in\n"
+"§7, which means §8.\n"
+"\n"
+"**Your task**: Given §9, prove §10.\n"
+"\n"
+"You'll use:\n"
+"- §11 to establish that §12 (Level 2 pattern)\n"
+"- Function application to get §13\n"
+"- §14 to extract the subset fact (Level 5 pattern)"
 msgstr ""
 
 #. §0: `prod_mul_distrib`
@@ -23117,6 +24767,10 @@ msgid "# How Many Binary Strings of Length n?\n"
 "\n"
 "**Your task**: Prove this identity for a general §11 using §12,\n"
 "§13, and §14."
+msgstr ""
+
+#: Game.Levels.Powerset.L13_PowersetEmptySet
+msgid "The powerset of the empty set has exactly one element."
 msgstr ""
 
 #. §0: `Finset.card_univ`
@@ -23851,6 +25505,81 @@ msgstr ""
 #: Game.Levels.BinomialCoefficients.L15_HockeyStick
 #: Game.Levels.BinomialCoefficients.L15_HockeyStick
 #: Game.Levels.BinomialCoefficients.L16_Boss
+#: Game.Levels.Powerset.L01_EmptyInPowerset
+#: Game.Levels.Powerset.L01_EmptyInPowerset
+#: Game.Levels.Powerset.L02_SelfMembership
+#: Game.Levels.Powerset.L03_ConcretePowerset
+#: Game.Levels.Powerset.L04_SubsetImpliesMember
+#: Game.Levels.Powerset.L04_SubsetImpliesMember
+#: Game.Levels.Powerset.L05_MemberImpliesSubset
+#: Game.Levels.Powerset.L05_MemberImpliesSubset
+#: Game.Levels.Powerset.L06_PowersetMonotonicity
+#: Game.Levels.Powerset.L06_PowersetMonotonicity
+#: Game.Levels.Powerset.L06_PowersetMonotonicity
+#: Game.Levels.Powerset.L06_PowersetMonotonicity
+#: Game.Levels.Powerset.L07_PowersetMonoConverse
+#: Game.Levels.Powerset.L07_PowersetMonoConverse
+#: Game.Levels.Powerset.L07_PowersetMonoConverse
+#: Game.Levels.Powerset.L07_PowersetMonoConverse
+#: Game.Levels.Powerset.L08_PowersetMonoIff
+#: Game.Levels.Powerset.L08_PowersetMonoIff
+#: Game.Levels.Powerset.L08_PowersetMonoIff
+#: Game.Levels.Powerset.L08_PowersetMonoIff
+#: Game.Levels.Powerset.L08_PowersetMonoIff
+#: Game.Levels.Powerset.L08_PowersetMonoIff
+#: Game.Levels.Powerset.L08_PowersetMonoIff
+#: Game.Levels.Powerset.L08_PowersetMonoIff
+#: Game.Levels.Powerset.L08_PowersetMonoIff
+#: Game.Levels.Powerset.L08_PowersetMonoIff
+#: Game.Levels.Powerset.L08_PowersetMonoIff
+#: Game.Levels.Powerset.L09_ComplementInPowerset
+#: Game.Levels.Powerset.L09_ComplementInPowerset
+#: Game.Levels.Powerset.L09_ComplementInPowerset
+#: Game.Levels.Powerset.L10_ComplementCard
+#: Game.Levels.Powerset.L10_ComplementCard
+#: Game.Levels.Powerset.L11_ComplementInvolution
+#: Game.Levels.Powerset.L11_ComplementInvolution
+#: Game.Levels.Powerset.L12_CardPowerset
+#: Game.Levels.Powerset.L12_CardPowerset
+#: Game.Levels.Powerset.L12_CardPowerset
+#: Game.Levels.Powerset.L13_PowersetEmptySet
+#: Game.Levels.Powerset.L13_PowersetEmptySet
+#: Game.Levels.Powerset.L13_PowersetEmptySet
+#: Game.Levels.Powerset.L14_SingletonPowerset
+#: Game.Levels.Powerset.L15_MeetPowersetCard
+#: Game.Levels.Powerset.L15_MeetPowersetCard
+#: Game.Levels.Powerset.L15_MeetPowersetCard
+#: Game.Levels.Powerset.L15_MeetPowersetCard
+#: Game.Levels.Powerset.L16_PowersetCardExtract
+#: Game.Levels.Powerset.L16_PowersetCardExtract
+#: Game.Levels.Powerset.L16_PowersetCardExtract
+#: Game.Levels.Powerset.L17_CardPowersetCard
+#: Game.Levels.Powerset.L18_ConcretePowersetCard
+#: Game.Levels.Powerset.L19_ZeroElementSubsets
+#: Game.Levels.Powerset.L19_ZeroElementSubsets
+#: Game.Levels.Powerset.L20_PowersetCardZero
+#: Game.Levels.Powerset.L21_SingletonSubsets
+#: Game.Levels.Powerset.L21_SingletonSubsets
+#: Game.Levels.Powerset.L22_FullSetSubset
+#: Game.Levels.Powerset.L22_FullSetSubset
+#: Game.Levels.Powerset.L23_TooManyElements
+#: Game.Levels.Powerset.L23_TooManyElements
+#: Game.Levels.Powerset.L24_SubsetBound
+#: Game.Levels.Powerset.L24_SubsetBound
+#: Game.Levels.Powerset.L25_ConcreteCount
+#: Game.Levels.Powerset.L25_ConcreteCount
+#: Game.Levels.Powerset.L25_ConcreteCount
+#: Game.Levels.Powerset.L26_ChooseSymmCoaching
+#: Game.Levels.Powerset.L26_ChooseSymmCoaching
+#: Game.Levels.Powerset.L26_ChooseSymmCoaching
+#: Game.Levels.Powerset.L27_Boss
+#: Game.Levels.Powerset.L27_Boss
+#: Game.Levels.Powerset.L27_Boss
+#: Game.Levels.Powerset.L27_Boss
+#: Game.Levels.Powerset.L27_Boss
+#: Game.Levels.Powerset.L27_Boss
+#: Game.Levels.Powerset.L27_Boss
+#: Game.Levels.Powerset.L27_Boss
 msgid "Try §0."
 msgstr ""
 
@@ -24001,6 +25730,46 @@ msgid "Now §0 is a disjunction of equalities: §1 equals one of\n"
 "closes it from the disjunctive hypothesis."
 msgstr ""
 
+#. §0: `mem_powersetCard`
+#. §1: `constructor`
+#. §2: `t`
+#. §3: `powersetCard k s`
+#. §4: `ht`
+#. §5: `A ∧ B`
+#. §6: `ht.1`
+#. §7: `A`
+#. §8: `ht.2`
+#. §9: `B`
+#. §10: `ht : t ∈ Finset.powersetCard 2 s`
+#. §11: `t ∈ s.powerset`
+#. §12: `ht`
+#. §13: `mem_powersetCard`
+#. §14: `t ⊆ s ∧ t.card = 2`
+#. §15: `mem_powerset`
+#. §16: `t ⊆ s`
+#. §17: `ht.1`
+#: Game.Levels.Powerset.L16_PowersetCardExtract
+msgid "# Reading a PowersetCard Membership\n"
+"\n"
+"In Level 15, you *built* a §0 proof using\n"
+"§1 to assemble the conjunction. Now go the other\n"
+"direction: given that §2 is in §3, extract\n"
+"useful information.\n"
+"\n"
+"When a hypothesis §4 has type §5 (a conjunction), you\n"
+"can access the two components with **projection notation**:\n"
+"- §6 gives the left component (type §7)\n"
+"- §8 gives the right component (type §9)\n"
+"\n"
+"**Your task**: Given §10,\n"
+"prove §11.\n"
+"\n"
+"Strategy:\n"
+"1. Rewrite §12 with §13 to get §14\n"
+"2. Rewrite the goal with §15 to get §16\n"
+"3. Use §17 to extract the subset component"
+msgstr ""
+
 #: Game.Levels.PsetBigOp.L05_FilteredSum
 msgid "Convert a conditional sum to a filtered sum and combine."
 msgstr ""
@@ -24096,6 +25865,13 @@ msgstr ""
 
 #: Game.Levels.FinsetOperations.L09_IntersectionIdempotency
 msgid "Intersection Idempotency"
+msgstr ""
+
+#. §0: `ht : s ∈ t.powerset`
+#. §1: `rw [Finset.mem_powerset] at ht`
+#: Game.Levels.Powerset.L07_PowersetMonoConverse
+msgid "You have §0. Extract the subset fact\n"
+"with §1 (the Level 4 pattern)."
 msgstr ""
 
 #. §0: `Fin n`
@@ -24377,6 +26153,10 @@ msgstr ""
 msgid "Absorption Law"
 msgstr ""
 
+#: Game.Levels.Powerset.L11_ComplementInvolution
+msgid "The Complement Is Its Own Inverse"
+msgstr ""
+
 #. §0: `Finset.image_inter_of_injOn s t hf`
 #. §1: `(s ∩ t).image f = s.image f ∩ t.image f`
 #. §2: `hf`
@@ -24587,6 +26367,10 @@ msgstr ""
 
 #: Game.Levels.PsetCardinality.L04_DisjointTripleUnion
 msgid "The union of three pairwise disjoint finsets has cardinality equal to the sum."
+msgstr ""
+
+#: Game.Levels.Powerset.L05_MemberImpliesSubset
+msgid "If s ∈ t.powerset, then s ⊆ t."
 msgstr ""
 
 #. §0: `ring`
@@ -24964,6 +26748,22 @@ msgid "You used §0 to rewrite the goal: since\n"
 "fits the context."
 msgstr ""
 
+#. §0: `ht`
+#. §1: `mem_powersetCard`
+#. §2: `t ⊆ s`
+#. §3: `t.card = 2`
+#: Game.Levels.Powerset.L16_PowersetCardExtract
+msgid "First, unwrap §0 using §1 to see the two\n"
+"conditions: §2 and §3."
+msgstr ""
+
+#. §0: `s ⊆ t ∧ s.card = 2`
+#. §1: `constructor`
+#: Game.Levels.Powerset.L15_MeetPowersetCard
+msgid "The goal is now §0 — a conjunction.\n"
+"Split it with §1."
+msgstr ""
+
 #: Game.Levels.PsetFinset.L11_DeMorganSubset
 msgid "De Morgan Subset"
 msgstr ""
@@ -25176,6 +26976,33 @@ msgid "After substitution, the goal is:\n"
 "This is the algebraic identity §1."
 msgstr ""
 
+#. §0: `Finset.sdiff_subset`
+#. §1: `s \\ t ⊆ s`
+#. §2: ```
+#. exact Finset.sdiff_subset
+#. ```
+#. §3: `s \\ t ⊆ s`
+#. §4: `s`
+#. §5: `t`
+#. §6: `s \\ t`
+#. §7: `s`
+#. §8: `t`
+#. §9: `s`
+#: Game.Levels.Powerset.L09_ComplementInPowerset
+msgid "§0 states that §1 — removing\n"
+"elements from a set gives a subset.\n"
+"\n"
+"## Syntax\n"
+"§2\n"
+"\n"
+"## When to use it\n"
+"When the goal is §3 for any finsets §4 and §5.\n"
+"\n"
+"## Meaning\n"
+"The set difference §6 keeps only elements of §7 that\n"
+"are not in §8, so the result is always a subset of §9."
+msgstr ""
+
 #. §0: `hf : f = ![2, 4, 6]`
 #. §1: `constructor`
 #: Game.Levels.PsetFin.L18_Boss
@@ -25316,6 +27143,10 @@ msgid "You've proved De Morgan's law for finsets! The set-level identity\n"
 "You will prove the second law in the Boss."
 msgstr ""
 
+#: Game.Levels.Powerset.L19_ZeroElementSubsets
+msgid "Every finset has exactly one 0-element subset."
+msgstr ""
+
 #. §0: `n`
 #: Game.Levels.MeetFin.L20_ConcreteApplication
 #: Game.Levels.MeetFin.L20_ConcreteApplication
@@ -25440,6 +27271,40 @@ msgstr ""
 msgid "The goal is §0. Use\n"
 "§1 to convert to a conjunction, then\n"
 "§2 to split."
+msgstr ""
+
+#. §0: `card_powersetCard`
+#. §1: `choose_eq_zero_of_lt`
+#. §2: $k$
+#. §3: $\\binom{n}{k}$
+#. §4: `∅`
+#. §5: $n$
+#. §6: $n$
+#. §7: `s`
+#. §8: $n$
+#. §9: $> n$
+#. §10: $\\binom{n}{k} = \\binom{n}{n-k}$
+#. §11: $k > n$
+#. §12: $n - k$
+#: Game.Levels.Powerset.L23_TooManyElements
+msgid "Two steps: §0 then §1.\n"
+"\n"
+"**Boundary quartet complete**:\n"
+"| §2 | §3 | Meaning |\n"
+"|:-:|:-:|:--|\n"
+"| 0 | 1 | Only §4 has 0 elements (Level 19) |\n"
+"| 1 | §5 | Each element gives one singleton (Level 21) |\n"
+"| §6 | 1 | Only §7 itself has §8 elements (Level 22) |\n"
+"| §9 | 0 | Can't choose more than available (this level) |\n"
+"\n"
+"The four boundary cases give a complete picture of the binomial\n"
+"coefficient's behavior at its extremes. Everything in between\n"
+"is captured by Pascal's identity and the general formula.\n"
+"\n"
+"**Symmetry connection**: The k=0 and k=n cases both give 1.\n"
+"The k > n case gives 0. These boundary behaviors are consistent\n"
+"with the symmetry §10: when §11,\n"
+"§12 would be negative, so the symmetric case doesn't exist."
 msgstr ""
 
 #. §0: `rw [«{h}»]`
@@ -25756,8 +27621,28 @@ msgid "# Boundary Cases: What Happens at the Extremes?\n"
 "(the only element), then derive §10."
 msgstr ""
 
+#. §0: `ht`
+#. §1: `mem_powerset`
+#: Game.Levels.Powerset.L27_Boss
+msgid "First, extract the subset fact from §0. This is the Level 5\n"
+"pattern: rewrite §1 in a hypothesis."
+msgstr ""
+
 #: Game.Levels.FinTuples.L17_TheEmptyTuple
 msgid "The Empty Tuple"
+msgstr ""
+
+#. §0: `omega`
+#. §1: `a + b ≤ c + d`
+#. §2: `n = m + 1`
+#: Game.Levels.Powerset.L27_Boss
+msgid "§0 solves linear arithmetic goals over natural numbers\n"
+"and integers. It handles equalities, inequalities, and\n"
+"combinations of both.\n"
+"\n"
+"## When to use it\n"
+"When the goal is a linear arithmetic statement like\n"
+"§1 or §2."
 msgstr ""
 
 #. §0: $s \\setminus (t \\cap u) = (s \\setminus t) \\cup (s \\setminus u)$
@@ -25874,6 +27759,10 @@ msgid "Congratulations — you've completed **Finset Operations**!\n"
 "injectivity and cardinality of images."
 msgstr ""
 
+#: Game.Levels.Powerset.L10_ComplementCard
+msgid "Complement Cardinality"
+msgstr ""
+
 #. §0: `insert`
 #. §1: `singleton`
 #. §2: `range`
@@ -25913,6 +27802,15 @@ msgid "# Finset.univ: All Elements of a Finite Type\n"
 "**Your task**: Prove that §16 for §17 has exactly 5 elements."
 msgstr ""
 
+#. §0: `h : (s.powerset).card = 2 ^ 3`
+#. §1: `(s.powerset).card = 8`
+#. §2: $2^3 = 8$
+#. §3: `h`
+#: Game.Levels.Powerset.L12_CardPowerset
+msgid "Now §0 and the goal is\n"
+"§1. Since §2, §3 matches the goal."
+msgstr ""
+
 #: Game.Levels.PsetCardinality.L08_FunctionTypeCard
 msgid "Function Type Cardinality"
 msgstr ""
@@ -25928,6 +27826,32 @@ msgstr ""
 #: Game.Levels.FinsetImage.L02_ChoosingTheWitness
 msgid "The goal is a disjunction: §0. Since 5 is not 2,\n"
 "use §1 to take the second disjunct."
+msgstr ""
+
+#. §0: `Finset.mem_powersetCard`
+#. §1: `t ∈ powersetCard k s ↔ t ⊆ s ∧ t.card = k`
+#. §2: ```
+#. rw [Finset.mem_powersetCard]     -- in the goal
+#. rw [Finset.mem_powersetCard] at h -- in a hypothesis
+#. ```
+#. §3: `t ∈ powersetCard k s`
+#. §4: `t ⊆ s`
+#. §5: `t.card = k`
+#. §6: `constructor`
+#: Game.Levels.Powerset.L15_MeetPowersetCard
+msgid "§0 states that\n"
+"§1.\n"
+"\n"
+"## Syntax\n"
+"§2\n"
+"\n"
+"## When to use it\n"
+"When you see §3 and want to split it into two\n"
+"conditions: §4 and §5.\n"
+"\n"
+"## After rewriting\n"
+"The goal becomes a conjunction. Use §6 to split it into\n"
+"two subgoals, then prove each separately."
 msgstr ""
 
 #. §0: $n$
@@ -26592,6 +28516,10 @@ msgid "Peel inserts with §0 and\n"
 "§1/§2 until you reach §3, then §4."
 msgstr ""
 
+#: Game.Levels.Powerset.L18_ConcretePowersetCard
+msgid "Seeing PowersetCard: A Concrete Example"
+msgstr ""
+
 #. §0: `rw [Finset.mem_union, Finset.mem_union]`
 #: Game.Levels.FinsetOperations.L14_UnionCommutativity
 msgid "Rewrite both union memberships:\n"
@@ -26649,6 +28577,13 @@ msgid "# Constant Sums: ∑ c = card • c\n"
 "\n"
 "**Your task**: Split §19 using §20, then\n"
 "simplify the constant part with §21."
+msgstr ""
+
+#. §0: `s ∈ t.powerset`
+#. §1: `Finset.mem_powerset`
+#: Game.Levels.Powerset.L04_SubsetImpliesMember
+msgid "The goal is §0. Convert this to a subset claim\n"
+"with §1."
 msgstr ""
 
 #. §0: `rw [Finset.mem_filter]`
@@ -27275,6 +29210,10 @@ msgid "§0 states that\n"
 "So §6, not §7."
 msgstr ""
 
+#: Game.Levels.Powerset.L25_ConcreteCount
+msgid "Counting 2-Element Subsets"
+msgstr ""
+
 #. §0: `Fin.succ`
 #. §1: `Fin n`
 #. §2: `Fin (n + 1)`
@@ -27679,6 +29618,14 @@ msgid "Now §0 sees:\n"
 "This is linear arithmetic: from h1 and h3, eliminate §4."
 msgstr ""
 
+#: Game.Levels.Powerset.L02_SelfMembership
+msgid "Every finset is a member of its own powerset."
+msgstr ""
+
+#: Game.Levels.Powerset.L01_EmptyInPowerset
+msgid "The empty set is in the powerset of any finset."
+msgstr ""
+
 #. §0: `f`
 #. §1: $\\sum_{x \\in s \\cup t} (f(x) + 4)$
 #. §2: `Finset.sum_add_distrib`
@@ -28079,6 +30026,14 @@ msgid "Use §0 to split the union sum.\n"
 "The hypothesis §1 is needed as an argument."
 msgstr ""
 
+#. §0: `h`
+#. §1: `Nat.choose 5 2`
+#. §2: `10`
+#: Game.Levels.Powerset.L25_ConcreteCount
+msgid "Now §0 says the count equals §1, which\n"
+"Lean reduces to §2. The hypothesis matches the goal."
+msgstr ""
+
 #. §0: `obtain ⟨j, hj⟩ := h`
 #. §1: `j`
 #. §2: `hj`
@@ -28309,15 +30264,6 @@ msgstr ""
 msgid "Proving Tuple Equality"
 msgstr ""
 
-#. §0: `inf_assoc`
-#. §1: `(a ⊓ b) ⊓ c = a ⊓ (b ⊓ c)`
-#: Game.Metadata
-msgid "§0 proves §1. For finsets, this is\n"
-"intersection associativity.\n"
-"\n"
-"Disabled to prevent shortcutting set identity proofs."
-msgstr ""
-
 #. §0: `castSucc`
 #. §1: `Fin.last`
 #. §2: `succ`
@@ -28360,6 +30306,19 @@ msgid "# The Dual Separation Fact\n"
 "§13. Just as §14 simplifies\n"
 "§15 to §16, §17 simplifies §18\n"
 "to §19."
+msgstr ""
+
+#. §0: `inf_assoc`
+#. §1: `(a ⊓ b) ⊓ c = a ⊓ (b ⊓ c)`
+#: Game.Metadata
+msgid "§0 proves §1. For finsets, this is\n"
+"intersection associativity.\n"
+"\n"
+"Disabled to prevent shortcutting set identity proofs."
+msgstr ""
+
+#: Game.Levels.Powerset.L20_PowersetCardZero
+msgid "The only 0-element subset of any finset is the empty set."
 msgstr ""
 
 #. §0: `omega`
@@ -28492,9 +30451,30 @@ msgid "You've proved that the containment §0\n"
 "sets), which image can't guarantee without injectivity."
 msgstr ""
 
+#: Game.Levels.Powerset.L07_PowersetMonoConverse
+msgid "If s.powerset ⊆ t.powerset, then s ⊆ t."
+msgstr ""
+
 #. §0: `Finset.card_singleton 7`
 #: Game.Levels.Cardinality.L02_CardinalityOfSingleton
 msgid "The goal matches §0. Apply it directly."
+msgstr ""
+
+#. §0: `Finset.empty_subset s`
+#. §1: `∅ ⊆ s`
+#. §2: `s`
+#. §3: ```
+#. exact Finset.empty_subset s
+#. ```
+#. §4: `∅ ⊆ s`
+#: Game.Levels.Powerset.L01_EmptyInPowerset
+msgid "§0 states that §1 for any finset §2.\n"
+"\n"
+"## Syntax\n"
+"§3\n"
+"\n"
+"## When to use it\n"
+"When the goal is §4 — the empty set is a subset of everything."
 msgstr ""
 
 #. §0: `Perm.nodup_iff`
@@ -29807,6 +31787,40 @@ msgid "The goal is §0. Apply the bound hypothesis to your\n"
 "specific element: §1."
 msgstr ""
 
+#. §0: `Nat.choose_symm`
+#. §1: `exact`
+#. §2: `rw`
+#. §3: `rw [Nat.choose_symm hk]`
+#. §4: `hk`
+#. §5: `hk`
+#. §6: $k \\leq n$
+#. §7: `hs : s.card = n`
+#. §8: `hk : k ≤ n`
+#. §9: `(Finset.powersetCard (n - k) s).card = Nat.choose n k`
+#. §10: `Nat.choose`
+#. §11: `s.card`
+#. §12: `n`
+#. §13: `Nat.choose_symm hk`
+#: Game.Levels.Powerset.L26_ChooseSymmCoaching
+msgid "# Rewriting with Choose Symmetry\n"
+"\n"
+"In the BinomialCoefficients world, you used §0 with\n"
+"§1. Now practice using it with §2 — a pattern the boss needs.\n"
+"\n"
+"The key new syntax: §3. Notice the **proof\n"
+"argument** §4 passed inside the rewrite brackets. This tells Lean\n"
+"which inequality justifies the rewrite. Without §5, Lean wouldn't\n"
+"know that §6.\n"
+"\n"
+"**Your task**: Given §7 and §8, prove that\n"
+"§9.\n"
+"\n"
+"Strategy:\n"
+"1. Convert the powersetCard cardinality to §10 (Level 17 pattern)\n"
+"2. Substitute §11 with §12\n"
+"3. Apply §13 via rewriting"
+msgstr ""
+
 #. §0: `ext`
 #. §1: `omega`
 #: Game.Levels.FinNavigation.L16_Boss
@@ -29990,6 +32004,10 @@ msgid "# Set Identity: De Morgan Direction\n"
 "\n"
 "This combines §13, §14, §15, §16, and\n"
 "negation handling — skills from all three lecture worlds."
+msgstr ""
+
+#: Game.Levels.Powerset.L14_SingletonPowerset
+msgid "A singleton finset has exactly 2 subsets."
 msgstr ""
 
 #. §0: `Fin n`
@@ -30203,6 +32221,24 @@ msgid "# Conditional Sums: sum_filter\n"
 "representations."
 msgstr ""
 
+#. §0: `s`
+#. §1: `t`
+#. §2: `h : s ∈ t.powerset`
+#. §3: `s ⊆ t`
+#. §4: `rw [...] at h`
+#: Game.Levels.Powerset.L05_MemberImpliesSubset
+msgid "# Reading a Powerset Membership\n"
+"\n"
+"In Level 4, you went from a subset fact to powerset membership.\n"
+"Now go the other direction: given that §0 is in the powerset of\n"
+"§1, extract the subset fact.\n"
+"\n"
+"**Your task**: Given §2, prove §3.\n"
+"\n"
+"This time, the powerset fact is in a **hypothesis**, not the goal.\n"
+"You'll use §4 to rewrite inside a hypothesis."
+msgstr ""
+
 #: Game.Levels.PsetCardinality.L05_ListToFinsetCard
 msgid "List Insertion Cardinality"
 msgstr ""
@@ -30219,6 +32255,40 @@ msgstr ""
 
 #: Game.Levels.FinsetOperations.L06_SubsetMonotonicity
 msgid "Every set is a subset of its union with another set."
+msgstr ""
+
+#. §0: `Finset.powerset s`
+#. §1: `s`
+#. §2: `Finset.powerset : Finset α → Finset (Finset α)`
+#. §3: `Finset.mem_powerset : t ∈ s.powerset ↔ t ⊆ s`
+#. §4: `t`
+#. §5: `s`
+#. §6: `t`
+#. §7: `s`
+#. §8: `Finset.card_powerset : (s.powerset).card = 2 ^ s.card`
+#. §9: `n`
+#. §10: `2^n`
+#. §11: `s = {1, 2}`
+#. §12: `s.powerset = {∅, {1}, {2}, {1, 2}}`
+#: Game.Levels.Powerset.L01_EmptyInPowerset
+msgid "§0 is the finset of all subsets of §1.\n"
+"\n"
+"## Type\n"
+"§2\n"
+"\n"
+"## Key characterization\n"
+"§3\n"
+"\n"
+"A finset §4 is in the powerset of §5 exactly when §6 is a\n"
+"subset of §7.\n"
+"\n"
+"## Cardinality\n"
+"§8\n"
+"\n"
+"A finset with §9 elements has §10 subsets.\n"
+"\n"
+"## Example\n"
+"If §11, then §12."
 msgstr ""
 
 #. §0: `succ`
@@ -30284,6 +32354,10 @@ msgstr ""
 #: Game.Levels.FinsetOperations.L18_DeMorgansLaw
 msgid "Use §0\n"
 "to unfold all operations into pure logic."
+msgstr ""
+
+#: Game.Levels.Powerset.L06_PowersetMonotonicity
+msgid "If s ⊆ t, then s.powerset ⊆ t.powerset."
 msgstr ""
 
 #. §0: `Fintype.surjective_iff_bijective`
@@ -30643,6 +32717,10 @@ msgstr ""
 
 #: Game.Levels.AbstractionLadder.L14_ToFinset
 msgid "List membership carries through toFinset of a cons'd list."
+msgstr ""
+
+#: Game.Levels.Powerset.L09_ComplementInPowerset
+msgid "Complements Stay in the Powerset"
 msgstr ""
 
 #. §0: `m`
@@ -31264,9 +33342,23 @@ msgid "§0 substitutes the formula, then\n"
 "case-split: §1"
 msgstr ""
 
+#. §0: `decide`
+#: Game.Levels.Powerset.L18_ConcretePowersetCard
+msgid "Lean can compute the cardinality of a concrete powersetCard\n"
+"directly. Use §0 to let Lean verify this by computation."
+msgstr ""
+
 #. §0: `v = n + 1`
 #: Game.Levels.PsetFin.L09_ZeroSuccRetrieval
 msgid "Here §0. Provide the preimage and prove equality."
+msgstr ""
+
+#. §0: `h : (powersetCard 2 s).card = Nat.choose s.card 2`
+#. §1: `s`
+#. §2: `hs`
+#: Game.Levels.Powerset.L25_ConcreteCount
+msgid "Now §0.\n"
+"Substitute the card of §1 using §2."
 msgstr ""
 
 #. §0: `1 = Nat.factorial 0`
@@ -31362,6 +33454,10 @@ msgid "§0 states that when §1,\n"
 "\n"
 "## Example\n"
 "§9"
+msgstr ""
+
+#: Game.Levels.Powerset
+msgid "Powerset"
 msgstr ""
 
 #. §0: `n`
@@ -31754,6 +33850,59 @@ msgid "§0 states that §1.\n"
 "algebraic rearrangement."
 msgstr ""
 
+#. §0: `rw [mem_powerset] at ht`
+#. §1: `t ⊆ s`
+#. §2: `rw [mem_powerset]`
+#. §3: `s \\ t ⊆ s`
+#. §4: `exact Finset.sdiff_subset`
+#. §5: `t`
+#. §6: `s`
+#. §7: `s \\ t`
+#. §8: `s`
+#. §9: `k`
+#. §10: `(n-k)`
+#. §11: $\\binom{n}{k} = \\binom{n}{n-k}$
+#. §12: `ht`
+#. §13: `s \\ t ⊆ s`
+#. §14: `t`
+#. §15: `s`
+#. §16: `ht`
+#. §17: `t`
+#. §18: `s`
+#. §19: `s \\ t`
+#. §20: `s`
+#. §21: `ht : t ∈ s.powerset`
+#. §22: $\\mathcal{P}(s)$
+#. §23: `ht`
+#. §24: `t ⊆ s`
+#: Game.Levels.Powerset.L09_ComplementInPowerset
+msgid "Three steps:\n"
+"1. §0 — see that §1\n"
+"2. §2 — convert goal to §3\n"
+"3. §4 — the set difference is a subset\n"
+"\n"
+"**Why this matters**: The powerset is closed under complementation.\n"
+"For every subset §5 of §6, the complement §7 (the elements\n"
+"you *did not* choose) is also a subset of §8. This pairs every\n"
+"§9-element subset with an §10-element subset, which is exactly\n"
+"the bijection behind the symmetry §11.\n"
+"\n"
+"**Did you notice?** The proof did not actually use §12. The fact\n"
+"§13 holds for *any* §14, not just subsets of §15. This is\n"
+"an important mathematical observation: **not every hypothesis is\n"
+"necessary**. Spotting unnecessary hypotheses is a valuable skill —\n"
+"it tells you the result is more general than stated.\n"
+"\n"
+"So why did we include §16? Because the *mathematical story* needs\n"
+"it. We care about complementation as an operation on the powerset:\n"
+"given a subset §17 of §18, produce another subset §19 of §20.\n"
+"The hypothesis §21 frames the result as a closure\n"
+"property of the complement map on §22. The next two\n"
+"levels will use §23 essentially — Level 10 needs §24 to\n"
+"compute the complement's cardinality, and Level 11 needs it to\n"
+"prove the complement is an involution."
+msgstr ""
+
 #. §0: `hx`
 #. §1: `rw [Finset.mem_filter] at hx`
 #. §2: `obtain ⟨hst, hp⟩ := hx`
@@ -31912,12 +34061,20 @@ msgid "Congratulations! You've mastered the algebraic manipulation of\n"
 "from scratch — no library lemma needed."
 msgstr ""
 
+#: Game.Levels.Powerset.L25_ConcreteCount
+msgid "A 5-element set has 10 two-element subsets."
+msgstr ""
+
 #: Game.Levels.Fintype.L04_SumTypes
 msgid "The sum type Fin n ⊕ Fin m has n + m elements."
 msgstr ""
 
 #: Game.Levels.PsetFinset.L14_Boss
 msgid "Boss: Image Preserves Set Difference"
+msgstr ""
+
+#: Game.Levels.Powerset.L21_SingletonSubsets
+msgid "The number of 1-element subsets of s equals s.card."
 msgstr ""
 
 #. §0: `f 0 = 0`
@@ -31951,6 +34108,33 @@ msgstr ""
 
 #: Game.Levels.FinsetOperations.L11_DisjointFinsets
 msgid "If no element belongs to both sets, their intersection is empty."
+msgstr ""
+
+#. §0: `Finset.powersetCard_zero`
+#. §1: `powersetCard 0 s = {∅}`
+#. §2: ```
+#. exact Finset.powersetCard_zero s
+#. ```
+#. §3: `powersetCard 0 s`
+#. §4: `{∅}`
+#. §5: `card_powersetCard`
+#. §6: `(powersetCard 0 s).card = choose n 0 = 1`
+#. §7: `powersetCard_zero`
+#. §8: `{∅}`
+#: Game.Levels.Powerset.L20_PowersetCardZero
+msgid "§0 states §1.\n"
+"\n"
+"## Syntax\n"
+"§2\n"
+"\n"
+"## When to use it\n"
+"When the goal involves §3 and you want to replace\n"
+"it with the singleton §4. This is stronger than knowing the\n"
+"count is 1 — it identifies the unique element.\n"
+"\n"
+"## Relationship to card_powersetCard\n"
+"§5 gives §6.\n"
+"§7 gives the stronger statement: the set itself is §8."
 msgstr ""
 
 #: Game.Levels.SummationFormulas.L03_OddNumbers
@@ -32046,6 +34230,13 @@ msgstr ""
 msgid "Injective functions preserve both membership and cardinality."
 msgstr ""
 
+#. §0: `ht : t ⊆ s`
+#. §1: `Finset.card_le_card`
+#: Game.Levels.Powerset.L27_Boss
+msgid "Now §0. Derive the cardinality bound: subsets can't\n"
+"be bigger than the parent set. Use §1 (Level 24)."
+msgstr ""
+
 #: Game.Levels.CountingTypes.L11_Boss
 msgid "Boss: Functions vs. Injections"
 msgstr ""
@@ -32103,6 +34294,17 @@ msgid "§0 proves the goal by contradiction. It introduces\n"
 "\n"
 "## Example\n"
 "§7"
+msgstr ""
+
+#. §0: `Finset.empty_mem_powerset s`
+#. §1: `∅ ∈ s.powerset`
+#. §2: `mem_powerset`
+#. §3: `empty_subset`
+#: Game.Metadata
+msgid "§0 proves §1 directly.\n"
+"\n"
+"Disabled in levels where the learner should prove this by rewriting with\n"
+"§2 and using §3."
 msgstr ""
 
 #. §0: `h`
@@ -32389,6 +34591,17 @@ msgid "Use §0 to close this goal.\n"
 "is a variable.)"
 msgstr ""
 
+#. §0: `Nat.choose n (n - k) = Nat.choose n k`
+#. §1: `Nat.choose_symm`
+#. §2: `choose n (n - k) = choose n k`
+#. §3: `k ≤ n`
+#. §4: `hk`
+#: Game.Levels.Powerset.L26_ChooseSymmCoaching
+msgid "The goal is §0. The\n"
+"symmetry identity §1 says §2\n"
+"when §3. Rewrite with it, passing the proof §4."
+msgstr ""
+
 #. §0: `intro h`
 #. §1: `0 ∈ image f (left_set ∩ right_set)`
 #: Game.Levels.FinsetImage.L17_WhyInjectivityMatters
@@ -32588,6 +34801,14 @@ msgstr ""
 msgid "After substituting the IH:\n"
 "§0.\n"
 "This factors as §1. §2 closes it."
+msgstr ""
+
+#. §0: `Finset.card_powersetCard`
+#: Game.Levels.Powerset.L19_ZeroElementSubsets
+#: Game.Levels.Powerset.L22_FullSetSubset
+#: Game.Levels.Powerset.L23_TooManyElements
+msgid "Convert the powersetCard cardinality to a binomial\n"
+"coefficient using §0."
 msgstr ""
 
 #. §0: `ext`
@@ -32827,6 +35048,10 @@ msgid "Now you can see what §0 actually contains:\n"
 "0, 1, ..., n-1 and collect the results into a finset.'"
 msgstr ""
 
+#: Game.Levels.Powerset.L12_CardPowerset
+msgid "Counting Subsets: 2^n"
+msgstr ""
+
 #. §0: `show ∀ a b, f a = f b → a = b`
 #. §1: `intro a b h`
 #. §2: `omega`
@@ -32968,6 +35193,10 @@ msgstr ""
 
 #: Game.Levels.BinomialCoefficients.L06_Symmetry
 msgid "Disabled: directly proves symmetry from an addition equation."
+msgstr ""
+
+#: Game.Levels.Powerset.L26_ChooseSymmCoaching
+msgid "Symmetry of Choose via Rewriting"
 msgstr ""
 
 #. §0: `Fin.cons`
@@ -34502,6 +36731,17 @@ msgid "You have §0 and need §1. If you can show\n"
 "§2, that contradicts §3."
 msgstr ""
 
+#. §0: `hu : u ∈ s.powerset`
+#. §1: `u ∈ t.powerset`
+#. §2: `rw [Finset.mem_powerset] at hu ⊢`
+#. §3: `⊢`
+#: Game.Levels.Powerset.L06_PowersetMonotonicity
+msgid "Now you have §0 and need §1.\n"
+"Use §2 to convert both the\n"
+"hypothesis and the goal to subset claims. The §3 symbol refers\n"
+"to the goal."
+msgstr ""
+
 #. §0: `rw [Finset.sum_add_distrib]`
 #: Game.Levels.PsetBigOp.L04_DoubleSumSwap
 msgid "Use §0 to split the\n"
@@ -34597,6 +36837,36 @@ msgstr ""
 
 #: Game.Levels.Cardinality.L18_MultiplicationPrinciple
 msgid "The Multiplication Principle"
+msgstr ""
+
+#. §0: `decide`
+#. §1: `({1} : Finset ℕ).powerset = {∅, {1}}`
+#. §2: `2 = 2`
+#. §3: `∅`
+#. §4: `∅`
+#. §5: `{1}`
+#. §6: `∅, {1}`
+#. §7: `{1,2}`
+#. §8: `∅, {1}, {2}, {1,2}`
+#. §9: $2^n$
+#. §10: $n$
+#: Game.Levels.Powerset.L14_SingletonPowerset
+msgid "One step: §0.\n"
+"\n"
+"Lean computed: §1 and §2. ✓\n"
+"\n"
+"**The doubling pattern**: Every time you add one element to a set,\n"
+"each existing subset splits into two versions — one with the new\n"
+"element and one without. So the number of subsets doubles:\n"
+"\n"
+"| Set | Subsets | Count |\n"
+"|:-:|:--|:-:|\n"
+"| §3 | §4 | 1 |\n"
+"| §5 | §6 | 2 |\n"
+"| §7 | §8 | 4 |\n"
+"\n"
+"This doubling is why the total is §9 — you make §10 independent\n"
+"binary choices."
 msgstr ""
 
 #: Game.Levels.FinsetImage.L12_PartialCollapse
@@ -35104,6 +37374,16 @@ msgstr ""
 msgid "Start with §0 to name the element."
 msgstr ""
 
+#. §0: `s.powerset ⊆ t.powerset`
+#. §1: `u`
+#. §2: `u ∈ s.powerset`
+#. §3: `u ∈ t.powerset`
+#: Game.Levels.Powerset.L06_PowersetMonotonicity
+msgid "The goal §0 means:\n"
+"for all §1, if §2 then §3.\n"
+"Start by introducing the element and its membership hypothesis."
+msgstr ""
+
 #. §0: `s`
 #. §1: `induction s using Finset.induction_on with`
 #. §2: `| empty => sorry`
@@ -35330,6 +37610,40 @@ msgid "Use §0. Then §1 and\n"
 "is §3. For the second (§4), use §5."
 msgstr ""
 
+#: Game.Levels.Powerset.L03_ConcretePowerset
+msgid "The powerset of {1, 2} has exactly 4 elements."
+msgstr ""
+
+#. §0: `Finset.card_powersetCard`
+#. §1: `(powersetCard k s).card = Nat.choose s.card k`
+#. §2: ```
+#. rw [Finset.card_powersetCard]
+#. exact Finset.card_powersetCard k s
+#. ```
+#. §3: `(powersetCard k s).card`
+#. §4: `Nat.choose s.card k`
+#. §5: `k`
+#. §6: `n`
+#. §7: $\\binom{n}{k}$
+#. §8: `Nat.choose`
+#: Game.Levels.Powerset.L17_CardPowersetCard
+msgid "§0 states that\n"
+"§1.\n"
+"\n"
+"## Syntax\n"
+"§2\n"
+"\n"
+"## When to use it\n"
+"When you see §3 and want to replace it\n"
+"with §4, connecting subset counting to the\n"
+"binomial coefficient.\n"
+"\n"
+"## Meaning\n"
+"The number of §5-element subsets of an §6-element set is\n"
+"§7. This is *the* combinatorial interpretation of\n"
+"§8."
+msgstr ""
+
 #: Game.Levels.BigOpAlgebra.L03_SumConst
 msgid "Constant Sums Meet Linearity"
 msgstr ""
@@ -35441,6 +37755,17 @@ msgid "# Boss: Putting Navigation Together\n"
 "**Part 2 — Succ injectivity**: You proved this in Level 9.\n"
 "Here you combine it with the decomposition in a single proof.\n"
 "The pattern is the same: §9, §10, §11, §12."
+msgstr ""
+
+#. §0: `x ∈ t`
+#. §1: `hx : x ∈ u`
+#. §2: `hu : u ⊆ s`
+#. §3: `hu hx : x ∈ s`
+#. §4: `h : s ⊆ t`
+#. §5: `h (hu hx) : x ∈ t`
+#: Game.Levels.Powerset.L06_PowersetMonotonicity
+msgid "You need §0. You know §1 and §2,\n"
+"so §3. Then §4, so §5."
 msgstr ""
 
 #. §0: `Fin.init`
@@ -35578,10 +37903,24 @@ msgid "You've learned the §0 modifier for §1:\n"
 "Lean can verify computationally."
 msgstr ""
 
+#. §0: `Nat.choose s.card k = 0`
+#. §1: `Nat.choose_eq_zero_of_lt`
+#. §2: `Nat.choose n k = 0`
+#. §3: `n < k`
+#: Game.Levels.Powerset.L23_TooManyElements
+msgid "The goal is §0. From the\n"
+"BinomialCoefficients world, §1 says\n"
+"that §2 when §3."
+msgstr ""
+
 #. §0: `have`
 #: Game.Levels.CountingTypes.L10_TheGap
 msgid "This is a subtraction — you need the value of both terms.\n"
 "Start by computing the function count in a §0 block."
+msgstr ""
+
+#: Game.Levels.Powerset.L12_CardPowerset
+msgid "A 3-element finset has 8 subsets."
 msgstr ""
 
 #: Game.Levels.FinsetOperations.L22_AbsorptionLaw
@@ -35895,6 +38234,12 @@ msgid "The inclusion-exclusion formula is the most important counting identity\n
 "§24.\n"
 "The partition identity is the deeper fact; inclusion-exclusion is its\n"
 "numerical consequence."
+msgstr ""
+
+#. §0: `Finset.card_powersetCard`
+#: Game.Levels.Powerset.L21_SingletonSubsets
+msgid "Start by converting the powersetCard cardinality to a\n"
+"binomial coefficient using §0."
 msgstr ""
 
 #. §0: `5 ∉ Finset.range 5`
@@ -36396,6 +38741,25 @@ msgid "The goal is §0. After §1, the\n"
 "Use §3 to check pointwise, then §4."
 msgstr ""
 
+#. §0: `rw [Finset.mem_powerset]`
+#. §1: `s ⊆ s`
+#. §2: `Finset.Subset.refl`
+#. §3: `∅`
+#. §4: `s`
+#: Game.Levels.Powerset.L02_SelfMembership
+msgid "One step: §0.\n"
+"\n"
+"After rewriting, the goal becomes §1, which Lean closes\n"
+"automatically because subset is reflexive (§2).\n"
+"\n"
+"The powerset always contains at least two distinguished members:\n"
+"- §3 (Level 1) — the empty set is a subset of everything\n"
+"- §4 itself (this level) — every set is a subset of itself\n"
+"\n"
+"These are the two extremes: the smallest and largest subsets.\n"
+"Everything else in the powerset sits between them."
+msgstr ""
+
 #. §0: `Finset.sum_sub_distrib`
 #. §1: `∑ x ∈ s, (f x - g x) = (∑ x ∈ s, f x) - (∑ x ∈ s, g x)`
 #: Game.Metadata
@@ -36714,8 +39078,25 @@ msgid "You need to show §0.\n"
 "Assume membership with §1."
 msgstr ""
 
+#: Game.Levels.Powerset.L19_ZeroElementSubsets
+msgid "Zero-Element Subsets: Choose 0"
+msgstr ""
+
 #: Game.Levels.PsetFin.L05_PointwiseFormula
 msgid "From Formula to Tuple"
+msgstr ""
+
+#. §0: `ht : t ⊆ s`
+#. §1: `s \\ (s \\ t) = t`
+#. §2: `sdiff_sdiff_eq_self`
+#. §3: `x \\ (x \\ y) = y`
+#. §4: `y ≤ x`
+#. §5: `y ⊆ x`
+#. §6: `ht`
+#: Game.Levels.Powerset.L11_ComplementInvolution
+msgid "Now §0. The goal is §1. The Mathlib\n"
+"lemma §2 states that §3 when\n"
+"§4 (i.e., §5 for finsets). Apply it with §6."
 msgstr ""
 
 #. §0: $n$
@@ -37646,6 +40027,11 @@ msgstr ""
 msgid "Now use §0 to peel off the 2."
 msgstr ""
 
+#. §0: `powersetCard`
+#: Game.Levels.Powerset.L27_Boss
+msgid "Do the same for the second §0 term."
+msgstr ""
+
 #. §0: `f a ∉ s.image f`
 #. §1: `intro hfa`
 #. §2: `f a ∈ s.image f`
@@ -37653,6 +40039,40 @@ msgstr ""
 #: Game.Levels.PsetFinset.L07_InjectiveNonMembership
 msgid "The goal is §0, which is a negation.\n"
 "Use §1 to assume §2 and derive §3."
+msgstr ""
+
+#. §0: `rw [mem_powerset] at ht`
+#. §1: `t ⊆ s`
+#. §2: `exact card_le_card ht`
+#. §3: `t.card ≤ s.card`
+#. §4: `mem_powerset`
+#. §5: `card_le_card`
+#. §6: `mem_powerset`
+#: Game.Levels.Powerset.L24_SubsetBound
+msgid "Two steps:\n"
+"1. §0 — extract §1\n"
+"2. §2 — conclude §3\n"
+"\n"
+"This level integrates the powerset world with the Cardinality world.\n"
+"The §4 bridge converts a powerset fact into a subset fact,\n"
+"which §5 can use.\n"
+"\n"
+"**Proof pattern**: When you need a cardinality inequality from a\n"
+"powerset membership, the recipe is always:\n"
+"1. Extract the subset with §6\n"
+"2. Apply the cardinality lemma\n"
+"\n"
+"This pattern will recur whenever powerset arguments interact with\n"
+"counting."
+msgstr ""
+
+#. §0: `h : s.powerset ⊆ t.powerset`
+#. §1: `s ∈ t.powerset`
+#. §2: `h`
+#. §3: `hs`
+#: Game.Levels.Powerset.L07_PowersetMonoConverse
+msgid "Now use the hypothesis §0 to\n"
+"conclude that §1. Apply §2 to §3."
 msgstr ""
 
 #: Game.Levels.FinNavigation.L02_LastIsMaximum
@@ -37930,6 +40350,40 @@ msgstr ""
 msgid "If x ∈ {1, 2, 3} ∪ {4, 5}, then x ∈ range 6."
 msgstr ""
 
+#. §0: `Finset.mem_powerset`
+#. §1: `t ∈ s.powerset ↔ t ⊆ s`
+#. §2: ```
+#. rw [Finset.mem_powerset]     -- in the goal
+#. rw [Finset.mem_powerset] at h -- in a hypothesis
+#. ```
+#. §3: `t ∈ s.powerset`
+#. §4: `t ⊆ s`
+#. §5: `t ∈ s.powerset`
+#. §6: `rw [Finset.mem_powerset]`
+#. §7: `t ⊆ s`
+#. §8: `⊆`
+#. §9: `∀ x ∈ t, x ∈ s`
+#. §10: `intro x hx`
+#: Game.Levels.Powerset.L01_EmptyInPowerset
+msgid "§0 states that §1.\n"
+"\n"
+"## Syntax\n"
+"§2\n"
+"\n"
+"## When to use it\n"
+"When you see §3 and want to convert it to §4\n"
+"(or vice versa). This is the fundamental bridge between powerset\n"
+"membership and subset reasoning.\n"
+"\n"
+"## Example\n"
+"If the goal is §5, then §6\n"
+"changes it to §7.\n"
+"\n"
+"## Common misuse\n"
+"Remember that §8 for finsets means §9, so after\n"
+"rewriting you may need §10 to proceed."
+msgstr ""
+
 #: Game.Levels.MeetFin.L19_ModularArithmetic
 msgid "Modular Arithmetic"
 msgstr ""
@@ -38007,6 +40461,10 @@ msgid "This is the separation fact from FinNavigation L07, now\n"
 "via value reasoning."
 msgstr ""
 
+#: Game.Levels.Powerset.L22_FullSetSubset
+msgid "The Full Set: Choose n"
+msgstr ""
+
 #. §0: `rw [Finset.mem_range]`
 #: Game.Levels.FinsetBasics.L09_FinToFinsetBridge
 msgid "Convert the membership goal to an inequality:\n"
@@ -38078,6 +40536,10 @@ msgstr ""
 #: Game.Levels.FinNavigation.L16_Boss
 msgid "Case-split on §0:\n"
 "§1"
+msgstr ""
+
+#: Game.Levels.Powerset.L26_ChooseSymmCoaching
+msgid "The (n-k)-element subsets of an n-element set number choose(n, k)."
 msgstr ""
 
 #. §0: `card_congr e`
@@ -38278,6 +40740,10 @@ msgstr ""
 #: Game.Levels.FinsetOperations.L25_Boss
 msgid "Apply the unfold-to-logic recipe: §0, then\n"
 "§1."
+msgstr ""
+
+#: Game.Levels.Powerset.L23_TooManyElements
+msgid "There are no k-element subsets when k exceeds the set size."
 msgstr ""
 
 #. §0: `Nat.mul_comm`
@@ -38672,6 +41138,21 @@ msgid "§0 proves §1 directly.\n"
 "Disabled to force manual proof."
 msgstr ""
 
+#. §0: `h : ((∅ : Finset ℕ).powerset).card = 2 ^ (∅ : Finset ℕ).card`
+#. §1: `Finset.card_empty`
+#. §2: `(∅ : Finset ℕ).card`
+#. §3: `0`
+#: Game.Levels.Powerset.L13_PowersetEmptySet
+msgid "Now §0.\n"
+"Use §1 to replace §2 with §3."
+msgstr ""
+
+#. §0: `have`
+#. §1: `card_powersetCard`
+#: Game.Levels.Powerset.L25_ConcreteCount
+msgid "Use §0 to bring §1 into the context."
+msgstr ""
+
 #: Game.Levels.Cardinality.L01_WhatIsCardinality
 msgid "The empty finset has zero elements."
 msgstr ""
@@ -38695,6 +41176,48 @@ msgstr ""
 msgid "Counting via Summation"
 msgstr ""
 
+#. §0: $s \\subseteq t$
+#. §1: $\\mathcal{P}(s) \\subseteq \\mathcal{P}(t)$
+#. §2: `intro u hu`
+#. §3: `rw [mem_powerset] at hu ⊢`
+#. §4: `intro x hx`
+#. §5: `u`
+#. §6: `exact h (hu hx)`
+#. §7: `x ∈ u → x ∈ s → x ∈ t`
+#. §8: `u ⊆ s`
+#. §9: `∀ x ∈ u, x ∈ s`
+#. §10: `hu`
+#. §11: `hx`
+#. §12: `x ∈ s`
+#. §13: `h`
+#. §14: `x ∈ t`
+#. §15: `rw [...] at hu ⊢`
+#. §16: `⊢`
+#. §17: `Finset.powerset_mono`
+#: Game.Levels.Powerset.L06_PowersetMonotonicity
+msgid "You proved powerset monotonicity: if §0, then\n"
+"§1.\n"
+"\n"
+"**Proof recipe**:\n"
+"1. §2 — introduce the element and membership\n"
+"2. §3 — convert both to subset claims\n"
+"3. §4 — introduce an element of §5\n"
+"4. §6 — chain: §7\n"
+"\n"
+"**The key move**: Step 4 chains two subset hypotheses by function\n"
+"application. Since §8 means §9, applying\n"
+"§10 to §11 gives §12, and then §13 gives §14.\n"
+"\n"
+"**The simultaneous-rewrite pattern**: Step 2 used §15\n"
+"to rewrite in *both* a hypothesis and the goal in one command. The\n"
+"§16 symbol refers to the goal. This pattern is useful whenever you\n"
+"need to normalize related expressions in different locations. You\n"
+"will use it again in Level 8 and in the boss.\n"
+"\n"
+"**Library connection**: Mathlib calls this §17 —\n"
+"you just proved a real library theorem from first principles!"
+msgstr ""
+
 #. §0: `castSucc`
 #. §1: `succ`
 #: Game.Levels.FinNavigation.L06_CastSuccNeSucc
@@ -38707,6 +41230,10 @@ msgstr ""
 
 #: Game.Levels.Fintype.L08_SubtypeCounting
 msgid "Subtype Counting"
+msgstr ""
+
+#: Game.Levels.Powerset.L17_CardPowersetCard
+msgid "Counting k-Element Subsets"
 msgstr ""
 
 #. §0: `l₁`
@@ -38793,6 +41320,16 @@ msgid "# Lists Care About Order\n"
 "§5 would force §6 — which is absurd.\n"
 "\n"
 "**Your task**: Prove that §7."
+msgstr ""
+
+#. §0: `h : (s.powerset).card = 2 ^ s.card`
+#. §1: `s.card`
+#. §2: `h`
+#. §3: `3`
+#. §4: `hs`
+#: Game.Levels.Powerset.L12_CardPowerset
+msgid "Now §0. Substitute §1\n"
+"in §2 to §3 using §4."
 msgstr ""
 
 #. §0: `f = vecSnoc (Fin.init f) (f (Fin.last 2))`
@@ -39034,6 +41571,30 @@ msgid "The surjectivity proof introduced a new technique: **deriving a\n"
 "and the complement of the last element in §15."
 msgstr ""
 
+#. §0: `decide`
+#. §1: `decide`
+#. §2: `({1, 2}).powerset`
+#. §3: `decide`
+#. §4: `({1, 2} : Finset Nat).powerset = {∅, {1}, {2}, {1, 2}}`
+#. §5: `4 = 4`
+#. §6: `{1, 2}`
+#: Game.Levels.Powerset.L03_ConcretePowerset
+msgid "One step: §0.\n"
+"\n"
+"For small concrete finsets, §1 asks Lean to compute the answer\n"
+"directly — it literally builds §2, counts its elements,\n"
+"and checks the result equals 4.\n"
+"\n"
+"**What §3 computed**:\n"
+"§4\n"
+"and §5. ✓\n"
+"\n"
+"In the rest of this world, you'll prove general facts about\n"
+"powersets that work for *any* finset — not just §6. But\n"
+"keeping this concrete picture in mind helps build intuition:\n"
+"the powerset is the collection of *all possible sub-selections*."
+msgstr ""
+
 #. §0: `use a`
 #. §1: `a ∈ s ∩ t`
 #. §2: `f a = y`
@@ -39215,6 +41776,10 @@ msgstr ""
 #. §0: `h : s = t`
 #: Game.Levels.PsetCardinality.L07_ExtCardinality
 msgid "Good — you have §0. Now transfer the cardinality."
+msgstr ""
+
+#: Game.Levels.Powerset.L09_ComplementInPowerset
+msgid "The complement of a powerset member is also in the powerset."
 msgstr ""
 
 #. §0: `apply e`
@@ -39691,11 +42256,27 @@ msgid "# Subsets Map to Subsets\n"
 "§5)."
 msgstr ""
 
+#. §0: `iff`
+#. §1: `↔`
+#. §2: `constructor`
+#: Game.Levels.Powerset.L08_PowersetMonoIff
+msgid "The goal is an §0 (§1). Use §2 to split it into\n"
+"the forward direction and the backward direction."
+msgstr ""
+
 #. §0: `rw [hswap, hg]`
 #: Game.Levels.PsetBigOp.L04_DoubleSumSwap
 #: Game.Levels.PsetBigOp.L05_FilteredSum
 msgid "Substitute the known values:\n"
 "§0."
+msgstr ""
+
+#. §0: `choose n t.card + choose n t.card = 2 * choose n t.card`
+#. §1: $x + x = 2x$
+#. §2: `ring`
+#: Game.Levels.Powerset.L27_Boss
+msgid "The goal is §0.\n"
+"This is §1. Close with §2."
 msgstr ""
 
 #. §0: `Finset.card_image_le`
@@ -39773,6 +42354,28 @@ msgid "# Injectivity Preserves Non-Membership\n"
 "\n"
 "The proof uses backward image extraction and injectivity to derive\n"
 "a contradiction."
+msgstr ""
+
+#. §0: `s ∈ powersetCard 2 t`
+#. §1: `rw [mem_powersetCard]`
+#. §2: `s ⊆ t ∧ s.card = 2`
+#. §3: `constructor`
+#. §4: `exact hsub`
+#. §5: `exact hcard`
+#. §6: `mem_powersetCard`
+#. §7: `constructor`
+#. §8: `mem_powerset`
+#: Game.Levels.Powerset.L15_MeetPowersetCard
+msgid "You proved §0 by:\n"
+"1. §1 — convert to §2\n"
+"2. §3 — split into two subgoals\n"
+"3. §4 and §5 — close each from hypotheses\n"
+"\n"
+"**Pattern**: §6 always produces a conjunction.\n"
+"After rewriting, expect to use §7 to split it.\n"
+"\n"
+"Compare with §8: powerset membership gives one condition\n"
+"(subset), while powersetCard membership gives two (subset AND card)."
 msgstr ""
 
 #. §0: `List.Perm.length_eq`
@@ -39873,6 +42476,10 @@ msgstr ""
 
 #: Game.Levels.BigOpAlgebra.L08_SumComm
 msgid "Interchanging Double Sums"
+msgstr ""
+
+#: Game.Levels.Powerset.L04_SubsetImpliesMember
+msgid "Subsets Live in the Powerset"
 msgstr ""
 
 #. §0: `2 * Nat.choose (n + 3) 2 = (n + 2) * (n + 3)`
@@ -40105,6 +42712,10 @@ msgid "Use §0 to reduce the equation to\n"
 "a membership proof."
 msgstr ""
 
+#: Game.Levels.Powerset.L08_PowersetMonoIff
+msgid "Powerset inclusion is equivalent to subset inclusion."
+msgstr ""
+
 #. §0: `«{h}»`
 #. §1: `i.val + 1 = 0`
 #. §2: `i.val + 1 >= 1 > 0`
@@ -40112,6 +42723,34 @@ msgstr ""
 #: Game.Levels.FinNavigation.L11_SuccNeverZero
 msgid "Now §0 says §1. But §2 for\n"
 "any natural number. §3 sees the contradiction."
+msgstr ""
+
+#. §0: `card_powersetCard`
+#. §1: `choose_zero_right`
+#. §2: `∅`
+#. §3: $\\binom{n}{0} = 1$
+#. §4: $k$
+#. §5: $\\binom{n}{k}$
+#. §6: `∅`
+#. §7: $n$
+#. §8: $n$
+#. §9: `s`
+#. §10: $n$
+#: Game.Levels.Powerset.L19_ZeroElementSubsets
+msgid "Two rewrites: §0 then §1.\n"
+"\n"
+"The only 0-element subset of any set is §2. This gives the\n"
+"boundary value §3.\n"
+"\n"
+"**Boundary cases of choose**:\n"
+"| §4 | §5 | Meaning |\n"
+"|:-:|:-:|:--|\n"
+"| 0 | 1 | Only §6 has 0 elements (this level) |\n"
+"| 1 | §7 | Each element gives one singleton (Level 21) |\n"
+"| §8 | 1 | Only §9 itself has §10 elements (Level 22) |\n"
+"\n"
+"These three anchor points help build intuition for the general\n"
+"formula before encountering it in complex proofs."
 msgstr ""
 
 #. §0: `Multiset.card_cons`
@@ -40379,6 +43018,13 @@ msgstr ""
 #: Game.Levels.FinsetOperations.L21_PartitionIdentity
 msgid "Unfold all operations with\n"
 "§0."
+msgstr ""
+
+#. §0: `have`
+#. §1: `card_powerset`
+#: Game.Levels.Powerset.L13_PowersetEmptySet
+msgid "Use §0 to bring §1 into the context,\n"
+"applied to the empty finset."
 msgstr ""
 
 #. §0: $2$
@@ -40764,6 +43410,35 @@ msgid "§0 states that §1:\n"
 "image respects function composition."
 msgstr ""
 
+#. §0: `Finset.card_powerset`
+#. §1: `(s.powerset).card = 2 ^ s.card`
+#. §2: ```
+#. rw [Finset.card_powerset]
+#. ```
+#. §3: `(s.powerset).card`
+#. §4: `2 ^ s.card`
+#. §5: `n`
+#. §6: `2^n`
+#. §7: `s.card = 4`
+#. §8: `(s.powerset).card = 2^4 = 16`
+#: Game.Levels.Powerset.L12_CardPowerset
+msgid "§0 states that\n"
+"§1.\n"
+"\n"
+"## Syntax\n"
+"§2\n"
+"\n"
+"## When to use it\n"
+"When you see §3 in a goal or hypothesis and want\n"
+"to replace it with §4.\n"
+"\n"
+"## Meaning\n"
+"A finset with §5 elements has exactly §6 subsets.\n"
+"\n"
+"## Example\n"
+"If §7, then §8."
+msgstr ""
+
 #: Game.Levels.Cardinality.L12_CardFilterLe
 msgid "Filtering Can't Increase Size"
 msgstr ""
@@ -40857,6 +43532,45 @@ msgstr ""
 #: Game.Levels.FinsetImage.L17_WhyInjectivityMatters
 msgid "Now §0 claims membership in the image. Extract the witness:\n"
 "§1 then §2."
+msgstr ""
+
+#. §0: `s`
+#. §1: `s.powerset`
+#. §2: `s`
+#. §3: `s = {1, 2, 3}`
+#. §4: `s.powerset`
+#. §5: `∅`
+#. §6: `{1}`
+#. §7: `{2}`
+#. §8: `{3}`
+#. §9: `{1,2}`
+#. §10: `{1,3}`
+#. §11: `{2,3}`
+#. §12: `{1,2,3}`
+#. §13: $2^3 = 8$
+#. §14: $$t \\in s.\\text{powerset} \\iff t \\subseteq s$$
+#. §15: `Finset.mem_powerset : t ∈ s.powerset ↔ t ⊆ s`
+#. §16: `s`
+#: Game.Levels.Powerset.L01_EmptyInPowerset
+msgid "# Meet the Powerset\n"
+"\n"
+"Given a finset §0, the **powerset** §1 is the finset of all\n"
+"subsets of §2. If §3, then §4 contains every\n"
+"possible sub-collection: §5, §6, §7, §8, §9, §10,\n"
+"§11, and §12 — that's §13 subsets in total.\n"
+"\n"
+"The key characterization lemma is:\n"
+"\n"
+"§14\n"
+"\n"
+"In Lean: §15.\n"
+"\n"
+"This turns powerset membership into a subset question, which you\n"
+"already know how to handle.\n"
+"\n"
+"**Your task**: Prove that the empty set is in the powerset of any\n"
+"finset §16. Strategy: rewrite the powerset membership into a subset\n"
+"claim, then use the fact that the empty set is a subset of everything."
 msgstr ""
 
 #. §0: `∑`
@@ -41067,6 +43781,13 @@ msgid "Swap the sides again: §0 case gets\n"
 "§1, §2 case gets §3."
 msgstr ""
 
+#. §0: `s ∈ powersetCard 2 t`
+#. §1: `Finset.mem_powersetCard`
+#: Game.Levels.Powerset.L15_MeetPowersetCard
+msgid "The goal is §0. Rewrite with\n"
+"§1 to split into two conditions."
+msgstr ""
+
 #: Game.Levels.CountingTypes.L05_FallingFactorials
 msgid "One factor down. Keep unfolding — peel off the next factor."
 msgstr ""
@@ -41145,6 +43866,31 @@ msgid "§0 states that\n"
 "## When to use it\n"
 "When you need to prove two list coercions give equal multisets,\n"
 "or when you need to extract a permutation from a multiset equality."
+msgstr ""
+
+#. §0: `exact Finset.card_powersetCard 2 s`
+#. §1: $$|\\{t \\subseteq s \\mid |t| = k\\}| = \\binom{|s|}{k}$$
+#. §2: `k`
+#. §3: `n`
+#. §4: `Nat.choose`
+#. §5: `choose n k`
+#. §6: `k`
+#. §7: `n`
+#: Game.Levels.Powerset.L17_CardPowersetCard
+msgid "One step: §0.\n"
+"\n"
+"This is a **retrieval** level — you identified the right lemma\n"
+"and applied it. The fact itself is profound:\n"
+"\n"
+"§1\n"
+"\n"
+"This is the standard combinatorial definition of 'n choose k':\n"
+"the number of ways to choose §2 items from §3.\n"
+"\n"
+"In the BinomialCoefficients world, you proved identities about\n"
+"§4 purely from its recursive definition. Now you see\n"
+"its **counting meaning**: §5 counts the §6-element\n"
+"subsets of any §7-element set."
 msgstr ""
 
 #. §0: `rw [Fintype.card_congr e, Fintype.card_prod, Fintype.card_fin, Fintype.card_bool]`
@@ -41495,6 +44241,27 @@ msgstr ""
 msgid "Prepending with Fin.cons"
 msgstr ""
 
+#. §0: `rw [Finset.mem_powerset]`
+#. §1: `exact h`
+#. §2: `mem_powerset`
+#. §3: `↔`
+#. §4: `rw`
+#. §5: `rw [Finset.mem_powerset]`
+#. §6: `s ∈ t.powerset`
+#. §7: `s ⊆ t`
+#. §8: `mem_powerset`
+#: Game.Levels.Powerset.L04_SubsetImpliesMember
+msgid "Two steps: §0 then §1.\n"
+"\n"
+"The §2 lemma is an iff (§3), and §4 with an iff\n"
+"replaces the left side with the right side in the goal. So\n"
+"§5 turns §6 into §7.\n"
+"\n"
+"This is the **forward direction** of §8: from a subset\n"
+"fact to a powerset membership fact. Next you'll practice the reverse\n"
+"direction."
+msgstr ""
+
 #. §0: `ext x`
 #. §1: `s = t`
 #. §2: `x ∈ s ↔ x ∈ t`
@@ -41613,6 +44380,15 @@ msgid "The membership proof pattern for lists is identical to finsets:\n"
 "peels), even though membership itself doesn't care about position.\n"
 "\n"
 "**Reusable recipe**: §3 then §4/§5."
+msgstr ""
+
+#. §0: `Nat.choose s.card s.card = 1`
+#. §1: `Nat.choose_self`
+#. §2: `Nat.choose n n = 1`
+#: Game.Levels.Powerset.L22_FullSetSubset
+msgid "The goal is §0. From the\n"
+"BinomialCoefficients world, §1 says\n"
+"§2."
 msgstr ""
 
 #: Game.Levels.Cardinality.L22_AbstractPigeonhole
@@ -41793,6 +44569,16 @@ msgid "§0 is the special case of inclusion-exclusion\n"
 "  simpler equation with three terms"
 msgstr ""
 
+#. §0: `Nat.choose s.card 0 = 1`
+#. §1: `Nat.choose_zero_right`
+#. §2: `Nat.choose n 0 = 1`
+#. §3: `n`
+#: Game.Levels.Powerset.L19_ZeroElementSubsets
+msgid "The goal is §0. From the\n"
+"BinomialCoefficients world, §1 says\n"
+"§2 for all §3."
+msgstr ""
+
 #. §0: `Finset.subset_univ s`
 #. §1: `s`
 #. §2: `Finset.univ`
@@ -41875,6 +44661,63 @@ msgstr ""
 #: Game.Levels.FinsetOperations.L23_Distributivity
 msgid "You have §0. Use\n"
 "§1, then §2 and §3."
+msgstr ""
+
+#. §0: $s$
+#. §1: $n$
+#. §2: $2^n$
+#. §3: $k$
+#. §4: $\\binom{n}{k}$
+#. §5: $\\mathcal{P}(s)$
+#. §6: $s$
+#. §7: $t \\in \\mathcal{P}(s)$
+#. §8: $t \\subseteq s$
+#. §9: `Finset.powerset`
+#. §10: `mem_powerset`
+#. §11: `Finset.card_powerset`
+#. §12: $n$
+#. §13: $2^n$
+#. §14: `Finset.powersetCard k s`
+#. §15: `s`
+#. §16: $k$
+#. §17: `Finset.card_powersetCard`
+#. §18: $k$
+#. §19: $\\binom{n}{k}$
+#. §20: $\\binom{n}{k}$
+#. §21: $k$
+#. §22: `mem_powerset`
+#. §23: `card_le_card`
+#. §24: `Nat.choose`
+#: Game.Levels.Powerset
+msgid "# Powerset: All Subsets of a Set\n"
+"\n"
+"Given a finite set §0, how many subsets does it have? What if you only\n"
+"want subsets of a specific size?\n"
+"\n"
+"**Concrete motivation**: Imagine choosing toppings for a pizza from a\n"
+"menu of §1 items. Each topping is independently *in* or *out* — that\n"
+"gives §2 possible pizzas. If you want exactly §3 toppings, there\n"
+"are §4 options. The powerset formalizes this: it is the\n"
+"collection of all possible choices.\n"
+"\n"
+"The **powerset** §5 is the collection of all subsets of §6.\n"
+"The key characterization: §7 if and only if §8.\n"
+"\n"
+"In this world you'll learn:\n"
+"\n"
+"- **§9** and its membership lemma §10\n"
+"- **§11**: a set with §12 elements has §13 subsets\n"
+"- **§14**: the subsets of §15 with exactly §16 elements\n"
+"- **§17**: the count of §18-element subsets is §19\n"
+"\n"
+"This connects the *set-theoretic* operation (listing subsets) to the\n"
+"*combinatorial* numbers (binomial coefficients) that you studied in the\n"
+"BinomialCoefficients world. There, §20 was defined recursively\n"
+"via Pascal's identity. Here, you'll see its **counting meaning**: it counts\n"
+"the §21-element subsets.\n"
+"\n"
+"**Prerequisites**: §22 for subset reasoning, §23 from\n"
+"Cardinality, and §24 identities from BinomialCoefficients."
 msgstr ""
 
 #. §0: $$n^{\\underline{n}} = n!$$
@@ -42012,6 +44855,35 @@ msgstr ""
 
 #: Game.Levels.FinsetOperations.L13_IntersectionCommutativity
 msgid "Intersection is commutative."
+msgstr ""
+
+#. §0: `rw [mem_powerset] at ht`
+#. §1: `exact card_sdiff_of_subset ht`
+#. §2: `s \\ t`
+#. §3: `t`
+#. §4: `k`
+#. §5: `s`
+#. §6: `n`
+#. §7: `s \\ t`
+#. §8: `n - k`
+#. §9: `k`
+#. §10: `(n-k)`
+#. §11: `powersetCard k s`
+#. §12: `powersetCard (n-k) s`
+#: Game.Levels.Powerset.L10_ComplementCard
+msgid "Two steps: §0 then §1.\n"
+"\n"
+"**Why this matters**: In Level 9, you proved that the complement\n"
+"§2 is in the powerset. Now you know its size: if §3 has §4\n"
+"elements and §5 has §6 elements, then §7 has §8 elements.\n"
+"\n"
+"This is the counting half of the complement bijection:\n"
+"- Level 9: the complement map sends subsets to subsets\n"
+"- This level: it sends §9-element subsets to §10-element subsets\n"
+"\n"
+"Together, these two facts mean the complement map is a function from\n"
+"§11 to §12. The next level shows\n"
+"it is its own inverse, completing the bijection."
 msgstr ""
 
 #. §0: `exact List.Perm.swap 1 2 [3]`

@@ -16,6 +16,7 @@ import Mathlib.Data.Multiset.Count
 import Mathlib.Data.Multiset.Dedup
 import Mathlib.Tactic.Ring
 import Mathlib.Data.Nat.Choose.Basic
+import Mathlib.Data.Finset.Powerset
 
 /-! ## Documentation for disabled tactics and theorems
 
@@ -1357,3 +1358,26 @@ then `∏ x ∈ s, f x = 1`.
 Disabled in levels where the learner should prove product identities by induction.
 -/
 TheoremDoc Finset.prod_eq_one as "Finset.prod_eq_one" in "BigOp"
+
+/-! ### Powerset-specific disabled theorems -/
+
+/-- `Finset.empty_mem_powerset s` proves `∅ ∈ s.powerset` directly.
+
+Disabled in levels where the learner should prove this by rewriting with
+`mem_powerset` and using `empty_subset`.
+-/
+TheoremDoc Finset.empty_mem_powerset as "Finset.empty_mem_powerset" in "Finset"
+
+/-- `Finset.mem_powerset_self s` proves `s ∈ s.powerset` directly.
+
+Disabled in levels where the learner should prove this by rewriting with
+`mem_powerset`.
+-/
+TheoremDoc Finset.mem_powerset_self as "Finset.mem_powerset_self" in "Finset"
+
+/-- `Finset.powerset_mono` states that `s.powerset ⊆ t.powerset ↔ s ⊆ t`.
+
+Disabled in levels where the learner should prove monotonicity manually
+using `mem_powerset` and subset transitivity.
+-/
+TheoremDoc Finset.powerset_mono as "Finset.powerset_mono" in "Finset"

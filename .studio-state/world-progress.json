@@ -18,6 +18,7 @@
     "FinsetInduction",
     "SummationFormulas",
     "PsetBigOp",
-    "BinomialCoefficients"
+    "BinomialCoefficients",
+    "Powerset"
   ]
 }
