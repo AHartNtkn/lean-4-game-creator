@@ -21,6 +21,7 @@ import Game.Levels.PsetBigOp
 import Game.Levels.BinomialCoefficients
 import Game.Levels.Powerset
 import Game.Levels.BinomialTheorem
+import Game.Levels.PascalsTriangle
 
 Title "Finite Mathematics"
 Introduction
@@ -65,5 +66,6 @@ Dependency Cardinality → BinomialCoefficients
 Dependency BinomialCoefficients → Powerset
 Dependency Powerset → BinomialTheorem
 Dependency BigOpAlgebra → BinomialTheorem
+Dependency BinomialTheorem → PascalsTriangle
 
 MakeGame

@@ -855,30 +855,49 @@ Each level isolates one dominant lesson. The novelty budget is strict: at most o
 
 ---
 
-#### W22: PascalsTriangle (Example)
+#### W22: PascalsTriangle (Lecture)
 
-**Type**: Example / Case-study
+**Type**: Lecture
 
-**Promise**: By the end of this world, the learner will have explored concrete properties of Pascal's triangle and used them to verify counting identities.
+**Promise**: By the end of this world, the learner will understand the antidiagonal as a tool for pair-indexed sums, know the Vandermonde convolution identity, and be able to decompose antidiagonal sums using reindexing, swapping, and Vandermonde.
 
 **Object**: Pascal's triangle as organized by `Nat.choose` and `Finset.Nat.antidiagonal`.
 
 **Proof-move goals**:
-- Compute specific entries of Pascal's triangle
-- Verify identities on concrete values before proving them abstractly
-- Use `Finset.Nat.antidiagonal` to express pairs summing to `n`
+- Use `choose_succ_succ` and `choose_one_right` to expand binomial coefficients
+- Use `choose_symm` for row symmetry
+- Use `Finset.Nat.antidiagonal` and `mem_antidiagonal` for pair membership
+- Reindex antidiagonal sums to range sums (`sum_antidiagonal_eq_sum_range_succ_mk`)
+- Swap antidiagonal coordinates (`sum_antidiagonal_swap`)
+- Apply the Vandermonde identity (`Nat.add_choose_eq`) via reshape-flip-apply
+- Use `sum_congr rfl` for pointwise reduction of sum equalities
+- Combine `have` sub-proofs with `sum_add_distrib` and `ring`
 
 **Inventory changes**:
 - `NewDefinition Finset.Nat.antidiagonal`
 - `NewTheorem Finset.Nat.mem_antidiagonal`
+- `NewTheorem Finset.Nat.card_antidiagonal Finset.Nat.antidiagonal_zero`
+- `NewTheorem Finset.Nat.sum_antidiagonal_eq_sum_range_succ_mk`
+- `NewTheorem Finset.Nat.sum_antidiagonal_swap`
+- `NewTheorem Nat.add_choose_eq`
+- `NewTheorem sq`
 
-**Level sketch**:
-- L01: Compute row 5 of Pascal's triangle. Lesson: concrete computation.
-- L02: Verify `∑ k in range 6, choose 5 k = 32` concretely. Lesson: row sum.
-- L03: `Finset.Nat.antidiagonal n` — the pairs `(a, b)` with `a + b = n`. Lesson: new construction.
-- L04: Rewrite a sum over `range (n+1)` as a sum over `antidiagonal n`. Lesson: reindexing.
-- L05: Verify a specific case of `choose n k * choose k j = choose n j * choose (n-j) (k-j)`. Lesson: compound identity.
-- L06 (Boss): Prove a result about Pascal's triangle entries using multiple identities.
+**Level sketch** (15 levels):
+- L01: Expand C(n+4, 2) recursively (warm-up with variables). Lesson: choose_succ_succ, choose_one_right.
+- L02: Prove C(n+6, 3) = C(n+6, n+3) (symmetry with variables). Lesson: choose_symm pattern.
+- L03: (2,3) ∈ antidiagonal 5. Lesson: mem_antidiagonal intro.
+- L04: (2,4) ∉ antidiagonal 5. Lesson: non-membership.
+- L05: card(antidiagonal 4) = 5 ∧ antidiagonal 0 = {(0,0)}. Lesson: API facts.
+- L06: (k, n-k) ∈ antidiagonal n. Lesson: reindexing correspondence.
+- L07: Row sum via antidiagonal. Lesson: sum_antidiagonal_eq_sum_range_succ_mk.
+- L08: Symmetric row sum. Lesson: sum_antidiagonal_swap teaching.
+- L09: Swap practice. Lesson: swap-reindex pattern retrieval.
+- L10: Concrete Vandermonde (m=3, n=4, k=2). Lesson: add_choose_eq, reshape-flip-apply.
+- L11: Convolution (m=n=k=n). Lesson: Vandermonde specialization.
+- L12: Pascal's identity from Vandermonde (m=1). Lesson: narrative closure.
+- L13: choose_symm on antidiagonal pairs. Lesson: term-by-term symmetry.
+- L14: Sum of squared binomials = C(2n,n). Lesson: sum_congr pointwise reduction, sq.
+- L15 (Boss): ∑(C(n,i)*C(n,j) + C(n,i) + C(n,j)) = C(2n,n) + 2·2^n. Integrates: sum_add_distrib, Vandermonde, reindex, swap, have, ring.
 
 **Dependencies**: BinomialTheorem
 
@@ -1184,7 +1203,7 @@ For each core item, the five coverage stages mapped to specific worlds.
 | W19 | — | `Nat.choose`, choose_succ_succ, choose_symm, factorial formula (factorial already from W17) | lattice aliases | Focus on choose and key identities; factorial known |
 | W20 | — | `Finset.powerset`, `Finset.powersetCard`, card_powerset, card_powersetCard | lattice aliases | Connect subsets to counting |
 | W21 | — | `add_pow`, `Nat.sum_range_choose` | lattice aliases | The binomial theorem |
-| W22 (example) | — | `Finset.Nat.antidiagonal`, `mem_antidiagonal` | lattice aliases | Pascal's triangle exploration |
+| W22 (lecture) | — | `Finset.Nat.antidiagonal`, `mem_antidiagonal`, `card_antidiagonal`, `antidiagonal_zero`, `sum_antidiagonal_eq_sum_range_succ_mk`, `sum_antidiagonal_swap`, `Nat.add_choose_eq`, `sq` | lattice aliases | Antidiagonal sums, Vandermonde convolution |
 | W23 (pset) | — | (all W19-W22 available) | lattice aliases | Retrieval |
 
 ### Phase 6: Advanced Topics (W24-W26)
@@ -1240,7 +1259,7 @@ For each core item, the five coverage stages mapped to specific worlds.
 | W19 | Binomial identity using Pascal + symmetry + induction | L03→Pascal, L05→symmetry, L07→factorial formula |
 | W20 | Powerset cardinality connecting to choose | L03→card_powerset, L05→card_powersetCard |
 | W21 | Binomial theorem specialization + simplification | L01→add_pow, L04→row sum |
-| W22 | Pascal's triangle result using multiple identities | W19-W21 identities |
+| W22 | Full antidiagonal sum integrating Vandermonde, reindex, swap | Levels 7-14 patterns |
 | W23 | Multi-step combinatorics, 5+ moves | W19-W22 all skills |
 | W24 | Product/sigma/diag cardinality or membership | L02→mem_product, L04→sigma, L05-L06→diag |
 | W25 | Finsupp construction + support reasoning | L01→single, L02→support, L03→single_apply, L04→support algebra |

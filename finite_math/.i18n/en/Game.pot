@@ -56,6 +56,24 @@ msgstr ""
 msgid "Combine prod_mul_distrib and prod_const."
 msgstr ""
 
+#. §0: `Nat.add_choose_eq m n k`
+#. §1: `(m + n).choose k = ∑ ij ∈ antidiagonal k, m.choose ij.1 * n.choose ij.2`
+#. §2: $m = n$
+#. §3: $k = n$
+#. §4: $2n$
+#. §5: `2 * n`
+#. §6: `(n + n).choose n`
+#. §7: `2 * n = n + n`
+#: Game.Levels.PascalsTriangle.L11_Convolution
+msgid "The Vandermonde identity §0 says:\n"
+"§1.\n"
+"\n"
+"With §2, §3, the RHS matches your LHS. But §4 on the\n"
+"right side of your goal is written as §5, while Vandermonde\n"
+"gives §6. First establish that §7.\n"
+"This is the reshape-flip-apply pattern again."
+msgstr ""
+
 #. §0: `Multiset.mem_toFinset`
 #. §1: `a ∈ m.toFinset ↔ a ∈ m`
 #. §2: `toFinset`
@@ -338,6 +356,15 @@ msgstr ""
 #: Game.Levels.Powerset.L05_MemberImpliesSubset
 msgid "The hypothesis §0 contains a subset fact\n"
 "in disguise. Use §1 to unwrap it."
+msgstr ""
+
+#. §0: `choose n p.1`
+#. §1: `p`
+#. §2: `_mk`
+#: Game.Levels.PascalsTriangle.L07_RowSumViaAntidiagonal
+msgid "The summand is §0 — a function of the pair §1\n"
+"that only uses the first coordinate. Reindex to a range sum using\n"
+"the §2 variant of the reindexing lemma."
 msgstr ""
 
 #. §0: `intro i`
@@ -1014,6 +1041,56 @@ msgid "**Inductive step**: Peel three things using §0:\n"
 "Then apply §4 and close with §5."
 msgstr ""
 
+#. §0: $$\\sum_{(i,j) \\in \\text{antidiagonal}(2)} \\binom{3}{i} \\cdot \\binom{4}{j} = \\binom{7}{2} = 21$$
+#. §1: `7 = 3 + 4`
+#. §2: `symm`
+#. §3: `exact`
+#. §4: `choose_symm`
+#. §5: `add_choose_eq`
+#. §6: $\\binom{m + n}{k}$
+#. §7: $k$
+#. §8: $i$
+#. §9: $m$
+#. §10: $j$
+#. §11: $n$
+#. §12: $i + j = k$
+#. §13: $m$
+#. §14: $n$
+#. §15: $k$
+#. §16: $\\sum_{(i,j) \\in \\text{antidiagonal}(k)}
+#. \\binom{m}{i} \\cdot \\binom{n}{j} = \\binom{m+n}{k}$
+#. §17: `symm`
+#. §18: `exact Nat.add_choose_eq m n k`
+#. §19: $m + n$
+#. §20: $m = n = k = n$
+#: Game.Levels.PascalsTriangle.L10_ConcreteVandermonde
+msgid "You verified:\n"
+"§0\n"
+"\n"
+"**The reshape-flip-apply pattern**: This proof uses a\n"
+"three-step strategy:\n"
+"1. **Reshape** — rewrite the goal to match the lemma's form (§1)\n"
+"2. **Flip** — §2 to orient the equation correctly\n"
+"3. **Apply** — §3 the lemma\n"
+"\n"
+"This is a general-purpose **matching** strategy: when a known lemma\n"
+"almost matches the goal but the form is slightly off, reshape the\n"
+"goal first, then flip and apply. You used it in Level 2 with\n"
+"§4, and here with §5.\n"
+"\n"
+"**What Vandermonde says**: To compute §6, you can\n"
+"split the §7 chosen items into §8 from the first group (of §9)\n"
+"and §10 from the second group (of §11), where §12. Summing\n"
+"over all ways to split gives the total.\n"
+"\n"
+"**The general form**: The Vandermonde identity works for any\n"
+"§13, §14, §15: §16. The concrete\n"
+"case is the same pattern — just §17 then §18\n"
+"(no reshape needed when §19 already appears in the goal).\n"
+"In the next level, you will specialize Vandermonde to\n"
+"§20 to get the **convolution** sum."
+msgstr ""
+
 #. §0: `Fin 3`
 #. §1: `0`
 #. §2: `1`
@@ -1452,6 +1529,72 @@ msgid "# Finset Induction\n"
 "§15 from BigOpAlgebra, and §16 from MeetFin."
 msgstr ""
 
+#. §0: ```
+#.           1
+#.          1 1
+#.         1 2 1
+#.        1 3 3 1
+#.       1 4 6 4 1
+#.      1 5 10 10 5 1
+#. ```
+#. §1: $\\binom{n}{k}$
+#. §2: $\\binom{n}{k} = \\binom{n}{n-k}$
+#. §3: $2^n$
+#. §4: $n$
+#. §5: $(i, j)$
+#. §6: $i + j = n$
+#. §7: $n$
+#. §8: $k$
+#. §9: $(k, n-k)$
+#. §10: $\\sum_{i+j=n} a_i b_j$
+#. §11: `Finset.antidiagonal n`
+#. §12: $n$
+#. §13: `Finset.mem_antidiagonal`
+#. §14: `Finset.Nat.sum_antidiagonal_eq_sum_range_succ_mk`
+#. §15: `Finset.Nat.sum_antidiagonal_swap`
+#. §16: `Nat.add_choose_eq`
+#. §17: `Nat.choose`
+#. §18: `Nat.sum_range_choose`
+#. §19: `sum_congr`
+#. §20: `Finset.sum_add_distrib`
+#: Game.Levels.PascalsTriangle
+msgid "# Pascal's Triangle\n"
+"\n"
+"Pascal's triangle is the most famous triangular array in mathematics:\n"
+"§0\n"
+"\n"
+"Each entry is a binomial coefficient §1. Each interior\n"
+"entry is the sum of the two above it (Pascal's identity). Each row\n"
+"is symmetric (§2). The sum of each\n"
+"row is §3.\n"
+"\n"
+"You have already proved all these properties. In this world, you\n"
+"will look at the triangle from a **new angle**: the **antidiagonal**.\n"
+"\n"
+"The §4-th antidiagonal is the set of all pairs §5 with\n"
+"§6. This is a natural way to organize the entries of\n"
+"row §7: instead of a single index §8, use the pair §9.\n"
+"\n"
+"**Why?** Sums over pairs appear naturally in:\n"
+"- **Convolution products**: §10\n"
+"- **Generating functions**: coefficient extraction\n"
+"- **Double counting**: the same sum indexed two ways\n"
+"\n"
+"You will learn:\n"
+"1. §11 — the set of pairs summing to §12\n"
+"2. §13 — the membership characterization\n"
+"3. §14 — reindexing\n"
+"4. §15 — coordinate symmetry\n"
+"5. §16 — the Vandermonde identity (convolution)\n"
+"\n"
+"These tools let you move freely between pair-indexed and\n"
+"single-indexed sums, and compute convolution products.\n"
+"\n"
+"**Prerequisites**: §17 identities from BinomialCoefficients,\n"
+"§18 and §19 from BinomialTheorem,\n"
+"§20 from BigOpAlgebra."
+msgstr ""
+
 #: Game.Levels.FinsetBasics.L17_DecideShortcut
 msgid "Decide closes concrete membership goals automatically."
 msgstr ""
@@ -1612,6 +1755,14 @@ msgstr ""
 #. §1: `n`
 #: Game.Levels.MeetFin.L18_CaseAnalysisPractice
 msgid "Now §0. Case-split again on §1."
+msgstr ""
+
+#. §0: `sq`
+#. §1: `choose n p.1 ^ 2`
+#. §2: `choose n p.1 * choose n p.1`
+#: Game.Levels.PascalsTriangle.L15_SquaredBinomials
+msgid "Unfold the square using §0: converts §1\n"
+"to §2."
 msgstr ""
 
 #: Game.Levels.FinsetImage.L19_CardPreservationConverse
@@ -2200,6 +2351,41 @@ msgstr ""
 
 #: Game.Levels.BinomialCoefficients.L15_HockeyStick
 msgid "The Hockey Stick Identity"
+msgstr ""
+
+#. §0: $(p_1, p_2)$
+#. §1: $p_1 + p_2 = n$
+#. §2: $$\\binom{n}{p_1} = \\binom{n}{p_2}$$
+#. §3: $p_1 + p_2 = n$
+#. §4: $\\binom{4}{1} = 4 \\neq 6 = \\binom{4}{2}$
+#. §5: $(1, 2)$
+#. §6: $3$
+#. §7: $4$
+#. §8: $i + j = n$
+#. §9: $j = n - i$
+#. §10: `choose_symm`
+#. §11: `choose_symm`
+#. §12: $n+3$
+#. §13: `choose_symm`
+#: Game.Levels.PascalsTriangle.L14_SymmetryOnAntidiagonal
+msgid "For any §0 with §1:\n"
+"§2\n"
+"\n"
+"This is the **term-by-term symmetry** of the antidiagonal: the\n"
+"two coordinates of any pair give the same binomial coefficient.\n"
+"\n"
+"**The antidiagonal constraint is essential**: Without the\n"
+"hypothesis §3, symmetry fails. For instance,\n"
+"§4 for the pair §5,\n"
+"which lies on antidiagonal §6, not antidiagonal §7. The\n"
+"constraint §8 is what makes §9, which is what\n"
+"makes §10 applicable.\n"
+"\n"
+"**Two views of the same symmetry**: Level 2 used §11\n"
+"on a single entry (position 3 vs position §12 in a row).\n"
+"This level uses §13 on antidiagonal pairs. The next\n"
+"level will use this to connect squared coefficients to the\n"
+"Vandermonde product sum."
 msgstr ""
 
 #. §0: `constructor`
@@ -3703,6 +3889,10 @@ msgid "The goal is now a pure arithmetic identity involving only\n"
 "§0. Use §1 to close it."
 msgstr ""
 
+#: Game.Levels.PascalsTriangle.L08_SymmetricRowSum
+msgid "The symmetric row sum: ∑ (i,j) with i+j=n of C(n,j) = 2^n."
+msgstr ""
+
 #. §0: `∑ i in range (n + 2), i = choose (n + 2) 2`
 #. §1: `sum_range_succ`
 #. §2: `choose (n+2) 2`
@@ -4581,6 +4771,41 @@ msgid "Composing a tuple with a function gives a new tuple:\n"
 "transformations."
 msgstr ""
 
+#. §0: `Finset.antidiagonal n`
+#. §1: `(i, j)`
+#. §2: `i + j = n`
+#. §3: ```
+#. Finset.antidiagonal n
+#. ```
+#. §4: `(i, j)`
+#. §5: `i + j = n`
+#. §6: `n`
+#. §7: `Finset.antidiagonal 3 = {(0,3), (1,2), (2,1), (3,0)}`
+#. §8: `antidiagonal n`
+#. §9: `n + 1`
+#. §10: `n`
+#. §11: `(0, n)`
+#. §12: `(n, 0)`
+#: Game.Levels.PascalsTriangle.L03_MeetAntidiagonal
+msgid "§0 is the finset of pairs §1 with\n"
+"§2.\n"
+"\n"
+"## Syntax\n"
+"§3\n"
+"\n"
+"## When to use it\n"
+"When you want to sum over all pairs §4 with §5,\n"
+"or when you want to index into row §6 of Pascal's triangle\n"
+"using both coordinates.\n"
+"\n"
+"## Example\n"
+"§7\n"
+"\n"
+"## Warning\n"
+"§8 contains §9 elements (not §10), because\n"
+"the pairs range from §11 to §12."
+msgstr ""
+
 #. §0: `rw [Fin.ext_iff]`
 #. §1: `Fin`
 #. §2: `i.val = i.val`
@@ -4642,6 +4867,16 @@ msgstr ""
 
 #: Game.Levels.BinomialCoefficients.L12_CoachingBossPattern
 msgid "Coaching: The Boss Pattern"
+msgstr ""
+
+#. §0: `p.1 ≤ n`
+#. §1: `choose_symm`
+#: Game.Levels.PascalsTriangle.L14_SymmetryOnAntidiagonal
+msgid "Also derive §0 (needed for §1)."
+msgstr ""
+
+#: Game.Levels.PascalsTriangle.L01_ComputeAnEntry
+msgid "Expanding C(n+4, 2) by walking down the triangle two steps."
 msgstr ""
 
 #: Game.Levels.FinTuples.L12_ExtForFunctions
@@ -4929,6 +5164,24 @@ msgstr ""
 
 #: Game.Levels.PsetBigOp.L01_ConcreteSum
 msgid "Concrete Sum Computation"
+msgstr ""
+
+#. §0: `Nat.add_choose_eq m n k`
+#. §1: `(m + n).choose k = ∑ ij ∈ antidiagonal k, m.choose ij.1 * n.choose ij.2`
+#. §2: $m = 3$
+#. §3: $n = 4$
+#. §4: $k = 2$
+#. §5: `(3 + 4).choose 2 = choose 7 2`
+#. §6: `7`
+#. §7: `3 + 4`
+#: Game.Levels.PascalsTriangle.L10_ConcreteVandermonde
+msgid "The Vandermonde identity §0 says:\n"
+"§1.\n"
+"\n"
+"With §2, §3, §4, the RHS matches your LHS.\n"
+"The LHS gives §5.\n"
+"\n"
+"First rewrite §6 as §7 so the types match."
 msgstr ""
 
 #: Game.Levels.Powerset.L06_PowersetMonotonicity
@@ -5234,6 +5487,10 @@ msgid "§0 states that\n"
 "afterward (e.g., with §13)."
 msgstr ""
 
+#: Game.Levels.PascalsTriangle.L06_AntidiagonalMembership
+msgid "(k, n - k) is in the antidiagonal of n when k ≤ n."
+msgstr ""
+
 #: Game.Levels.FinTuples.L08_RoundTripProperty
 msgid "Assembling and decomposing recovers the original components."
 msgstr ""
@@ -5390,6 +5647,7 @@ msgstr ""
 #: Game.Levels.FinsetImage.L23_Boss
 #: Game.Levels.Cardinality.L20_SubsetUniv
 #: Game.Levels.BinomialCoefficients.L14_GaussSum
+#: Game.Levels.PascalsTriangle.L15_SquaredBinomials
 msgid "Try:\n"
 "§0\n"
 "§1\n"
@@ -5407,6 +5665,33 @@ msgstr ""
 #. §0: `rw [Finset.card_insert_of_notMem h2]`
 #: Game.Levels.Cardinality.L08_ConcreteCardinality
 msgid "Peel the next layer: §0."
+msgstr ""
+
+#. §0: `Finset.mem_antidiagonal`
+#. §1: `p ∈ Finset.antidiagonal n ↔ p.1 + p.2 = n`
+#. §2: ```
+#. rw [Finset.mem_antidiagonal]
+#. rw [Finset.mem_antidiagonal] at h
+#. ```
+#. §3: `p ∈ Finset.antidiagonal n`
+#. §4: `p.1 + p.2 = n`
+#. §5: ```
+#. have h : (2, 3) ∈ Finset.antidiagonal 5 := by
+#.   rw [Finset.mem_antidiagonal]
+#. ```
+#: Game.Levels.PascalsTriangle.L03_MeetAntidiagonal
+msgid "§0 states that\n"
+"§1.\n"
+"\n"
+"## Syntax\n"
+"§2\n"
+"\n"
+"## When to use it\n"
+"When you see §3 and want to convert it\n"
+"to the arithmetic condition §4, or vice versa.\n"
+"\n"
+"## Example\n"
+"§5"
 msgstr ""
 
 #. §0: `constructor`
@@ -5759,6 +6044,10 @@ msgstr ""
 
 #: Game.Levels.FinsetBasics.L12_ProvingNonMembership
 msgid "4 is not an element of {1, 2, 3}."
+msgstr ""
+
+#: Game.Levels.PascalsTriangle.L15_SquaredBinomials
+msgid "The sum of squared binomial coefficients equals C(2n, n)."
 msgstr ""
 
 #. §0: `x`
@@ -6124,6 +6413,42 @@ msgid "# Automation for Concrete Goals\n"
 "**Your task**: Prove §12 using just §13."
 msgstr ""
 
+#. §0: `Nat.add_choose_eq`
+#. §1: `(m + n).choose k = ∑ ij ∈ antidiagonal k, m.choose ij.1 * n.choose ij.2`
+#. §2: ```
+#. rw [Nat.add_choose_eq]
+#. rw [← Nat.add_choose_eq]
+#. exact Nat.add_choose_eq m n k
+#. ```
+#. §3: `choose (m + n) k`
+#. §4: `antidiagonal k`
+#. §5: `m = n = k = n`
+#. §6: `∑ choose n i * choose n j = choose (2n) n`
+#. §7: `m = n, k = 0`
+#. §8: `choose (2n) 0 = 1`
+#: Game.Levels.PascalsTriangle.L10_ConcreteVandermonde
+msgid "§0 (the Vandermonde identity) states that\n"
+"§1.\n"
+"\n"
+"## Syntax\n"
+"§2\n"
+"\n"
+"## When to use it\n"
+"When you have a sum over the antidiagonal of products of binomial\n"
+"coefficients and want to collapse it to a single binomial coefficient,\n"
+"or vice versa. The identity decomposes §3 into a\n"
+"convolution over §4.\n"
+"\n"
+"## Key specializations\n"
+"- §5: gives §6\n"
+"  (sum of squared binomial coefficients)\n"
+"- §7: gives §8 (trivial base case)"
+msgstr ""
+
+#: Game.Levels.PascalsTriangle.L01_ComputeAnEntry
+msgid "Now expand C(n+3, 2) with Pascal's identity again."
+msgstr ""
+
 #: Game.Levels.BigOpAlgebra.L04_ProdConst
 msgid "Constant Products: The Multiplicative Twin"
 msgstr ""
@@ -6402,6 +6727,10 @@ msgid "You combined two tools:\n"
 "variable — every element contributes the same value."
 msgstr ""
 
+#: Game.Levels.PascalsTriangle.L06_AntidiagonalMembership
+msgid "The Reindexing Correspondence"
+msgstr ""
+
 #. §0: `x = z`
 #. §1: `ext`
 #. §2: `x.val = z.val`
@@ -6601,6 +6930,10 @@ msgid "You've proved one direction: every element of §0\n"
 "routing changes."
 msgstr ""
 
+#: Game.Levels.PascalsTriangle.L16_Boss
+msgid "Name the pair and its membership."
+msgstr ""
+
 #: Game.Levels.FinsetOperations.L14_UnionCommutativity
 msgid "Union Commutativity"
 msgstr ""
@@ -6658,6 +6991,13 @@ msgid "# Bigger Set, Bigger Powerset\n"
 "**New syntax**: You can rewrite in multiple places at once using\n"
 "§16, where §17 refers to the goal. This rewrites\n"
 "both the hypothesis §18 and the goal in one step."
+msgstr ""
+
+#. §0: `Finset.mem_antidiagonal`
+#. §1: $2 + 3 = 5$
+#: Game.Levels.PascalsTriangle.L03_MeetAntidiagonal
+msgid "Use §0 to convert the membership\n"
+"question into an arithmetic equation: is §1?"
 msgstr ""
 
 #. §0: `ring`
@@ -6776,6 +7116,41 @@ msgid "You just saw the real power of §0: it doesn't just\n"
 "| §1 | Swap to the easier order |\n"
 "| §2 | Substitute known inner sums |\n"
 "| §3 | Evaluate the constant outer sum |"
+msgstr ""
+
+#. §0: ```
+#.           1
+#.          1 1
+#.         1 2 1
+#.        1 3 3 1
+#.       1 4 6 4 1
+#.      1 5 10 10 5 1
+#. ```
+#. §1: $\\binom{n}{k}$
+#. §2: $(i, j)$
+#. §3: $i + j = n$
+#. §4: `Nat.choose_succ_succ`
+#. §5: `Nat.choose_one_right`
+#: Game.Levels.PascalsTriangle.L01_ComputeAnEntry
+msgid "# Pascal's Triangle, Row by Row\n"
+"\n"
+"Welcome to Pascal's triangle — the most famous triangular array in\n"
+"mathematics:\n"
+"§0\n"
+"\n"
+"Each entry is a binomial coefficient §1, and each interior\n"
+"entry is the sum of the two entries above it (Pascal's identity).\n"
+"\n"
+"In the BinomialCoefficients world, you proved identities **about** the\n"
+"entries. In this world, you will explore the **triangle itself** as a\n"
+"geometric object: its rows, its diagonals, and a new construction —\n"
+"the **antidiagonal** — that organizes pairs §2 with §3.\n"
+"\n"
+"**Warm-up**: Show that expanding the second column of Pascal's triangle\n"
+"two steps gives a recursive formula. The tools are the same as\n"
+"BinomialCoefficients:\n"
+"- §4 to expand interior entries\n"
+"- §5 to simplify the edge entries"
 msgstr ""
 
 #: Game.Levels.SummationFormulas.L04_SumOfSquares
@@ -6948,6 +7323,20 @@ msgstr ""
 
 #: Game.Levels.FinsetBasics.L08_RangeReverseDirection
 msgid "Range: The Reverse Direction"
+msgstr ""
+
+#. §0: `rw [← Finset.Nat.sum_antidiagonal_swap]`
+#. §1: `←`
+#. §2: `∑ p, f p`
+#. §3: `∑ p, f p.swap`
+#. §4: `f p = choose n p.2`
+#. §5: `f p.swap = choose n p.swap.2 = choose n p.1`
+#: Game.Levels.PascalsTriangle.L08_SymmetricRowSum
+msgid "Try §0.\n"
+"\n"
+"The §1 (backward) direction converts\n"
+"§2 into §3.\n"
+"Here §4, so §5."
 msgstr ""
 
 #: Game.Levels.BigOpIntro.L15_Boss
@@ -7281,6 +7670,11 @@ msgstr ""
 msgid "Union is commutative."
 msgstr ""
 
+#. §0: `m = 1`
+#: Game.Levels.PascalsTriangle.L12_PascalFromVandermonde
+msgid "Now flip and apply Vandermonde with §0."
+msgstr ""
+
 #. §0: `ring`
 #. §1: `ring`
 #: Game.Levels.BinomialTheorem.L03_CubicCase
@@ -7587,6 +7981,10 @@ msgstr ""
 
 #: Game.Levels.Powerset.L01_EmptyInPowerset
 msgid "The Empty Set Is Always a Subset"
+msgstr ""
+
+#: Game.Levels.PascalsTriangle.L04_AntidiagonalNonMembership
+msgid "Not in the Antidiagonal"
 msgstr ""
 
 #. §0: `h`
@@ -8659,6 +9057,10 @@ msgstr ""
 msgid "intermediate goal solved! 🎉"
 msgstr ""
 
+#: Game.Levels.PascalsTriangle.L16_Boss
+msgid "Boss: The Full Antidiagonal Sum"
+msgstr ""
+
 #. §0: `h`
 #. §1: `(-1 + 1)^n = ∑ m, (-1)^m * 1^(n-m) * ↑(choose n m)`
 #. §2: `1^(n-m)`
@@ -9091,6 +9493,52 @@ msgstr ""
 msgid "Integrate the full big-operator toolkit."
 msgstr ""
 
+#. §0: `choose_succ_succ`
+#. §1: $m = 1$
+#. §2: $$\\sum_{(i,j) \\in \\text{antidiagonal}(k)} \\binom{1}{i} \\cdot \\binom{n}{j} = \\binom{n+1}{k}$$
+#. §3: $k + 1$
+#. §4: $$\\binom{n}{k} + \\binom{n}{k+1}$$
+#. §5: $k + 1$
+#. §6: $(0, k+1), (1, k), (2, k-1), \\ldots$
+#. §7: $\\binom{1}{i} = 0$
+#. §8: $i \\ge 2$
+#. §9: $(0, k+1)$
+#. §10: $\\binom{1}{0} \\cdot \\binom{n}{k+1} = \\binom{n}{k+1}$
+#. §11: $(1, k)$
+#. §12: $\\binom{1}{1} \\cdot \\binom{n}{k} = \\binom{n}{k}$
+#. §13: $\\binom{n}{k} + \\binom{n}{k+1} = \\binom{n+1}{k+1}$
+#. §14: $m = 1$
+#. §15: $\\binom{n+1}{k+1}$
+#. §16: `choose_succ_succ`
+#. §17: $\\binom{n+1}{k+1}$
+#: Game.Levels.PascalsTriangle.L13_TheCircleCloses
+msgid "# Pascal's Recurrence from Vandermonde\n"
+"\n"
+"In Level 1, you used Pascal's identity (§0) as a\n"
+"**given tool** to walk down the triangle. In Level 12, you proved\n"
+"that the Vandermonde specialization §1 gives:\n"
+"§2\n"
+"\n"
+"Now **close the circle**: show that this Vandermonde sum, for\n"
+"§3, equals exactly the two terms of Pascal's recurrence:\n"
+"§4\n"
+"\n"
+"**Why only two terms?** The antidiagonal of §5 contains\n"
+"pairs §6 But §7\n"
+"for §8, so only the first two terms survive:\n"
+"- §9: §10\n"
+"- §11: §12\n"
+"\n"
+"The sum is §13.\n"
+"This IS Pascal's identity — the defining recurrence of the triangle\n"
+"is a consequence of Vandermonde.\n"
+"\n"
+"**Proof plan**:\n"
+"1. Use Vandermonde (§14) to show the sum equals §15\n"
+"   (the reshape-flip-apply pattern from Level 12)\n"
+"2. Apply §16 to expand §17"
+msgstr ""
+
 #. §0: `Finset.card_image_of_injective`
 #. §1: `exact Finset.card_image_of_injective s hf`
 #: Game.Levels.FinsetImage.L15_InjectivePreservesSize
@@ -9247,6 +9695,12 @@ msgid "§0 is the empty finset, containing no elements.\n"
 "and §4 (the range with zero elements)."
 msgstr ""
 
+#. §0: `have h2 : ∑ p ∈ Finset.antidiagonal n, Nat.choose n p.1 = 2 ^ n := by`
+#: Game.Levels.PascalsTriangle.L16_Boss
+msgid "State the reindexing result:\n"
+"§0"
+msgstr ""
+
 #. §0: `constructor`
 #: Game.Levels.FinNavigation.L16_Boss
 msgid "The goal is a conjunction. Use §0 to split it."
@@ -9298,6 +9752,10 @@ msgstr ""
 
 #: Game.Levels.FinsetOperations.L25_Boss
 msgid "Boss: De Morgan's Second Law"
+msgstr ""
+
+#: Game.Levels.PascalsTriangle.L14_SymmetryOnAntidiagonal
+msgid "On the antidiagonal, choose n applied to either coordinate gives the same result."
 msgstr ""
 
 #: Game.Levels.AbstractionLadder.L14_ToFinset
@@ -9644,6 +10102,14 @@ msgstr ""
 msgid "An element of §0 leads to a contradiction."
 msgstr ""
 
+#. §0: `Nat.choose (n + 6) (n + 3) = Nat.choose (n + 6) 3`
+#. §1: `h : 3 ≤ n + 6`
+#. §2: `choose_symm`
+#: Game.Levels.PascalsTriangle.L02_SymmetryInAction
+msgid "The goal is now §0.\n"
+"You need §1 for §2."
+msgstr ""
+
 #. §0: `ext`
 #. §1: `ext x`
 #. §2: `x`
@@ -9766,6 +10232,10 @@ msgstr ""
 
 #: Game.Levels.PsetFinset.L06_ImageNonempty
 msgid "Image of a Nonempty Set"
+msgstr ""
+
+#: Game.Levels.PascalsTriangle.L08_SymmetricRowSum
+msgid "The Symmetric Row Sum"
 msgstr ""
 
 #. §0: `rw [mem_powerset] at ht`
@@ -10235,6 +10705,13 @@ msgid "§0 states that\n"
 "§12, so §13 is the cleaner version."
 msgstr ""
 
+#. §0: `p.1`
+#. §1: `p.2`
+#: Game.Levels.PascalsTriangle.L08_SymmetricRowSum
+msgid "Good — the sum now uses §0 instead of §1.\n"
+"Reindex and apply the row sum identity."
+msgstr ""
+
 #: Game.Levels.Powerset.L08_PowersetMonoIff
 msgid "Powerset Monotonicity: The Equivalence"
 msgstr ""
@@ -10419,6 +10896,10 @@ msgstr ""
 
 #: Game.Levels.BigOpIntro.L14_ProdIntegration
 msgid "Product: Congr + Peel"
+msgstr ""
+
+#: Game.Levels.PascalsTriangle.L09_SwapPractice
+msgid "The double row sum: ∑ (C(n,i) + C(n,j)) over the antidiagonal = 2 * 2^n."
 msgstr ""
 
 #. §0: `a ∈ m`
@@ -11046,6 +11527,11 @@ msgid "# The Fundamental Counting Identity\n"
 "compute the size of their union."
 msgstr ""
 
+#: Game.Levels.PascalsTriangle.L01_ComputeAnEntry
+msgid "Expand C(n+4, 2) using Pascal's identity:\n"
+"C(n+4, 2) = C(n+3, 1) + C(n+3, 2)."
+msgstr ""
+
 #. §0: `by_contra`
 #. §1: `by_contra hnt`
 #. §2: `¬(goal)`
@@ -11315,6 +11801,45 @@ msgstr ""
 #. §2: `use 5`
 #: Game.Levels.FinsetImage.L02_ChoosingTheWitness
 msgid "Solve: §0 gives §1. Try §2."
+msgstr ""
+
+#. §0: `antidiagonal n`
+#. §1: `range (n + 1)`
+#. §2: $k$
+#. §3: $(k, n - k)$
+#. §4: $(k, n - k)$
+#. §5: `antidiagonal n`
+#. §6: $k \\le n$
+#. §7: $k + (n - k) = n$
+#. §8: $(k, n - k) \\in \\text{antidiagonal}(n)$
+#. §9: $k \\le n$
+#. §10: $(k, n - k)$
+#. §11: $k \\le n$
+#: Game.Levels.PascalsTriangle.L06_AntidiagonalMembership
+msgid "# Why Reindexing Works\n"
+"\n"
+"In the next level, you will use a reindexing lemma that converts\n"
+"a sum over §0 into a sum over §1. The\n"
+"correspondence maps each index §2 to the pair §3.\n"
+"\n"
+"But why does this work? Because §4 is **always** in\n"
+"§5 when §6: the coordinates sum to\n"
+"§7.\n"
+"\n"
+"**Your task**: Prove that §8\n"
+"given §9.\n"
+"\n"
+"This is the membership fact that makes the reindexing valid.\n"
+"Every pair in the antidiagonal has the form §10 for\n"
+"some §11, and conversely every such pair is in the\n"
+"antidiagonal. You are proving the converse direction."
+msgstr ""
+
+#. §0: `2 * n = n + n`
+#: Game.Levels.PascalsTriangle.L16_Boss
+msgid "First reshape: §0, then expand using Vandermonde.\n"
+"This converts the RHS to a product sum that you can match\n"
+"term-by-term with the squared sum."
 msgstr ""
 
 #: Game.Levels.FinsetOperations.L24_DualDistributivity
@@ -11668,6 +12193,15 @@ msgid "§0 proves equality by reducing to equality of subexpressions.\n"
 "In this level, §1 is disabled because the goal is to learn\n"
 "§2 — the big-operator-specific way to prove equality of\n"
 "sums by rewriting the summand."
+msgstr ""
+
+#. §0: `choose (n+1) (k+1)`
+#. §1: `choose_succ_succ`
+#. §2: `choose (n+1) (k+1) = choose n k + choose n (k+1)`
+#: Game.Levels.PascalsTriangle.L13_TheCircleCloses
+msgid "Good — the sum equals §0.\n"
+"Now apply Pascal's identity §1 to expand\n"
+"§2."
 msgstr ""
 
 #. §0: $y = 1$
@@ -12121,6 +12655,12 @@ msgid "# Powers of One: §0 and §1\n"
 "when specializing §22 to §23."
 msgstr ""
 
+#. §0: `hp : p.1 + p.2 = n`
+#. §1: `p.2 = n - p.1`
+#: Game.Levels.PascalsTriangle.L14_SymmetryOnAntidiagonal
+msgid "From §0, derive that §1."
+msgstr ""
+
 #. §0: $$3^{\\underline{3}} = 3 \\times 2 \\times 1 = 6 = 3!$$
 #. §1: `k = n`
 #. §2: $$n^{\\underline{n}} = n!$$
@@ -12457,6 +12997,27 @@ msgid "§0 is the workhorse of concrete sum computation.\n"
 "made precise in a later level."
 msgstr ""
 
+#. §0: `have h1 : ∑ p ∈ Finset.antidiagonal n, Nat.choose n p.1 = 2 ^ n := by`
+#. §1: `rw [Finset.Nat.sum_antidiagonal_eq_sum_range_succ_mk]`
+#. §2: `exact Nat.sum_range_choose n`
+#: Game.Levels.PascalsTriangle.L09_SwapPractice
+msgid "Introduce the first sum:\n"
+"§0\n"
+"then §1\n"
+"then §2."
+msgstr ""
+
+#. §0: `∑ p ∈ antidiagonal n, choose n p.1 ^ 2 =
+#. ∑ p ∈ antidiagonal n, choose n p.1 * choose n p.2`
+#. §1: `Finset.sum_congr rfl`
+#: Game.Levels.PascalsTriangle.L15_SquaredBinomials
+msgid "Now the goal is:\n"
+"§0\n"
+"\n"
+"These sums are equal term-by-term. Use §1\n"
+"to reduce from proving two sums equal to proving each term equal."
+msgstr ""
+
 #. §0: `Finset.eq_sum_range_sub`
 #: Game.Metadata
 msgid "§0 expresses a value as a telescoping sum.\n"
@@ -12707,6 +13268,15 @@ msgstr ""
 #: Game.Levels.FinsetInduction.L05_AlgebraInStep
 msgid "**Base case**: Rewrite both sums over §0 to §1,\n"
 "then close the arithmetic."
+msgstr ""
+
+#. §0: `(n + n).choose n`
+#. §1: `Nat.add_choose_eq`
+#. §2: `∑ p ∈ antidiagonal n, choose n p.1 * choose n p.2`
+#: Game.Levels.PascalsTriangle.L15_SquaredBinomials
+msgid "Expand §0 into its Vandermonde sum using\n"
+"§1. This replaces the RHS with\n"
+"§2."
 msgstr ""
 
 #. §0: `v = 0`
@@ -13090,6 +13660,13 @@ msgid "Start by converting the powersetCard cardinality to a binomial\n"
 "coefficient using §0."
 msgstr ""
 
+#. §0: `choose n p.1 * choose n p.1 = choose n p.1 * choose n p.2`
+#. §1: `choose n p.1 = choose n p.2`
+#: Game.Levels.PascalsTriangle.L15_SquaredBinomials
+msgid "The goal is §0.\n"
+"You need §1 — the symmetry from Level 14."
+msgstr ""
+
 #. §0: `card_prod`
 #. §1: `card (α × β) = card α * card β`
 #. §2: `card_sum`
@@ -13392,6 +13969,13 @@ msgstr ""
 #: Game.Levels.MeetFin.L07_RewritingHypotheses
 msgid "Now §0 says §1 and §2 says §3.\n"
 "§4 can combine these to conclude §5."
+msgstr ""
+
+#. §0: `3 + 4`
+#. §1: `7`
+#: Game.Levels.PascalsTriangle.L10_ConcreteVandermonde
+#: Game.Levels.PascalsTriangle.L11_Convolution
+msgid "Now rewrite the goal to use §0 instead of §1."
 msgstr ""
 
 #. §0: `Fin 0`
@@ -14051,6 +14635,58 @@ msgid "§0.\n"
 "Use §1."
 msgstr ""
 
+#. §0: $$\\sum_{(i,j) \\in \\text{antidiagonal}(n)} \\binom{n}{i}^2 = \\binom{2n}{n}$$
+#. §1: $\\binom{n}{k} = \\binom{n}{n-k}$
+#. §2: $\\binom{n}{j}$
+#. §3: $\\binom{n}{i}$
+#. §4: $i + j = n$
+#. §5: $\\sum \\binom{n}{i} \\cdot \\binom{n}{j} = \\binom{2n}{n}$
+#. §6: $\\binom{n}{i} \\cdot \\binom{n}{j}$
+#. §7: $\\binom{n}{i}^2$
+#. §8: `sum_congr rfl`
+#. §9: `apply sum_congr rfl`
+#. §10: `intro p hp`
+#. §11: $k = n$
+#. §12: $k = n$
+#. §13: $i + j = k \\neq n$
+#. §14: $\\binom{n}{i} \\cdot \\binom{n}{j}$
+#. §15: $j \\neq n - i$
+#. §16: $n = 3$
+#. §17: $$1^2 + 3^2 + 3^2 + 1^2 = 1 + 9 + 9 + 1 = 20 = \\binom{6}{3}$$
+#: Game.Levels.PascalsTriangle.L15_SquaredBinomials
+msgid "You proved:\n"
+"§0\n"
+"\n"
+"This is one of the most elegant identities in combinatorics.\n"
+"It connects two themes from this world:\n"
+"\n"
+"- **Symmetry** (Levels 2, 14): §1\n"
+"  lets you replace §2 with §3 when §4\n"
+"\n"
+"- **Convolution** (Level 11): the Vandermonde identity gives\n"
+"  §5\n"
+"\n"
+"Combining them: each product §6\n"
+"is really §7, so the convolution sum is a sum of\n"
+"squares.\n"
+"\n"
+"**The sum_congr pointwise reduction pattern**: When two sums over\n"
+"the same index set differ only term-by-term, use §8\n"
+"to reduce the sum equation to a pointwise equation, then prove each\n"
+"term matches. This pattern — §9, §10,\n"
+"then work on the single term — is a reusable proof strategy that\n"
+"transfers to any setting where you need to show two sums are equal\n"
+"by showing their summands agree.\n"
+"\n"
+"**Note on the §11 specialization**: The sum-of-squares identity\n"
+"depends crucially on §12 in Vandermonde. When §13,\n"
+"the products §14 are NOT all squares,\n"
+"because §15.\n"
+"\n"
+"**Concrete check**: For §16:\n"
+"§17"
+msgstr ""
+
 #. §0: `Finset.prod_insert`
 #. §1: `a ∉ s`
 #. §2: `∏ x ∈ insert a s, f x = f a * ∏ x ∈ s, f x`
@@ -14066,6 +14702,27 @@ msgid "§0 states that if §1, then\n"
 "§3\n"
 "\n"
 "The proof §4 is required to avoid double-counting."
+msgstr ""
+
+#. §0: $(2, 4)$
+#. §1: `antidiagonal 5`
+#. §2: $2 + 4 = 6 \\neq 5$
+#. §3: $n$
+#. §4: `Finset.mem_antidiagonal`
+#. §5: `¬(2 + 4 = 5)`
+#. §6: `omega`
+#. §7: $(2, 4) \\notin \\text{antidiagonal}(5)$
+#: Game.Levels.PascalsTriangle.L04_AntidiagonalNonMembership
+msgid "# What's NOT in an Antidiagonal\n"
+"\n"
+"The pair §0 is NOT in §1, because §2.\n"
+"Only pairs whose coordinates sum to **exactly** §3 qualify.\n"
+"\n"
+"To prove non-membership, unfold the definition with\n"
+"§4, which produces the goal §5.\n"
+"Then §6 handles the arithmetic.\n"
+"\n"
+"**Your task**: Prove §7."
 msgstr ""
 
 #. §0: `i.val = 3`
@@ -14250,6 +14907,62 @@ msgstr ""
 #: Game.Levels.AbstractionLadder.L02_ListsAreOrdered
 msgid "Try §0 to extract that\n"
 "the heads are equal (1 = 2)."
+msgstr ""
+
+#. §0: $\\sum_{(i,j)} \\left(\\binom{n}{i}^2 + \\binom{n}{i} + \\binom{n}{j}\\right) = \\binom{2n}{n} + 2 \\cdot 2^n$
+#. §1: $(i, j)$
+#. §2: $n$
+#. §3: $\\binom{n}{i}^2$
+#. §4: $\\binom{n}{i}$
+#. §5: $\\binom{n}{j}$
+#. §6: $\\binom{2n}{n} + 2 \\cdot 2^n$
+#. §7: `sum_add_distrib`
+#. §8: $\\binom{n}{i}^2$
+#. §9: $\\binom{n}{i} \\cdot \\binom{n}{j}$
+#. §10: $= 2^n$
+#. §11: $= 2^n$
+#. §12: `Finset.sum_add_distrib`
+#. §13: `Finset.sum_congr rfl`
+#. §14: `sq`
+#. §15: `Nat.choose_symm`
+#. §16: `Nat.add_choose_eq`
+#. §17: `Finset.Nat.sum_antidiagonal_eq_sum_range_succ_mk`
+#. §18: `← Finset.Nat.sum_antidiagonal_swap`
+#. §19: `Nat.sum_range_choose`
+#. §20: `have`
+#. §21: `ring`
+#: Game.Levels.PascalsTriangle.L16_Boss
+msgid "# Boss: §0\n"
+"\n"
+"For each pair §1 in the antidiagonal of §2, sum three\n"
+"contributions:\n"
+"- The **squared coefficient** §3\n"
+"- The **first entry** §4\n"
+"- The **second entry** §5\n"
+"\n"
+"The total is §6 — the central binomial\n"
+"coefficient plus twice the row sum.\n"
+"\n"
+"**Why?** Split the sum into three parts using §7.\n"
+"- The squared sum requires the **sum_congr pointwise reduction**\n"
+"  (Level 15): reduce §8 to §9\n"
+"  using symmetry on the antidiagonal, then apply Vandermonde\n"
+"- The first-entry sum is the row sum §10\n"
+"  (Level 7's reindexing pattern)\n"
+"- The second-entry sum is the symmetric row sum §11\n"
+"  (Level 8's swap-reindex pattern)\n"
+"\n"
+"**Skills needed**:\n"
+"- §12 — split a sum of sums (BigOpAlgebra)\n"
+"- §13 — reduce sum equation to pointwise (Level 15)\n"
+"- §14 — unfold squares to products (Level 15)\n"
+"- §15 — symmetry on antidiagonal pairs (Level 14)\n"
+"- §16 — Vandermonde identity (Level 10)\n"
+"- §17 — reindex (Level 7)\n"
+"- §18 — swap coordinates (Level 8)\n"
+"- §19 — row sum identity (BinomialTheorem)\n"
+"- §20 with sub-proofs — intermediate results\n"
+"- §21 — final arithmetic"
 msgstr ""
 
 #: Game.Levels.Powerset.L19_ZeroElementSubsets
@@ -14508,6 +15221,48 @@ msgstr ""
 msgid "Function Type Cardinality"
 msgstr ""
 
+#. §0: $$\\sum_{k=0}^{n} \\binom{n}{k} = 2^n$$
+#. §1: $(i, j)$
+#. §2: $i + j = n$
+#. §3: $\\binom{n}{i}$
+#. §4: `sum_antidiagonal_eq_sum_range_succ_mk`
+#. §5: `Nat.sum_range_choose`
+#. §6: ```
+#. Finset.Nat.sum_antidiagonal_eq_sum_range_succ_mk (g : ℕ × ℕ → M) (n : ℕ) :
+#.   ∑ p ∈ Finset.antidiagonal n, g p =
+#.     ∑ k ∈ Finset.range (n + 1), g (k, n - k)
+#. ```
+#. §7: $(i, j)$
+#. §8: $j = n - i$
+#. §9: $k$
+#. §10: $0$
+#. §11: $n$
+#. §12: $n - k$
+#: Game.Levels.PascalsTriangle.L07_RowSumViaAntidiagonal
+msgid "# Row Sum Through Pairs\n"
+"\n"
+"In BinomialTheorem Level 8, you proved:\n"
+"§0\n"
+"\n"
+"Now express the same sum **through the antidiagonal**. For each\n"
+"pair §1 with §2, take the entry §3\n"
+"(indexed by the first coordinate). The sum of all such entries\n"
+"is the row sum.\n"
+"\n"
+"**Proof plan**:\n"
+"1. Reindex: convert the antidiagonal sum to a range sum using\n"
+"   §4\n"
+"2. Close: apply §5 (the row sum identity)\n"
+"\n"
+"The **reindexing lemma** converts between the two:\n"
+"\n"
+"§6\n"
+"\n"
+"Since every pair §7 in the antidiagonal satisfies §8,\n"
+"you can replace the pair-sum with a single-index sum where §9 ranges\n"
+"from §10 to §11 and the second argument is §12."
+msgstr ""
+
 #. §0: $n$
 #. §1: $$\\sum_{i=0}^{n} i = \\frac{n(n+1)}{2}$$
 #. §2: $1 + 2 + \\cdots + 100$
@@ -14580,6 +15335,10 @@ msgid "Both cases give §0:\n"
 "§1 and §2."
 msgstr ""
 
+#: Game.Levels.BinomialTheorem.L08_RowSum
+msgid "The row sum of Pascal's triangle equals 2^n."
+msgstr ""
+
 #. §0: `ring`
 #. §1: ```
 #. ring
@@ -14631,10 +15390,6 @@ msgid "§0 closes goals that are equalities in commutative (semi)rings\n"
 "§18 it into the goal first, then use §19 to close the algebra."
 msgstr ""
 
-#: Game.Levels.BinomialTheorem.L08_RowSum
-msgid "The row sum of Pascal's triangle equals 2^n."
-msgstr ""
-
 #. §0: `Fin.succAbove_zero`
 #. §1: `succ`
 #. §2: `exact Fin.succAbove_zero`
@@ -14683,6 +15438,10 @@ msgstr ""
 #: Game.Levels.SummationFormulas.L08_ExponentialBound
 msgid "**Base case**: The goal is §0, i.e., §1.\n"
 "Use §2 to handle the exponential."
+msgstr ""
+
+#: Game.Levels.PascalsTriangle.L16_Boss
+msgid "Now evaluate the third sum: swap first, then reindex."
 msgstr ""
 
 #. §0: `Finset.image f s`
@@ -16595,6 +17354,44 @@ msgstr ""
 msgid "Convert an if-then-else sum to a filtered finset sum."
 msgstr ""
 
+#. §0: $$\\sum_{(i,j) \\in \\text{antidiagonal}(n)} \\binom{n}{i} \\cdot \\binom{n}{j} = \\binom{2n}{n}$$
+#. §1: $\\binom{n}{p_1} = \\binom{n}{p_2}$
+#. §2: $\\binom{n}{i} \\cdot \\binom{n}{j}$
+#. §3: $\\binom{n}{i}^2$
+#. §4: $$\\sum_{(i,j) \\in \\text{antidiagonal}(n)} \\binom{n}{i}^2 = \\binom{2n}{n}$$
+#. §5: `choose (2 * n) n`
+#. §6: `add_choose_eq`
+#. §7: `sum_congr rfl`
+#. §8: `a ^ 2 = a * a`
+#. §9: `sq`
+#. §10: `choose_symm`
+#: Game.Levels.PascalsTriangle.L15_SquaredBinomials
+msgid "# Connecting Symmetry to Convolution\n"
+"\n"
+"In Level 11, you proved:\n"
+"§0\n"
+"\n"
+"In Level 14, you proved the term-by-term symmetry:\n"
+"§1 on the antidiagonal.\n"
+"\n"
+"Combining these: each product §2 is\n"
+"really §3. This gives one of the most beautiful\n"
+"identities in combinatorics:\n"
+"\n"
+"§4\n"
+"\n"
+"**Your task**: Prove this identity by connecting it to Vandermonde.\n"
+"\n"
+"**Proof plan**:\n"
+"1. Rewrite §5 as the Vandermonde sum using §6\n"
+"   (reshape-flip-apply)\n"
+"2. Reduce to term equality with §7 — the\n"
+"   **sum_congr pointwise reduction** pattern\n"
+"3. Unfold §8 using the rewrite lemma §9\n"
+"4. Show each squared term equals the corresponding product using\n"
+"   §10 (exactly as in Level 14)"
+msgstr ""
+
 #. §0: `(n+1)`
 #. §1: `Nat.factorial n`
 #. §2: `ring`
@@ -17108,6 +17905,36 @@ msgid "This is a finset induction problem. Set up induction on §0\n"
 "using §1."
 msgstr ""
 
+#. §0: $$\\sum_{(i,j) \\in \\text{antidiagonal}(k)} \\binom{1}{i} \\cdot \\binom{n}{j} = \\binom{n+1}{k}$$
+#. §1: $i = 0$
+#. §2: $i = 1$
+#. §3: $\\binom{1}{i} = 0$
+#. §4: $i \\ge 2$
+#. §5: $\\binom{n}{k} + \\binom{n}{k-1} = \\binom{n+1}{k}$
+#. §6: $n + 1 = 1 + n$
+#. §7: `symm`
+#. §8: `exact add_choose_eq 1 n k`
+#: Game.Levels.PascalsTriangle.L12_PascalFromVandermonde
+msgid "You proved:\n"
+"§0\n"
+"\n"
+"**Why this matters**: This sum has only two non-zero terms (when\n"
+"§1 and §2, since §3 for §4).\n"
+"So it equals §5.\n"
+"This is **Pascal's identity** — the defining recurrence of the\n"
+"triangle.\n"
+"\n"
+"The world began with Pascal's identity as a tool for computing\n"
+"entries (Level 1). It ends with the realization that Pascal's\n"
+"identity is a **consequence** of Vandermonde. The starting point\n"
+"is a special case of the climax.\n"
+"\n"
+"**The reshape-flip-apply pattern one more time**: reshape\n"
+"(§6), flip (§7), apply (§8).\n"
+"This is the fourth time you have used this pattern. It is now a\n"
+"standard move in your repertoire."
+msgstr ""
+
 #: Game.Levels.FinsetImage.L18_ImageIntersectionEquality
 msgid "Intersection Repaired: Injectivity Gives Equality"
 msgstr ""
@@ -17507,10 +18334,20 @@ msgid "You just completed your first finset induction proof! The pattern was:\n"
 "§9 adds a genuinely new natural number."
 msgstr ""
 
+#: Game.Levels.PascalsTriangle.L09_SwapPractice
+msgid "Good — two sums. Evaluate each one as an intermediate result.\n"
+"The first sum uses reindexing (Level 7), the second uses\n"
+"swap + reindexing (Level 8)."
+msgstr ""
+
 #. §0: `rw [Finset.sum_singleton]`
 #: Game.Levels.BigOpIntro.L05_ThreeElementSum
 msgid "Finish with §0 to evaluate the last\n"
 "singleton sum."
+msgstr ""
+
+#: Game.Levels.PascalsTriangle.L15_SquaredBinomials
+msgid "The Sum of Squared Binomial Coefficients"
 msgstr ""
 
 #. §0: `a`
@@ -17993,6 +18830,12 @@ msgid "Case-split on §0 to check each value:\n"
 "§1"
 msgstr ""
 
+#. §0: `Finset.Nat.antidiagonal_zero`
+#: Game.Levels.PascalsTriangle.L05_AntidiagonalFacts
+msgid "Second goal: the 0th antidiagonal is the singleton.\n"
+"Apply §0 directly."
+msgstr ""
+
 #: Game.Levels.Fintype.L06_FinitenessMatters
 msgid "The number of functions from a finite type to Bool is 2^(card α)."
 msgstr ""
@@ -18406,6 +19249,41 @@ msgstr ""
 msgid "Nodup: The Bridge to Finsets"
 msgstr ""
 
+#. §0: $\\binom{n+6}{3} = \\binom{n+6}{n+3}$
+#. §1: `choose_symm`
+#. §2: `symm`
+#. §3: `have h : k ≤ n := by omega`
+#. §4: `exact Nat.choose_symm h`
+#. §5: `symm`
+#. §6: $n + 6$
+#. §7: $3$
+#. §8: $n + 3$
+#. §9: $n$
+#. §10: $0, 1, \\ldots, \\lfloor n/2 \\rfloor$
+#: Game.Levels.PascalsTriangle.L02_SymmetryInAction
+msgid "§0.\n"
+"\n"
+"**The flip-apply pattern**: When using §1:\n"
+"1. §2 — flip the goal to match the lemma's direction\n"
+"2. §3 — establish the inequality\n"
+"3. §4 — apply the lemma\n"
+"\n"
+"This is an instance of a general strategy you will see repeatedly:\n"
+"**reshape-flip-apply**. When a known lemma almost matches the goal\n"
+"but the form is slightly off, reshape the goal first, then flip\n"
+"and apply. Here the 'reshape' was trivial (just §5), but in\n"
+"later levels you will need an explicit rewrite step before flipping.\n"
+"Watch for this pattern — it recurs throughout the world.\n"
+"\n"
+"**Visual check**: In row §6, positions §7 and §8 are\n"
+"equidistant from the edges (both are 3 from their respective end).\n"
+"Symmetry means these entries are always equal, regardless of §9.\n"
+"\n"
+"Symmetry means you only need to compute half the row: if you know\n"
+"the entries at positions §10, the\n"
+"rest follow by symmetry."
+msgstr ""
+
 #. §0: $s \\cup s = s$
 #. §1: $P \\lor P \\iff P$
 #. §2: $s \\cap s = s$
@@ -18635,6 +19513,25 @@ msgstr ""
 msgid "Induct on §0 — exactly the same skeleton as Levels 5 and 6."
 msgstr ""
 
+#. §0: $$\\binom{n+4}{2} = (n+3) + (n+2) + \\binom{n+2}{2}$$
+#. §1: `choose_one_right`
+#. §2: $n$
+#. §3: `choose_succ_succ`
+#. §4: `choose_one_right`
+#: Game.Levels.PascalsTriangle.L01_ComputeAnEntry
+msgid "You expanded:\n"
+"§0\n"
+"\n"
+"Each expansion peels off one edge entry (§1) and\n"
+"leaves a smaller interior entry. This is the same recursive walk\n"
+"through the triangle as in BinomialCoefficients — now with a\n"
+"variable §2 instead of fixed numbers.\n"
+"\n"
+"**Pattern recap**: Expand with §3, simplify edges\n"
+"with §4. Repeat until the remaining term is\n"
+"small enough."
+msgstr ""
+
 #: Game.Levels.CountingTypes.L05_FallingFactorials
 msgid "Two factors down. One more unfolding exposes the base case."
 msgstr ""
@@ -18654,6 +19551,23 @@ msgstr ""
 #: Game.Levels.FinNavigation.L07_CastSuccNeverLast
 msgid "Simplify: §0.\n"
 "This gives §1."
+msgstr ""
+
+#. §0: `antidiagonal 4`
+#. §1: $(0,4), (1,3), (2,2), (3,1), (4,0)$
+#. §2: `antidiagonal 0 = \\{(0, 0)\\}$ — the only pair of natural numbers
+#. summing to 0 is $(0, 0)$.
+#. 
+#. **The antidiagonal encodes Pascal's identity**. Each pair $(i, j)$
+#. with $i + j = n + 1$ comes from either $(i - 1, j)$ or
+#. $(i, j - 1)$ in `
+#: Game.Levels.PascalsTriangle.L05_AntidiagonalFacts
+msgid "§0 has 5 elements:\n"
+"§1.\n"
+"\n"
+"And §2antidiagonal n`. The antidiagonal is the\n"
+"**geometric encoding** of Pascal's triangle, where each entry\n"
+"is the sum of the two entries on the previous antidiagonal."
 msgstr ""
 
 #. §0: `simp`
@@ -19066,6 +19980,13 @@ msgid "§0 tells you that §1 has exactly one\n"
 "§8 a new element into a finset."
 msgstr ""
 
+#. §0: `rw [Finset.mem_antidiagonal]`
+#. §1: `omega`
+#: Game.Levels.PascalsTriangle.L04_AntidiagonalNonMembership
+msgid "Try §0 first.\n"
+"Then §1 closes the negation."
+msgstr ""
+
 #: Game.Levels.PsetFinset.L12_ImageMonotonicity
 msgid "Image preserves subsets: s ⊆ t implies s.image f ⊆ t.image f."
 msgstr ""
@@ -19273,6 +20194,11 @@ msgstr ""
 #: Game.Levels.CountingTypes.L11_Boss
 msgid "Now unfold §0 — four §1\n"
 "rewrites plus §2."
+msgstr ""
+
+#. §0: `1 + n`
+#: Game.Levels.PascalsTriangle.L12_PascalFromVandermonde
+msgid "Rewrite the goal to use §0."
 msgstr ""
 
 #. §0: `constructor`
@@ -19937,6 +20863,15 @@ msgid "# Beyond Natural Numbers: §0\n"
 "This is the left-hand side of the alternating sum identity."
 msgstr ""
 
+#. §0: `¬((2, 4).1 + (2, 4).2 = 5)`
+#. §1: `¬(2 + 4 = 5)`
+#. §2: `omega`
+#. §3: $6 \\neq 5$
+#: Game.Levels.PascalsTriangle.L04_AntidiagonalNonMembership
+msgid "The goal is §0, which reduces to\n"
+"§1. The §2 tactic can close this: §3."
+msgstr ""
+
 #. §0: `h`
 #. §1: `(2 + 1) ^ n = ∑ m, choose n m * 2^m`
 #. §2: `∑ m, choose n m * 2^m = 3 ^ n`
@@ -19947,6 +20882,11 @@ msgid "Now §0 says §1.\n"
 "\n"
 "The goal is §2. Since §3,\n"
 "§4 gives exactly the goal."
+msgstr ""
+
+#. §0: `ring`
+#: Game.Levels.PascalsTriangle.L16_Boss
+msgid "Substitute all three results and simplify with §0."
 msgstr ""
 
 #: Game.Levels.PsetFin.L17_Pigeonhole
@@ -20240,6 +21180,27 @@ msgid "§0 provides a witness for an existential goal §1.\n"
 "## When to use it\n"
 "When the goal is §3 and you know which §4 works.\n"
 "After §5, the goal becomes §6."
+msgstr ""
+
+#. §0: `Finset.Nat.card_antidiagonal`
+#. §1: `(Finset.antidiagonal n).card = n + 1`
+#. §2: ```
+#. exact Finset.Nat.card_antidiagonal n
+#. rw [Finset.Nat.card_antidiagonal]
+#. ```
+#. §3: `Finset.Nat.card_antidiagonal 4 : (antidiagonal 4).card = 5`
+#: Game.Levels.PascalsTriangle.L05_AntidiagonalFacts
+msgid "§0 states that\n"
+"§1.\n"
+"\n"
+"## Syntax\n"
+"§2\n"
+"\n"
+"## When to use it\n"
+"When you need to know the size of an antidiagonal.\n"
+"\n"
+"## Example\n"
+"§3"
 msgstr ""
 
 #. §0: `x`
@@ -20930,6 +21891,53 @@ msgid "The two sums have the same finset but different functions:\n"
 "to reduce to proving they agree pointwise."
 msgstr ""
 
+#. §0: $$\\binom{m + n}{k} = \\sum_{(i,j) \\in \\text{antidiagonal}(k)} \\binom{m}{i} \\cdot \\binom{n}{j}$$
+#. §1: `Nat.add_choose_eq m n k`
+#. §2: $k$
+#. §3: $m$
+#. §4: $n$
+#. §5: $k$
+#. §6: $i$
+#. §7: $j = k - i$
+#. §8: $i + j = k$
+#. §9: $i$
+#. §10: $m$
+#. §11: $\\binom{m}{i}$
+#. §12: $j$
+#. §13: $n$
+#. §14: $\\binom{n}{j}$
+#. §15: $\\binom{m+n}{k}$
+#. §16: $$\\sum_{(i,j) \\in \\text{antidiagonal}(2)} \\binom{3}{i} \\cdot \\binom{4}{j} = \\binom{7}{2}$$
+#. §17: $(0,2), (1,1), (2,0)$
+#. §18: $$\\binom{3}{0} \\cdot \\binom{4}{2} + \\binom{3}{1} \\cdot \\binom{4}{1} + \\binom{3}{2} \\cdot \\binom{4}{0} = 1 \\cdot 6 + 3 \\cdot 4 + 3 \\cdot 1 = 21 = \\binom{7}{2}$$
+#. §19: `Nat.add_choose_eq`
+#: Game.Levels.PascalsTriangle.L10_ConcreteVandermonde
+msgid "# The Vandermonde Identity: A Concrete Case\n"
+"\n"
+"The most important convolution identity in combinatorics is the\n"
+"**Vandermonde identity**:\n"
+"§0\n"
+"\n"
+"In Lean, this is §1.\n"
+"\n"
+"**Counting interpretation**: Imagine choosing §2 people from a\n"
+"group of §3 men and §4 women. You can split the §5 chosen people\n"
+"into §6 men and §7 women, where §8. The number\n"
+"of ways to choose §9 men from §10 is §11, and §12 women\n"
+"from §13 is §14. Summing over all splits gives\n"
+"§15. This is the most famous **double-counting**\n"
+"argument in combinatorics.\n"
+"\n"
+"Before proving it in full generality, verify it on a small case:\n"
+"§16\n"
+"\n"
+"The antidiagonal of 2 has three pairs: §17.\n"
+"The sum is:\n"
+"§18\n"
+"\n"
+"**Your task**: Prove this using §19 directly."
+msgstr ""
+
 #. §0: `Finset.prod_union`
 #. §1: `h : Disjoint s t`
 #. §2: `∏ x ∈ s ∪ t, f x = (∏ x ∈ s, f x) * ∏ x ∈ t, f x`
@@ -21100,6 +22108,10 @@ msgstr ""
 msgid "Same idea in reverse: §0."
 msgstr ""
 
+#: Game.Levels.PascalsTriangle.L03_MeetAntidiagonal
+msgid "(2, 3) is in the 5th antidiagonal."
+msgstr ""
+
 #. §0: `x`
 #. §1: `cases`
 #. §2: `Fin 3`
@@ -21155,6 +22167,35 @@ msgstr ""
 #: Game.Levels.CountingTypes.L11_Boss
 msgid "Resolve the abstract domain with §0, then\n"
 "decompose the product."
+msgstr ""
+
+#. §0: $\\sum_{(i,j)} \\binom{n}{i} = 2^n$
+#. §1: $\\sum_{(i,j)} \\binom{n}{j} = 2^n$
+#. §2: $(i, j)$
+#. §3: $\\binom{n}{i} + \\binom{n}{j}$
+#. §4: $2 \\cdot 2^n$
+#. §5: `Finset.sum_add_distrib`
+#. §6: `have`
+#. §7: `ring`
+#: Game.Levels.PascalsTriangle.L09_SwapPractice
+msgid "# Combining Swap and Reindex\n"
+"\n"
+"In Levels 7-8, you proved:\n"
+"- §0 (reindex)\n"
+"- §1 (swap + reindex)\n"
+"\n"
+"Now combine them. For each pair §2 in the antidiagonal,\n"
+"sum **both** binomial coefficients §3.\n"
+"The result is §4 — twice the row sum.\n"
+"\n"
+"**Proof plan**:\n"
+"1. Use §5 to split the sum of sums into two sums\n"
+"2. Evaluate each half with §6 sub-proofs\n"
+"   - The first uses reindexing (Level 7 pattern)\n"
+"   - The second uses swap + reindexing (Level 8 pattern)\n"
+"3. Substitute and close with §7\n"
+"\n"
+"This is a **rehearsal** for the boss, which adds a third component."
 msgstr ""
 
 #: Game.Levels.PsetFin.L04_AntisymmetricEquality
@@ -22029,6 +23070,11 @@ msgid "The goal is an §0 (§1). Use §2 to split it into\n"
 "the forward direction and the backward direction."
 msgstr ""
 
+#. §0: `rw [Finset.sum_add_distrib]`
+#: Game.Levels.PascalsTriangle.L16_Boss
+msgid "Apply §0 again to split the remaining two terms."
+msgstr ""
+
 #. §0: `rw [hswap, hg]`
 #: Game.Levels.PsetBigOp.L04_DoubleSumSwap
 #: Game.Levels.PsetBigOp.L05_FilteredSum
@@ -22488,6 +23534,10 @@ msgid "# The Geometric Series for Any Base\n"
 "the closing step uses §16 instead of §17 + §18 + §19."
 msgstr ""
 
+#: Game.Levels.PascalsTriangle.L04_AntidiagonalNonMembership
+msgid "(2, 4) is not in the 5th antidiagonal."
+msgstr ""
+
 #. §0: `Fin.init ![a, b, c]`
 #. §1: `![a, b, c]`
 #. §2: `1.castSucc = 1`
@@ -22618,6 +23668,15 @@ msgstr ""
 
 #: Game.Levels.Cardinality.L12_CardFilterLe
 msgid "Filtering Can't Increase Size"
+msgstr ""
+
+#. §0: `p.2`
+#. §1: `n - p.1`
+#. §2: `choose_symm`
+#. §3: `choose n (n - p.1) = choose n p.1`
+#: Game.Levels.PascalsTriangle.L14_SymmetryOnAntidiagonal
+msgid "Rewrite §0 to §1, then apply §2:\n"
+"§3."
 msgstr ""
 
 #. §0: `.isLt`
@@ -23079,6 +24138,12 @@ msgid "One step: §0.\n"
 "specialize-simplify-rewrite method produces an equation §5,\n"
 "but the goal often has §6. The final step is always\n"
 "§7."
+msgstr ""
+
+#. §0: `Finset.Nat.card_antidiagonal`
+#: Game.Levels.PascalsTriangle.L05_AntidiagonalFacts
+msgid "First goal: the 4th antidiagonal has 5 elements.\n"
+"Apply §0 directly."
 msgstr ""
 
 #. §0: `List.mem_cons`
@@ -23570,6 +24635,10 @@ msgid "§0 tells you that §1.\n"
 "inside a larger proof."
 msgstr ""
 
+#: Game.Levels.PascalsTriangle.L14_SymmetryOnAntidiagonal
+msgid "Symmetry on the Antidiagonal"
+msgstr ""
+
 #. §0: `rw [Finset.prod_mul_distrib]`
 #. §1: `(∏ x ∈ s, f x) * ∏ x ∈ s, g x`
 #: Game.Levels.BigOpAlgebra.L02_ProdMulDistrib
@@ -23854,6 +24923,46 @@ msgid "§0 extracts §1 from\n"
 "Disabled to force the learner to use §3 and §4."
 msgstr ""
 
+#. §0: $n$
+#. §1: $(0, n), (1, n-1), \\ldots, (n, 0)$
+#. §2: $n + 1$
+#. §3: ```
+#. Finset.Nat.card_antidiagonal :
+#.   (Finset.antidiagonal n).card = n + 1
+#. ```
+#. §4: $n$
+#. §5: $n + 1$
+#. §6: $\\binom{n}{0}$
+#. §7: $\\binom{n}{n}$
+#. §8: $n + 1$
+#. §9: $0$
+#. §10: ```
+#. Finset.Nat.antidiagonal_zero :
+#.   Finset.antidiagonal 0 = {(0, 0)}
+#. ```
+#: Game.Levels.PascalsTriangle.L05_AntidiagonalFacts
+msgid "# Size and Base Case\n"
+"\n"
+"Two basic facts about antidiagonals:\n"
+"\n"
+"**Size**: The antidiagonal of §0 contains the pairs\n"
+"§1 — that is, §2 pairs:\n"
+"\n"
+"§3\n"
+"\n"
+"This connects to Pascal's triangle: row §4 has §5 entries\n"
+"(from §6 to §7), and the antidiagonal\n"
+"has §8 pairs — one pair per entry.\n"
+"\n"
+"**Base case**: The antidiagonal of §9 has exactly one pair:\n"
+"\n"
+"§10\n"
+"\n"
+"This is the base case for any induction on the antidiagonal.\n"
+"\n"
+"**Your task**: Prove both facts."
+msgstr ""
+
 #. §0: `List.toFinset_cons`
 #. §1: `(a :: l).toFinset = insert a l.toFinset`
 #. §2: ```
@@ -23869,6 +24978,10 @@ msgid "§0 states that\n"
 "\n"
 "## When to use it\n"
 "When simplifying §3 of a cons'd list."
+msgstr ""
+
+#: Game.Levels.PascalsTriangle.L03_MeetAntidiagonal
+msgid "Meet the Antidiagonal"
 msgstr ""
 
 #. §0: `prod_congr`
@@ -25030,6 +26143,38 @@ msgstr ""
 msgid "Bijective Counting"
 msgstr ""
 
+#. §0: $$\\sum_{i + j = n} a_i \\cdot b_j$$
+#. §1: $n$
+#. §2: `antidiagonal n`
+#. §3: $$\\binom{m + n}{k} = \\sum_{(i,j) \\in \\text{antidiagonal}(k)} \\binom{m}{i} \\cdot \\binom{n}{j}$$
+#. §4: $m = n = k = n$
+#. §5: $$\\sum_{(i,j) \\in \\text{antidiagonal}(n)} \\binom{n}{i} \\cdot \\binom{n}{j} = \\binom{2n}{n}$$
+#. §6: $i + j = n$
+#. §7: $\\binom{n}{j} = \\binom{n}{n-i}
+#. = \\binom{n}{i}$
+#: Game.Levels.PascalsTriangle.L11_Convolution
+msgid "# The Antidiagonal's Canonical Application\n"
+"\n"
+"You have learned the antidiagonal's API: membership, reindexing,\n"
+"and swapping. But **why** does the antidiagonal exist?\n"
+"\n"
+"The answer is **convolution**. A convolution sum has the form:\n"
+"§0\n"
+"\n"
+"This is a sum over **pairs** whose coordinates sum to §1 — exactly\n"
+"what §2 provides.\n"
+"\n"
+"The most famous convolution identity is the **Vandermonde identity**:\n"
+"§3\n"
+"\n"
+"In Level 10, you verified this on concrete numbers. Now prove the\n"
+"specialization §4:\n"
+"§5\n"
+"\n"
+"This is the **sum of products of paired binomial coefficients**.\n"
+"On the antidiagonal, §6, so §7 by symmetry — each product is really a square."
+msgstr ""
+
 #. §0: `mem_insert`
 #. §1: `mem_singleton`
 #. §2: `omega`
@@ -25096,6 +26241,10 @@ msgstr ""
 
 #: Game.Levels.AbstractionLadder.L02_ListsAreOrdered
 msgid "Lists with the same elements in different order are not equal."
+msgstr ""
+
+#: Game.Levels.PascalsTriangle.L02_SymmetryInAction
+msgid "Symmetry in Action"
 msgstr ""
 
 #. §0: `ring`
@@ -25407,6 +26556,19 @@ msgid "# Counting via Equivalence\n"
 "cardinality, then §21 to evaluate."
 msgstr ""
 
+#. §0: `2 * n`
+#. §1: `n + n`
+#: Game.Levels.PascalsTriangle.L15_SquaredBinomials
+msgid "First, rewrite §0 as §1 so it matches the\n"
+"Vandermonde identity's form. This is the start of the\n"
+"reshape-flip-apply pattern."
+msgstr ""
+
+#. §0: `rw [Finset.sum_add_distrib]`
+#: Game.Levels.PascalsTriangle.L16_Boss
+msgid "Try §0 to split off the last term."
+msgstr ""
+
 #. §0: `have`
 #. §1: `omega`
 #: Game.Levels.PsetCardinality.L11_Boss
@@ -25466,6 +26628,40 @@ msgstr ""
 #. §1: `constructor`
 #: Game.Levels.FinsetOperations.L25_Boss
 msgid "The goal is §0. Use §1 to split it."
+msgstr ""
+
+#. §0: `Finset.Nat.sum_antidiagonal_eq_sum_range_succ_mk`
+#. §1: `∑ p ∈ antidiagonal n, g p = ∑ k ∈ range (n + 1), g (k, n - k)`
+#. §2: ```
+#. rw [Finset.Nat.sum_antidiagonal_eq_sum_range_succ_mk]
+#. ```
+#. §3: `antidiagonal n`
+#. §4: `g : ℕ × ℕ → M`
+#. §5: `p`
+#. §6: `p.1`
+#. §7: `p.2`
+#. §8: `fun p => choose n p.1`
+#. §9: `sum_antidiagonal_eq_sum_range_succ`
+#. §10: `_mk`
+#. §11: `f p.1 p.2`
+#. §12: `_mk`
+#. §13: `g p`
+#: Game.Levels.PascalsTriangle.L07_RowSumViaAntidiagonal
+msgid "§0 states that\n"
+"§1.\n"
+"\n"
+"## Syntax\n"
+"§2\n"
+"\n"
+"## When to use it\n"
+"When you have a sum over §3 with a function\n"
+"§4 applied to the pair §5 directly (not split\n"
+"into §6 and §7). This variant handles functions like\n"
+"§8 where the second coordinate is not used.\n"
+"\n"
+"## Difference from §9\n"
+"The non-§10 version requires the summand to have the form\n"
+"§11 (curried). This §12 version handles §13 (uncurried)."
 msgstr ""
 
 #: Game.Levels.Powerset.L05_MemberImpliesSubset
@@ -25687,6 +26883,14 @@ msgid "The general boundary exclusion: §0 for all §1.\n"
 "§10 converts to §11, and strict inequality is irreflexive."
 msgstr ""
 
+#. §0: `k + (n - k) = n`
+#. §1: `k ≤ n`
+#. §2: `omega`
+#: Game.Levels.PascalsTriangle.L06_AntidiagonalMembership
+msgid "The goal is §0. Since §1, this is\n"
+"a standard arithmetic fact. Use §2."
+msgstr ""
+
 #. §0: `castSucc`
 #. §1: `succ`
 #. §2: `i.succ = j.succ`
@@ -25905,12 +27109,6 @@ msgid "# General 0/succ Decomposition\n"
 "**Your task**: Prove the general 0/succ decomposition."
 msgstr ""
 
-#. §0: `intro h`
-#: Game.Levels.Cardinality.L08_ConcreteCardinality
-msgid "Assume membership with §0, then rewrite and derive\n"
-"a contradiction."
-msgstr ""
-
 #. §0: `v = n + 1`
 #. §1: `n`
 #. §2: `v = 1`
@@ -25920,6 +27118,12 @@ msgstr ""
 msgid "Now §0. Case-split once more on §1 to determine\n"
 "whether §2 or §3:\n"
 "§4"
+msgstr ""
+
+#. §0: `intro h`
+#: Game.Levels.Cardinality.L08_ConcreteCardinality
+msgid "Assume membership with §0, then rewrite and derive\n"
+"a contradiction."
 msgstr ""
 
 #. §0: `f : α → β`
@@ -26258,6 +27462,15 @@ msgid "Now the goal is §0 — the empty set is a subset of\n"
 "everything. The lemma §1 says exactly this."
 msgstr ""
 
+#. §0: `Finset.mem_antidiagonal`
+#. §1: `p ∈ antidiagonal n`
+#. §2: `p.1 + p.2 = n`
+#: Game.Levels.PascalsTriangle.L14_SymmetryOnAntidiagonal
+msgid "Extract the arithmetic from the membership hypothesis.\n"
+"§0 converts §1 to\n"
+"§2."
+msgstr ""
+
 #. §0: `ext ⟨v, hv⟩`
 #. §1: `rw [hf, hg]`
 #: Game.Levels.PsetFin.L18_Boss
@@ -26456,6 +27669,64 @@ msgstr ""
 msgid "Use §0 to evaluate the\n"
 "singleton sum, then substitute the function values:\n"
 "§1."
+msgstr ""
+
+#. §0: $$\\sum_{(i,j)} \\binom{n}{j}
+#. \\;\\xrightarrow{\\text{swap}}\\;
+#. \\sum_{(i,j)} \\binom{n}{i}
+#. \\;\\xrightarrow{\\text{reindex}}\\;
+#. \\sum_{k=0}^{n} \\binom{n}{k}
+#. = 2^n$$
+#. §1: $(i, j) \\mapsto (j, i)$
+#. §2: $i + j = n$
+#. §3: $j + i = n$
+#. §4: $k = j$
+#. §5: $n - k = i$
+#. §6: $\\sum_k \\binom{n}{k} = 2^n$
+#. §7: `← sum_antidiagonal_swap`
+#. §8: `p.2`
+#. §9: `p.1`
+#. §10: `sum_antidiagonal_eq_sum_range_succ_mk`
+#. §11: `range`
+#: Game.Levels.PascalsTriangle.L08_SymmetricRowSum
+msgid "Three steps: swap, reindex, close.\n"
+"\n"
+"§0\n"
+"\n"
+"**Why the swap works**: Coordinate-swapping §1\n"
+"is a **bijection** on the antidiagonal because §2 if and\n"
+"only if §3. Since it is a bijection, it only permutes\n"
+"the terms of the sum — it cannot add or remove any — so the\n"
+"total is unchanged. This is the formal version of the intuition\n"
+"that the antidiagonal \"looks the same\" under reflection.\n"
+"\n"
+"This is a **change of variable** argument. In ordinary math, you\n"
+"would write: \"Let §4 and §5; then the sum becomes\n"
+"§6.\" The formal version is more explicit:\n"
+"swap the pair coordinates, then reindex.\n"
+"\n"
+"**The swap-reindex pattern**: You now have a three-step strategy\n"
+"for any antidiagonal sum involving the second coordinate:\n"
+"1. **Swap** — use §7 to turn §8 into §9\n"
+"2. **Reindex** — use §10 to convert\n"
+"   to a single-index sum over §11\n"
+"3. **Close** — apply a known range-sum identity\n"
+"\n"
+"This swap-reindex pattern is a reusable proof strategy — an\n"
+"**antidiagonal change of variable**. You will see it again in\n"
+"the boss level."
+msgstr ""
+
+#. §0: `have h2 : ∑ p ∈ Finset.antidiagonal n, Nat.choose n p.2 = 2 ^ n := by`
+#. §1: `rw [← Finset.Nat.sum_antidiagonal_swap]`
+#. §2: `rw [Finset.Nat.sum_antidiagonal_eq_sum_range_succ_mk]`
+#. §3: `exact Nat.sum_range_choose n`
+#: Game.Levels.PascalsTriangle.L09_SwapPractice
+msgid "Introduce the second sum:\n"
+"§0\n"
+"then §1\n"
+"then §2\n"
+"then §3."
 msgstr ""
 
 #. §0: $s$
@@ -27317,6 +28588,17 @@ msgid "To provide the preimage, use §0 where\n"
 "Here: §2."
 msgstr ""
 
+#. §0: `∑ p ∈ antidiagonal n, choose n p.1 * choose n p.2 = (n + n).choose n`
+#. §1: `Nat.add_choose_eq n n n`
+#. §2: `symm`
+#: Game.Levels.PascalsTriangle.L11_Convolution
+msgid "The goal is now:\n"
+"§0.\n"
+"\n"
+"This is exactly the Vandermonde identity §1\n"
+"read backwards. Use §2 to flip the equation."
+msgstr ""
+
 #: Game.Levels.BigOpAlgebra.L06_SumUnion
 msgid "Now substitute the known sums."
 msgstr ""
@@ -27638,6 +28920,11 @@ msgid "# There Is Only One Empty Tuple\n"
 "to eliminate the impossible case."
 msgstr ""
 
+#. §0: `symm`
+#: Game.Levels.PascalsTriangle.L02_SymmetryInAction
+msgid "Try §0 to flip the goal."
+msgstr ""
+
 #. §0: `inf_idem`
 #. §1: `a ⊓ a = a`
 #. §2: `s ∩ s = s`
@@ -27716,6 +29003,10 @@ msgstr ""
 #: Game.Levels.PsetBigOp.L01_ConcreteSum
 msgid "The remaining arithmetic §0\n"
 "is closed by §1."
+msgstr ""
+
+#: Game.Levels.PascalsTriangle.L12_PascalFromVandermonde
+msgid "Pascal's Identity from Vandermonde"
 msgstr ""
 
 #. §0: `mul_comm`
@@ -28069,6 +29360,10 @@ msgstr ""
 msgid "Coaching: Card-Sum Bridge Meets Union Splitting"
 msgstr ""
 
+#: Game.Levels.PascalsTriangle.L11_Convolution
+msgid "The sum of products C(n,i)*C(n,j) over the antidiagonal equals C(2n,n)."
+msgstr ""
+
 #. §0: `f a = f b`
 #. §1: `hfa : f a = y`
 #. §2: `hfb : f b = y`
@@ -28122,6 +29417,25 @@ msgid "This is the single most important theorem in finite mathematics:\n"
 "The counting argument (pigeonhole + image = univ) proves something\n"
 "that case analysis cannot scale to: this holds for ALL §11, not\n"
 "just §12."
+msgstr ""
+
+#. §0: `Finset.Nat.antidiagonal_zero`
+#. §1: `Finset.antidiagonal 0 = {(0, 0)}`
+#. §2: ```
+#. exact Finset.Nat.antidiagonal_zero
+#. rw [Finset.Nat.antidiagonal_zero]
+#. ```
+#. §3: `antidiagonal 0`
+#: Game.Levels.PascalsTriangle.L05_AntidiagonalFacts
+msgid "§0 states that\n"
+"§1.\n"
+"\n"
+"## Syntax\n"
+"§2\n"
+"\n"
+"## When to use it\n"
+"When simplifying a sum or expression involving §3 —\n"
+"the base case in inductions over antidiagonal."
 msgstr ""
 
 #. §0: `hb : b ∈ singleton a`
@@ -28393,6 +29707,10 @@ msgid "Here §0. The witness is §1\n"
 "where §2 follows from §3."
 msgstr ""
 
+#: Game.Levels.PascalsTriangle.L10_ConcreteVandermonde
+msgid "Concrete Vandermonde"
+msgstr ""
+
 #. §0: `right`
 #. §1: `P ∨ Q`
 #. §2: ```
@@ -28471,6 +29789,10 @@ msgid "**Inductive step**: First, peel off the last term with\n"
 "§0. Then distribute the §1 with §2 to\n"
 "separate the sum from the last term. Finally, substitute\n"
 "the IH and close with §3."
+msgstr ""
+
+#: Game.Levels.PascalsTriangle.L13_TheCircleCloses
+msgid "The Circle Closes"
 msgstr ""
 
 #. §0: `Finset.card_image_le`
@@ -28754,6 +30076,28 @@ msgid "# Warm-Up: Compute a Sum\n"
 "- §2 to peel each element (proving §3)\n"
 "- §4 for the final singleton\n"
 "- Hypothesis substitution (§5) for the function values"
+msgstr ""
+
+#. §0: $$\\sum_{(i,j) \\in \\text{antidiagonal}(n)} \\left(\\binom{n}{i} + \\binom{n}{j}\\right) = 2 \\cdot 2^n$$
+#. §1: `sum_add_distrib`
+#. §2: `have`
+#. §3: `rw`
+#. §4: `ring`
+#: Game.Levels.PascalsTriangle.L09_SwapPractice
+msgid "You proved:\n"
+"§0\n"
+"\n"
+"**The decompose-evaluate-combine pattern**:\n"
+"1. **Decompose** — §1 splits the sum of sums\n"
+"2. **Evaluate** — §2 sub-proofs compute each sum\n"
+"3. **Combine** — §3 and §4 assemble the final result\n"
+"\n"
+"Each sub-proof retrieves a pattern from a previous level:\n"
+"- **h1** uses reindex + row sum (Level 7)\n"
+"- **h2** uses swap + reindex + row sum (Level 8)\n"
+"\n"
+"This three-phase pattern is exactly what the boss level\n"
+"requires — but with an additional Vandermonde component."
 msgstr ""
 
 #. §0: `Finset.image_subset_iff`
@@ -29250,6 +30594,16 @@ msgstr ""
 #: Game.Levels.FinsetBasics.L12_ProvingNonMembership
 msgid "Now §0 says §1. All branches are\n"
 "false. §2 derives the contradiction."
+msgstr ""
+
+#. §0: `p.2`
+#. §1: `p.1`
+#. §2: `← Finset.Nat.sum_antidiagonal_swap`
+#. §3: `p.swap.2 = p.1`
+#: Game.Levels.PascalsTriangle.L08_SymmetricRowSum
+msgid "The summand uses §0 instead of §1. You need to swap\n"
+"the coordinates. Use §2 to\n"
+"convert the sum: after swapping, §3."
 msgstr ""
 
 #. §0: `intro h`
@@ -30845,6 +32199,13 @@ msgid "# Insert is Idempotent\n"
 "**Your task**: Prove that §12."
 msgstr ""
 
+#. §0: `Nat.choose_eq_one_iff`
+#. §1: `choose n k = 1`
+#: Game.Metadata
+msgid "Disabled: §0 characterizes when §1.\n"
+"Trivializes boundary-value exercises."
+msgstr ""
+
 #. §0: `h`
 #. §1: `rw [Finset.mem_image] at h`
 #: Game.Levels.FinsetImage.L08_ImageOfSingleton
@@ -31202,6 +32563,11 @@ msgid "You computed the cardinality of a composite function type using ALL\n"
 "equivalences, and subtypes."
 msgstr ""
 
+#: Game.Levels.PascalsTriangle.L16_Boss
+msgid "Extract arithmetic from the membership, unfold the square,\n"
+"and apply symmetry — exactly as in Level 15."
+msgstr ""
+
 #. §0: `exact Finset.card_le_card (Finset.filter_subset p s)`
 #. §1: `have h := Finset.filter_subset p s`
 #. §2: `exact Finset.card_le_card h`
@@ -31428,6 +32794,35 @@ msgid "# Each Element Gives One Singleton Subset\n"
 "- §5: §6\n"
 "\n"
 "**Your task**: Chain these two rewrites to prove the result."
+msgstr ""
+
+#. §0: `sq`
+#. §1: `a ^ 2 = a * a`
+#. §2: ```
+#. rw [sq]
+#. ```
+#. §3: `a ^ 2`
+#. §4: `a * a`
+#. §5: `← sq`
+#. §6: ```
+#. -- goal: x ^ 2 = x * x
+#. rw [sq]
+#. -- goal becomes: x * x = x * x
+#. ```
+#: Game.Levels.PascalsTriangle.L15_SquaredBinomials
+msgid "§0 states that §1.\n"
+"\n"
+"## Syntax\n"
+"§2\n"
+"\n"
+"## When to use it\n"
+"When you see §3 in the goal or a hypothesis and want to\n"
+"convert it to §4 (or vice versa with §5). Useful when\n"
+"a goal involves squares but the relevant lemma speaks about\n"
+"products.\n"
+"\n"
+"## Example\n"
+"§6"
 msgstr ""
 
 #: Game.Levels.PsetFinset
@@ -31824,6 +33219,10 @@ msgid "Now unfold §0 to see what §1 could be:\n"
 "§2."
 msgstr ""
 
+#: Game.Levels.PascalsTriangle.L02_SymmetryInAction
+msgid "C(n+6, 3) = C(n+6, n+3): symmetry of Pascal's triangle."
+msgstr ""
+
 #. §0: `intro i`
 #. §1: `exact Fin.val_castSucc i`
 #: Game.Levels.FinNavigation.L03_EmbeddingCastSucc
@@ -31891,6 +33290,10 @@ msgstr ""
 msgid "Try:\n"
 "§0\n"
 "§1"
+msgstr ""
+
+#: Game.Levels.PascalsTriangle.L11_Convolution
+msgid "Convolution: The Sum of Products"
 msgstr ""
 
 #. §0: `card_image_of_injective`
@@ -32010,6 +33413,11 @@ msgid "First goal: §0. This means you must show membership leads\n"
 "to a contradiction. Use §1 to assume §2."
 msgstr ""
 
+#. §0: `sum_range_choose`
+#: Game.Levels.PascalsTriangle.L16_Boss
+msgid "Reindex to a range sum, then apply §0."
+msgstr ""
+
 #: Game.Levels.PsetFin.L05_PointwiseFormula
 msgid "Show the functions agree index by index using ext,\n"
 "then substitute the formula and case-split."
@@ -32124,6 +33532,12 @@ msgstr ""
 msgid "Simplify both sides: §0."
 msgstr ""
 
+#. §0: `Finset.sum_add_distrib`
+#: Game.Levels.PascalsTriangle.L16_Boss
+msgid "The summand is a sum of three terms. Split it into three\n"
+"separate sums using §0 twice."
+msgstr ""
+
 #. §0: `Finset.card_eq_zero`
 #. §1: `s.card = 0 ↔ s = ∅`
 #. §2: ```
@@ -32148,6 +33562,34 @@ msgstr ""
 #: Game.Levels.FinsetImage.L06_ImageUnionEquality
 msgid "Try §0 then extract the\n"
 "witness and embed into the union."
+msgstr ""
+
+#. §0: $m = 1$
+#. §1: $$\\binom{1 + n}{k} = \\sum_{(i,j) \\in \\text{antidiagonal}(k)} \\binom{1}{i} \\cdot \\binom{n}{j}$$
+#. §2: $\\binom{1}{i} = 0$
+#. §3: $i \\ge 2$
+#. §4: $$\\binom{1}{0} \\cdot \\binom{n}{k} + \\binom{1}{1} \\cdot \\binom{n}{k-1}
+#. = \\binom{n}{k} + \\binom{n}{k-1} = \\binom{n+1}{k}$$
+#. §5: $m = 1$
+#: Game.Levels.PascalsTriangle.L12_PascalFromVandermonde
+msgid "# The Punchline: Vandermonde Subsumes Pascal\n"
+"\n"
+"In Level 1, you used Pascal's identity (choose_succ_succ) as a\n"
+"given tool to walk down the triangle. In Levels 10-11, you proved\n"
+"the Vandermonde identity. Now comes the punchline: **Pascal's\n"
+"identity is a special case of Vandermonde**.\n"
+"\n"
+"Set §0 in Vandermonde:\n"
+"§1\n"
+"\n"
+"Since §2 for §3, only two terms survive:\n"
+"§4\n"
+"\n"
+"This IS Pascal's identity! The defining recurrence of the\n"
+"triangle is a special case of the convolution theorem.\n"
+"\n"
+"**Your task**: Prove the Vandermonde specialization §5.\n"
+"This uses the same reshape-flip-apply pattern from Level 10."
 msgstr ""
 
 #. §0: `Finset.sum_insert`
@@ -32463,6 +33905,10 @@ msgid "§0 states that\n"
 "When proving or decomposing §3 for a cons'd list."
 msgstr ""
 
+#: Game.Levels.PascalsTriangle.L05_AntidiagonalFacts
+msgid "Antidiagonal Facts"
+msgstr ""
+
 #: Game.Levels.BigOpAlgebra.L13_ConcreteComputation
 msgid "Computing a Concrete Sum"
 msgstr ""
@@ -32551,6 +33997,46 @@ msgstr ""
 
 #: Game.Levels.FinsetOperations.L03_SetDifference
 msgid "Prove membership in the first set — this is a standard membership proof."
+msgstr ""
+
+#. §0: $n$
+#. §1: $n$
+#. §2: $\\binom{n}{k}$
+#. §3: $k$
+#. §4: $(k, n - k)$
+#. §5: $n$
+#. §6: $(i, j)$
+#. §7: $i + j = n$
+#. §8: $$\\text{antidiagonal}(5) = \\{(0,5),\\; (1,4),\\; (2,3),\\; (3,2),\\; (4,1),\\; (5,0)\\}$$
+#. §9: `Finset.antidiagonal n`
+#. §10: ```
+#. Finset.mem_antidiagonal :
+#.   p ∈ Finset.antidiagonal n ↔ p.1 + p.2 = n
+#. ```
+#. §11: $(i, j)$
+#. §12: $n$
+#. §13: $i + j = n$
+#. §14: $(2, 3) \\in \\text{antidiagonal}(5)$
+#: Game.Levels.PascalsTriangle.L03_MeetAntidiagonal
+msgid "# The Antidiagonal: Pairs That Sum to §0\n"
+"\n"
+"Look at row §1 of Pascal's triangle. Each entry §2 is\n"
+"indexed by **one** number §3. But there is a natural way to index\n"
+"by **two** numbers: the pair §4.\n"
+"\n"
+"The §5-th **antidiagonal** is the set of all pairs §6 of\n"
+"natural numbers with §7:\n"
+"\n"
+"§8\n"
+"\n"
+"In Lean, this is §9. The key characterization:\n"
+"\n"
+"§10\n"
+"\n"
+"A pair §11 is in the §12-th antidiagonal if and only if\n"
+"§13.\n"
+"\n"
+"**Your task**: Prove that §14."
 msgstr ""
 
 #: Game.Levels.Cardinality.L14_ConcreteInclusionExclusion
@@ -32982,6 +34468,18 @@ msgid "# Fin 1 Has Exactly One Element\n"
 "Use §16 then §17."
 msgstr ""
 
+#. §0: `have h_vand : ∑ p ∈ Finset.antidiagonal (k + 1), Nat.choose 1 p.1 * Nat.choose n p.2 = Nat.choose (n + 1) (k + 1) := by`
+#. §1: `have hh : n + 1 = 1 + n := by ring`
+#. §2: `rw [hh]`
+#. §3: `symm`
+#. §4: `exact Nat.add_choose_eq 1 n (k + 1)`
+#: Game.Levels.PascalsTriangle.L13_TheCircleCloses
+msgid "Try\n"
+"§0\n"
+"then inside: §1\n"
+"then §2, §3, §4."
+msgstr ""
+
 #. §0: `t ⊆ s`
 #. §1: `mem_powerset`
 #: Game.Levels.Powerset.L10_ComplementCard
@@ -32996,6 +34494,20 @@ msgstr ""
 #: Game.Levels.FinsetBasics.L09_FinToFinsetBridge
 msgid "The goal is §0. Every element of §1 carries\n"
 "exactly this proof — it's called §2. Use §3."
+msgstr ""
+
+#. §0: `∑ k ∈ range (n + 1), Nat.choose n (k, n - k).1 = 2 ^ n`
+#. §1: `(k, n - k).1 = k`
+#. §2: `∑ k ∈ range (n + 1), Nat.choose n k = 2 ^ n`
+#. §3: `Nat.sum_range_choose`
+#: Game.Levels.PascalsTriangle.L07_RowSumViaAntidiagonal
+msgid "After reindexing, the goal is:\n"
+"§0\n"
+"\n"
+"Since §1, this simplifies to\n"
+"§2.\n"
+"\n"
+"This is exactly §3 from BinomialTheorem."
 msgstr ""
 
 #. §0: `m`
@@ -33339,8 +34851,75 @@ msgid "The cons/snoc duality is now complete. Every tuple can be\n"
 "whole sequence either way."
 msgstr ""
 
+#. §0: $n + 6$
+#. §1: $3$
+#. §2: $n + 3$
+#. §3: $(n + 6) - 3 = n + 3$
+#. §4: `Nat.choose_symm`
+#. §5: ```
+#. Nat.choose_symm (h : k ≤ n) : Nat.choose n (n - k) = Nat.choose n k
+#. ```
+#. §6: $\\binom{n+6}{3} = \\binom{n+6}{n+3}$
+#. §7: `choose_symm h`
+#. §8: `choose n (n - k) = choose n k`
+#. §9: $(n+6) - 3 = n + 3$
+#: Game.Levels.PascalsTriangle.L02_SymmetryInAction
+msgid "# Row Symmetry\n"
+"\n"
+"Each row of Pascal's triangle reads the same forwards and backwards.\n"
+"In row §0, the entries at positions §1 and §2 are equal,\n"
+"because §3. These two positions are equidistant\n"
+"from the edges of the row.\n"
+"\n"
+"In Lean, §4 says:\n"
+"§5\n"
+"\n"
+"**Your task**: Prove §6 using symmetry.\n"
+"Note that §7 proves §8.\n"
+"Since §9, you need to flip the goal to match."
+msgstr ""
+
 #: Game.Levels.SummationFormulas.L06_GeometricSum3
 msgid "Geometric Sum: Base 3"
+msgstr ""
+
+#. §0: $(k, n - k) \\in \\text{antidiagonal}(n)$
+#. §1: $k + (n - k) = n$
+#. §2: $k$
+#. §3: $0 \\le k \\le n$
+#. §4: $(k, n - k)$
+#. §5: $(i, j)$
+#. §6: $j = n - i$
+#. §7: $i + j = n$
+#. §8: $\\{(0, n), (1, n-1), \\ldots, (n, 0)\\}$
+#. §9: $n + 1$
+#. §10: `card_antidiagonal`
+#. §11: $\\{0, 1, \\ldots, n\\}$
+#. §12: `antidiagonal n`
+#. §13: `sum_antidiagonal_eq_sum_range_succ_mk`
+#. §14: $(i, j)$
+#. §15: $i + j = n$
+#. §16: $k \\in \\{0, \\ldots, n\\}$
+#. §17: $(k, n - k)$
+#: Game.Levels.PascalsTriangle.L06_AntidiagonalMembership
+msgid "§0 because §1.\n"
+"\n"
+"This is the **reindexing correspondence**: for each §2 with\n"
+"§3, the pair §4 is in the antidiagonal.\n"
+"Conversely, every pair §5 in the antidiagonal satisfies\n"
+"§6 (since §7). So the antidiagonal is exactly\n"
+"§8, which has §9\n"
+"elements (matching §10 from Level 5).\n"
+"\n"
+"This bijection between §11 and\n"
+"§12 is what makes the reindexing lemma\n"
+"§13 true: it converts\n"
+"a sum over pairs §14 with §15 into a sum over\n"
+"a single index §16, replacing each pair\n"
+"with §17.\n"
+"\n"
+"In the next level, you will use this reindexing to compute\n"
+"a row sum of Pascal's triangle through the antidiagonal."
 msgstr ""
 
 #: Game.Levels.BinomialTheorem.L14_ConcreteAlternatingSum
@@ -33815,6 +35394,13 @@ msgid "You've now used §0 in both directions:\n"
 "§9 is the tool."
 msgstr ""
 
+#: Game.Levels.PascalsTriangle.L16_Boss
+msgid "Three sums plus arithmetic. The first sum has squares —\n"
+"use the Level 15 pattern (sum_congr + sq + choose_symm) to\n"
+"reduce it to a Vandermonde convolution. The other two sums\n"
+"use reindexing and swap-reindexing from Levels 7-8."
+msgstr ""
+
 #. §0: `Finset.prod_empty`
 #. §1: `1`
 #. §2: $0! = 1$
@@ -33900,6 +35486,11 @@ msgstr ""
 #. §0: `rw [Multiset.card_cons]`
 #: Game.Levels.PsetCardinality.L06_MultisetRetrieval
 msgid "One cons peeled off. Continue: §0."
+msgstr ""
+
+#. §0: `sum_range_choose`
+#: Game.Levels.PascalsTriangle.L08_SymmetricRowSum
+msgid "The goal is the row sum identity. Close with §0."
 msgstr ""
 
 #: Game.Levels.FinsetOperations.L25_Boss
@@ -34228,6 +35819,14 @@ msgid "§0 states that §1.\n"
 "§5"
 msgstr ""
 
+#. §0: `Nat.choose_symm_of_eq_add`
+#. §1: `choose n k = choose n (n - k)`
+#. §2: `n = k + j`
+#: Game.Metadata
+msgid "Disabled: §0 proves §1\n"
+"from an equation §2. Bypasses manual symmetry reasoning."
+msgstr ""
+
 #. §0: `Finset.subset_univ s`
 #. §1: `Finset.card_le_card`
 #: Game.Levels.Cardinality.L20_SubsetUniv
@@ -34283,6 +35882,11 @@ msgstr ""
 
 #: Game.Levels.FinsetInduction.L04_FullInduction
 msgid "The sum of 1 over any finset equals its cardinality."
+msgstr ""
+
+#. §0: `choose_one_right`
+#: Game.Levels.PascalsTriangle.L01_ComputeAnEntry
+msgid "Good — simplify C(n+3, 1) = n+3 using §0."
 msgstr ""
 
 #. §0: `h.2`
@@ -34350,6 +35954,10 @@ msgid "§0 is the finset of all §1-element subsets of §2.\n"
 "## Example\n"
 "The 2-element subsets of §9 are §10, §11, §12 —\n"
 "three subsets, matching §13."
+msgstr ""
+
+#: Game.Levels.PascalsTriangle.L01_ComputeAnEntry
+msgid "Walking Down the Triangle"
 msgstr ""
 
 #: Game.Levels.PsetCardinality.L08_FunctionTypeCard
@@ -35041,6 +36649,10 @@ msgid "Three steps:\n"
 "The extra information (cardinality = k) is carried by §15."
 msgstr ""
 
+#: Game.Levels.PascalsTriangle.L16_Boss
+msgid "The full antidiagonal sum: combines symmetry reduction, Vandermonde, reindexing, and swap."
+msgstr ""
+
 #: Game.Levels.Powerset.L04_SubsetImpliesMember
 msgid "If s ⊆ t, then s ∈ t.powerset."
 msgstr ""
@@ -35097,6 +36709,7 @@ msgstr ""
 
 #. §0: `constructor`
 #: Game.Levels.FinTuples.L05_ConsAccessLemmas
+#: Game.Levels.PascalsTriangle.L05_AntidiagonalFacts
 msgid "Use §0 to split the conjunction into two goals."
 msgstr ""
 
@@ -35321,6 +36934,13 @@ msgid "# The §0 Modifier for §1\n"
 "**Your task**: Given that the image preserves cardinality, prove\n"
 "that §29 is injective on §30. Convert the injectivity goal to a\n"
 "cardinality equation using §31, then close with the hypothesis."
+msgstr ""
+
+#. §0: `(n + n).choose n = ∑ p ∈ antidiagonal n, ...`
+#. §1: `Nat.add_choose_eq`
+#: Game.Levels.PascalsTriangle.L11_Convolution
+msgid "Now the goal is §0.\n"
+"Apply §1 directly."
 msgstr ""
 
 #. §0: `2 = 2`
@@ -35802,6 +37422,10 @@ msgstr ""
 msgid "Two Distinct Witnesses"
 msgstr ""
 
+#: Game.Levels.PascalsTriangle.L01_ComputeAnEntry
+msgid "Simplify C(n+2, 1) = n+2."
+msgstr ""
+
 #. §0: `Nat.choose_succ_succ`
 #. §1: `Nat.choose (n + 1) (k + 1) = Nat.choose n k + Nat.choose n (k + 1)`
 #. §2: ```
@@ -35843,6 +37467,10 @@ msgstr ""
 #. §1: `mem_powerset`
 #: Game.Levels.Powerset.L24_SubsetBound
 msgid "First, extract the subset fact from §0 using §1."
+msgstr ""
+
+#: Game.Levels.PascalsTriangle.L12_PascalFromVandermonde
+msgid "Vandermonde with m=1: the convolution reduces to Pascal's identity."
 msgstr ""
 
 #. §0: `rw [Fin.val_castSucc]`
@@ -36836,6 +38464,54 @@ msgstr ""
 #: Game.Levels.BinomialTheorem.L15_Boss
 #: Game.Levels.BinomialTheorem.L15_Boss
 #: Game.Levels.BinomialTheorem.L15_Boss
+#: Game.Levels.PascalsTriangle.L01_ComputeAnEntry
+#: Game.Levels.PascalsTriangle.L01_ComputeAnEntry
+#: Game.Levels.PascalsTriangle.L01_ComputeAnEntry
+#: Game.Levels.PascalsTriangle.L01_ComputeAnEntry
+#: Game.Levels.PascalsTriangle.L02_SymmetryInAction
+#: Game.Levels.PascalsTriangle.L02_SymmetryInAction
+#: Game.Levels.PascalsTriangle.L03_MeetAntidiagonal
+#: Game.Levels.PascalsTriangle.L03_MeetAntidiagonal
+#: Game.Levels.PascalsTriangle.L04_AntidiagonalNonMembership
+#: Game.Levels.PascalsTriangle.L05_AntidiagonalFacts
+#: Game.Levels.PascalsTriangle.L05_AntidiagonalFacts
+#: Game.Levels.PascalsTriangle.L05_AntidiagonalFacts
+#: Game.Levels.PascalsTriangle.L06_AntidiagonalMembership
+#: Game.Levels.PascalsTriangle.L06_AntidiagonalMembership
+#: Game.Levels.PascalsTriangle.L07_RowSumViaAntidiagonal
+#: Game.Levels.PascalsTriangle.L07_RowSumViaAntidiagonal
+#: Game.Levels.PascalsTriangle.L08_SymmetricRowSum
+#: Game.Levels.PascalsTriangle.L08_SymmetricRowSum
+#: Game.Levels.PascalsTriangle.L09_SwapPractice
+#: Game.Levels.PascalsTriangle.L10_ConcreteVandermonde
+#: Game.Levels.PascalsTriangle.L10_ConcreteVandermonde
+#: Game.Levels.PascalsTriangle.L10_ConcreteVandermonde
+#: Game.Levels.PascalsTriangle.L10_ConcreteVandermonde
+#: Game.Levels.PascalsTriangle.L11_Convolution
+#: Game.Levels.PascalsTriangle.L11_Convolution
+#: Game.Levels.PascalsTriangle.L11_Convolution
+#: Game.Levels.PascalsTriangle.L11_Convolution
+#: Game.Levels.PascalsTriangle.L12_PascalFromVandermonde
+#: Game.Levels.PascalsTriangle.L12_PascalFromVandermonde
+#: Game.Levels.PascalsTriangle.L14_SymmetryOnAntidiagonal
+#: Game.Levels.PascalsTriangle.L14_SymmetryOnAntidiagonal
+#: Game.Levels.PascalsTriangle.L14_SymmetryOnAntidiagonal
+#: Game.Levels.PascalsTriangle.L14_SymmetryOnAntidiagonal
+#: Game.Levels.PascalsTriangle.L15_SquaredBinomials
+#: Game.Levels.PascalsTriangle.L15_SquaredBinomials
+#: Game.Levels.PascalsTriangle.L15_SquaredBinomials
+#: Game.Levels.PascalsTriangle.L15_SquaredBinomials
+#: Game.Levels.PascalsTriangle.L15_SquaredBinomials
+#: Game.Levels.PascalsTriangle.L15_SquaredBinomials
+#: Game.Levels.PascalsTriangle.L15_SquaredBinomials
+#: Game.Levels.PascalsTriangle.L16_Boss
+#: Game.Levels.PascalsTriangle.L16_Boss
+#: Game.Levels.PascalsTriangle.L16_Boss
+#: Game.Levels.PascalsTriangle.L16_Boss
+#: Game.Levels.PascalsTriangle.L16_Boss
+#: Game.Levels.PascalsTriangle.L16_Boss
+#: Game.Levels.PascalsTriangle.L16_Boss
+#: Game.Levels.PascalsTriangle.L16_Boss
 msgid "Try §0."
 msgstr ""
 
@@ -37386,6 +39062,10 @@ msgid "# The Geometric Sum for §0\n"
 "again in the boss."
 msgstr ""
 
+#: Game.Levels.PascalsTriangle
+msgid "Pascal's Triangle"
+msgstr ""
+
 #. §0: `Fin 5`
 #. §1: `Fin 3`
 #. §2: `Fin 2`
@@ -37545,6 +39225,12 @@ msgstr ""
 msgid "Now bound the image size. The image §0 is a\n"
 "subset of §1 (everything lives in the target).\n"
 "Use §2 with §3."
+msgstr ""
+
+#. §0: `have h1 : ∑ p ∈ Finset.antidiagonal n, Nat.choose n p.1 ^ 2 = Nat.choose (2 * n) n := by`
+#: Game.Levels.PascalsTriangle.L16_Boss
+msgid "Start with the squared sum. State the result:\n"
+"§0"
 msgstr ""
 
 #. §0: `toFinset`
@@ -37732,6 +39418,10 @@ msgid "§0 states that if §1 for all §2,\n"
 "Disabled in levels where the learner should prove product identities by induction."
 msgstr ""
 
+#: Game.Levels.PascalsTriangle.L09_SwapPractice
+msgid "Now introduce the second sum using the swap-reindex pattern."
+msgstr ""
+
 #. §0: `List.Perm.swap`
 #. §1: `List.Perm.cons`
 #. §2: `.trans`
@@ -37772,6 +39462,36 @@ msgid "You built a permutation by chaining two swaps through an intermediate\n"
 "\n"
 "**Reusable recipe**: §13 then §14\n"
 "then §15."
+msgstr ""
+
+#. §0: $(2, 4) \\notin \\text{antidiagonal}(5)$
+#. §1: $2 + 4 = 6 \\neq 5$
+#. §2: $(2, 4)$
+#. §3: `antidiagonal 6`
+#. §4: `p ∉ antidiagonal n`
+#. §5: `rw [Finset.mem_antidiagonal]`
+#. §6: `omega`
+#. §7: $i + j \\neq n$
+#. §8: `p ∈ antidiagonal n`
+#. §9: `rw [Finset.mem_antidiagonal]`
+#. §10: `omega`
+#. §11: $i + j = n$
+#. §12: `mem_antidiagonal`
+#: Game.Levels.PascalsTriangle.L04_AntidiagonalNonMembership
+msgid "§0 because §1.\n"
+"\n"
+"The pair §2 belongs to §3 instead.\n"
+"\n"
+"**Pattern**: To prove §4:\n"
+"1. §5 — convert to arithmetic\n"
+"2. §6 — the contradiction §7\n"
+"\n"
+"To prove §8:\n"
+"1. §9 — convert to arithmetic\n"
+"2. §10 — the identity §11\n"
+"\n"
+"Both directions use the same tool: §12 reduces\n"
+"membership to a simple arithmetic question."
 msgstr ""
 
 #. §0: `s`
@@ -37826,6 +39546,10 @@ msgid "# Every Set Splits Into Two Pieces\n"
 "**Backward**: Case-split on the §22. In both cases, §23 gives §24.\n"
 "\n"
 "**Your task**: Prove the partition identity."
+msgstr ""
+
+#: Game.Levels.PascalsTriangle.L05_AntidiagonalFacts
+msgid "Two basic antidiagonal facts: the size and the base case."
 msgstr ""
 
 #. §0: `α × β`
@@ -38173,6 +39897,11 @@ msgid "Four tools from two worlds, combined on a fresh surface:\n"
 "individual skills from separate lectures must now work together."
 msgstr ""
 
+#. §0: `choose_symm`
+#: Game.Levels.PascalsTriangle.L02_SymmetryInAction
+msgid "Now apply §0 with the inequality."
+msgstr ""
+
 #. §0: `rw [hn, hk]`
 #: Game.Levels.CountingTypes.L08_CountingInjections
 msgid "Substitute the concrete values: §0."
@@ -38314,6 +40043,17 @@ msgstr ""
 msgid "§0 states that when §1 is injective,\n"
 "§2 — image distributes\n"
 "over set difference under injectivity."
+msgstr ""
+
+#. §0: `(m + n).choose k = ∑ p ∈ antidiagonal k, m.choose p.1 * n.choose p.2`
+#. §1: $m = 1$
+#. §2: `(1 + n).choose k`
+#. §3: `(n + 1).choose k`
+#. §4: `n + 1 = 1 + n`
+#: Game.Levels.PascalsTriangle.L12_PascalFromVandermonde
+msgid "Vandermonde says §0.\n"
+"With §1, the LHS is §2. Your RHS has §3.\n"
+"Reshape: §4."
 msgstr ""
 
 #. §0: `Finset.mem_of_mem_inter_left h`
@@ -39015,6 +40755,42 @@ msgstr ""
 msgid "Rewrite with the formula, then simplify §0's value."
 msgstr ""
 
+#. §0: `Finset.Nat.sum_antidiagonal_swap`
+#. §1: `∑ p ∈ antidiagonal n, f p.swap = ∑ p ∈ antidiagonal n, f p`
+#. §2: ```
+#. rw [Finset.Nat.sum_antidiagonal_swap]
+#. rw [← Finset.Nat.sum_antidiagonal_swap]
+#. ```
+#. §3: `p.1`
+#. §4: `p.2`
+#. §5: `f p.swap`
+#. §6: `f p`
+#. §7: `←`
+#. §8: `f p`
+#. §9: `f p.swap`
+#. §10: `p.1 ↔ p.2`
+#. §11: `←`
+#. §12: `p.2`
+#. §13: `p.1`
+#: Game.Levels.PascalsTriangle.L08_SymmetricRowSum
+msgid "§0 states that\n"
+"§1.\n"
+"\n"
+"## Syntax\n"
+"§2\n"
+"\n"
+"## When to use it\n"
+"When you want to swap the roles of §3 and §4 in a sum\n"
+"over the antidiagonal. The forward direction replaces §5\n"
+"with §6. The backward direction (§7) replaces §8 with\n"
+"§9, which effectively swaps §10 throughout the\n"
+"summand.\n"
+"\n"
+"## Warning\n"
+"The backward direction (§11) is usually what you want when you\n"
+"need to convert a sum over §12 into a sum over §13."
+msgstr ""
+
 #. §0: `f 0 = f 1`
 #. §1: `h0`
 #. §2: `h1`
@@ -39046,6 +40822,10 @@ msgid "Use §0 — the same tool as Level 24.\n"
 "§1 splits the goal into:\n"
 "1. The image is a subset of univ (always true)\n"
 "2. §2 (from surjectivity)"
+msgstr ""
+
+#: Game.Levels.PascalsTriangle.L16_Boss
+msgid "Now evaluate the second sum: the row sum via reindexing."
 msgstr ""
 
 #. §0: `Unique.eq_default`
@@ -39205,6 +40985,10 @@ msgstr ""
 
 #: Game.Levels.BinomialTheorem.L02_QuadraticCase
 msgid "The Quadratic Case"
+msgstr ""
+
+#: Game.Levels.PascalsTriangle.L09_SwapPractice
+msgid "Substitute both results and simplify."
 msgstr ""
 
 #. §0: `h`
@@ -39986,6 +41770,10 @@ msgstr ""
 msgid "Try §0 to resolve the abstract domain."
 msgstr ""
 
+#: Game.Levels.PascalsTriangle.L10_ConcreteVandermonde
+msgid "Now apply the Vandermonde identity."
+msgstr ""
+
 #. §0: `x < 100`
 #. §1: `exact «{hbound}» x «{hx}»`
 #: Game.Levels.FinsetBasics.L15_NonemptyFinsets
@@ -40047,6 +41835,10 @@ msgstr ""
 #: Game.Levels.MeetFin.L23_Boss
 msgid "Now you need §0. Use §1\n"
 "to extract §2 from §3."
+msgstr ""
+
+#: Game.Levels.PascalsTriangle.L09_SwapPractice
+msgid "The Double Row Sum"
 msgstr ""
 
 #. §0: `t`
@@ -40221,6 +42013,12 @@ msgid "§0 states that §1.\n"
 "\n"
 "## Example\n"
 "§6"
+msgstr ""
+
+#. §0: `p.2`
+#. §1: `p.1`
+#: Game.Levels.PascalsTriangle.L16_Boss
+msgid "Swap to convert §0 to §1, then reindex."
 msgstr ""
 
 #: Game.Levels.FinNavigation.L05_CastSuccBelowSucc
@@ -40492,6 +42290,13 @@ msgid "You now have two ways to build tuples:\n"
 "FinNavigation — they power the two dual tuple constructors."
 msgstr ""
 
+#. §0: `Nat.choose_symm_add`
+#. §1: `choose (n + k) n = choose (n + k) k`
+#: Game.Metadata
+msgid "Disabled: §0 proves §1.\n"
+"This is a direct consequence of symmetry that would bypass manual proofs."
+msgstr ""
+
 #: Game.Levels.BinomialCoefficients.L13_SumSimplification
 msgid "A single-term sum of choose: ∑ i in range 1, choose i k = choose 1 (k+1)."
 msgstr ""
@@ -40642,6 +42447,12 @@ msgid "# Functions from Fin as Tuples\n"
 "is §24. (Remember: indexing starts at 0.)"
 msgstr ""
 
+#. §0: `intro p hp`
+#: Game.Levels.PascalsTriangle.L15_SquaredBinomials
+msgid "**Checkpoint**: You reduced a sum equation to a pointwise\n"
+"equation. Name the pair and its membership with §0."
+msgstr ""
+
 #: Game.Levels.FinsetBasics.L03_TheEmptyFinset
 msgid "The Empty Finset"
 msgstr ""
@@ -40715,6 +42526,11 @@ msgstr ""
 #: Game.Levels.SummationFormulas.L12_TelescopingSum
 #: Game.Levels.SummationFormulas.L14_Boss
 #: Game.Levels.BinomialCoefficients.L16_Boss
+#: Game.Levels.PascalsTriangle.L09_SwapPractice
+#: Game.Levels.PascalsTriangle.L12_PascalFromVandermonde
+#: Game.Levels.PascalsTriangle.L13_TheCircleCloses
+#: Game.Levels.PascalsTriangle.L16_Boss
+#: Game.Levels.PascalsTriangle.L16_Boss
 msgid "Try §0 then §1."
 msgstr ""
 
@@ -40748,6 +42564,16 @@ msgstr ""
 #: Game.Levels.Powerset.L25_ConcreteCount
 msgid "Now §0.\n"
 "Substitute the card of §1 using §2."
+msgstr ""
+
+#. §0: `∑ p ∈ antidiagonal 2, choose 3 p.1 * choose 4 p.2 = (3 + 4).choose 2`
+#. §1: `symm`
+#: Game.Levels.PascalsTriangle.L10_ConcreteVandermonde
+msgid "The goal is now:\n"
+"§0.\n"
+"\n"
+"Flip the equation with §1 so the Vandermonde identity\n"
+"matches directly."
 msgstr ""
 
 #. §0: `1 = Nat.factorial 0`
@@ -40950,6 +42776,11 @@ msgstr ""
 
 #: Game.Levels.BigOpAlgebra.L01_SumAddDistrib
 msgid "Using sum_add_distrib with known component sums."
+msgstr ""
+
+#. §0: `omega`
+#: Game.Levels.PascalsTriangle.L03_MeetAntidiagonal
+msgid "The goal is now an arithmetic identity. Close it with §0."
 msgstr ""
 
 #. §0: `1 + 4 = 5`
@@ -41280,6 +43111,18 @@ msgstr ""
 msgid "Image Distributes Over Union"
 msgstr ""
 
+#. §0: `rw [Finset.mem_antidiagonal] at hp`
+#. §1: `rw [sq]`
+#. §2: `have h_eq : p.2 = n - p.1 := by omega`
+#. §3: `have h_le : p.1 ≤ n := by omega`
+#. §4: `rw [h_eq, Nat.choose_symm h_le]`
+#: Game.Levels.PascalsTriangle.L16_Boss
+msgid "Try §0 then §1\n"
+"then §2\n"
+"then §3\n"
+"then §4."
+msgstr ""
+
 #: Game.Levels.Fintype.L11_BijectiveCounting
 msgid "If α is equivalent to Fin 6, then α has 6 elements."
 msgstr ""
@@ -41333,6 +43176,10 @@ msgid "§0 computes the falling factorial\n"
 "## Special cases\n"
 "- §6\n"
 "- §7"
+msgstr ""
+
+#: Game.Levels.PascalsTriangle.L07_RowSumViaAntidiagonal
+msgid "The row sum via antidiagonal: ∑ (i,j) with i+j=n of C(n,i) = 2^n."
 msgstr ""
 
 #. §0: `f`
@@ -41450,6 +43297,10 @@ msgid "Use §0 to close this goal.\n"
 "(Since the definition is transparent, §1 also works here.\n"
 "But §2 is the general tool you'll need when §3\n"
 "is a variable.)"
+msgstr ""
+
+#: Game.Levels.PascalsTriangle.L15_SquaredBinomials
+msgid "Now rewrite the goal."
 msgstr ""
 
 #. §0: `intro h`
@@ -41782,6 +43633,12 @@ msgstr ""
 msgid "Symmetry of Choose via Rewriting"
 msgstr ""
 
+#. §0: `have h3 : ∑ p ∈ Finset.antidiagonal n, Nat.choose n p.2 = 2 ^ n := by`
+#: Game.Levels.PascalsTriangle.L16_Boss
+msgid "State the swap-reindex result:\n"
+"§0"
+msgstr ""
+
 #. §0: `exact add_pow x y n`
 #. §1: `x`
 #. §2: `y`
@@ -41935,6 +43792,10 @@ msgid "Peel both products and the cardinality:\n"
 "§0\n"
 "§1\n"
 "then §2."
+msgstr ""
+
+#: Game.Levels.PascalsTriangle.L13_TheCircleCloses
+msgid "The Vandermonde m=1 sum equals Pascal's recurrence terms."
 msgstr ""
 
 #. §0: `sum_comm`
@@ -42181,6 +44042,55 @@ msgid "§0 normalizes ring expressions without necessarily closing\n"
 "but you want Lean to simplify the ring parts as much as possible."
 msgstr ""
 
+#: Game.Levels.PascalsTriangle.L10_ConcreteVandermonde
+msgid "Concrete Vandermonde: ∑ (i,j) with i+j=2 of C(3,i)*C(4,j) = C(7,2)."
+msgstr ""
+
+#. §0: $$\\sum_{(i,j) \\in \\text{antidiagonal}(n)} \\binom{n}{i} = 2^n$$
+#. §1: $$\\sum_{(i,j) \\in \\text{antidiagonal}(n)} \\binom{n}{j} = 2^n$$
+#. §2: ```
+#. Finset.Nat.sum_antidiagonal_swap :
+#.   ∑ p ∈ Finset.antidiagonal n, f p.swap =
+#.     ∑ p ∈ Finset.antidiagonal n, f p
+#. ```
+#. §3: $(i, j)$
+#. §4: $(j, i)$
+#. §5: $i$
+#. §6: $j$
+#. §7: `← Finset.Nat.sum_antidiagonal_swap`
+#. §8: `p.swap.2 = p.1`
+#. §9: `∑ choose n p.2`
+#. §10: `∑ choose n p.swap.2 = ∑ choose n p.1`
+#. §11: `Nat.sum_range_choose`
+#: Game.Levels.PascalsTriangle.L08_SymmetricRowSum
+msgid "# Summing the Second Coordinate\n"
+"\n"
+"In Level 7, you proved:\n"
+"§0\n"
+"\n"
+"Now prove the **symmetric version**: index by the **second** coordinate\n"
+"instead:\n"
+"§1\n"
+"\n"
+"This should give the same answer — after all, summing a row of\n"
+"Pascal's triangle from left to right or from right to left\n"
+"produces the same total. But the formal proof requires a new tool.\n"
+"\n"
+"The **swap lemma**:\n"
+"§2\n"
+"\n"
+"This says: swapping the coordinates of each pair does not change\n"
+"the sum. Since swapping replaces §3 with §4, and the\n"
+"antidiagonal is symmetric in §5 and §6, the sum is unchanged.\n"
+"\n"
+"**Proof plan**:\n"
+"1. Use §7 (backward!) to rewrite\n"
+"   the sum: since §8, the backward rewrite converts\n"
+"   §9 into §10\n"
+"2. Reindex to a range sum\n"
+"3. Apply §11"
+msgstr ""
+
 #. §0: `List.toFinset_eq_of_perm l₁ l₂ h`
 #. §1: `l₁.toFinset = l₂.toFinset`
 #. §2: `h : l₁.Perm l₂`
@@ -42214,6 +44124,18 @@ msgstr ""
 #: Game.Levels.PsetCardinality.L08_FunctionTypeCard
 msgid "You need (in order): §0, §1,\n"
 "§2, §3, §4, §5 — then §6 for the final arithmetic."
+msgstr ""
+
+#. §0: `rw [Finset.mem_antidiagonal]`
+#. §1: `∉`
+#. §2: `¬(... ∈ ...)`
+#. §3: `¬(2 + 4 = 5)`
+#. §4: `omega`
+#: Game.Levels.PascalsTriangle.L04_AntidiagonalNonMembership
+msgid "Use §0 to convert the membership\n"
+"condition to arithmetic. Since §1 is §2, the rewrite\n"
+"targets the inner membership, giving §3.\n"
+"Then §4 handles the contradiction."
 msgstr ""
 
 #. §0: `Fin 3 -> Fin 2`
@@ -43004,6 +44926,12 @@ msgstr ""
 msgid "castSucc Never Reaches Last"
 msgstr ""
 
+#. §0: `Finset.sum_add_distrib`
+#: Game.Levels.PascalsTriangle.L09_SwapPractice
+msgid "The summand is a sum of two terms. Split it into two\n"
+"separate sums using §0."
+msgstr ""
+
 #. §0: `intro i`
 #: Game.Levels.FinNavigation.L02_LastIsMaximum
 msgid "Start with §0 to name the element."
@@ -43134,6 +45062,11 @@ msgstr ""
 msgid "Constant Sums Meet Linearity"
 msgstr ""
 
+#. §0: `p.1 + p.2 = n`
+#: Game.Levels.PascalsTriangle.L15_SquaredBinomials
+msgid "Extract the arithmetic from the membership: §0."
+msgstr ""
+
 #. §0: `Finset.notMem_empty a`
 #. §1: `a ∉ ∅`
 #. §2: `exact`
@@ -43165,6 +45098,32 @@ msgstr ""
 
 #: Game.Levels.SummationFormulas.L02_GaussSum
 msgid "The Gauss Sum"
+msgstr ""
+
+#. §0: $$\\sum_{(i,j) \\in \\text{antidiagonal}(n)} \\binom{n}{i}
+#. \\;\\xrightarrow{\\text{reindex}}\\;
+#. \\sum_{k=0}^{n} \\binom{n}{k}
+#. \\;\\xrightarrow{\\text{sum\\_range\\_choose}}\\;
+#. 2^n$$
+#. §1: `range`
+#. §2: $k$
+#. §3: `antidiagonal`
+#. §4: $(i, j)$
+#. §5: $i + j = n$
+#: Game.Levels.PascalsTriangle.L07_RowSumViaAntidiagonal
+msgid "Two steps: reindex, then apply the row sum.\n"
+"\n"
+"§0\n"
+"\n"
+"**The point**: The antidiagonal is a different **lens** on the same\n"
+"sum. In the §1 view, you sum over one index §2.\n"
+"In the §3 view, you sum over pairs §4 with\n"
+"§5. The reindexing lemma lets you move freely between\n"
+"the two views. The mathematics is the same; only the bookkeeping\n"
+"changes.\n"
+"\n"
+"In the next level, you will see why the antidiagonal view matters:\n"
+"it makes **symmetry** visible."
 msgstr ""
 
 #. §0: `interval_cases`
@@ -43224,6 +45183,22 @@ msgid "You need §0. You know §1 and §2,\n"
 "so §3. Then §4, so §5."
 msgstr ""
 
+#. §0: `Nat.choose_symm (h : k ≤ n)`
+#. §1: `choose n (n - k) = choose n k`
+#. §2: `n := n+6`
+#. §3: `k := 3`
+#. §4: `choose (n+6) ((n+6) - 3) = choose (n+6) 3`
+#. §5: `choose (n+6) (n+3) = choose (n+6) 3`
+#. §6: `symm`
+#: Game.Levels.PascalsTriangle.L02_SymmetryInAction
+msgid "The symmetry lemma §0 proves\n"
+"§1. With §2 and §3,\n"
+"it gives §4, i.e.,\n"
+"§5.\n"
+"\n"
+"The goal has the equality in the other direction. Use §6 first."
+msgstr ""
+
 #: Game.Levels.FinsetOperations.L19_ProofByContradiction
 msgid "If x is in s but not in s \\\\ t, then x must be in t."
 msgstr ""
@@ -43258,6 +45233,15 @@ msgstr ""
 
 #: Game.Levels.Cardinality.L14_ConcreteInclusionExclusion
 msgid "Concrete Inclusion-Exclusion"
+msgstr ""
+
+#. §0: `Finset.mem_antidiagonal`
+#. §1: `k + (n - k) = n`
+#. §2: `k ≤ n`
+#: Game.Levels.PascalsTriangle.L06_AntidiagonalMembership
+msgid "Convert the membership condition to arithmetic using\n"
+"§0. Then the goal becomes\n"
+"§1, which follows from §2."
 msgstr ""
 
 #. §0: `l₁.length + l₂.length = 7`
@@ -44459,6 +46443,35 @@ msgstr ""
 msgid "Rewriting the Summand"
 msgstr ""
 
+#. §0: $(2, 3) \\in \\text{antidiagonal}(5)$
+#. §1: $2 + 3 = 5$
+#. §2: $n$
+#. §3: $(i, j)$
+#. §4: $i + j = n$
+#. §5: ```
+#.     j=0  j=1  j=2  j=3  j=4  j=5
+#. i=0  [*]
+#. i=1       [*]
+#. i=2            [*]            <-- (2, 3) is here
+#. i=3                 [*]
+#. i=4                      [*]
+#. i=5                           [*]
+#. ```
+#. §6: `antidiagonal 5`
+#: Game.Levels.PascalsTriangle.L03_MeetAntidiagonal
+msgid "§0 because §1. That is all\n"
+"the antidiagonal means: pairs whose coordinates sum to §2.\n"
+"\n"
+"**Why antidiagonals?** The name comes from matrices. If you arrange\n"
+"the pairs §3 in a grid, the pairs with §4 lie along\n"
+"a diagonal running from top-right to bottom-left — the **anti**diagonal:\n"
+"\n"
+"§5\n"
+"\n"
+"The starred entries are §6. In the next level, you will\n"
+"see what is NOT in an antidiagonal."
+msgstr ""
+
 #. §0: `powersetCard`
 #: Game.Levels.Powerset.L27_Boss
 msgid "Do the same for the second §0 term."
@@ -44499,6 +46512,13 @@ msgstr ""
 
 #: Game.Levels.PsetCardinality
 msgid "Problem Set: Cardinality"
+msgstr ""
+
+#. §0: `Nat.choose_succ_self_right`
+#. §1: `choose n (n + 1) = 0`
+#: Game.Metadata
+msgid "Disabled: §0 proves §1.\n"
+"Trivializes boundary-value exercises."
 msgstr ""
 
 #. §0: `decide`
@@ -44641,6 +46661,18 @@ msgstr ""
 msgid "The Full Set: Choose n"
 msgstr ""
 
+#. §0: $m = 1$
+#. §1: `(1 + n).choose (k+1) = ∑ p ∈ antidiagonal (k+1), choose 1 p.1 * choose n p.2`
+#. §2: `choose (n+1) (k+1)`
+#. §3: `n + 1 = 1 + n`
+#: Game.Levels.PascalsTriangle.L13_TheCircleCloses
+msgid "The Vandermonde identity with §0 gives:\n"
+"§1.\n"
+"\n"
+"First use this to show the LHS equals §2.\n"
+"You need §3 to match Vandermonde's form."
+msgstr ""
+
 #. §0: `rw [Finset.mem_range]`
 #: Game.Levels.FinsetBasics.L09_FinToFinsetBridge
 msgid "Convert the membership goal to an inequality:\n"
@@ -44752,6 +46784,36 @@ msgstr ""
 #: Game.Levels.FinsetOperations.L25_Boss
 msgid "Apply the unfold-to-logic recipe: §0, then\n"
 "§1."
+msgstr ""
+
+#. §0: $$\\sum_{(i,j) \\in \\text{antidiagonal}(k+1)} \\binom{1}{i} \\cdot \\binom{n}{j} = \\binom{n}{k} + \\binom{n}{k+1}$$
+#. §1: $m = 1$
+#. §2: $m = 1$
+#. §3: `choose_succ_succ`
+#. §4: $(0, k+1)$
+#. §5: $(1, k)$
+#. §6: $\\binom{1}{i} = 0$
+#. §7: $i \\ge 2$
+#: Game.Levels.PascalsTriangle.L13_TheCircleCloses
+msgid "You proved:\n"
+"§0\n"
+"\n"
+"**The circle is closed.** The world began with Pascal's identity\n"
+"as a computational tool (Level 1: expand entries by walking down\n"
+"the triangle). You then built the antidiagonal machinery, proved\n"
+"Vandermonde, and specialized to §1 (Level 12). Now you have\n"
+"shown that Vandermonde with §2 gives back Pascal's identity.\n"
+"\n"
+"The starting point is a special case of the climax. The recurrence\n"
+"that **defines** the triangle is a **consequence** of the\n"
+"convolution theorem that the triangle satisfies.\n"
+"\n"
+"**What we did NOT prove here**: We used §3 as\n"
+"a library fact to verify the match. A fully self-contained\n"
+"derivation would expand the antidiagonal sum term by term, showing\n"
+"that only §4 and §5 contribute. That expansion is\n"
+"more complex, but the key insight is the same: §6\n"
+"for §7 kills all but two terms."
 msgstr ""
 
 #. §0: `Nat.mul_comm`
@@ -44897,6 +46959,39 @@ msgstr ""
 #: Game.Levels.BigOpIntro.L01_SumEmpty
 msgid "The hypothesis §0 tells you §1. First substitute\n"
 "with §2, then the goal becomes a sum over §3."
+msgstr ""
+
+#. §0: $\\binom{n+6}{3} = \\binom{n+6}{n+3}$
+#. §1: $(p_1, p_2)$
+#. §2: $p_1 + p_2 = n$
+#. §3: $p_2 = n - p_1$
+#. §4: $p_1 \\le n$
+#. §5: `choose_symm`
+#. §6: $$\\binom{n}{p_2} = \\binom{n}{n - p_1} = \\binom{n}{p_1}$$
+#. §7: $\\binom{n}{\\text{first}} = \\binom{n}{\\text{second}}$
+#. §8: `p.1 + p.2 = n`
+#. §9: `p.2 = n - p.1`
+#. §10: `p.1 ≤ n`
+#. §11: `choose_symm`
+#: Game.Levels.PascalsTriangle.L14_SymmetryOnAntidiagonal
+msgid "# Binomial Coefficient Symmetry, Pair by Pair\n"
+"\n"
+"In Level 2, you proved that §0 —\n"
+"the symmetry of a single row entry. Now apply this symmetry to\n"
+"**pairs on the antidiagonal**.\n"
+"\n"
+"For any pair §1 with §2, we have\n"
+"§3 and §4. By §5:\n"
+"§6\n"
+"\n"
+"So on the antidiagonal, §7.\n"
+"This is the key insight you will need in Level 15 to connect\n"
+"squared coefficients to the Vandermonde convolution.\n"
+"\n"
+"**Proof plan**:\n"
+"1. Extract the arithmetic from the membership: §8\n"
+"2. Derive §9 and §10\n"
+"3. Rewrite and apply §11"
 msgstr ""
 
 #. §0: `intro i`
@@ -45322,6 +47417,44 @@ msgstr ""
 msgid "Unfold the union membership in §0 and case-split."
 msgstr ""
 
+#. §0: $$\\sum_{(i,j) \\in \\text{antidiagonal}(n)} \\binom{n}{i} \\cdot \\binom{n}{j} = \\binom{2n}{n}$$
+#. §1: $\\sum \\binom{n}{i}$
+#. §2: $\\sum \\binom{n}{j}$
+#. §3: $\\sum_{i+j=n} a_i \\cdot b_j$
+#. §4: $\\binom{2n}{n}$
+#. §5: $(0,0)$
+#. §6: $(n,n)$
+#. §7: $2n$
+#. §8: $f$
+#. §9: $g$
+#. §10: $(fg)_n = \\sum_{i+j=n} f_i \\cdot g_j$
+#. §11: $n = 3$
+#. §12: $$1 \\cdot 1 + 3 \\cdot 3 + 3 \\cdot 3 + 1 \\cdot 1 = 1 + 9 + 9 + 1 = 20 = \\binom{6}{3}$$
+#: Game.Levels.PascalsTriangle.L11_Convolution
+msgid "You proved:\n"
+"§0\n"
+"\n"
+"**Why this matters**: This is the first **multiplicative** sum over\n"
+"the antidiagonal you have computed. The additive sums in Levels 7-8\n"
+"(§1 and §2) could have been\n"
+"written as range sums. But this convolution sum\n"
+"§3 is **naturally** an antidiagonal sum —\n"
+"the product structure makes the pair indexing essential.\n"
+"\n"
+"**The central binomial coefficient §4**: This is one of\n"
+"the most important sequences in combinatorics. It counts the number of\n"
+"lattice paths from §5 to §6, and is the largest entry in\n"
+"row §7 of Pascal's triangle.\n"
+"\n"
+"**Polynomial multiplication connection**: In the Products world (W24),\n"
+"you will see that multiplying two polynomials §8 and §9 produces\n"
+"coefficients §10 — exactly this\n"
+"antidiagonal convolution.\n"
+"\n"
+"**Concrete check**: For §11:\n"
+"§12"
+msgstr ""
+
 #. §0: `sdiff_le_self`
 #. §1: `a \\ b ≤ a`
 #: Game.Levels.PsetFinset.L05_UnionComplement
@@ -45455,6 +47588,10 @@ msgid "§0\n"
 "§11 is trapped inside §12."
 msgstr ""
 
+#: Game.Levels.PascalsTriangle.L07_RowSumViaAntidiagonal
+msgid "Row Sum via Antidiagonal"
+msgstr ""
+
 #. §0: `castSucc`
 #. §1: `i /= Fin.last n`
 #. §2: `i`
@@ -45566,6 +47703,15 @@ msgid "§0 lets you rewrite the function inside a §1 without\n"
 "\n"
 "In plain math: if §18 for all §19, then\n"
 "§20."
+msgstr ""
+
+#. §0: `∑ p, choose n p.1 ^ 2 = ∑ ij, choose n ij.1 * choose n ij.2`
+#. §1: `Finset.sum_congr rfl`
+#: Game.Levels.PascalsTriangle.L16_Boss
+msgid "The goal is now:\n"
+"§0\n"
+"\n"
+"Use §1 to reduce to a pointwise equation."
 msgstr ""
 
 #. §0: $\\sum (-1)^m \\binom{n}{m} = 0$
@@ -45846,6 +47992,50 @@ msgstr ""
 #: Game.Levels.FinsetBasics.L01_WhatIsAFinset
 msgid "Use §0 to convert the membership goal into\n"
 "a disjunction: is §1 the inserted element, or is it in the rest?"
+msgstr ""
+
+#. §0: $$\\sum_{(i,j) \\in \\text{antidiagonal}(n)} \\left(\\binom{n}{i}^2 + \\binom{n}{i} + \\binom{n}{j}\\right) = \\binom{2n}{n} + 2 \\cdot 2^n$$
+#. §1: `Finset.sum_add_distrib`
+#. §2: `Finset.sum_congr rfl`
+#. §3: `sq`
+#. §4: $a^2 = a \\cdot a$
+#. §5: `Nat.choose_symm`
+#. §6: `Nat.add_choose_eq`
+#. §7: `Finset.Nat.sum_antidiagonal_eq_sum_range_succ_mk`
+#. §8: `← Finset.Nat.sum_antidiagonal_swap`
+#. §9: `Nat.sum_range_choose`
+#. §10: $\\sum \\binom{n}{k} = 2^n$
+#. §11: `have`
+#. §12: `ring`
+#: Game.Levels.PascalsTriangle.L16_Boss
+msgid "You proved:\n"
+"§0\n"
+"\n"
+"**Skills integrated in this boss**:\n"
+"1. §1 — split a sum of sums (BigOpAlgebra)\n"
+"2. §2 — reduce sum equation to pointwise (Level 15)\n"
+"3. §3 — unfold §4 (Level 15)\n"
+"4. §5 — symmetry on antidiagonal pairs (Level 14)\n"
+"5. §6 — the Vandermonde identity (Level 10)\n"
+"6. §7 — reindex (Level 7)\n"
+"7. §8 — swap pair coordinates (Level 8)\n"
+"8. §9 — the row sum §10 (BinomialTheorem)\n"
+"9. §11 — three intermediate results\n"
+"10. §12 — final arithmetic\n"
+"\n"
+"**The structure of the proof**: Split -> Evaluate each part -> Combine.\n"
+"Three sub-proofs, each retrieving a different pattern:\n"
+"- **h1** (squared sum): sum_congr reduction + symmetry + Vandermonde\n"
+"  (Levels 14-15 pattern, then Level 10 reshape-flip-apply)\n"
+"- **h2** (row sum): reindex + close (Level 7 pattern)\n"
+"- **h3** (symmetric row sum): swap + reindex + close (Levels 8-9 pattern)\n"
+"\n"
+"**What made h1 different**: Unlike Levels 7-9 where the summand\n"
+"was already in a directly evaluable form, h1 required a\n"
+"**transformation** step: reducing squares to products via\n"
+"antidiagonal symmetry before Vandermonde could apply. This is the\n"
+"integration of the symmetry arc (Levels 14-15) with the\n"
+"sum-manipulation arc (Levels 7-12)."
 msgstr ""
 
 #. §0: `«{h}»`

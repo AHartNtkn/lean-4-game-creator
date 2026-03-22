@@ -17,6 +17,7 @@ import Mathlib.Data.Multiset.Dedup
 import Mathlib.Tactic.Ring
 import Mathlib.Data.Nat.Choose.Basic
 import Mathlib.Data.Nat.Choose.Sum
+import Mathlib.Data.Nat.Choose.Vandermonde
 import Mathlib.Data.Finset.Powerset
 
 /-- The binomial theorem for natural numbers, without Nat.cast coercion.
@@ -1395,3 +1396,19 @@ Disabled in levels where the learner should prove monotonicity manually
 using `mem_powerset` and subset transitivity.
 -/
 TheoremDoc Finset.powerset_mono as "Finset.powerset_mono" in "Finset"
+
+/-- Disabled: `Nat.choose_symm_add` proves `choose (n + k) n = choose (n + k) k`.
+This is a direct consequence of symmetry that would bypass manual proofs. -/
+TheoremDoc Nat.choose_symm_add as "Nat.choose_symm_add" in "Choose"
+
+/-- Disabled: `Nat.choose_symm_of_eq_add` proves `choose n k = choose n (n - k)`
+from an equation `n = k + j`. Bypasses manual symmetry reasoning. -/
+TheoremDoc Nat.choose_symm_of_eq_add as "Nat.choose_symm_of_eq_add" in "Choose"
+
+/-- Disabled: `Nat.choose_succ_self_right` proves `choose n (n + 1) = 0`.
+Trivializes boundary-value exercises. -/
+TheoremDoc Nat.choose_succ_self_right as "Nat.choose_succ_self_right" in "Choose"
+
+/-- Disabled: `Nat.choose_eq_one_iff` characterizes when `choose n k = 1`.
+Trivializes boundary-value exercises. -/
+TheoremDoc Nat.choose_eq_one_iff as "Nat.choose_eq_one_iff" in "Choose"
