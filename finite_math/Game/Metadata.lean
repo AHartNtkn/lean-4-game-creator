@@ -15,6 +15,7 @@ import Mathlib.Data.Multiset.Basic
 import Mathlib.Data.Multiset.Count
 import Mathlib.Data.Multiset.Dedup
 import Mathlib.Tactic.Ring
+import Mathlib.Data.Nat.Choose.Basic
 
 /-! ## Documentation for disabled tactics and theorems
 
@@ -215,6 +216,13 @@ fields and rings.
 Disabled in levels where manual inequality chaining is the lesson.
 -/
 TacticDoc linarith
+
+/-- `nlinarith` extends `linarith` with nonlinear reasoning by
+multiplying hypotheses together before applying linear arithmetic.
+
+Disabled in levels where manual algebraic manipulation is the lesson.
+-/
+TacticDoc nlinarith
 
 /-- `trivial` attempts to close the goal using a combination of
 basic tactics (`rfl`, `exact True.intro`, `assumption`).

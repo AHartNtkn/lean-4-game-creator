@@ -242,6 +242,15 @@ msgid "§0 then unfold sdiff in each case.\n"
 "In §6: same pattern with §7."
 msgstr ""
 
+#. §0: `0 = Nat.choose 1 2`
+#. §1: $1 < 2$
+#. §2: `Nat.choose 1 2 = 0`
+#. §3: `choose_eq_zero_of_lt`
+#: Game.Levels.BinomialCoefficients.L14_GaussSum
+msgid "The goal is §0.\n"
+"Since §1, we have §2 by §3."
+msgstr ""
+
 #: Game.Levels.BigOpIntro.L03_SumInsert
 msgid "Peeling one element off a sum using sum_insert."
 msgstr ""
@@ -287,6 +296,13 @@ msgstr ""
 msgid "Part 1: prove every §0 element is §1 or §2.\n"
 "Start with §3, then destructure §4 with\n"
 "§5."
+msgstr ""
+
+#. §0: `Nat.choose 3 1 + Nat.choose 3 2 = 6`
+#. §1: `choose_one_right`
+#: Game.Levels.BinomialCoefficients.L04_PascalComputation
+msgid "The goal is §0.\n"
+"Simplify C(3, 1) = 3 using §1."
 msgstr ""
 
 #. §0: `Fin.ext_iff`
@@ -1209,6 +1225,62 @@ msgid "§0 at index 0 is §1 at\n"
 "§2, which is §3. Use §4."
 msgstr ""
 
+#. §0: $\\binom{4}{2} = 6$
+#. §1: `Nat.choose n k`
+#. §2: $\\binom{n}{0} = 1$
+#. §3: $\\binom{n}{n} = 1$
+#. §4: $\\binom{n}{1} = n$
+#. §5: $\\binom{n+1}{k+1} = \\binom{n}{k} + \\binom{n}{k+1}$
+#. §6: $\\binom{n}{k} = \\binom{n}{n-k}$
+#. §7: $\\binom{n}{k} = 0$
+#. §8: $k > n$
+#. §9: $\\binom{n}{k} \\cdot k! \\cdot (n-k)! = n!$
+#. §10: $(n+1) \\cdot \\binom{n}{k} = (k+1) \\cdot \\binom{n+1}{k+1}$
+#. §11: $\\binom{n}{k}$
+#. §12: $\\binom{n+1}{2}$
+#. §13: $\\sum_{i=0}^{n} \\binom{i}{k} = \\binom{n+1}{k+1}$
+#. §14: $2 \\cdot \\binom{n+2}{2} = (n+1)(n+2)$
+#. §15: `Nat.factorial`
+#. §16: `induction`
+#. §17: `ring`
+#. §18: `omega`
+#: Game.Levels.BinomialCoefficients
+msgid "# Binomial Coefficients\n"
+"\n"
+"A committee of 2 must be chosen from 4 candidates. How many possible\n"
+"committees are there? And how would you *prove* your answer is correct?\n"
+"\n"
+"The answer is §0, the **binomial coefficient**.\n"
+"These numbers have a long history: the arrangement we now call\n"
+"**Pascal's triangle** was studied by Chinese mathematician Jia Xian\n"
+"around 1050 CE and by Persian mathematician Omar Khayyam around 1100 CE —\n"
+"over 500 years before Blaise Pascal published his treatise in 1665.\n"
+"\n"
+"In this world, you'll learn the Lean formalization §1 and prove\n"
+"identities using its key properties:\n"
+"\n"
+"- **Boundary values**: §2, §3, §4\n"
+"- **Pascal's identity**: §5\n"
+"- **Symmetry**: §6\n"
+"- **Beyond the edge**: §7 when §8\n"
+"- **Factorial formula**: §9\n"
+"- **Absorption identity**: §10\n"
+"\n"
+"Pascal's identity is the **recursive heart** of the binomial coefficient.\n"
+"Combined with the boundary values, it lets you compute any §11\n"
+"by building Pascal's triangle from the top.\n"
+"\n"
+"After learning these identities, you'll prove a cross-world connection\n"
+"(the Gauss sum equals §12), the **hockey stick identity**\n"
+"§13, and then tackle the\n"
+"boss: proving by induction that\n"
+"§14, integrating Pascal's identity\n"
+"with the peel + IH + ring pattern from the summation worlds.\n"
+"\n"
+"**Prerequisites**: §15 from SummationFormulas, §16\n"
+"from FinsetInduction, §17 from BigOpAlgebra, §18 from MeetFin."
+msgstr ""
+
 #: Game.Levels.AbstractionLadder.L23_Boss
 msgid "Permuted nodup lists give finsets with card equal to the original length."
 msgstr ""
@@ -1221,6 +1293,13 @@ msgstr ""
 msgid "§0 is an elimination principle for §1: given\n"
 "a value for §2 and a function on §3 images, produce\n"
 "a value for any element."
+msgstr ""
+
+#. §0: `h : 2 ≤ 10`
+#. §1: `exact Nat.choose_symm h`
+#: Game.Levels.BinomialCoefficients.L06_Symmetry
+msgid "Now you have §0 in context. Use it with symmetry:\n"
+"§1."
 msgstr ""
 
 #. §0: `rw [Finset.sum_comm]`
@@ -1617,6 +1696,10 @@ msgstr ""
 msgid "Every element of §0 is §1, §2, or §3."
 msgstr ""
 
+#: Game.Levels.BinomialCoefficients.L16_Boss
+msgid "2 * C(n+2, 2) = (n+1) * (n+2)."
+msgstr ""
+
 #. §0: `Multiset α`
 #. §1: `↑l`
 #. §2: `(↑l : Multiset α)`
@@ -1754,6 +1837,7 @@ msgstr ""
 #: Game.Levels.SummationFormulas.L04_SumOfSquares
 #: Game.Levels.SummationFormulas.L09_ProductBasics
 #: Game.Levels.SummationFormulas.L09_ProductBasics
+#: Game.Levels.BinomialCoefficients.L12_CoachingBossPattern
 msgid "Try §0\n"
 "then §1."
 msgstr ""
@@ -2763,6 +2847,28 @@ msgid "Extract the witness from the composed image, then build\n"
 "the two-layer membership."
 msgstr ""
 
+#. §0: `Nat.choose_zero_right`
+#. §1: `Nat.choose n 0 = 1`
+#. §2: ```
+#. rw [Nat.choose_zero_right]
+#. ```
+#. §3: `Nat.choose n 0`
+#. §4: `1`
+#: Game.Levels.BinomialCoefficients.L01_BoundaryValues
+msgid "§0 states that §1.\n"
+"\n"
+"## Syntax\n"
+"§2\n"
+"\n"
+"## When to use it\n"
+"When you see §3 in the goal or a hypothesis and want\n"
+"to simplify it to §4.\n"
+"\n"
+"## Meaning\n"
+"There is exactly one way to choose zero items from any collection:\n"
+"take nothing."
+msgstr ""
+
 #: Game.Levels.CountingTypes
 msgid "Counting Types"
 msgstr ""
@@ -2957,6 +3063,19 @@ msgstr ""
 
 #: Game.Levels.BigOpAlgebra.L11_SumRangeSucc
 msgid "Peel off the last term of a range sum."
+msgstr ""
+
+#. §0: `2 * ((n + 2) + Nat.choose (n + 2) 2) = (n + 2) * (n + 3)`
+#. §1: `2 * Nat.choose (n + 2) 2`
+#. §2: `mul_add`
+#. §3: `mul_add : a * (b + c) = a * b + a * c`
+#: Game.Levels.BinomialCoefficients.L16_Boss
+msgid "Good — the goal is\n"
+"§0.\n"
+"\n"
+"You need §1 to appear on its own so\n"
+"the IH can rewrite it. Distribute with §2:\n"
+"§3."
 msgstr ""
 
 #. §0: `Finset.univ`
@@ -3719,6 +3838,10 @@ msgid "# Union is Idempotent\n"
 "**Your task**: Prove that §10."
 msgstr ""
 
+#: Game.Levels.BinomialCoefficients.L15_HockeyStick
+msgid "The Hockey Stick Identity"
+msgstr ""
+
 #. §0: `constructor`
 #: Game.Levels.FinsetImage.L15_InjectivePreservesSize
 msgid "Use §0 to split into the membership part and the\n"
@@ -3891,6 +4014,10 @@ msgstr ""
 #: Game.Levels.Fintype.L11_BijectiveCounting
 msgid "Use §0 to replace §1\n"
 "with §2, then §3 to evaluate."
+msgstr ""
+
+#: Game.Levels.BinomialCoefficients.L01_BoundaryValues
+msgid "The boundary values: C(5,0) = 1 and C(5,5) = 1."
 msgstr ""
 
 #. §0: `(l₁ ++ l₂).length = 7`
@@ -4372,6 +4499,32 @@ msgid "The exponent is §0.\n"
 "Decompose the sum type: §1."
 msgstr ""
 
+#. §0: $\\binom{4}{2} = 6$
+#. §1: $$\\binom{4}{2} = \\binom{3}{1} + \\binom{3}{2}$$
+#. §2: $$= 3 + (\\binom{2}{1} + \\binom{2}{2})$$
+#. §3: $$= 3 + (2 + 1) = 6$$
+#. §4: `choose_succ_succ`
+#. §5: `choose_one_right`
+#. §6: `choose_self`
+#. §7: $\\binom{4}{2} = 6$
+#: Game.Levels.BinomialCoefficients.L04_PascalComputation
+msgid "# Computing a Binomial Coefficient from Scratch\n"
+"\n"
+"Pascal's identity lets you compute any binomial coefficient by\n"
+"**expanding recursively** until you hit boundary values.\n"
+"\n"
+"Let's compute §0 by hand:\n"
+"§1\n"
+"§2\n"
+"§3\n"
+"\n"
+"Each step either:\n"
+"- **Expands** using §4 (Pascal's identity), or\n"
+"- **Simplifies a leaf** using §5 or §6\n"
+"\n"
+"**Your task**: Prove §7 using this recursive expansion."
+msgstr ""
+
 #. §0: `rw [Finset.sum_range_succ]`
 #: Game.Levels.BigOpAlgebra.L12_RangeCombo
 msgid "Start by peeling off the last term with\n"
@@ -4381,6 +4534,10 @@ msgstr ""
 #: Game.Levels.FinsetImage.L07_ImageComposition
 msgid "Extract the witness from the outer image, then extract the\n"
 "deeper witness from the inner image."
+msgstr ""
+
+#: Game.Levels.BinomialCoefficients.L02_ChoosingOne
+msgid "C(7, 1) = 7: there are 7 ways to choose 1 item from 7."
 msgstr ""
 
 #. §0: `le_antisymm`
@@ -4413,6 +4570,10 @@ msgstr ""
 #: Game.Levels.FinsetOperations.L19_ProofByContradiction
 msgid "The goal is now §0. Use\n"
 "§1 to unfold it into a conjunction."
+msgstr ""
+
+#: Game.Levels.BinomialCoefficients.L09_FactorialFormula
+msgid "The factorial formula: C(5,2) * 2! * 3! = 5!."
 msgstr ""
 
 #. §0: `Finset.mem_image_of_mem f h`
@@ -4518,6 +4679,11 @@ msgstr ""
 msgid "After §0, Lean automatically verified that §1\n"
 "(by computation). The remaining goal is §2.\n"
 "Rewrite with §3 to get §4, then §5."
+msgstr ""
+
+#. §0: `exact Nat.choose_symm h`
+#: Game.Levels.BinomialCoefficients.L07_DerivingChooseSelf
+msgid "Now use §0 to close the goal."
 msgstr ""
 
 #. §0: `have`
@@ -4686,6 +4852,10 @@ msgid "The lists §0 and §1 differ only in the order\n"
 "of the first two elements. This is exactly §2."
 msgstr ""
 
+#: Game.Levels.BinomialCoefficients.L02_ChoosingOne
+msgid "Choosing One"
+msgstr ""
+
 #. §0: `h1 : (s₁ ∪ s₂).card = s₁.card + s₂.card`
 #. §1: `card_union_of_disjoint`
 #: Game.Levels.PsetCardinality.L04_DisjointTripleUnion
@@ -4844,6 +5014,12 @@ msgstr ""
 #: Game.Levels.FinsetOperations.L08_Extensionality
 msgid "The goal is §0. Use §1 to split\n"
 "the biconditional into two implications."
+msgstr ""
+
+#. §0: `P ∧ Q`
+#. §1: `constructor`
+#: Game.Levels.BinomialCoefficients.L01_BoundaryValues
+msgid "The goal is a conjunction §0. Split it with §1."
 msgstr ""
 
 #: Game.Levels.FinsetImage.L21_CountingProvesInjectivity
@@ -5470,6 +5646,25 @@ msgid "You now know both directions of §0:\n"
 "In Lean: §7."
 msgstr ""
 
+#. §0: `2 * Nat.choose (n + 3) (n + 2) = 2 * (n + 3)`
+#. §1: `choose_succ_succ`
+#. §2: $2$
+#. §3: `mul_add`
+#. §4: `choose (n+2) (n+2)`
+#. §5: `choose_self`
+#. §6: `ring`
+#: Game.Levels.BinomialCoefficients.L12_CoachingBossPattern
+msgid "**Inductive step**: The goal is\n"
+"§0.\n"
+"\n"
+"Strategy (same as the boss):\n"
+"1. Expand with Pascal's identity (§1)\n"
+"2. Distribute the §2 with §3\n"
+"3. Simplify §4 with §5\n"
+"4. Substitute the IH\n"
+"5. Close with §6"
+msgstr ""
+
 #. §0: `Finset.card_sdiff_add_card_inter s t`
 #. §1: `(s \\ t).card + (s ∩ t).card = s.card`
 #. §2: ```
@@ -5751,6 +5946,11 @@ msgid "# Linearity of ∑: Splitting Addition\n"
 "the known values."
 msgstr ""
 
+#. §0: `rw [Nat.choose_succ_succ]`
+#: Game.Levels.BinomialCoefficients.L15_HockeyStick
+msgid "Try §0 to expand the right side."
+msgstr ""
+
 #. §0: `hk : k < n`
 #. §1: `Fin n`
 #. §2: `use ⟨k, hk⟩`
@@ -5917,6 +6117,13 @@ msgid "§0 is the base case for sums: the empty sum equals\n"
 "the empty sum is zero regardless of the function."
 msgstr ""
 
+#. §0: `n`
+#. §1: `ring`
+#: Game.Levels.BinomialCoefficients.L16_Boss
+msgid "The goal is now a pure arithmetic identity involving only\n"
+"§0. Use §1 to close it."
+msgstr ""
+
 #: Game.Levels.Cardinality.L17_InclusionExclusionDerivation
 msgid "Derive inclusion-exclusion from disjoint union and complement counting."
 msgstr ""
@@ -6017,6 +6224,23 @@ msgid "Start by invoking finset induction:\n"
 "inductive step (insert)."
 msgstr ""
 
+#. §0: `∑ i in range (n + 2), i = choose (n + 2) 2`
+#. §1: `sum_range_succ`
+#. §2: `choose (n+2) 2`
+#. §3: `choose (n+1) 1 = n+1`
+#. §4: `omega`
+#: Game.Levels.BinomialCoefficients.L14_GaussSum
+msgid "**Inductive step**: The goal is\n"
+"§0.\n"
+"\n"
+"Strategy:\n"
+"1. Peel off the last term with §1\n"
+"2. Substitute the IH\n"
+"3. Expand §2 with Pascal's identity\n"
+"4. Simplify §3\n"
+"5. Close with §4"
+msgstr ""
+
 #. §0: `v = m + 2`
 #. §1: `hlt`
 #. §2: `v < 2`
@@ -6062,6 +6286,14 @@ msgid "# When Two Sets Share Nothing\n"
 "\n"
 "The proof uses the same §9 recipe: reduce the equality to\n"
 "element-wise reasoning, then use the hypothesis to close each case."
+msgstr ""
+
+#. §0: `apply Nat.choose_eq_zero_of_lt`
+#. §1: `3 < 5`
+#: Game.Levels.BinomialCoefficients.L08_BeyondTheEdge
+msgid "You cannot choose 5 items from only 3.\n"
+"Use §0 to apply the theorem,\n"
+"then prove the inequality §1."
 msgstr ""
 
 #. §0: `rfl`
@@ -6130,6 +6362,41 @@ msgstr ""
 msgid "Enter:\n"
 "§0\n"
 "then prove it inside the §1 block."
+msgstr ""
+
+#. §0: `choose_symm`
+#. §1: $n$
+#. §2: $n+2$
+#. §3: $2$
+#. §4: $n+2$
+#. §5: `choose_eq_zero_of_lt`
+#. §6: $n+1$
+#. §7: $n$
+#. §8: $0$
+#. §9: `choose_mul_factorial_mul_factorial`
+#. §10: `add_one_mul_choose_eq`
+#. §11: `have h : k ≤ n := by omega`
+#. §12: `exact Nat.choose_symm h`
+#. §13: `apply choose_eq_zero_of_lt`
+#. §14: `omega`
+#. §15: `apply choose_mul_factorial_mul_factorial`
+#. §16: `omega`
+#. §17: `rw [add_one_mul_choose_eq]`
+#: Game.Levels.BinomialCoefficients.L11_RetrievalPractice
+msgid "You retrieved four theorem families on variable statements:\n"
+"\n"
+"1. **Symmetry** (§0): choosing §1 from §2 = choosing §3 from §4\n"
+"2. **Beyond-edge** (§5): choosing §6 from §7 gives §8\n"
+"3. **Factorial formula** (§9): connecting choose to factorials\n"
+"4. **Absorption** (§10): the committee chair identity\n"
+"\n"
+"**Patterns**:\n"
+"- Symmetry: §11 + §12\n"
+"- Beyond-edge: §13 + §14\n"
+"- Factorial: §15 + §16\n"
+"- Absorption: direct §17\n"
+"\n"
+"Next: coaching levels, a cross-world connection, and the boss."
 msgstr ""
 
 #: Game.Levels.FinsetOperations.L16_LatticeNotation
@@ -6386,6 +6653,10 @@ msgid "You've proved the **subset-union monotonicity** law: §0.\n"
 "§11."
 msgstr ""
 
+#: Game.Levels.BinomialCoefficients.L06_Symmetry
+msgid "Disabled: directly proves symmetry via addition decomposition."
+msgstr ""
+
 #. §0: `h : x ∈ {1, 2, 3}`
 #. §1: `x`
 #. §2: `{1, 2, 3} = insert 1 (insert 2 {3})`
@@ -6422,6 +6693,32 @@ msgid "# Reading Membership\n"
 "been practicing.\n"
 "\n"
 "**Your task**: Given §7, prove §8."
+msgstr ""
+
+#. §0: `choose_self`
+#. §1: `choose_zero_right`
+#. §2: `choose_symm`
+#. §3: $$\\binom{n}{n} \\stackrel{\\text{symm}}{=} \\binom{n}{0} \\stackrel{\\text{zero\\_right}}{=} 1$$
+#. §4: $1$
+#. §5: `rw [← h]`
+#. §6: `choose_self`
+#: Game.Levels.BinomialCoefficients.L07_DerivingChooseSelf
+msgid "You just proved that §0 is a **consequence** of\n"
+"§1 + §2:\n"
+"§3\n"
+"\n"
+"This is a recurring theme in mathematics: results that *look*\n"
+"independent often turn out to be connected. The two boundary values\n"
+"of Pascal's triangle — both edges being §4 — are really the *same*\n"
+"fact viewed through the lens of symmetry.\n"
+"\n"
+"You learned a new tool: **backward rewrite** (§5). This is\n"
+"useful whenever you want to *introduce* a known expression rather than\n"
+"*simplify* one away.\n"
+"\n"
+"You can still use §6 directly in future levels (it's more\n"
+"convenient than re-deriving it each time). But knowing *why* it's\n"
+"true gives you deeper understanding."
 msgstr ""
 
 #. §0: `hfun : ... = 625`
@@ -6881,6 +7178,36 @@ msgid "§0 states that §1.\n"
 "the same identity."
 msgstr ""
 
+#. §0: $\\binom{4}{2} = \\binom{3}{1} + \\binom{3}{2} = 3 + (2 + 1) = 6$
+#. §1: ```
+#.       1
+#.      1 1
+#.     1 2 1
+#.    1 3 3 1
+#.   1 4 [6] 4 1
+#. ```
+#. §2: $\\binom{n}{k}$
+#. §3: `choose_succ_succ`
+#. §4: `choose_one_right`
+#. §5: $k = 1$
+#. §6: `choose_self`
+#. §7: $k = n$
+#: Game.Levels.BinomialCoefficients.L04_PascalComputation
+msgid "§0\n"
+"\n"
+"You just walked down **Pascal's triangle** by hand:\n"
+"§1\n"
+"\n"
+"The recipe for computing §2:\n"
+"1. **Expand** interior entries with §3 (Pascal's identity)\n"
+"2. **Simplify leaves** with §4 (§5) or §6 (§7)\n"
+"3. Repeat until only numbers remain\n"
+"\n"
+"This recursive expansion is exactly how Pascal's triangle is built\n"
+"row by row. In the next level, you'll apply all three boundary\n"
+"theorems on a **variable** statement."
+msgstr ""
+
 #. §0: `have h1 : List.Perm [1, 2, 3] [1, 3, 2] := List.Perm.cons 1 (List.Perm.swap 3 2 [])`
 #. §1: `have h1 : List.Perm [1, 2, 3] [1, 3, 2] := by exact List.Perm.cons 1 (List.Perm.swap 3 2 [])`
 #: Game.Levels.AbstractionLadder.L07_PermChain
@@ -7207,6 +7534,15 @@ msgid "§0 proves §1.\n"
 "§5"
 msgstr ""
 
+#. §0: `(n + 1) + Nat.choose (n + 1) 0 + Nat.choose (n + 1) (n + 1) = n + 3`
+#. §1: `Nat.choose_zero_right`
+#. §2: `Nat.choose (n + 1) 0`
+#: Game.Levels.BinomialCoefficients.L05_BoundaryPractice
+msgid "Good — the goal is now\n"
+"§0.\n"
+"Use §1 to simplify §2."
+msgstr ""
+
 #. §0: `g circ f = ![g (f 0), g (f 1)]`
 #. §1: `ext`
 #. §2: `g circ f`
@@ -7318,6 +7654,10 @@ msgid "§0 is an **embedding**: it maps §1 into\n"
 "You'll prove this decomposition in the boss level.\n"
 "\n"
 "In plain math: the inclusion §20 is the identity on elements."
+msgstr ""
+
+#: Game.Levels.BinomialCoefficients.L12_CoachingBossPattern
+msgid "Coaching: The Boss Pattern"
 msgstr ""
 
 #: Game.Levels.FinTuples.L12_ExtForFunctions
@@ -8250,6 +8590,11 @@ msgid "The addition principle for types:\n"
 "| Addition | §8 | §9 |"
 msgstr ""
 
+#: Game.Levels.BinomialCoefficients.L10_AbsorptionIdentity
+msgid "The absorption identity for k = 2:\n"
+"(n + 1) * C(n, 2) = C(n + 1, 3) * 3."
+msgstr ""
+
 #. §0: $\\sum_{i=0}^{n-1} 1 = n$
 #. §1: `induction n with`
 #. §2: `Finset.sum_range_zero`
@@ -8325,6 +8670,10 @@ msgstr ""
 #: Game.Levels.FinsetBasics.L16_ProvingNonempty
 msgid "The goal is §0, which means §1.\n"
 "Provide a witness with §2."
+msgstr ""
+
+#: Game.Levels.BinomialCoefficients
+msgid "Binomial Coefficients"
 msgstr ""
 
 #. §0: `Finset.card_image_le`
@@ -8584,6 +8933,7 @@ msgstr ""
 #. §2: `omega`
 #: Game.Levels.FinsetImage.L23_Boss
 #: Game.Levels.Cardinality.L20_SubsetUniv
+#: Game.Levels.BinomialCoefficients.L14_GaussSum
 msgid "Try:\n"
 "§0\n"
 "§1\n"
@@ -8684,6 +9034,30 @@ msgstr ""
 #: Game.Levels.PsetFin.L01_DoubleWitness
 msgid "§0 assumes they're equal,\n"
 "then §1 sees the values differ and closes the goal."
+msgstr ""
+
+#. §0: $\\binom{10}{8} = \\binom{10}{2} = 45$
+#. §1: $\\binom{10}{8}$
+#. §2: $\\binom{10}{2}$
+#. §3: $k > n/2$
+#. §4: `choose_symm`
+#. §5: $k' = n - k < n/2$
+#. §6: `have h : k ≤ n := by omega`
+#. §7: `exact Nat.choose_symm h`
+#. §8: `exact Nat.choose_symm (by omega)`
+#: Game.Levels.BinomialCoefficients.L06_Symmetry
+msgid "§0.\n"
+"\n"
+"Symmetry is a powerful **computation shortcut**: instead of expanding\n"
+"§1 through 8 levels of Pascal's triangle, convert to\n"
+"§2 and expand through just 2 levels.\n"
+"\n"
+"In general, when §3, use §4 to get\n"
+"§5, which requires fewer Pascal expansions.\n"
+"\n"
+"**Pattern**: Create the inequality proof with §6,\n"
+"then §7. You can also use the inline style:\n"
+"§8."
 msgstr ""
 
 #. §0: $$n + 1 \\le 2^n$$
@@ -8963,6 +9337,47 @@ msgstr ""
 msgid "Three factorial equals 3 * (2 * (1 * 1)), showing the recursive structure."
 msgstr ""
 
+#. §0: $\\binom{n+2}{2}$
+#. §1: $n + 1$
+#. §2: $n + 2$
+#. §3: $n + 2$
+#. §4: $2$
+#. §5: $$2 \\cdot \\binom{n+2}{n+1} = 2(n+2)$$
+#. §6: $n = 0$
+#. §7: $2 \\cdot \\binom{2}{1} = 2 \\cdot 2$
+#. §8: `choose_one_right`
+#. §9: $2$
+#. §10: `mul_add`
+#. §11: `choose_self`
+#. §12: `ring`
+#. §13: `mul_add`
+#. §14: `a * (b + c)`
+#. §15: `a * b + a * c`
+#. §16: $2$
+#: Game.Levels.BinomialCoefficients.L12_CoachingBossPattern
+msgid "# Coaching for the Boss\n"
+"\n"
+"The boss asks you to prove an identity about §0 by induction.\n"
+"Here you'll practice the **exact same pattern** on a simpler statement.\n"
+"\n"
+"Choosing §1 items from §2 equals §3 (you're just choosing\n"
+"which one item to leave out). Multiplying both sides by §4 gives:\n"
+"\n"
+"§5\n"
+"\n"
+"**Proof plan** (identical to the boss pattern):\n"
+"- **Base case** (§6): §7.\n"
+"  Use §8 to simplify.\n"
+"- **Inductive step**: Expand with Pascal's identity, **distribute** the §9\n"
+"  with §10, simplify with §11, substitute the IH, close\n"
+"  with §12.\n"
+"\n"
+"The new move here is §13: it distributes §14 into\n"
+"§15. This is essential for the boss because after Pascal\n"
+"peels off a sum, the leading factor of §16 must be distributed before\n"
+"the IH can fire."
+msgstr ""
+
 #. §0: `calc ∑ x ∈ s, (f x + f x)`
 #. §1: `    = (∑ x ∈ s, f x) + ∑ x ∈ s, f x := Finset.sum_add_distrib`
 #. §2: `  _ = a + a := by rw [hf]`
@@ -9026,6 +9441,37 @@ msgstr ""
 #: Game.Levels.PsetFinset.L07_InjectiveNonMembership
 msgid "§0 states that if §1 is injective\n"
 "and §2, then §3."
+msgstr ""
+
+#. §0: `Finset.range 1`
+#. §1: $0$
+#. §2: `Finset.sum_range_succ`
+#. §3: $\\sum_{i=0}^{0} f(i) = (\\sum_{i \\in \\emptyset} f(i)) + f(0)$
+#. §4: `Finset.sum_range_zero`
+#. §5: $\\sum_{i \\in \\emptyset} f(i) = 0$
+#. §6: `zero_add`
+#. §7: $0 + f(0) = f(0)$
+#. §8: $\\binom{0}{k} = \\binom{1}{k+1}$
+#. §9: $\\binom{0}{k+1} = 0$
+#. §10: `have`
+#. §11: `add_zero`
+#: Game.Levels.BinomialCoefficients.L13_SumSimplification
+msgid "# Simplifying a Single-Term Sum\n"
+"\n"
+"Before tackling the hockey stick identity, let's practice a pattern\n"
+"that will appear in its base case: **simplifying a sum with one term**.\n"
+"\n"
+"A sum over §0 has exactly one term (at index §1).\n"
+"To simplify it:\n"
+"1. §2 peels off the last term: §3\n"
+"2. §4 clears the empty sum: §5\n"
+"3. §6 simplifies: §7\n"
+"\n"
+"After the sum is simplified, you'll need to show that\n"
+"§8. This requires expanding the right\n"
+"side with Pascal's identity, then using the **collect-and-close**\n"
+"pattern: bring §9 into context with §10, then\n"
+"simplify with §11."
 msgstr ""
 
 #: Game.Levels.FinsetBasics.L12_ProvingNonMembership
@@ -9775,6 +10221,30 @@ msgid "§0 is the type of boolean values: §1 and §2.\n"
 "§7 (binary strings), and §8."
 msgstr ""
 
+#. §0: $$\\binom{n+1}{1} + \\binom{n+1}{0} + \\binom{n+1}{n+1} = (n+1) + 1 + 1 = n + 3$$
+#. §1: `Nat.choose`
+#. §2: `rw [Nat.choose_one_right]`
+#. §3: `rw [Nat.choose_zero_right]`
+#. §4: `rw [Nat.choose_self]`
+#. §5: `Nat.choose`
+#. §6: `rw [Nat.choose_one_right, Nat.choose_zero_right, Nat.choose_self]`
+#: Game.Levels.BinomialCoefficients.L05_BoundaryPractice
+msgid "You simplified all three boundary values on a variable statement:\n"
+"\n"
+"§0\n"
+"\n"
+"**The recipe**:\n"
+"1. Identify which boundary theorem matches each §1 term\n"
+"2. Rewrite with §2, §3,\n"
+"   or §4\n"
+"3. After all §5 terms are eliminated, the arithmetic resolves\n"
+"\n"
+"You can also combine all three rewrites into one:\n"
+"§6\n"
+"\n"
+"This multi-step rewriting pattern is the core skill for the boss."
+msgstr ""
+
 #. §0: `have hlt := x.isLt`
 #. §1: `hlt : x.val < 5`
 #: Game.Levels.MeetFin.L03_TheUpperBound
@@ -10099,6 +10569,10 @@ msgid "Simplify both sides: §0.\n"
 "§1 simplifies the left; §2 simplifies the right."
 msgstr ""
 
+#: Game.Levels.BinomialCoefficients.L14_GaussSum
+msgid "Gauss Meets Pascal"
+msgstr ""
+
 #. §0: `rw [Finset.subset_iff]`
 #. §1: `intro x hx`
 #: Game.Levels.FinsetOperations.L07_EqualityByAntisymmetry
@@ -10356,6 +10830,13 @@ msgid "You've proved the **double set difference identity**:\n"
 "where counting elements 'not in the complement' is a key technique."
 msgstr ""
 
+#. §0: `n`
+#: Game.Levels.BinomialCoefficients.L12_CoachingBossPattern
+msgid "This requires **induction** on §0.\n"
+"The proof follows the same peel + distribute + IH + ring\n"
+"pattern as the boss."
+msgstr ""
+
 #. §0: `Finset.prod_pair`
 #. §1: `prod_insert`
 #. §2: `prod_singleton`
@@ -10538,6 +11019,11 @@ msgid "The pattern: unfold everything, extract the parts, reassemble.\n"
 "filter. Keeping exactly the parts you need is the essence of subset proofs."
 msgstr ""
 
+#. §0: `ring`
+#: Game.Levels.BinomialCoefficients.L12_CoachingBossPattern
+msgid "The goal is now a pure arithmetic identity. Use §0."
+msgstr ""
+
 #. §0: `sum_add_distrib`
 #. §1: `g`
 #. §2: `sum_comm`
@@ -10638,6 +11124,7 @@ msgid "The innermost set is a singleton: §0."
 msgstr ""
 
 #: Game.Levels.CountingTypes.L07_FactorialConnection
+#: Game.Levels.BinomialCoefficients.L09_FactorialFormula
 msgid "The Factorial Connection"
 msgstr ""
 
@@ -10857,6 +11344,35 @@ msgid "The goal is now:\n"
 "Use §1 to split the biconditional."
 msgstr ""
 
+#. §0: $\\binom{n}{k}$
+#. §1: `Nat.choose n k`
+#. §2: $k$
+#. §3: $n$
+#. §4: `Nat.choose`
+#. §5: $\\binom{n}{0} = 1$
+#. §6: $\\binom{n}{n} = 1$
+#. §7: $n = 5$
+#. §8: $\\binom{5}{0} = 1$
+#. §9: `Nat.choose_zero_right`
+#. §10: $\\binom{5}{5} = 1$
+#. §11: `Nat.choose_self`
+#: Game.Levels.BinomialCoefficients.L01_BoundaryValues
+msgid "# Meet the Binomial Coefficient\n"
+"\n"
+"The **binomial coefficient** §0, written §1 in Lean,\n"
+"counts the number of ways to choose §2 items from a collection of §3 items\n"
+"(without regard to order). See the §4 entry in the inventory panel\n"
+"for the full recursive definition.\n"
+"\n"
+"The two most important base cases are the **boundary values**:\n"
+"- §5 — choosing nothing: one way (take nothing)\n"
+"- §6 — choosing everything: one way (take all)\n"
+"\n"
+"**Your task**: Prove both boundary values for §7:\n"
+"- §8 using §9\n"
+"- §10 using §11"
+msgstr ""
+
 #. §0: `Fin.cases`
 #. §1: `Fin (n + 1)`
 #. §2: `0`
@@ -10912,6 +11428,11 @@ msgstr ""
 #. §2: `5`
 #: Game.Levels.FinsetBasics.L18_Boss
 msgid "Substitute §0: §1. Then prove non-membership of §2."
+msgstr ""
+
+#. §0: `constructor`
+#: Game.Levels.BinomialCoefficients.L11_RetrievalPractice
+msgid "Split again with §0."
 msgstr ""
 
 #: Game.Levels.Cardinality.L15_DisjointUnion
@@ -10980,6 +11501,10 @@ msgid "§0 proves §1 from\n"
 "\n"
 "## When to use it\n"
 "When two lists have the same head and their tails are permutations."
+msgstr ""
+
+#: Game.Levels.BinomialCoefficients.L06_Symmetry
+msgid "Symmetry"
 msgstr ""
 
 #: Game.Levels.FinsetImage.L02_ChoosingTheWitness
@@ -11056,6 +11581,38 @@ msgstr ""
 #: Game.Levels.BigOpIntro.L09_BaseCaseContrast
 msgid "The sum is gone (replaced by 0). Now simplify the empty\n"
 "product with §0."
+msgstr ""
+
+#. §0: `Nat.choose_eq_zero_of_lt`
+#. §1: `Nat.choose n k = 0`
+#. §2: `n < k`
+#. §3: ```
+#. apply Nat.choose_eq_zero_of_lt
+#. omega
+#. ```
+#. §4: ```
+#. exact Nat.choose_eq_zero_of_lt (by omega)
+#. ```
+#. §5: `Nat.choose n k`
+#. §6: `k > n`
+#. §7: `0`
+#. §8: `n < k`
+#. §9: `k > n`
+#: Game.Levels.BinomialCoefficients.L08_BeyondTheEdge
+msgid "§0 states that §1\n"
+"when §2.\n"
+"\n"
+"## Syntax\n"
+"§3\n"
+"or equivalently:\n"
+"§4\n"
+"\n"
+"## When to use it\n"
+"When you see §5 where §6 and need to simplify to §7.\n"
+"\n"
+"## Warning\n"
+"The hypothesis is §8, NOT §9. Both mean the same thing,\n"
+"but the order matters for pattern matching."
 msgstr ""
 
 #: Game.Levels.BigOpIntro.L15_Boss
@@ -11261,6 +11818,30 @@ msgstr ""
 
 #: Game.Levels.FinNavigation.L09_SuccInjectivity
 msgid "succ is Injective"
+msgstr ""
+
+#. §0: ```
+#.           1
+#.          1 1
+#.         1 2 1
+#.        1 3 3 1
+#.       1 4 6 4 1
+#.      1 5 10 10 5 1
+#. ```
+#. §1: `choose_zero_right`
+#. §2: `choose_self`
+#. §3: $1$
+#: Game.Levels.BinomialCoefficients.L03_PascalsIdentity
+msgid "Pascal's identity is the engine of **Pascal's triangle**:\n"
+"§0\n"
+"\n"
+"Each entry is the sum of the two entries above it.\n"
+"The boundary values (§1 and §2)\n"
+"give the §3s along the edges; Pascal's identity fills in\n"
+"the interior.\n"
+"\n"
+"In the next level, you'll use Pascal's identity **repeatedly** to\n"
+"compute a specific binomial coefficient from scratch."
 msgstr ""
 
 #. §0: `Fin n`
@@ -11476,6 +12057,14 @@ msgid "This was definitionally true — which is exactly the point. When you\n"
 "requirement on §12 guarantees that §13, which is\n"
 "exactly what makes the multiset-level sum independent of which\n"
 "representative list you pick."
+msgstr ""
+
+#. §0: `Nat.choose 5 0 = 1`
+#. §1: `Nat.choose_zero_right`
+#: Game.Levels.BinomialCoefficients.L01_BoundaryValues
+msgid "**Left goal**: §0.\n"
+"Choosing zero items from any collection gives 1.\n"
+"Use §1 to rewrite."
 msgstr ""
 
 #. §0: `have h : (1 : ℕ) ∉ (Finset.singleton 2) := by
@@ -11958,6 +12547,11 @@ msgid "§0 chains two permutations.\n"
 "When you need to chain multiple rearrangements."
 msgstr ""
 
+#: Game.Levels.BinomialCoefficients.L04_PascalComputation
+msgid "Start by expanding C(4, 2) with Pascal's identity:\n"
+"C(4, 2) = C(3, 1) + C(3, 2)."
+msgstr ""
+
 #. §0: `Finset.mem_union_left t h`
 #. §1: `a ∈ s ∪ t`
 #. §2: `h : a ∈ s`
@@ -12337,6 +12931,11 @@ msgid "§0 is the §1 variant of\n"
 "§2 — requires injectivity only on the relevant sets."
 msgstr ""
 
+#: Game.Levels.BinomialCoefficients.L15_HockeyStick
+msgid "The hockey stick identity:\n"
+"∑ i in range (n+1), choose i k = choose (n+1) (k+1)."
+msgstr ""
+
 #. §0: `sdiff_le_iff'`
 #. §1: `a \\ b ≤ c ↔ a ≤ c ⊔ b`
 #: Game.Levels.PsetFinset.L05_UnionComplement
@@ -12402,6 +13001,14 @@ msgstr ""
 msgid "The exponent is §0, but §1 is abstract. Use the\n"
 "equivalence: §2 replaces §3\n"
 "with §4."
+msgstr ""
+
+#. §0: `Nat.choose 5 5 = 1`
+#. §1: `Nat.choose_self`
+#: Game.Levels.BinomialCoefficients.L01_BoundaryValues
+msgid "**Right goal**: §0.\n"
+"Choosing all items from a collection gives 1.\n"
+"Use §1 to rewrite."
 msgstr ""
 
 #: Game.Levels.FinsetOperations.L05_Subset
@@ -12725,6 +13332,28 @@ msgid "§0 states that §1.\n"
 "§2"
 msgstr ""
 
+#. §0: `Nat.choose_self`
+#. §1: `Nat.choose n n = 1`
+#. §2: ```
+#. rw [Nat.choose_self]
+#. ```
+#. §3: `Nat.choose n n`
+#. §4: `1`
+#: Game.Levels.BinomialCoefficients.L01_BoundaryValues
+msgid "§0 states that §1.\n"
+"\n"
+"## Syntax\n"
+"§2\n"
+"\n"
+"## When to use it\n"
+"When you see §3 in the goal or a hypothesis and want\n"
+"to simplify it to §4.\n"
+"\n"
+"## Meaning\n"
+"There is exactly one way to choose all items from a collection:\n"
+"take everything."
+msgstr ""
+
 #: Game.Levels.Cardinality.L02_CardinalityOfSingleton
 msgid "A singleton finset has cardinality 1."
 msgstr ""
@@ -13041,6 +13670,39 @@ msgstr ""
 #: Game.Levels.PsetFin.L14_CyclicPermutation
 msgid "For each valid value, the output differs\n"
 "from the input. Close with §0 for the contradiction."
+msgstr ""
+
+#. §0: `Nat.choose_zero_right`
+#. §1: $\\binom{n}{0} = 1$
+#. §2: `Nat.choose_one_right`
+#. §3: $\\binom{n}{1} = n$
+#. §4: `Nat.choose_self`
+#. §5: $\\binom{n}{n} = 1$
+#. §6: $n + 1$
+#. §7: $\\binom{n+1}{1} = n + 1$
+#. §8: $\\binom{n+1}{0} = 1$
+#. §9: $\\binom{n+1}{n+1} = 1$
+#. §10: $$\\binom{n+1}{1} + \\binom{n+1}{0} + \\binom{n+1}{n+1} = n + 3$$
+#. §11: `Nat.choose`
+#: Game.Levels.BinomialCoefficients.L05_BoundaryPractice
+msgid "# Applying All Three Boundary Theorems\n"
+"\n"
+"In Levels 1–4, you learned the three boundary theorems and saw Pascal's\n"
+"identity in action on a concrete computation:\n"
+"- §0: §1\n"
+"- §2: §3\n"
+"- §4: §5\n"
+"\n"
+"Now apply all three on a **variable** statement. Row §6 of\n"
+"Pascal's triangle starts with §7, has\n"
+"§8 in position zero, and ends with\n"
+"§9. Adding these gives:\n"
+"\n"
+"§10\n"
+"\n"
+"**Strategy**: Rewrite each §11 term one at a time using\n"
+"the appropriate boundary theorem. After all three rewrites, the\n"
+"arithmetic closes automatically."
 msgstr ""
 
 #. §0: `Finset.insert_eq_of_mem`
@@ -14089,6 +14751,19 @@ msgstr ""
 msgid "intermediate goal solved! 🎉"
 msgstr ""
 
+#. §0: `Nat.choose 0 k = Nat.choose 0 k + Nat.choose 0 (k + 1)`
+#. §1: $k + 1$
+#. §2: $0$
+#. §3: `Nat.choose 0 (k+1) = 0`
+#. §4: `have`
+#: Game.Levels.BinomialCoefficients.L13_SumSimplification
+msgid "The goal is §0.\n"
+"\n"
+"You can't choose §1 items from §2 items, so\n"
+"§3. Bring this into context with §4,\n"
+"then rewrite."
+msgstr ""
+
 #: Game.Levels.PsetFinset
 msgid "Problem Set: Finsets"
 msgstr ""
@@ -15015,6 +15690,9 @@ msgstr ""
 #: Game.Levels.Cardinality.L17_InclusionExclusionDerivation
 #: Game.Levels.AbstractionLadder.L08_PermLengthExercise
 #: Game.Levels.AbstractionLadder.L17_NodupCardEqualsLength
+#: Game.Levels.BinomialCoefficients.L11_RetrievalPractice
+#: Game.Levels.BinomialCoefficients.L13_SumSimplification
+#: Game.Levels.BinomialCoefficients.L15_HockeyStick
 msgid "Try:\n"
 "§0\n"
 "§1"
@@ -15225,6 +15903,10 @@ msgstr ""
 #: Game.Levels.AbstractionLadder.L13_NodupDistinct
 msgid "First goal: §0. This means you must show membership leads\n"
 "to a contradiction. Use §1 to assume §2."
+msgstr ""
+
+#: Game.Levels.BinomialCoefficients.L11_RetrievalPractice
+msgid "Retrieval practice: symmetry, beyond-the-edge, factorial formula, and absorption."
 msgstr ""
 
 #. §0: `range 1`
@@ -16602,6 +17284,59 @@ msgid "§0\n"
 "principle — if you have more pigeons than holes, no injection exists."
 msgstr ""
 
+#. §0: $$\\sum_{i=0}^{n} \\binom{i}{k} = \\binom{n+1}{k+1}$$
+#. §1: `induction n with`
+#. §2: `Finset.sum_range_succ`
+#. §3: `Finset.sum_range_zero`
+#. §4: `Nat.choose_succ_succ`
+#. §5: `← rw`
+#. §6: `Nat.choose_eq_zero_of_lt`
+#. §7: `choose(n+1, k) + choose(n+1, k+1)`
+#. §8: `choose(n+2, k+1)`
+#. §9: `← choose_succ_succ`
+#. §10: `choose 0 (k+1) = 0`
+#. §11: `have`
+#. §12: ```
+#.     1
+#.    1 1
+#.   1 [2] 1
+#.  1  3 [3] 1
+#. 1  4  6 [4]  1
+#. 1 5 10 10 [5]  1
+#.        [20]
+#. ```
+#. §13: $\\binom{2}{2} + \\binom{3}{2} + \\binom{4}{2} + \\binom{5}{2} = 1 + 3 + 6 + 10 = 20 = \\binom{6}{3}$
+#: Game.Levels.BinomialCoefficients.L15_HockeyStick
+msgid "You proved the **hockey stick identity**:\n"
+"§0\n"
+"\n"
+"**Skills integrated in this proof**:\n"
+"1. §1 — natural number induction\n"
+"2. §2 — peeling off the last term (BigOpAlgebra)\n"
+"3. §3 — empty sum equals 0 (SummationFormulas)\n"
+"4. §4 — Pascal's identity (Level 3)\n"
+"5. §5 — backward rewrite (Level 7)\n"
+"6. §6 — beyond the edge (Level 8)\n"
+"\n"
+"**The key insight**: The inductive step uses **Pascal's identity in reverse**.\n"
+"After peeling and substituting the IH, we have §7,\n"
+"which is exactly the Pascal expansion of §8. The backward\n"
+"rewrite §9 folds it back.\n"
+"\n"
+"The base case uses the **collect-and-close** pattern (from FinsetInduction):\n"
+"bring §10 into context with §11, then close with a\n"
+"rewrite. This is the same strategy you'll use whenever a goal has\n"
+"structural facts that need to be made explicit before the arithmetic\n"
+"resolves.\n"
+"\n"
+"**Why \"hockey stick\"?** In Pascal's triangle, if you highlight a diagonal\n"
+"sequence of entries and the entry just below the last one (on the opposite\n"
+"side), the shape looks like a hockey stick:\n"
+"§12\n"
+"The bracketed entries show §13. The vertical\n"
+"sequence is the \"stick\" and the bottom entry is the \"blade.\""
+msgstr ""
+
 #. §0: `have hfun : Fintype.card (α → (Fin 3 ⊕ Bool)) = 625 := by`
 #: Game.Levels.CountingTypes.L11_Boss
 msgid "This is a subtraction — you need the value of both terms.\n"
@@ -16690,6 +17425,32 @@ msgstr ""
 #. §0: `Fin.tail`
 #: Game.Levels.FinTuples.L06_DroppingTheHead
 msgid "§0 drops the first element of a tuple."
+msgstr ""
+
+#. §0: $$\\sum_{i=0}^{n} i = \\binom{n+1}{2}$$
+#. §1: $n + 1$
+#. §2: $\\binom{n+1}{2}$
+#. §3: $i$
+#. §4: $i$
+#. §5: $i$
+#. §6: $\\sum_{i=0}^{n} i$
+#. §7: $k = 1$
+#. §8: $\\binom{i}{1} = i$
+#: Game.Levels.BinomialCoefficients.L14_GaussSum
+msgid "You proved:\n"
+"§0\n"
+"\n"
+"This is a **cross-world connection**: the Gauss sum from\n"
+"SummationFormulas equals a binomial coefficient. Both count the\n"
+"same thing — the number of pairs you can form from §1 elements —\n"
+"just in different ways:\n"
+"- The **counting** perspective: §2 directly counts 2-element subsets\n"
+"- The **summing** perspective: group pairs by the larger element §3;\n"
+"  there are §4 pairs with larger element §5, so the total is §6\n"
+"\n"
+"This is an instance of the **hockey stick identity** with §7\n"
+"(since §8), which you'll prove in full generality\n"
+"in the next level."
 msgstr ""
 
 #: Game.Levels.SummationFormulas.L13_SumComm
@@ -16879,6 +17640,10 @@ msgstr ""
 
 #: Game.Levels.Fintype.L10_AbstractTypes
 msgid "If α has 5 elements, then α ⊕ Fin 3 has 8 elements."
+msgstr ""
+
+#: Game.Levels.BinomialCoefficients.L12_CoachingBossPattern
+msgid "2 * C(n+2, n+1) = 2 * (n+2): coaching for the boss induction pattern."
 msgstr ""
 
 #. §0: `Equiv`
@@ -17071,6 +17836,10 @@ msgstr ""
 #: Game.Levels.FinsetOperations.L23_Distributivity
 msgid "Use §0. Then §1 is the §2 part and §3 is §4.\n"
 "Case-split on §5 using §6."
+msgstr ""
+
+#: Game.Levels.BinomialCoefficients.L13_SumSimplification
+msgid "Coaching: Single-Term Sums"
 msgstr ""
 
 #. §0: `intro a b h`
@@ -17521,6 +18290,13 @@ msgid "Use §0. In §1, you have\n"
 "contradicting §5 — use §6."
 msgstr ""
 
+#. §0: $k = 2$
+#. §1: `Nat.add_one_mul_choose_eq`
+#: Game.Levels.BinomialCoefficients.L10_AbsorptionIdentity
+msgid "This is a direct instance of the absorption identity with §0.\n"
+"Use §1 to rewrite the left side."
+msgstr ""
+
 #. §0: `∑ x ∈ s, f x`
 #. §1: `s`
 #. §2: `{1, 2}`
@@ -17772,6 +18548,10 @@ msgstr ""
 msgid "Summing 1s Over a Range"
 msgstr ""
 
+#: Game.Levels.BinomialCoefficients.L01_BoundaryValues
+msgid "Disabled: characterizes when choose n k = 1, bypassing intended proof paths."
+msgstr ""
+
 #. §0: `s ∪ t`
 #. §1: `s`
 #. §2: `t`
@@ -17997,6 +18777,11 @@ msgid "You've used §0 for the first time! The pattern:\n"
 "\n"
 "In the next level, you'll use §11 inside a more complex proof:\n"
 "the double set difference identity."
+msgstr ""
+
+#. §0: `constructor`
+#: Game.Levels.BinomialCoefficients.L11_RetrievalPractice
+msgid "The goal is a 4-part conjunction. Split with §0."
 msgstr ""
 
 #. §0: `rw [h]`
@@ -18274,6 +19059,64 @@ msgid "**Base case**: Simplify both sums over §0 and §1.\n"
 "Then close the arithmetic."
 msgstr ""
 
+#. §0: $\\binom{3}{5} = 0$
+#. §1: `Nat.choose`
+#. §2: $0 \\le k \\le n$
+#. §3: $k = 0$
+#. §4: $k = n$
+#. §5: $1$
+#. §6: $k > n$
+#. §7: $0$
+#. §8: $n$
+#. §9: $0, 1, \\ldots, n$
+#. §10: $k \\ge 1$
+#. §11: $\\binom{n}{k} = 0$
+#. §12: $k \\ge 1$
+#. §13: $k > n$
+#. §14: $\\binom{n}{k} = 0$
+#. §15: $k > n$
+#. §16: $k$
+#. §17: $\\binom{n}{k} = 0$
+#. §18: $\\binom{n+1}{k+1} = \\binom{n}{k} + \\binom{n}{k+1}$
+#. §19: $0$
+#. §20: $0! = 1$
+#. §21: $x^0 = 1$
+#. §22: `apply Nat.choose_eq_zero_of_lt`
+#. §23: `omega`
+#. §24: `exact Nat.choose_eq_zero_of_lt (by omega)`
+#. §25: `apply`
+#. §26: `omega`
+#: Game.Levels.BinomialCoefficients.L08_BeyondTheEdge
+msgid "§0 — there are no 5-element subsets of a 3-element set.\n"
+"\n"
+"The **domain picture** of §1:\n"
+"- §2: interesting values, forming Pascal's triangle\n"
+"- §3 or §4: boundary value §5\n"
+"- §6: always §7\n"
+"\n"
+"This means Pascal's triangle has a triangular shape: row §8 has\n"
+"nonzero entries only in positions §9.\n"
+"\n"
+"The converse is also true for §10: if §11 and\n"
+"§12, then §13. So §14 if and only if §15\n"
+"(for positive §16).\n"
+"\n"
+"This convention — §17 outside the triangle — is a\n"
+"deliberate **design choice**, not a mathematical accident. It makes\n"
+"formulas cleaner: Pascal's identity\n"
+"§18 works without\n"
+"any boundary conditions because the out-of-range terms are simply §19.\n"
+"This is the same principle behind §20 and §21: defining\n"
+"edge cases to be the identity element of the operation eliminates\n"
+"special cases from the formulas.\n"
+"\n"
+"**Pattern**: Use §22 then §23.\n"
+"Or equivalently: §24.\n"
+"This is the **collect-and-close** pattern (named in FinsetInduction):\n"
+"state a key structural fact (here via §25), then close the\n"
+"arithmetic obligation with §26. You'll see this pattern repeatedly."
+msgstr ""
+
 #. §0: `[].Nodup`
 #: Game.Levels.AbstractionLadder.L12_NodupSingleton
 msgid "Second goal: §0. The empty list trivially has no\n"
@@ -18325,6 +19168,24 @@ msgstr ""
 
 #: Game.Levels.FinTuples.L11_InitSnocReconstruction
 msgid "Init-Snoc Reconstruction"
+msgstr ""
+
+#. §0: `sum_range_succ`
+#. §1: `sum_range_zero`
+#. §2: `zero_add`
+#. §3: `choose_succ_succ`
+#. §4: `choose 0 (k+1) = 0`
+#. §5: `have`
+#. §6: `add_zero`
+#: Game.Levels.BinomialCoefficients.L13_SumSimplification
+msgid "You practiced the **single-term sum** pattern:\n"
+"1. §0 + §1 + §2 to reduce to a single term\n"
+"2. §3 to expand Pascal's identity\n"
+"3. **Collect-and-close**: bring §4 into context with §5,\n"
+"   then simplify with §6\n"
+"\n"
+"This is exactly the base case of the hockey stick identity coming up next.\n"
+"By practicing it here, you can focus on the inductive step in the next level."
 msgstr ""
 
 #. §0: `rw [h] at p`
@@ -19118,6 +19979,11 @@ msgid "# Using Perm.length_eq\n"
 "with §9."
 msgstr ""
 
+#: Game.Levels.BinomialCoefficients.L14_GaussSum
+msgid "The Gauss sum equals a binomial coefficient:\n"
+"∑ i in range (n+1), i = choose (n+1) 2."
+msgstr ""
+
 #: Game.Levels.FinsetInduction.L04_FullInduction
 msgid "The sum of 1 over any finset equals its cardinality."
 msgstr ""
@@ -19478,6 +20344,44 @@ msgid "§0\n"
 "(function), then work inward (product in the domain, base types last)."
 msgstr ""
 
+#. §0: $k$
+#. §1: $n$
+#. §2: $n - k$
+#. §3: $$\\binom{n}{k} = \\binom{n}{n - k}$$
+#. §4: ```
+#. Nat.choose_symm : k ≤ n → Nat.choose n (n - k) = Nat.choose n k
+#. ```
+#. §5: `k ≤ n`
+#. §6: `Nat.choose n k = 0`
+#. §7: $k > n$
+#. §8: $0 = 0$
+#. §9: $0 \\le k \\le n$
+#. §10: $\\binom{10}{8} = \\binom{10}{2}$
+#: Game.Levels.BinomialCoefficients.L06_Symmetry
+msgid "# Symmetry of Binomial Coefficients\n"
+"\n"
+"Choosing §0 items from §1 is the same as choosing which §2\n"
+"items to **leave out**:\n"
+"\n"
+"§3\n"
+"\n"
+"This means Pascal's triangle is **symmetric**: each row reads the\n"
+"same forwards and backwards.\n"
+"\n"
+"In Lean:\n"
+"§4\n"
+"\n"
+"The hypothesis §5 is needed because §6 when\n"
+"§7 (which you'll see in Level 8), and §8 is trivially\n"
+"symmetric — the interesting symmetry is within the range §9.\n"
+"\n"
+"**Your task**: Prove §10 using symmetry.\n"
+"\n"
+"This is a **computation shortcut**: instead of expanding C(10, 8)\n"
+"through 8 levels of Pascal's triangle, symmetry converts it to\n"
+"C(10, 2), which needs only 2 levels."
+msgstr ""
+
 #: Game.Levels.AbstractionLadder.L03_ListMembership
 msgid "List Membership"
 msgstr ""
@@ -19686,6 +20590,8 @@ msgstr ""
 #: Game.Levels.FinTuples.L18_ProvingTupleEquality
 #: Game.Levels.FinTuples.L18_ProvingTupleEquality
 #: Game.Levels.FinsetOperations.L08_Extensionality
+#: Game.Levels.BinomialCoefficients.L11_RetrievalPractice
+#: Game.Levels.BinomialCoefficients.L11_RetrievalPractice
 msgid "The goal is §0. Use §1."
 msgstr ""
 
@@ -20282,6 +21188,14 @@ msgid "Now prove §0. The first element §1 is\n"
 "The tails §3 and §4 differ by a single swap."
 msgstr ""
 
+#. §0: `∑ i in range 1, i = choose 1 2`
+#: Game.Levels.BinomialCoefficients.L14_GaussSum
+msgid "**Base case** (n = 0): The goal is\n"
+"§0.\n"
+"\n"
+"Simplify the single-term sum (just like Level 13)."
+msgstr ""
+
 #: Game.Levels.PsetBigOp.L05_FilteredSum
 msgid "Filtered Sum Conversion"
 msgstr ""
@@ -20623,6 +21537,10 @@ msgstr ""
 #: Game.Levels.SummationFormulas.L12_TelescopingSum
 #: Game.Levels.SummationFormulas.L14_Boss
 #: Game.Levels.PsetBigOp.L08_Boss
+#: Game.Levels.BinomialCoefficients.L12_CoachingBossPattern
+#: Game.Levels.BinomialCoefficients.L14_GaussSum
+#: Game.Levels.BinomialCoefficients.L15_HockeyStick
+#: Game.Levels.BinomialCoefficients.L16_Boss
 msgid "Type:\n"
 "§0\n"
 "§1\n"
@@ -21279,6 +22197,103 @@ msgid "The proof pattern:\n"
 "containment directly."
 msgstr ""
 
+#. §0: $\\binom{n}{n} = 1$
+#. §1: `Nat.choose_self`
+#. §2: $\\binom{n}{n} = 1$
+#. §3: $$\\binom{n}{n} \\stackrel{\\text{symm}}{=} \\binom{n}{0} \\stackrel{\\text{zero\\_right}}{=} 1$$
+#. §4: $n$
+#. §5: $0$
+#. §6: $\\binom{n}{0} = 1$
+#. §7: `rw [h]`
+#. §8: `h`
+#. §9: `rw [\\leftarrow h]`
+#. §10: `rw [← h]`
+#. §11: `h : A = B`
+#. §12: `rw [h]`
+#. §13: `A`
+#. §14: `B`
+#. §15: `rw [← h]`
+#. §16: `B`
+#. §17: `A`
+#. §18: $\\binom{n}{n} = 1$
+#. §19: `← Nat.choose_zero_right`
+#. §20: `Nat.choose_symm`
+#. §21: `Nat.choose_self`
+#: Game.Levels.BinomialCoefficients.L07_DerivingChooseSelf
+msgid "# Deriving §0 from Symmetry\n"
+"\n"
+"In Level 1, we gave you §1 (§2) as a fact.\n"
+"But now that you have **symmetry**, you can *derive* it!\n"
+"\n"
+"The key insight: the two boundary values aren't independent.\n"
+"§3\n"
+"\n"
+"Choosing all §4 items is the same as leaving out §5 items, which\n"
+"gives §6.\n"
+"\n"
+"## New tool: Backward rewrite\n"
+"\n"
+"You know §7 rewrites the **left** side of §8 to the right side.\n"
+"Sometimes you need the reverse: §9 (written §10)\n"
+"rewrites the **right** side to the left side.\n"
+"\n"
+"For example, if §11, then:\n"
+"- §12 replaces §13 with §14 in the goal\n"
+"- §15 replaces §16 with §17 in the goal\n"
+"\n"
+"**Your task**: Prove §18 using §19\n"
+"and §20 — without using §21."
+msgstr ""
+
+#. §0: $k > n$
+#. §1: $$k > n \\implies \\binom{n}{k} = 0$$
+#. §2: `Nat.choose`
+#. §3: $k > n$
+#. §4: $0$
+#. §5: ```
+#. Nat.choose_eq_zero_of_lt : n < k → Nat.choose n k = 0
+#. ```
+#. §6: `n < k`
+#. §7: `k > n`
+#. §8: `Nat.choose n k = 0`
+#. §9: `apply f`
+#. §10: `omega`
+#. §11: `apply`
+#. §12: `have h : P := by omega`
+#. §13: `rw [f h]`
+#. §14: `exact f (by omega)`
+#. §15: $\\binom{3}{5} = 0$
+#: Game.Levels.BinomialCoefficients.L08_BeyondTheEdge
+msgid "# When §0: Zero Choices\n"
+"\n"
+"What happens when you try to choose more items than you have?\n"
+"\n"
+"There are **zero** ways to do this:\n"
+"\n"
+"§1\n"
+"\n"
+"This may feel obvious, but it's worth noting explicitly because\n"
+"§2 is a **total function** — it accepts any pair of\n"
+"natural numbers, even when §3. The result is always §4\n"
+"in that case.\n"
+"\n"
+"In Lean:\n"
+"§5\n"
+"\n"
+"Note the argument order: the hypothesis is §6 (not §7),\n"
+"and the conclusion is §8.\n"
+"\n"
+"**Proof patterns for theorems with hypotheses**: You've now seen\n"
+"two styles for providing inequality proofs:\n"
+"- §9 then §10 (Level 5) — let §11 decompose the goal\n"
+"- §12 then §13 (Level 6) — name the proof\n"
+"\n"
+"There's a third, more concise style: §14. This\n"
+"provides the proof **inline** as an argument. All three are equivalent.\n"
+"\n"
+"**Your task**: Prove §15."
+msgstr ""
+
 #. §0: `inf_sup_right`
 #. §1: `(a ⊔ b) ⊓ c = (a ⊓ c) ⊔ (b ⊓ c)`
 #. §2: `(s ∪ t) ∩ u = (s ∩ u) ∪ (t ∩ u)`
@@ -21290,6 +22305,20 @@ msgid "§0 proves §1 in any\n"
 "distributive lattice. For finsets, this is §2.\n"
 "\n"
 "Disabled as a lattice alias for §3."
+msgstr ""
+
+#. §0: `∑ i in range 1, choose i k = choose 1 (k + 1)`
+#. §1: `range 1`
+#. §2: $i = 0$
+#. §3: `sum_range_succ`
+#. §4: `sum_range_zero`
+#: Game.Levels.BinomialCoefficients.L15_HockeyStick
+msgid "**Base case** (n = 0): The goal is\n"
+"§0.\n"
+"\n"
+"First, simplify the sum. A sum over §1 has one term (at §2).\n"
+"Use §3 to peel it, then §4 to clear the\n"
+"empty sum."
 msgstr ""
 
 #. §0: `v`
@@ -21407,6 +22436,43 @@ msgstr ""
 #: Game.Levels.PsetFin.L16_SimplePigeonhole
 msgid "Now provide the witnesses. §0 says: the collision\n"
 "is between inputs §1 and §2."
+msgstr ""
+
+#. §0: `Nat.choose_succ_succ`
+#. §1: `Nat.choose (n + 1) (k + 1) = Nat.choose n k + Nat.choose n (k + 1)`
+#. §2: ```
+#. rw [Nat.choose_succ_succ]
+#. ```
+#. §3: `Nat.choose (n + 1) (k + 1)`
+#. §4: `Nat.choose 6 3`
+#. §5: $k+1$
+#. §6: $n+1$
+#. §7: $k$
+#. §8: $k+1$
+#. §9: `rw [Nat.choose_succ_succ]`
+#. §10: `Nat.choose (n + 1) (k + 1)`
+#: Game.Levels.BinomialCoefficients.L03_PascalsIdentity
+msgid "§0 states that\n"
+"§1.\n"
+"\n"
+"This is **Pascal's identity**: the recursive structure of binomial\n"
+"coefficients.\n"
+"\n"
+"## Syntax\n"
+"§2\n"
+"\n"
+"## When to use it\n"
+"When you see §3 (or equivalently a concrete\n"
+"value like §4) and want to expand it recursively.\n"
+"\n"
+"## Meaning\n"
+"To choose §5 items from §6: either include a specific element\n"
+"(choose §7 from the rest) or exclude it (choose §8 from the rest).\n"
+"\n"
+"## Warning\n"
+"§9 rewrites **all** matching occurrences of\n"
+"§10 in the goal simultaneously. If multiple\n"
+"terms match the pattern, they will all be expanded at once."
 msgstr ""
 
 #: Game.Levels.MeetFin.L07_RewritingHypotheses
@@ -21709,6 +22775,15 @@ msgid "First, use §0 to get the general\n"
 "equation: §1."
 msgstr ""
 
+#. §0: `Nat.choose n n = Nat.choose n 0`
+#. §1: `0 ≤ n`
+#. §2: `have`
+#: Game.Levels.BinomialCoefficients.L07_DerivingChooseSelf
+msgid "The goal is now §0.\n"
+"This is exactly what symmetry says (with k = 0).\n"
+"Create a proof that §1 with §2, then apply symmetry."
+msgstr ""
+
 #: Game.Levels.PsetFinset.L09_CardinalityRange
 msgid "Cardinality of an Injective Image"
 msgstr ""
@@ -21892,6 +22967,41 @@ msgid "You proved §0.\n"
 "§15 come from §16? For union, yes (always).\n"
 "For intersection, only if §17 is injective — because without\n"
 "injectivity, different preimages can produce the same output."
+msgstr ""
+
+#. §0: $$\\binom{0}{k} + \\binom{1}{k} + \\binom{2}{k} + \\cdots + \\binom{n}{k} = \\binom{n+1}{k+1}$$
+#. §1: $k = 1$
+#. §2: $$\\binom{0}{1} + \\binom{1}{1} + \\binom{2}{1} + \\binom{3}{1} = 0 + 1 + 2 + 3 = 6 = \\binom{4}{2}$$
+#. §3: $0 + 1 + 2 + \\cdots + n = \\binom{n+1}{2}$
+#. §4: $k = 1$
+#. §5: $n$
+#. §6: $n = 0$
+#. §7: $\\binom{0}{k}$
+#. §8: $\\binom{1}{k+1}$
+#. §9: `sum_range_succ`
+#: Game.Levels.BinomialCoefficients.L15_HockeyStick
+msgid "# The Hockey Stick Identity\n"
+"\n"
+"Look at a diagonal of Pascal's triangle and sum its entries:\n"
+"\n"
+"§0\n"
+"\n"
+"This is the **hockey stick identity** (also called the Christmas stocking\n"
+"identity), because if you highlight the summed entries and the result in\n"
+"Pascal's triangle, the shape looks like a hockey stick.\n"
+"\n"
+"For example, with §1:\n"
+"§2\n"
+"\n"
+"This generalizes the Gauss sum formula from Level 14:\n"
+"the sum §3 is the hockey stick\n"
+"with §4.\n"
+"\n"
+"**Proof strategy**: Induction on §5.\n"
+"- **Base case** (§6): The sum has one term, §7. Show this\n"
+"  equals §8 using the single-term sum pattern from Level 13.\n"
+"- **Inductive step**: Peel off the last term with §9,\n"
+"  substitute the IH, then fold back using Pascal's identity in reverse."
 msgstr ""
 
 #. §0: `card_fun`
@@ -22391,6 +23501,36 @@ msgid "Destructure §0 into its components:\n"
 "§1"
 msgstr ""
 
+#. §0: `Nat.add_one_mul_choose_eq`
+#. §1: `(n + 1) * Nat.choose n k = Nat.choose (n + 1) (k + 1) * (k + 1)`
+#. §2: ```
+#. rw [Nat.add_one_mul_choose_eq]
+#. ```
+#. §3: $(k+1)$
+#. §4: $n+1$
+#. §5: $n+1$
+#. §6: $k$
+#. §7: `choose_mul_factorial_mul_factorial`
+#: Game.Levels.BinomialCoefficients.L10_AbsorptionIdentity
+msgid "§0 states that\n"
+"§1.\n"
+"\n"
+"This is the **absorption identity**. It connects adjacent entries\n"
+"in Pascal's triangle through multiplication.\n"
+"\n"
+"## Syntax\n"
+"§2\n"
+"\n"
+"## Combinatorial meaning\n"
+"Choosing a §3-member committee from §4 people and then\n"
+"picking a chair (right side) equals picking the chair first from\n"
+"§5 people and then choosing the remaining §6 members (left side).\n"
+"\n"
+"## Related\n"
+"This can be derived from the factorial formula\n"
+"§7."
+msgstr ""
+
 #: Game.Levels.AbstractionLadder.L16_PermToFinset
 msgid "Permutations Give Equal Finsets"
 msgstr ""
@@ -22403,6 +23543,10 @@ msgstr ""
 
 #: GameServer.RpcHandlers
 msgid "level completed with warnings… 🎭"
+msgstr ""
+
+#: Game.Levels.BinomialCoefficients.L03_PascalsIdentity
+msgid "Pascal's identity: C(6, 3) = C(5, 2) + C(5, 3)."
 msgstr ""
 
 #. §0: `l₂`
@@ -22475,6 +23619,10 @@ msgid "# The Ladder in Action: Descending to Prove a Finset Fact\n"
 "The insight: finset cardinality is hard to compute directly, but list\n"
 "length is easy. The §5 bridge lets you work\n"
 "where the tools are strongest."
+msgstr ""
+
+#: Game.Levels.BinomialCoefficients.L05_BoundaryPractice
+msgid "The three boundary entries of row n+1 sum to n+3."
 msgstr ""
 
 #. §0: `have h4 : Fintype.card (Fin 2 ↪ Fin 3) = 6 := by`
@@ -22653,6 +23801,46 @@ msgstr ""
 #: Game.Levels.SummationFormulas.L13_SumComm
 #: Game.Levels.SummationFormulas.L14_Boss
 #: Game.Levels.SummationFormulas.L14_Boss
+#: Game.Levels.BinomialCoefficients.L01_BoundaryValues
+#: Game.Levels.BinomialCoefficients.L01_BoundaryValues
+#: Game.Levels.BinomialCoefficients.L01_BoundaryValues
+#: Game.Levels.BinomialCoefficients.L02_ChoosingOne
+#: Game.Levels.BinomialCoefficients.L03_PascalsIdentity
+#: Game.Levels.BinomialCoefficients.L04_PascalComputation
+#: Game.Levels.BinomialCoefficients.L04_PascalComputation
+#: Game.Levels.BinomialCoefficients.L04_PascalComputation
+#: Game.Levels.BinomialCoefficients.L04_PascalComputation
+#: Game.Levels.BinomialCoefficients.L05_BoundaryPractice
+#: Game.Levels.BinomialCoefficients.L05_BoundaryPractice
+#: Game.Levels.BinomialCoefficients.L05_BoundaryPractice
+#: Game.Levels.BinomialCoefficients.L06_Symmetry
+#: Game.Levels.BinomialCoefficients.L06_Symmetry
+#: Game.Levels.BinomialCoefficients.L07_DerivingChooseSelf
+#: Game.Levels.BinomialCoefficients.L07_DerivingChooseSelf
+#: Game.Levels.BinomialCoefficients.L07_DerivingChooseSelf
+#: Game.Levels.BinomialCoefficients.L08_BeyondTheEdge
+#: Game.Levels.BinomialCoefficients.L08_BeyondTheEdge
+#: Game.Levels.BinomialCoefficients.L09_FactorialFormula
+#: Game.Levels.BinomialCoefficients.L09_FactorialFormula
+#: Game.Levels.BinomialCoefficients.L10_AbsorptionIdentity
+#: Game.Levels.BinomialCoefficients.L11_RetrievalPractice
+#: Game.Levels.BinomialCoefficients.L11_RetrievalPractice
+#: Game.Levels.BinomialCoefficients.L11_RetrievalPractice
+#: Game.Levels.BinomialCoefficients.L11_RetrievalPractice
+#: Game.Levels.BinomialCoefficients.L11_RetrievalPractice
+#: Game.Levels.BinomialCoefficients.L11_RetrievalPractice
+#: Game.Levels.BinomialCoefficients.L11_RetrievalPractice
+#: Game.Levels.BinomialCoefficients.L11_RetrievalPractice
+#: Game.Levels.BinomialCoefficients.L12_CoachingBossPattern
+#: Game.Levels.BinomialCoefficients.L12_CoachingBossPattern
+#: Game.Levels.BinomialCoefficients.L13_SumSimplification
+#: Game.Levels.BinomialCoefficients.L13_SumSimplification
+#: Game.Levels.BinomialCoefficients.L14_GaussSum
+#: Game.Levels.BinomialCoefficients.L14_GaussSum
+#: Game.Levels.BinomialCoefficients.L14_GaussSum
+#: Game.Levels.BinomialCoefficients.L15_HockeyStick
+#: Game.Levels.BinomialCoefficients.L15_HockeyStick
+#: Game.Levels.BinomialCoefficients.L16_Boss
 msgid "Try §0."
 msgstr ""
 
@@ -22717,6 +23905,12 @@ msgstr ""
 #: Game.Levels.FinsetOperations.L14_UnionCommutativity
 msgid "You have §0. The goal needs\n"
 "§1, so choose §2: §3."
+msgstr ""
+
+#. §0: `rw [Nat.choose_succ_succ, Nat.choose_one_right]`
+#: Game.Levels.BinomialCoefficients.L16_Boss
+msgid "Start with\n"
+"§0."
 msgstr ""
 
 #. §0: `rw [Finset.mem_image] at h`
@@ -22831,6 +24025,15 @@ msgid "# Three Pigeons, Two Holes\n"
 "4. If they differ: check §9 — it must match one of them"
 msgstr ""
 
+#. §0: `sum_range_succ`
+#. §1: `sum_range_zero`
+#. §2: `zero_add`
+#: Game.Levels.BinomialCoefficients.L13_SumSimplification
+msgid "First, simplify the single-term sum.\n"
+"Use §0 to peel, §1 to clear,\n"
+"and §2 to simplify."
+msgstr ""
+
 #. §0: `intro h`
 #. §1: `h`
 #. §2: `∨`
@@ -22848,6 +24051,28 @@ msgstr ""
 
 #: Game.Levels.Cardinality.L24_Capstone
 msgid "An injective function on Fin 5 maps univ to univ."
+msgstr ""
+
+#. §0: `∑ i in range (n + 2), choose i k = choose (n + 2) (k + 1)`
+#. §1: `sum_range_succ`
+#. §2: `← choose_succ_succ`
+#. §3: `(∑ over range (n+1)) + choose (n+1) k`
+#. §4: `choose (n+1) (k+1)`
+#. §5: `choose (n+1) k + choose (n+1) (k+1)`
+#. §6: `choose (n+2) (k+1)`
+#: Game.Levels.BinomialCoefficients.L15_HockeyStick
+msgid "**Inductive step**: The goal is\n"
+"§0.\n"
+"\n"
+"Strategy:\n"
+"1. Peel off the last term with §1\n"
+"2. Substitute the IH\n"
+"3. Fold back using Pascal's identity in reverse (§2)\n"
+"\n"
+"After peeling, the sum becomes §3.\n"
+"The IH rewrites the sum to §4.\n"
+"Then §5 is exactly Pascal's\n"
+"identity for §6, read backward."
 msgstr ""
 
 #. §0: `l.length + 1 = 4`
@@ -23203,6 +24428,18 @@ msgid "# When k = n: Permutations\n"
 "§12 base case."
 msgstr ""
 
+#. §0: `Nat.choose_symm`
+#. §1: `2 ≤ 10`
+#. §2: `have`
+#. §3: `exact`
+#: Game.Levels.BinomialCoefficients.L06_Symmetry
+msgid "Choosing 8 from 10 is the same as leaving out 2.\n"
+"Use §0 with a proof that §1.\n"
+"\n"
+"Step 1: Create the inequality proof with §2.\n"
+"Step 2: Apply symmetry with §3."
+msgstr ""
+
 #. §0: `hu : x ∈ u`
 #. §1: `constructor`
 #. §2: `right`
@@ -23375,6 +24612,10 @@ msgstr ""
 
 #: Game.Levels.AbstractionLadder.L19_ContrastLevel
 msgid "Duplicates cause list length and finset card to differ."
+msgstr ""
+
+#: Game.Levels.BinomialCoefficients.L07_DerivingChooseSelf
+msgid "C(n, n) = 1, derived from symmetry and choose_zero_right."
 msgstr ""
 
 #. §0: `sum_comm`
@@ -23623,6 +24864,19 @@ msgstr ""
 msgid "Use §0 to convert membership into an inequality."
 msgstr ""
 
+#. §0: `2 * Nat.choose 2 2 = 1 * 2`
+#. §1: `Nat.choose_self`
+#. §2: `2 * 1 = 1 * 2`
+#: Game.Levels.BinomialCoefficients.L16_Boss
+msgid "**Base case** (n = 0): The goal is\n"
+"§0.\n"
+"Since C(2, 2) = 1, rewrite with §1.\n"
+"\n"
+"After the rewrite, the goal §2 closes\n"
+"automatically — both sides reduce to 2. Don't be surprised\n"
+"when the goal disappears!"
+msgstr ""
+
 #. §0: `constructor`
 #: Game.Levels.PsetFin.L01_DoubleWitness
 #: Game.Levels.PsetFin.L13_SuccAboveUnification
@@ -23662,6 +24916,10 @@ msgid "This function §0 on §1 shows **partial\n"
 "This spectrum is the content of §8: the image\n"
 "can only shrink, and it shrinks by exactly the number of collisions.\n"
 "The next levels formalize this with cardinality."
+msgstr ""
+
+#: Game.Levels.BinomialCoefficients.L04_PascalComputation
+msgid "C(4, 2) = 6: computed by chaining Pascal's identity."
 msgstr ""
 
 #. §0: `← hp.length_eq`
@@ -24090,6 +25348,74 @@ msgstr ""
 msgid "Two permuted lists give the same multiset."
 msgstr ""
 
+#. §0: $$2 \\cdot \\binom{n+2}{2} = (n+1)(n+2)$$
+#. §1: `induction n with`
+#. §2: `Nat.choose_self`
+#. §3: `Nat.choose_succ_succ`
+#. §4: `Nat.choose_one_right`
+#. §5: `mul_add`
+#. §6: `ih`
+#. §7: `ring`
+#. §8: `ring`
+#. §9: `rw`
+#. §10: `ring`
+#. §11: $\\binom{n}{2} = n(n-1)/2$
+#. §12: $n$
+#. §13: $1, 3, 6, 10, 15, \\ldots$
+#. §14: $1 + 2 + \\cdots + n =
+#. n(n+1)/2$
+#. §15: $\\sum_{i=0}^{n} i = \\binom{n+1}{2}$
+#. §16: $\\sum_{i=0}^{n} \\binom{i}{k} = \\binom{n+1}{k+1}$
+#. §17: $\\binom{n}{2}$
+#. §18: $n$
+#. §19: $$(x + y)^n = \\sum_{k=0}^{n} \\binom{n}{k}\\, x^k\\, y^{n-k}$$
+#. §20: $n$
+#. §21: $(x+y)^n$
+#. §22: $x = y = 1$
+#. §23: $\\sum_{k=0}^{n} \\binom{n}{k} = 2^n$
+#. §24: $2$
+#: Game.Levels.BinomialCoefficients.L16_Boss
+msgid "Congratulations! You proved:\n"
+"§0\n"
+"\n"
+"**Skills integrated in this boss**:\n"
+"1. §1 — natural number induction\n"
+"2. §2 — boundary value C(2, 2) = 1 (Level 1)\n"
+"3. §3 — Pascal's identity (Level 3)\n"
+"4. §4 — C(n, 1) = n (Level 2)\n"
+"5. §5 — distributing multiplication\n"
+"6. §6 — the induction hypothesis\n"
+"7. §7 — closing the polynomial identity\n"
+"\n"
+"**The pattern**: Peel with Pascal, simplify leaves with the boundary\n"
+"theorems, distribute, substitute the IH, and close with §8. This\n"
+"is the **collect-and-close** skeleton (from FinsetInduction): bring\n"
+"structural facts into context (here via §9), then close with an\n"
+"algebraic tactic (§10). The same skeleton appears in\n"
+"SummationFormulas, now applied to binomial coefficients.\n"
+"\n"
+"**The formula**: §11 counts the number of\n"
+"2-element subsets — equivalently, the number of handshakes among\n"
+"§12 people. These are the **triangular numbers**: §13\n"
+"\n"
+"The triangular numbers are also the partial sums §14 from the SummationFormulas world. In Level 14, you proved this\n"
+"connection formally: §15. And in Level 15,\n"
+"you proved the full generalization — the **hockey stick identity**:\n"
+"§16.\n"
+"\n"
+"The binomial coefficient §17 also counts the 2-element\n"
+"subsets of an §18-element set — a connection you'll explore in the\n"
+"**Powerset** world.\n"
+"\n"
+"The binomial coefficients also give their name to the **binomial theorem**:\n"
+"§19\n"
+"The entries of row §20 of Pascal's triangle are exactly the coefficients\n"
+"in the expansion of §21 — which is why they are called *binomial*\n"
+"coefficients. Setting §22 gives §23:\n"
+"the sum of each row is a power of §24. You'll prove this in the\n"
+"BinomialTheorem world."
+msgstr ""
+
 #. §0: `y ∈ s.image f ∩ t.image f`
 #. §1: `rw [Finset.mem_inter]`
 #. §2: `constructor`
@@ -24302,6 +25628,10 @@ msgid "Subtypes are the fourth composition rule:\n"
 "result about subtype cardinality under the hood.\n"
 "\n"
 "Next: practice combining subtype counting with products."
+msgstr ""
+
+#: Game.Levels.BinomialCoefficients.L03_PascalsIdentity
+msgid "Pascal's Identity"
 msgstr ""
 
 #. §0: `Fin 5`
@@ -24878,6 +26208,14 @@ msgstr ""
 msgid "§0 has exactly one element: §1."
 msgstr ""
 
+#. §0: `Nat.choose 6 3`
+#. §1: $6 = 5 + 1$
+#. §2: $3 = 2 + 1$
+#: Game.Levels.BinomialCoefficients.L03_PascalsIdentity
+msgid "Use Pascal's identity to expand §0.\n"
+"Since §1 and §2, this matches the pattern."
+msgstr ""
+
 #: Game.Levels.Cardinality.L24_Capstone
 msgid "Injective Implies Surjective (Finite Types)"
 msgstr ""
@@ -25056,6 +26394,44 @@ msgstr ""
 msgid "Complement via Set Difference"
 msgstr ""
 
+#. §0: $$(n + 1) \\cdot \\binom{n}{k} = (k + 1) \\cdot \\binom{n+1}{k+1}$$
+#. §1: $(k+1)$
+#. §2: $n+1$
+#. §3: $k+1$
+#. §4: $(n+1)$
+#. §5: $k$
+#. §6: $n$
+#. §7: `Nat.add_one_mul_choose_eq`
+#. §8: ```
+#. Nat.add_one_mul_choose_eq :
+#.   (n + 1) * Nat.choose n k = Nat.choose (n + 1) (k + 1) * (k + 1)
+#. ```
+#. §9: $k = 2$
+#: Game.Levels.BinomialCoefficients.L10_AbsorptionIdentity
+msgid "# The Absorption Identity\n"
+"\n"
+"The factorial formula from Level 8 isn't just a curiosity — it\n"
+"implies one of the most important binomial coefficient identities:\n"
+"\n"
+"§0\n"
+"\n"
+"This is the **absorption identity**. It has a beautiful combinatorial\n"
+"interpretation called the **committee chair** argument:\n"
+"\n"
+"- **Right side**: Choose a §1-member committee from §2 people,\n"
+"  then pick one of the §3 members to be chair.\n"
+"- **Left side**: Pick the chair first (§4 choices), then choose\n"
+"  the remaining §5 committee members from the other §6 people.\n"
+"\n"
+"Both sides count the same thing — the number of ways to form a\n"
+"committee with a designated chair — so they must be equal.\n"
+"\n"
+"In Lean, this is §7:\n"
+"§8\n"
+"\n"
+"**Your task**: Apply the absorption identity for §9."
+msgstr ""
+
 #. §0: `Finset.mem_of_mem_inter_left h`
 #. §1: `a ∈ s`
 #. §2: `h : a ∈ s ∩ t`
@@ -25152,6 +26528,10 @@ msgstr ""
 msgid "§0 states that §1.\n"
 "\n"
 "The earlier elements of a snoc'd tuple come from the original tuple."
+msgstr ""
+
+#: Game.Levels.BinomialCoefficients.L16_Boss
+msgid "Boss: The Triangular Choose"
 msgstr ""
 
 #. §0: `rw [Function.comp_apply, hf, hg]`
@@ -25431,6 +26811,16 @@ msgid "This is the bridge the introduction promised: §0\n"
 "transfer directly."
 msgstr ""
 
+#. §0: `apply Nat.choose_mul_factorial_mul_factorial`
+#. §1: `2 ≤ 5`
+#: Game.Levels.BinomialCoefficients.L09_FactorialFormula
+msgid "This is an instance of the factorial formula:\n"
+"C(n, k) * k! * (n - k)! = n!\n"
+"\n"
+"Use §0 to apply the\n"
+"theorem, leaving the inequality §1 as a subgoal."
+msgstr ""
+
 #. §0: `sup_le_sup_left`
 #. §1: `a ≤ b`
 #. §2: `c ⊔ a ≤ c ⊔ b`
@@ -25559,6 +26949,38 @@ msgstr ""
 msgid "Boss: Image Membership, Bounds, and Injectivity"
 msgstr ""
 
+#. §0: $\\binom{5}{2} \\cdot 2! \\cdot 3! = 10 \\cdot 2 \\cdot 6 = 120 = 5!$
+#. §1: $\\binom{n}{k}$
+#. §2: $$\\binom{5}{2} = \\frac{5!}{2! \\cdot 3!} = \\frac{120}{2 \\cdot 6} = 10$$
+#. §3: $\\binom{n}{k} \\cdot k! \\cdot (n-k)! = n!$
+#. §4: $(x+y)^n = \\sum_k \\binom{n}{k} x^k y^{n-k}$
+#. §5: $\\binom{n}{k}$
+#. §6: $k$
+#: Game.Levels.BinomialCoefficients.L09_FactorialFormula
+msgid "§0\n"
+"\n"
+"The factorial formula is the **closed form** for binomial coefficients.\n"
+"While Pascal's identity gives a recursive way to compute §1,\n"
+"the factorial formula gives a direct computation:\n"
+"\n"
+"§2\n"
+"\n"
+"In proofs, the **multiplicative form** is usually more convenient than\n"
+"the division form, because natural number division rounds down and\n"
+"can lose information. The multiplicative form\n"
+"§3\n"
+"avoids this issue entirely.\n"
+"\n"
+"You now have the full toolkit. These tools aren't just abstract —\n"
+"they're the building blocks for the **binomial theorem**:\n"
+"§4, which you'll prove\n"
+"in a later world. And the **Powerset** world will ground §5\n"
+"as literally counting §6-element subsets of a Finset.\n"
+"\n"
+"Next: the **absorption identity**, which shows the factorial formula\n"
+"in action as a tool for deriving new identities."
+msgstr ""
+
 #. §0: `Fin.le_last i`
 #. §1: `i ≤ Fin.last n`
 #. §2: `i : Fin (n + 1)`
@@ -25634,6 +27056,30 @@ msgid "You've proved both directions of the characterization:\n"
 "implies §18, surjectivity gives §19\n"
 "— which is injectivity. The counting bridge makes both directions\n"
 "trivial once you have §20."
+msgstr ""
+
+#. §0: `Nat.choose n n = 1`
+#. §1: `Nat.choose n 0 = 1`
+#. §2: `1`
+#. §3: `Nat.choose n 0`
+#. §4: `Nat.choose_zero_right n : Nat.choose n 0 = 1`
+#. §5: `rw [← Nat.choose_zero_right n]`
+#. §6: `1`
+#. §7: `Nat.choose n 0`
+#: Game.Levels.BinomialCoefficients.L07_DerivingChooseSelf
+msgid "The goal is §0. We want to connect this\n"
+"to §1 via symmetry.\n"
+"\n"
+"Step 1: Use backward rewrite to replace the §2 with §3.\n"
+"Since §4, writing\n"
+"§5 replaces §6 with §7."
+msgstr ""
+
+#. §0: `n`
+#: Game.Levels.BinomialCoefficients.L16_Boss
+msgid "This requires **induction** on §0.\n"
+"The base case uses a boundary value; the inductive step uses\n"
+"Pascal's identity and the IH."
 msgstr ""
 
 #. §0: `Finset.card_le_univ s`
@@ -25861,6 +27307,23 @@ msgid "§0 states that §1.\n"
 "induction pattern by factoring before the induction step."
 msgstr ""
 
+#. §0: $\\binom{n}{1} = n$
+#. §1: $\\binom{n}{0} = 1$
+#. §2: $\\binom{n}{1} = n$
+#. §3: $\\binom{n}{n} = 1$
+#. §4: $2 \\le k \\le n - 1$
+#: Game.Levels.BinomialCoefficients.L02_ChoosingOne
+msgid "§0 — choosing one is just picking any element.\n"
+"\n"
+"Together with the boundary values:\n"
+"- §1 (choose nothing)\n"
+"- §2 (choose one)\n"
+"- §3 (choose everything)\n"
+"\n"
+"These three formulas handle the simplest cases. For\n"
+"§4, we need **Pascal's identity** — coming up next."
+msgstr ""
+
 #. §0: `(↑i : ℕ) = 3`
 #. §1: `i.val = 3`
 #. §2: `«{h}»`
@@ -25961,6 +27424,10 @@ msgstr ""
 #: Game.Levels.FinsetImage.L13_ConstantImageEquality
 msgid "Use §0 to prove the two finsets are equal by showing\n"
 "they have the same members."
+msgstr ""
+
+#: Game.Levels.BinomialCoefficients.L01_BoundaryValues
+msgid "Disabled: gives a direct formula for choose (n+1) n that bypasses induction."
 msgstr ""
 
 #. §0: `Fin.val_last`
@@ -27336,6 +28803,10 @@ msgstr ""
 msgid "Six times the sum of squares from 0 to n equals n(n+1)(2n+1)."
 msgstr ""
 
+#: Game.Levels.BinomialCoefficients.L10_AbsorptionIdentity
+msgid "The Absorption Identity"
+msgstr ""
+
 #. §0: `have h1 := Finset.card_union_add_card_inter s t`
 #: Game.Levels.PsetCardinality.L11_Boss
 msgid "Start with inclusion-exclusion:\n"
@@ -27632,6 +29103,50 @@ msgstr ""
 msgid "**This level is deliberately tedious.** The next level introduces\n"
 "§0, a much cleaner approach. The verbosity here motivates why §1\n"
 "is valuable."
+msgstr ""
+
+#. §0: $$\\binom{2}{2} = 1, \\quad \\binom{3}{2} = 3, \\quad \\binom{4}{2} = 6, \\quad \\binom{5}{2} = 10, \\ldots$$
+#. §1: $$2 \\cdot \\binom{n+2}{2} = (n+1)(n+2)$$
+#. §2: $\\binom{n}{2} = n(n-1)/2$
+#. §3: `induction n with`
+#. §4: `Nat.choose_self`
+#. §5: `Nat.choose_succ_succ`
+#. §6: `Nat.choose_one_right`
+#. §7: `mul_add`
+#. §8: `a * (b + c) = a * b + a * c`
+#. §9: `ring`
+#. §10: $n = 0$
+#. §11: `choose_self`
+#. §12: `ring`
+#: Game.Levels.BinomialCoefficients.L16_Boss
+msgid "# Boss: The Triangular Number Formula\n"
+"\n"
+"The second column of Pascal's triangle gives the **triangular numbers**:\n"
+"\n"
+"§0\n"
+"\n"
+"Prove the closed-form identity:\n"
+"\n"
+"§1\n"
+"\n"
+"This is the multiplicative version of the well-known formula\n"
+"§2, shifted to avoid natural number subtraction.\n"
+"\n"
+"**What you need** (all from this world and prior worlds):\n"
+"- Natural number induction (§3)\n"
+"- §4 — boundary value C(2, 2) = 1 (Level 1)\n"
+"- §5 — Pascal's identity (Level 3)\n"
+"- §6 — reducing C(n, 1) to n (Level 2)\n"
+"- §7 — distributing multiplication over addition (from BigOpAlgebra: §8)\n"
+"- Induction hypothesis — substituting the IH\n"
+"- §9 — closing the final polynomial identity\n"
+"\n"
+"**Proof plan**:\n"
+"- **Base case** (§10): C(2, 2) = 1 by §11, then the\n"
+"  arithmetic closes automatically.\n"
+"- **Inductive step**: Expand C(n+3, 2) with Pascal's identity, simplify\n"
+"  C(n+2, 1) = n+2, distribute the factor of 2, substitute the IH,\n"
+"  then close with §12."
 msgstr ""
 
 #. §0: `a ∈ insert b s`
@@ -28211,6 +29726,16 @@ msgstr ""
 msgid "Combine sum_range_succ and sum_add_distrib."
 msgstr ""
 
+#. §0: `Nat.choose (n + 2) n = Nat.choose (n + 2) 2`
+#. §1: `2 ≤ n + 2`
+#. §2: `Nat.choose_symm`
+#: Game.Levels.BinomialCoefficients.L11_RetrievalPractice
+msgid "**Part 1**: §0.\n"
+"Choosing n from n + 2 is the same as leaving out 2.\n"
+"Use symmetry: create a proof that §1, then apply\n"
+"§2."
+msgstr ""
+
 #. §0: `y ∈ s.image (f ∘ g)`
 #. §1: `x`
 #. §2: `rw [Finset.mem_image]`
@@ -28338,8 +29863,19 @@ msgstr ""
 msgid "The constant function shows image of intersection can be strictly smaller."
 msgstr ""
 
+#. §0: `3 + (Nat.choose 2 1 + Nat.choose 2 2) = 6`
+#: Game.Levels.BinomialCoefficients.L04_PascalComputation
+msgid "The goal is §0.\n"
+"Simplify the leaves: C(2, 1) = 2 and C(2, 2) = 1."
+msgstr ""
+
 #: Game.Levels.FinsetBasics.L01_WhatIsAFinset
 msgid "1 is an element of the finset {1, 2, 3}."
+msgstr ""
+
+#. §0: `constructor`
+#: Game.Levels.BinomialCoefficients.L11_RetrievalPractice
+msgid "Split the remaining conjunction with §0."
 msgstr ""
 
 #: Game.Levels.PsetCardinality.L03_ConverseInclusionExclusion
@@ -29102,6 +30638,10 @@ msgstr ""
 msgid "Proving Nonempty"
 msgstr ""
 
+#: Game.Levels.BinomialCoefficients.L13_SumSimplification
+msgid "A single-term sum of choose: ∑ i in range 1, choose i k = choose 1 (k+1)."
+msgstr ""
+
 #. §0: `List.Perm`
 #. §1: `l₁.Perm l₂`
 #. §2: `l₁ ~ l₂`
@@ -29326,6 +30866,14 @@ msgstr ""
 #: Game.Levels.FinNavigation.L11_SuccNeverZero
 msgid "The goal is §0, which means §1.\n"
 "Start with §2."
+msgstr ""
+
+#. §0: `2 * Nat.choose 2 1 = 2 * 2`
+#. §1: `choose_one_right`
+#: Game.Levels.BinomialCoefficients.L12_CoachingBossPattern
+msgid "**Base case** (n = 0): The goal is §0.\n"
+"Since C(2, 1) = 2 by §1, the rewrite closes\n"
+"the goal automatically."
 msgstr ""
 
 #. §0: `Fin n`
@@ -29633,6 +31181,7 @@ msgstr ""
 #: Game.Levels.SummationFormulas.L07_GeneralGeometricSum
 #: Game.Levels.SummationFormulas.L12_TelescopingSum
 #: Game.Levels.SummationFormulas.L14_Boss
+#: Game.Levels.BinomialCoefficients.L16_Boss
 msgid "Try §0 then §1."
 msgstr ""
 
@@ -30202,6 +31751,10 @@ msgid "Unfold §0 with §1,\n"
 "Build the goal: §5."
 msgstr ""
 
+#: Game.Levels.BinomialCoefficients.L04_PascalComputation
+msgid "Computing with Pascal's Identity"
+msgstr ""
+
 #. §0: `castSucc`
 #. §1: $0, \\ldots, n-1$
 #. §2: `Fin.last`
@@ -30439,6 +31992,33 @@ msgstr ""
 
 #: Game.Levels.FinTuples.L09_AppendingWithSnoc
 msgid "The access lemmas for vecSnoc."
+msgstr ""
+
+#. §0: `Nat.choose_mul_factorial_mul_factorial`
+#. §1: `Nat.choose n k * Nat.factorial k * Nat.factorial (n - k) = Nat.factorial n`
+#. §2: `k ≤ n`
+#. §3: ```
+#. apply Nat.choose_mul_factorial_mul_factorial
+#. omega
+#. ```
+#. §4: ```
+#. exact Nat.choose_mul_factorial_mul_factorial (by omega)
+#. ```
+#. §5: $\\binom{n}{k} = n! / (k!(n-k)!)$
+#: Game.Levels.BinomialCoefficients.L09_FactorialFormula
+msgid "§0 states that\n"
+"§1\n"
+"when §2.\n"
+"\n"
+"## Syntax\n"
+"§3\n"
+"or equivalently:\n"
+"§4\n"
+"\n"
+"## When to use it\n"
+"When you need to connect binomial coefficients to factorials in a\n"
+"multiplication context. This avoids the integer division in the\n"
+"formula §5."
 msgstr ""
 
 #. §0: `omega`
@@ -31274,6 +32854,15 @@ msgid "Find an index where §0 differs from §1.\n"
 "Since §2, any index besides 0 works."
 msgstr ""
 
+#. §0: `nlinarith`
+#. §1: `linarith`
+#: Game.Metadata
+msgid "§0 extends §1 with nonlinear reasoning by\n"
+"multiplying hypotheses together before applying linear arithmetic.\n"
+"\n"
+"Disabled in levels where manual algebraic manipulation is the lesson."
+msgstr ""
+
 #: Game.Levels.AbstractionLadder.L12_NodupSingleton
 msgid "Nodup: The Bridge to Finsets"
 msgstr ""
@@ -31361,6 +32950,10 @@ msgstr ""
 msgid "Reconstructing from Head and Tail"
 msgstr ""
 
+#: Game.Levels.BinomialCoefficients.L06_Symmetry
+msgid "Disabled: directly proves symmetry from an addition equation."
+msgstr ""
+
 #. §0: `Fin.cons`
 #. §1: `Fin.tail`
 #. §2: `f : Fin (n + 1) → α`
@@ -31423,6 +33016,16 @@ msgstr ""
 #. §0: `constructor`
 #: Game.Levels.FinsetImage.L07_ImageComposition
 msgid "Split the biconditional with §0."
+msgstr ""
+
+#. §0: `Nat.choose (n + 1) 2 + (n + 1) = Nat.choose (n + 2) 2`
+#. §1: `choose (n+2) 2 = choose (n+1) 1 + choose (n+1) 2`
+#. §2: `choose (n+1) 1 = n+1`
+#: Game.Levels.BinomialCoefficients.L14_GaussSum
+msgid "The goal is §0.\n"
+"\n"
+"Expand the right side: §1\n"
+"by Pascal's identity, then §2."
 msgstr ""
 
 #. §0: `Fin 5`
@@ -31492,6 +33095,39 @@ msgid "Every nonzero element of §0 generates the whole group under\n"
 "Now back to our main path: using §28 as an index for concrete data."
 msgstr ""
 
+#. §0: $0 + 1 + 2 + \\cdots + n = n(n+1)/2$
+#. §1: $$\\sum_{i=0}^{n} i = \\binom{n+1}{2}$$
+#. §2: $\\binom{n+1}{2}$
+#. §3: $(n+1)$
+#. §4: $0 + 1 + \\cdots + n$
+#. §5: $n$
+#. §6: $n = 0$
+#. §7: $0$
+#. §8: $\\binom{n+1}{2} + (n+1) = \\binom{n+2}{2}$
+#. §9: `choose_one_right`
+#: Game.Levels.BinomialCoefficients.L14_GaussSum
+msgid "# The Gauss Sum as a Binomial Coefficient\n"
+"\n"
+"In SummationFormulas, you proved the **Gauss sum formula**:\n"
+"§0.\n"
+"\n"
+"Now prove that this same sum equals a **binomial coefficient**:\n"
+"\n"
+"§1\n"
+"\n"
+"This is a beautiful **cross-world connection**: a summing question\n"
+"from SummationFormulas and a counting question from this world give\n"
+"the same answer. Why? Because §2 counts the 2-element\n"
+"subsets of an §3-element set, and the sum §4\n"
+"counts the same thing by grouping subsets by their larger element.\n"
+"\n"
+"**Proof strategy**: Induction on §5.\n"
+"- **Base case** (§6): Both sides equal §7.\n"
+"- **Inductive step**: Peel the sum, substitute the IH, then show\n"
+"  §8 by expanding the right\n"
+"  side with Pascal's identity and using §9."
+msgstr ""
+
 #. §0: `Fin.castSucc_inj`
 #. §1: `a.castSucc = b.castSucc ↔ a = b`
 #. §2: `Fin n`
@@ -31499,6 +33135,15 @@ msgstr ""
 #: Game.Metadata
 msgid "§0 states that §1\n"
 "for elements of §2. In other words, §3 is injective."
+msgstr ""
+
+#. §0: `n + 3`
+#. §1: `k = 3`
+#. §2: `apply Nat.choose_mul_factorial_mul_factorial`
+#. §3: `3 ≤ n + 3`
+#: Game.Levels.BinomialCoefficients.L11_RetrievalPractice
+msgid "**Part 3**: The factorial formula with §0 and §1.\n"
+"Use §2, then prove §3."
 msgstr ""
 
 #. §0: `sum_insert`
@@ -31542,6 +33187,12 @@ msgid "Try:\n"
 "§2\n"
 "\n"
 "Or as a one-liner: §3"
+msgstr ""
+
+#. §0: `n`
+#: Game.Levels.BinomialCoefficients.L14_GaussSum
+#: Game.Levels.BinomialCoefficients.L15_HockeyStick
+msgid "Use **induction** on §0."
 msgstr ""
 
 #. §0: `Finset.sum_congr`
@@ -31806,6 +33457,10 @@ msgstr ""
 msgid "The goal involves a function type. Decompose it first."
 msgstr ""
 
+#: Game.Levels.Cardinality.L09_RangeCardinality
+msgid "Comparing Range Sizes"
+msgstr ""
+
 #. §0: `Finset.card_image_iff`
 #. §1: $$|f(S)| = |S| \\iff f \\text{ is injective on } S$$
 #. §2: $f(n) = n \\cdot n + 1$
@@ -31873,10 +33528,6 @@ msgid "# The Payoff: Cardinality as a Proof Technique\n"
 "1. §27 — convert the injectivity\n"
 "   goal into a cardinality equation\n"
 "2. §28 — let Lean compute both sides and verify equality"
-msgstr ""
-
-#: Game.Levels.Cardinality.L09_RangeCardinality
-msgid "Comparing Range Sizes"
 msgstr ""
 
 #: Game.Levels.SummationFormulas.L14_Boss
@@ -32019,6 +33670,11 @@ msgstr ""
 
 #: Game.Levels.FinsetBasics.L08_RangeReverseDirection
 msgid "Membership in Finset.range n implies the element is less than n."
+msgstr ""
+
+#: Game.Levels.BinomialCoefficients.L16_Boss
+msgid "Disabled: gives a closed form for choose n 2 that bypasses the\n"
+"intended induction proof."
 msgstr ""
 
 #. §0: `f 0 = ![1, 4, 9] 0`
@@ -32299,6 +33955,10 @@ msgstr ""
 #. §0: `Fin 3 → ℕ`
 #: Game.Levels.FinTuples.L03_BuildingTuples
 msgid "A function §0 that maps 0 to 10, 1 to 20, and 2 to 30."
+msgstr ""
+
+#: Game.Levels.BinomialCoefficients.L01_BoundaryValues
+msgid "Boundary Values"
 msgstr ""
 
 #. §0: `card_embedding_eq`
@@ -32674,6 +34334,18 @@ msgid "The goal is now §0.\n"
 "values and recognizes the square-of-sum identity."
 msgstr ""
 
+#. §0: `Nat.choose 0 k = Nat.choose 0 k + Nat.choose 0 (k + 1)`
+#. §1: `choose 0 (k+1) = 0`
+#. §2: `choose_eq_zero_of_lt`
+#. §3: $0 < k + 1$
+#. §4: `add_zero`
+#: Game.Levels.BinomialCoefficients.L15_HockeyStick
+msgid "The goal is §0.\n"
+"\n"
+"Show that §1 using §2\n"
+"(since §3), then simplify with §4."
+msgstr ""
+
 #: Game.Levels.Fintype.L03_ProductTypes
 msgid "Product Types"
 msgstr ""
@@ -32942,6 +34614,10 @@ msgstr ""
 
 #: Game.Levels.FinsetOperations.L17_TargetedSimplification
 msgid "Targeted Simplification"
+msgstr ""
+
+#: Game.Levels.BinomialCoefficients.L06_Symmetry
+msgid "C(10, 8) = C(10, 2): symmetry of binomial coefficients."
 msgstr ""
 
 #. §0: `obtain ⟨a, ha, hfa⟩ := h`
@@ -33687,6 +35363,36 @@ msgid "§0 performs case analysis on a natural number or\n"
 "Disabled in early levels to force manual case analysis."
 msgstr ""
 
+#. §0: `Nat.choose n k`
+#. §1: $\\binom{n}{k}$
+#. §2: $C(n, k)$
+#. §3: `k`
+#. §4: `n`
+#. §5: `Nat.choose n 0 = 1`
+#. §6: `Nat.choose 0 (k + 1) = 0`
+#. §7: `Nat.choose (n + 1) (k + 1) = Nat.choose n k + Nat.choose n (k + 1)`
+#. §8: `Nat.choose_zero_right : Nat.choose n 0 = 1`
+#. §9: `Nat.choose_self : Nat.choose n n = 1`
+#. §10: `Nat.choose n k`
+#. §11: `k`
+#. §12: `n`
+#: Game.Levels.BinomialCoefficients.L01_BoundaryValues
+msgid "§0 (also written §1 or §2) is the\n"
+"number of ways to choose §3 items from §4 items without regard to order.\n"
+"\n"
+"## Definition (recursive)\n"
+"- §5\n"
+"- §6\n"
+"- §7\n"
+"\n"
+"## Key boundary values\n"
+"- §8\n"
+"- §9\n"
+"\n"
+"## Combinatorial meaning\n"
+"§10 counts the §11-element subsets of an §12-element set."
+msgstr ""
+
 #. §0: `Fin 3`
 #. §1: `Fin.last 2`
 #. §2: `j.castSucc`
@@ -34198,6 +35904,10 @@ msgid "# n is Never in Finset.range n\n"
 "with a variable §6 instead of the concrete §7."
 msgstr ""
 
+#: Game.Levels.BinomialCoefficients.L05_BoundaryPractice
+msgid "Applying the Boundary Theorems"
+msgstr ""
+
 #. §0: $$s \\cap t = \\emptyset \\implies \\sum_{x \\in s \\cup t} f(x) = \\sum_{x \\in s} f(x) + \\sum_{x \\in t} f(x)$$
 #. §1: ```
 #. Finset.sum_union (h : Disjoint s t) :
@@ -34404,6 +36114,10 @@ msgstr ""
 
 #: Game.Levels.FinsetBasics.L04_RangeOfNaturals
 msgid "3 is in the range {0, 1, 2, 3, 4}."
+msgstr ""
+
+#: Game.Levels.BinomialCoefficients.L07_DerivingChooseSelf
+msgid "Boundary Revisited"
 msgstr ""
 
 #. §0: `exact absurd hlt (by omega)`
@@ -34707,6 +36421,39 @@ msgid "The functional equation hasn't changed.\n"
 "Use §0."
 msgstr ""
 
+#. §0: $\\binom{n+2}{n} = \\binom{n+2}{2}$
+#. §1: $\\binom{n}{n+1} = 0$
+#. §2: $\\binom{n+3}{3} \\cdot 3! \\cdot n! = (n+3)!$
+#. §3: $(n+1) \\cdot \\binom{n}{3} = \\binom{n+1}{4} \\cdot 4$
+#. §4: `have h : ... := by omega`
+#. §5: `exact Nat.choose_symm h`
+#. §6: `apply ... ; omega`
+#. §7: `rw`
+#: Game.Levels.BinomialCoefficients.L11_RetrievalPractice
+msgid "# Retrieval Practice\n"
+"\n"
+"You've learned six theorem families in rapid succession (Levels 6–10).\n"
+"Before moving to induction, let's retrieve four of them on **variable**\n"
+"statements:\n"
+"\n"
+"**Part 1** — Symmetry (Level 6):\n"
+"§0\n"
+"\n"
+"**Part 2** — Beyond the edge (Level 8):\n"
+"§1\n"
+"\n"
+"**Part 3** — Factorial formula (Level 9):\n"
+"§2\n"
+"\n"
+"**Part 4** — Absorption identity (Level 10):\n"
+"§3\n"
+"\n"
+"Each part is one or two moves. Recall the patterns:\n"
+"- Symmetry needs §4 then §5\n"
+"- Beyond-edge and factorial use §6\n"
+"- Absorption is a direct §7"
+msgstr ""
+
 #. §0: `castSucc`
 #. §1: `Fin.last`
 #: Game.Levels.FinNavigation.L07_CastSuccNeverLast
@@ -35007,6 +36754,8 @@ msgstr ""
 #. §0: `4 ≠ 3`
 #. §1: `omega`
 #: Game.Levels.AbstractionLadder.L19_ContrastLevel
+#: Game.Levels.BinomialCoefficients.L08_BeyondTheEdge
+#: Game.Levels.BinomialCoefficients.L09_FactorialFormula
 msgid "The goal is §0. Use §1 to close it."
 msgstr ""
 
@@ -35161,6 +36910,43 @@ msgstr ""
 #: Game.Levels.SummationFormulas.L10_FactorialCompute
 msgid "You've reached §0.\n"
 "Use §1 to replace §2 with §3."
+msgstr ""
+
+#. §0: $$\\binom{n}{k} \\cdot k! \\cdot (n-k)! = n!$$
+#. §1: $\\binom{n}{k} = \\frac{n!}{k! \\cdot (n-k)!}$
+#. §2: $n!$
+#. §3: $n$
+#. §4: $k$
+#. §5: $\\binom{n}{k}$
+#. §6: $k$
+#. §7: $k!$
+#. §8: $n-k$
+#. §9: $(n-k)!$
+#. §10: ```
+#. Nat.choose_mul_factorial_mul_factorial :
+#.   k ≤ n → Nat.choose n k * Nat.factorial k * Nat.factorial (n - k) = Nat.factorial n
+#. ```
+#. §11: $n = 5, k = 2$
+#. §12: $\\binom{5}{2} \\cdot 2! \\cdot 3! = 5!$
+#: Game.Levels.BinomialCoefficients.L09_FactorialFormula
+msgid "# The Factorial Formula\n"
+"\n"
+"The binomial coefficient connects to the factorial through:\n"
+"\n"
+"§0\n"
+"\n"
+"Or equivalently: §1\n"
+"\n"
+"**Why is this true?** There are §2 ways to arrange §3 objects in a line.\n"
+"Choosing §4 of them (in §5 ways), then arranging the\n"
+"chosen §6 objects (§7 ways) and the remaining §8 objects\n"
+"(§9 ways), accounts for every arrangement exactly once.\n"
+"\n"
+"The multiplicative form avoids division and is more natural for proofs:\n"
+"§10\n"
+"\n"
+"**Your task**: Verify the multiplicative formula for §11:\n"
+"§12"
 msgstr ""
 
 #: Game.Levels.BigOpAlgebra.L16_CardSumBridge
@@ -36081,6 +37867,14 @@ msgid "§0 constructs an element of §1 from a natural\n"
 "§5"
 msgstr ""
 
+#. §0: `Nat.choose`
+#. §1: `Nat.choose_one_right`
+#. §2: `Nat.choose (n + 1) 1`
+#: Game.Levels.BinomialCoefficients.L05_BoundaryPractice
+msgid "Apply the boundary theorems to simplify each §0 term.\n"
+"Start with §1 to simplify §2."
+msgstr ""
+
 #. §0: `hx : x ∈ ∅`
 #. §1: `exact absurd hx (Finset.notMem_empty x)`
 #: Game.Levels.FinsetOperations.L11_DisjointFinsets
@@ -36190,6 +37984,27 @@ msgstr ""
 #: Game.Levels.FinsetBasics.L09_FinToFinsetBridge
 msgid "Convert the membership goal to an inequality:\n"
 "§0."
+msgstr ""
+
+#. §0: `Nat.choose`
+#. §1: $\\binom{n}{0} = 1$
+#. §2: $\\binom{n}{n} = 1$
+#. §3: $1$
+#. §4: `Nat.choose n 0`
+#. §5: `Nat.choose n n`
+#. §6: `choose_zero_right`
+#. §7: `choose_self`
+#: Game.Levels.BinomialCoefficients.L01_BoundaryValues
+msgid "You proved the two boundary values of §0:\n"
+"\n"
+"- §1 — choosing nothing: one way (take nothing)\n"
+"- §2 — choosing everything: one way (take all)\n"
+"\n"
+"These are the **base cases** of Pascal's triangle. Every row starts\n"
+"and ends with §3.\n"
+"\n"
+"**Reusable recipe**: When you see §4 or §5\n"
+"in a goal, rewrite with §6 or §7."
 msgstr ""
 
 #. §0: `x`
@@ -36526,6 +38341,28 @@ msgid "Now use the apply-then-prove pattern:\n"
 "§0 reduces the equation to membership."
 msgstr ""
 
+#. §0: $$(n + 1) \\cdot \\binom{n}{k} = (k + 1) \\cdot \\binom{n+1}{k+1}$$
+#. §1: $k!$
+#. §2: $\\binom{n}{k} \\cdot k! = \\frac{n!}{(n-k)!}$
+#: Game.Levels.BinomialCoefficients.L10_AbsorptionIdentity
+msgid "The absorption identity connects adjacent entries of Pascal's\n"
+"triangle through multiplication:\n"
+"§0\n"
+"\n"
+"The **committee chair** argument gives a beautiful proof without\n"
+"any algebra: both sides count the same thing (committees with a\n"
+"designated chair), just in different order.\n"
+"\n"
+"This pattern — counting the same set in two ways to prove an\n"
+"identity — is called **double counting**. It is one of the most\n"
+"powerful techniques in combinatorics.\n"
+"\n"
+"The absorption identity also shows the factorial formula *in action*:\n"
+"it's equivalent to canceling §1 from both sides of\n"
+"§2. The factorial formula\n"
+"(Level 8) is a *tool*, not just a formula."
+msgstr ""
+
 #. §0: `f a + f a + 2 * ∑ f = 2 * (f a + ∑ f)`
 #. §1: `ring`
 #: Game.Levels.FinsetInduction.L03_InductiveStep
@@ -36642,6 +38479,29 @@ msgid "# A Different Kind of Finset\n"
 "The proof starts the same (§11), but the\n"
 "membership subgoal uses §12 and §13\n"
 "instead of §14."
+msgstr ""
+
+#. §0: `Nat.choose_one_right`
+#. §1: `Nat.choose n 1 = n`
+#. §2: ```
+#. rw [Nat.choose_one_right]
+#. ```
+#. §3: `Nat.choose n 1`
+#. §4: `n`
+#. §5: `n`
+#. §6: `n`
+#: Game.Levels.BinomialCoefficients.L02_ChoosingOne
+msgid "§0 states that §1.\n"
+"\n"
+"## Syntax\n"
+"§2\n"
+"\n"
+"## When to use it\n"
+"When you see §3 in the goal or a hypothesis and\n"
+"want to simplify it to §4.\n"
+"\n"
+"## Meaning\n"
+"There are exactly §5 ways to choose 1 item from §6 items."
 msgstr ""
 
 #: Game.Levels.MeetFin.L16_DestructuringFin
@@ -36787,6 +38647,11 @@ msgstr ""
 
 #: Game.Levels.Cardinality.L01_WhatIsCardinality
 msgid "The empty finset has zero elements."
+msgstr ""
+
+#. §0: `rw [Nat.choose_self]`
+#: Game.Levels.BinomialCoefficients.L16_Boss
+msgid "Try §0. The goal closes automatically after the rewrite."
 msgstr ""
 
 #. §0: `rw [← Finset.card_eq_sum_ones]`
@@ -36980,6 +38845,17 @@ msgstr ""
 #: Game.Levels.FinsetOperations.L17_TargetedSimplification
 msgid "Use §0\n"
 "to unfold the union and concrete memberships in §1 all at once."
+msgstr ""
+
+#. §0: `Nat.choose n (n + 1) = 0`
+#. §1: $n + 1$
+#. §2: $n$
+#. §3: `apply Nat.choose_eq_zero_of_lt`
+#. §4: `n < n + 1`
+#: Game.Levels.BinomialCoefficients.L11_RetrievalPractice
+msgid "**Part 2**: §0.\n"
+"You can't choose §1 items from §2.\n"
+"Use §3, then prove §4."
 msgstr ""
 
 #. §0: $n = 0$
@@ -37368,6 +39244,39 @@ msgid "# Finset.range 0 is Empty\n"
 "2. §5 — assume §6\n"
 "3. §7 — converts to §8\n"
 "4. §9 — contradiction (no natural number is less than 0)"
+msgstr ""
+
+#. §0: $2 \\cdot \\binom{n+2}{n+1} = 2(n+2)$
+#. §1: `induction n with`
+#. §2: `Nat.choose_succ_succ`
+#. §3: `mul_add`
+#. §4: `Nat.choose_self`
+#. §5: `ih`
+#. §6: `ring`
+#. §7: `choose_one_right`
+#. §8: `choose_self`
+#. §9: `mul_add`
+#. §10: `a * (b + c) = a * b + a * c`
+#. §11: `2 * Nat.choose ...`
+#. §12: `2 * (... + ...)`
+#: Game.Levels.BinomialCoefficients.L12_CoachingBossPattern
+msgid "§0\n"
+"\n"
+"You just practiced the **exact boss pattern**:\n"
+"1. §1 — set up the induction\n"
+"2. §2 — Pascal's identity peels off the sum\n"
+"3. §3 — distribute the leading factor over the sum\n"
+"4. §4 — simplify the boundary term\n"
+"5. §5 — substitute the induction hypothesis\n"
+"6. §6 — close the polynomial identity\n"
+"\n"
+"This is the **peel + distribute + simplify + IH + ring** skeleton.\n"
+"The boss uses the same skeleton with slightly different boundary theorems\n"
+"(§7 instead of §8).\n"
+"\n"
+"**Key new move**: §9 distributes multiplication over addition:\n"
+"§10. Without this, the IH can't fire because\n"
+"§11 is trapped inside §12."
 msgstr ""
 
 #. §0: `castSucc`
@@ -37814,6 +39723,12 @@ msgid "# Counterexample: Intersection Without Injectivity\n"
 "**Your task**: Prove both parts of this counterexample."
 msgstr ""
 
+#. §0: `3 + Nat.choose 3 2 = 6`
+#: Game.Levels.BinomialCoefficients.L04_PascalComputation
+msgid "The goal is §0.\n"
+"Expand C(3, 2) with Pascal's identity again."
+msgstr ""
+
 #. §0: $f$
 #. §1: $a \\notin s$
 #. §2: $f(a) \\notin f(s)$
@@ -37885,6 +39800,14 @@ msgid "Now apply injectivity:\n"
 "§0"
 msgstr ""
 
+#. §0: $n$
+#. §1: $n$
+#. §2: `Nat.choose_one_right`
+#: Game.Levels.BinomialCoefficients.L02_ChoosingOne
+msgid "There are §0 ways to choose 1 from §1.\n"
+"Use §2."
+msgstr ""
+
 #. §0: `s`
 #. §1: `p`
 #. §2: `p`
@@ -37923,6 +39846,25 @@ msgstr ""
 
 #: Game.Levels.BigOpAlgebra.L08_SumComm
 msgid "Interchanging Double Sums"
+msgstr ""
+
+#. §0: `2 * Nat.choose (n + 3) 2 = (n + 2) * (n + 3)`
+#. §1: `mul_add`
+#. §2: `ring`
+#: Game.Levels.BinomialCoefficients.L16_Boss
+msgid "**Inductive step**: The goal is\n"
+"§0.\n"
+"\n"
+"Strategy:\n"
+"1. Expand C(n+3, 2) with Pascal's identity\n"
+"2. Simplify C(n+2, 1) to n + 2\n"
+"3. Distribute the 2 with §1\n"
+"4. Substitute the induction hypothesis\n"
+"5. Close with §2"
+msgstr ""
+
+#: Game.Levels.BinomialCoefficients.L08_BeyondTheEdge
+msgid "Beyond the Edge"
 msgstr ""
 
 #: Game.Levels.PsetCardinality.L06_MultisetRetrieval
@@ -38047,8 +39989,35 @@ msgid "Use §0 to convert the membership goal into\n"
 "a disjunction: is §1 the inserted element, or is it in the rest?"
 msgstr ""
 
+#. §0: $n$
+#. §1: $n$
+#. §2: $n$
+#. §3: $$\\binom{n}{1} = n$$
+#. §4: `Nat.choose_one_right : Nat.choose n 1 = n`
+#. §5: $n = 7$
+#: Game.Levels.BinomialCoefficients.L02_ChoosingOne
+msgid "# Choosing One Element\n"
+"\n"
+"How many ways can you choose 1 item from a set of §0 items?\n"
+"\n"
+"Exactly §1 ways — you pick any one of the §2 items. This gives us:\n"
+"\n"
+"§3\n"
+"\n"
+"In Lean: §4\n"
+"\n"
+"**Your task**: Verify this for §5."
+msgstr ""
+
 #: Game.Levels.FinTuples.L14_TuplesAsData
 msgid "Tuples as Data"
+msgstr ""
+
+#. §0: `Nat.choose 0 k = Nat.choose 1 (k + 1)`
+#: Game.Levels.BinomialCoefficients.L13_SumSimplification
+msgid "The goal is §0.\n"
+"\n"
+"Expand the right side with Pascal's identity."
 msgstr ""
 
 #. §0: `have`
@@ -38578,6 +40547,19 @@ msgid "§0 states that §1.\n"
 "This is the list analogue of §3."
 msgstr ""
 
+#. §0: `Nat.choose 0 k = Nat.choose 1 (k + 1)`
+#. §1: `choose 1 (k+1) =
+#. choose 0 k + choose 0 (k+1)`
+#. §2: `choose 0 (k+1) = 0`
+#. §3: $k+1$
+#. §4: $0$
+#: Game.Levels.BinomialCoefficients.L15_HockeyStick
+msgid "The goal is §0.\n"
+"\n"
+"Expand the right side with Pascal's identity: §1. Then show §2\n"
+"(you cannot choose §3 items from §4)."
+msgstr ""
+
 #. §0: `1 + s.card = s.card + 1`
 #. §1: `omega`
 #: Game.Levels.FinsetInduction.L04_FullInduction
@@ -38803,6 +40785,37 @@ msgid "The proof is identical to Level 3 — extract §0, close with\n"
 "In later worlds (starting with FinNavigation), you'll work with\n"
 "variable §11 routinely. The moves are the same ones you've\n"
 "practiced here."
+msgstr ""
+
+#. §0: `Nat.choose_symm`
+#. §1: `Nat.choose n (n - k) = Nat.choose n k`
+#. §2: `k ≤ n`
+#. §3: ```
+#. have h : k ≤ n := by omega
+#. exact Nat.choose_symm h
+#. ```
+#. §4: `Nat.choose n k`
+#. §5: `Nat.choose n (n - k)`
+#. §6: `Nat.choose_symm (show 2 ≤ 10 by omega) : Nat.choose 10 8 = Nat.choose 10 2`
+#. §7: `k ≤ n`
+#: Game.Levels.BinomialCoefficients.L06_Symmetry
+msgid "§0 states that §1\n"
+"when §2.\n"
+"\n"
+"## Syntax\n"
+"§3\n"
+"\n"
+"## When to use it\n"
+"When you need to convert §4 to §5\n"
+"(or vice versa) to simplify a computation. Computing C(10, 2)\n"
+"is much easier than C(10, 8)!\n"
+"\n"
+"## Example\n"
+"§6\n"
+"\n"
+"## Common misuse\n"
+"Forgetting to provide the proof that §7. The hypothesis\n"
+"is required because choose gives 0 outside the valid range."
 msgstr ""
 
 #. §0: `rw [Finset.sum_empty, Finset.sum_empty, Finset.card_empty]`
@@ -39144,6 +41157,14 @@ msgstr ""
 msgid "Access a cons'd tuple through a hypothesis."
 msgstr ""
 
+#. §0: `(n + 1) + 1 + Nat.choose (n + 1) (n + 1) = n + 3`
+#. §1: `Nat.choose_self`
+#: Game.Levels.BinomialCoefficients.L05_BoundaryPractice
+msgid "Almost there — the goal is\n"
+"§0.\n"
+"Use §1 to simplify the last term."
+msgstr ""
+
 #: Game.Levels.SummationFormulas.L09_ProductBasics
 msgid "The product of 2 over range n equals 2 to the n."
 msgstr ""
@@ -39317,6 +41338,38 @@ msgstr ""
 #: Game.Levels.FinTuples.L21_Boss
 msgid "The goal is a conjunction. Use §0 to split\n"
 "into Part 1 and Part 2."
+msgstr ""
+
+#. §0: $$\\binom{n+1}{k+1} = \\binom{n}{k} + \\binom{n}{k+1}$$
+#. §1: $k+1$
+#. §2: $n+1$
+#. §3: $k$
+#. §4: $n$
+#. §5: $k+1$
+#. §6: $n$
+#. §7: `Nat.choose`
+#. §8: ```
+#. Nat.choose_succ_succ :
+#.   Nat.choose (n + 1) (k + 1) = Nat.choose n k + Nat.choose n (k + 1)
+#. ```
+#. §9: $n = 5, k = 2$
+#. §10: $\\binom{6}{3} = \\binom{5}{2} + \\binom{5}{3}$
+#: Game.Levels.BinomialCoefficients.L03_PascalsIdentity
+msgid "# Pascal's Identity\n"
+"\n"
+"The heart of the binomial coefficient is **Pascal's identity**:\n"
+"\n"
+"§0\n"
+"\n"
+"This says: to choose §1 items from §2 items, either:\n"
+"- **Include** a fixed element (then choose §3 more from the remaining §4), or\n"
+"- **Exclude** it (then choose all §5 from the remaining §6)\n"
+"\n"
+"In Lean, this is the defining equation of §7:\n"
+"§8\n"
+"\n"
+"**Your task**: Verify Pascal's identity for §9:\n"
+"§10."
 msgstr ""
 
 #. §0: `Finset.card_univ`
@@ -39553,6 +41606,10 @@ msgstr ""
 
 #: Game.Levels.PsetFinset.L13_NonMembershipFromImage
 msgid "Non-Membership from Image"
+msgstr ""
+
+#: Game.Levels.BinomialCoefficients.L08_BeyondTheEdge
+msgid "C(3, 5) = 0: you cannot choose 5 items from 3."
 msgstr ""
 
 #. §0: `h`
@@ -39978,6 +42035,10 @@ msgid "You have §0 and\n"
 "Finally §7 closes it."
 msgstr ""
 
+#: Game.Levels.BinomialCoefficients.L11_RetrievalPractice
+msgid "Retrieval Practice"
+msgstr ""
+
 #. §0: `Finset.sum_insert ha`
 #. §1: `insert a s`
 #. §2: `(f a + f a) + ∑ x ∈ s, (f x + f x)`
@@ -39987,6 +42048,14 @@ msgid "**Step 1 — Peel**: Use §0 to split both\n"
 "sums over §1. The left side becomes\n"
 "§2, and the right side\n"
 "becomes §3."
+msgstr ""
+
+#. §0: `(n + 1) * Nat.choose n 3 = Nat.choose (n + 1) 4 * 4`
+#. §1: `Nat.add_one_mul_choose_eq`
+#: Game.Levels.BinomialCoefficients.L11_RetrievalPractice
+msgid "**Part 4**: The absorption identity with k = 3:\n"
+"§0.\n"
+"Use §1 to rewrite directly."
 msgstr ""
 
 #. §0: `∀ y, y ∈ lhs → y ∈ rhs`

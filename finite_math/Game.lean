@@ -58,7 +58,7 @@ Dependency BigOpAlgebra → PsetBigOp
 Dependency FinsetInduction → PsetBigOp
 
 -- Phase 5: Combinatorics (cross-phase dependencies)
-Dependency FinsetInduction → BinomialCoefficients
+Dependency SummationFormulas → BinomialCoefficients
 Dependency Cardinality → BinomialCoefficients
 
 MakeGame
