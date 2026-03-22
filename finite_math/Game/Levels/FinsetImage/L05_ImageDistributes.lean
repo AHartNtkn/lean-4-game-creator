@@ -40,7 +40,7 @@ Statement (f : ℕ → ℕ) (s t : Finset ℕ) (x : ℕ)
   rw [Finset.mem_union] at ha
   Hint "The goal is `x ∈ s.image f ∪ t.image f`.
   Use `rw [Finset.mem_union]` to convert it to a disjunction,
-  then case-split on `ha` with `cases ha with | inl hl => ... | inr hr => ...`."
+  then case-split on `ha` with `cases ha with | inl hl | inr hr`."
   rw [Finset.mem_union]
   Hint (hidden := true) "Try `cases ha with` then handle each case
   using `left` or `right` and the forward membership pattern."

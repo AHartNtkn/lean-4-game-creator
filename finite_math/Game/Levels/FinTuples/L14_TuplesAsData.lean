@@ -43,7 +43,7 @@ Statement : (fun i : Fin 2 => (![1, 0] : Fin 2 → ℕ) i + (![2, 3] : Fin 2 →
   pointwise equality."
   ext ⟨v, hv⟩
   Hint "Now verify each index. Case-split on `v`."
-  Hint (hidden := true) "`cases v with | zero => rfl | succ n => ...`
+  Hint (hidden := true) "`cases v with | zero | succ n`
   and continue splitting on `n`."
   cases v with
   | zero => rfl

@@ -32,9 +32,9 @@ determine which of the three hypotheses closes the goal.
 Statement (f g : Fin 3 → ℕ) (h0 : f 0 = g 0) (h1 : f 1 = g 1)
     (h2 : f 2 = g 2) : ∀ i : Fin 3, f i = g i := by
   Hint "Start by introducing `i`, then destructure it:
-  `intro i; cases i with | mk v hlt =>`"
+  `intro i` then `cases i with | mk v hlt`"
   intro i
-  Hint (hidden := true) "`cases i with | mk v hlt =>`"
+  Hint (hidden := true) "`cases i with | mk v hlt`"
   cases i with
   | mk v hlt =>
     Hint "Case-split on `v` to determine which position `i` is at.

@@ -46,8 +46,9 @@ Statement (f : Fin 3 → Fin 2) : ∃ i j : Fin 3, i ≠ j ∧ f i = f j := by
   Hint "First, prove a helper: every element of `Fin 2` is `0` or `1`.
   Use `have classify : forall x : Fin 2, x = 0 or x = 1 := by ...`"
   Hint (hidden := true) "Inside the `have`, destructure:
-  `intro (v, hv); cases v with | zero => left; rfl | succ n => ...`
-  For `succ n`: `cases n with | zero => right; rfl | succ m => exact absurd hv (by omega)`"
+  `intro ⟨v, hv⟩; cases v with | zero | succ n`
+  For `zero`: `left; rfl`. For `succ n`: `cases n with | zero | succ m`.
+  For `zero`: `right; rfl`. For `succ m`: `exact absurd hv (by omega)`"
   have classify : ∀ x : Fin 2, x = 0 ∨ x = 1 := by
     intro ⟨v, hv⟩
     cases v with
@@ -69,9 +70,9 @@ Statement (f : Fin 3 → Fin 2) : ∃ i j : Fin 3, i ≠ j ∧ f i = f j := by
 
   Every branch ends the same way: `use i, j; constructor; intro h; cases h; rw [...]`.
 
-  Start: `cases h0 with | inl h0 => ... | inr h0 => ...`"
+  Start: `cases h0 with | inl h0 | inr h0`"
   Hint (hidden := true) "Inside each `h0` branch:
-  `cases h1 with | inl h1 => ... | inr h1 => ...`
+  `cases h1 with | inl h1 | inr h1`
 
   In matching-value branches (both 0 or both 1):
   `use 0, 1; constructor; intro h; cases h; rw [h0, h1]`

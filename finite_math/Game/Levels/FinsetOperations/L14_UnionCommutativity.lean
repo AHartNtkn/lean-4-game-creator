@@ -39,8 +39,8 @@ Statement (s t : Finset ℕ) : s ∪ t = t ∪ s := by
     then rebuild with the sides swapped using `left`/`right`.
     Use `intro h` then `cases h with` to split on which side holds."
     intro h
-    Hint (hidden := true) "`cases h with` gives `| inl hs => ...`
-    and `| inr ht => ...`. In the first case, choose `right`;
+    Hint (hidden := true) "`cases h with | inl hs | inr ht` splits
+    into two branches. In the first, choose `right`;
     in the second, choose `left`."
     cases h with
     | inl hs =>
@@ -70,7 +70,7 @@ and union (∨-swapping). Compare the two patterns:
 
 **Union commutativity** (this level):
 - After ext + rewrite: `x ∈ s ∨ x ∈ t ↔ x ∈ t ∨ x ∈ s`
-- Swap disjuncts: `intro h; cases h with | inl => right | inr => left`
+- Swap disjuncts: `intro h; cases h with | inl | inr` then `right`/`left`
 
 The key difference: conjunctions let you project (`.1`/`.2`), but
 disjunctions require case-splitting (`cases`) and rebuilding

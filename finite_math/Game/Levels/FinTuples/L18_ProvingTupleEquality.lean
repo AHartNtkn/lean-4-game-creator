@@ -37,7 +37,7 @@ Statement (f : Fin 3 → ℕ)
   Use `ext ⟨v, hv⟩` to introduce the index and
   reduce to `f ⟨v, hv⟩ = ![1, 4, 9] ⟨v, hv⟩`."
   ext ⟨v, hv⟩
-  Hint "Now case-split on `v` with `cases v with | zero => ... | succ n => ...`.
+  Hint "Now case-split on `v` with `cases v with | zero | succ n`.
   The `zero` case corresponds to index 0."
   cases v with
   | zero =>
@@ -45,7 +45,7 @@ Statement (f : Fin 3 → ℕ)
     You have `{h0} : f 0 = 1`. Use `exact h0`."
     exact h0
   | succ n =>
-    Hint (hidden := true) "Continue splitting: `cases n with | zero => ... | succ m => ...`"
+    Hint (hidden := true) "Continue splitting: `cases n with | zero | succ m`"
     cases n with
     | zero =>
       Hint (hidden := true) "The goal is `f 1 = 4`. Use `exact h1`."
@@ -67,12 +67,12 @@ a function from `Fin n` equals a specific tuple:
 
 ```
 ext ⟨v, hv⟩
-cases v with
-| zero => ...      -- handle index 0
-| succ n =>
-  cases n with
-  | zero => ...    -- handle index 1
-  | succ m => ...  -- handle index 2, etc.
+cases v with | zero | succ n
+-- in the zero branch: handle index 0
+-- in the succ branch:
+  cases n with | zero | succ m
+  -- zero: handle index 1
+  -- succ: handle index 2, etc.
 ```
 
 The impossible branch (where `v ≥ n`) is always closed by

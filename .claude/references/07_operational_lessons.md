@@ -81,6 +81,18 @@ lean4game course.
 
 ## lean4game server limitations
 
+- **Multi-line tactics with `=>` don't work for players**: The lean4game
+  interactive proof editor processes one tactic step at a time.
+  Structured `cases` branches using `=>` (e.g.,
+  `cases x with | mk v hlt =>`) are multi-line tactic blocks that
+  the editor cannot handle. Use the non-branching form instead:
+  - Single constructor: `cases x with | mk v hlt` (no `|`, no `=>`)
+  - Multiple constructors: `cases v with | zero | succ n` (no `=>`)
+  The non-branching form creates separate goals that the player handles
+  one at a time, which is exactly what the interactive editor expects.
+  Similarly, `obtain ⟨v, hlt⟩ := x` works for single-constructor types.
+  Never suggest or show `=>` syntax in hints, introductions, or
+  conclusions.
 - **`open scoped` doesn't work for players**: The game server's
   `RpcHandlers.lean` doesn't apply the level's saved scope to the
   interactive proof environment. `open scoped Pointwise` (or any scoped

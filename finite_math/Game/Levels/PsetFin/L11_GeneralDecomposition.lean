@@ -28,32 +28,32 @@ with `omega` and then case-split on it.
 /-- Every element of Fin (n+1) is either last or a castSucc image. -/
 Statement (n : ℕ) : ∀ i : Fin (n + 1), i = Fin.last n ∨ ∃ j : Fin n, i = j.castSucc := by
   Hint "Start with `intro i`, then destructure with
-  `cases i with | mk v hv =>`."
+  `cases i with | mk v hv`."
   intro i
   cases i with
   | mk v hv =>
-    Hint "Now `v < n + 1`. This means either `v < n` or `v = n`.
-    Create this disjunction: `have h : v < n or v = n := by omega`."
-    Hint (hidden := true) "`have h : v < n or v = n := by omega`"
-    have h : v < n ∨ v = n := by omega
-    Hint "Case-split on `h`: `cases h with | inl hlt => ... | inr heq => ...`"
-    cases h with
-    | inl hlt =>
-      Hint "Here `v < n`, so the element is a `castSucc` image.
-      Choose `right` and provide the witness."
-      Hint (hidden := true) "`right; use ⟨v, hlt⟩; ext; rw [Fin.val_castSucc]`"
-      right
-      use ⟨v, hlt⟩
-      ext
-      rw [Fin.val_castSucc]
-    | inr heq =>
-      Hint "Here `v = n`, so the element IS `Fin.last n`.
-      Choose `left` and prove the equality."
-      Hint (hidden := true) "`left; ext; rw [Fin.val_last]; exact heq`"
-      left
-      ext
-      rw [Fin.val_last]
-      exact heq
+  Hint "Now `v < n + 1`. This means either `v < n` or `v = n`.
+  Create this disjunction: `have h : v < n or v = n := by omega`."
+  Hint (hidden := true) "`have h : v < n or v = n := by omega`"
+  have h : v < n ∨ v = n := by omega
+  Hint "Case-split on `h`: `cases h with | inl hlt | inr heq`"
+  cases h with
+  | inl hlt =>
+    Hint "Here `v < n`, so the element is a `castSucc` image.
+    Choose `right` and provide the witness."
+    Hint (hidden := true) "`right; use ⟨v, hlt⟩; ext; rw [Fin.val_castSucc]`"
+    right
+    use ⟨v, hlt⟩
+    ext
+    rw [Fin.val_castSucc]
+  | inr heq =>
+    Hint "Here `v = n`, so the element IS `Fin.last n`.
+    Choose `left` and prove the equality."
+    Hint (hidden := true) "`left; ext; rw [Fin.val_last]; exact heq`"
+    left
+    ext
+    rw [Fin.val_last]
+    exact heq
 
 Conclusion "
 You've generalized the concrete decomposition to ALL `n`.

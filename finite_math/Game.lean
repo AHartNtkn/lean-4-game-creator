@@ -18,7 +18,6 @@ import Game.Levels.BigOpAlgebra
 import Game.Levels.FinsetInduction
 import Game.Levels.SummationFormulas
 import Game.Levels.PsetBigOp
-import Game.Levels.BinomialCoefficients
 
 Title "Finite Mathematics"
 Introduction
@@ -56,9 +55,5 @@ Dependency FinsetOperations → BigOpIntro → BigOpAlgebra → FinsetInduction 
 Dependency BigOpIntro → PsetBigOp
 Dependency BigOpAlgebra → PsetBigOp
 Dependency FinsetInduction → PsetBigOp
-
--- Phase 5: Combinatorics (cross-phase dependencies)
-Dependency FinsetInduction → BinomialCoefficients
-Dependency Cardinality → BinomialCoefficients
 
 MakeGame

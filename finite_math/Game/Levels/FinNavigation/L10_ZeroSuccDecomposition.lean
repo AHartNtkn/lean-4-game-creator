@@ -41,29 +41,29 @@ split on the value, handle each case.
 /-- Every element of Fin 3 is either 0 or a successor. -/
 Statement : ∀ i : Fin 3, i = 0 ∨ ∃ j : Fin 2, i = j.succ := by
   Hint "Start with `intro i`, then destructure:
-  `cases i with | mk v hv =>`."
+  `cases i with | mk v hv`."
   intro i
-  Hint (hidden := true) "`cases i with | mk v hv =>`"
+  Hint (hidden := true) "`cases i with | mk v hv`"
   cases i with
   | mk v hv =>
-    Hint "Now case-split on `v`: is the value `0` or `succ n`?"
-    Hint (hidden := true) "`cases v with | zero => ... | succ n => ...`"
-    cases v with
-    | zero =>
-      Hint "Here `v = 0`, so `i = 0`. Choose `left` and use `rfl`."
-      left
-      rfl
-    | succ n =>
-      Hint "Here `v = n + 1`, so `i = j.succ` where
-      `j = ⟨n, ...⟩ : Fin 2`. Choose `right`, provide the witness,
-      then prove the equality."
-      right
-      Hint (hidden := true) "`use ⟨n, by omega⟩`"
-      use ⟨n, by omega⟩
-      Hint (hidden := true) "Use `ext` to reduce to values,
-      then `rw [Fin.val_succ]`."
-      ext
-      rw [Fin.val_succ]
+  Hint "Now case-split on `v`: is the value `0` or `succ n`?"
+  Hint (hidden := true) "`cases v with | zero | succ n`"
+  cases v with
+  | zero =>
+    Hint "Here `v = 0`, so `i = 0`. Choose `left` and use `rfl`."
+    left
+    rfl
+  | succ n =>
+    Hint "Here `v = n + 1`, so `i = j.succ` where
+    `j = ⟨n, ...⟩ : Fin 2`. Choose `right`, provide the witness,
+    then prove the equality."
+    right
+    Hint (hidden := true) "`use ⟨n, by omega⟩`"
+    use ⟨n, by omega⟩
+    Hint (hidden := true) "Use `ext` to reduce to values,
+    then `rw [Fin.val_succ]`."
+    ext
+    rw [Fin.val_succ]
 
 Conclusion "
 You've proved the **0/succ decomposition**: every element of

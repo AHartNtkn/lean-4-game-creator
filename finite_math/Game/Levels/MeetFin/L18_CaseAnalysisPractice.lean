@@ -24,8 +24,8 @@ automation doesn't replace this understanding — it just lets you
 skip the mechanical parts once you've mastered them.
 
 The pattern is the same:
-1. **Destructure**: `cases x with | mk v hlt =>`
-2. **Case-split on `v`**: `cases v with | zero => ... | succ n => ...`
+1. **Destructure**: `cases x with | mk v hlt`
+2. **Case-split on `v`**: `cases v with | zero | succ n`
 3. **Nest further** as needed
 4. **Valid cases**: `left`/`right` + `rfl`
 5. **Impossible cases**: `exact absurd hlt (by omega)`
@@ -38,10 +38,10 @@ impossible case (`v ≥ 3`).
 
 /-- Every element of `Fin 3` is `0`, `1`, or `2`. -/
 Statement (x : Fin 3) : x = 0 ∨ x = 1 ∨ x = 2 := by
-  Hint "Start by destructuring: `cases x with | mk v hlt =>`"
+  Hint "Start by destructuring: `cases x with | mk v hlt`"
   cases x with
   | mk v hlt =>
-    Hint "Case-split on `v`: `cases v with | zero => ... | succ n => ...`"
+    Hint "Case-split on `v`: `cases v with | zero | succ n`"
     cases v with
     | zero =>
       Hint "Here `v = 0`. Choose the left disjunct: `left` then `rfl`."

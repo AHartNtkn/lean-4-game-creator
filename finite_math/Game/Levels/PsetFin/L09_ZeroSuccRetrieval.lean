@@ -21,22 +21,22 @@ on the value:
 /-- A nonzero Fin element is a successor image. -/
 Statement (i : Fin 4) (h : i ≠ 0) : ∃ j : Fin 3, i = j.succ := by
   Hint "Destructure `i` into its value and bound."
-  Hint (hidden := true) "`cases i with | mk v hv =>`"
+  Hint (hidden := true) "`cases i with | mk v hv`"
   cases i with
   | mk v hv =>
-    Hint "Case-split on `v`: is it zero or a successor?"
-    Hint (hidden := true) "`cases v with | zero => ... | succ n => ...`"
-    cases v with
-    | zero =>
-      Hint "Here `v = 0`, so `i = 0`. But `h` says `i /= 0`.
-      Use `exact absurd rfl h`."
-      exact absurd rfl h
-    | succ n =>
-      Hint "Here `v = n + 1`. Provide the preimage and prove equality."
-      Hint (hidden := true) "`use ⟨n, by omega⟩; ext; rw [Fin.val_succ]`"
-      use ⟨n, by omega⟩
-      ext
-      rw [Fin.val_succ]
+  Hint "Case-split on `v`: is it zero or a successor?"
+  Hint (hidden := true) "`cases v with | zero | succ n`"
+  cases v with
+  | zero =>
+    Hint "Here `v = 0`, so `i = 0`. But `h` says `i /= 0`.
+    Use `exact absurd rfl h`."
+    exact absurd rfl h
+  | succ n =>
+    Hint "Here `v = n + 1`. Provide the preimage and prove equality."
+    Hint (hidden := true) "`use ⟨n, by omega⟩; ext; rw [Fin.val_succ]`"
+    use ⟨n, by omega⟩
+    ext
+    rw [Fin.val_succ]
 
 Conclusion "
 This is the 0/succ decomposition in applied form: if an element

@@ -92,7 +92,7 @@ Here's everything in your toolkit:
 
 **Inequality**: `intro h; cases h` (literals), `rw [Fin.ext_iff] at h; omega` (general)
 
-**Case analysis**: `cases x with | mk v hv =>` + nested `cases v`
+**Case analysis**: `cases x with | mk v hv` + nested `cases v`
 
 **Reconstruction**: `Fin.cons_self_tail.symm` (front), `vecSnoc_self_init.symm` (back)
 

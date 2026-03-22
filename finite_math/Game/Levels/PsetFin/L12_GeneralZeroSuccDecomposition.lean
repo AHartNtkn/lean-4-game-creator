@@ -28,25 +28,25 @@ The proof mirrors L11's structure: instead of splitting on
 /-- Every element of Fin (n+1) is either 0 or a successor. -/
 Statement (n : ℕ) : ∀ i : Fin (n + 1), i = 0 ∨ ∃ j : Fin n, i = j.succ := by
   Hint "Start with `intro i`, then destructure with
-  `cases i with | mk v hv =>`."
+  `cases i with | mk v hv`."
   intro i
   cases i with
   | mk v hv =>
-    Hint "Now case-split on `v` itself: `cases v with | zero => ... | succ m => ...`"
-    cases v with
-    | zero =>
-      Hint "Here `v = 0`, so `i = 0`. Choose `left` and use `rfl`."
-      Hint (hidden := true) "`left; rfl`"
-      left
-      rfl
-    | succ m =>
-      Hint "Here `v = m + 1`, so `i = j.succ` where `j = ⟨m, ...⟩ : Fin n`.
-      Choose `right`, provide the witness, then prove via `ext` + `Fin.val_succ`."
-      Hint (hidden := true) "`right; use ⟨m, by omega⟩; ext; rw [Fin.val_succ]`"
-      right
-      use ⟨m, by omega⟩
-      ext
-      rw [Fin.val_succ]
+  Hint "Now case-split on `v` itself: `cases v with | zero | succ m`"
+  cases v with
+  | zero =>
+    Hint "Here `v = 0`, so `i = 0`. Choose `left` and use `rfl`."
+    Hint (hidden := true) "`left; rfl`"
+    left
+    rfl
+  | succ m =>
+    Hint "Here `v = m + 1`, so `i = j.succ` where `j = ⟨m, ...⟩ : Fin n`.
+    Choose `right`, provide the witness, then prove via `ext` + `Fin.val_succ`."
+    Hint (hidden := true) "`right; use ⟨m, by omega⟩; ext; rw [Fin.val_succ]`"
+    right
+    use ⟨m, by omega⟩
+    ext
+    rw [Fin.val_succ]
 
 Conclusion "
 You've completed the **dual** of Level 11:

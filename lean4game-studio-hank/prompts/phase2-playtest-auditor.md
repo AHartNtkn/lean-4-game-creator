@@ -53,6 +53,7 @@ Red flags:
 - **Elaborate one-liners**: multi-line expressions that must be typed entirely before feedback → P1
 - **No intermediate feedback**: refine that adds invisible metavariables → P2
 - **Opaque goals**: set-membership `x ∈ {g | P g}` instead of concrete predicate → P2
+- **Multi-line `=>` tactics in player-facing text**: Hints, introductions, or conclusions that suggest `cases x with | mk v hlt =>` or `cases v with | zero => ... | succ n => ...`. The `=>` syntax creates multi-line tactic blocks that do not work in lean4game's interactive editor. Correct forms: `cases x with | mk v hlt` (single constructor) or `cases v with | zero | succ n` (multiple constructors) — no `=>` → P0
 
 ### 2. Coverage sanity
 

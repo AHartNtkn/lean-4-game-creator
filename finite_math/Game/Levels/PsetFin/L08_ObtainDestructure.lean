@@ -47,7 +47,7 @@ Conclusion "
 working with existential hypotheses in Lean.
 
 Compare with what you already know:
-- `cases h with | intro j hj =>` — also works, but more verbose
+- `cases h with intro j hj` — also works, but more verbose
 - `obtain ⟨j, hj⟩ := h` — cleaner, preferred in practice
 
 The pattern:

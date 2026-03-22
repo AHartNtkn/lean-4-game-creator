@@ -49,7 +49,7 @@ Statement (s t : Finset ℕ) : s \ t ∪ s ∩ t = s := by
   -- Forward: (x ∈ s ∧ x ∉ t) ∨ (x ∈ s ∧ x ∈ t) → x ∈ s
   · Hint "Both sides of the `∨` contain `x ∈ s` as the first
     component. Case-split on `h` and use `.1` in both cases."
-    Hint (hidden := true) "`intro h; cases h with | inl h => exact h.1 | inr h => exact h.1`"
+    Hint (hidden := true) "`intro h; cases h with | inl h | inr h` then `exact h.1` in both branches."
     intro h
     cases h with
     | inl h => exact h.1
