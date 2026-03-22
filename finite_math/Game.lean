@@ -24,6 +24,7 @@ import Game.Levels.BinomialTheorem
 import Game.Levels.PascalsTriangle
 import Game.Levels.PsetCombinatorics
 import Game.Levels.Products
+import Game.Levels.Finsupp
 
 Title "Finite Mathematics"
 Introduction
@@ -73,6 +74,7 @@ Dependency BinomialTheorem → PascalsTriangle
 -- Phase 6: Advanced
 Dependency Cardinality → Products
 Dependency SummationFormulas → Products
+Dependency Fintype → Finsupp
 
 -- Phase 5 Pset: Combinatorics
 Dependency BinomialCoefficients → PsetCombinatorics

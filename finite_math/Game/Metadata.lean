@@ -19,6 +19,7 @@ import Mathlib.Data.Nat.Choose.Basic
 import Mathlib.Data.Nat.Choose.Sum
 import Mathlib.Data.Nat.Choose.Vandermonde
 import Mathlib.Data.Finset.Powerset
+import Mathlib.Algebra.Group.Finsupp
 
 /-- The binomial theorem for natural numbers, without Nat.cast coercion.
 
@@ -295,6 +296,21 @@ simultaneously.
 Disabled for the same reason as `simp`.
 -/
 TacticDoc simp_all
+
+/-- `omega` solves linear arithmetic goals over `ℕ` and `ℤ`.
+It handles equalities, inequalities, and disequalities involving
+addition, subtraction, and multiplication by literals.
+
+## Syntax
+```
+omega
+```
+
+## When to use it
+When the goal is a concrete numeric fact like `5 ≠ 3`, `3 + 4 = 7`,
+or `n < n + 1`.
+-/
+TacticDoc omega
 
 /-- `by_cases h : P` splits the goal into two cases: one where `h : P`
 holds and one where `h : ¬P` holds.
@@ -1501,3 +1517,56 @@ TheoremDoc Finset.product_subset_product_left as "Finset.product_subset_product_
 from `t ⊆ t'`.
 -/
 TheoremDoc Finset.product_subset_product_right as "Finset.product_subset_product_right" in "Product"
+
+/-! ### Finsupp theorems disabled in level files -/
+
+/-- `Finsupp.single_apply` is the unified evaluation lemma:
+
+`Finsupp.single_apply : Finsupp.single a b a' = if a = a' then b else 0`
+
+## Syntax
+```
+rw [Finsupp.single_apply]
+```
+
+## Relationship to other lemmas
+- `single_eq_same` is `single_apply` with `a' = a` (the `if` is true)
+- `single_eq_of_ne` is `single_apply` with `a' ≠ a` (the `if` is false)
+
+## When to use it
+When you want to expose the `if-then-else` structure of a `single`
+evaluation. In most cases, `single_eq_same` or `single_eq_of_ne`
+are more convenient.
+
+In this world, `single_apply` is disabled in most levels to encourage
+you to reason about each case explicitly using the specialized lemmas.
+-/
+TheoremDoc Finsupp.single_apply as "Finsupp.single_apply" in "Finsupp"
+
+/-- `Finsupp.single_add` says that a single with a summed value
+equals the sum of two singles:
+
+`Finsupp.single_add : Finsupp.single a (b₁ + b₂) = Finsupp.single a b₁ + Finsupp.single a b₂`
+
+## Syntax
+```
+rw [Finsupp.single_add]         -- expand one single into a sum
+rw [← Finsupp.single_add]      -- combine two singles into one
+```
+
+## When to use it
+- **Forward** (`rw [single_add]`): when you want to expand
+  `single a (b₁ + b₂)` into a sum of two singles.
+- **Backward** (`rw [← single_add]`): when you want to combine
+  `single a b₁ + single a b₂` into a single with summed value.
+  This is the more common direction.
+
+## Warning
+Both singles must have the **same** first argument `a`.
+This lemma does not apply to singles at different positions.
+
+In this world, `single_add` is disabled in levels that teach pointwise
+evaluation, so you learn to compute values manually before using the
+algebraic shortcut.
+-/
+TheoremDoc Finsupp.single_add as "Finsupp.single_add" in "Finsupp"

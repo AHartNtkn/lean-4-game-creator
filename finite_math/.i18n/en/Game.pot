@@ -156,6 +156,46 @@ msgstr ""
 msgid "Any finset of Fin 4 has at most 4 elements."
 msgstr ""
 
+#. §0: `Finsupp.single a b`
+#. §1: `b`
+#. §2: `b ≠ 0`
+#. §3: `a`
+#. §4: `b = 0`
+#. §5: `Finset`
+#. §6: `Finset`
+#. §7: `Finset.sum`
+#. §8: `α → M`
+#. §9: `Finset`
+#. §10: `Finsupp`
+#. §11: `apply Finsupp.support_single_ne_zero`
+#. §12: `omega`
+#. §13: `b ≠ 0`
+#: Game.Levels.Finsupp.L03_SupportSingle
+msgid "The support of §0 is determined by whether §1 is\n"
+"zero:\n"
+"- If §2: the support is the singleton containing §3\n"
+"- If §4: the support is empty (next level)\n"
+"\n"
+"Since the support is a §5, all the tools you learned in the\n"
+"Finset worlds — membership, operations, cardinality — apply to\n"
+"supports of finitely supported functions.\n"
+"\n"
+"Why does Lean bundle the support as explicit data rather than just\n"
+"defining it as the set of nonzero values? Because a §6 can be\n"
+"computably iterated over. This is what makes operations like\n"
+"§7 over the support possible — you need to know\n"
+"*which* elements to sum, and the bundled support tells you.\n"
+"\n"
+"A plain function §8 with a side proof that it has finite support\n"
+"would let you *reason* about finiteness, but you could not *compute*\n"
+"with it — you would not be able to enumerate the nonzero positions,\n"
+"sum over them, or count them. Bundling the support as a §9\n"
+"makes §10 a computational object, not just a logical one.\n"
+"\n"
+"**Pattern**: §11 then §12\n"
+"to discharge the §13 side condition."
+msgstr ""
+
 #. §0: `h : s ⊆ t`
 #: Game.Levels.Powerset.L05_MemberImpliesSubset
 #: Game.Levels.Powerset.L07_PowersetMonoConverse
@@ -396,6 +436,14 @@ msgstr ""
 msgid "A Three-Element Sum"
 msgstr ""
 
+#. §0: `rw [Finsupp.support_single_ne_zero 3 (show (7 : ℕ) ≠ 0 by omega)]`
+#. §1: `singleton 3`
+#: Game.Levels.Finsupp.L15_SummingOverSupport
+msgid "Try\n"
+"§0.\n"
+"This rewrites the support to §1."
+msgstr ""
+
 #. §0: `s \\ t`
 #. §1: `s`
 #. §2: `t`
@@ -469,6 +517,11 @@ msgstr ""
 #. §0: `have h2 := j.isLt`
 #: Game.Levels.MeetFin.L04_ConstructionAndExtraction
 msgid "Extract the second bound: §0."
+msgstr ""
+
+#. §0: `single_apply`
+#: Game.Levels.Finsupp.L07_SingleApply
+msgid "Evaluate using the unified §0 lemma."
 msgstr ""
 
 #: Game.Levels.MeetFin.L08_TransferringBounds
@@ -602,6 +655,12 @@ msgstr ""
 #. §0: `5 ∈ t`
 #: Game.Levels.Products.L01_ProductMembership
 msgid "Prove §0."
+msgstr ""
+
+#. §0: `rw [Finsupp.single_zero]`
+#: Game.Levels.Finsupp.L16_SupportCoaching
+msgid "Try §0. The\n"
+"support of the zero function is empty by definition."
 msgstr ""
 
 #. §0: `rw [Fintype.card_embedding_eq]`
@@ -1153,6 +1212,44 @@ msgstr ""
 #. §3: `2`
 #: Game.Levels.MeetFin.L18_CaseAnalysisPractice
 msgid "Every element of §0 is §1, §2, or §3."
+msgstr ""
+
+#. §0: `5`
+#: Game.Levels.Finsupp.L17_Boss
+msgid "**Part 1**: Prove §0 is in the support. Convert support\n"
+"membership to a statement about the function value."
+msgstr ""
+
+#. §0: `Finsupp.single 3 7`
+#. §1: `{3}`
+#. §2: `7`
+#. §3: `∑ a ∈ f.support, f a`
+#. §4: `f`
+#. §5: `support_single_ne_zero`
+#. §6: `Finset.sum_singleton`
+#. §7: `single_eq_same`
+#. §8: `Finsupp.single 3 7`
+#: Game.Levels.Finsupp.L15_SummingOverSupport
+msgid "# Connecting Finsupp to Big Operators\n"
+"\n"
+"Every finitely supported function can be decomposed as a sum over its\n"
+"support. For §0, the support is §1, and summing\n"
+"the function values over this singleton gives §2.\n"
+"\n"
+"This connects finitely supported functions back to the big operator\n"
+"machinery from earlier worlds. The key idea:\n"
+"\n"
+"§3\n"
+"\n"
+"computes the **total mass** of §4 — the sum of all its nonzero values.\n"
+"For a single, this is just the value at the one nonzero point.\n"
+"\n"
+"To evaluate this sum, you will:\n"
+"1. Compute the support using §5\n"
+"2. Simplify the sum over a singleton using §6\n"
+"3. Evaluate the function at the support point using §7\n"
+"\n"
+"**Your task**: Compute the total mass of §8."
 msgstr ""
 
 #: Game.Levels.FinsetImage.L07_ImageComposition
@@ -1871,6 +1968,13 @@ msgid "Unfold the square using §0: converts §1\n"
 "to §2."
 msgstr ""
 
+#. §0: `9`
+#. §1: `3`
+#: Game.Levels.Finsupp.L16_SupportCoaching
+msgid "The second single has support point §0, not §1.\n"
+"Establish the inequality."
+msgstr ""
+
 #: Game.Levels.FinsetImage.L19_CardPreservationConverse
 msgid "Size Preservation Implies Injectivity"
 msgstr ""
@@ -1899,6 +2003,15 @@ msgstr ""
 #. §0: `rw [Finset.sum_singleton]`
 #: Game.Levels.BigOpIntro.L04_TwoElementSum
 msgid "Use §0 to evaluate the singleton sum."
+msgstr ""
+
+#. §0: `rw [Finsupp.single_zero]`
+#. §1: `Finsupp.single 3 0`
+#. §2: `0`
+#: Game.Levels.Finsupp.L04_SingleZero
+msgid "Try §0. This\n"
+"rewrites §1 to §2, and the support of zero\n"
+"is empty by definition."
 msgstr ""
 
 #: Game.Levels.CountingTypes
@@ -2722,6 +2835,31 @@ msgid "Use §0 to replace §1\n"
 "with §2, then §3 to evaluate."
 msgstr ""
 
+#. §0: `∑ a ∈ f.support, f a = 7`
+#. §1: `f = single 3 7`
+#. §2: `Finsupp.sum f g`
+#. §3: `∑ a ∈ f.support, g a (f a)`
+#. §4: `f.sum Finsupp.single = f`
+#: Game.Levels.Finsupp.L15_SummingOverSupport
+msgid "You just computed §0 for §1.\n"
+"This is the total mass of the function — the sum of all nonzero values.\n"
+"\n"
+"The pattern — compute support, simplify the Finset sum, evaluate —\n"
+"connects three ideas:\n"
+"- **Finsupp.support** (from this world) tells you *where* the function\n"
+"  is nonzero\n"
+"- **Finset.sum** (from BigOp worlds) sums over a finite set\n"
+"- **Evaluation lemmas** (single_eq_same, single_eq_of_ne) compute the\n"
+"  function values\n"
+"\n"
+"In Mathlib, the operation §2 computes\n"
+"§3. The decomposition theorem\n"
+"§4 says every finitely supported function\n"
+"equals the sum of its singles — this is the formal version of writing\n"
+"a polynomial as a sum of monomials, or a vector as a sum of basis\n"
+"vectors scaled by coordinates."
+msgstr ""
+
 #. §0: `(l₁ ++ l₂).length = 7`
 #. §1: `List.length_append`
 #: Game.Levels.AbstractionLadder.L22_DescentPayoff
@@ -2759,6 +2897,17 @@ msgstr ""
 
 #: Game.Levels.BinomialTheorem.L07_RewritingHypotheses
 msgid "Simplify a sum inside a hypothesis using the have + sum_congr pattern."
+msgstr ""
+
+#. §0: `(if 3 = 5 then 7 else 0) = 0`
+#. §1: `3 ≠ 5`
+#. §2: `have`
+#. §3: `if_neg`
+#. §4: `if`
+#: Game.Levels.Finsupp.L07_SingleApply
+msgid "The goal is now §0. Since\n"
+"§1, the condition is false. Create a proof with §2 and\n"
+"then use §3 to resolve the §4."
 msgstr ""
 
 #. §0: `«{h}»`
@@ -3223,6 +3372,10 @@ msgstr ""
 msgid "Part 2: prove succ is injective. Start with §0."
 msgstr ""
 
+#: Game.Levels.Finsupp.L15_SummingOverSupport
+msgid "Now evaluate the single at its support point."
+msgstr ""
+
 #. §0: `use ⟨1, by omega⟩`
 #. §1: `rw [hf]`
 #. §2: `4`
@@ -3360,6 +3513,14 @@ msgstr ""
 
 #: Game.Levels.FinsetImage.L21_CountingProvesInjectivity
 msgid "Counting proves injectivity: n ↦ n² + 1 is injective on {0, 1, 2}."
+msgstr ""
+
+#. §0: `Finsupp.single 8 1`
+#. §1: `8`
+#. §2: `5`
+#: Game.Levels.Finsupp.L17_Boss
+msgid "The second single, §0, has support point\n"
+"§1, not §2. Establish the inequality."
 msgstr ""
 
 #. §0: `sum_empty`
@@ -3634,6 +3795,13 @@ msgid "Now §0. The goal is §1.\n"
 "subtracted set is a subset."
 msgstr ""
 
+#. §0: `Finsupp.single 3 0`
+#. §1: `Finsupp.single_zero`
+#: Game.Levels.Finsupp.L04_SingleZero
+msgid "First, recognize that §0 IS the zero\n"
+"function. Rewrite with §1 to replace it."
+msgstr ""
+
 #. §0: $s \\cap t = \\varnothing$
 #. §1: `ext`
 #. §2: $\\varnothing$
@@ -3760,6 +3928,26 @@ msgstr ""
 
 #: Game.Levels.SummationFormulas.L14_Boss
 msgid "Boss: The Factorial Sum Identity"
+msgstr ""
+
+#. §0: `Finsupp.single a b`
+#. §1: `b`
+#. §2: `a`
+#. §3: `Finsupp.single_eq_same`
+#. §4: `Finsupp.single a b a`
+#. §5: `Finsupp.single_eq_same`
+#. §6: `b`
+#: Game.Levels.Finsupp.L01_SingleEqSame
+msgid "§0 is the fundamental building block of finitely\n"
+"supported functions — a function with a single nonzero value §1 at\n"
+"position §2. The lemma §3 evaluates it at\n"
+"the support point.\n"
+"\n"
+"**Pattern**: When you see §4 in the goal, rewrite\n"
+"with §5 to replace it with §6.\n"
+"\n"
+"In the next level, you'll see what happens when you evaluate at a\n"
+"*different* position."
 msgstr ""
 
 #. §0: `rw [Finset.sum_empty]`
@@ -4062,12 +4250,26 @@ msgid "One step: §0.\n"
 "§11"
 msgstr ""
 
+#. §0: `a ≠ 3`
+#. §1: `3`
+#. §2: `a`
+#. §3: `0`
+#: Game.Levels.Finsupp.L13_Extensionality
+msgid "In this branch, §0. All three singles have support point\n"
+"§1, so evaluating at §2 gives §3 for each."
+msgstr ""
+
 #. §0: `ht : t ⊆ s ∧ t.card = 2`
 #. §1: `t ∈ s.powerset`
 #. §2: `mem_powerset`
 #: Game.Levels.Powerset.L16_PowersetCardExtract
 msgid "Now §0. The goal is §1.\n"
 "Rewrite the goal to a subset claim using §2."
+msgstr ""
+
+#: Game.Levels.Finsupp.L16_SupportCoaching
+#: Game.Levels.Finsupp.L17_Boss
+msgid "The goal is now a concrete arithmetic inequality."
 msgstr ""
 
 #. §0: $\\prod_{i=0}^{n-1} 2 = 2^n$
@@ -4373,6 +4575,13 @@ msgid "Here §0 but §1 says §2.\n"
 "Impossible: §3."
 msgstr ""
 
+#. §0: `(Finsupp.single 8 7).support = ...`
+#. §1: `support_single_ne_zero`
+#: Game.Levels.Finsupp.L17_Boss
+msgid "Now the goal is §0.\n"
+"Use §1."
+msgstr ""
+
 #. §0: `h : x ∈ {1, 2, 3}`
 #. §1: `x`
 #. §2: `{1, 2, 3} = insert 1 (insert 2 {3})`
@@ -4560,6 +4769,36 @@ msgstr ""
 
 #: Game.Levels.PsetCardinality.L03_ConverseInclusionExclusion
 msgid "Converse Inclusion-Exclusion"
+msgstr ""
+
+#. §0: `single 7 0`
+#. §1: `single_zero`
+#: Game.Levels.Finsupp.L16_SupportCoaching
+msgid "**Part 2**: The single §0 has value zero, so it\n"
+"IS the zero function. Rewrite with §1."
+msgstr ""
+
+#. §0: `if_neg`
+#. §1: `if_neg (h : ¬P) : (if P then a else b) = b`
+#. §2: ```
+#. rw [if_neg h]   -- when h proves ¬P (i.e., the condition is false)
+#. ```
+#. §3: `if P then a else b`
+#. §4: `h : ¬P`
+#. §5: `have h : ... := by omega`
+#. §6: `h`
+#: Game.Levels.Finsupp.L07_SingleApply
+msgid "§0 resolves a conditional expression when the condition is false:\n"
+"\n"
+"§1\n"
+"\n"
+"## Syntax\n"
+"§2\n"
+"\n"
+"## When to use it\n"
+"When the goal contains §3 and you have a proof\n"
+"§4. Use §5 to manufacture §6 when\n"
+"needed."
 msgstr ""
 
 #. §0: `Fin`
@@ -4776,6 +5015,19 @@ msgstr ""
 msgid "Now §0 says these §1 elements are equal. But their\n"
 "underlying values are §2 and §3 — different natural numbers.\n"
 "§4 performs injection and sees the contradiction."
+msgstr ""
+
+#. §0: `← Finsupp.single_add`
+#. §1: `single a b₁ + single a b₂`
+#. §2: `single a (b₁ + b₂)`
+#: Game.Levels.Finsupp.L11_Cancellation
+msgid "Combine the two singles into one using a backward rewrite.\n"
+"The lemma §0 replaces\n"
+"§1 with §2."
+msgstr ""
+
+#: Game.Levels.Finsupp.L10_SingleAddAlgebra
+msgid "Two singles at the same point combine into one."
 msgstr ""
 
 #. §0: `Finset.mem_insert`
@@ -5349,6 +5601,31 @@ msgid "# Constant Products: ∏ c = c ^ card\n"
 "\n"
 "**Your task**: Split §12 using §13, then\n"
 "simplify the constant part with §14."
+msgstr ""
+
+#. §0: `Finsupp.mem_support_iff`
+#. §1: `Finsupp.mem_support_iff : a ∈ f.support ↔ f a ≠ 0`
+#. §2: ```
+#. rw [Finsupp.mem_support_iff]       -- in the goal
+#. rw [Finsupp.mem_support_iff] at h  -- in a hypothesis
+#. ```
+#. §3: `↔`
+#. §4: `5 ∈ f.support`
+#. §5: `f 5 ≠ 0`
+#: Game.Levels.Finsupp.L05_MemSupportIff
+msgid "§0 characterizes support membership:\n"
+"\n"
+"§1\n"
+"\n"
+"## Syntax\n"
+"§2\n"
+"\n"
+"## When to use it\n"
+"When you need to connect support membership with function values.\n"
+"Works in both directions since it's an §3.\n"
+"\n"
+"## Example\n"
+"If the goal is §4, rewriting gives §5."
 msgstr ""
 
 #. §0: `rw [Finset.sum_const]`
@@ -6018,6 +6295,10 @@ msgstr ""
 msgid "Peel the next layer: §0."
 msgstr ""
 
+#: Game.Levels.Finsupp.L02_SingleEqOfNe
+msgid "Away from the Peak"
+msgstr ""
+
 #. §0: `Finset.mem_antidiagonal`
 #. §1: `p ∈ Finset.antidiagonal n ↔ p.1 + p.2 = n`
 #. §2: ```
@@ -6619,6 +6900,13 @@ msgstr ""
 
 #: Game.Levels.FinsetImage.L06_ImageUnionEquality
 msgid "Same pattern for the right side."
+msgstr ""
+
+#. §0: `Finsupp.single 5 4`
+#. §1: `5`
+#: Game.Levels.Finsupp.L17_Boss
+msgid "The third single, §0, has support point\n"
+"§1 — another match. Values accumulate."
 msgstr ""
 
 #. §0: `calc`
@@ -7259,6 +7547,14 @@ msgstr ""
 msgid "Gauss Meets Pascal"
 msgstr ""
 
+#. §0: `x`
+#. §1: `Finsupp.support_add`
+#: Game.Levels.Finsupp.L16_SupportCoaching
+msgid "**Part 4**: Given §0 in the support of a sum, show it\n"
+"is in the union of the individual supports. This is exactly\n"
+"what §1 gives you."
+msgstr ""
+
 #. §0: `∑ x ∈ s, 3`
 #. §1: `rw [Finset.sum_const]`
 #. §2: `s.card • 3`
@@ -7340,6 +7636,43 @@ msgstr ""
 msgid "§0 proves §1 when §2.\n"
 "\n"
 "Disabled to prevent shortcutting the capstone proof."
+msgstr ""
+
+#. §0: `Finsupp.single_add`
+#. §1: `Finsupp.single_add : Finsupp.single a (b₁ + b₂) = Finsupp.single a b₁ + Finsupp.single a b₂`
+#. §2: ```
+#. rw [Finsupp.single_add]         -- expand one single into a sum
+#. rw [← Finsupp.single_add]      -- combine two singles into one
+#. ```
+#. §3: `rw [single_add]`
+#. §4: `single a (b₁ + b₂)`
+#. §5: `rw [← single_add]`
+#. §6: `single a b₁ + single a b₂`
+#. §7: `a`
+#. §8: `single_add`
+#: Game.Metadata
+msgid "§0 says that a single with a summed value\n"
+"equals the sum of two singles:\n"
+"\n"
+"§1\n"
+"\n"
+"## Syntax\n"
+"§2\n"
+"\n"
+"## When to use it\n"
+"- **Forward** (§3): when you want to expand\n"
+"  §4 into a sum of two singles.\n"
+"- **Backward** (§5): when you want to combine\n"
+"  §6 into a single with summed value.\n"
+"  This is the more common direction.\n"
+"\n"
+"## Warning\n"
+"Both singles must have the **same** first argument §7.\n"
+"This lemma does not apply to singles at different positions.\n"
+"\n"
+"In this world, §8 is disabled in levels that teach pointwise\n"
+"evaluation, so you learn to compute values manually before using the\n"
+"algebraic shortcut."
 msgstr ""
 
 #. §0: `have h2 : ∑ p ∈ Finset.antidiagonal n, Nat.choose n p.2 = 2 ^ n := by`
@@ -8301,6 +8634,28 @@ msgid "In the §0 case (§1): §2.\n"
 "If §8: §9."
 msgstr ""
 
+#. §0: `omega`
+#. §1: `ℕ`
+#. §2: `ℤ`
+#. §3: ```
+#. omega
+#. ```
+#. §4: `5 ≠ 3`
+#. §5: `3 + 4 = 7`
+#. §6: `n < n + 1`
+#: Game.Metadata
+msgid "§0 solves linear arithmetic goals over §1 and §2.\n"
+"It handles equalities, inequalities, and disequalities involving\n"
+"addition, subtraction, and multiplication by literals.\n"
+"\n"
+"## Syntax\n"
+"§3\n"
+"\n"
+"## When to use it\n"
+"When the goal is a concrete numeric fact like §4, §5,\n"
+"or §6."
+msgstr ""
+
 #. §0: `Fin.cons a f 0 = a`
 #. §1: `Fin.cons a f i.succ = f i`
 #. §2: `Fin.cons_val_zero`
@@ -8549,6 +8904,14 @@ msgid "Now you have §0 and\n"
 "§1. Chain them with §2."
 msgstr ""
 
+#. §0: `5`
+#. §1: `8`
+#. §2: `h`
+#: Game.Levels.Finsupp.L17_Boss
+msgid "The third single also has support point §0, not §1.\n"
+"You can reuse the same inequality proof §2."
+msgstr ""
+
 #: Game.Levels.PsetCombinatorics
 msgid "Problem Set: Combinatorics"
 msgstr ""
@@ -8565,12 +8928,6 @@ msgid "§0 is the §1 variant of\n"
 "§2 — requires injectivity only on the relevant sets."
 msgstr ""
 
-#. §0: `sdiff_le_iff'`
-#. §1: `a \\ b ≤ c ↔ a ≤ c ⊔ b`
-#: Game.Levels.PsetFinset.L05_UnionComplement
-msgid "§0 is the commuted form: §1."
-msgstr ""
-
 #. §0: `h`
 #. §1: `1^m * 1^(n-m) * choose n m`
 #. §2: `choose n m`
@@ -8583,6 +8940,44 @@ msgid "The sum in §0 has unsimplified terms: §1.\n"
 "\n"
 "Start by declaring the pointwise simplification:\n"
 "§4"
+msgstr ""
+
+#. §0: `sdiff_le_iff'`
+#. §1: `a \\ b ≤ c ↔ a ≤ c ⊔ b`
+#: Game.Levels.PsetFinset.L05_UnionComplement
+msgid "§0 is the commuted form: §1."
+msgstr ""
+
+#. §0: `Finsupp.add_apply`
+#. §1: `Finsupp.add_apply : (f + g) a = f a + g a`
+#. §2: ```
+#. rw [Finsupp.add_apply]
+#. ```
+#. §3: `(f + g) a`
+#. §4: `f`
+#. §5: `g`
+#. §6: `f`
+#. §7: `g`
+#. §8: `rw [Finsupp.add_apply]`
+#. §9: `(Finsupp.single 1 3 + Finsupp.single 2 5) 1 = 3`
+#. §10: `Finsupp.single 1 3 1 + Finsupp.single 2 5 1 = 3`
+#: Game.Levels.Finsupp.L08_PointwiseAddition
+msgid "§0 decomposes pointwise addition:\n"
+"\n"
+"§1\n"
+"\n"
+"## Syntax\n"
+"§2\n"
+"\n"
+"## When to use it\n"
+"When the goal contains §3 for finitely supported functions\n"
+"§4 and §5. Rewriting splits the evaluation into separate evaluations\n"
+"of §6 and §7.\n"
+"\n"
+"## Example\n"
+"§8 on\n"
+"§9\n"
+"gives §10."
 msgstr ""
 
 #: Game.Levels.BinomialTheorem.L04_PowersOfOne
@@ -9382,6 +9777,10 @@ msgid "Good — both sides are now sums over the same range. The LHS\n"
 "equal for each §3."
 msgstr ""
 
+#: Game.Levels.Finsupp.L06_MemSupportIffReverse
+msgid "The Other Direction"
+msgstr ""
+
 #: Game.Levels.FinsetOperations.L23_Distributivity
 msgid "Distributivity"
 msgstr ""
@@ -9532,6 +9931,46 @@ msgstr ""
 msgid "Producing an Equiv"
 msgstr ""
 
+#. §0: `single_add`
+#: Game.Levels.Finsupp.L12_SingleAddIntegration
+msgid "First, combine the two singles into one using a backward\n"
+"rewrite with §0."
+msgstr ""
+
+#. §0: `single a b`
+#. §1: `single a (-b)`
+#. §2: `a`
+#. §3: `b`
+#. §4: `-b`
+#. §5: `a`
+#. §6: `α →₀ ℤ`
+#. §7: `5x⁴ + (-5)x⁴ = 0`
+#. §8: `← Finsupp.single_add`
+#. §9: `Finsupp.single_zero`
+#. §10: `single a 0`
+#. §11: `single 4 5 + single 4 (-5) = 0`
+#. §12: `ℕ →₀ ℤ`
+#: Game.Levels.Finsupp.L11_Cancellation
+msgid "# Why Integer Values Matter\n"
+"\n"
+"In Level 9 you saw that integer-valued Finsupp functions allow\n"
+"negative coefficients. Now you will see the most important\n"
+"consequence: **cancellation**.\n"
+"\n"
+"If you add §0 and §1, the values at position\n"
+"§2 are §3 and §4, which sum to zero. The entire function becomes\n"
+"zero — not just at §5, but as an element of §6.\n"
+"\n"
+"In polynomial language, this is the fact that §7:\n"
+"a monomial plus its negation cancels completely.\n"
+"\n"
+"You will use two lemmas you already know:\n"
+"1. §8 to combine the two singles\n"
+"2. §9 to recognize §10 as the zero function\n"
+"\n"
+"**Your task**: Prove that §11 in §12."
+msgstr ""
+
 #. §0: `Fin n`
 #. §1: $\\{0, 1, \\ldots, n-1\\}$
 #. §2: $\\{0, 1, \\ldots, n\\}$
@@ -9596,6 +10035,10 @@ msgstr ""
 
 #: GameServer.RpcHandlers
 msgid "intermediate goal solved! 🎉"
+msgstr ""
+
+#: Game.Levels.Finsupp.L16_SupportCoaching
+msgid "Practice support reasoning with evaluation and support_add."
 msgstr ""
 
 #. §0: `2 ≠ 5`
@@ -10345,6 +10788,39 @@ msgstr ""
 msgid "Boss: De Morgan's Second Law"
 msgstr ""
 
+#: Game.Levels.Finsupp.L17_Boss
+msgid "Prove support membership, evaluation, support computation, algebraic combination, and support bound."
+msgstr ""
+
+#. §0: `Finsupp.support_add`
+#. §1: `f`
+#. §2: `g`
+#. §3: `x`
+#. §4: `f.support ∪ g.support`
+#. §5: `x`
+#. §6: `(f + g).support`
+#. §7: `(f + g) x = 0`
+#. §8: `single a b + single a (-b)`
+#. §9: `a`
+#. §10: `support_single_ne_zero`
+#: Game.Levels.Finsupp.L14_SupportOfSum
+msgid "§0 bounds the support of a sum by the union of\n"
+"the individual supports. This is useful in two ways:\n"
+"\n"
+"1. **Upper bound**: If you know the supports of §1 and §2, you\n"
+"   know which points the sum *could* be nonzero at.\n"
+"2. **Contrapositive**: If §3 is NOT in §4,\n"
+"   then §5 is NOT in §6 — so §7.\n"
+"\n"
+"The containment can be strict: §8 has\n"
+"empty support (you proved this in the cancellation level), while\n"
+"both summands have support containing §9. Cancellation explains\n"
+"the gap between ⊆ and =.\n"
+"\n"
+"Combined with §10, you can now bound the\n"
+"support of any sum of singles without evaluating pointwise."
+msgstr ""
+
 #: Game.Levels.PascalsTriangle.L14_SymmetryOnAntidiagonal
 msgid "On the antidiagonal, choose n applied to either coordinate gives the same result."
 msgstr ""
@@ -10381,6 +10857,10 @@ msgid "§0 states that §1.\n"
 "\n"
 "## Example\n"
 "§6"
+msgstr ""
+
+#: Game.Levels.Finsupp
+msgid "Finsupp"
 msgstr ""
 
 #. §0: `card_sdiff_add_card_inter`
@@ -10786,6 +11266,26 @@ msgid "The §0 tactic is the standard way to prove finset equality in Lean.\n"
 "We'll call this the **ext-unfold-logic** recipe. Every set identity in\n"
 "the remaining levels follows this recipe. When you see a finset equality\n"
 "to prove, think 'ext-unfold-logic' and the three steps will guide you."
+msgstr ""
+
+#. §0: `if_pos`
+#. §1: `if_pos (h : P) : (if P then a else b) = a`
+#. §2: ```
+#. rw [if_pos h]     -- when h proves the condition
+#. rw [if_pos rfl]   -- when the condition is an equality that holds by rfl
+#. ```
+#. §3: `if P then a else b`
+#. §4: `h : P`
+#: Game.Levels.Finsupp.L07_SingleApply
+msgid "§0 resolves a conditional expression when the condition is true:\n"
+"\n"
+"§1\n"
+"\n"
+"## Syntax\n"
+"§2\n"
+"\n"
+"## When to use it\n"
+"When the goal contains §3 and you have a proof §4."
 msgstr ""
 
 #. §0: `Finset.powersetCard k s`
@@ -11357,6 +11857,13 @@ msgstr ""
 #. §0: `Fin.tail`
 #: Game.Levels.FinTuples.L06_DroppingTheHead
 msgid "§0 drops the first element of a tuple."
+msgstr ""
+
+#. §0: `rfl`
+#. §1: `exact Finsupp.support_zero`
+#: Game.Levels.Finsupp.L04_SingleZero
+msgid "The support of the zero function is empty.\n"
+"Try §0 (it holds by definition) or §1."
 msgstr ""
 
 #: Game.Levels.FinsetImage.L14_ImageCanOnlyShrink
@@ -12053,6 +12560,48 @@ msgstr ""
 #: Game.Levels.FinTuples.L20_ReconstructionStrategy
 msgid "Start with §0.\n"
 "This gives §1."
+msgstr ""
+
+#. §0: `rw [Finsupp.add_apply]`
+#. §1: `(f + g) 1`
+#. §2: `f 1 + g 1`
+#: Game.Levels.Finsupp.L08_PointwiseAddition
+msgid "Start by decomposing the addition. Use §0\n"
+"to split §1 into §2."
+msgstr ""
+
+#. §0: `f : α →₀ M`
+#. §1: `f.support : Finset α`
+#. §2: `f`
+#. §3: `Finsupp.single a b`
+#. §4: `b ≠ 0`
+#. §5: `a`
+#. §6: ```
+#. Finsupp.support_single_ne_zero (a : α) (hb : b ≠ 0) :
+#.   (Finsupp.single a b).support = singleton a
+#. ```
+#. §7: `b ≠ 0`
+#. §8: `b = 0`
+#. §9: `Finsupp.single 3 7`
+#. §10: `3`
+#: Game.Levels.Finsupp.L03_SupportSingle
+msgid "# The Support is a Finset\n"
+"\n"
+"Every finitely supported function §0 carries a field\n"
+"§1 — the finite set of points where §2 is\n"
+"nonzero.\n"
+"\n"
+"For §3 with §4, the support is exactly\n"
+"the singleton containing §5:\n"
+"\n"
+"§6\n"
+"\n"
+"The condition §7 is essential — if §8, the function is\n"
+"zero everywhere and the support would be empty (you'll see this\n"
+"in the next level).\n"
+"\n"
+"**Your task**: Prove that the support of §9 is\n"
+"the singleton containing §10."
 msgstr ""
 
 #. §0: $s$
@@ -12789,6 +13338,10 @@ msgid "§0 states that\n"
 "§4 is the full self-product."
 msgstr ""
 
+#: Game.Levels.Finsupp.L13_Extensionality
+msgid "Proving Finsupp Equality"
+msgstr ""
+
 #. §0: `Finset.univ`
 #. §1: `univ`
 #. §2: `univ`
@@ -13082,6 +13635,16 @@ msgid "The goal is exactly the statement of §0 applied to\n"
 "natural numbers. Close it with §1."
 msgstr ""
 
+#. §0: `5`
+#. §1: `3`
+#. §2: `apply Finsupp.single_eq_of_ne`
+#. §3: `5 ≠ 3`
+#: Game.Levels.Finsupp.L02_SingleEqOfNe
+msgid "The evaluation point §0 differs from the support point §1.\n"
+"Use §2 to reduce this to proving\n"
+"§3."
+msgstr ""
+
 #. §0: `Finset.mem_offDiag`
 #: Game.Levels.Products.L12_OffDiagonal
 msgid "Use §0 to characterize the membership,\n"
@@ -13188,6 +13751,14 @@ msgid "# Between Injective and Constant\n"
 "   but §22)"
 msgstr ""
 
+#. §0: `h : 3 ∈ f.support`
+#. §1: `f 3 ≠ 0`
+#. §2: `mem_support_iff`
+#: Game.Levels.Finsupp.L06_MemSupportIffReverse
+msgid "You have §0 and need §1.\n"
+"Rewrite §2 in the hypothesis to convert it."
+msgstr ""
+
 #. §0: `f`
 #. §1: `intro hinj`
 #: Game.Levels.Cardinality.L23_GeneralPigeonhole
@@ -13279,6 +13850,10 @@ msgid "Now build the membership proof for the larger set.\n"
 "an existential."
 msgstr ""
 
+#: Game.Levels.Finsupp.L06_MemSupportIffReverse
+msgid "Support membership implies nonzero value."
+msgstr ""
+
 #. §0: `obtain ⟨a, ha, hfa⟩ := h`
 #. §1: `a`
 #. §2: `ha : a ∈ s ∪ t`
@@ -13359,6 +13934,39 @@ msgstr ""
 #: Game.Levels.FinNavigation.L16_Boss
 msgid "Here §0. Choose §1,\n"
 "then §2."
+msgstr ""
+
+#. §0: `Finsupp.single_zero`
+#. §1: `Finsupp.single_zero (a : α) : Finsupp.single a 0 = 0`
+#. §2: ```
+#. rw [Finsupp.single_zero]
+#. exact Finsupp.single_zero a
+#. ```
+#. §3: `Finsupp.single a 0`
+#. §4: `0 : α →₀ M`
+#. §5: `0`
+#. §6: `0`
+#. §7: `single`
+#. §8: `M`
+#. §9: `0`
+#. §10: `α →₀ M`
+#: Game.Levels.Finsupp.L04_SingleZero
+msgid "§0 says that creating a single with value zero\n"
+"gives the zero finitely supported function:\n"
+"\n"
+"§1\n"
+"\n"
+"## Syntax\n"
+"§2\n"
+"\n"
+"## When to use it\n"
+"When §3 appears in the goal. Rewriting replaces\n"
+"it with §4.\n"
+"\n"
+"## Warning\n"
+"The two §5s in the statement mean different things: the §6 inside\n"
+"§7 is the zero *value* (in §8), while the §9 on the right\n"
+"is the zero *function* (in §10)."
 msgstr ""
 
 #. §0: `Finset.card_powersetCard`
@@ -13520,6 +14128,17 @@ msgstr ""
 msgid "Now simplify the constant sum with\n"
 "§0 — this converts the sum of §1 to\n"
 "§2."
+msgstr ""
+
+#. §0: `single`
+#. §1: `a`
+#. §2: `a`
+#. §3: `a = 3`
+#. §4: `by_cases h : a = 3`
+#: Game.Levels.Finsupp.L13_Extensionality
+msgid "Now you need to evaluate three §0 expressions at point §1.\n"
+"But §2 is a variable — you do not know if §3 or not. Split\n"
+"into cases with §4."
 msgstr ""
 
 #. §0: `s.offDiag.card`
@@ -13696,6 +14315,10 @@ msgstr ""
 msgid "**Inductive step**: Use §0 to peel\n"
 "the product over §1 into §2.\n"
 "Then apply the IH and close."
+msgstr ""
+
+#: Game.Levels.Finsupp.L16_SupportCoaching
+msgid "Support Workout"
 msgstr ""
 
 #. §0: `x ∈ s`
@@ -14247,6 +14870,17 @@ msgid "You proved the sum-of-squares formula:\n"
 "separates the sum (which the IH knows about) from the new term."
 msgstr ""
 
+#. §0: `a = 3`
+#. §1: `rw [h]`
+#. §2: `a`
+#. §3: `3`
+#. §4: `single_eq_same`
+#: Game.Levels.Finsupp.L13_Extensionality
+msgid "In this branch, §0. Substitute with §1 to replace\n"
+"§2 with §3, then evaluate all three singles at their support\n"
+"point using §4."
+msgstr ""
+
 #. §0: `List.Perm.nodup_iff : l₁.Perm l₂ → (l₁.Nodup ↔ l₂.Nodup)`
 #. §1: `hp : l₁.Perm l₂`
 #. §2: `hp.nodup_iff.mp hnd`
@@ -14481,6 +15115,10 @@ msgstr ""
 
 #: Game.Levels.PsetFinset.L09_CardinalityRange
 msgid "Cardinality of an Injective Image"
+msgstr ""
+
+#: Game.Levels.Finsupp.L14_SupportOfSum
+msgid "Support of a Sum"
 msgstr ""
 
 #. §0: `Finset.card_powersetCard`
@@ -14929,6 +15567,10 @@ msgid "# The Hockey Stick for §0\n"
 "**Strategy**: Induction on §8, following the Level 15 pattern."
 msgstr ""
 
+#: Game.Levels.Finsupp.L05_MemSupportIff
+msgid "Support membership is equivalent to nonzero value."
+msgstr ""
+
 #. §0: `l₁`
 #. §1: `l₂`
 #. §2: `(l₁ ++ l₂).toFinset.card = 7`
@@ -15009,6 +15651,65 @@ msgid "# The Middle-to-Top Bridge: Multiset.toFinset\n"
 "\n"
 "**Your task**: Given §8 for a multiset §9, prove\n"
 "§10."
+msgstr ""
+
+#. §0: `Finsupp.single_apply`
+#. §1: `Finsupp.single`
+#. §2: `single_eq_same`
+#. §3: `single_eq_of_ne`
+#. §4: ```
+#. Finsupp.single_apply :
+#.   Finsupp.single a b a' = if a = a' then b else 0
+#. ```
+#. §5: `single`
+#. §6: `a`
+#. §7: `a'`
+#. §8: `b`
+#. §9: `0`
+#. §10: `if`
+#. §11: `a = a'`
+#. §12: `if`
+#. §13: `b`
+#. §14: `single_eq_same`
+#. §15: `a ≠ a'`
+#. §16: `if`
+#. §17: `0`
+#. §18: `single_eq_of_ne`
+#. §19: `if`
+#. §20: `rw [if_pos h]`
+#. §21: `h`
+#. §22: `rw [if_neg h]`
+#. §23: `h`
+#. §24: `Finsupp.single 3 7`
+#. §25: `5`
+#. §26: `single_apply`
+#. §27: `if`
+#: Game.Levels.Finsupp.L07_SingleApply
+msgid "# Behind the Scenes: §0\n"
+"\n"
+"You have been using two separate lemmas to evaluate §1:\n"
+"- §2 when the evaluation point matches the support point\n"
+"- §3 when it does not\n"
+"\n"
+"These are actually both special cases of a single unified lemma:\n"
+"\n"
+"§4\n"
+"\n"
+"This is the *actual definition* of evaluation for §5. It says:\n"
+"look at whether the support point §6 equals the evaluation point §7.\n"
+"If yes, return §8. If no, return §9.\n"
+"\n"
+"The two lemmas you learned are just this definition with the §10\n"
+"resolved:\n"
+"- When §11: the §12 returns §13 — that is §14\n"
+"- When §15: the §16 returns §17 — that is §18\n"
+"\n"
+"To resolve an §19 expression in a proof, use:\n"
+"- §20 when §21 proves the condition is true\n"
+"- §22 when §23 proves the condition is false\n"
+"\n"
+"**Your task**: Evaluate §24 at position §25 by using\n"
+"the unified lemma §26 and then resolving the §27."
 msgstr ""
 
 #. §0: `rw [Nat.choose_succ_succ, Nat.choose_one_right]`
@@ -15158,6 +15859,12 @@ msgid "# The Explosion Principle\n"
 "and doesn't even need to engage with §10."
 msgstr ""
 
+#. §0: `add_apply`
+#: Game.Levels.Finsupp.L09_Accumulation
+msgid "Start by decomposing the addition with §0, just\n"
+"like in the previous level."
+msgstr ""
+
 #. §0: $$n! = \\prod_{i=0}^{n-1} (i + 1) = 1 \\cdot 2 \\cdot 3 \\cdots n$$
 #. §1: `prod_range_zero`
 #. §2: `prod_range_succ`
@@ -15290,6 +15997,71 @@ msgid "You have §0. Use §1 and\n"
 "choose §2 for both parts: §3."
 msgstr ""
 
+#. §0: `mem_support_iff`
+#. §1: `add_apply`
+#. §2: `single_eq_same`
+#. §3: `single_eq_of_ne`
+#. §4: `8`
+#. §5: `5`
+#. §6: `single_eq_of_ne`
+#. §7: `5`
+#. §8: `single_eq_same`
+#. §9: `8`
+#. §10: `support_single_ne_zero`
+#. §11: `← single_add`
+#. §12: `support_single_ne_zero`
+#. §13: `support_add`
+#. §14: `(f + g).support`
+#. §15: `f.support ∪ g.support`
+#. §16: `add_apply`
+#. §17: `single_eq_same`
+#. §18: `single_eq_of_ne`
+#. §19: `f = f.sum Finsupp.single`
+#. §20: `Finsupp.sum`
+#. §21: `Finset.sum`
+#: Game.Levels.Finsupp.L17_Boss
+msgid "You integrated all the Finsupp skills in a single proof:\n"
+"\n"
+"**Part 1 — Support membership via evaluation**:\n"
+"§0 converted support membership to a nonzero-ness\n"
+"claim, then you evaluated the 3-term sum using §1 twice\n"
+"(for the nested addition), §2 (for matching support\n"
+"points), and §3 (for non-matching ones). Support\n"
+"reasoning required evaluation, which required decomposition —\n"
+"genuine skill integration.\n"
+"\n"
+"**Part 2 — Evaluation at a different point**:\n"
+"The same evaluation strategy at position §4 instead of §5 required\n"
+"picking the *opposite* lemma at each step — §6 for\n"
+"the singles at §7, and §8 for the single at §9.\n"
+"\n"
+"**Part 3 — Support of a single**:\n"
+"A quick application of §10 — the lemma from\n"
+"Level 3 that computes the support when the value is nonzero.\n"
+"\n"
+"**Part 4 — Algebraic combination**:\n"
+"§11 combined two singles at the same position into one,\n"
+"then §12 computed the support of the result.\n"
+"This is the algebraic approach: simplify first, then reason about\n"
+"the simpler expression.\n"
+"\n"
+"**Part 5 — Support bound**:\n"
+"§13 shows that the support of a sum is contained in the\n"
+"union of the supports. This is the ⊆ direction from Level 14 —\n"
+"an element in §14 must be in §15.\n"
+"\n"
+"The **finsupp evaluation strategy** — §16 →\n"
+"§17/§18 → arithmetic — is the fundamental\n"
+"technique for computing with finitely supported functions.\n"
+"\n"
+"**Connection to big operators**: Every finitely supported function can\n"
+"be decomposed as a sum of singles: §19. The\n"
+"operation §20 is actually §21 over the support —\n"
+"connecting directly to the big operator machinery from earlier worlds.\n"
+"This is why finitely supported functions are the algebraic backbone\n"
+"of formal sums, polynomials, and free modules."
+msgstr ""
+
 #: Game.Levels.Cardinality.L02_CardinalityOfSingleton
 msgid "Cardinality of a Singleton"
 msgstr ""
@@ -15399,12 +16171,53 @@ msgid "# Same Elements, Same Size\n"
 "equivalence?"
 msgstr ""
 
+#. §0: `Finsupp.single_eq_of_ne`
+#. §1: `Finsupp.single_eq_of_ne (h : a' ≠ a) : Finsupp.single a b a' = 0`
+#. §2: ```
+#. apply Finsupp.single_eq_of_ne    -- leaves `a' ≠ a` as goal
+#. exact Finsupp.single_eq_of_ne h  -- when you have `h : a' ≠ a`
+#. ```
+#. §3: `Finsupp.single a b a'`
+#. §4: `a'`
+#. §5: `a`
+#. §6: `apply Finsupp.single_eq_of_ne`
+#. §7: `Finsupp.single 3 7 5 = 0`
+#. §8: `5 ≠ 3`
+#. §9: `omega`
+#. §10: `a' ≠ a`
+#: Game.Levels.Finsupp.L02_SingleEqOfNe
+msgid "§0 evaluates a single away from its\n"
+"support point:\n"
+"\n"
+"§1\n"
+"\n"
+"## Syntax\n"
+"§2\n"
+"\n"
+"## When to use it\n"
+"When the goal contains §3 where §4 is\n"
+"visibly different from §5.\n"
+"\n"
+"## Example\n"
+"§6 on goal §7\n"
+"leaves §8, which §9 closes.\n"
+"\n"
+"## Warning\n"
+"The inequality is §10 (evaluation point ≠ support point),\n"
+"not the other way around."
+msgstr ""
+
 #. §0: `≠`
 #. §1: `= → False`
 #. §2: `intro h`
 #: Game.Levels.MeetFin.L21_ProvingInequality
 msgid "Remember, §0 means §1. Start with §2\n"
 "to assume they are equal."
+msgstr ""
+
+#. §0: `constructor`
+#: Game.Levels.Finsupp.L16_SupportCoaching
+msgid "Split the first conjunction with §0."
 msgstr ""
 
 #. §0: `intro y hy`
@@ -15991,6 +16804,10 @@ msgstr ""
 msgid "Case Analysis Practice"
 msgstr ""
 
+#: Game.Levels.Finsupp.L17_Boss
+msgid "Boss: Finitely Supported Functions"
+msgstr ""
+
 #. §0: `∑ x ∈ ∅, f x = 0`
 #. §1: `Finset.sum_empty`
 #. §2: `exact Finset.sum_empty`
@@ -16122,6 +16939,11 @@ msgid "§0 is the workhorse for reasoning about product\n"
 "§4.\n"
 "\n"
 "**Pattern**: §5 then §6 to split."
+msgstr ""
+
+#. §0: `hf`
+#: Game.Levels.Finsupp.L05_MemSupportIff
+msgid "The goal now matches hypothesis §0 exactly."
 msgstr ""
 
 #: Game.Levels.FinTuples.L17_TheEmptyTuple
@@ -16804,6 +17626,31 @@ msgid "# What toFinset Does with Duplicates\n"
 "change its §12. This is deduplication made explicit."
 msgstr ""
 
+#. §0: `f.support`
+#. §1: `Finset`
+#. §2: `f`
+#. §3: `f : α →₀ M`
+#. §4: `f.support : Finset α`
+#. §5: `Finsupp.mem_support_iff : a ∈ f.support ↔ f a ≠ 0`
+#. §6: `Finsupp.support_zero : (0 : α →₀ M).support = ∅`
+#. §7: `Finsupp.support_single_ne_zero a hb : (single a b).support = singleton a`
+#. §8: `hb : b ≠ 0`
+#: Game.Levels.Finsupp.L03_SupportSingle
+msgid "§0 is the §1 of points where a finitely supported\n"
+"function §2 is nonzero.\n"
+"\n"
+"## Type\n"
+"If §3, then §4.\n"
+"\n"
+"## Key lemma\n"
+"§5\n"
+"\n"
+"## Properties\n"
+"- §6\n"
+"- §7\n"
+"  (when §8)"
+msgstr ""
+
 #. §0: `(a, b) ∈ s ×ˢ s`
 #. §1: `a = b`
 #. §2: `a ≠ b`
@@ -16965,6 +17812,40 @@ msgid "§0\n"
 "in action as a tool for deriving new identities."
 msgstr ""
 
+#. §0: `Finsupp.single 3 0`
+#. §1: `3`
+#. §2: `3`
+#. §3: `0`
+#. §4: `3`
+#. §5: `Finsupp.single a 0`
+#. §6: ```
+#. Finsupp.single_zero (a : α) : Finsupp.single a 0 = 0
+#. ```
+#. §7: `0`
+#. §8: `0`
+#. §9: `ℕ →₀ ℕ`
+#. §10: `0`
+#. §11: `Finsupp.single 3 0`
+#: Game.Levels.Finsupp.L04_SingleZero
+msgid "# A Trap: Single with Value Zero\n"
+"\n"
+"What happens if you create §0? You might expect\n"
+"a function with support containing §1. But the value at §2 is §3,\n"
+"so actually §4 is NOT in the support — the function is zero\n"
+"everywhere.\n"
+"\n"
+"In fact, §5 is exactly the zero finitely supported\n"
+"function:\n"
+"\n"
+"§6\n"
+"\n"
+"Here, the §7 on the left is the value (a natural number), and\n"
+"the §8 on the right is the zero element of §9 — the\n"
+"function that returns §10 at every input and has empty support.\n"
+"\n"
+"**Your task**: Prove that §11 has empty support."
+msgstr ""
+
 #. §0: `omega`
 #. §1: `ring`
 #. §2: $1 - 4 + 6 - 4 + 1 = 0$
@@ -17091,6 +17972,13 @@ msgid "§0 states that\n"
 "from one list to the other."
 msgstr ""
 
+#. §0: `Finsupp.single_apply`
+#. §1: `if-then-else`
+#: Game.Levels.Finsupp.L07_SingleApply
+msgid "Start by rewriting with the unified evaluation lemma\n"
+"§0. This will expose the §1."
+msgstr ""
+
 #. §0: `Fintype.card_fun`
 #. §1: `Fintype.card (α → β) = Fintype.card β ^ Fintype.card α`
 #. §2: ```
@@ -17209,6 +18097,11 @@ msgstr ""
 msgid "There are m ^ n functions from Fin n to Fin m."
 msgstr ""
 
+#. §0: `single`
+#: Game.Levels.Finsupp.L01_SingleEqSame
+msgid "Evaluating a §0 at its support point returns the value."
+msgstr ""
+
 #. §0: `Finset.image f s`
 #. §1: `f x`
 #. §2: `x ∈ s`
@@ -17266,6 +18159,29 @@ msgstr ""
 #: Game.Levels.FinsetOperations.L02_IntersectionMembership
 msgid "Prove membership in the right set. Since §0 is the first\n"
 "element, one peel suffices."
+msgstr ""
+
+#. §0: `Finsupp.mem_support_iff`
+#. §1: `a ∈ f.support`
+#. §2: `f a ≠ 0`
+#. §3: `rw`
+#. §4: `Finset.mem_filter`
+#. §5: `Finset.mem_image`
+#. §6: `rw [Finsupp.mem_support_iff]`
+#: Game.Levels.Finsupp.L05_MemSupportIff
+msgid "§0 is the bridge between two views of a\n"
+"finitely supported function:\n"
+"\n"
+"- **The support view**: §1 (a finset membership question)\n"
+"- **The value view**: §2 (a question about the function output)\n"
+"\n"
+"You can convert freely between them with §3. This is analogous\n"
+"to §4 or §5 — characterization\n"
+"lemmas that translate between a structural description and a\n"
+"logical description.\n"
+"\n"
+"**Pattern**: §6 to switch from\n"
+"support membership to nonzero-ness (or vice versa)."
 msgstr ""
 
 #: Game.Levels.FinNavigation
@@ -17665,6 +18581,18 @@ msgstr ""
 msgid "The goal is §0. Use the hypothesis §1."
 msgstr ""
 
+#. §0: `Finsupp.support_add`
+#. §1: `(f + g).support ⊆ f.support ∪ g.support`
+#. §2: `⊆`
+#. §3: `Finsupp.support_add`
+#. §4: `hx`
+#: Game.Levels.Finsupp.L14_SupportOfSum
+msgid "The lemma §0 says exactly this:\n"
+"§1.\n"
+"Since §2 means every element of the left is in the right,\n"
+"you can apply §3 to §4."
+msgstr ""
+
 #. §0: `Fin (n+1)`
 #. §1: `Fin.last n`
 #. §2: `j.castSucc`
@@ -17849,6 +18777,35 @@ msgstr ""
 
 #: Game.Levels.FinTuples.L18_ProvingTupleEquality
 msgid "Proving Tuple Equality"
+msgstr ""
+
+#. §0: `single_add`
+#. §1: `rw [← Finsupp.single_add]`
+#. §2: `apply Finsupp.support_single_ne_zero`
+#. §3: `3x⁵ + 4x⁵ = 7x⁵`
+#. §4: `7x⁵`
+#. §5: `5`
+#: Game.Levels.Finsupp.L12_SingleAddIntegration
+msgid "This is the power of algebraic reasoning with §0: instead\n"
+"of evaluating the sum pointwise at every position (which you did in\n"
+"Level 9), you can *simplify the expression first* and then reason\n"
+"about the simpler form.\n"
+"\n"
+"The two-step pattern:\n"
+"1. §1 — combine singles at the same point\n"
+"2. §2 — compute the support\n"
+"\n"
+"This is exactly how you reason about polynomials: first simplify\n"
+"§3, then observe that §4 has one nonzero term\n"
+"at degree §5."
+msgstr ""
+
+#. §0: `5 ∈ f.support`
+#. §1: `Finsupp.mem_support_iff`
+#: Game.Levels.Finsupp.L05_MemSupportIff
+msgid "The goal §0 is about support membership.\n"
+"Rewrite with §1 to convert it to the\n"
+"equivalent statement about values."
 msgstr ""
 
 #. §0: `s ×ˢ t ⊆ s' ×ˢ t'`
@@ -18807,6 +19764,53 @@ msgstr ""
 msgid "1 is an element of the finset {1, 2, 3}."
 msgstr ""
 
+#. §0: `single_add`
+#. §1: `ext a`
+#. §2: `f = g`
+#. §3: `∀ a, f a = g a`
+#. §4: `a`
+#. §5: `f a = g a`
+#. §6: `ext`
+#. §7: `Fin`
+#. §8: `Finsupp`
+#. §9: `ext`
+#. §10: `a`
+#. §11: `a`
+#. §12: `by_cases h : a = 3`
+#. §13: `h : a = 3`
+#. §14: `rw [h]`
+#. §15: `single_eq_same`
+#. §16: `h : a ≠ 3`
+#. §17: `single_eq_of_ne h`
+#. §18: `single 3 2 + single 3 5 = single 3 7`
+#. §19: `single_add`
+#: Game.Levels.Finsupp.L13_Extensionality
+msgid "# Extensionality for Finitely Supported Functions\n"
+"\n"
+"You have used lemmas like §0 that state two finitely supported\n"
+"functions are equal. But how would you *prove* such an equality yourself,\n"
+"from scratch?\n"
+"\n"
+"The technique is **extensionality**: two finitely supported functions are\n"
+"equal if and only if they agree at every point. The tactic §1\n"
+"converts a goal §2 into §3 — or in tactic mode,\n"
+"it introduces a generic point §4 and asks you to show §5.\n"
+"\n"
+"You used §6 on §7 types back in MeetFin. Here it works the same\n"
+"way, but on function types: to show two §8 values are equal,\n"
+"check that they give the same output at every input.\n"
+"\n"
+"After applying §9, you typically need to reason about an arbitrary\n"
+"point §10. For singles, the value depends on whether §11 equals the\n"
+"support point or not. Use §12 to split into:\n"
+"- §13 — substitute with §14, then evaluate with\n"
+"  §15\n"
+"- §16 — evaluate with §17\n"
+"\n"
+"**Your task**: Prove that §18\n"
+"using extensionality, without citing §19."
+msgstr ""
+
 #: Game.Levels.PsetCardinality.L03_ConverseInclusionExclusion
 msgid "Compute the intersection size from the union size via inclusion-exclusion."
 msgstr ""
@@ -19375,6 +20379,47 @@ msgid "Rewrite with §0 to turn the product\n"
 "membership into two separate membership goals."
 msgstr ""
 
+#. §0: `single_eq_same`
+#. §1: `single_eq_of_ne`
+#. §2: `single_apply`
+#. §3: `if-then-else`
+#. §4: `if`
+#. §5: `single_apply`
+#. §6: `Finsupp.single`
+#. §7: `single`
+#. §8: `if`
+#. §9: `if_pos`
+#. §10: `if_neg`
+#. §11: `if`
+#. §12: `single_eq_same`
+#. §13: `single_apply`
+#. §14: `if_pos rfl`
+#. §15: `single_eq_of_ne`
+#. §16: `single_apply`
+#. §17: `if_neg h`
+#: Game.Levels.Finsupp.L07_SingleApply
+msgid "You have seen behind the curtain: the two evaluation lemmas\n"
+"§0 and §1 are both consequences of the\n"
+"unified lemma §2, which uses an §3 to\n"
+"decide between the two cases.\n"
+"\n"
+"In practice, the specialized lemmas are more convenient — you do not\n"
+"have to construct a proof of equality or inequality and then resolve\n"
+"the §4. That is why we taught them first and will continue using\n"
+"them in the rest of this world. But knowing that §5\n"
+"exists is important:\n"
+"\n"
+"1. It is the canonical Mathlib form — if you search for evaluation\n"
+"   of §6, this is the lemma you will find.\n"
+"2. It reveals the computational content: evaluation of a §7 is\n"
+"   just an §8 check.\n"
+"3. The tools §9 and §10 are general — they work for any\n"
+"   §11 expression in Lean, not just Finsupp.\n"
+"\n"
+"**Takeaway**: §12 = §13 + §14.\n"
+"§15 = §16 + §17."
+msgstr ""
+
 #. §0: `sum_congr`
 #. §1: `sum_const`
 #. §2: `exact`
@@ -19802,6 +20847,14 @@ msgstr ""
 msgid "Here §0 is at position 2. §1 closes the goal."
 msgstr ""
 
+#. §0: `ext a`
+#. §1: `a : ℕ`
+#. §2: `a`
+#: Game.Levels.Finsupp.L13_Extensionality
+msgid "Try §0. This introduces §1 and gives\n"
+"you the goal about values at §2."
+msgstr ""
+
 #. §0: `Fin`
 #: Game.Levels.MeetFin.L06_ConverseDirection
 msgid "If two §0 elements are equal, their values are equal."
@@ -20212,6 +21265,31 @@ msgid "Now §0. Simplify the right side\n"
 "using §1 and §2."
 msgstr ""
 
+#. §0: `rw [Finsupp.single_eq_of_ne h, Finsupp.single_eq_of_ne h, Finsupp.single_eq_of_ne h]`
+#. §1: `omega`
+#. §2: `0 + 0 = 0`
+#: Game.Levels.Finsupp.L13_Extensionality
+msgid "Try\n"
+"§0\n"
+"then §1 to close §2."
+msgstr ""
+
+#. §0: `Finsupp.support_zero`
+#. §1: `Finsupp.support_zero : (0 : α →₀ M).support = ∅`
+#. §2: `Finsupp.single_zero`
+#. §3: `rfl`
+#: Game.Levels.Finsupp.L04_SingleZero
+msgid "§0 says the zero finitely supported function\n"
+"has empty support:\n"
+"\n"
+"§1\n"
+"\n"
+"## When to use it\n"
+"After rewriting with §2 to convert a single with\n"
+"value zero to the zero function, this lemma (or §3) closes the\n"
+"resulting goal about the support being empty."
+msgstr ""
+
 #. §0: `Finset.offDiag_pairDisjoint`
 #. §1: `s.offDiag`
 #: Game.Levels.Products.L13_OffDiagExtraction
@@ -20229,6 +21307,10 @@ msgstr ""
 #. §0: `s`
 #: Game.Levels.FinsetInduction.L07_ProductInduction
 msgid "Start with finset induction on §0, just as you did for sums."
+msgstr ""
+
+#: Game.Levels.Finsupp.L04_SingleZero
+msgid "A single with value zero has empty support."
 msgstr ""
 
 #: Game.Levels.BigOpIntro.L07_ProdTwoElement
@@ -20880,6 +21962,10 @@ msgstr ""
 msgid "Now you need §0. Both are in your context."
 msgstr ""
 
+#: Game.Levels.Finsupp.L09_Accumulation
+msgid "Accumulation at a Point"
+msgstr ""
+
 #. §0: `constructor`
 #: Game.Levels.FinTuples.L03_BuildingTuples
 msgid "Use §0 to split the remaining conjunction."
@@ -21239,6 +22325,13 @@ msgid "If §0, unfold the intersection to get §1 and\n"
 "§2. The hypothesis §3 says these are contradictory."
 msgstr ""
 
+#. §0: `3 + 0 = 3`
+#. §1: `omega`
+#: Game.Levels.Finsupp.L08_PointwiseAddition
+#: Game.Levels.Finsupp.L09_Accumulation
+msgid "The goal is now §0. Try §1."
+msgstr ""
+
 #: Game.Levels.Fintype.L03_ProductTypes
 msgid "Product Types"
 msgstr ""
@@ -21516,6 +22609,29 @@ msgstr ""
 #: Game.Levels.FinsetImage.L11_ConstantFunctionForward
 msgid "Now §0. Extract the witness\n"
 "with §1."
+msgstr ""
+
+#. §0: `Finsupp.support_add`
+#. §1: `Finsupp.support_add : (f + g).support ⊆ f.support ∪ g.support`
+#. §2: ```
+#. exact Finsupp.support_add hx   -- when hx : x ∈ (f + g).support
+#. ```
+#: Game.Levels.Finsupp.L14_SupportOfSum
+msgid "§0 bounds the support of a sum:\n"
+"\n"
+"§1\n"
+"\n"
+"## Syntax\n"
+"§2\n"
+"\n"
+"## When to use it\n"
+"When you know something is in the support of a sum and need to\n"
+"conclude it is in the support of one of the summands (via\n"
+"union membership).\n"
+"\n"
+"## Warning\n"
+"This is ⊆, not =. Values can cancel, making the support of the\n"
+"sum strictly smaller than the union of supports."
 msgstr ""
 
 #. §0: $$\\left(\\sum_{i=0}^{n-1} i \\cdot i!\\right) + 1 = n!$$
@@ -21830,6 +22946,13 @@ msgid "Use §0. Then §1 and\n"
 "is §3. For the second (§4), use §5."
 msgstr ""
 
+#. §0: `5`
+#. §1: `add_apply`
+#: Game.Levels.Finsupp.L17_Boss
+msgid "The goal is now about evaluating the sum at §0. Decompose\n"
+"the outermost addition with §1."
+msgstr ""
+
 #. §0: `h : a ∈ s ∧ b ∈ s ∧ a ≠ b`
 #. §1: `Finset.mem_offDiag`
 #: Game.Levels.Products.L13_OffDiagExtraction
@@ -22084,6 +23207,35 @@ msgid "# The Multiplication Principle for Types\n"
 "and then evaluate with §16."
 msgstr ""
 
+#. §0: `single 4 5 + single 4 (-5) = 0`
+#. §1: `ℤ`
+#. §2: `← single_add`
+#. §3: `single_zero`
+#. §4: `5x⁴ + (-5)x⁴ = (5 + (-5))x⁴ = 0 · x⁴ = 0`
+#. §5: `single_add`
+#. §6: `single_zero`
+#. §7: `support_single_ne_zero`
+#. §8: `b ≠ 0`
+#: Game.Levels.Finsupp.L11_Cancellation
+msgid "You have proved that §0 — complete\n"
+"cancellation. This is the algebraic reason that §1 values (or any\n"
+"type with negation) matter: they allow Finsupp functions to form a\n"
+"**group** under addition, not just a monoid.\n"
+"\n"
+"The proof combined two previously separate skills:\n"
+"- §2 to merge singles at the same position\n"
+"- §3 to recognize the zero function\n"
+"\n"
+"In polynomial language: §4.\n"
+"The §5 step is the coefficient arithmetic, and §6\n"
+"is the observation that a monomial with zero coefficient is the zero\n"
+"polynomial.\n"
+"\n"
+"This also shows why §7 requires the side\n"
+"condition §8: after cancellation, the support is empty even\n"
+"though we started with two nonempty-support singles."
+msgstr ""
+
 #. §0: `rw [Finset.mem_image]`
 #. §1: `n ∈ range 4`
 #. §2: `n - 1 = 1`
@@ -22243,6 +23395,14 @@ msgstr ""
 
 #: Game.Levels.FinTuples.L20_ReconstructionStrategy
 msgid "Reconstruct a tuple from its head and tail."
+msgstr ""
+
+#. §0: `Finsupp.single 4 (-3) 4 + Finsupp.single 4 5 4 = 2`
+#. §1: `4`
+#: Game.Levels.Finsupp.L09_Accumulation
+msgid "Now you have §0.\n"
+"Both singles are evaluated at their support point §1. Evaluate\n"
+"the first one."
 msgstr ""
 
 #. §0: `f`
@@ -22914,6 +24074,14 @@ msgid "# Double Sums: Swapping the Order\n"
 "**Your task**: Given the sum in one order, deduce it in the other."
 msgstr ""
 
+#. §0: `Finset.sum_singleton`
+#. §1: `∑ a ∈ singleton 3, f a`
+#. §2: `f 3`
+#: Game.Levels.Finsupp.L15_SummingOverSupport
+msgid "The sum is now over a singleton set. Use §0\n"
+"to simplify §1 to §2."
+msgstr ""
+
 #. §0: $$\\binom{n}{k} \\cdot k! \\cdot (n-k)! = n!$$
 #. §1: $\\binom{n}{k} = \\frac{n!}{k! \\cdot (n-k)!}$
 #. §2: $n!$
@@ -23142,6 +24310,10 @@ msgid "Try §0.\n"
 "§1 → §2 → §3 → §4."
 msgstr ""
 
+#: Game.Levels.Finsupp.L07_SingleApply
+msgid "The Unified Evaluation Lemma"
+msgstr ""
+
 #. §0: `ext`
 #. §1: `i.val = j.val`
 #. §2: `omega`
@@ -23316,6 +24488,13 @@ msgid "This is true by definition — §0 is literally\n"
 "defined as §1. Use §2 to close it."
 msgstr ""
 
+#. §0: `1`
+#. §1: `2`
+#: Game.Levels.Finsupp.L08_PointwiseAddition
+msgid "The second single is evaluated at §0, but its support point\n"
+"is §1. You need to show these differ and then evaluate."
+msgstr ""
+
 #. §0: `rw [hf]`
 #: Game.Levels.BigOpAlgebra.L04_ProdConst
 msgid "Now substitute the known product with §0."
@@ -23330,6 +24509,13 @@ msgstr ""
 #: Game.Levels.CountingTypes.L08_CountingInjections
 msgid "Now evaluate the §0 cardinalities:\n"
 "§1."
+msgstr ""
+
+#. §0: `rw [Finsupp.mem_support_iff]`
+#. §1: `f 5 ≠ 0`
+#: Game.Levels.Finsupp.L05_MemSupportIff
+msgid "Try §0. This\n"
+"changes the goal to §1."
 msgstr ""
 
 #. §0: `card_embedding_eq`
@@ -23816,6 +25002,12 @@ msgid "**Inductive step**: Peel three things using §0:\n"
 "let §5 close the goal using both §6 and §7."
 msgstr ""
 
+#. §0: `Finsupp.support_add`
+#: Game.Levels.Finsupp.L16_SupportCoaching
+#: Game.Levels.Finsupp.L17_Boss
+msgid "Now apply §0 to the membership proof."
+msgstr ""
+
 #. §0: `rw [Finset.mem_image] at hfa`
 #. §1: `obtain ⟨b, hbs, hfb⟩ := hfa`
 #. §2: `have hab : b = a := hf hfb`
@@ -23887,6 +25079,14 @@ msgstr ""
 #: Game.Levels.Cardinality.L25_SurjectiveImpliesInjective
 msgid "Now prove §0: for every §1,\n"
 "show §2. Surjectivity gives a witness."
+msgstr ""
+
+#. §0: `by_cases h : a = 3`
+#. §1: `h : a = 3`
+#. §2: `h : a ≠ 3`
+#: Game.Levels.Finsupp.L13_Extensionality
+msgid "Try §0. This creates two\n"
+"goals: one where §1 and one where §2."
 msgstr ""
 
 #. §0: `Finset.range n`
@@ -24027,6 +25227,45 @@ msgstr ""
 msgid "The empty finset has zero elements."
 msgstr ""
 
+#. §0: `Finsupp.single_apply`
+#. §1: `Finsupp.single_apply : Finsupp.single a b a' = if a = a' then b else 0`
+#. §2: ```
+#. rw [Finsupp.single_apply]
+#. ```
+#. §3: `single_eq_same`
+#. §4: `single_apply`
+#. §5: `a' = a`
+#. §6: `if`
+#. §7: `single_eq_of_ne`
+#. §8: `single_apply`
+#. §9: `a' ≠ a`
+#. §10: `if`
+#. §11: `if-then-else`
+#. §12: `single`
+#. §13: `single_eq_same`
+#. §14: `single_eq_of_ne`
+#. §15: `single_apply`
+#: Game.Metadata
+msgid "§0 is the unified evaluation lemma:\n"
+"\n"
+"§1\n"
+"\n"
+"## Syntax\n"
+"§2\n"
+"\n"
+"## Relationship to other lemmas\n"
+"- §3 is §4 with §5 (the §6 is true)\n"
+"- §7 is §8 with §9 (the §10 is false)\n"
+"\n"
+"## When to use it\n"
+"When you want to expose the §11 structure of a §12\n"
+"evaluation. In most cases, §13 or §14\n"
+"are more convenient.\n"
+"\n"
+"In this world, §15 is disabled in most levels to encourage\n"
+"you to reason about each case explicitly using the specialized lemmas."
+msgstr ""
+
 #. §0: `rw [← Finset.card_eq_sum_ones]`
 #. §1: `∑ x ∈ s, 1`
 #. §2: `s.card`
@@ -24053,6 +25292,15 @@ msgstr ""
 
 #: Game.Levels.Powerset.L17_CardPowersetCard
 msgid "Counting k-Element Subsets"
+msgstr ""
+
+#. §0: `(single 5 3 + single 8 1).support`
+#. §1: `(single 5 4).support`
+#. §2: `Finsupp.support_add`
+#: Game.Levels.Finsupp.L17_Boss
+msgid "**Part 5**: Show that any element in the support of\n"
+"the three-term sum is in the union of §0\n"
+"and §1. This is §2."
 msgstr ""
 
 #: Game.Levels.FinTuples.L17_TheEmptyTuple
@@ -24173,6 +25421,12 @@ msgid "The goal is §0.\n"
 "Similarly: §1."
 msgstr ""
 
+#. §0: `8`
+#: Game.Levels.Finsupp.L17_Boss
+msgid "**Part 4**: Two singles at position §0 — combine them\n"
+"algebraically first, then compute the support of the result."
+msgstr ""
+
 #. §0: `3 = 2`
 #. §1: `3`
 #. §2: `right`
@@ -24225,6 +25479,34 @@ msgid "The pattern is simple:\n"
 "for functions. Both are valid."
 msgstr ""
 
+#. §0: `single_add`
+#. §1: `Finsupp.single_add`
+#. §2: `Finsupp.single a b₁ + Finsupp.single a b₂ = Finsupp.single a (b₁ + b₂)`
+#. §3: `← single_add`
+#. §4: `Finsupp.single`
+#. §5: `support_single_ne_zero`
+#. §6: `Finsupp.single 5 3 + Finsupp.single 5 4`
+#. §7: `5`
+#: Game.Levels.Finsupp.L12_SingleAddIntegration
+msgid "# Using §0 with Support Reasoning\n"
+"\n"
+"In the last level you learned that §1 lets you\n"
+"combine two singles at the same point into one:\n"
+"\n"
+"§2\n"
+"\n"
+"Now let's use that algebraic identity for something practical:\n"
+"proving a fact about the **support** of a sum of singles.\n"
+"\n"
+"If you can combine two singles into one using §3, you\n"
+"reduce the sum to a single §4 whose support you already\n"
+"know how to compute with §5.\n"
+"\n"
+"**Your task**: Prove that the support of\n"
+"§6 is the singleton\n"
+"containing §7."
+msgstr ""
+
 #. §0: `use a`
 #. §1: `a ∈ s ∩ t`
 #. §2: `f a = y`
@@ -24255,6 +25537,10 @@ msgid "One step: §0.\n"
 "powersets that work for *any* finset — not just §6. But\n"
 "keeping this concrete picture in mind helps build intuition:\n"
 "the powerset is the collection of *all possible sub-selections*."
+msgstr ""
+
+#: Game.Levels.Finsupp.L12_SingleAddIntegration
+msgid "Combine two singles algebraically, then compute the support."
 msgstr ""
 
 #: Game.Levels.Cardinality
@@ -24780,6 +26066,16 @@ msgstr ""
 msgid "Binomial Theorem Retrieval"
 msgstr ""
 
+#. §0: `rw [← Finsupp.single_add]`
+#. §1: `single 5 3 + single 5 4`
+#. §2: `single 5 (3 + 4)`
+#. §3: `single 5 7`
+#: Game.Levels.Finsupp.L12_SingleAddIntegration
+msgid "Try §0. This\n"
+"combines §1 into §2,\n"
+"which is §3."
+msgstr ""
+
 #: Game.Levels.BigOpAlgebra.L08_SumComm
 msgid "Interchanging Double Sums"
 msgstr ""
@@ -24825,6 +26121,7 @@ msgid "A subset of a union has cardinality bounded by inclusion-exclusion."
 msgstr ""
 
 #: Game.Levels.Products.L20_AlgebraicIdentity
+#: Game.Levels.Finsupp.L10_SingleAddAlgebra
 msgid "The Algebraic Identity"
 msgstr ""
 
@@ -26030,6 +27327,10 @@ msgid "**Step 1 — Peel**: Use §0 to split both\n"
 "becomes §3."
 msgstr ""
 
+#: Game.Levels.Finsupp.L11_Cancellation
+msgid "Two singles at the same point with opposite values cancel to zero."
+msgstr ""
+
 #: Game.Levels.PsetBigOp.L01_ConcreteSum
 msgid "Compute the sum of f over the finset {2, 5, 8} given f's values."
 msgstr ""
@@ -26075,6 +27376,10 @@ msgstr ""
 
 #: Game.Levels.BigOpAlgebra.L10_ReorderingForSimplification
 msgid "Use sum_comm to enable simplification of the inner sum."
+msgstr ""
+
+#: Game.Levels.Finsupp.L08_PointwiseAddition
+msgid "Evaluate a sum of two singles at a point."
 msgstr ""
 
 #: Game.Levels.MeetFin.L05_FinEquality
@@ -26190,6 +27495,14 @@ msgstr ""
 #: Game.Levels.BinomialCoefficients.L14_GaussSum
 msgid "The goal is §0.\n"
 "Since §1, we have §2 by §3."
+msgstr ""
+
+#. §0: `single 5 7`
+#. §1: `5`
+#. §2: `support_single_ne_zero`
+#: Game.Levels.Finsupp.L17_Boss
+msgid "**Part 3**: The support of §0 is the singleton\n"
+"containing §1. Use §2."
 msgstr ""
 
 #. §0: `Fintype.injective_iff_surjective`
@@ -26387,6 +27700,10 @@ msgstr ""
 #: Game.Levels.Cardinality.L24_Capstone
 msgid "§0\n"
 "§1"
+msgstr ""
+
+#: Game.Levels.Finsupp.L03_SupportSingle
+msgid "The Support of a Single"
 msgstr ""
 
 #. §0: $$\\sum_{i=0}^{n} i^2 = \\frac{n(n+1)(2n+1)}{6}$$
@@ -26861,6 +28178,10 @@ msgid "# Boss: Putting It All Together\n"
 "Prove §9 by proving that §10 is injective.\n"
 "\n"
 "No new moves — only moves seeded in Levels 1-21."
+msgstr ""
+
+#: Game.Levels.Finsupp.L01_SingleEqSame
+msgid "Evaluating a Single"
 msgstr ""
 
 #. §0: `h`
@@ -27364,6 +28685,7 @@ msgstr ""
 #: Game.Levels.SummationFormulas.L09_ProductBasics
 #: Game.Levels.SummationFormulas.L09_ProductBasics
 #: Game.Levels.BinomialCoefficients.L12_CoachingBossPattern
+#: Game.Levels.Finsupp.L16_SupportCoaching
 msgid "Try §0\n"
 "then §1."
 msgstr ""
@@ -27567,6 +28889,11 @@ msgstr ""
 msgid "Sum of Squares"
 msgstr ""
 
+#. §0: `constructor`
+#: Game.Levels.Finsupp.L17_Boss
+msgid "Split the conjunction into parts with §0."
+msgstr ""
+
 #. §0: $|\\text{sigma}| = \\sum_{i \\in \\{0, 1, 2\\}} |t\\, i| = 1 + 2 + 3 = 6$
 #. §1: `s ×ˢ t`
 #. §2: $i$
@@ -27738,6 +29065,10 @@ msgid "Resolve the abstract domain and decompose the product:\n"
 "§0."
 msgstr ""
 
+#: Game.Levels.Finsupp.L16_SupportCoaching
+msgid "Decompose the addition."
+msgstr ""
+
 #. §0: `Finset.range 0`
 #. §1: `Fin 0`
 #. §2: `Fin 0`
@@ -27870,6 +29201,41 @@ msgid "§0 — intersection is **idempotent**.\n"
 "This was the simplest §11 identity: the logic reduced to\n"
 "§12. Next you'll see identities where the logic is\n"
 "more interesting."
+msgstr ""
+
+#. §0: `support_single_ne_zero`
+#. §1: `single_zero`
+#. §2: `mem_support_iff`
+#. §3: `add_apply`
+#. §4: `single_eq_same`
+#. §5: `single_eq_of_ne`
+#. §6: `support_add`
+#. §7: `constructor`
+#. §8: `∧`
+#: Game.Levels.Finsupp.L16_SupportCoaching
+msgid "# Putting Support and Evaluation Together\n"
+"\n"
+"Before the boss, let's practice combining several skills. You will\n"
+"prove four facts:\n"
+"\n"
+"1. **The support of a nonzero single** is the singleton — using\n"
+"   §0 from Level 3.\n"
+"\n"
+"2. **A zero-valued single has empty support** — using §1\n"
+"   from Level 4.\n"
+"\n"
+"3. **Support membership via evaluation** — converting a support\n"
+"   question to a value computation and then evaluating, combining\n"
+"   §2, §3, §4, and\n"
+"   §5.\n"
+"\n"
+"4. **Support of a sum is bounded** — using §6 to show\n"
+"   that an element in the support of a sum is in the union of\n"
+"   the individual supports.\n"
+"\n"
+"This is the longest proof you have encountered in this world.\n"
+"Take it one conjunction at a time — use §7 to split\n"
+"each §8, then handle one part before moving to the next."
 msgstr ""
 
 #: Game.Levels.FinsetOperations.L02_IntersectionMembership
@@ -28565,6 +29931,10 @@ msgstr ""
 msgid "Powerset Membership → Subset"
 msgstr ""
 
+#: Game.Levels.Finsupp.L17_Boss
+msgid "Decompose the inner addition too."
+msgstr ""
+
 #. §0: `decide`
 #: Game.Levels.FinsetBasics.L17_DecideShortcut
 msgid "§0 evaluates the membership check computationally\n"
@@ -28616,6 +29986,42 @@ msgstr ""
 msgid "Induct on §0. This follows the same pattern as the sum levels,\n"
 "but with §1 and §2 instead of\n"
 "their sum counterparts."
+msgstr ""
+
+#. §0: `(single 4 (-3) + single 4 5) 4 = 2`
+#. §1: `ℤ`
+#. §2: ```
+#. Finsupp.single_add :
+#.   Finsupp.single a (b₁ + b₂) = Finsupp.single a b₁ + Finsupp.single a b₂
+#. ```
+#. §3: `b₁ + b₂`
+#. §4: `single 4 3 + single 4 5 = single 4 8`
+#. §5: `Finsupp.single_add`
+#. §6: `rw [← Finsupp.single_add]`
+#. §7: `3 + 5`
+#: Game.Levels.Finsupp.L10_SingleAddAlgebra
+msgid "# From Values to Functions\n"
+"\n"
+"In the last level you proved that §0\n"
+"by evaluating pointwise with §1 values. But there is a stronger fact:\n"
+"the two singles at the same point **combine into a single** whose\n"
+"value is the sum:\n"
+"\n"
+"§2\n"
+"\n"
+"This is function equality, not just agreement at one point. The\n"
+"left side is one single with value §3, and the right side\n"
+"is the sum of two singles. They are the **same function**.\n"
+"\n"
+"This is the algebraic form of accumulation. Where the previous\n"
+"level showed that values add at a shared position, this lemma says\n"
+"the entire functions are equal — a fact you can use to simplify\n"
+"expressions algebraically.\n"
+"\n"
+"**Your task**: Prove that §4\n"
+"using §5. You will need a **backward rewrite**\n"
+"§6 to combine the two singles on the\n"
+"left into a single whose value is §7."
 msgstr ""
 
 #: Game.Levels.Products.L16_OffDiagBinomial
@@ -29754,6 +31160,33 @@ msgid "Case-split on §0 with\n"
 "§1"
 msgstr ""
 
+#. §0: `Finsupp α M`
+#. §1: `α →₀ M`
+#. §2: `α`
+#. §3: `M`
+#. §4: `Finsupp.single a b`
+#. §5: `b`
+#. §6: `a`
+#. §7: `0`
+#. §8: `f.support`
+#. §9: `Finset`
+#. §10: `f`
+#. §11: `Finsupp.mem_support_iff : a ∈ f.support ↔ f a ≠ 0`
+#. §12: `Finsupp.add_apply : (f + g) a = f a + g a`
+#: Game.Levels.Finsupp.L01_SingleEqSame
+msgid "§0 (notation: §1) is the type of finitely\n"
+"supported functions from §2 to §3 — functions that are zero\n"
+"everywhere except on a finite set called the **support**.\n"
+"\n"
+"## Key definitions\n"
+"- §4: the function equal to §5 at §6, §7 elsewhere\n"
+"- §8: the §9 where §10 is nonzero\n"
+"\n"
+"## Key properties\n"
+"- §11\n"
+"- §12"
+msgstr ""
+
 #. §0: `sum_range_succ`
 #. §1: $$\\sum_{i \\in \\text{range}(n+1)} f(i) = \\sum_{i \\in \\text{range}(n)} f(i) + f(n)$$
 #. §2: `n`
@@ -30068,6 +31501,14 @@ msgid "Start by invoking finset induction:\n"
 "\n"
 "This creates two goals: the base case (empty set) and the\n"
 "inductive step (insert)."
+msgstr ""
+
+#. §0: `5`
+#. §1: `Finsupp.single 5 3`
+#. §2: `5`
+#: Game.Levels.Finsupp.L17_Boss
+msgid "Now evaluate each single at position §0. The first one,\n"
+"§1, has support point §2 — a match."
 msgstr ""
 
 #. §0: `hp : p.1 ∈ s ∧ p.2 ∈ t`
@@ -30632,6 +32073,10 @@ msgid "Now evaluate the sum over §0. Peel off terms\n"
 "from the top with §1."
 msgstr ""
 
+#: Game.Levels.Finsupp.L08_PointwiseAddition
+msgid "Now evaluate the first single at its support point."
+msgstr ""
+
 #: Game.Levels.PsetCardinality.L03_ConverseInclusionExclusion
 msgid "Same lemma as Level 2 — but now you're solving for the\n"
 "intersection instead of bounding the union."
@@ -30691,6 +32136,10 @@ msgstr ""
 
 #: Game.Levels.BigOpAlgebra.L06_SumUnion
 msgid "Now substitute the known sums."
+msgstr ""
+
+#: Game.Levels.Finsupp.L11_Cancellation
+msgid "Cancellation"
 msgstr ""
 
 #. §0: `«{h0}»`
@@ -30940,6 +32389,51 @@ msgstr ""
 #. §1: `h : a ∈ l`
 #: Game.Levels.AbstractionLadder.L14_ToFinset
 msgid "Now prove §0 from §1."
+msgstr ""
+
+#. §0: `f g : α →₀ M`
+#. §1: `f + g`
+#. §2: ```
+#. Finsupp.add_apply : (f + g) a = f a + g a
+#. ```
+#. §3: `Finsupp`
+#. §4: `add_apply`
+#. §5: `single_eq_same`
+#. §6: `single_eq_of_ne`
+#. §7: `apply Finsupp.single_eq_of_ne`
+#. §8: `single a b a' = 0`
+#. §9: `add_apply`
+#. §10: `single_eq_same`
+#. §11: `apply`
+#. §12: `rw`
+#. §13: `rw [Finsupp.single_eq_of_ne]`
+#. §14: `have h : 1 ≠ 2 := by omega`
+#. §15: `rw [Finsupp.single_eq_of_ne h]`
+#. §16: `Finsupp.single 1 3 + Finsupp.single 2 5`
+#. §17: `1`
+#: Game.Levels.Finsupp.L08_PointwiseAddition
+msgid "# Adding Finitely Supported Functions\n"
+"\n"
+"Two finitely supported functions §0 can be added.\n"
+"The result §1 is the function that adds values pointwise:\n"
+"\n"
+"§2\n"
+"\n"
+"This is the defining equation for addition of §3 values.\n"
+"After rewriting with §4, you can evaluate each summand\n"
+"separately using §5 and §6.\n"
+"\n"
+"**A new pattern**: In Level 2, you used §7\n"
+"because the *entire goal* was §8. Here, after\n"
+"rewriting with §9 and §10, the single evaluation\n"
+"is buried inside a larger arithmetic expression — you cannot §11 a\n"
+"lemma that rewrites a subexpression. Instead, you need §12, and\n"
+"§13 requires the inequality proof upfront.\n"
+"So you manufacture it with §14 and then\n"
+"§15.\n"
+"\n"
+"**Your task**: Evaluate §16\n"
+"at position §17."
 msgstr ""
 
 #. §0: `a ∉ s`
@@ -31308,6 +32802,14 @@ msgstr ""
 msgid "castSucc and succ Never Agree"
 msgstr ""
 
+#. §0: `single 2 4`
+#. §1: `2`
+#. §2: `support_single_ne_zero`
+#: Game.Levels.Finsupp.L16_SupportCoaching
+msgid "**Part 1**: The support of §0 is the singleton\n"
+"containing §1. Use §2."
+msgstr ""
+
 #. §0: `Finset`
 #. §1: `List α`
 #. §2: `Multiset α`
@@ -31523,6 +33025,10 @@ msgstr ""
 msgid "The succAbove Unification"
 msgstr ""
 
+#: Game.Levels.Finsupp.L14_SupportOfSum
+msgid "The support of a sum is contained in the union of supports."
+msgstr ""
+
 #. §0: $f(a) \\in f(s)$
 #. §1: $b \\in s$
 #. §2: $f(b) = f(a)$
@@ -31662,6 +33168,11 @@ msgstr ""
 
 #: Game.Levels.MeetFin.L04_ConstructionAndExtraction
 msgid "The sum of two Fin 5 values is at most 8."
+msgstr ""
+
+#. §0: `add_apply`
+#: Game.Levels.Finsupp.L13_Extensionality
+msgid "Decompose the left side using §0."
 msgstr ""
 
 #: Game.Levels.PsetFin.L16_SimplePigeonhole
@@ -31946,6 +33457,13 @@ msgid "§0 selects the right disjunct of a goal §1.\n"
 "When the goal is §3 and you want to prove §4."
 msgstr ""
 
+#. §0: `ext a`
+#. §1: `a`
+#: Game.Levels.Finsupp.L13_Extensionality
+msgid "Use §0 to reduce function equality to pointwise equality\n"
+"at a generic point §1."
+msgstr ""
+
 #: Game.Levels.AbstractionLadder.L21_PermNodupCoaching
 msgid "Permutations preserve the no-duplicates property."
 msgstr ""
@@ -32007,6 +33525,76 @@ msgid "**Inductive step**: First, peel off the last term with\n"
 "§0. Then distribute the §1 with §2 to\n"
 "separate the sum from the last term. Finally, substitute\n"
 "the IH and close with §3."
+msgstr ""
+
+#. §0: `Finset`
+#. §1: `f : α → M`
+#. §2: `f a ≠ 0`
+#. §3: `a`
+#. §4: `α`
+#. §5: `M`
+#. §6: `M`
+#. §7: `Finsupp α M`
+#. §8: `α →₀ M`
+#. §9: `α → M`
+#. §10: `Finset α`
+#. §11: `a ∈ support ↔ f a ≠ 0`
+#. §12: `Finsupp`
+#. §13: `Finsupp.single a b`
+#. §14: `b`
+#. §15: `a`
+#. §16: `0`
+#. §17: `a`
+#. §18: `b`
+#. §19: `ℕ`
+#. §20: `ℤ`
+#. §21: `single`
+#. §22: `support`
+#. §23: `Finset`
+#. §24: `single_add`
+#. §25: `support_add`
+#. §26: `Finsupp`
+#. §27: `Finsupp.mapDomain`
+#: Game.Levels.Finsupp
+msgid "# Finitely Supported Functions\n"
+"\n"
+"In previous worlds, you worked with §0 — finite collections of\n"
+"elements. Now we turn to **finitely supported functions**: functions\n"
+"§1 where §2 for only finitely many values of §3.\n"
+"\n"
+"In Lean, a finitely supported function from §4 to §5 (where §6\n"
+"has a zero) is bundled as §7, written §8. The\n"
+"key data is:\n"
+"- A function §9 giving the value at each point\n"
+"- A §10 called the **support**, recording where the function\n"
+"  is nonzero\n"
+"- A proof that §11\n"
+"\n"
+"The simplest way to build a §12 is §13 — the\n"
+"function that is §14 at §15 and §16 everywhere else. Think of it\n"
+"as a spike at position §17 with height §18.\n"
+"\n"
+"Finitely supported functions appear throughout mathematics:\n"
+"- A **polynomial** is a finitely supported function from §19 to its\n"
+"  coefficient ring (most coefficients are zero)\n"
+"- A **formal sum** of group elements is a finitely supported function\n"
+"  from the group to §20\n"
+"- A **vector** relative to a basis is a finitely supported function\n"
+"  from the basis set to the scalar field\n"
+"\n"
+"In this world you will learn to:\n"
+"1. Construct finitely supported functions using §21\n"
+"2. Evaluate them at points (at the support, and away from it)\n"
+"3. Reason about their §22 as a §23\n"
+"4. Add them pointwise — including accumulation at shared positions\n"
+"5. Combine singles algebraically using §24\n"
+"6. Prove equality using extensionality\n"
+"7. Bound the support of a sum using §25\n"
+"8. Connect Finsupp back to big operators via summation over supports\n"
+"\n"
+"This is a focused introduction to §26. Operations like\n"
+"§27 (reindexing by a function on the domain) are\n"
+"not covered here."
 msgstr ""
 
 #: Game.Levels.PascalsTriangle.L13_TheCircleCloses
@@ -32131,6 +33719,36 @@ msgid "Inside the §0, destructure:\n"
 "§1\n"
 "For §2: §3. For §4: §5.\n"
 "For §6: §7. For §8: §9"
+msgstr ""
+
+#. §0: `5`
+#. §1: `single 5 3 + single 8 1 + single 5 4`
+#. §2: `1`
+#. §3: `8`
+#. §4: `single 5 7`
+#. §5: `5`
+#. §6: `8`
+#: Game.Levels.Finsupp.L17_Boss
+msgid "# Boss: Putting It All Together\n"
+"\n"
+"You have learned to construct finitely supported functions, evaluate\n"
+"them at and away from the support point, reason about support, add\n"
+"them pointwise, combine singles algebraically, and bound the support\n"
+"of a sum.\n"
+"\n"
+"Now put it all together. Prove five things:\n"
+"\n"
+"1. **Support membership**: §0 belongs to the support of the\n"
+"   three-term sum §1.\n"
+"2. **Evaluation**: The sum evaluates to §2 at position §3.\n"
+"3. **Support of a single**: The support of §4 is\n"
+"   the singleton containing §5.\n"
+"4. **Algebraic combination**: Two singles at position §6 combine\n"
+"   to give a singleton support.\n"
+"5. **Support bound**: An element in the support of a sum is in the\n"
+"   union of the individual supports.\n"
+"\n"
+"Each part exercises a different combination of skills."
 msgstr ""
 
 #: Game.Levels.Products.L17_DecompositionReverse
@@ -32401,6 +34019,25 @@ msgstr ""
 msgid "Compute sigma cardinality from the fiber-size sum."
 msgstr ""
 
+#. §0: `support_single_ne_zero`
+#. §1: `single_zero`
+#. §2: `mem_support_iff`
+#. §3: `add_apply`
+#. §4: `single_eq_same`
+#. §5: `single_eq_of_ne`
+#. §6: `support_add`
+#: Game.Levels.Finsupp.L16_SupportCoaching
+msgid "You combined five different skills in a single proof:\n"
+"- §0 to compute the support of a single\n"
+"- §1 to recognize when a single is the zero function\n"
+"- §2 to convert between support membership and values\n"
+"- The full evaluation strategy (§3 → §4 /\n"
+"  §5) to compute a concrete value\n"
+"- §6 to bound the support of a sum by the union\n"
+"\n"
+"This is the complete Finsupp toolkit. You are ready for the boss."
+msgstr ""
+
 #. §0: `(s \\ t) ∪ t`
 #. §1: `s ∪ t`
 #. §2: `h1`
@@ -32516,6 +34153,15 @@ msgstr ""
 #. §1: `s.card = 5`
 #: Game.Levels.BigOpAlgebra.L13_ConcreteComputation
 msgid "Substitute the known values: §0 and §1."
+msgstr ""
+
+#. §0: `rw [← Finsupp.single_add]`
+#. §1: `single 4 (5 + (-5))`
+#. §2: `single 4 0`
+#: Game.Levels.Finsupp.L11_Cancellation
+msgid "Try §0. This\n"
+"combines the two singles into §1, which\n"
+"simplifies to §2."
 msgstr ""
 
 #: Game.Levels.FinsetOperations.L03_SetDifference
@@ -33352,6 +34998,30 @@ msgid "You proved the converse of powerset monotonicity:\n"
 "the subset ordering. This is a deeper fact than either direction alone."
 msgstr ""
 
+#. §0: `rw [...] at h`
+#. §1: `↔`
+#. §2: `mem_support_iff`
+#. §3: `mem_support_iff`
+#. §4: `rw [Finsupp.mem_support_iff]`
+#. §5: `a ∈ f.support`
+#. §6: `f a ≠ 0`
+#. §7: `rw [Finsupp.mem_support_iff] at h`
+#. §8: `h`
+#: Game.Levels.Finsupp.L06_MemSupportIffReverse
+msgid "The §0 syntax is a powerful tool: it rewrites inside\n"
+"a hypothesis rather than the goal. Combined with §1 lemmas like\n"
+"§2, it lets you freely convert between equivalent\n"
+"forms on either side of the turnstile.\n"
+"\n"
+"Both directions of §3 are now in your toolkit:\n"
+"- **Goal**: §4 converts\n"
+"  §5 to §6 (or vice versa)\n"
+"- **Hypothesis**: §7 does the\n"
+"  same transformation on §8\n"
+"\n"
+"This completes your understanding of the support-value bridge."
+msgstr ""
+
 #. §0: `i.val = j.val`
 #. §1: `«{h}»`
 #: Game.Levels.MeetFin.L05_FinEquality
@@ -34051,9 +35721,21 @@ msgid "Congratulations! You've mastered the Big Operators Introduction.\n"
 "you'll meet later."
 msgstr ""
 
+#. §0: `8`
+#. §1: `Finsupp.single 5 3`
+#. §2: `5`
+#. §3: `8`
+#: Game.Levels.Finsupp.L17_Boss
+msgid "Now evaluate each single at position §0. The first one,\n"
+"§1, has support point §2, not §3."
+msgstr ""
+
 #. §0: `rw [Finset.card_eq_sum_ones]`
 #. §1: `exact hs`
 #: Game.Levels.BigOpIntro.L15_Boss
+#: Game.Levels.Finsupp.L13_Extensionality
+#: Game.Levels.Finsupp.L17_Boss
+#: Game.Levels.Finsupp.L17_Boss
 msgid "Try §0 then\n"
 "§1."
 msgstr ""
@@ -34274,6 +35956,17 @@ msgid "# Boss: Putting It All Together\n"
 "coherent proof. No single level taught all of this at once."
 msgstr ""
 
+#. §0: `apply Finsupp.support_single_ne_zero`
+#. §1: `7 ≠ 0`
+#: Game.Levels.Finsupp.L03_SupportSingle
+#: Game.Levels.Finsupp.L12_SingleAddIntegration
+#: Game.Levels.Finsupp.L16_SupportCoaching
+#: Game.Levels.Finsupp.L17_Boss
+#: Game.Levels.Finsupp.L17_Boss
+msgid "Try §0.\n"
+"This leaves the goal §1."
+msgstr ""
+
 #: Game.Levels.PsetCardinality.L01_ComplementErase
 msgid "Complement and Erase"
 msgstr ""
@@ -34295,6 +35988,13 @@ msgid "§0 states that\n"
 "## When to use it\n"
 "When you need to decompose a tuple into its earlier elements\n"
 "and its last element."
+msgstr ""
+
+#. §0: `apply Finsupp.support_single_ne_zero`
+#. §1: `7`
+#: Game.Levels.Finsupp.L03_SupportSingle
+msgid "Use §0 to reduce this to\n"
+"proving that the value §1 is nonzero."
 msgstr ""
 
 #. §0: `have hα : Fintype.card α = 10 := by`
@@ -34629,6 +36329,10 @@ msgid "§0 states that §1.\n"
 "## When to use it\n"
 "When you need to establish that a filtered set is a subset of the\n"
 "original, typically as a step toward a cardinality bound."
+msgstr ""
+
+#: Game.Levels.Finsupp.L12_SingleAddIntegration
+msgid "Combining Algebra and Support"
 msgstr ""
 
 #. §0: `s ∈ s.powerset`
@@ -35317,6 +37021,47 @@ msgid "# The Geometric Series Formula\n"
 "§8 *can* prove), then §9 closes the resulting linear goal."
 msgstr ""
 
+#. §0: `Finsupp.single a 0 = 0`
+#. §1: `single`
+#. §2: `b ≠ 0`
+#. §3: `a`
+#. §4: `support_single_ne_zero`
+#. §5: `b = 0`
+#. §6: `single_zero`
+#. §7: `support_zero`
+#. §8: `support_single_ne_zero`
+#. §9: `b ≠ 0`
+#. §10: `Finsupp.single a b = 0`
+#. §11: `b = 0`
+#. §12: `a`
+#. §13: `Finsupp.single a b = 0 ↔ b = 0`
+#. §14: `Finsupp.support_zero : (0 : α →₀ M).support = ∅`
+#. §15: `rw [Finsupp.single_zero]`
+#. §16: `0`
+#. §17: `(0 : ℕ →₀ ℕ).support = ∅`
+#. §18: `rfl`
+#: Game.Levels.Finsupp.L04_SingleZero
+msgid "This is an important edge case: §0. The\n"
+"support of a §1 depends on whether the value is zero:\n"
+"\n"
+"- §2: support is the singleton containing §3\n"
+"  (§4)\n"
+"- §5: support is empty (§6 + §7)\n"
+"\n"
+"This is why §8 requires the side condition\n"
+"§9 — without it, the claim would be false.\n"
+"\n"
+"Note: the converse also holds. If §10 then\n"
+"§11 (since the function is zero at every point, including §12).\n"
+"So §13 — the single is zero if and\n"
+"only if the value is zero.\n"
+"\n"
+"The lemma §14 names\n"
+"the fact that the zero function has empty support. After\n"
+"§15 converted our single to §16, the goal\n"
+"§17 held by definition (§18)."
+msgstr ""
+
 #. §0: `Fin`
 #. §1: `Fin`
 #. §2: `omega`
@@ -35468,6 +37213,13 @@ msgid "§0 proves that\n"
 "The image of an intersection is contained in the intersection of images.\n"
 "\n"
 "Disabled to force manual proof using backward extraction."
+msgstr ""
+
+#. §0: `(0 : ℕ →₀ ℕ).support = ∅`
+#. §1: `rfl`
+#: Game.Levels.Finsupp.L16_SupportCoaching
+msgid "The goal is now §0.\n"
+"Try §1 — this holds by definition."
 msgstr ""
 
 #. §0: `rw [Finset.subset_iff]; intro y hy`
@@ -36181,6 +37933,10 @@ msgstr ""
 
 #: Game.Levels.FinNavigation.L10_ZeroSuccDecomposition
 msgid "Every element of Fin 3 is either 0 or a successor."
+msgstr ""
+
+#: Game.Levels.Finsupp.L09_Accumulation
+msgid "When two singles share a support point, their integer values add."
 msgstr ""
 
 #. §0: `e`
@@ -36900,6 +38656,10 @@ msgid "§0 characterizes membership in §1:\n"
 "When the goal or a hypothesis involves §8."
 msgstr ""
 
+#: Game.Levels.Finsupp.L04_SingleZero
+msgid "When the Value is Zero"
+msgstr ""
+
 #. §0: `rw [Finset.sum_filter]`
 #: Game.Levels.BigOpAlgebra.L07_SumFilter
 msgid "Use §0 to rewrite the filtered sum\n"
@@ -37137,18 +38897,6 @@ msgid "The pattern you just learned is the **sum simplification pattern**:\n"
 "rather than the goal — as you will see in Level 7."
 msgstr ""
 
-#. §0: `intro a b h`
-#. §1: `h : a * 2 = b * 2`
-#. §2: `omega`
-#: Game.Levels.FinsetImage.L22_ShowTactic
-msgid "Now §0 gives you concrete variables and an\n"
-"equation §1. Then §2 solves it."
-msgstr ""
-
-#: Game.Levels.BinomialCoefficients.L13_SumSimplification
-msgid "Coaching: Single-Term Sums"
-msgstr ""
-
 #. §0: `have`
 #. §1: `sum_congr`
 #. §2: `rw at h`
@@ -37188,6 +38936,18 @@ msgid "# The §0 + §1 + §2 Pattern\n"
 "\n"
 "In Level 8, you will create §14 yourself using §15. Here,\n"
 "focus on the mechanics of simplifying a sum inside a hypothesis."
+msgstr ""
+
+#. §0: `intro a b h`
+#. §1: `h : a * 2 = b * 2`
+#. §2: `omega`
+#: Game.Levels.FinsetImage.L22_ShowTactic
+msgid "Now §0 gives you concrete variables and an\n"
+"equation §1. Then §2 solves it."
+msgstr ""
+
+#: Game.Levels.BinomialCoefficients.L13_SumSimplification
+msgid "Coaching: Single-Term Sums"
 msgstr ""
 
 #. §0: $i = 0$
@@ -37288,6 +39048,11 @@ msgid "§0 replaces hypothesis §1 with §2, provided §3 is\n"
 "## When to use it\n"
 "When a hypothesis uses lattice notation (§8, §9, §10) and you\n"
 "want to convert it to finset notation (§11, §12, §13)."
+msgstr ""
+
+#. §0: `h`
+#: Game.Levels.Finsupp.L06_MemSupportIffReverse
+msgid "Now §0 says exactly what the goal needs."
 msgstr ""
 
 #: Game.Levels.AbstractionLadder.L11_MultisetCardinality
@@ -38095,6 +39860,14 @@ msgstr ""
 msgid "One cons peeled off. Continue: §0."
 msgstr ""
 
+#. §0: `rw [Finsupp.mem_support_iff] at h`
+#. §1: `h`
+#. §2: `f 3 ≠ 0`
+#: Game.Levels.Finsupp.L06_MemSupportIffReverse
+msgid "Try §0.\n"
+"This changes §1 to §2."
+msgstr ""
+
 #. §0: `sum_range_choose`
 #: Game.Levels.PascalsTriangle.L08_SymmetricRowSum
 msgid "The goal is the row sum identity. Close with §0."
@@ -38404,6 +40177,13 @@ msgstr ""
 
 #: Game.Levels.PsetFin.L08_ObtainDestructure
 msgid "Obtain: Existential Destructuring"
+msgstr ""
+
+#. §0: `apply Finsupp.single_eq_of_ne`
+#. §1: `5 ≠ 3`
+#: Game.Levels.Finsupp.L02_SingleEqOfNe
+msgid "Try §0. This\n"
+"leaves the goal §1."
 msgstr ""
 
 #. §0: `s ×ˢ t`
@@ -39043,6 +40823,13 @@ msgid "Now prove §0. Use §1 to\n"
 "reduce to values."
 msgstr ""
 
+#. §0: `Finsupp.single 4 0 = 0`
+#. §1: `single a 0`
+#: Game.Levels.Finsupp.L11_Cancellation
+msgid "The goal is now §0. You know from\n"
+"Level 4 that §1 is the zero function."
+msgstr ""
+
 #. §0: `hy : y ∈ s.image f ∩ t.image f`
 #. §1: `rw [Finset.mem_inter] at hy`
 #: Game.Levels.FinsetImage.L18_ImageIntersectionEquality
@@ -39380,6 +41167,17 @@ msgid "The first two terms §0 match\n"
 "to fold them into §2."
 msgstr ""
 
+#. §0: `Finsupp.single_add`
+#. §1: `single a (b₁ + b₂) = single a b₁ + single a b₂`
+#. §2: `single a b₁ + single a b₂`
+#. §3: `single a (b₁ + b₂)`
+#: Game.Levels.Finsupp.L10_SingleAddAlgebra
+msgid "Use a backward rewrite to combine the left side. The lemma\n"
+"§0 says §1.\n"
+"Rewriting backwards replaces §2 with\n"
+"§3."
+msgstr ""
+
 #. §0: `omega`
 #: Game.Levels.SummationFormulas.L08_ExponentialBound
 msgid "Now §0 has all the linear facts it needs."
@@ -39585,6 +41383,11 @@ msgstr ""
 
 #: Game.Levels.FinNavigation.L13_FindingCastSucc
 msgid "Finding a castSucc Preimage"
+msgstr ""
+
+#: Game.Levels.Finsupp.L15_SummingOverSupport
+msgid "First, compute the support. You know from Level 3 that the\n"
+"support of a nonzero single is a singleton."
 msgstr ""
 
 #. §0: $(s \\cup t) \\cap u = (s \\cap u) \\cup (t \\cap u)$
@@ -39984,6 +41787,13 @@ msgid "The goal is now a disjunction: §0 on the left, or\n"
 "choose the left branch with §3."
 msgstr ""
 
+#. §0: `rw [Finsupp.single_eq_same]`
+#. §1: `3`
+#: Game.Levels.Finsupp.L08_PointwiseAddition
+msgid "Try §0. The\n"
+"first single evaluates to §1."
+msgstr ""
+
 #. §0: `Fin 2`
 #. §1: `Fin`
 #. §2: `cases x with | mk v hlt`
@@ -40232,6 +42042,44 @@ msgid "You've proved **distributivity**: §0.\n"
 "swap roles. Then the boss, which brings in set difference."
 msgstr ""
 
+#. §0: `Finsupp.mem_support_iff`
+#. §1: `mem_support_iff`
+#. §2: `↔`
+#. §3: `a`
+#. §4: `f a ≠ 0`
+#. §5: `support_single_ne_zero`
+#. §6: ```
+#. rw [Finsupp.mem_support_iff] at h
+#. ```
+#. §7: `h : a ∈ f.support`
+#. §8: `h : f a ≠ 0`
+#. §9: `3`
+#. §10: `f`
+#. §11: `f 3 ≠ 0`
+#: Game.Levels.Finsupp.L06_MemSupportIffReverse
+msgid "# Rewriting in a Hypothesis\n"
+"\n"
+"In the last level you used §0 to convert a\n"
+"goal about support membership into a goal about function values.\n"
+"But §1 is an §2 — it works in **both** directions.\n"
+"\n"
+"The direction you haven't used yet is: given that §3 IS in the\n"
+"support, conclude that §4. In practice this direction is\n"
+"common — you often know something is in the support (for example\n"
+"from §5) and need to conclude the value\n"
+"is nonzero.\n"
+"\n"
+"To use the reverse direction, you rewrite **in the hypothesis**\n"
+"rather than the goal. The syntax is:\n"
+"\n"
+"§6\n"
+"\n"
+"This transforms §7 into §8.\n"
+"\n"
+"**Your task**: Given that §9 is in the support of §10, prove\n"
+"that §11."
+msgstr ""
+
 #. §0: `s.diag.card`
 #. §1: `Finset.diag_card`
 #: Game.Levels.Products.L21_Boss
@@ -40377,6 +42225,21 @@ msgstr ""
 
 #: Game.Levels.PascalsTriangle.L12_PascalFromVandermonde
 msgid "Vandermonde with m=1: the convolution reduces to Pascal's identity."
+msgstr ""
+
+#. §0: `rw [Finsupp.single_apply]`
+#. §1: `(if 3 = 5 then 7 else 0) = 0`
+#: Game.Levels.Finsupp.L07_SingleApply
+#: Game.Levels.Finsupp.L08_PointwiseAddition
+msgid "Try §0. The goal\n"
+"becomes §1."
+msgstr ""
+
+#. §0: `rw [Finsupp.single_eq_same]`
+#. §1: `3`
+#: Game.Levels.Finsupp.L01_SingleEqSame
+msgid "Use §0 to evaluate the function\n"
+"at position §1."
 msgstr ""
 
 #. §0: `rw [Fin.val_castSucc]`
@@ -41511,6 +43374,47 @@ msgstr ""
 #: Game.Levels.Products.L21_Boss
 #: Game.Levels.Products.L21_Boss
 #: Game.Levels.Products.L21_Boss
+#: Game.Levels.Finsupp.L01_SingleEqSame
+#: Game.Levels.Finsupp.L02_SingleEqOfNe
+#: Game.Levels.Finsupp.L03_SupportSingle
+#: Game.Levels.Finsupp.L05_MemSupportIff
+#: Game.Levels.Finsupp.L06_MemSupportIffReverse
+#: Game.Levels.Finsupp.L09_Accumulation
+#: Game.Levels.Finsupp.L09_Accumulation
+#: Game.Levels.Finsupp.L09_Accumulation
+#: Game.Levels.Finsupp.L11_Cancellation
+#: Game.Levels.Finsupp.L12_SingleAddIntegration
+#: Game.Levels.Finsupp.L13_Extensionality
+#: Game.Levels.Finsupp.L14_SupportOfSum
+#: Game.Levels.Finsupp.L15_SummingOverSupport
+#: Game.Levels.Finsupp.L15_SummingOverSupport
+#: Game.Levels.Finsupp.L16_SupportCoaching
+#: Game.Levels.Finsupp.L16_SupportCoaching
+#: Game.Levels.Finsupp.L16_SupportCoaching
+#: Game.Levels.Finsupp.L16_SupportCoaching
+#: Game.Levels.Finsupp.L16_SupportCoaching
+#: Game.Levels.Finsupp.L16_SupportCoaching
+#: Game.Levels.Finsupp.L16_SupportCoaching
+#: Game.Levels.Finsupp.L16_SupportCoaching
+#: Game.Levels.Finsupp.L16_SupportCoaching
+#: Game.Levels.Finsupp.L17_Boss
+#: Game.Levels.Finsupp.L17_Boss
+#: Game.Levels.Finsupp.L17_Boss
+#: Game.Levels.Finsupp.L17_Boss
+#: Game.Levels.Finsupp.L17_Boss
+#: Game.Levels.Finsupp.L17_Boss
+#: Game.Levels.Finsupp.L17_Boss
+#: Game.Levels.Finsupp.L17_Boss
+#: Game.Levels.Finsupp.L17_Boss
+#: Game.Levels.Finsupp.L17_Boss
+#: Game.Levels.Finsupp.L17_Boss
+#: Game.Levels.Finsupp.L17_Boss
+#: Game.Levels.Finsupp.L17_Boss
+#: Game.Levels.Finsupp.L17_Boss
+#: Game.Levels.Finsupp.L17_Boss
+#: Game.Levels.Finsupp.L17_Boss
+#: Game.Levels.Finsupp.L17_Boss
+#: Game.Levels.Finsupp.L17_Boss
 msgid "Try §0."
 msgstr ""
 
@@ -41949,6 +43853,39 @@ msgstr ""
 msgid "C(n, n) = 1, derived from symmetry and choose_zero_right."
 msgstr ""
 
+#. §0: `single`
+#. §1: `f`
+#. §2: ```
+#. Finsupp.mem_support_iff : a ∈ f.support ↔ f a ≠ 0
+#. ```
+#. §3: `Finset`
+#. §4: `a`
+#. §5: `f`
+#. §6: `a`
+#. §7: `↔`
+#. §8: `rw`
+#. §9: `f 5 ≠ 0`
+#. §10: `5`
+#. §11: `f`
+#: Game.Levels.Finsupp.L05_MemSupportIff
+msgid "# Support Membership Means Nonzero\n"
+"\n"
+"You know what the support of a §0 looks like. For a general\n"
+"finitely supported function §1, the characterization is:\n"
+"\n"
+"§2\n"
+"\n"
+"This is the fundamental link between the support (a §3) and\n"
+"the function values. It says: §4 is in the support if and only if\n"
+"§5 is nonzero at §6.\n"
+"\n"
+"Since this is an §7, you can use §8 to convert between the\n"
+"two forms.\n"
+"\n"
+"**Your task**: Given that §9, prove that §10 is in the\n"
+"support of §11."
+msgstr ""
+
 #. §0: `sum_comm`
 #. §1: $\\sum_{i=0}^{n-1} \\sum_{j=0}^{m-1} g(j)$
 #. §2: $i$
@@ -42072,6 +44009,46 @@ msgstr ""
 
 #: Game.Levels.PascalsTriangle
 msgid "Pascal's Triangle"
+msgstr ""
+
+#. §0: `0`
+#. §1: `-3x⁴ + 5x⁴`
+#. §2: `2x⁴`
+#. §3: `Finsupp.single`
+#. §4: `ℕ →₀ ℕ`
+#. §5: `Finsupp`
+#. §6: `ℕ →₀ ℤ`
+#. §7: `-3x⁴`
+#. §8: `add_apply`
+#. §9: `single_eq_same`
+#. §10: `single_eq_of_ne`
+#. §11: `Finsupp.single 4 (-3) + Finsupp.single 4 5`
+#. §12: `4`
+#: Game.Levels.Finsupp.L09_Accumulation
+msgid "# Same Support Point: Values Add Up\n"
+"\n"
+"In the last level, you added two singles with *different* support\n"
+"points (1 and 2) and evaluated at one of them. The other single\n"
+"contributed §0 at that position.\n"
+"\n"
+"What happens when both singles share the **same** support point?\n"
+"The values **accumulate** — they add together at that position.\n"
+"\n"
+"This is the core property that makes finitely supported functions\n"
+"behave like formal linear combinations. A polynomial like §1\n"
+"simplifies to §2 because the coefficients at the same power\n"
+"add up. The same thing happens with §3.\n"
+"\n"
+"**A note on types**: Until now, every level used §4. But\n"
+"§5 is general — the domain and codomain can be any types\n"
+"with the right structure. This level uses §6, where the\n"
+"values are **integers**. This lets coefficients be negative, which\n"
+"is essential for polynomials (like §7) and formal linear\n"
+"combinations in general. All the same lemmas — §8,\n"
+"§9, §10 — work unchanged.\n"
+"\n"
+"**Your task**: Evaluate §11\n"
+"at position §12, where the values are integers."
 msgstr ""
 
 #. §0: `Fin 5`
@@ -42257,6 +44234,36 @@ msgstr ""
 msgid "Start by unfolding §0 on the cons'd list:\n"
 "§1 turns §2 into\n"
 "§3."
+msgstr ""
+
+#. §0: `single 4 3 + single 4 5 = single 4 8`
+#. §1: `single 4 3`
+#. §2: `3x⁴`
+#. §3: `3`
+#. §4: `4`
+#. §5: `rw [← lemma]`
+#. §6: `← single_add`
+#. §7: `rw [single_add]`
+#. §8: `rw [← Finsupp.single_add]`
+#. §9: `single a b₁ + single a b₂`
+#. §10: `single a (b₁ + b₂)`
+#: Game.Levels.Finsupp.L10_SingleAddAlgebra
+msgid "You have proved that §0 as\n"
+"*function equality*, not just pointwise agreement. This is the\n"
+"algebraic form of accumulation.\n"
+"\n"
+"In polynomial language, you just proved that **3x⁴ + 5x⁴ = 8x⁴**:\n"
+"the Finsupp §1 represents the monomial §2 (coefficient\n"
+"§3 at degree §4), and adding two monomials at the same degree\n"
+"gives a monomial whose coefficient is the sum.\n"
+"\n"
+"The backward rewrite §5 is useful whenever you want to\n"
+"*combine* rather than *expand*. Here, §6 combined two\n"
+"singles into one. The forward direction §7 would\n"
+"expand one single into a sum of two.\n"
+"\n"
+"**Pattern**: §8 to combine\n"
+"§9 into §10."
 msgstr ""
 
 #. §0: `0 ∉ image (fun _ => 0) (singleton 1 ∩ singleton 2)`
@@ -42972,6 +44979,14 @@ msgid "§0 states that §1.\n"
 "§4"
 msgstr ""
 
+#: Game.Levels.Finsupp.L16_SupportCoaching
+#: Game.Levels.Finsupp.L16_SupportCoaching
+#: Game.Levels.Finsupp.L17_Boss
+#: Game.Levels.Finsupp.L17_Boss
+#: Game.Levels.Finsupp.L17_Boss
+msgid "Split the remaining conjunction."
+msgstr ""
+
 #. §0: `Finset.card_union_of_disjoint h`
 #. §1: `h : Disjoint s t`
 #. §2: `(s ∪ t).card = s.card + t.card`
@@ -43156,6 +45171,49 @@ msgstr ""
 msgid "Destructure §0 into its value and bound."
 msgstr ""
 
+#. §0: `f : α →₀ M`
+#. §1: `α`
+#. §2: `M`
+#. §3: `Finsupp α M`
+#. §4: `α →₀ M`
+#. §5: `Finset`
+#. §6: `Finsupp`
+#. §7: `Finsupp.single a b`
+#. §8: `b`
+#. §9: `a`
+#. §10: `0`
+#. §11: `Finsupp.single a b`
+#. §12: `a`
+#. §13: `Finsupp.single_eq_same`
+#. §14: ```
+#. Finsupp.single_eq_same : Finsupp.single a b a = b
+#. ```
+#. §15: `Finsupp.single 3 7`
+#. §16: `3`
+#: Game.Levels.Finsupp.L01_SingleEqSame
+msgid "# What is a Finitely Supported Function?\n"
+"\n"
+"A **finitely supported function** §0 is a function from §1\n"
+"to §2 that equals zero at all but finitely many points. The type\n"
+"§3 (notation §4) bundles together:\n"
+"- the function itself\n"
+"- a §5 called the **support**, recording where the function\n"
+"  is nonzero\n"
+"- a proof that these two agree\n"
+"\n"
+"The simplest §6 is §7: the function that\n"
+"equals §8 at §9 and §10 everywhere else.\n"
+"\n"
+"To evaluate §11 at the point §12 itself, use\n"
+"§13:\n"
+"\n"
+"§14\n"
+"\n"
+"This says: evaluating a single at its support point returns the value.\n"
+"\n"
+"**Your task**: Evaluate §15 at position §16."
+msgstr ""
+
 #. §0: `vecSnoc_castSucc f x i`
 #. §1: `vecSnoc f x i.castSucc = f i`
 #: Game.Levels.FinTuples.L09_AppendingWithSnoc
@@ -43207,6 +45265,41 @@ msgid "§0 states that §1.\n"
 "pattern for rewriting. For example, if the IH matches §3\n"
 "but the goal has §4, use §5 to get\n"
 "§6, then §7 fires."
+msgstr ""
+
+#. §0: `Finsupp.single_eq_same`
+#. §1: `Finsupp.single a b a = b`
+#. §2: ```
+#. rw [Finsupp.single_eq_same]
+#. exact Finsupp.single_eq_same
+#. ```
+#. §3: `Finsupp.single a b a`
+#. §4: `single`
+#. §5: `rw [Finsupp.single_eq_same]`
+#. §6: `Finsupp.single 3 7 3 = 7`
+#. §7: `7 = 7`
+#. §8: `single`
+#. §9: `Finsupp.single_eq_of_ne`
+#: Game.Levels.Finsupp.L01_SingleEqSame
+msgid "§0 evaluates a single at its support point:\n"
+"\n"
+"§1\n"
+"\n"
+"## Syntax\n"
+"§2\n"
+"\n"
+"## When to use it\n"
+"When the goal contains §3 — the evaluation point\n"
+"matches the first argument of §4.\n"
+"\n"
+"## Example\n"
+"§5 turns §6\n"
+"into §7.\n"
+"\n"
+"## Warning\n"
+"This only works when the evaluation point is *exactly* the same\n"
+"as the first argument to §8. If they differ, use\n"
+"§9 instead."
 msgstr ""
 
 #. §0: `constructor`
@@ -43628,6 +45721,16 @@ msgid "# Filter: Selecting Elements by a Property\n"
 "**Your task**: Prove that §11.\n"
 "\n"
 "In words: 4 is in the set of even numbers less than 6."
+msgstr ""
+
+#. §0: `rw [← Finsupp.single_add]`
+#. §1: `single 4 3 + single 4 5`
+#. §2: `single 4 (3 + 5)`
+#. §3: `single 4 8`
+#: Game.Levels.Finsupp.L10_SingleAddAlgebra
+msgid "Try §0. This\n"
+"combines §1 into §2,\n"
+"which Lean recognizes as §3."
 msgstr ""
 
 #. §0: `s.card = 4`
@@ -44517,6 +46620,10 @@ msgstr ""
 #. §0: `2^n`
 #: Game.Levels.PsetCombinatorics.L12_AntidiagonalDoubleSum
 msgid "Both sums are §0. Substitute and close."
+msgstr ""
+
+#: Game.Levels.Finsupp.L09_Accumulation
+msgid "Now evaluate the second single at its support point."
 msgstr ""
 
 #. §0: `List.toFinset_eq_of_perm`
@@ -45852,6 +47959,12 @@ msgid "The goal is §0, which means\n"
 "the disjunction, then §3 to split into cases."
 msgstr ""
 
+#. §0: `0 + 0 = 0`
+#. §1: `omega`
+#: Game.Levels.Finsupp.L13_Extensionality
+msgid "The goal is §0. Try §1."
+msgstr ""
+
 #. §0: `castSucc`
 #. §1: `succ`
 #. §2: `i.castSucc.val < i.succ.val`
@@ -45948,6 +48061,40 @@ msgstr ""
 #: Game.Levels.PsetFin.L05_PointwiseFormula
 msgid "§0 substitutes the formula, then\n"
 "case-split: §1"
+msgstr ""
+
+#. §0: `Finsupp.single a b`
+#. §1: `b`
+#. §2: `a`
+#. §3: `a'`
+#. §4: `0`
+#. §5: `a`
+#. §6: `Finsupp.single_eq_of_ne`
+#. §7: ```
+#. Finsupp.single_eq_of_ne (h : a' ≠ a) : Finsupp.single a b a' = 0
+#. ```
+#. §8: `h`
+#. §9: `a'`
+#. §10: `a`
+#. §11: `Finsupp.single 3 7`
+#. §12: `5`
+#. §13: `0`
+#: Game.Levels.Finsupp.L02_SingleEqOfNe
+msgid "# Evaluating Away from the Support Point\n"
+"\n"
+"You know that §0 evaluates to §1 at §2. What\n"
+"about at a *different* point §3?\n"
+"\n"
+"The answer is §4 — the function is zero everywhere except at §5.\n"
+"The lemma is §6:\n"
+"\n"
+"§7\n"
+"\n"
+"Notice the argument order: §8 proves that the **evaluation point**\n"
+"§9 differs from the **support point** §10.\n"
+"\n"
+"**Your task**: Evaluate §11 at position §12.\n"
+"The result should be §13."
 msgstr ""
 
 #. §0: `h : (powersetCard 2 s).card = Nat.choose s.card 2`
@@ -46307,6 +48454,14 @@ msgid "§0 states that §1.\n"
 "algebraic rearrangement."
 msgstr ""
 
+#. §0: `have h : 1 ≠ 2 := by omega`
+#. §1: `rw [Finsupp.single_eq_of_ne h]`
+#: Game.Levels.Finsupp.L08_PointwiseAddition
+msgid "Establish the inequality with\n"
+"§0, then\n"
+"§1."
+msgstr ""
+
 #. §0: `Fin.val_zero`
 #. §1: `(0 : Fin (n + 1)).val = 0`
 #. §2: ```
@@ -46381,6 +48536,51 @@ msgstr ""
 
 #: Game.Levels.Powerset.L21_SingletonSubsets
 msgid "The number of 1-element subsets of s equals s.card."
+msgstr ""
+
+#. §0: `0`
+#. §1: `-3 + 5 = 2`
+#. §2: `Finsupp.single 4 (-3) + Finsupp.single 4 5`
+#. §3: `4`
+#. §4: `2`
+#. §5: `-3`
+#. §6: `5`
+#. §7: `Finsupp.single 4 (-3)`
+#. §8: `-3x⁴`
+#. §9: `-3`
+#. §10: `4`
+#. §11: `4`
+#. §12: `-3 + 5 = 2`
+#. §13: `ℤ`
+#. §14: `ℕ`
+#. §15: `add_apply`
+#. §16: `single_eq_same`
+#. §17: `ℕ`
+#. §18: `ℤ`
+#. §19: `AddZeroClass`
+#: Game.Levels.Finsupp.L09_Accumulation
+msgid "Notice the difference from the previous level:\n"
+"\n"
+"- **Different support points** (Level 8): one single evaluates to its\n"
+"  value, the other evaluates to §0. The sum is just the one value.\n"
+"- **Same support point** (this level): BOTH singles evaluate to their\n"
+"  values. The sum is the actual sum of the two values: §1.\n"
+"\n"
+"This is **accumulation** — the defining behavior of formal linear\n"
+"combinations. When you write §2,\n"
+"you get a finsupp whose value at §3 is §4, not §5 or §6.\n"
+"\n"
+"In polynomial language, you just proved that **-3x⁴ + 5x⁴ = 2x⁴**:\n"
+"§7 represents the monomial §8 (coefficient\n"
+"§9 at degree §10), and evaluating the sum at degree §11 gives\n"
+"§12, the combined coefficient. The fact that we used §13\n"
+"values made negative coefficients possible — §14 would not allow this.\n"
+"\n"
+"No new lemmas were needed. The same finsupp evaluation strategy\n"
+"(§15 → §16) handles both cases, regardless of\n"
+"whether the value type is §17, §18, or any other §19.\n"
+"The difference is purely in which evaluation lemma applies to each\n"
+"summand."
 msgstr ""
 
 #: Game.Levels.FinsetOperations.L11_DisjointFinsets
@@ -47209,6 +49409,11 @@ msgid "**Part 3**: The factorial formula with §0 and §1.\n"
 "Use §2, then prove §3."
 msgstr ""
 
+#. §0: `8`
+#: Game.Levels.Finsupp.L17_Boss
+msgid "**Part 2**: Evaluate the sum at position §0. Decompose."
+msgstr ""
+
 #. §0: `Finset.eq_univ_of_card s hs`
 #. §1: `s = Finset.univ`
 #. §2: `hs : #s = Fintype.card α`
@@ -47217,6 +49422,10 @@ msgid "§0 proves §1 from\n"
 "§2.\n"
 "\n"
 "Disabled to force manual equality reasoning via subset + cardinality."
+msgstr ""
+
+#: Game.Levels.Finsupp.L15_SummingOverSupport
+msgid "Summing Over the Support"
 msgstr ""
 
 #. §0: `constructor`
@@ -47956,6 +50165,12 @@ msgid "§0 proves §1 from\n"
 "§6, and want to conclude §7."
 msgstr ""
 
+#. §0: `3 ∈ (single 3 6 + single 9 1).support`
+#: Game.Levels.Finsupp.L16_SupportCoaching
+msgid "**Part 3**: Prove §0.\n"
+"Convert support membership to a value statement."
+msgstr ""
+
 #. §0: `card_insert_of_notMem`
 #. §1: `a \\notin s`
 #. §2: `(insert a s).card = s.card + 1`
@@ -48063,6 +50278,14 @@ msgid "The goal is §0.\n"
 "(since §3), then simplify with §4."
 msgstr ""
 
+#. §0: `rw [← Finsupp.single_add]`
+#. §1: `single 8 1 + single 8 6`
+#. §2: `single 8 7`
+#: Game.Levels.Finsupp.L17_Boss
+msgid "Try §0 to\n"
+"combine §1 into §2."
+msgstr ""
+
 #. §0: $$\\sum_{x \\in s} (f(x) + 1) = \\sum_{x \\in s} f(x) + |s|$$
 #. §1: $\\emptyset$
 #. §2: $0$
@@ -48137,6 +50360,35 @@ msgstr ""
 msgid "Now you have §0 and the goal is §1.\n"
 "Rewrite §2 using §3 to get\n"
 "§4."
+msgstr ""
+
+#. §0: `Finsupp.support_single_ne_zero`
+#. §1: `Finsupp.support_single_ne_zero a (hb : b ≠ 0) :
+#.   (Finsupp.single a b).support = singleton a`
+#. §2: ```
+#. apply Finsupp.support_single_ne_zero   -- leaves `b ≠ 0`
+#. exact Finsupp.support_single_ne_zero a hb  -- with proof of `b ≠ 0`
+#. ```
+#. §3: `(Finsupp.single a b).support`
+#. §4: `b ≠ 0`
+#. §5: `b = 0`
+#. §6: `Finsupp.single_zero`
+#: Game.Levels.Finsupp.L03_SupportSingle
+msgid "§0 computes the support of a\n"
+"nonzero single:\n"
+"\n"
+"§1\n"
+"\n"
+"## Syntax\n"
+"§2\n"
+"\n"
+"## When to use it\n"
+"When the goal involves §3 and you\n"
+"know §4.\n"
+"\n"
+"## Warning\n"
+"If §5, the support is empty, not a singleton.\n"
+"Use §6 instead."
 msgstr ""
 
 #: Game.Levels.AbstractionLadder.L16_PermToFinset
@@ -48464,6 +50716,13 @@ msgid "Use §0 to split into\n"
 "and §5 to evaluate §6."
 msgstr ""
 
+#. §0: `(Finsupp.single 5 7).support = ...`
+#. §1: `support_single_ne_zero`
+#: Game.Levels.Finsupp.L12_SingleAddIntegration
+msgid "Now the goal is §0.\n"
+"Use §1 to compute the support."
+msgstr ""
+
 #: Game.Levels.BigOpAlgebra.L15_RingTactic
 msgid "The two-phase pattern: big-operator rewrite, then ring."
 msgstr ""
@@ -48542,6 +50801,11 @@ msgstr ""
 msgid "Try §0 again."
 msgstr ""
 
+#. §0: `single`
+#: Game.Levels.Finsupp.L02_SingleEqOfNe
+msgid "Evaluating a §0 away from its support point gives zero."
+msgstr ""
+
 #: Game.Levels.Products.L18_DisjointnessCoaching
 msgid "Compute the cardinality of a disjoint diagonal/off-diagonal union."
 msgstr ""
@@ -48577,6 +50841,10 @@ msgstr ""
 
 #: Game.Levels.PsetFin.L12_GeneralZeroSuccDecomposition
 msgid "The Dual Decomposition"
+msgstr ""
+
+#: Game.Levels.Finsupp.L08_PointwiseAddition
+msgid "Pointwise Addition"
 msgstr ""
 
 #: Game.Levels.Powerset.L03_ConcretePowerset
@@ -48742,6 +51010,45 @@ msgid "You need §0. You know §1 and §2,\n"
 "so §3. Then §4, so §5."
 msgstr ""
 
+#. §0: `Finsupp`
+#. §1: `(f + g) a = f a + g a`
+#. §2: `add_apply`
+#. §3: `rw [Finsupp.add_apply]`
+#. §4: `rw [Finsupp.single_eq_same]`
+#. §5: `have h : a' ≠ a := by omega`
+#. §6: `rw [Finsupp.single_eq_of_ne h]`
+#. §7: `have`
+#. §8: `single_eq_of_ne`
+#. §9: `h`
+#. §10: `have`
+#. §11: `add_apply`
+#. §12: `single_eq_same`
+#. §13: `single_eq_of_ne`
+#: Game.Levels.Finsupp.L08_PointwiseAddition
+msgid "Adding §0 values is pointwise: §1.\n"
+"After decomposing with §2, you evaluate each piece using\n"
+"the lemmas from earlier levels:\n"
+"\n"
+"1. §3 — decompose the sum\n"
+"2. §4 — evaluate at the support point\n"
+"3. §5 then\n"
+"   §6 — evaluate away from it\n"
+"\n"
+"The §7 step is needed because §8 requires a\n"
+"proof that the points differ. You create that proof, name it §9,\n"
+"then feed it to the lemma. This §10 pattern — manufacture a\n"
+"proof of a side condition, name it, then feed it to a lemma — is\n"
+"a general Lean technique that works whenever a lemma needs a\n"
+"hypothesis you don't already have in context.\n"
+"\n"
+"This three-step sequence — §11 → §12/§13\n"
+"→ arithmetic — is the **finsupp evaluation strategy**. You will use it\n"
+"whenever you need to compute a concrete value of a sum of singles.\n"
+"\n"
+"In this level the two singles had *different* support points. In the\n"
+"next level you will see what happens when they share the same one."
+msgstr ""
+
 #. §0: `(s.sigma (fun _ => s)).card`
 #. §1: `Finset.card_sigma`
 #: Game.Levels.Products.L21_Boss
@@ -48817,6 +51124,10 @@ msgstr ""
 
 #: Game.Levels.Products.L18_DisjointnessCoaching
 msgid "Disjointness and Cardinality"
+msgstr ""
+
+#: Game.Levels.Finsupp.L03_SupportSingle
+msgid "The support of a nonzero single is the singleton."
 msgstr ""
 
 #. §0: `Finset.mem_antidiagonal`
@@ -48968,6 +51279,10 @@ msgid "§0 states that\n"
 "§3"
 msgstr ""
 
+#: Game.Levels.Finsupp.L16_SupportCoaching
+msgid "Evaluate the first single at its support point."
+msgstr ""
+
 #. §0: `← Nat.choose_succ_succ`
 #. §1: `choose n k + choose n (k+1)`
 #. §2: `choose (n+1) (k+1)`
@@ -48985,6 +51300,10 @@ msgstr ""
 #: Game.Levels.FinsetBasics.L02_FindingDeeperElements
 msgid "The goal is now membership in a singleton set.\n"
 "Use §0 to reduce to §1."
+msgstr ""
+
+#: Game.Levels.Finsupp.L15_SummingOverSupport
+msgid "Sum the values of a single over its support."
 msgstr ""
 
 #. §0: $$|A \\cup B| = |A| + |B| - |A \\cap B|$$
@@ -49265,6 +51584,12 @@ msgid "§0 states that if §1, then\n"
 "## Warning\n"
 "The hypothesis §7 is required. Without it, elements\n"
 "in the intersection would be counted differently on each side."
+msgstr ""
+
+#. §0: `5 ≠ 3`
+#: Game.Levels.Finsupp.L02_SingleEqOfNe
+#: Game.Levels.Finsupp.L03_SupportSingle
+msgid "Now prove §0."
 msgstr ""
 
 #. §0: `card_prod`
@@ -49740,6 +52065,10 @@ msgstr ""
 msgid "Split a sum and convert the constant part to cardinality."
 msgstr ""
 
+#: Game.Levels.Finsupp.L05_MemSupportIff
+msgid "Reading Support Membership"
+msgstr ""
+
 #. §0: `x ∈ s ∧ x ∈ t ↔ x ∈ t ∧ x ∈ s`
 #. §1: `intro h; exact ⟨h.2, h.1⟩`
 #. §2: `x ∈ s ∨ x ∈ t ↔ x ∈ t ∨ x ∈ s`
@@ -50076,6 +52405,31 @@ msgid "# The Empty Finset\n"
 "\n"
 "After §8, the goal becomes §9. Close it with\n"
 "§10."
+msgstr ""
+
+#. §0: `Finsupp.single a b`
+#. §1: `0`
+#. §2: `Finsupp.single_eq_same`
+#. §3: `b`
+#. §4: `Finsupp.single_eq_of_ne h`
+#. §5: `0`
+#. §6: `a' ≠ a`
+#. §7: `single_eq_of_ne`
+#. §8: `omega`
+#. §9: `apply Finsupp.single_eq_of_ne`
+#. §10: `omega`
+#: Game.Levels.Finsupp.L02_SingleEqOfNe
+msgid "§0 is nonzero at exactly one point. Everywhere\n"
+"else, it returns §1. Together, the two evaluation lemmas give you\n"
+"complete control:\n"
+"\n"
+"- **At the support point**: §2 gives §3\n"
+"- **Away from it**: §4 gives §5\n"
+"\n"
+"The side condition §6 in §7 is a natural\n"
+"number inequality, so §8 closes it.\n"
+"\n"
+"**Pattern**: §9 then §10."
 msgstr ""
 
 #: Game.Levels.PsetBigOp.L03_SumInduction
@@ -50686,6 +53040,19 @@ msgstr ""
 #: Game.Levels.BigOpAlgebra.L18_Boss
 msgid "Now use §0 to convert §1 to\n"
 "cardinality."
+msgstr ""
+
+#. §0: `have h : (3 : ℕ) ≠ 5 := by omega`
+#. §1: `rw [if_neg h]`
+#. §2: `(3 : ℕ)`
+#. §3: `if_neg`
+#. §4: `3`
+#. §5: `DecidableEq`
+#: Game.Levels.Finsupp.L07_SingleApply
+msgid "Try §0 then\n"
+"§1. The type annotation §2 is needed\n"
+"because after §3, Lean sees the bare numeral §4 and\n"
+"needs to know its type to find the right §5 instance."
 msgstr ""
 
 #: Game.Levels.BigOpAlgebra.L11_SumRangeSucc
@@ -51642,6 +54009,10 @@ msgstr ""
 msgid "Product Cardinality Integration"
 msgstr ""
 
+#: Game.Levels.Finsupp.L13_Extensionality
+msgid "Prove function equality from pointwise agreement."
+msgstr ""
+
 #. §0: `List.Perm.length_eq`
 #. §1: `l₁.Perm l₂ → l₁.length = l₂.length`
 #. §2: ```
@@ -51767,6 +54138,48 @@ msgstr ""
 
 #: Game.Levels.PsetCombinatorics.L03_WeightedRowSum
 msgid "Weighted Alternating Sum Over Z"
+msgstr ""
+
+#. §0: `f + g`
+#. §1: ```
+#. Finsupp.support_add :
+#.   (f + g).support ⊆ f.support ∪ g.support
+#. ```
+#. §2: `single 4 5 + single 4 (-5) = 0`
+#. §3: `4`
+#. §4: `x`
+#. §5: `x`
+#. §6: `⊆`
+#. §7: `Finset`
+#. §8: `∀ x, x ∈ s → x ∈ t`
+#. §9: `Finsupp.support_add`
+#. §10: `x`
+#. §11: `f + g`
+#. §12: `x`
+#: Game.Levels.Finsupp.L14_SupportOfSum
+msgid "# Bounding the Support of a Sum\n"
+"\n"
+"You know how to compute the support of individual singles. But what\n"
+"about the support of §0?\n"
+"\n"
+"The key fact is that the support of a sum is **contained in** the\n"
+"union of the individual supports:\n"
+"\n"
+"§1\n"
+"\n"
+"This is containment (⊆), not equality — values can cancel! You\n"
+"saw this in the last level: §2 has\n"
+"empty support, even though both summands have support containing §3.\n"
+"\n"
+"The containment direction is the useful one: if §4 is in the\n"
+"support of a sum, then §5 must be in the support of at least one\n"
+"summand.\n"
+"\n"
+"Since §6 for §7 means §8, the lemma\n"
+"§9 can be applied directly to a membership proof.\n"
+"\n"
+"**Your task**: Given that §10 is in the support of §11, prove\n"
+"that §12 is in the union of the supports."
 msgstr ""
 
 #. §0: `card_union_add_card_inter`
@@ -52296,6 +54709,33 @@ msgid "§0 proves §1 in any\n"
 "Disabled as a lattice alias for dual distributivity."
 msgstr ""
 
+#. §0: `ext a`
+#. §1: `f = g`
+#. §2: `f a = g a`
+#. §3: `a`
+#. §4: `by_cases h : a = n`
+#. §5: `a`
+#. §6: `single_eq_same`
+#. §7: `single_eq_of_ne`
+#. §8: `single_add`
+#. §9: `ext`
+#: Game.Levels.Finsupp.L13_Extensionality
+msgid "You proved function equality from scratch using extensionality!\n"
+"\n"
+"The pattern:\n"
+"1. §0 — reduce §1 to §2 for arbitrary §3\n"
+"2. §4 — split on whether §5 is the support point\n"
+"3. In each branch, evaluate using §6 or §7\n"
+"\n"
+"This is exactly how §8 is proved internally: apply §9,\n"
+"then check both cases. The lemma packages this up so you do not need\n"
+"to do the case analysis every time.\n"
+"\n"
+"Extensionality is the standard technique for proving equality of\n"
+"function-like objects. You will use it again when working with\n"
+"matrices — proving two matrices are equal by checking every entry."
+msgstr ""
+
 #. §0: `Finset.card_powerset`
 #. §1: `(s.powerset).card = 2 ^ s.card`
 #. §2: ```
@@ -52327,6 +54767,13 @@ msgstr ""
 
 #: Game.Levels.PsetFin.L03_SnocReconstruction
 msgid "Reconstruct a tuple whose init is described by a formula."
+msgstr ""
+
+#. §0: `intro x hx`
+#: Game.Levels.Finsupp.L16_SupportCoaching
+#: Game.Levels.Finsupp.L17_Boss
+msgid "Try §0 to introduce the\n"
+"element and its membership proof."
 msgstr ""
 
 #: Game.Levels.MeetFin.L09_FinEta
@@ -52432,6 +54879,37 @@ msgid "Two applications of §0 give:\n"
 "generalizes this: for a family of pairwise disjoint sets,\n"
 "§3. That single lemma replaces an\n"
 "arbitrary number of §4 applications."
+msgstr ""
+
+#. §0: `Finsupp.single a b`
+#. §1: `b`
+#. §2: `a`
+#. §3: `0`
+#. §4: ```
+#. Finsupp.single a b     -- a function with one nonzero value
+#. ```
+#. §5: `a : α`
+#. §6: `b : M`
+#. §7: `M`
+#. §8: `Finsupp.single a b : α →₀ M`
+#. §9: `Finsupp.single_eq_same : Finsupp.single a b a = b`
+#. §10: `Finsupp.single_eq_of_ne : a' ≠ a → Finsupp.single a b a' = 0`
+#. §11: `Finsupp.support_single_ne_zero : b ≠ 0 → (Finsupp.single a b).support = singleton a`
+#: Game.Levels.Finsupp.L01_SingleEqSame
+msgid "§0 is the finitely supported function that\n"
+"has value §1 at §2 and §3 everywhere else.\n"
+"\n"
+"## Syntax\n"
+"§4\n"
+"\n"
+"## Type\n"
+"If §5 and §6 where §7 has a zero, then\n"
+"§8.\n"
+"\n"
+"## Key lemmas\n"
+"- §9\n"
+"- §10\n"
+"- §11"
 msgstr ""
 
 #. §0: `one_mul`
@@ -52947,6 +55425,13 @@ msgstr ""
 #: Game.Levels.FinsetOperations.L01_UnionMembership
 msgid "Use §0 to convert the union membership\n"
 "into a disjunction: is §1 in the left set or the right set?"
+msgstr ""
+
+#. §0: `Finsupp.single 8 1`
+#. §1: `8`
+#: Game.Levels.Finsupp.L17_Boss
+msgid "The middle single, §0, has support\n"
+"point §1 — a match."
 msgstr ""
 
 #: Game.Levels.Cardinality.L22_AbstractPigeonhole
