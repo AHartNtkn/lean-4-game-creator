@@ -14,7 +14,7 @@ notation: `x.val` and `x.isLt`. There's another way:
 
 When you write:
 ```
-cases x with | mk v hlt =>
+cases x with | mk v hlt
 ```
 Lean replaces `x : Fin 3` with two new hypotheses:
 - `v : ℕ` — the underlying value
@@ -39,21 +39,21 @@ your context and you can package them up.
 /-- Every Fin element can be reconstructed from its components. -/
 Statement (x : Fin 3) : ∃ (v : ℕ) (h : v < 3), x = ⟨v, h⟩ := by
   Hint "Destructure `x` into its components:
-  `cases x with | mk v hlt =>`"
+  `cases x with | mk v hlt`"
   cases x with
   | mk v hlt =>
-    Hint "Now you have `v : ℕ` and `hlt : v < 3` as standalone
-    variables. The goal asks for a number and a bound proof such that
-    the element equals the reconstruction. You already have both!
-    Use `exact ⟨v, hlt, rfl⟩` to provide `v` as the number, `hlt`
-    as the bound proof, and `rfl` for the equality (since the element
-    IS its own reconstruction)."
-    exact ⟨v, hlt, rfl⟩
+  Hint "Now you have `v : ℕ` and `hlt : v < 3` as standalone
+  variables. The goal asks for a number and a bound proof such that
+  the element equals the reconstruction. You already have both!
+  Use `exact ⟨v, hlt, rfl⟩` to provide `v` as the number, `hlt`
+  as the bound proof, and `rfl` for the equality (since the element
+  IS its own reconstruction)."
+  exact ⟨v, hlt, rfl⟩
 
 Conclusion "
 You've just destructured a `Fin` element for the first time.
 
-The pattern `cases x with | mk v hlt =>` is the `Fin` version of
+The pattern `cases x with | mk v hlt` is the `Fin` version of
 a general Lean pattern: any structure (or subtype) can be taken
 apart with `cases` to expose its components.
 
@@ -71,7 +71,7 @@ own reconstruction from components.
 
 **Alternative: `obtain`**. There is another way to destructure in
 Lean: `obtain ⟨v, hlt⟩ := x`. This does the same thing as
-`cases x with | mk v hlt =>` when the type has exactly one
+`cases x with | mk v hlt` when the type has exactly one
 constructor (as `Fin` does — its only constructor is `mk`). Use
 `cases` when you need to enumerate multiple constructors (like
 `Nat.zero` and `Nat.succ`); use `obtain` when there's only one

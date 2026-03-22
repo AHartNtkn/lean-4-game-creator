@@ -60,17 +60,17 @@ Statement (f g : Fin 3 → ℕ)
     `rw [hf, hg]`."
     rw [hf, hg]
     Hint "Now case-split on `v` to verify each index."
-    Hint (hidden := true) "`cases v with | zero => rfl | succ n => ...`"
+    Hint (hidden := true) "`cases v with | zero | succ n`"
     cases v with
     | zero =>
       Hint (hidden := true) "Both sides evaluate to 1. Use `rfl`."
       rfl
     | succ n =>
-      Hint (hidden := true) "Continue: `cases n with | zero => rfl | succ m => ...`"
+      Hint (hidden := true) "Continue: `cases n with | zero | succ m`"
       cases n with
       | zero => rfl
       | succ m =>
-        Hint (hidden := true) "`cases m with | zero => rfl | succ k => exact absurd hv (by omega)`"
+        Hint (hidden := true) "`cases m with | zero | succ k`"
         cases m with
         | zero => rfl
         | succ k => exact absurd hv (by omega)

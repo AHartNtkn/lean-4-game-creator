@@ -39,8 +39,8 @@ Statement : ({1, 2, 3} : Finset ℕ).card = 3 := by
   (Recall that the finset notation for two elements is `insert` + `singleton`.)"
   Hint (hidden := true) "Inside the `have`, use `intro h` to assume
   membership, then `rw [Finset.mem_insert] at h` to get a disjunction.
-  Case-split with `cases h with | inl h => omega | inr h => ...`
-  and for the right branch, `rw [Finset.mem_singleton] at h; omega`."
+  Case-split with `cases h with | inl h | inr h`.
+  In the left branch: `omega`. In the right: `rw [Finset.mem_singleton] at h; omega`."
   have h1 : (1 : ℕ) ∉ ({2, 3} : Finset ℕ) := by
     Hint "You need to show `1 ∉ insert 2 (singleton 3)`.
     Assume membership with `intro h`."
@@ -49,7 +49,7 @@ Statement : ({1, 2, 3} : Finset ℕ).card = 3 := by
     Rewrite with `rw [Finset.mem_insert] at h` to get a disjunction."
     rw [Finset.mem_insert] at h
     Hint "Case-split on `h` with
-    `cases h with | inl h => omega | inr h => ...`"
+    `cases h with | inl h | inr h`"
     cases h with
     | inl h => omega
     | inr h => rw [Finset.mem_singleton] at h; omega

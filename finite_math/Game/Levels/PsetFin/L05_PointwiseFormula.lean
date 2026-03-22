@@ -30,7 +30,7 @@ Statement (f : Fin 3 → ℕ) (h : ∀ i : Fin 3, f i = i.val + 1) :
     then substitute the formula and case-split."
     ext ⟨v, hv⟩
     Hint (hidden := true) "`rw [h]` substitutes the formula, then
-    case-split: `cases v with | zero => rfl | succ n => ...`"
+    case-split: `cases v with | zero | succ n`"
     rw [h]
     cases v with
     | zero => rfl

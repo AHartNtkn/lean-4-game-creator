@@ -34,22 +34,22 @@ Statement (n : ℕ) : ∀ i : Fin (n + 1), i ≠ 0 → ∃ j : Fin n, i = j.succ
   Hint "Start with `intro i hne`."
   intro i hne
   Hint "Destructure `i` into its value and bound:
-  `cases i with | mk v hv =>`"
+  `cases i with | mk v hv`"
   cases i with
   | mk v hv =>
-    Hint "Case-split on `v`: `cases v with | zero => ... | succ k => ...`"
-    cases v with
-    | zero =>
-      Hint "Here `v = 0`, so `⟨0, hv⟩ = 0` — contradicting `hne`.
-      Use `exact absurd rfl hne`."
-      exact absurd rfl hne
-    | succ k =>
-      Hint "Here `v = k + 1`. The witness is `⟨k, proof⟩ : Fin n`
-      where `k < n` follows from `k + 1 < n + 1`."
-      Hint (hidden := true) "`use ⟨k, by omega⟩; ext; rw [Fin.val_succ]`"
-      use ⟨k, by omega⟩
-      ext
-      rw [Fin.val_succ]
+  Hint "Case-split on `v`: `cases v with | zero | succ k`"
+  cases v with
+  | zero =>
+    Hint "Here `v = 0`, so `⟨0, hv⟩ = 0` — contradicting `hne`.
+    Use `exact absurd rfl hne`."
+    exact absurd rfl hne
+  | succ k =>
+    Hint "Here `v = k + 1`. The witness is `⟨k, proof⟩ : Fin n`
+    where `k < n` follows from `k + 1 < n + 1`."
+    Hint (hidden := true) "`use ⟨k, by omega⟩; ext; rw [Fin.val_succ]`"
+    use ⟨k, by omega⟩
+    ext
+    rw [Fin.val_succ]
 
 Conclusion "
 You've proved the dual of Level 14: every non-zero element of

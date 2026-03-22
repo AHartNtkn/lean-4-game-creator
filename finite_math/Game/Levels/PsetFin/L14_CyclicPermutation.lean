@@ -31,10 +31,10 @@ elements and verify that the output differs from the input.
 /-- The cyclic permutation ![1, 2, 0] has no fixed points. -/
 Statement : ∀ i : Fin 3, (![1, 2, 0] : Fin 3 → Fin 3) i ≠ i := by
   Hint "Start with `intro i` to take an arbitrary element of `Fin 3`,
-  then destructure with `cases i with | mk v hv =>`."
+  then destructure with `cases i with | mk v hv`."
   intro ⟨v, hv⟩
   Hint "Case-split on `v` to check each value:
-  `cases v with | zero => ... | succ n => ...`"
+  `cases v with | zero | succ n`"
   Hint (hidden := true) "For each valid value, the output differs
   from the input. Close with `intro h; cases h` for the contradiction."
   cases v with

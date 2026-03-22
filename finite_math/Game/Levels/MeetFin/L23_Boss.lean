@@ -49,11 +49,11 @@ Statement : (∀ x y z : Fin 3, x.val = y.val → y = z → x = z) ∧
     with `intro h; cases h`. The impossible case (value >= 3) closes
     with `absurd`."
     intro x
-    Hint (hidden := true) "Destructure `x`: `cases x with | mk v hv =>`"
+    Hint (hidden := true) "Destructure `x`: `cases x with | mk v hv`"
     cases x with
     | mk v hv =>
       Hint (hidden := true) "Case-split on `v`:
-      `cases v with | zero => ... | succ n => ...`"
+      `cases v with | zero | succ n`"
       cases v with
       | zero =>
         Hint (hidden := true) "The element is `0`. Provide `1` as witness:

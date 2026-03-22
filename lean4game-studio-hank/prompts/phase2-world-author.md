@@ -121,6 +121,10 @@ Each level's proof must be a sequence of discrete tactic steps where each step c
 - Elaborate one-liners (`refine ⟨{ field := ..., ... }, rfl⟩`)
 - Opaque goals (set-membership notation instead of concrete predicate)
 - Bundled rewrites (`rw [a, b, c, d, e]` — break into individual steps in early levels)
+- **Multi-line tactics with `=>`**: The lean4game interactive editor cannot handle tactic blocks introduced by `=>`. Never use `cases x with | mk v hlt =>` or `cases v with | zero => ... | succ n => ...` in hints, introductions, or conclusions. Use instead:
+  - Single constructor: `cases x with | mk v hlt` (no `=>`)
+  - Multiple constructors: `cases v with | zero | succ n` (no `=>`)
+  The `=>` form creates multi-line tactic blocks; the non-`=>` form creates separate goals that the player handles one at a time.
 
 ### Step 5: Ensure coverage closure
 

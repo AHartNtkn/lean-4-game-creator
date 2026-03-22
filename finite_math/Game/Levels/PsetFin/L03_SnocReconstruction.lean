@@ -35,7 +35,7 @@ Statement (p : Fin 3 → ℕ)
     Hint "Inside the `have`, use `ext ⟨v, hv⟩` to check the formula at
     each index. After `rw [hi]`, each index reduces to an arithmetic check."
     Hint (hidden := true) "Use `ext ⟨v, hv⟩`, then `rw [hi]`, then
-    case-split on `v` with `cases v with | zero => rfl | succ n => ...`"
+    case-split on `v` with `cases v with | zero | succ n`"
     ext ⟨v, hv⟩
     rw [hi]
     cases v with

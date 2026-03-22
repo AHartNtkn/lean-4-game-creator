@@ -13,11 +13,11 @@ arbitrary `x : Fin 2`, you can **case-split**: handle each possible
 value of `x` separately.
 
 In Level 16, you learned to destructure a `Fin` element with
-`cases x with | mk v hlt =>`. Now you'll take the next step:
+`cases x with | mk v hlt`. Now you'll take the next step:
 **case-splitting on the natural number** to handle each value.
 
 After destructuring, `v : ℕ` and `hlt : v < 2`. Use
-`cases v with | zero => ... | succ n => ...` to split:
+`cases v with | zero | succ n` to split into two goals:
 - `v = 0`: the element is `0`, close with `left; rfl`
 - `v = n + 1`: split again on `n`
   - `n = 0`: the element is `1`, close with `right; rfl`
@@ -33,37 +33,38 @@ For the impossible case, you'll use a new tactic: `absurd`.
 /-- Every element of `Fin 2` is either `0` or `1`. -/
 Statement (x : Fin 2) : x = 0 ∨ x = 1 := by
   Hint "Start by destructuring `x` into its components:
-  `cases x with | mk v hlt =>`"
+  `cases x with | mk v hlt`"
   cases x with
   | mk v hlt =>
-    Hint "Now `v : ℕ` and `hlt : v < 2`. Case-split on `v`:
-    `cases v with | zero => ... | succ n => ...`"
-    cases v with
+  Hint "Now `v : ℕ` and `hlt : v < 2`. Case-split on `v`:
+  `cases v with | zero | succ n`"
+  cases v with
+  | zero =>
+    Hint "In this case `v = 0`, so `x` is the element `0`.
+    Choose the left disjunct with `left`, then close with `rfl`."
+    left
+    rfl
+  | succ n =>
+    Hint "Now `v = n + 1`. Case-split once more on `n` to determine
+    whether `v = 1` or `v ≥ 2`:
+    `cases n with | zero | succ m`"
+    cases n with
     | zero =>
-      Hint "In this case `v = 0`, so `x` is the element `0`.
-      Choose the left disjunct with `left`, then close with `rfl`."
-      left
+      Hint "Now `v = 1`. Choose the right disjunct with `right`,
+      then close with `rfl`."
+      right
       rfl
-    | succ n =>
-      Hint "Now `v = n + 1`. Case-split once more on `n` to determine
-      whether `v = 1` or `v ≥ 2`."
-      cases n with
-      | zero =>
-        Hint "Now `v = 1`. Choose the right disjunct with `right`,
-        then close with `rfl`."
-        right
-        rfl
-      | succ m =>
-        Hint (hidden := true) "Here `v = m + 2`, but `hlt` says `v < 2`.
-        This is impossible — `exact absurd hlt (by omega)` closes it."
-        exact absurd hlt (by omega)
+    | succ m =>
+      Hint (hidden := true) "Here `v = m + 2`, but `hlt` says `v < 2`.
+      This is impossible — `exact absurd hlt (by omega)` closes it."
+      exact absurd hlt (by omega)
 
 Conclusion "
 You've just performed **exhaustive case analysis** on `Fin 2`.
 
 The strategy — which we'll call **Fin case analysis** — is:
-1. **Destructure** the `Fin` element (Level 16)
-2. **Case-split** on the natural number (nested `cases` as needed)
+1. **Destructure** the `Fin` element: `cases x with | mk v hlt` (Level 16)
+2. **Case-split** on the natural number: `cases v with | zero | succ n`
 3. **Handle** each case: valid cases with `left`/`right` + `rfl`,
    impossible cases with `absurd` + `omega`
 

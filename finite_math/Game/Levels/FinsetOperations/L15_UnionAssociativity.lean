@@ -48,8 +48,8 @@ Statement (s t u : Finset ℕ) : (s ∪ t) ∪ u = s ∪ (t ∪ u) := by
     the correct nesting of `left`/`right`.
     Use `intro h` then `cases h with` to split the outer disjunction."
     intro h
-    Hint (hidden := true) "`cases h with` gives `| inl hst => ...` (where
-    `hst : x ∈ s ∨ x ∈ t`) and `| inr hu => ...` (where `hu : x ∈ u`).
+    Hint (hidden := true) "`cases h with | inl hst | inr hu` gives
+    `hst : x ∈ s ∨ x ∈ t` and `hu : x ∈ u` in separate branches.
     In the `inl` case, split `hst` with another `cases`.
     In the `inr` case, `right; right; exact hu`."
     cases h with
