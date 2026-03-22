@@ -17,6 +17,7 @@
     "BigOpAlgebra",
     "FinsetInduction",
     "SummationFormulas",
-    "PsetBigOp"
+    "PsetBigOp",
+    "BinomialCoefficients"
   ]
 }

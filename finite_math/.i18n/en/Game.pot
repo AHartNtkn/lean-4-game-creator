@@ -291,7 +291,7 @@ msgstr ""
 #. §2: `castSucc`
 #. §3: `intro i`
 #. §4: `i`
-#. §5: `cases i with | mk v hv =>`
+#. §5: `cases i with | mk v hv`
 #: Game.Levels.FinNavigation.L16_Boss
 msgid "Part 1: prove every §0 element is §1 or §2.\n"
 "Start with §3, then destructure §4 with\n"
@@ -1558,7 +1558,7 @@ msgstr ""
 #. §0: `ext ⟨v, hv⟩`
 #. §1: `rw [hi]`
 #. §2: `v`
-#. §3: `cases v with | zero => rfl | succ n => ...`
+#. §3: `cases v with | zero | succ n`
 #: Game.Levels.PsetFin.L03_SnocReconstruction
 msgid "Use §0, then §1, then\n"
 "case-split on §2 with §3"
@@ -1682,6 +1682,63 @@ msgid "The goal is §0. Use §1 to split\n"
 "the conjunction, then close each part:\n"
 "- §2 for §3\n"
 "- §4 for §5"
+msgstr ""
+
+#. §0: `Fin 2`
+#. §1: `0`
+#. §2: `1`
+#. §3: `x : Fin 2`
+#. §4: `x`
+#. §5: `Fin`
+#. §6: `cases x with | mk v hlt`
+#. §7: `v : ℕ`
+#. §8: `hlt : v < 2`
+#. §9: `cases v with | zero | succ n`
+#. §10: `v = 0`
+#. §11: `0`
+#. §12: `left; rfl`
+#. §13: `v = n + 1`
+#. §14: `n`
+#. §15: `n = 0`
+#. §16: `1`
+#. §17: `right; rfl`
+#. §18: `n = succ m`
+#. §19: `v ≥ 2`
+#. §20: `hlt : v < 2`
+#. §21: `absurd`
+#. §22: `absurd h1 h2`
+#. §23: `h1 : P`
+#. §24: `h2 : ¬P`
+#. §25: `hlt`
+#. §26: `v < 2`
+#. §27: `v ≥ 2`
+#. §28: `exact absurd hlt (by omega)`
+#. §29: `Fin 2`
+#. §30: `0`
+#. §31: `1`
+#: Game.Levels.MeetFin.L17_TwoElements
+msgid "# Case Analysis on Fin 2\n"
+"\n"
+"§0 has two elements: §1 and §2. To prove something about an\n"
+"arbitrary §3, you can **case-split**: handle each possible\n"
+"value of §4 separately.\n"
+"\n"
+"In Level 16, you learned to destructure a §5 element with\n"
+"§6. Now you'll take the next step:\n"
+"**case-splitting on the natural number** to handle each value.\n"
+"\n"
+"After destructuring, §7 and §8. Use\n"
+"§9 to split into two goals:\n"
+"- §10: the element is §11, close with §12\n"
+"- §13: split again on §14\n"
+"  - §15: the element is §16, close with §17\n"
+"  - §18: now §19, contradicting §20\n"
+"\n"
+"For the impossible case, you'll use a new tactic: §21.\n"
+"§22 closes a goal when §23 and §24. Here,\n"
+"§25 says §26 but §27, so §28 works.\n"
+"\n"
+"**Your task**: Prove that every element of §29 is either §30 or §31."
 msgstr ""
 
 #: Game.Levels.FinNavigation.L16_Boss
@@ -2877,7 +2934,7 @@ msgstr ""
 msgid "Bijective Counting"
 msgstr ""
 
-#. §0: `cases n with | zero => rfl | succ m => ...`
+#. §0: `cases n with | zero | succ m`
 #: Game.Levels.FinTuples.L21_Boss
 msgid "Continue: §0"
 msgstr ""
@@ -3115,7 +3172,7 @@ msgid "# Bounding Cardinality via Univ\n"
 "4 elements."
 msgstr ""
 
-#. §0: `cases v with | zero => rfl | succ n => ...`
+#. §0: `cases v with | zero | succ n`
 #. §1: `n`
 #: Game.Levels.FinTuples.L14_TuplesAsData
 msgid "§0\n"
@@ -4602,7 +4659,7 @@ msgstr ""
 #. §2: `x.isLt`
 #. §3: `cases`
 #. §4: ```
-#. cases x with | mk v hlt =>
+#. cases x with | mk v hlt
 #. ```
 #. §5: `x : Fin 3`
 #. §6: `v : ℕ`
@@ -4768,6 +4825,17 @@ msgid "# General 0/succ Decomposition\n"
 "- If §12: the element is §13 where §14\n"
 "\n"
 "**Your task**: Prove the general 0/succ decomposition."
+msgstr ""
+
+#. §0: `v = n + 1`
+#. §1: `n`
+#. §2: `v = 1`
+#. §3: `v ≥ 2`
+#. §4: `cases n with | zero | succ m`
+#: Game.Levels.MeetFin.L17_TwoElements
+msgid "Now §0. Case-split once more on §1 to determine\n"
+"whether §2 or §3:\n"
+"§4"
 msgstr ""
 
 #. §0: `intro h`
@@ -5130,7 +5198,7 @@ msgid "A finset with 5 elements is nonempty."
 msgstr ""
 
 #. §0: `h0`
-#. §1: `cases h1 with | inl h1 => ... | inr h1 => ...`
+#. §1: `cases h1 with | inl h1 | inr h1`
 #. §2: `use 0, 1; constructor; intro h; cases h; rw [h0, h1]`
 #. §3: `have h2 := classify (f 2)`
 #. §4: `h2`
@@ -5298,6 +5366,21 @@ msgstr ""
 
 #: Game.Levels.AbstractionLadder.L18_DedupDemonstration
 msgid "Adding a duplicate element to a list doesn't change its toFinset."
+msgstr ""
+
+#. §0: `cases h with | inl hst | inr hu`
+#. §1: `hst : x ∈ s ∨ x ∈ t`
+#. §2: `hu : x ∈ u`
+#. §3: `inl`
+#. §4: `hst`
+#. §5: `cases`
+#. §6: `inr`
+#. §7: `right; right; exact hu`
+#: Game.Levels.FinsetOperations.L15_UnionAssociativity
+msgid "§0 gives\n"
+"§1 and §2 in separate branches.\n"
+"In the §3 case, split §4 with another §5.\n"
+"In the §6 case, §7."
 msgstr ""
 
 #: Game.Levels.FinsetImage
@@ -5791,7 +5874,7 @@ msgid "Finset Basics"
 msgstr ""
 
 #. §0: `h`
-#. §1: `cases h with | inl h => omega | inr h => ...`
+#. §1: `cases h with | inl h | inr h`
 #: Game.Levels.Cardinality.L08_ConcreteCardinality
 msgid "Case-split on §0 with\n"
 "§1"
@@ -5906,7 +5989,7 @@ msgid "# Larger Input, Larger Image\n"
 "noting that §12 implies §13."
 msgstr ""
 
-#. §0: `cases n with | zero => ... | succ m => ...`
+#. §0: `cases n with | zero | succ m`
 #: Game.Levels.FinTuples.L18_ProvingTupleEquality
 msgid "Continue splitting: §0"
 msgstr ""
@@ -6416,7 +6499,7 @@ msgstr ""
 
 #. §0: `intro i`
 #. §1: `Fin 3`
-#. §2: `cases i with | mk v hv =>`
+#. §2: `cases i with | mk v hv`
 #: Game.Levels.PsetFin.L14_CyclicPermutation
 msgid "Start with §0 to take an arbitrary element of §1,\n"
 "then destructure with §2."
@@ -6943,7 +7026,7 @@ msgid "Now evaluate each component type:\n"
 msgstr ""
 
 #. §0: `Fin`
-#. §1: `cases x with | mk v hlt =>`
+#. §1: `cases x with | mk v hlt`
 #. §2: `Fin`
 #. §3: `cases`
 #. §4: `x : Fin 3`
@@ -6957,7 +7040,7 @@ msgstr ""
 #. §12: `rfl`
 #. §13: `obtain`
 #. §14: `obtain ⟨v, hlt⟩ := x`
-#. §15: `cases x with | mk v hlt =>`
+#. §15: `cases x with | mk v hlt`
 #. §16: `Fin`
 #. §17: `mk`
 #. §18: `cases`
@@ -8030,17 +8113,6 @@ msgstr ""
 
 #: Game.Levels.BigOpIntro.L10_CardAsSum
 msgid "Cardinality equals the sum of the constant function 1."
-msgstr ""
-
-#. §0: `cases h with`
-#. §1: `| inl hs => ...`
-#. §2: `| inr ht => ...`
-#. §3: `right`
-#. §4: `left`
-#: Game.Levels.FinsetOperations.L14_UnionCommutativity
-msgid "§0 gives §1\n"
-"and §2. In the first case, choose §3;\n"
-"in the second, choose §4."
 msgstr ""
 
 #: Game.Levels.PsetFinset.L07_InjectiveNonMembership
@@ -9139,7 +9211,7 @@ msgstr ""
 msgid "Constant Image Equality"
 msgstr ""
 
-#. §0: `cases x with | mk v hlt =>`
+#. §0: `cases x with | mk v hlt`
 #: Game.Levels.MeetFin.L18_CaseAnalysisPractice
 msgid "Start by destructuring: §0"
 msgstr ""
@@ -9147,32 +9219,6 @@ msgstr ""
 #. §0: `Fin.last 4`
 #: Game.Levels.FinNavigation.L01_TheLastElement
 msgid "§0 has value 4."
-msgstr ""
-
-#. §0: `x ∈ s ∧ x ∈ t ↔ x ∈ t ∧ x ∈ s`
-#. §1: `intro h; exact ⟨h.2, h.1⟩`
-#. §2: `x ∈ s ∨ x ∈ t ↔ x ∈ t ∨ x ∈ s`
-#. §3: `intro h; cases h with | inl => right | inr => left`
-#. §4: `.1`
-#. §5: `.2`
-#. §6: `cases`
-#. §7: `left`
-#. §8: `right`
-#: Game.Levels.FinsetOperations.L14_UnionCommutativity
-msgid "You've now proved commutativity for both intersection (∧-swapping)\n"
-"and union (∨-swapping). Compare the two patterns:\n"
-"\n"
-"**Intersection commutativity** (Level 12):\n"
-"- After ext + rewrite: §0\n"
-"- Swap conjuncts: §1\n"
-"\n"
-"**Union commutativity** (this level):\n"
-"- After ext + rewrite: §2\n"
-"- Swap disjuncts: §3\n"
-"\n"
-"The key difference: conjunctions let you project (§4/§5), but\n"
-"disjunctions require case-splitting (§6) and rebuilding\n"
-"(§7/§8). Both patterns appear in the boss."
 msgstr ""
 
 #: Game.Levels.Fintype.L09_SubtypePractice
@@ -9483,7 +9529,7 @@ msgid "Good — 25 functions. Now compute the injection count."
 msgstr ""
 
 #. §0: `x`
-#. §1: `cases x with | mk v hlt =>`
+#. §1: `cases x with | mk v hlt`
 #: Game.Levels.MeetFin.L17_TwoElements
 msgid "Start by destructuring §0 into its components:\n"
 "§1"
@@ -9768,7 +9814,7 @@ msgstr ""
 #. §0: `x ∈ s.image f ∪ t.image f`
 #. §1: `rw [Finset.mem_union]`
 #. §2: `ha`
-#. §3: `cases ha with | inl hl => ... | inr hr => ...`
+#. §3: `cases ha with | inl hl | inr hr`
 #: Game.Levels.FinsetImage.L05_ImageDistributes
 msgid "The goal is §0.\n"
 "Use §1 to convert it to a disjunction,\n"
@@ -10127,6 +10173,23 @@ msgid "The pattern you just used will recur throughout this world:\n"
 "\n"
 "**When to use it**: Whenever you see §2 and\n"
 "want to separate the two parts into independent sums."
+msgstr ""
+
+#. §0: `have`
+#. §1: `intro ⟨v, hv⟩; cases v with | zero | succ n`
+#. §2: `zero`
+#. §3: `left; rfl`
+#. §4: `succ n`
+#. §5: `cases n with | zero | succ m`
+#. §6: `zero`
+#. §7: `right; rfl`
+#. §8: `succ m`
+#. §9: `exact absurd hv (by omega)`
+#: Game.Levels.PsetFin.L17_Pigeonhole
+msgid "Inside the §0, destructure:\n"
+"§1\n"
+"For §2: §3. For §4: §5.\n"
+"For §6: §7. For §8: §9"
 msgstr ""
 
 #. §0: `rw [Finset.sum_insert h]`
@@ -11180,6 +11243,31 @@ msgstr ""
 msgid "Assume membership: §0."
 msgstr ""
 
+#. §0: `rw [card_insert_of_notMem h]`
+#. §1: `rw [card_singleton]`
+#. §2: $|\\{a_1, \\ldots, a_n\\}|$
+#. §3: $n - 1$
+#. §4: `card_insert`
+#. §5: `card_singleton`
+#. §6: `mem_insert`
+#. §7: `mem_singleton`
+#. §8: `omega`
+#: Game.Levels.Cardinality.L08_ConcreteCardinality
+msgid "You computed a concrete cardinality from scratch:\n"
+"\n"
+"1. Prove non-membership for each insert layer (retrieval from FinsetBasics)\n"
+"2. §0 — peel each insert\n"
+"3. §1 — resolve the innermost singleton\n"
+"\n"
+"This is the full recipe for computing §2:\n"
+"prove §3 non-membership facts, apply §4 that many\n"
+"times, then §5 once. The arithmetic resolves automatically.\n"
+"\n"
+"The non-membership proofs followed the FinsetBasics pattern:\n"
+"assume membership, rewrite with §6/§7,\n"
+"and derive a contradiction with §8."
+msgstr ""
+
 #. §0: `Fin (n+1)`
 #. §1: `succ`
 #. §2: `i`
@@ -11208,31 +11296,6 @@ msgid "You've proved the dual of Level 14: every non-zero element of\n"
 "§2 and case-split on the value directly. For §3, the hypothesis\n"
 "§4 gives an immediate contradiction. For §5, the\n"
 "witness §6 is right there — no subtraction needed."
-msgstr ""
-
-#. §0: `rw [card_insert_of_notMem h]`
-#. §1: `rw [card_singleton]`
-#. §2: $|\\{a_1, \\ldots, a_n\\}|$
-#. §3: $n - 1$
-#. §4: `card_insert`
-#. §5: `card_singleton`
-#. §6: `mem_insert`
-#. §7: `mem_singleton`
-#. §8: `omega`
-#: Game.Levels.Cardinality.L08_ConcreteCardinality
-msgid "You computed a concrete cardinality from scratch:\n"
-"\n"
-"1. Prove non-membership for each insert layer (retrieval from FinsetBasics)\n"
-"2. §0 — peel each insert\n"
-"3. §1 — resolve the innermost singleton\n"
-"\n"
-"This is the full recipe for computing §2:\n"
-"prove §3 non-membership facts, apply §4 that many\n"
-"times, then §5 once. The arithmetic resolves automatically.\n"
-"\n"
-"The non-membership proofs followed the FinsetBasics pattern:\n"
-"assume membership, rewrite with §6/§7,\n"
-"and derive a contradiction with §8."
 msgstr ""
 
 #. §0: `cases h.1 with`
@@ -11385,6 +11448,19 @@ msgstr ""
 
 #: Game.Levels.BigOpIntro.L02_SumSingleton
 msgid "Sum Over a Singleton"
+msgstr ""
+
+#. §0: `have`
+#. §1: `intro h`
+#. §2: `rw [Finset.mem_insert] at h`
+#. §3: `cases h with | inl h | inr h`
+#. §4: `omega`
+#. §5: `rw [Finset.mem_singleton] at h; omega`
+#: Game.Levels.Cardinality.L08_ConcreteCardinality
+msgid "Inside the §0, use §1 to assume\n"
+"membership, then §2 to get a disjunction.\n"
+"Case-split with §3.\n"
+"In the left branch: §4. In the right: §5."
 msgstr ""
 
 #. §0: `prod_congr rfl`
@@ -11732,63 +11808,6 @@ msgid "§0 proves §1 for any semilattice with inf.\n"
 "§4.\n"
 "\n"
 "Disabled alongside §5."
-msgstr ""
-
-#. §0: `Fin 2`
-#. §1: `0`
-#. §2: `1`
-#. §3: `x : Fin 2`
-#. §4: `x`
-#. §5: `Fin`
-#. §6: `cases x with | mk v hlt =>`
-#. §7: `v : ℕ`
-#. §8: `hlt : v < 2`
-#. §9: `cases v with | zero => ... | succ n => ...`
-#. §10: `v = 0`
-#. §11: `0`
-#. §12: `left; rfl`
-#. §13: `v = n + 1`
-#. §14: `n`
-#. §15: `n = 0`
-#. §16: `1`
-#. §17: `right; rfl`
-#. §18: `n = succ m`
-#. §19: `v ≥ 2`
-#. §20: `hlt : v < 2`
-#. §21: `absurd`
-#. §22: `absurd h1 h2`
-#. §23: `h1 : P`
-#. §24: `h2 : ¬P`
-#. §25: `hlt`
-#. §26: `v < 2`
-#. §27: `v ≥ 2`
-#. §28: `exact absurd hlt (by omega)`
-#. §29: `Fin 2`
-#. §30: `0`
-#. §31: `1`
-#: Game.Levels.MeetFin.L17_TwoElements
-msgid "# Case Analysis on Fin 2\n"
-"\n"
-"§0 has two elements: §1 and §2. To prove something about an\n"
-"arbitrary §3, you can **case-split**: handle each possible\n"
-"value of §4 separately.\n"
-"\n"
-"In Level 16, you learned to destructure a §5 element with\n"
-"§6. Now you'll take the next step:\n"
-"**case-splitting on the natural number** to handle each value.\n"
-"\n"
-"After destructuring, §7 and §8. Use\n"
-"§9 to split:\n"
-"- §10: the element is §11, close with §12\n"
-"- §13: split again on §14\n"
-"  - §15: the element is §16, close with §17\n"
-"  - §18: now §19, contradicting §20\n"
-"\n"
-"For the impossible case, you'll use a new tactic: §21.\n"
-"§22 closes a goal when §23 and §24. Here,\n"
-"§25 says §26 but §27, so §28 works.\n"
-"\n"
-"**Your task**: Prove that every element of §29 is either §30 or §31."
 msgstr ""
 
 #. §0: `have h1 := Finset.card_union_of_disjoint (disjoint_sdiff_self_left : Disjoint (s \\ t) t)`
@@ -12186,7 +12205,7 @@ msgid "**Inductive step**: Peel the last term §0 with\n"
 msgstr ""
 
 #. §0: `v`
-#. §1: `cases v with | zero => ... | succ n => ...`
+#. §1: `cases v with | zero | succ n`
 #: Game.Levels.MeetFin.L18_CaseAnalysisPractice
 #: Game.Levels.FinNavigation.L15_SuccSurjectivity
 #: Game.Levels.PsetFin.L11_GeneralDecomposition
@@ -13217,7 +13236,7 @@ msgid "§0 states that §1.\n"
 msgstr ""
 
 #. §0: `x`
-#. §1: `cases x with | mk v hv =>`
+#. §1: `cases x with | mk v hv`
 #: Game.Levels.MeetFin.L23_Boss
 msgid "Destructure §0: §1"
 msgstr ""
@@ -14461,7 +14480,7 @@ msgid "§0\n"
 msgstr ""
 
 #. §0: `obtain ⟨witness, property⟩ := h`
-#. §1: `cases h with | intro j hj =>`
+#. §1: `cases h with intro j hj`
 #. §2: `obtain ⟨j, hj⟩ := h`
 #. §3: `obtain ⟨j, hj⟩ := h`
 #. §4: `rw [hj]`
@@ -15774,7 +15793,7 @@ msgid "Now prove the exact count. Apply\n"
 msgstr ""
 
 #. §0: `v`
-#. §1: `cases v with | zero => ... | succ m => ...`
+#. §1: `cases v with | zero | succ m`
 #: Game.Levels.PsetFin.L12_GeneralZeroSuccDecomposition
 msgid "Now case-split on §0 itself: §1"
 msgstr ""
@@ -16309,15 +16328,6 @@ msgid "The goal matches the shape of §0. You have the\n"
 "Try §2."
 msgstr ""
 
-#. §0: `v = n + 1`
-#. §1: `n`
-#. §2: `v = 1`
-#. §3: `v ≥ 2`
-#: Game.Levels.MeetFin.L17_TwoElements
-msgid "Now §0. Case-split once more on §1 to determine\n"
-"whether §2 or §3."
-msgstr ""
-
 #. §0: `0 < s.card`
 #. §1: `Finset.card_pos`
 #. §2: `rw [Finset.card_pos]`
@@ -16641,78 +16651,6 @@ msgstr ""
 #: Game.Levels.BigOpAlgebra.L11_SumRangeSucc
 msgid "Use §0 to peel off the last term\n"
 "§1 from the sum over §2."
-msgstr ""
-
-#. §0: `Fin 2`
-#. §1: `Fin`
-#. §2: `cases`
-#. §3: `left`
-#. §4: `right`
-#. §5: `rfl`
-#. §6: `absurd`
-#. §7: `omega`
-#. §8: `Fin n`
-#. §9: `.isLt`
-#. §10: `cases`
-#. §11: `.isLt`
-#. §12: `n`
-#. §13: `n`
-#. §14: `v < n`
-#. §15: `Fin n`
-#. §16: `Fintype`
-#. §17: `Fin n`
-#. §18: `cases`
-#. §19: `Fin 100`
-#. §20: `fin_cases`
-#. §21: `Fin 2`
-#. §22: `Bool`
-#. §23: `Bool`
-#. §24: `true`
-#. §25: `false`
-#. §26: `Fin 2`
-#. §27: `0`
-#. §28: `1`
-#. §29: `absurd`
-#. §30: `absurd`
-#. §31: `Fin 3`
-#. §32: `intro h; cases h`
-#. §33: `0 = 1`
-#: Game.Levels.MeetFin.L17_TwoElements
-msgid "You've just performed **exhaustive case analysis** on §0.\n"
-"\n"
-"The strategy — which we'll call **Fin case analysis** — is:\n"
-"1. **Destructure** the §1 element (Level 16)\n"
-"2. **Case-split** on the natural number (nested §2 as needed)\n"
-"3. **Handle** each case: valid cases with §3/§4 + §5,\n"
-"   impossible cases with §6 + §7\n"
-"\n"
-"**Why does this work?** Exhaustive case analysis on §8 terminates\n"
-"because §9 bounds the natural number. Each §10 step peels\n"
-"off one possible value (0, then 1, then 2, ...), and the §11\n"
-"bound ensures that after §12 valid cases, the remaining case is\n"
-"impossible — the value would need to be ≥ §13, contradicting §14.\n"
-"This is the **Fin contradiction pattern** from Level 13 applied to the\n"
-"impossible branch. This termination is what makes §15 a *finite*\n"
-"type in a proof-relevant sense: you can enumerate all elements and\n"
-"handle each one. This idea will be formalized as §16 in a later\n"
-"world.\n"
-"\n"
-"This strategy works for any §17 by nesting enough §18 on the\n"
-"natural number. But imagine doing this for §19: you'd need 100\n"
-"branches, 99 of which are contradiction proofs. The §20 tactic\n"
-"(currently disabled) automates all of this — it performs the case split\n"
-"and handles the impossible branches automatically. You'll unlock it\n"
-"later.\n"
-"\n"
-"Fun fact: §21 is equivalent to §22 — both have exactly two\n"
-"elements. Where §23 has §24 and §25, §26 has §27 and §28.\n"
-"\n"
-"**A note on §29**: You used §30 here for a *bound violation*\n"
-"in case analysis — the value was too large for the bound. This is a\n"
-"general tool you'll use in later worlds whenever you have contradictory\n"
-"hypotheses. In the next level, you'll practice case analysis on §31,\n"
-"and after that you'll learn a different pattern (§32)\n"
-"for when *constructors themselves* don't match (like §33)."
 msgstr ""
 
 #. §0: `h : x ∈ singleton 0`
@@ -17359,7 +17297,7 @@ msgstr ""
 #. §12: `rfl`
 #. §13: `intro h; cases h`
 #. §14: `rw [Fin.ext_iff] at h; omega`
-#. §15: `cases x with | mk v hv =>`
+#. §15: `cases x with | mk v hv`
 #. §16: `cases v`
 #. §17: `Fin.cons_self_tail.symm`
 #. §18: `vecSnoc_self_init.symm`
@@ -20677,13 +20615,6 @@ msgid "Case-split on §0 with §1.\n"
 "In the §8 case (§9): build forward membership directly."
 msgstr ""
 
-#. §0: `i`
-#. §1: `intro i; cases i with | mk v hlt =>`
-#: Game.Levels.MeetFin.L20_ConcreteApplication
-msgid "Start by introducing §0, then destructure it:\n"
-"§1"
-msgstr ""
-
 #. §0: `hy : y ∈ s.image f ∩ t.image f`
 #. §1: `rw [Finset.mem_inter] at hy`
 #: Game.Levels.FinsetImage.L18_ImageIntersectionEquality
@@ -21888,6 +21819,79 @@ msgid "# Computing Intersection from Union\n"
 "Collect the inclusion-exclusion fact and let §5 do the algebra."
 msgstr ""
 
+#. §0: `Fin 2`
+#. §1: `Fin`
+#. §2: `cases x with | mk v hlt`
+#. §3: `cases v with | zero | succ n`
+#. §4: `left`
+#. §5: `right`
+#. §6: `rfl`
+#. §7: `absurd`
+#. §8: `omega`
+#. §9: `Fin n`
+#. §10: `.isLt`
+#. §11: `cases`
+#. §12: `.isLt`
+#. §13: `n`
+#. §14: `n`
+#. §15: `v < n`
+#. §16: `Fin n`
+#. §17: `Fintype`
+#. §18: `Fin n`
+#. §19: `cases`
+#. §20: `Fin 100`
+#. §21: `fin_cases`
+#. §22: `Fin 2`
+#. §23: `Bool`
+#. §24: `Bool`
+#. §25: `true`
+#. §26: `false`
+#. §27: `Fin 2`
+#. §28: `0`
+#. §29: `1`
+#. §30: `absurd`
+#. §31: `absurd`
+#. §32: `Fin 3`
+#. §33: `intro h; cases h`
+#. §34: `0 = 1`
+#: Game.Levels.MeetFin.L17_TwoElements
+msgid "You've just performed **exhaustive case analysis** on §0.\n"
+"\n"
+"The strategy — which we'll call **Fin case analysis** — is:\n"
+"1. **Destructure** the §1 element: §2 (Level 16)\n"
+"2. **Case-split** on the natural number: §3\n"
+"3. **Handle** each case: valid cases with §4/§5 + §6,\n"
+"   impossible cases with §7 + §8\n"
+"\n"
+"**Why does this work?** Exhaustive case analysis on §9 terminates\n"
+"because §10 bounds the natural number. Each §11 step peels\n"
+"off one possible value (0, then 1, then 2, ...), and the §12\n"
+"bound ensures that after §13 valid cases, the remaining case is\n"
+"impossible — the value would need to be ≥ §14, contradicting §15.\n"
+"This is the **Fin contradiction pattern** from Level 13 applied to the\n"
+"impossible branch. This termination is what makes §16 a *finite*\n"
+"type in a proof-relevant sense: you can enumerate all elements and\n"
+"handle each one. This idea will be formalized as §17 in a later\n"
+"world.\n"
+"\n"
+"This strategy works for any §18 by nesting enough §19 on the\n"
+"natural number. But imagine doing this for §20: you'd need 100\n"
+"branches, 99 of which are contradiction proofs. The §21 tactic\n"
+"(currently disabled) automates all of this — it performs the case split\n"
+"and handles the impossible branches automatically. You'll unlock it\n"
+"later.\n"
+"\n"
+"Fun fact: §22 is equivalent to §23 — both have exactly two\n"
+"elements. Where §24 has §25 and §26, §27 has §28 and §29.\n"
+"\n"
+"**A note on §30**: You used §31 here for a *bound violation*\n"
+"in case analysis — the value was too large for the bound. This is a\n"
+"general tool you'll use in later worlds whenever you have contradictory\n"
+"hypotheses. In the next level, you'll practice case analysis on §32,\n"
+"and after that you'll learn a different pattern (§33)\n"
+"for when *constructors themselves* don't match (like §34)."
+msgstr ""
+
 #. §0: `v = k + 3`
 #. §1: `hlt`
 #. §2: `v < 3`
@@ -21990,6 +21994,12 @@ msgid "§0 splits the goal into two cases: one where §1\n"
 "\n"
 "Disabled in levels where the taught destructuring + nested §3\n"
 "pattern is the intended approach to case analysis."
+msgstr ""
+
+#. §0: `intro h; cases h with | inl h | inr h`
+#. §1: `exact h.1`
+#: Game.Levels.FinsetOperations.L21_PartitionIdentity
+msgid "§0 then §1 in both branches."
 msgstr ""
 
 #: Game.Levels.Fintype.L05_FunctionTypes
@@ -22322,7 +22332,7 @@ msgid "**Base case** (n = 0): The goal is\n"
 msgstr ""
 
 #. §0: `v`
-#. §1: `cases v with | zero => ... | succ n => ...`
+#. §1: `cases v with | zero | succ n`
 #. §2: `zero`
 #: Game.Levels.FinTuples.L18_ProvingTupleEquality
 msgid "Now case-split on §0 with §1.\n"
@@ -22917,7 +22927,7 @@ msgid "§0 is the multiplicative analogue of\n"
 "structurally identical."
 msgstr ""
 
-#. §0: `cases i with | mk v hv =>`
+#. §0: `cases i with | mk v hv`
 #: Game.Levels.FinNavigation.L16_Boss
 msgid "Destructure: §0"
 msgstr ""
@@ -23495,7 +23505,7 @@ msgid "# Fin 0 Has No Elements\n"
 msgstr ""
 
 #. §0: `x`
-#. §1: `cases x with | mk v hlt =>`
+#. §1: `cases x with | mk v hlt`
 #: Game.Levels.MeetFin.L16_DestructuringFin
 msgid "Destructure §0 into its components:\n"
 "§1"
@@ -24192,7 +24202,7 @@ msgid "# The Factorial as a Product\n"
 "recursive structure."
 msgstr ""
 
-#. §0: `cases i with | mk v hlt =>`
+#. §0: `cases i with | mk v hlt`
 #: Game.Levels.MeetFin.L20_ConcreteApplication
 #: Game.Levels.FinNavigation.L10_ZeroSuccDecomposition
 #: Game.Levels.FinNavigation.L10_ZeroSuccDecomposition
@@ -24223,7 +24233,6 @@ msgstr ""
 #: Game.Levels.FinsetBasics.L15_NonemptyFinsets
 #: Game.Levels.FinsetBasics.L15_NonemptyFinsets
 #: Game.Levels.FinsetBasics.L16_ProvingNonempty
-#: Game.Levels.FinsetOperations.L21_PartitionIdentity
 #: Game.Levels.FinsetImage.L10_ImageIntersectionCounterexample
 #: Game.Levels.FinsetImage.L10_ImageIntersectionCounterexample
 #: Game.Levels.FinsetImage.L20_ReverseRewriting
@@ -24507,6 +24516,14 @@ msgid "§0 states that\n"
 "\n"
 "## Connection to Finset complement counting\n"
 "This is the type-level analogue of §4."
+msgstr ""
+
+#. §0: `i`
+#. §1: `intro i`
+#. §2: `cases i with | mk v hlt`
+#: Game.Levels.MeetFin.L20_ConcreteApplication
+msgid "Start by introducing §0, then destructure it:\n"
+"§1 then §2"
 msgstr ""
 
 #. §0: `vecSnoc`
@@ -26732,16 +26749,6 @@ msgstr ""
 msgid "Filtering a Sum"
 msgstr ""
 
-#. §0: `have`
-#. §1: `intro (v, hv); cases v with | zero => left; rfl | succ n => ...`
-#. §2: `succ n`
-#. §3: `cases n with | zero => right; rfl | succ m => exact absurd hv (by omega)`
-#: Game.Levels.PsetFin.L17_Pigeonhole
-msgid "Inside the §0, destructure:\n"
-"§1\n"
-"For §2: §3"
-msgstr ""
-
 #. §0: `α`
 #. §1: `2 ^ (card α)`
 #. §2: `Bool`
@@ -28613,7 +28620,7 @@ msgstr ""
 #. §4: `f 0 = 1, f 1 = 0`
 #. §5: `f 2`
 #. §6: `use i, j; constructor; intro h; cases h; rw [...]`
-#. §7: `cases h0 with | inl h0 => ... | inr h0 => ...`
+#. §7: `cases h0 with | inl h0 | inr h0`
 #: Game.Levels.PsetFin.L17_Pigeonhole
 msgid "**Strategy map** — the case tree has 6 branches:\n"
 "\n"
@@ -30082,6 +30089,15 @@ msgid "Congratulations — you've completed **Meet Fin**!\n"
 "reaching the boundary with §50."
 msgstr ""
 
+#. §0: `cases h with | inl hs | inr ht`
+#. §1: `right`
+#. §2: `left`
+#: Game.Levels.FinsetOperations.L14_UnionCommutativity
+msgid "§0 splits\n"
+"into two branches. In the first, choose §1;\n"
+"in the second, choose §2."
+msgstr ""
+
 #. §0: `6.descFactorial 3 = 120`
 #. §1: `descFactorial_succ`
 #. §2: `descFactorial_zero`
@@ -30580,9 +30596,9 @@ msgstr ""
 #. §4: `norm_num`
 #. §5: `Fin`
 #. §6: `absurd`
-#. §7: `cases x with | mk v hlt =>`
+#. §7: `cases x with | mk v hlt`
 #. §8: `v`
-#. §9: `cases v with | zero => ... | succ n => ...`
+#. §9: `cases v with | zero | succ n`
 #. §10: `left`
 #. §11: `right`
 #. §12: `rfl`
@@ -31242,7 +31258,7 @@ msgid "If α has 12 elements and 4 satisfy P, then {x // ¬P x} × Fin 3 has 24 
 msgstr ""
 
 #. §0: `rw [h]`
-#. §1: `cases v with | zero => rfl | succ n => ...`
+#. §1: `cases v with | zero | succ n`
 #: Game.Levels.PsetFin.L05_PointwiseFormula
 msgid "§0 substitutes the formula, then\n"
 "case-split: §1"
@@ -31927,7 +31943,7 @@ msgid "§0 proves §1 directly.\n"
 msgstr ""
 
 #. §0: `v`
-#. §1: `cases v with | zero => ... | succ n => ...`
+#. §1: `cases v with | zero | succ n`
 #: Game.Levels.PsetFin.L14_CyclicPermutation
 msgid "Case-split on §0 to check each value:\n"
 "§1"
@@ -32393,12 +32409,12 @@ msgstr ""
 #. §1: `Fin n`
 #. §2: ```
 #. ext ⟨v, hv⟩
-#. cases v with
-#. | zero => ...      -- handle index 0
-#. | succ n =>
-#.   cases n with
-#.   | zero => ...    -- handle index 1
-#.   | succ m => ...  -- handle index 2, etc.
+#. cases v with | zero | succ n
+#. -- in the zero branch: handle index 0
+#. -- in the succ branch:
+#.   cases n with | zero | succ m
+#.   -- zero: handle index 1
+#.   -- succ: handle index 2, etc.
 #. ```
 #. §3: `v ≥ n`
 #. §4: `exact absurd hv (by omega)`
@@ -32739,7 +32755,7 @@ msgid "The goal is §0 and you have §1.\n"
 msgstr ""
 
 #. §0: `intro i`
-#. §1: `cases i with | mk v hv =>`
+#. §1: `cases i with | mk v hv`
 #: Game.Levels.FinNavigation.L10_ZeroSuccDecomposition
 msgid "Start with §0, then destructure:\n"
 "§1."
@@ -36561,7 +36577,7 @@ msgstr ""
 #. §0: `v : ℕ`
 #. §1: `hlt : v < 2`
 #. §2: `v`
-#. §3: `cases v with | zero => ... | succ n => ...`
+#. §3: `cases v with | zero | succ n`
 #: Game.Levels.MeetFin.L17_TwoElements
 #: Game.Levels.FinNavigation.L16_Boss
 msgid "Now §0 and §1. Case-split on §2:\n"
@@ -37011,6 +37027,34 @@ msgstr ""
 msgid "**Commutativity pattern (disjunction)**: Case-split on §0,\n"
 "then rebuild with the sides swapped using §1/§2.\n"
 "Use §3 then §4 to split on which side holds."
+msgstr ""
+
+#. §0: `x ∈ s ∧ x ∈ t ↔ x ∈ t ∧ x ∈ s`
+#. §1: `intro h; exact ⟨h.2, h.1⟩`
+#. §2: `x ∈ s ∨ x ∈ t ↔ x ∈ t ∨ x ∈ s`
+#. §3: `intro h; cases h with | inl | inr`
+#. §4: `right`
+#. §5: `left`
+#. §6: `.1`
+#. §7: `.2`
+#. §8: `cases`
+#. §9: `left`
+#. §10: `right`
+#: Game.Levels.FinsetOperations.L14_UnionCommutativity
+msgid "You've now proved commutativity for both intersection (∧-swapping)\n"
+"and union (∨-swapping). Compare the two patterns:\n"
+"\n"
+"**Intersection commutativity** (Level 12):\n"
+"- After ext + rewrite: §0\n"
+"- Swap conjuncts: §1\n"
+"\n"
+"**Union commutativity** (this level):\n"
+"- After ext + rewrite: §2\n"
+"- Swap disjuncts: §3 then §4/§5\n"
+"\n"
+"The key difference: conjunctions let you project (§6/§7), but\n"
+"disjunctions require case-splitting (§8) and rebuilding\n"
+"(§9/§10). Both patterns appear in the boss."
 msgstr ""
 
 #. §0: `eq_of_subset_of_card_le`
@@ -37545,23 +37589,6 @@ msgid "# castSucc Preserves Distinctness\n"
 "5. §18 — close with the hypothesis"
 msgstr ""
 
-#. §0: `cases h with`
-#. §1: `| inl hst => ...`
-#. §2: `hst : x ∈ s ∨ x ∈ t`
-#. §3: `| inr hu => ...`
-#. §4: `hu : x ∈ u`
-#. §5: `inl`
-#. §6: `hst`
-#. §7: `cases`
-#. §8: `inr`
-#. §9: `right; right; exact hu`
-#: Game.Levels.FinsetOperations.L15_UnionAssociativity
-msgid "§0 gives §1 (where\n"
-"§2) and §3 (where §4).\n"
-"In the §5 case, split §6 with another §7.\n"
-"In the §8 case, §9."
-msgstr ""
-
 #. §0: `sum_range_succ`
 #. §1: $2$
 #. §2: `mul_add`
@@ -37955,7 +37982,7 @@ msgid "# Providing a Fin Element as a Witness\n"
 msgstr ""
 
 #. §0: `i`
-#. §1: `cases i with | mk v hv =>`
+#. §1: `cases i with | mk v hv`
 #: Game.Levels.FinNavigation.L15_SuccSurjectivity
 msgid "Destructure §0 into its value and bound:\n"
 "§1"
@@ -38046,7 +38073,7 @@ msgid "The goal now has §0 — a constant product. Use\n"
 msgstr ""
 
 #. §0: `v`
-#. §1: `cases v with | zero => ... | succ n => ...`
+#. §1: `cases v with | zero | succ n`
 #: Game.Levels.MeetFin.L23_Boss
 #: Game.Levels.FinNavigation.L16_Boss
 msgid "Case-split on §0:\n"
@@ -38432,7 +38459,7 @@ msgid "Now prove §0: for every §1,\n"
 msgstr ""
 
 #. §0: `intro i`
-#. §1: `cases i with | mk v hv =>`
+#. §1: `cases i with | mk v hv`
 #: Game.Levels.PsetFin.L11_GeneralDecomposition
 #: Game.Levels.PsetFin.L12_GeneralZeroSuccDecomposition
 msgid "Start with §0, then destructure with\n"
@@ -40018,18 +40045,6 @@ msgstr ""
 msgid "The goal is §0.\n"
 "\n"
 "Expand the right side with Pascal's identity."
-msgstr ""
-
-#. §0: `have`
-#. §1: `intro h`
-#. §2: `rw [Finset.mem_insert] at h`
-#. §3: `cases h with | inl h => omega | inr h => ...`
-#. §4: `rw [Finset.mem_singleton] at h; omega`
-#: Game.Levels.Cardinality.L08_ConcreteCardinality
-msgid "Inside the §0, use §1 to assume\n"
-"membership, then §2 to get a disjunction.\n"
-"Case-split with §3\n"
-"and for the right branch, §4."
 msgstr ""
 
 #. §0: `Fintype.card (Fin 3) ^ Fintype.card α = 81`
