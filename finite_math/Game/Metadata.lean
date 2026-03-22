@@ -16,7 +16,21 @@ import Mathlib.Data.Multiset.Count
 import Mathlib.Data.Multiset.Dedup
 import Mathlib.Tactic.Ring
 import Mathlib.Data.Nat.Choose.Basic
+import Mathlib.Data.Nat.Choose.Sum
 import Mathlib.Data.Finset.Powerset
+
+/-- The binomial theorem for natural numbers, without Nat.cast coercion.
+
+`add_pow` works over any `CommSemiring R` and inserts `↑(Nat.choose n m)`
+via `Nat.cast`. When `R = ℕ` the cast is definitionally `id`, so `exact`
+and `apply` see through it, but `rw` does not (it needs a syntactic match).
+
+This wrapper states the theorem directly over `ℕ` so that `rw` and
+`Finset.sum_congr` work without fighting `Nat.cast`. -/
+theorem add_pow_nat (x y n : ℕ) :
+    (x + y) ^ n =
+      ∑ m ∈ Finset.range (n + 1), x ^ m * y ^ (n - m) * Nat.choose n m :=
+  add_pow x y n
 
 /-! ## Documentation for disabled tactics and theorems
 

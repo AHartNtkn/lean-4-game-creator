@@ -20,6 +20,7 @@ import Game.Levels.SummationFormulas
 import Game.Levels.PsetBigOp
 import Game.Levels.BinomialCoefficients
 import Game.Levels.Powerset
+import Game.Levels.BinomialTheorem
 
 Title "Finite Mathematics"
 Introduction
@@ -62,5 +63,7 @@ Dependency FinsetInduction → PsetBigOp
 Dependency SummationFormulas → BinomialCoefficients
 Dependency Cardinality → BinomialCoefficients
 Dependency BinomialCoefficients → Powerset
+Dependency Powerset → BinomialTheorem
+Dependency BigOpAlgebra → BinomialTheorem
 
 MakeGame

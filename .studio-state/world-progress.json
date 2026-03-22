@@ -19,6 +19,7 @@
     "SummationFormulas",
     "PsetBigOp",
     "BinomialCoefficients",
-    "Powerset"
+    "Powerset",
+    "BinomialTheorem"
   ]
 }
