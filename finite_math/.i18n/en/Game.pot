@@ -207,6 +207,10 @@ msgid "The goal is §0.\n"
 "Simplify C(3, 1) = 3 using §1."
 msgstr ""
 
+#: Game.Levels.Products.L02_MkMemProduct
+msgid "Building Product Pairs"
+msgstr ""
+
 #. §0: `Finset.sdiff s t`
 #. §1: `s \\ t`
 #. §2: `s`
@@ -286,6 +290,22 @@ msgstr ""
 #: Game.Levels.AbstractionLadder.L05_DuplicateElements
 msgid "The outermost structure is §0. Use\n"
 "§1 to peel off §2."
+msgstr ""
+
+#. §0: `Finset.card_sigma`
+#. §1: $$|s.\\text{sigma}\\ t| = \\sum_{i \\in s} |t\\, i|$$
+#: Game.Levels.Products.L09_SigmaCardinality
+msgid "# Counting Dependent Pairs\n"
+"\n"
+"You just used §0 to evaluate a sigma cardinality\n"
+"by unfolding the sum. Now let's go the other direction: given\n"
+"information about the **sum**, conclude the sigma cardinality.\n"
+"\n"
+"Recall:\n"
+"§1\n"
+"\n"
+"**Your task**: Given that the sum of the fiber sizes is 10,\n"
+"conclude that the sigma has 10 elements."
 msgstr ""
 
 #. §0: `use 2; rw [Finset.mem_insert]; left; rfl`
@@ -579,6 +599,11 @@ msgid "# Double Set Difference and Complement\n"
 "**Your task**: Prove that §32."
 msgstr ""
 
+#. §0: `5 ∈ t`
+#: Game.Levels.Products.L01_ProductMembership
+msgid "Prove §0."
+msgstr ""
+
 #. §0: `rw [Fintype.card_embedding_eq]`
 #: Game.Levels.CountingTypes.L09_InjectionPractice
 msgid "Start with §0 to convert to a\n"
@@ -823,6 +848,10 @@ msgstr ""
 #. §0: `intro x`
 #: Game.Levels.FinsetBasics.L03_TheEmptyFinset
 msgid "The goal is universally quantified. Start with §0."
+msgstr ""
+
+#: Game.Levels.Products.L03_ExtractFromProduct
+msgid "Extract the first component membership from a product membership."
 msgstr ""
 
 #. §0: `h2 : u.card \\leq (s \\ t).card`
@@ -1246,6 +1275,11 @@ msgstr ""
 #. §0: `ring`
 #: Game.Levels.FinsetInduction.L06_MixedInduction
 msgid "The goal is now pure arithmetic. Close with §0."
+msgstr ""
+
+#: Game.Levels.Products.L21_Boss
+msgid "Prove product membership, compute sigma cardinality, and compute\n"
+"self-product cardinality via decomposition."
 msgstr ""
 
 #. §0: `induction n`
@@ -1968,6 +2002,10 @@ msgid "The same proof from FinNavigation works with abstract §0 — the\n"
 "you now have both separation facts in full generality."
 msgstr ""
 
+#: Game.Levels.Products.L04_ProductSubset
+msgid "Product Subset Monotonicity"
+msgstr ""
+
 #. §0: `∑ x ∈ ∅, 0 = 0`
 #. §1: `Finset.sum_empty`
 #. §2: `rw [Finset.sum_empty]`
@@ -1984,6 +2022,21 @@ msgstr ""
 msgid "Full proof:\n"
 "§0\n"
 "§1"
+msgstr ""
+
+#: Game.Levels.Products.L20_AlgebraicIdentity
+msgid "Split the union cardinality using disjointness."
+msgstr ""
+
+#. §0: `rw [Finset.card_union_of_disjoint (Finset.disjoint_diag_offDiag s)]`
+#. §1: `Finset.disjoint_diag_offDiag s`
+#. §2: `card_union_of_disjoint`
+#: Game.Levels.Products.L18_DisjointnessCoaching
+msgid "Try\n"
+"§0.\n"
+"\n"
+"§1 provides the disjointness proof,\n"
+"and §2 converts the union cardinality to a sum."
 msgstr ""
 
 #. §0: `Finset.univ`
@@ -2191,6 +2244,45 @@ msgstr ""
 msgid "The finset {1, 2, 3} is nonempty."
 msgstr ""
 
+#. §0: `Finset.card_sigma`
+#. §1: $$|s.\\text{sigma}\\ t| = \\sum_{i \\in s} |t\\, i|$$
+#. §2: `t i`
+#. §3: `k`
+#. §4: $\\sum_{i \\in s} k = |s| \\cdot k$
+#. §5: `card_product`
+#. §6: `sum_range_succ`
+#. §7: `sum_insert`
+#. §8: `sum_singleton`
+#. §9: `s.sigma t`
+#. §10: `t i`
+#. §11: `i ∈ s`
+#. §12: `(t i).card`
+#. §13: `card_sigma`
+#. §14: `s ×ˢ s`
+#: Game.Levels.Products.L09_SigmaCardinality
+msgid "§0 reduces a sigma cardinality question to a\n"
+"summation question:\n"
+"\n"
+"§1\n"
+"\n"
+"**Connection to products**: If every §2 has the same size §3,\n"
+"then §4, recovering §5.\n"
+"Sigma is the generalization — products are the uniform special case.\n"
+"\n"
+"**Connection to big operators**: You already know how to evaluate\n"
+"sums over explicit finsets (§6, §7,\n"
+"§8). Those same tools apply to sigma cardinalities.\n"
+"\n"
+"**The disjoint union reading**: You can think of §9\n"
+"as a *disjoint union* of the fibers §10 over §11. Each\n"
+"fiber contributes §12 elements, and the fibers don't\n"
+"overlap (they live in different components of the sigma type).\n"
+"The cardinality formula §13 is then just the additive\n"
+"rule for disjoint unions: total = sum of parts. You'll see this\n"
+"same principle again later when the diagonal and off-diagonal\n"
+"partition §14 — the partition-then-count pattern."
+msgstr ""
+
 #. §0: `rw [Fin.ext_iff]`
 #. §1: `i.val = i.val`
 #: Game.Levels.MeetFin.L10_DerivingFinEta
@@ -2382,6 +2474,10 @@ msgid "You combined two §0 bounds and let §1 chain them.\n"
 "extractors (Levels 2–3) form a complete round-trip: you can take a\n"
 "§19 element apart and put it back together. You'll see this\n"
 "round-trip formalized starting in Level 5."
+msgstr ""
+
+#: Game.Levels.Products.L03_ExtractFromProduct
+msgid "Extracting from Products"
 msgstr ""
 
 #. §0: $s \\cup s = s$
@@ -2990,6 +3086,12 @@ msgid "# What Is the Only 0-Element Subset?\n"
 "This is a retrieval level: find the right lemma and apply it."
 msgstr ""
 
+#. §0: `s.diag.card`
+#. §1: `Finset.diag_card`
+#: Game.Levels.Products.L18_DisjointnessCoaching
+msgid "Now compute §0 using §1."
+msgstr ""
+
 #. §0: `exact Finset.powersetCard_zero s`
 #. §1: `∅`
 #. §2: $\\binom{n}{0} = 1$
@@ -3322,6 +3424,13 @@ msgid "§0 closes a goal when you have contradictory hypotheses.\n"
 "## Note\n"
 "§7 is the formal version of proof by contradiction:\n"
 "if you can show both §8 and §9, the current goal is closed."
+msgstr ""
+
+#. §0: `∑ a ∈ s, (t a).card = 10`
+#. §1: `hsum`
+#: Game.Levels.Products.L09_SigmaCardinality
+msgid "Now the goal is §0, which is\n"
+"exactly your hypothesis §1."
 msgstr ""
 
 #: Game.Levels.Cardinality.L04_NonemptyFromCard
@@ -4546,6 +4655,14 @@ msgid "§0\n"
 "then inside: §1"
 msgstr ""
 
+#. §0: `(Finset.range k).card`
+#. §1: `k`
+#. §2: `Finset.card_range`
+#: Game.Levels.Products.L08_ConcreteSigmaFormula
+msgid "Now simplify each §0 to §1 using\n"
+"§2."
+msgstr ""
+
 #: Game.Levels.Powerset.L22_FullSetSubset
 msgid "Every finset has exactly one subset of the same size: itself."
 msgstr ""
@@ -4847,6 +4964,30 @@ msgid "# Practice: Complement Counting + Products\n"
 "\n"
 "**Your task**: Decompose using §8, then apply §9,\n"
 "then substitute the known values."
+msgstr ""
+
+#. §0: `Finset.mem_diag`
+#. §1: `s.diag`
+#. §2: `x ∈ s.diag ↔ x.1 ∈ s ∧ x.1 = x.2`
+#. §3: `(a, b)`
+#. §4: `a ∈ s`
+#. §5: `a = b`
+#. §6: ```
+#. rw [Finset.mem_diag]
+#. ```
+#. §7: `_ ∈ s.diag`
+#: Game.Levels.Products.L11_Diagonal
+msgid "§0 characterizes membership in §1:\n"
+"\n"
+"§2\n"
+"\n"
+"A pair §3 is in the diagonal iff §4 and §5.\n"
+"\n"
+"## Syntax\n"
+"§6\n"
+"\n"
+"## When to use it\n"
+"When the goal or a hypothesis involves §7."
 msgstr ""
 
 #. §0: `Finset.notMem_empty a`
@@ -5210,6 +5351,16 @@ msgid "# Constant Products: ∏ c = c ^ card\n"
 "simplify the constant part with §14."
 msgstr ""
 
+#. §0: `rw [Finset.sum_const]`
+#. §1: `s.card * t.card = s.card * t.card`
+#. §2: `rfl`
+#: Game.Levels.Products.L10_SigmaRecovery
+msgid "Try §0.\n"
+"This gives §1 (for natural\n"
+"numbers, scalar multiplication is ordinary multiplication),\n"
+"which closes by §2."
+msgstr ""
+
 #: Game.Levels.CountingTypes.L11_Boss
 msgid "There are 505 more functions than injections from α to Fin 3 ⊕ Bool,\n"
 "    given α ≃ Fin 2 × Bool."
@@ -5227,6 +5378,14 @@ msgid "The goal is §0.\n"
 "This involves natural number subtraction, so §1 can't close it\n"
 "directly. Use §2: establish §3\n"
 "with §4, then §5 handles the subtraction arithmetic."
+msgstr ""
+
+#. §0: `ha : 3 ∈ s`
+#. §1: `hb : 7 ∈ t`
+#. §2: `Finset.mk_mem_product`
+#: Game.Levels.Products.L02_MkMemProduct
+msgid "You have §0 and §1. Use\n"
+"§2 to combine them directly."
 msgstr ""
 
 #. §0: `h`
@@ -5333,6 +5492,11 @@ msgid "The Vandermonde identity §0 says:\n"
 "First rewrite §6 as §7 so the types match."
 msgstr ""
 
+#. §0: `constructor`
+#: Game.Levels.Products.L01_ProductMembership
+msgid "Now you have a conjunction. Split it with §0."
+msgstr ""
+
 #: Game.Levels.Powerset.L06_PowersetMonotonicity
 msgid "Powerset Monotonicity"
 msgstr ""
@@ -5391,6 +5555,14 @@ msgid "The §0 tactic is useful when:\n"
 "3. Prove §4 from §5 (often §6 or algebraic reasoning)\n"
 "\n"
 "The boss will use this pattern as part of a larger proof."
+msgstr ""
+
+#. §0: `rw [Finset.sum_range_succ]`
+#. §1: `i = 1`
+#: Game.Levels.Products.L07_ConcreteSigma
+#: Game.Levels.Products.L08_ConcreteSigmaFormula
+msgid "Try §0 again for\n"
+"the §1 term."
 msgstr ""
 
 #. §0: `\\sum_{x \\in s} 1 = |s|`
@@ -5566,6 +5738,31 @@ msgstr ""
 #: Game.Levels.AbstractionLadder.L23_Boss
 msgid "Good. Now use §0 to convert the finset\n"
 "card to a list length."
+msgstr ""
+
+#. §0: `Finset.product`
+#. §1: `s ×ˢ t`
+#. §2: `(a, b)`
+#. §3: `a ∈ s`
+#. §4: `b ∈ t`
+#. §5: ```
+#. s ×ˢ t    -- the Cartesian product
+#. ```
+#. §6: `(s ×ˢ t).card = s.card * t.card`
+#. §7: `Finset.card_product`
+#. §8: `Finset.mem_product : p ∈ s ×ˢ t ↔ p.1 ∈ s ∧ p.2 ∈ t`
+#: Game.Levels.Products.L01_ProductMembership
+msgid "§0 (written §1) is the Cartesian product of\n"
+"two finsets: the set of all pairs §2 where §3 and §4.\n"
+"\n"
+"## Syntax\n"
+"§5\n"
+"\n"
+"## Cardinality\n"
+"§6 (§7)\n"
+"\n"
+"## Key lemma\n"
+"§8"
 msgstr ""
 
 #. §0: $$|\\alpha \\oplus \\beta| = |\\alpha| + |\\beta|$$
@@ -6232,6 +6429,10 @@ msgid "Now simplify both sides using the access lemma:\n"
 "§0"
 msgstr ""
 
+#: Game.Levels.Products.L07_ConcreteSigma
+msgid "Compute a concrete sigma cardinality with varying fiber sizes."
+msgstr ""
+
 #: Game.Levels.AbstractionLadder
 msgid "Abstraction Ladder"
 msgstr ""
@@ -6318,6 +6519,11 @@ msgid "You proved that the cyclic permutation §0 has no fixed\n"
 "- Inequality via §9 (MeetFin) — proving the output differs"
 msgstr ""
 
+#. §0: `h : p.1 ∈ s ∧ p.2 ∈ t`
+#: Game.Levels.Products.L03_ExtractFromProduct
+msgid "Now §0. Extract the left conjunct."
+msgstr ""
+
 #. §0: `rw [Fintype.card_embedding_eq, Fintype.card_congr e, Fintype.card_fin, Fintype.card_fin, Nat.descFactorial_succ, Nat.descFactorial_succ, Nat.descFactorial_succ, Nat.descFactorial_zero]`
 #: Game.Levels.PsetCardinality.L10_InjectionCounting
 msgid "Full proof:\n"
@@ -6366,6 +6572,39 @@ msgstr ""
 
 #: Game.Levels.MeetFin.L07_RewritingHypotheses
 msgid "Rewriting Hypotheses"
+msgstr ""
+
+#. §0: `mk_mem_product ha ha`
+#. §1: `(a, a) ∈ s ×ˢ s`
+#. §2: `a ∈ s`
+#. §3: `card_sigma`
+#. §4: `sum_const`
+#. §5: $\\sum_{i \\in s} |s| = |s| \\cdot |s| = 25$
+#. §6: $$|s \\times^s s| = |s.\\text{diag}| + |s.\\text{offDiag}|
+#. = 5 + (25 - 5) = 25$$
+#. §7: `Fin m × Fin n`
+#. §8: $m \\times n$
+#: Game.Levels.Products.L21_Boss
+msgid "You integrated all three product construction arcs:\n"
+"\n"
+"**Part 1 — Cartesian product membership**:\n"
+"§0 builds §1 from §2.\n"
+"\n"
+"**Part 2 — Sigma cardinality**:\n"
+"§3 + §4 computes the constant-fiber sigma:\n"
+"§5.\n"
+"\n"
+"**Part 3 — Diagonal decomposition**:\n"
+"§6\n"
+"\n"
+"The **partition-then-count** strategy — decompose, verify\n"
+"disjointness, count each piece, add — is a fundamental\n"
+"technique you'll use whenever you need to count by cases.\n"
+"\n"
+"**Looking ahead**: The product §7 is the index\n"
+"set for entries of an §8 matrix. Everything you've\n"
+"learned here about counting and decomposing product pairs\n"
+"applies directly to matrix entries in the Matrices world."
 msgstr ""
 
 #. §0: `range 0`
@@ -6461,6 +6700,23 @@ msgstr ""
 
 #: Game.Levels.FinsetImage.L23_Boss
 msgid "Forward membership, subset bound, cardinality bounds, and injectivity."
+msgstr ""
+
+#. §0: `Finset.mk_mem_product ha hb`
+#. §1: `Finset.mem_product`
+#. §2: `Finset.mk_mem_product`
+#: Game.Levels.Products.L02_MkMemProduct
+msgid "One line! §0 builds a product membership\n"
+"from its components.\n"
+"\n"
+"**When to use which**:\n"
+"- §1 (↔): when you need to rewrite or extract\n"
+"  component memberships from a product membership\n"
+"- §2 (→): when you already have both component\n"
+"  memberships and want to build a product membership directly\n"
+"\n"
+"Both encode the same mathematical fact — the definition of\n"
+"Cartesian product — but they face different directions."
 msgstr ""
 
 #. §0: `«{h}»`
@@ -6904,6 +7160,15 @@ msgid "You combined two tools:\n"
 "variable — every element contributes the same value."
 msgstr ""
 
+#. §0: `rw [Nat.mul_sub_one]`
+#. §1: `←`
+#. §2: `Nat.mul_sub_one`
+#: Game.Levels.Products.L16_OffDiagBinomial
+msgid "Try §0.\n"
+"The §1 direction isn't needed here because §2\n"
+"rewrites in the direction that matches the goal."
+msgstr ""
+
 #: Game.Levels.PascalsTriangle.L06_AntidiagonalMembership
 msgid "The Reindexing Correspondence"
 msgstr ""
@@ -7242,6 +7507,11 @@ msgstr ""
 msgid "The Factorial Connection"
 msgstr ""
 
+#. §0: `Finset.diag_card`
+#: Game.Levels.Products.L20_AlgebraicIdentity
+msgid "Now substitute the diagonal cardinality using §0."
+msgstr ""
+
 #. §0: `0 < s.card`
 #. §1: `hs`
 #. §2: `omega`
@@ -7549,6 +7819,13 @@ msgid "Try §0.\n"
 "The §1 (backward) direction converts\n"
 "§2 into §3.\n"
 "Here §4, so §5."
+msgstr ""
+
+#. §0: `rw [hs]`
+#. §1: `3 + (3 * 3 - 3) = 3 + 6 = 9`
+#: Game.Levels.Products.L18_DisjointnessCoaching
+msgid "Try §0.\n"
+"This gives §1."
 msgstr ""
 
 #: Game.Levels.BigOpIntro.L15_Boss
@@ -7895,6 +8172,10 @@ msgid "This is a polynomial identity over natural numbers. The §0\n"
 "Try §1."
 msgstr ""
 
+#: Game.Levels.Products.L04_ProductSubset
+msgid "Product preserves subset inclusion."
+msgstr ""
+
 #: Game.Levels.SummationFormulas.L12_TelescopingSum
 msgid "The sum of (i+1)² - i² over range n equals n². A telescoping sum."
 msgstr ""
@@ -8182,6 +8463,10 @@ msgstr ""
 msgid "Now verify each index. Case-split on §0."
 msgstr ""
 
+#: Game.Levels.Products.L15_OffDiagCard
+msgid "Off-Diagonal Cardinality"
+msgstr ""
+
 #. §0: `succ`
 #. §1: `rw [Fin.val_succ, Fin.val_succ] at h`
 #. §2: `i.val + 1 = j.val + 1`
@@ -8314,6 +8599,10 @@ msgstr ""
 msgid "**Right goal**: §0.\n"
 "Choosing all items from a collection gives 1.\n"
 "Use §1 to rewrite."
+msgstr ""
+
+#: Game.Levels.Products.L12_OffDiagonal
+msgid "Prove off-diagonal membership from element memberships."
 msgstr ""
 
 #. §0: $\\sum \\binom{n}{m} = 2^n$
@@ -8467,6 +8756,11 @@ msgid "§0 states that §1.\n"
 "\n"
 "## Example\n"
 "§5"
+msgstr ""
+
+#. §0: `5 ∈ s ∧ 2 ≠ 5`
+#: Game.Levels.Products.L12_OffDiagonal
+msgid "Now you need §0. Split again."
 msgstr ""
 
 #. §0: `Finset`
@@ -8715,6 +9009,7 @@ msgstr ""
 
 #. §0: `hlen`
 #: Game.Levels.PsetCardinality.L06_MultisetRetrieval
+#: Game.Levels.Products.L18_DisjointnessCoaching
 msgid "Substitute §0 to finish."
 msgstr ""
 
@@ -9301,6 +9596,11 @@ msgstr ""
 
 #: GameServer.RpcHandlers
 msgid "intermediate goal solved! 🎉"
+msgstr ""
+
+#. §0: `2 ≠ 5`
+#: Game.Levels.Products.L12_OffDiagonal
+msgid "Finally, prove §0."
 msgstr ""
 
 #: Game.Levels.PascalsTriangle.L16_Boss
@@ -10521,6 +10821,31 @@ msgid "# PowersetCard: Subsets of Size k\n"
 "that §11."
 msgstr ""
 
+#. §0: `(s.diag ∪ s.offDiag).card`
+#. §1: `s.card`
+#. §2: `s.card`
+#. §3: $$(s \\times^s s).\\text{card} = s.\\text{diag}.\\text{card} + s.\\text{offDiag}.\\text{card}$$
+#. §4: `s`
+#. §5: `s`
+#. §6: `s ×ˢ s`
+#. §7: `← diag_union_offDiag`
+#. §8: `card_union_of_disjoint`
+#: Game.Levels.Products.L19_GeneralDecomposition
+msgid "# The Partition Identity for Self-Products\n"
+"\n"
+"You've computed §0 for a specific value\n"
+"of §1. Now let's prove the **general identity** — without\n"
+"assuming anything about §2:\n"
+"\n"
+"§3\n"
+"\n"
+"This says: the total number of pairs from §4 decomposes as\n"
+"diagonal pairs plus off-diagonal pairs, for **any** finset §5.\n"
+"\n"
+"**Strategy**: Decompose §6 using §7,\n"
+"then apply §8 with the disjointness proof."
+msgstr ""
+
 #: Game.Levels.PsetFinset.L06_ImageNonempty
 msgid "Image of a Nonempty Set"
 msgstr ""
@@ -10761,6 +11086,18 @@ msgstr ""
 msgid "Use §0."
 msgstr ""
 
+#. §0: `exact ⟨h.2.1, h.1, Ne.symm h.2.2⟩`
+#. §1: `h.1 : a ∈ s`
+#. §2: `h.2.1 : b ∈ s`
+#. §3: `Ne.symm h.2.2 : b ≠ a`
+#. §4: `a ≠ b`
+#: Game.Levels.Products.L13_OffDiagExtraction
+msgid "Try §0.\n"
+"\n"
+"Here §1, §2, and\n"
+"§3 (flipped from §4)."
+msgstr ""
+
 #. §0: `ih : n + 1 \\le 2^n`
 #. §1: `n + 2 \\le 2^(n+1)`
 #. §2: `have`
@@ -10780,6 +11117,10 @@ msgid "**Inductive step**: You have §0 and need\n"
 "- Goal: $n+2 \\le b$\n"
 "\n"
 "Since $b = 2a \\ge 2(n+1) = 2n+2 \\ge n+2$, this is linear arithmetic."
+msgstr ""
+
+#: Game.Levels.Products.L05_ProductCardIntegration
+msgid "Substitute the known sizes."
 msgstr ""
 
 #. §0: `absurd`
@@ -10822,6 +11163,12 @@ msgid "# Proving Two Fin Elements Are Not Equal\n"
 "in reverse: if the values differ, the elements can't be equal.\n"
 "\n"
 "**Your task**: Prove that §14 and §15 are different elements of §16."
+msgstr ""
+
+#. §0: `2 ∈ s`
+#. §1: `Finset.mem_insert`
+#: Game.Levels.Products.L01_ProductMembership
+msgid "Prove §0 by peeling inserts with §1."
 msgstr ""
 
 #. §0: `length`
@@ -11051,6 +11398,11 @@ msgstr ""
 msgid "Obtain Meets Decomposition"
 msgstr ""
 
+#. §0: `s.card = 5`
+#: Game.Levels.Products.L21_Boss
+msgid "Substitute §0."
+msgstr ""
+
 #. §0: `rw [Finset.mem_image] at h`
 #. §1: `obtain ⟨x, hx, _⟩ := h`
 #. §2: `rw [Finset.mem_inter] at hx`
@@ -11130,6 +11482,10 @@ msgstr ""
 msgid "2 * C(n+2, n+1) = 2 * (n+2): coaching for the boss induction pattern."
 msgstr ""
 
+#: Game.Levels.Products.L06_SigmaIntro
+msgid "Prove membership in a sigma construction."
+msgstr ""
+
 #. §0: `Fin n`
 #. §1: `![1, 2, 0] : Fin 3 -> Fin 3`
 #. §2: `0 -> 1`
@@ -11204,6 +11560,10 @@ msgid "The nonempty hypothesis guarantees at least one element\n"
 "exists. Can you extract a concrete witness from it?"
 msgstr ""
 
+#: Game.Levels.Products.L10_SigmaRecovery
+msgid "Sigma Recovers Product"
+msgstr ""
+
 #. §0: `intro h`
 #. §1: `h.1`
 #. §2: `∨`
@@ -11222,6 +11582,9 @@ msgstr ""
 #: Game.Levels.CountingTypes.L09_InjectionPractice
 #: Game.Levels.CountingTypes.L10_TheGap
 #: Game.Levels.CountingTypes.L11_Boss
+#: Game.Levels.Products.L19_GeneralDecomposition
+#: Game.Levels.Products.L20_AlgebraicIdentity
+#: Game.Levels.Products.L21_Boss
 msgid "Try\n"
 "§0."
 msgstr ""
@@ -11548,6 +11911,13 @@ msgstr ""
 #: Game.Levels.PsetCombinatorics.L05_AbsorptionIdentity
 msgid "The goal is §0.\n"
 "Close with §1 (multiplication is commutative)."
+msgstr ""
+
+#. §0: `card_union_of_disjoint`
+#. §1: `disjoint_diag_offDiag`
+#: Game.Levels.Products.L19_GeneralDecomposition
+msgid "The union is disjoint — apply §0\n"
+"with §1."
 msgstr ""
 
 #: Game.Levels.BinomialTheorem.L07_RewritingHypotheses
@@ -12081,6 +12451,10 @@ msgstr ""
 msgid "The Cardinality-Summation Bridge"
 msgstr ""
 
+#: Game.Levels.Products.L11_Diagonal
+msgid "Prove diagonal membership from element membership."
+msgstr ""
+
 #: Game.Levels.MeetFin.L14_ExplosionPrinciple
 msgid "From an element of the empty type, anything follows."
 msgstr ""
@@ -12391,6 +12765,30 @@ msgid "Now substitute the known last element and init:\n"
 "§0."
 msgstr ""
 
+#. §0: `Finset.diag_union_offDiag`
+#. §1: `s.diag ∪ s.offDiag = s ×ˢ s`
+#. §2: ```
+#. rw [Finset.diag_union_offDiag]  -- replaces s.diag ∪ s.offDiag with s ×ˢ s
+#. rw [← Finset.diag_union_offDiag]  -- replaces s ×ˢ s with s.diag ∪ s.offDiag
+#. ```
+#. §3: `s ×ˢ s`
+#. §4: `s.diag ∪ s.offDiag`
+#: Game.Levels.Products.L17_DecompositionReverse
+msgid "§0 states that\n"
+"\n"
+"§1\n"
+"\n"
+"The diagonal and off-diagonal partition the self-product.\n"
+"\n"
+"## Syntax\n"
+"§2\n"
+"\n"
+"## When to use it\n"
+"When you need to decompose §3 into diagonal and\n"
+"off-diagonal components, or when you need to recognize that\n"
+"§4 is the full self-product."
+msgstr ""
+
 #. §0: `Finset.univ`
 #. §1: `univ`
 #. §2: `univ`
@@ -12419,6 +12817,11 @@ msgid "# Grounding Finset.univ in Concrete Terms\n"
 "\n"
 "**Your task**: Prove that §9 equals\n"
 "the literal finset §10."
+msgstr ""
+
+#. §0: `hp : p ∈ s ×ˢ t`
+#: Game.Levels.Products.L04_ProductSubset
+msgid "Now extract the components from §0."
 msgstr ""
 
 #: Game.Levels.FinsetBasics.L14_InsertIsIdempotent
@@ -12677,6 +13080,12 @@ msgstr ""
 #: Game.Levels.BinomialTheorem.L01_MeetAddPow
 msgid "The goal is exactly the statement of §0 applied to\n"
 "natural numbers. Close it with §1."
+msgstr ""
+
+#. §0: `Finset.mem_offDiag`
+#: Game.Levels.Products.L12_OffDiagonal
+msgid "Use §0 to characterize the membership,\n"
+"then prove the three conditions."
 msgstr ""
 
 #. §0: `intro hyt`
@@ -13111,6 +13520,12 @@ msgstr ""
 msgid "Now simplify the constant sum with\n"
 "§0 — this converts the sum of §1 to\n"
 "§2."
+msgstr ""
+
+#. §0: `s.offDiag.card`
+#. §1: `Finset.offDiag_card`
+#: Game.Levels.Products.L18_DisjointnessCoaching
+msgid "And §0 using §1."
 msgstr ""
 
 #. §0: `[2, 3, 1]`
@@ -13590,6 +14005,17 @@ msgstr ""
 
 #: Game.Levels.AbstractionLadder.L05_DuplicateElements
 msgid "Duplicate Elements"
+msgstr ""
+
+#. §0: $|s.\\text{diag}| = |s|$
+#. §1: `s`
+#. §2: `s ×ˢ s`
+#: Game.Levels.Products.L14_DiagCard
+msgid "One pair per element: §0.\n"
+"\n"
+"This makes intuitive sense — the diagonal is a 'copy' of §1\n"
+"inside the product §2, with each element mapped to its\n"
+"self-pair."
 msgstr ""
 
 #. §0: `insert a l.toFinset = l.toFinset`
@@ -14289,6 +14715,36 @@ msgid "# Every Tuple = Init Snoc'd with Last\n"
 "**Your task**: Prove the init-snoc reconstruction identity."
 msgstr ""
 
+#. §0: `s`
+#. §1: $$|s.\\text{offDiag}| = |s|^2 - |s|$$
+#. §2: ```
+#. Finset.offDiag_card : (Finset.offDiag s).card = s.card * s.card - s.card
+#. ```
+#. §3: `s ×ˢ s`
+#. §4: $|s|^2$
+#. §5: `s.diag`
+#. §6: $|s|$
+#. §7: $|s|^2 - |s|$
+#. §8: `s.card = 4`
+#. §9: `s.offDiag.card`
+#: Game.Levels.Products.L15_OffDiagCard
+msgid "# Counting Distinct Pairs\n"
+"\n"
+"The off-diagonal contains all ordered pairs of *distinct* elements\n"
+"from §0. Its cardinality is:\n"
+"\n"
+"§1\n"
+"\n"
+"In Lean:\n"
+"§2\n"
+"\n"
+"This makes sense: §3 has §4 pairs total, and §5\n"
+"accounts for §6 of them (the self-pairs). Removing the diagonal\n"
+"leaves §7 distinct pairs.\n"
+"\n"
+"**Your task**: Given §8, compute §9."
+msgstr ""
+
 #. §0: `rw [Finset.mem_range] at h`
 #: Game.Levels.FinsetBasics.L11_GeneralNonMembership
 msgid "Rewrite to extract the inequality:\n"
@@ -14908,6 +15364,10 @@ msgid "Two skills combined:\n"
 "  concrete element and its membership proof\n"
 "- **Forward image membership**: the witness for §1 in the image\n"
 "  is §2 itself, with §3 by §4"
+msgstr ""
+
+#: Game.Levels.Products.L07_ConcreteSigma
+msgid "Substitute the known fiber sizes."
 msgstr ""
 
 #. §0: `Finset.mem_insert_of_mem h`
@@ -15646,6 +16106,24 @@ msgid "# Boundary Cases: What Happens at the Extremes?\n"
 "(the only element), then derive §10."
 msgstr ""
 
+#. §0: `Finset.mem_product`
+#. §1: `p ∈ s ×ˢ t`
+#. §2: `p.1 ∈ s`
+#. §3: `p.2 ∈ t`
+#. §4: $s \\times t = \\{(a, b) \\mid a \\in s \\text{ and } b \\in t\\}$
+#. §5: `rw [Finset.mem_product]`
+#. §6: `constructor`
+#: Game.Levels.Products.L01_ProductMembership
+msgid "§0 is the workhorse for reasoning about product\n"
+"membership. It turns a single membership goal §1 into\n"
+"two independent membership goals §2 and §3.\n"
+"\n"
+"This is the finset version of the set-theoretic definition:\n"
+"§4.\n"
+"\n"
+"**Pattern**: §5 then §6 to split."
+msgstr ""
+
 #: Game.Levels.FinTuples.L17_TheEmptyTuple
 msgid "The Empty Tuple"
 msgstr ""
@@ -15784,6 +16262,40 @@ msgid "# The Sum of the First §0 Natural Numbers\n"
 "(which the IH knows about) from §24."
 msgstr ""
 
+#. §0: `s.offDiag`
+#. §1: `h.1`
+#. §2: `h.2.1`
+#. §3: `h.2.2`
+#. §4: `Ne.symm`
+#. §5: `mem_product`
+#. §6: `mem_offDiag`
+#. §7: `(a, b)`
+#. §8: `(b, a)`
+#. §9: `s.offDiag`
+#. §10: `s.offDiag.card`
+#. §11: $|s.\\text{offDiag}| = 2 \\binom{n}{2}$
+#: Game.Levels.Products.L13_OffDiagExtraction
+msgid "Extraction from §0 gives three pieces:\n"
+"1. First component membership: §1\n"
+"2. Second component membership: §2\n"
+"3. Distinctness: §3\n"
+"\n"
+"The symmetry proof is another instance of the **membership\n"
+"round-trip** from Level 4: extract the components, transform\n"
+"them (swap the membership order and flip the disequality with\n"
+"§4), then rebuild the off-diagonal membership.\n"
+"\n"
+"The pattern is the same — only the membership characterization\n"
+"changed from §5 to §6.\n"
+"\n"
+"**A consequence of symmetry**: Since every off-diagonal pair\n"
+"§7 has a companion §8 also in §9, the\n"
+"off-diagonal elements come in pairs. This means\n"
+"§10 is always even. Keep this in mind — when\n"
+"you see the formula §11 in\n"
+"a later level, the factor of 2 is exactly this pairing."
+msgstr ""
+
 #. §0: `x ∈ s`
 #. §1: `| inl hs => exact hs`
 #. §2: `| inr hs => exact hs`
@@ -15864,6 +16376,34 @@ msgstr ""
 msgid "Simplify the §0 values:\n"
 "§1.\n"
 "This gives §2 as §3."
+msgstr ""
+
+#. §0: `Finset.mem_offDiag`
+#. §1: `x.1 ∈ s`
+#. §2: `s`
+#. §3: `x.2 ∈ s`
+#. §4: `s`
+#. §5: `x.1 ≠ x.2`
+#. §6: `mem_diag`
+#. §7: `x.1 = x.2`
+#. §8: `x.1 ≠ x.2`
+#. §9: `s ×ˢ s`
+#. §10: $$|s.\\text{offDiag}| = |s|^2 - |s| = |s| \\cdot (|s| - 1)$$
+#: Game.Levels.Products.L12_OffDiagonal
+msgid "§0 has three conditions:\n"
+"1. §1 — the first component is in §2\n"
+"2. §3 — the second component is in §4\n"
+"3. §5 — the components are distinct\n"
+"\n"
+"**Contrast with §6**: The diagonal requires §7;\n"
+"the off-diagonal requires §8. Together they partition\n"
+"§9.\n"
+"\n"
+"**Cardinality**:\n"
+"§10\n"
+"\n"
+"This counts **ordered** pairs of distinct elements — important\n"
+"in combinatorics for permutations and arrangements."
 msgstr ""
 
 #. §0: `rw [Multiset.card_cons, Multiset.card_cons, Multiset.coe_card, hlen]`
@@ -16264,8 +16804,82 @@ msgid "# What toFinset Does with Duplicates\n"
 "change its §12. This is deduplication made explicit."
 msgstr ""
 
+#. §0: `(a, b) ∈ s ×ˢ s`
+#. §1: `a = b`
+#. §2: `a ≠ b`
+#. §3: $$s.\\text{diag} \\cup s.\\text{offDiag} = s \\times^s s$$
+#. §4: ```
+#. Finset.diag_union_offDiag : s.diag ∪ s.offDiag = s ×ˢ s
+#. ```
+#. §5: `←`
+#. §6: `rw [← lemma]`
+#. §7: `A = B`
+#. §8: `diag_union_offDiag`
+#. §9: `← `
+#. §10: `diag_union_offDiag`
+#. §11: `rw [Finset.diag_union_offDiag]`
+#. §12: `s.diag ∪ s.offDiag`
+#. §13: `s ×ˢ s`
+#. §14: `rw [← Finset.diag_union_offDiag]`
+#. §15: `s ×ˢ s`
+#. §16: `s.diag ∪ s.offDiag`
+#. §17: `hp : p ∈ s.diag ∪ s.offDiag`
+#. §18: `p ∈ s ×ˢ s`
+#. §19: `←`
+#: Game.Levels.Products.L17_DecompositionReverse
+msgid "# The Self-Product Decomposes\n"
+"\n"
+"Every pair §0 either has §1 (diagonal) or\n"
+"§2 (off-diagonal). This gives the **decomposition identity**:\n"
+"\n"
+"§3\n"
+"\n"
+"§4\n"
+"\n"
+"**The §5 rewrite modifier**: When you write §6,\n"
+"Lean rewrites **right-to-left** instead of left-to-right.\n"
+"This works for **any** lemma of the form §7 — not just\n"
+"§8. Whenever you see the right-hand side of\n"
+"an equation in your goal and want to replace it with the left-hand\n"
+"side, §9 is the tool.\n"
+"\n"
+"For §10:\n"
+"- §11 replaces §12\n"
+"  with §13 (left → right)\n"
+"- §14 replaces §15\n"
+"  with §16 (right → left)\n"
+"\n"
+"**Your task**: Given §17, prove\n"
+"§18. Use the §19 modifier to rewrite the goal."
+msgstr ""
+
 #: Game.Levels.Fintype.L07_CoachedPractice
 msgid "Mixing Types"
+msgstr ""
+
+#. §0: `Finset.mem_product`
+#. §1: ```
+#. Finset.mk_mem_product : a ∈ s → b ∈ t → (a, b) ∈ s ×ˢ t
+#. ```
+#. §2: `rw`
+#. §3: `constructor`
+#. §4: `ha : 3 ∈ s`
+#. §5: `hb : 7 ∈ t`
+#. §6: `(3, 7) ∈ s ×ˢ t`
+#: Game.Levels.Products.L02_MkMemProduct
+msgid "# The Forward Direction\n"
+"\n"
+"In the previous level you used §0 as a rewrite\n"
+"to split product membership into a conjunction. There's a more\n"
+"direct way when you already have both component memberships:\n"
+"\n"
+"§1\n"
+"\n"
+"This takes two membership proofs and combines them in one step —\n"
+"no need for §2 + §3.\n"
+"\n"
+"**Your task**: Given §4 and §5, prove\n"
+"§6."
 msgstr ""
 
 #. §0: `have hab : a = b := hf (by rw [hfa, hfb])`
@@ -16580,6 +17194,10 @@ msgstr ""
 msgid "Chain strip → symmetry → absorption to prove the identity."
 msgstr ""
 
+#: Game.Levels.Products.L07_ConcreteSigma
+msgid "Concrete Sigma"
+msgstr ""
+
 #. §0: `ext x`
 #. §1: `constructor`
 #: Game.Levels.FinsetOperations.L11_DisjointFinsets
@@ -16891,6 +17509,15 @@ msgid "**Inductive step**: You need three rewrites:\n"
 "Then close with §7."
 msgstr ""
 
+#. §0: `s.card = 5`
+#. §1: `•`
+#. §2: `*`
+#: Game.Levels.Products.L21_Boss
+msgid "Substitute §0. After substitution, for natural\n"
+"numbers scalar multiplication §1 is the same as ordinary\n"
+"multiplication §2, so the goal closes."
+msgstr ""
+
 #. §0: `List.toFinset`
 #. §1: `List.mem_toFinset : a ∈ l.toFinset ↔ a ∈ l`
 #. §2: `l.toFinset`
@@ -16969,6 +17596,12 @@ msgstr ""
 
 #: Game.Levels.PsetCombinatorics.L09_ConcreteVerification
 msgid "Concrete Verification"
+msgstr ""
+
+#. §0: `Finset.offDiag_card`
+#: Game.Levels.Products.L16_OffDiagBinomial
+msgid "Start by expressing the off-diagonal cardinality using\n"
+"§0."
 msgstr ""
 
 #. §0: `constructor`
@@ -17216,6 +17849,12 @@ msgstr ""
 
 #: Game.Levels.FinTuples.L18_ProvingTupleEquality
 msgid "Proving Tuple Equality"
+msgstr ""
+
+#. §0: `s ×ˢ t ⊆ s' ×ˢ t'`
+#: Game.Levels.Products.L04_ProductSubset
+msgid "To prove §0, introduce an element\n"
+"and its membership hypothesis."
 msgstr ""
 
 #. §0: `Fin`
@@ -17506,6 +18145,40 @@ msgstr ""
 msgid "Six times the sum of squares from 0 to n equals n(n+1)(2n+1)."
 msgstr ""
 
+#. §0: `Finset.range 3 = {0, 1, 2}`
+#. §1: `t i = Finset.range (i + 1)`
+#. §2: `{0}`
+#. §3: `{0, 1}`
+#. §4: `{0, 1, 2}`
+#. §5: $$|\\text{sigma}| = 1 + 2 + 3 = 6$$
+#. §6: `i`
+#. §7: `i + 1`
+#. §8: `Finset.card_sigma`
+#. §9: `Finset.card_range`
+#: Game.Levels.Products.L08_ConcreteSigmaFormula
+msgid "# Sigma with a Defined Fiber Family\n"
+"\n"
+"In the previous level you computed the cardinality of a sigma\n"
+"where the fiber sizes were given as hypotheses. Now let's work\n"
+"with fibers defined by a **formula**.\n"
+"\n"
+"Consider the index set §0, with fibers\n"
+"§1 — so fiber 0 has 1 element (§2),\n"
+"fiber 1 has 2 elements (§3), and fiber 2 has 3 elements\n"
+"(§4). The total:\n"
+"\n"
+"§5\n"
+"\n"
+"This models a common combinatorial pattern: objects indexed by\n"
+"a parameter, where the number of choices grows with the parameter.\n"
+"For example, in a tournament with 3 rounds where round §6 offers\n"
+"§7 choices, the total number of (round, choice) pairs is 6.\n"
+"\n"
+"**Your task**: Compute the cardinality of this sigma construction.\n"
+"You'll use §8 to convert to a sum, then\n"
+"§9 to evaluate each fiber size."
+msgstr ""
+
 #: Game.Levels.BinomialCoefficients.L10_AbsorptionIdentity
 msgid "The Absorption Identity"
 msgstr ""
@@ -17751,6 +18424,16 @@ msgid "# Union Makes Sets Bigger\n"
 "**Your task**: Prove that §12."
 msgstr ""
 
+#. §0: `rw [Finset.mem_product]`
+#. §1: `2 ∈ s ∧ 5 ∈ t`
+#. §2: `s`
+#. §3: `t`
+#: Game.Levels.Products.L01_ProductMembership
+msgid "Try §0.\n"
+"This changes the goal to §1 where §2 and §3 are\n"
+"the original finsets."
+msgstr ""
+
 #: Game.Levels.FinsetBasics.L15_NonemptyFinsets
 msgid "Nonempty Finsets"
 msgstr ""
@@ -17892,6 +18575,11 @@ msgid "# Subtracting a Component from a Union\n"
 "from §5.\n"
 "\n"
 "The proof combines §6, §7, and §8."
+msgstr ""
+
+#. §0: `s.card = 5`
+#: Game.Levels.Products.L14_DiagCard
+msgid "Now the goal is §0, which is your hypothesis."
 msgstr ""
 
 #: Game.Levels.MeetFin.L23_Boss
@@ -18047,6 +18735,11 @@ msgstr ""
 msgid "**Base case**: The goal is §0.\n"
 "Use §1 — the product analogue of §2.\n"
 "Where §3 gives §4, §5 gives §6."
+msgstr ""
+
+#. §0: `constructor`
+#: Game.Levels.Products.L12_OffDiagonal
+msgid "Try §0 to split the conjunction."
 msgstr ""
 
 #. §0: `ext`
@@ -18653,12 +19346,33 @@ msgstr ""
 msgid "The Unique Element"
 msgstr ""
 
+#. §0: `Finset.offDiag s`
+#. §1: `s`
+#. §2: `(a, b)`
+#. §3: `a ∈ s`
+#. §4: `b ∈ s`
+#. §5: `a ≠ b`
+#. §6: `s.offDiag.card = s.card * s.card - s.card`
+#: Game.Levels.Products.L12_OffDiagonal
+msgid "§0 is the off-diagonal of §1: the set of\n"
+"pairs §2 where §3, §4, and §5.\n"
+"\n"
+"## Cardinality\n"
+"§6"
+msgstr ""
+
 #. §0: `2 * Nat.choose 2 1 = 2 * 2`
 #. §1: `choose_one_right`
 #: Game.Levels.BinomialCoefficients.L12_CoachingBossPattern
 msgid "**Base case** (n = 0): The goal is §0.\n"
 "Since C(2, 1) = 2 by §1, the rewrite closes\n"
 "the goal automatically."
+msgstr ""
+
+#. §0: `Finset.mem_product`
+#: Game.Levels.Products.L01_ProductMembership
+msgid "Rewrite with §0 to turn the product\n"
+"membership into two separate membership goals."
 msgstr ""
 
 #. §0: `sum_congr`
@@ -19498,6 +20212,15 @@ msgid "Now §0. Simplify the right side\n"
 "using §1 and §2."
 msgstr ""
 
+#. §0: `Finset.offDiag_pairDisjoint`
+#. §1: `s.offDiag`
+#: Game.Levels.Products.L13_OffDiagExtraction
+msgid "§0 states that §1 is\n"
+"pairwise disjoint for certain relations.\n"
+"\n"
+"Disabled to keep focus on the main off-diagonal API."
+msgstr ""
+
 #. §0: `n`
 #: Game.Levels.SummationFormulas.L02_GaussSum
 msgid "Induct on §0 using natural number induction."
@@ -19589,6 +20312,10 @@ msgstr ""
 #: Game.Levels.FinsetOperations.L08_Extensionality
 msgid "Use §0 to introduce a variable and convert the\n"
 "equality into an element-wise biconditional."
+msgstr ""
+
+#: Game.Levels.Products.L20_AlgebraicIdentity
+msgid "The self-product cardinality equals diagonal count plus off-diagonal count in algebraic form."
 msgstr ""
 
 #. §0: `List.length_append`
@@ -20148,6 +20875,11 @@ msgid "The four §0 statements you need:\n"
 "Then §5."
 msgstr ""
 
+#. §0: `1 ∈ s ∧ 3 ∈ t 1`
+#: Game.Levels.Products.L06_SigmaIntro
+msgid "Now you need §0. Both are in your context."
+msgstr ""
+
 #. §0: `constructor`
 #: Game.Levels.FinTuples.L03_BuildingTuples
 msgid "Use §0 to split the remaining conjunction."
@@ -20242,6 +20974,25 @@ msgstr ""
 msgid "You have §0 and need to choose which side of\n"
 "the disjunction to prove. The deciding factor is whether §1\n"
 "or §2. Use §3 to split on this."
+msgstr ""
+
+#. §0: $|s.\\text{offDiag}| = 4 \\times 4 - 4 = 16 - 4 = 12$
+#. §1: $$P(4, 2) = 4 \\times 3 = 12$$
+#. §2: `offDiag_card`
+#. §3: $|s|^2 - |s|$
+#. §4: $|s| \\cdot (|s| - 1)$
+#: Game.Levels.Products.L15_OffDiagCard
+msgid "§0.\n"
+"\n"
+"These 12 pairs are the **ordered** pairs of distinct elements\n"
+"from a 4-element set. In combinatorics notation, this is the\n"
+"number of **2-permutations** of 4 elements:\n"
+"\n"
+"§1\n"
+"\n"
+"Note that §2 writes the formula as §3\n"
+"rather than §4 — they're equal, but the\n"
+"squared form avoids natural number subtraction issues."
 msgstr ""
 
 #. §0: `n`
@@ -21079,6 +21830,24 @@ msgid "Use §0. Then §1 and\n"
 "is §3. For the second (§4), use §5."
 msgstr ""
 
+#. §0: `h : a ∈ s ∧ b ∈ s ∧ a ≠ b`
+#. §1: `Finset.mem_offDiag`
+#: Game.Levels.Products.L13_OffDiagExtraction
+msgid "Now §0. Rewrite the goal\n"
+"with §1 too."
+msgstr ""
+
+#. §0: `Finset.offDiag_mono`
+#. §1: `s ⊆ t`
+#. §2: `s.offDiag ⊆ t.offDiag`
+#: Game.Levels.Products.L13_OffDiagExtraction
+msgid "§0 states that the off-diagonal is monotone:\n"
+"if §1 then §2.\n"
+"\n"
+"Disabled to force manual extraction and reconstruction of\n"
+"off-diagonal membership."
+msgstr ""
+
 #. §0: `Nat.choose n k`
 #. §1: $\\binom{n}{k}$
 #. §2: $C(n, k)$
@@ -21666,6 +22435,49 @@ msgid "You proved the **full identity**: §0.\n"
 "why in Level 8."
 msgstr ""
 
+#. §0: `Finset.mem_product`
+#. §1: `s ×ˢ t`
+#. §2: `p ∈ s ×ˢ t ↔ p.1 ∈ s ∧ p.2 ∈ t`
+#. §3: ```
+#. rw [Finset.mem_product]       -- rewrite product membership
+#. rw [Finset.mem_product] at h  -- rewrite a hypothesis
+#. ```
+#. §4: `_ ∈ s ×ˢ t`
+#. §5: `rw [Finset.mem_product]`
+#. §6: `(a, b) ∈ s ×ˢ t`
+#. §7: `a ∈ s ∧ b ∈ t`
+#. §8: `↔`
+#. §9: `.1`
+#. §10: `.2`
+#. §11: `a`
+#. §12: `b`
+#. §13: `(a, b)`
+#. §14: `(a, b).1`
+#. §15: `a`
+#: Game.Levels.Products.L01_ProductMembership
+msgid "§0 characterizes membership in §1:\n"
+"\n"
+"§2\n"
+"\n"
+"A pair belongs to the product iff each component belongs to\n"
+"the respective finset.\n"
+"\n"
+"## Syntax\n"
+"§3\n"
+"\n"
+"## When to use it\n"
+"When the goal or a hypothesis involves §4.\n"
+"\n"
+"## Example\n"
+"After §5, the goal\n"
+"§6 becomes §7.\n"
+"\n"
+"## Warning\n"
+"The §8 uses §9 and §10 (projections), not pattern-matched\n"
+"§11 and §12. For a concrete pair §13, Lean reduces\n"
+"§14 to §15 automatically."
+msgstr ""
+
 #. §0: `exact hfx`
 #: Game.Levels.FinsetImage.L04_ImageGrowsWithTheSet
 msgid "The functional equation hasn't changed.\n"
@@ -21711,6 +22523,10 @@ msgid "# Retrieval Practice\n"
 "- Symmetry needs §4 then §5\n"
 "- Beyond-edge and factorial use §6\n"
 "- Absorption is a direct §7"
+msgstr ""
+
+#: Game.Levels.Products.L10_SigmaRecovery
+msgid "When all fibers are the same, sigma cardinality equals product cardinality."
 msgstr ""
 
 #: Game.Levels.PsetFin
@@ -21853,6 +22669,28 @@ msgid "Compute the type cardinality via equivalence:\n"
 "then resolve with §1 steps inside the sub-proof."
 msgstr ""
 
+#. §0: `Finset.mk_mem_product`
+#. §1: `ha : a ∈ s → hb : b ∈ t → (a, b) ∈ s ×ˢ t`
+#. §2: ```
+#. exact Finset.mk_mem_product ha hb
+#. ```
+#. §3: `a ∈ s`
+#. §4: `b ∈ t`
+#. §5: `(a, b) ∈ s ×ˢ t`
+#: Game.Levels.Products.L02_MkMemProduct
+msgid "§0 builds product membership from\n"
+"component memberships:\n"
+"\n"
+"§1\n"
+"\n"
+"## Syntax\n"
+"§2\n"
+"\n"
+"## When to use it\n"
+"When you have separate proofs of §3 and §4 and\n"
+"need to show §5."
+msgstr ""
+
 #. §0: `n`
 #: Game.Levels.CountingTypes.L05_FallingFactorials
 #: Game.Levels.CountingTypes.L06_FallingFactorialIdentity
@@ -21915,6 +22753,38 @@ msgstr ""
 #: Game.Levels.BinomialCoefficients.L08_BeyondTheEdge
 #: Game.Levels.BinomialCoefficients.L09_FactorialFormula
 msgid "The goal is §0. Use §1 to close it."
+msgstr ""
+
+#. §0: `Nat.choose_two_right`
+#. §1: `Nat.choose n 2 = n * (n - 1) / 2`
+#. §2: ```
+#. rw [Nat.choose_two_right]
+#. ```
+#. §3: `n.choose 2`
+#. §4: `offDiag_card`
+#. §5: `choose_two_right`
+#: Game.Metadata
+msgid "§0 gives the closed form for choosing 2:\n"
+"\n"
+"§1\n"
+"\n"
+"This is the formula C(n, 2) = n(n-1)/2.\n"
+"\n"
+"## Syntax\n"
+"§2\n"
+"\n"
+"## When to use it\n"
+"When the goal involves §3 and you want to work with\n"
+"the explicit formula.\n"
+"\n"
+"## Connection to offDiag\n"
+"Since §4 gives n^2 - n and §5\n"
+"gives n(n-1)/2, the identity offDiag.card = 2 * C(n, 2)\n"
+"bridges ordered and unordered pair counting.\n"
+"\n"
+"## Note\n"
+"Disabled in BinomialCoefficients (where the induction proof\n"
+"is the lesson). Introduced in Products."
 msgstr ""
 
 #. §0: `x ∈ s ∪ t ↔ x ∈ s ∨ x ∈ t`
@@ -22332,6 +23202,10 @@ msgstr ""
 msgid "The weighted alternating sum with x = -1, y = 3 over Z."
 msgstr ""
 
+#: Game.Levels.Products.L12_OffDiagonal
+msgid "The Off-Diagonal"
+msgstr ""
+
 #: Game.Levels.CountingTypes.L03_LabelingAGrid
 msgid "The domain is a product type. What rule decomposes product\n"
 "cardinality into a multiplication?"
@@ -22745,6 +23619,12 @@ msgid "The goal involves a function type §0. What rule\n"
 "decomposes function types into base and exponent?"
 msgstr ""
 
+#. §0: `Finset.range 0`
+#: Game.Levels.Products.L07_ConcreteSigma
+#: Game.Levels.Products.L08_ConcreteSigmaFormula
+msgid "The sum over §0 is 0."
+msgstr ""
+
 #. §0: `card_congr e`
 #: Game.Levels.CountingTypes.L11_Boss
 msgid "Resolve the abstract domain with §0, then\n"
@@ -22853,6 +23733,19 @@ msgstr ""
 msgid "The hypothesis §0 says §1.\n"
 "If two cons'd lists are equal, their heads must be equal.\n"
 "Use §2 to extract §3 and §4."
+msgstr ""
+
+#. §0: `Finset.diag s`
+#. §1: `s`
+#. §2: `(a, a)`
+#. §3: `a ∈ s`
+#. §4: `s.diag.card = s.card`
+#: Game.Levels.Products.L11_Diagonal
+msgid "§0 is the diagonal of §1: the set of pairs\n"
+"§2 where §3.\n"
+"\n"
+"## Cardinality\n"
+"§4 — one pair per element."
 msgstr ""
 
 #. §0: `card_image_of_injective`
@@ -23389,6 +24282,13 @@ msgstr ""
 msgid "Comparing reconstructed tuples and finding non-constant entries."
 msgstr ""
 
+#. §0: `Finset.offDiag_card`
+#. §1: `s.card`
+#: Game.Levels.Products.L15_OffDiagCard
+msgid "Apply §0 to express the off-diagonal\n"
+"cardinality in terms of §1."
+msgstr ""
+
 #. §0: `Fin.elim0 i`
 #. §1: `False`
 #. §2: `42 = 0`
@@ -23708,6 +24608,17 @@ msgstr ""
 msgid "Introduce the element §0, then eliminate it."
 msgstr ""
 
+#. §0: `gcongr`
+#. §1: `f a ≤ f b`
+#. §2: `a ≤ b`
+#. §3: `f`
+#: Game.Levels.Products.L04_ProductSubset
+msgid "§0 (generalized congruence) solves monotonicity goals\n"
+"like §1 when §2 and §3 is known to be monotone.\n"
+"\n"
+"Disabled in this level to force manual extraction and rebuilding."
+msgstr ""
+
 #. §0: $s \\subseteq t$
 #. §1: $f(s) \\subseteq f(t)$
 #. §2: `y ∈ s.image f`
@@ -23911,6 +24822,10 @@ msgstr ""
 
 #: Game.Levels.PsetCardinality.L02_SubsetBound
 msgid "A subset of a union has cardinality bounded by inclusion-exclusion."
+msgstr ""
+
+#: Game.Levels.Products.L20_AlgebraicIdentity
+msgid "The Algebraic Identity"
 msgstr ""
 
 #. §0: `Finset.sum_insert`
@@ -24247,6 +25162,10 @@ msgstr ""
 #: Game.Levels.FinTuples.L10_DroppingTheLast
 msgid "§0 at index 1 is §1 at\n"
 "§2, which is §3. Use §4."
+msgstr ""
+
+#: Game.Levels.Products.L16_OffDiagBinomial
+msgid "Off-Diagonal Factored Form"
 msgstr ""
 
 #. §0: `x ∈ s`
@@ -25026,6 +25945,20 @@ msgstr ""
 msgid "There are 2^(m+n) functions from Fin m ⊕ Fin n to Bool."
 msgstr ""
 
+#. §0: `Finset.product_subset_product`
+#. §1: `s ×ˢ t ⊆ s' ×ˢ t'`
+#. §2: `s ⊆ s'`
+#. §3: `t ⊆ t'`
+#. §4: `mem_product`
+#. §5: `mk_mem_product`
+#: Game.Metadata
+msgid "§0 proves §1\n"
+"from §2 and §3.\n"
+"\n"
+"Disabled to force the learner to use §4 extraction\n"
+"and §5 construction manually."
+msgstr ""
+
 #: Game.Levels.Cardinality.L21_ConcreteUniv
 msgid "The universal finset of Fin 3 is exactly {0, 1, 2}."
 msgstr ""
@@ -25101,6 +26034,28 @@ msgstr ""
 msgid "Compute the sum of f over the finset {2, 5, 8} given f's values."
 msgstr ""
 
+#. §0: `Finset.mem_diag`
+#. §1: `(a, b)`
+#. §2: `s.diag`
+#. §3: `a ∈ s`
+#. §4: `a = b`
+#. §5: `(a, a)`
+#. §6: `a ∈ s`
+#. §7: `s`
+#. §8: $$|s.\\text{diag}| = |s|$$
+#. §9: `Finset.diag_card`
+#: Game.Levels.Products.L11_Diagonal
+msgid "§0 characterizes diagonal membership: §1 is\n"
+"in §2 iff §3 and §4. Equivalently, the diagonal\n"
+"consists of all pairs §5 where §6.\n"
+"\n"
+"**Cardinality**: Since the diagonal has one pair per element of §7:\n"
+"\n"
+"§8\n"
+"\n"
+"This is §9, which you'll use in the next levels."
+msgstr ""
+
 #. §0: `have h3 := Finset.card_sdiff_add_card_inter s t`
 #. §1: `omega`
 #: Game.Levels.Cardinality.L17_InclusionExclusionDerivation
@@ -25124,6 +26079,29 @@ msgstr ""
 
 #: Game.Levels.MeetFin.L05_FinEquality
 msgid "When Are Fin Elements Equal?"
+msgstr ""
+
+#. §0: `Finset.mem_sigma`
+#. §1: `Finset.mem_product`
+#. §2: `s ×ˢ t`
+#. §3: `s.sigma t`
+#. §4: `t i`
+#. §5: `i`
+#. §6: `n`
+#: Game.Levels.Products.L06_SigmaIntro
+msgid "§0 works just like §1 — rewrite\n"
+"to expose the conjunction, then prove each component.\n"
+"\n"
+"The mathematical difference is important:\n"
+"- **Product** §2: the set of second components is the same\n"
+"  regardless of which first component you pick\n"
+"- **Sigma** §3: the set of valid second components\n"
+"  §4 can vary with the first component §5\n"
+"\n"
+"In combinatorics, sigma appears whenever you count objects whose\n"
+"structure depends on a parameter — for example, the number of\n"
+"divisor pairs of §6, or the number of edges incident to each\n"
+"vertex in a graph."
 msgstr ""
 
 #: Game.Levels.PsetFinset.L10_ImageUnionSdiff
@@ -25240,6 +26218,38 @@ msgstr ""
 msgid "Part 1: prove every §0 element is §1 or §2.\n"
 "Start with §3, then destructure §4 with\n"
 "§5."
+msgstr ""
+
+#. §0: `s ×ˢ t`
+#. §1: `mem_product`
+#. §2: `mk_mem_product`
+#. §3: `card_product`
+#. §4: `s.sigma t`
+#. §5: `mem_sigma`
+#. §6: `card_sigma`
+#. §7: `sum_const`
+#. §8: `s ×ˢ s = s.diag ∪ s.offDiag`
+#. §9: `diag_card`
+#. §10: `offDiag_card`
+#. §11: `disjoint_diag_offDiag`
+#. §12: `card_product`
+#. §13: `constructor`
+#: Game.Levels.Products.L21_Boss
+msgid "# Boss: Three Arcs, One Proof\n"
+"\n"
+"This world taught three product constructions:\n"
+"\n"
+"1. **Cartesian product** (§0): membership via §1\n"
+"   and §2, cardinality via §3\n"
+"2. **Dependent product** (§4): membership via §5,\n"
+"   cardinality via §6 and §7\n"
+"3. **Diagonal decomposition**: §8,\n"
+"   with §9, §10, and §11\n"
+"\n"
+"Prove all three claims below. §12 is disabled for\n"
+"the third part — use the decomposition route.\n"
+"\n"
+"**Hint**: Use §13 to split the conjunction into parts."
 msgstr ""
 
 #. §0: `ext`
@@ -25521,6 +26531,24 @@ msgid "The goal is §0.\n"
 "§1 knows that §2."
 msgstr ""
 
+#. §0: $|\\text{sigma}| = \\sum_{i=0}^{2} |\\text{range}(i+1)| = 1 + 2 + 3 = 6$
+#. §1: `Finset.card_range`
+#. §2: `card_sigma`
+#. §3: `card_range`
+#: Game.Levels.Products.L08_ConcreteSigmaFormula
+msgid "§0\n"
+"\n"
+"Unlike the previous level where fiber sizes were given as hypotheses,\n"
+"here you computed each fiber size directly from §1.\n"
+"The fibers are **defined**, not just hypothesized — each one is a\n"
+"concrete finset whose size Lean can compute.\n"
+"\n"
+"**The pattern**: §2 converts to a sum, then you evaluate\n"
+"the sum term by term. When fibers are formula-defined, you use the\n"
+"relevant cardinality lemma (here §3) to compute each\n"
+"fiber's contribution."
+msgstr ""
+
 #: Game.Levels.Fintype.L06_FinitenessMatters
 msgid "Finiteness Matters"
 msgstr ""
@@ -25552,6 +26580,26 @@ msgstr ""
 #: Game.Levels.FinsetImage.L06_ImageUnionEquality
 msgid "Try §0 then use §1/§2\n"
 "with §3."
+msgstr ""
+
+#. §0: `Finset.diag_card`
+#. §1: `(Finset.diag s).card = s.card`
+#. §2: ```
+#. rw [Finset.diag_card]
+#. ```
+#. §3: `s.diag.card`
+#. §4: `(Finset.diag s).card`
+#: Game.Levels.Products.L14_DiagCard
+msgid "§0 states that the diagonal has the same\n"
+"cardinality as the original finset:\n"
+"\n"
+"§1\n"
+"\n"
+"## Syntax\n"
+"§2\n"
+"\n"
+"## When to use it\n"
+"When the goal involves §3 or §4."
 msgstr ""
 
 #. §0: `5 * Nat.choose 4 2 = 3 * 10`
@@ -25591,6 +26639,10 @@ msgstr ""
 #. §0: `n`
 #: Game.Levels.SummationFormulas.L01_ConstantSum
 msgid "This is a natural number induction proof. Induct on §0."
+msgstr ""
+
+#: Game.Levels.Products.L05_ProductCardIntegration
+msgid "Combine product and union cardinality."
 msgstr ""
 
 #. §0: `h.1`
@@ -25724,6 +26776,35 @@ msgstr ""
 
 #: Game.Levels.PascalsTriangle.L03_MeetAntidiagonal
 msgid "Meet the Antidiagonal"
+msgstr ""
+
+#. §0: `Finset.offDiag_card`
+#. §1: `(Finset.offDiag s).card = s.card * s.card - s.card`
+#. §2: `card^2 - card`
+#. §3: ```
+#. rw [Finset.offDiag_card]
+#. ```
+#. §4: `s.offDiag.card`
+#. §5: `s.card * s.card - s.card`
+#. §6: `s.card * (s.card - 1)`
+#: Game.Levels.Products.L15_OffDiagCard
+msgid "§0 states that\n"
+"\n"
+"§1\n"
+"\n"
+"The off-diagonal has §2 elements: the total number\n"
+"of pairs minus the diagonal pairs.\n"
+"\n"
+"## Syntax\n"
+"§3\n"
+"\n"
+"## When to use it\n"
+"When the goal involves §4.\n"
+"\n"
+"## Note\n"
+"The formula uses §5 rather than\n"
+"§6. Both are mathematically equal, but\n"
+"the squared form avoids Nat subtraction edge cases."
 msgstr ""
 
 #. §0: `prod_congr`
@@ -26129,6 +27210,10 @@ msgid "§0 states §1.\n"
 "Disabled in levels where the learner should practice the recursive definition."
 msgstr ""
 
+#: Game.Levels.Products.L11_Diagonal
+msgid "The Diagonal"
+msgstr ""
+
 #. §0: `Multiset.count a m`
 #. §1: `a`
 #. §2: `m`
@@ -26482,6 +27567,29 @@ msgstr ""
 msgid "Sum of Squares"
 msgstr ""
 
+#. §0: $|\\text{sigma}| = \\sum_{i \\in \\{0, 1, 2\\}} |t\\, i| = 1 + 2 + 3 = 6$
+#. §1: `s ×ˢ t`
+#. §2: $i$
+#. §3: $d(i)$
+#. §4: $\\sum_i d(i)$
+#. §5: `card_sigma`
+#: Game.Levels.Products.L07_ConcreteSigma
+msgid "§0\n"
+"\n"
+"The key insight: unlike §1 where every row has the same\n"
+"number of columns, a sigma construction can have **different-sized\n"
+"rows**. The total count is a sum, not a product.\n"
+"\n"
+"**Where sigma appears in mathematics**:\n"
+"- **Degree sequences**: if vertex §2 has §3 neighbors,\n"
+"  the total directed edges are §4\n"
+"- **Partitions**: items grouped into categories of varying size\n"
+"- **Fiber bundles**: total space size = sum of fiber sizes\n"
+"\n"
+"§5 is the bridge between counting dependent pairs\n"
+"and evaluating a sum."
+msgstr ""
+
 #. §0: `obtain`
 #. §1: `s.Nonempty`
 #. §2: `∃ x, x ∈ s`
@@ -26768,6 +27876,39 @@ msgstr ""
 msgid "Intersection Membership"
 msgstr ""
 
+#. §0: `s.offDiag`
+#. §1: `s ×ˢ s`
+#. §2: $$s.\\text{offDiag} = \\{(a, b) \\mid a \\in s,\\ b \\in s,\\ a \\ne b\\}$$
+#. §3: ```
+#. Finset.mem_offDiag : x ∈ s.offDiag ↔ x.1 ∈ s ∧ x.2 ∈ s ∧ x.1 ≠ x.2
+#. ```
+#. §4: `s`
+#. §5: `omega`
+#. §6: `2 ≠ 5`
+#. §7: `omega`
+#. §8: `(2, 5) ∈ s.offDiag`
+#. §9: `2 ∈ s`
+#. §10: `5 ∈ s`
+#: Game.Levels.Products.L12_OffDiagonal
+msgid "# Off-Diagonal Pairs\n"
+"\n"
+"The **off-diagonal** §0 is the complement of the diagonal\n"
+"within §1 — all pairs of *distinct* elements:\n"
+"\n"
+"§2\n"
+"\n"
+"§3\n"
+"\n"
+"Three conditions: both components in §4, and they're different.\n"
+"\n"
+"**Note on §5**: For the third condition (§6), the §7\n"
+"tactic handles concrete numeric disequalities — it knows that\n"
+"distinct natural number literals are different.\n"
+"\n"
+"**Your task**: Prove that §8 given that both\n"
+"§9 and §10."
+msgstr ""
+
 #. §0: `∑ x ∈ s, 1`
 #. §1: `s.card`
 #. §2: `∑ x ∈ s ∪ t, f x`
@@ -26938,6 +28079,10 @@ msgstr ""
 msgid "Two parts left. Use §0 to split them."
 msgstr ""
 
+#: Game.Levels.Products
+msgid "Products"
+msgstr ""
+
 #. §0: `s`
 #. §1: `rw [hs]`
 #. §2: `x`
@@ -27002,6 +28147,10 @@ msgstr ""
 
 #: Game.Levels.BigOpAlgebra.L11_SumRangeSucc
 msgid "Peel off the last term of a range sum."
+msgstr ""
+
+#: Game.Levels.Products.L21_Boss
+msgid "Now split the remaining conjunction."
 msgstr ""
 
 #. §0: `Fin (n+1)`
@@ -27469,6 +28618,10 @@ msgid "Induct on §0. This follows the same pattern as the sum levels,\n"
 "their sum counterparts."
 msgstr ""
 
+#: Game.Levels.Products.L16_OffDiagBinomial
+msgid "The off-diagonal cardinality in factored form."
+msgstr ""
+
 #. §0: `card_eq_sum_ones`
 #. §1: ```
 #. Finset.card_eq_sum_ones : s.card = ∑ x ∈ s, 1
@@ -27591,6 +28744,14 @@ msgid "# Deriving Inclusion-Exclusion\n"
 "The derivation is three §17 lines followed by §18."
 msgstr ""
 
+#. §0: `h`
+#. §1: `Finset.mem_offDiag`
+#. §2: `h`
+#: Game.Levels.Products.L13_OffDiagExtraction
+msgid "First extract the components from §0. Rewrite\n"
+"§1 at §2 to expose the conjunction."
+msgstr ""
+
 #. §0: `prod_congr`
 #. §1: `prod_insert`
 #: Game.Levels.BigOpIntro.L15_Boss
@@ -27706,6 +28867,13 @@ msgstr ""
 msgid "A singleton list has no duplicates."
 msgstr ""
 
+#. §0: `t.card`
+#. §1: `Finset.sum_const`
+#: Game.Levels.Products.L10_SigmaRecovery
+msgid "The sum is constant — every term is §0.\n"
+"Use §1 to simplify it."
+msgstr ""
+
 #: Game.Levels.BinomialCoefficients.L09_FactorialFormula
 msgid "The factorial formula: C(5,2) * 2! * 3! = 5!."
 msgstr ""
@@ -27720,6 +28888,18 @@ msgid "§0 proves §1 from §2.\n"
 "\n"
 "Disabled to force the learner to use §3 and provide\n"
 "a witness manually with §4."
+msgstr ""
+
+#. §0: `have simpl : ∀ m ∈ Finset.range (n + 1), 1 ^ m * 1 ^ (n - m) * Nat.choose n m = Nat.choose n m := by`
+#. §1: `intro m _`
+#. §2: `rw [one_pow, one_pow, one_mul, one_mul]`
+#: Game.Levels.BinomialTheorem.L07_RewritingHypotheses
+#: Game.Levels.BinomialTheorem.L08_RowSum
+msgid "Type:\n"
+"§0\n"
+"\n"
+"Then in the sub-proof: §1 followed by\n"
+"§2."
 msgstr ""
 
 #. §0: `Fin n`
@@ -27778,18 +28958,6 @@ msgstr ""
 #: Game.Levels.Cardinality.L16_ComplementCounting
 msgid "Try\n"
 "§0 and then §1."
-msgstr ""
-
-#. §0: `have simpl : ∀ m ∈ Finset.range (n + 1), 1 ^ m * 1 ^ (n - m) * Nat.choose n m = Nat.choose n m := by`
-#. §1: `intro m _`
-#. §2: `rw [one_pow, one_pow, one_mul, one_mul]`
-#: Game.Levels.BinomialTheorem.L07_RewritingHypotheses
-#: Game.Levels.BinomialTheorem.L08_RowSum
-msgid "Type:\n"
-"§0\n"
-"\n"
-"Then in the sub-proof: §1 followed by\n"
-"§2."
 msgstr ""
 
 #. §0: `Nat.factorial_succ`
@@ -28118,6 +29286,13 @@ msgstr ""
 #. §0: `ext y`
 #: Game.Levels.FinsetImage.L07_ImageComposition
 msgid "Use §0 to reduce the equality to element-wise membership."
+msgstr ""
+
+#. §0: `(a, a) ∈ s ×ˢ s`
+#. §1: `ha : a ∈ s`
+#: Game.Levels.Products.L21_Boss
+msgid "**Part 1**: Prove §0. You have §1\n"
+"— how do you build product membership from component memberships?"
 msgstr ""
 
 #. §0: `hy`
@@ -28450,6 +29625,10 @@ msgid "Now §0. Choose the right disjunct with §1,\n"
 "then close with §2."
 msgstr ""
 
+#: Game.Levels.Products.L21_Boss
+msgid "Boss: Product Constructions"
+msgstr ""
+
 #. §0: `rw [Finset.sum_singleton]`
 #. §1: `rw [hf2, hf5, hf8]`
 #: Game.Levels.PsetBigOp.L01_ConcreteSum
@@ -28705,6 +29884,11 @@ msgid "The expression is now §0. The leading §1\n"
 "leaving §12."
 msgstr ""
 
+#. §0: `Finset.card_sigma`
+#: Game.Levels.Products.L10_SigmaRecovery
+msgid "Convert the sigma cardinality to a sum using §0."
+msgstr ""
+
 #. §0: $(x + y)^3$
 #. §1: $1, 2, 1$
 #. §2: $(x + y)^3$
@@ -28884,6 +30068,13 @@ msgid "Start by invoking finset induction:\n"
 "\n"
 "This creates two goals: the base case (empty set) and the\n"
 "inductive step (insert)."
+msgstr ""
+
+#. §0: `hp : p.1 ∈ s ∧ p.2 ∈ t`
+#. §1: `s' ×ˢ t'`
+#: Game.Levels.Products.L04_ProductSubset
+msgid "You have §0. Build membership\n"
+"in §1 by applying the subset hypotheses to each component."
 msgstr ""
 
 #. §0: `v = m + 2`
@@ -29085,6 +30276,14 @@ msgstr ""
 #: Game.Levels.FinNavigation.L16_Boss
 msgid "Simplify succ values: §0.\n"
 "This gives §1."
+msgstr ""
+
+#. §0: `Finset.card_sigma`
+#: Game.Levels.Products.L07_ConcreteSigma
+#: Game.Levels.Products.L08_ConcreteSigmaFormula
+#: Game.Levels.Products.L09_SigmaCardinality
+msgid "Apply §0 to convert the sigma cardinality\n"
+"into a sum of fiber sizes."
 msgstr ""
 
 #: Game.Levels.Cardinality.L03_NonemptyBridge
@@ -29392,6 +30591,47 @@ msgstr ""
 msgid "Use §0 to unfold the intersection."
 msgstr ""
 
+#. §0: `offDiag_card`
+#. §1: $$|s.\\text{offDiag}| = |s|^2 - |s|$$
+#. §2: $$|s.\\text{offDiag}| = |s| \\cdot (|s| - 1) = P(n, 2)$$
+#. §3: $n$
+#. §4: $n^2 - n = n(n - 1)$
+#. §5: `Nat.mul_sub_one`
+#. §6: ```
+#. Nat.mul_sub_one : n * (m - 1) = n * m - n
+#. ```
+#. §7: `s`
+#: Game.Levels.Products.L16_OffDiagBinomial
+msgid "# The Permutation Formula\n"
+"\n"
+"The off-diagonal cardinality formula from §0 is:\n"
+"\n"
+"§1\n"
+"\n"
+"But in combinatorics textbooks, this quantity is usually written\n"
+"in **factored form**:\n"
+"\n"
+"§2\n"
+"\n"
+"This is the number of **2-permutations** of an §3-element set:\n"
+"ordered selections of 2 distinct elements.\n"
+"\n"
+"The factoring uses the identity §4, which in\n"
+"Lean is §5:\n"
+"\n"
+"§6\n"
+"\n"
+"**Your task**: Prove the general factored form for any finset §7."
+msgstr ""
+
+#. §0: `Finset.range 3`
+#. §1: `Finset.sum_range_succ`
+#: Game.Levels.Products.L07_ConcreteSigma
+#: Game.Levels.Products.L08_ConcreteSigmaFormula
+msgid "Now evaluate the sum over §0. Peel off terms\n"
+"from the top with §1."
+msgstr ""
+
 #: Game.Levels.PsetCardinality.L03_ConverseInclusionExclusion
 msgid "Same lemma as Level 2 — but now you're solving for the\n"
 "intersection instead of bounding the union."
@@ -29571,6 +30811,34 @@ msgid "# Identifying a Tuple from Its Values\n"
 "§21."
 msgstr ""
 
+#. §0: `s ⊆ s'`
+#. §1: `t ⊆ t'`
+#. §2: `s ×ˢ t ⊆ s' ×ˢ t'`
+#. §3: `s`
+#. §4: `s'`
+#. §5: `t`
+#. §6: `t'`
+#. §7: `s ×ˢ t`
+#. §8: `s' ×ˢ t'`
+#. §9: `s ×ˢ t`
+#. §10: `s' ×ˢ t'`
+#. §11: `mem_product`
+#. §12: `mk_mem_product`
+#: Game.Levels.Products.L04_ProductSubset
+msgid "# Bigger Factors, Bigger Products\n"
+"\n"
+"If §0 and §1, does §2?\n"
+"\n"
+"Of course — if every element of §3 is in §4 and every element\n"
+"of §5 is in §6, then every pair from §7 is in §8.\n"
+"\n"
+"Prove this by introducing a pair, extracting its components\n"
+"from §9, and rebuilding membership in §10.\n"
+"\n"
+"**New move**: This level combines §11 extraction with\n"
+"§12 construction — the full round-trip."
+msgstr ""
+
 #. §0: `f x`
 #. §1: `use f x`
 #. §2: `f x ∈ s.image f`
@@ -29614,6 +30882,10 @@ msgid "Two rewrites: §0 then §1.\n"
 "\n"
 "This is the k=1 case of the general pattern:\n"
 "§6"
+msgstr ""
+
+#: Game.Levels.Products.L08_ConcreteSigmaFormula
+msgid "Sigma with Formula-Defined Fibers"
 msgstr ""
 
 #. §0: `Finset.sum_nsmul`
@@ -29678,6 +30950,15 @@ msgstr ""
 #: Game.Levels.PsetFinset.L13_NonMembershipFromImage
 msgid "The goal §0 means §1.\n"
 "Assume §2 with §3, then derive §4."
+msgstr ""
+
+#. §0: `(s ×ˢ s).card`
+#. §1: `card_product`
+#. §2: `s ×ˢ s`
+#: Game.Levels.Products.L21_Boss
+msgid "**Part 3**: Compute §0 without §1.\n"
+"Use the decomposition route: split §2 into diagonal and\n"
+"off-diagonal."
 msgstr ""
 
 #. §0: `List.length`
@@ -30009,6 +31290,10 @@ msgid "# Finset Basics: Finite Sets\n"
 "combines all these moves."
 msgstr ""
 
+#: Game.Levels.Products.L06_SigmaIntro
+msgid "Dependent Products with Sigma"
+msgstr ""
+
 #: Game.Levels.PsetBigOp.L08_Boss
 msgid "The sum of (f(x)+1)^2 - f(x)^2 over s equals 2 times the sum of f plus card."
 msgstr ""
@@ -30097,6 +31382,10 @@ msgstr ""
 #. §1: `x ∈ s ↔ x ∈ t`
 #: Game.Levels.PsetCardinality.L07_ExtCardinality
 msgid "§0 is exactly §1."
+msgstr ""
+
+#: Game.Levels.Products.L19_GeneralDecomposition
+msgid "The self-product cardinality decomposes as diagonal plus off-diagonal."
 msgstr ""
 
 #: Game.Levels.Powerset.L20_PowersetCardZero
@@ -30207,6 +31496,10 @@ msgstr ""
 #: Game.Levels.FinsetBasics.L16_ProvingNonempty
 msgid "The goal is §0, which means §1.\n"
 "Provide a witness with §2."
+msgstr ""
+
+#: Game.Levels.Products.L13_OffDiagExtraction
+msgid "The off-diagonal is symmetric: swap the pair."
 msgstr ""
 
 #. §0: `rw [Finset.mem_sdiff]`
@@ -30608,6 +31901,10 @@ msgid "Use the decompose-evaluate workflow. Start with\n"
 "§0."
 msgstr ""
 
+#: Game.Levels.Products.L02_MkMemProduct
+msgid "Combine two membership proofs into product membership."
+msgstr ""
+
 #. §0: `s.card`
 #. §1: `n`
 #. §2: `hs`
@@ -30834,6 +32131,10 @@ msgid "Inside the §0, destructure:\n"
 "§1\n"
 "For §2: §3. For §4: §5.\n"
 "For §6: §7. For §8: §9"
+msgstr ""
+
+#: Game.Levels.Products.L17_DecompositionReverse
+msgid "Diagonal Decomposition"
 msgstr ""
 
 #: Game.Levels.FinsetOperations.L15_UnionAssociativity
@@ -31096,6 +32397,10 @@ msgid "Simplify both sides: §0.\n"
 "§1 simplifies the left; §2 simplifies the right."
 msgstr ""
 
+#: Game.Levels.Products.L09_SigmaCardinality
+msgid "Compute sigma cardinality from the fiber-size sum."
+msgstr ""
+
 #. §0: `(s \\ t) ∪ t`
 #. §1: `s ∪ t`
 #. §2: `h1`
@@ -31149,6 +32454,37 @@ msgid "**Inductive step**: The goal is\n"
 "\n"
 "First, peel off the inserted element with §3.\n"
 "This gives §4."
+msgstr ""
+
+#: Game.Levels.Products.L17_DecompositionReverse
+msgid "Use reverse rewriting with the decomposition identity."
+msgstr ""
+
+#. §0: `Finset.sigma`
+#. §1: `s : Finset ι`
+#. §2: `t : ∀ i, Finset (α i)`
+#. §3: `Finset (Σ i, α i)`
+#. §4: `⟨i, x⟩`
+#. §5: `i ∈ s`
+#. §6: `x ∈ t i`
+#. §7: ```
+#. s.sigma t    -- the dependent product
+#. ```
+#. §8: `s ×ˢ t`
+#: Game.Levels.Products.L06_SigmaIntro
+msgid "§0 constructs the dependent product of a finset\n"
+"§1 and a family of finsets §2.\n"
+"\n"
+"The result is §3 — the finset of dependent pairs\n"
+"§4 where §5 and §6.\n"
+"\n"
+"## Syntax\n"
+"§7\n"
+"\n"
+"## When to use it\n"
+"When the set of valid second components depends on which first\n"
+"component is chosen. If the second component is independent,\n"
+"use §8 instead."
 msgstr ""
 
 #. §0: `l`
@@ -31438,6 +32774,30 @@ msgid "§0 states that §1.\n"
 "(e.g., for rewriting in the reverse direction)."
 msgstr ""
 
+#. §0: $$|s.\\text{diag} \\cup s.\\text{offDiag}| = |s.\\text{diag}| + |s.\\text{offDiag}|
+#. = 3 + (9 - 3) = 3 + 6 = 9 = 3^2$$
+#. §1: `s.diag ∪ s.offDiag = s ×ˢ s`
+#. §2: `(s ×ˢ s).card = s.card * s.card = 9`
+#. §3: $n^2 = n + n(n-1)$
+#. §4: $n$
+#. §5: $n(n-1)$
+#. §6: $n^2$
+#. §7: `s ×ˢ s`
+#: Game.Levels.Products.L18_DisjointnessCoaching
+msgid "The computation breaks down as:\n"
+"\n"
+"§0\n"
+"\n"
+"No surprise — §1 and\n"
+"§2.\n"
+"\n"
+"But the **decomposition route** reveals *why* §3:\n"
+"the §4 pairs on the diagonal plus the §5 pairs off the\n"
+"diagonal account for all §6 pairs in §7.\n"
+"\n"
+"You now have all the tools for the boss level."
+msgstr ""
+
 #. §0: `x ∈ t`
 #: Game.Levels.PsetFinset.L03_FilterSubset
 msgid "The pattern: unfold everything, extract the parts, reassemble.\n"
@@ -31445,6 +32805,26 @@ msgid "The pattern: unfold everything, extract the parts, reassemble.\n"
 "The §0 component was extracted but not needed — it came along\n"
 "for the ride from the intersection but isn't required for the right-hand\n"
 "filter. Keeping exactly the parts you need is the essence of subset proofs."
+msgstr ""
+
+#. §0: `s.diag`
+#. §1: `(a, a)`
+#. §2: `a ∈ s`
+#. §3: `s.card`
+#. §4: ```
+#. Finset.diag_card : (Finset.diag s).card = s.card
+#. ```
+#. §5: `s.card = 5`
+#. §6: `s.diag.card`
+#: Game.Levels.Products.L14_DiagCard
+msgid "# How Big Is the Diagonal?\n"
+"\n"
+"Since §0 has one pair §1 for each §2, its\n"
+"cardinality equals §3:\n"
+"\n"
+"§4\n"
+"\n"
+"**Your task**: Given §5, compute §6."
 msgstr ""
 
 #. §0: `Set.InjOn f ↑s`
@@ -31672,6 +33052,39 @@ msgid "Congratulations! You proved the symmetry identity for powersetCard,\n"
 "prove this identity formally in the BinomialTheorem world."
 msgstr ""
 
+#. §0: $$|s.\\text{offDiag}| = |s| \\cdot (|s| - 1)$$
+#. §1: `s`
+#. §2: $n$
+#. §3: $n$
+#. §4: $n - 1$
+#. §5: $n(n-1)$
+#. §6: $P(n, 2)$
+#. §7: $$|s.\\text{offDiag}| = n(n-1) = 2 \\cdot \\binom{n}{2}$$
+#. §8: $n$
+#. §9: $\\binom{n}{2} = n(n-1)/2$
+#: Game.Levels.Products.L16_OffDiagBinomial
+msgid "You've proved the **general** factored form:\n"
+"\n"
+"§0\n"
+"\n"
+"This holds for any finset §1 — no specific cardinality assumed.\n"
+"\n"
+"**The combinatorial reading**: Choosing an ordered pair of distinct\n"
+"elements from an §2-element set means choosing the first element\n"
+"(§3 choices) then the second (§4 remaining choices), giving\n"
+"§5 total. This is the 2-permutation count §6.\n"
+"\n"
+"**Connection to binomial coefficients**: Since each unordered pair\n"
+"corresponds to two ordered pairs (the symmetry from Level 13):\n"
+"\n"
+"§7\n"
+"\n"
+"This bridges the *product-counting* framework (offDiag) with\n"
+"the *subset-counting* framework (choose). The handshake lemma\n"
+"is the classic instance: §8 people shake hands\n"
+"§9 times."
+msgstr ""
+
 #. §0: `x ∈ t`
 #. §1: `by_contra hnt`
 #. §2: `x ∉ t`
@@ -31718,6 +33131,14 @@ msgstr ""
 
 #: Game.Levels.BigOpIntro.L02_SumSingleton
 msgid "Sum Over a Singleton"
+msgstr ""
+
+#. §0: `rw [Finset.mem_insert]`
+#. §1: `right`
+#. §2: `rw [Finset.mem_singleton]`
+#: Game.Levels.Products.L01_ProductMembership
+msgid "Try §0 then §1,\n"
+"then §2."
 msgstr ""
 
 #. §0: `s`
@@ -31991,6 +33412,10 @@ msgid "Complement counting is the 'sibling' of inclusion-exclusion:\n"
 "if you want §3, compute §4."
 msgstr ""
 
+#: Game.Levels.Products.L09_SigmaCardinality
+msgid "Sigma Cardinality"
+msgstr ""
+
 #. §0: `ha : a ∈ s ∪ t`
 #. §1: `rw [Finset.mem_union] at ha`
 #. §2: `rw [Finset.mem_union]`
@@ -32013,6 +33438,10 @@ msgstr ""
 #: Game.Levels.SummationFormulas.L12_TelescopingSum
 msgid "**Inductive step**: Peel the last term with §0\n"
 "and substitute the IH."
+msgstr ""
+
+#: Game.Levels.Products.L08_ConcreteSigmaFormula
+msgid "Compute sigma cardinality with formula-defined fibers."
 msgstr ""
 
 #. §0: `inf_comm`
@@ -32553,6 +33982,12 @@ msgstr ""
 #. §1: $2!$
 #: Game.Levels.SummationFormulas.L10_FactorialCompute
 msgid "Good — you've unfolded §0. Now unfold §1."
+msgstr ""
+
+#. §0: `rfl`
+#: Game.Levels.Products.L10_SigmaRecovery
+msgid "Try §0 — for natural numbers,\n"
+"scalar multiplication is ordinary multiplication."
 msgstr ""
 
 #: Game.Levels.FinsetOperations.L10_EmptySetIdentity
@@ -33677,6 +35112,12 @@ msgid "Convert the multiset equality to a list permutation using\n"
 "§0."
 msgstr ""
 
+#. §0: `Finset.mem_diag`
+#: Game.Levels.Products.L11_Diagonal
+msgid "Use §0 to characterize diagonal membership,\n"
+"then prove the two conditions."
+msgstr ""
+
 #. §0: `∨`
 #. §1: `x ∈ s`
 #. §2: `x ∈ s`
@@ -33806,6 +35247,33 @@ msgstr ""
 
 #: Game.Levels.FinsetOperations.L21_PartitionIdentity
 msgid "Every finset splits: s = (s \\\\ t) ∪ (s ∩ t)."
+msgstr ""
+
+#. §0: `Nat.mul_sub_one`
+#. §1: `n * (m - 1) = n * m - n`
+#. §2: ```
+#. rw [Nat.mul_sub_one]
+#. ```
+#. §3: `n * m - n`
+#. §4: `n * (m - 1)`
+#. §5: `offDiag_card`
+#. §6: `m = 0`
+#: Game.Levels.Products.L16_OffDiagBinomial
+msgid "§0 factors natural number subtraction:\n"
+"\n"
+"§1\n"
+"\n"
+"## Syntax\n"
+"§2\n"
+"\n"
+"## When to use it\n"
+"When you need to factor §3 into §4, or\n"
+"vice versa. Commonly used with §5 to convert\n"
+"between the squared form and the factored form.\n"
+"\n"
+"## Warning\n"
+"This is a natural number identity, so it holds even when\n"
+"§6 (both sides are 0). No side conditions needed."
 msgstr ""
 
 #. §0: `f a ∈ s.image f`
@@ -34054,6 +35522,17 @@ msgstr ""
 #. §1: `exact key`
 #: Game.Levels.FinTuples.L20_ReconstructionStrategy
 msgid "Now §0 matches the goal exactly. Use §1."
+msgstr ""
+
+#. §0: `Finset.Pairwise.mono`
+#. §1: `t`
+#. §2: `s ⊆ t`
+#. §3: `s`
+#: Game.Levels.Products.L13_OffDiagExtraction
+msgid "§0 weakens a pairwise relation by a subset:\n"
+"if a relation holds pairwise on §1 and §2, it holds on §3.\n"
+"\n"
+"Disabled to keep the focus on direct membership reasoning."
 msgstr ""
 
 #. §0: `Finset α`
@@ -35024,6 +36503,10 @@ msgstr ""
 msgid "The union of {1,2,3} and {2,3,4} has 4 elements."
 msgstr ""
 
+#: Game.Levels.Products.L14_DiagCard
+msgid "The diagonal has the same cardinality as the original set."
+msgstr ""
+
 #. §0: `Multiset.mem_toFinset`
 #. §1: `List.mem_toFinset`
 #. §2: `List.toFinset`
@@ -35228,6 +36711,76 @@ msgid "This is a subtraction — you need the value of both terms.\n"
 "Try §0"
 msgstr ""
 
+#. §0: `s ×ˢ t`
+#. §1: `card_product`
+#. §2: `Finset.mem_product`
+#. §3: $$
+#. (a, b) \\in s \\times^s t \\iff a \\in s \\land b \\in t
+#. $$
+#. §4: ```
+#. Finset.mem_product : p ∈ s ×ˢ t ↔ p.1 ∈ s ∧ p.2 ∈ t
+#. ```
+#. §5: `↔`
+#. §6: `rw`
+#. §7: `constructor`
+#. §8: `rw`
+#. §9: `(2, 5)`
+#. §10: `{1, 2} ×ˢ {5}`
+#: Game.Levels.Products.L01_ProductMembership
+msgid "# The Cartesian Product of Finsets\n"
+"\n"
+"You met §0 in the Cardinality world and used §1\n"
+"to count its elements. But you never needed to prove that a\n"
+"*specific pair* belongs to a product, or to extract the components\n"
+"of a product membership.\n"
+"\n"
+"The key characterization is §2:\n"
+"\n"
+"§3\n"
+"\n"
+"§4\n"
+"\n"
+"This is an §5, so you can use §6 to turn a product membership\n"
+"into a conjunction, or §7 after §8 to split into two\n"
+"membership goals.\n"
+"\n"
+"**Your task**: Prove that §9 belongs to the product\n"
+"§10."
+msgstr ""
+
+#. §0: `←`
+#. §1: `rw`
+#. §2: `rw [h]`
+#. §3: `h : A = B`
+#. §4: `A`
+#. §5: `B`
+#. §6: `rw [← h]`
+#. §7: `h : A = B`
+#. §8: `B`
+#. §9: `A`
+#. §10: `diag_union_offDiag`
+#. §11: `←`
+#. §12: `s ×ˢ s`
+#. §13: `s ×ˢ s = s.diag ∪ s.offDiag`
+#. §14: $$|s \\times^s s| = |s.\\text{diag}| + |s.\\text{offDiag}|$$
+#: Game.Levels.Products.L17_DecompositionReverse
+msgid "The §0 modifier is a general tool for §1:\n"
+"\n"
+"- §2 where §3 replaces §4 with §5\n"
+"- §6 where §7 replaces §8 with §9\n"
+"\n"
+"For §10, the §11 direction is especially\n"
+"useful: it lets you **decompose** §12 into its diagonal\n"
+"and off-diagonal components. This is the direction you'll\n"
+"need for the boss level.\n"
+"\n"
+"**Why this matters**: The decomposition §13\n"
+"is a **disjoint union** — diagonal and off-diagonal pairs never\n"
+"overlap. This means cardinalities add:\n"
+"\n"
+"§14"
+msgstr ""
+
 #. §0: $$\\sum_{i=0}^{n} i = \\binom{n+1}{2}$$
 #. §1: $n + 1$
 #. §2: $\\binom{n+1}{2}$
@@ -35319,6 +36872,32 @@ msgid "§0 returns the number of elements in a multiset,\n"
 "- §1\n"
 "- §2\n"
 "- §3"
+msgstr ""
+
+#. §0: `Finset.mem_offDiag`
+#. §1: `s.offDiag`
+#. §2: `x ∈ s.offDiag ↔ x.1 ∈ s ∧ x.2 ∈ s ∧ x.1 ≠ x.2`
+#. §3: `(a, b)`
+#. §4: `a ∈ s`
+#. §5: `b ∈ s`
+#. §6: `a ≠ b`
+#. §7: ```
+#. rw [Finset.mem_offDiag]
+#. ```
+#. §8: `_ ∈ s.offDiag`
+#: Game.Levels.Products.L12_OffDiagonal
+msgid "§0 characterizes membership in §1:\n"
+"\n"
+"§2\n"
+"\n"
+"A pair §3 is in the off-diagonal iff both §4 and\n"
+"§5, and §6.\n"
+"\n"
+"## Syntax\n"
+"§7\n"
+"\n"
+"## When to use it\n"
+"When the goal or a hypothesis involves §8."
 msgstr ""
 
 #. §0: `rw [Finset.sum_filter]`
@@ -35754,6 +37333,15 @@ msgid "The §0 + §1 pattern is powerful for cardinality reasoning:\n"
 "§6 is the complement of §7:\n"
 "- Insert a new element: size goes up by 1\n"
 "- Erase an existing element: size goes down by 1"
+msgstr ""
+
+#. §0: `Finset.product_subset_product_left`
+#. §1: `s ×ˢ t ⊆ s' ×ˢ t`
+#. §2: `s ⊆ s'`
+#: Game.Metadata
+#: Game.Metadata
+msgid "§0 proves §1\n"
+"from §2."
 msgstr ""
 
 #: Game.Levels.FinsetImage.L21_CountingProvesInjectivity
@@ -36202,6 +37790,10 @@ msgid "Use §0 to evaluate the remaining\n"
 "singleton product."
 msgstr ""
 
+#: Game.Levels.Products.L01_ProductMembership
+msgid "Product Membership"
+msgstr ""
+
 #. §0: `Set.InjOn f s`
 #. §1: `f`
 #. §2: `s`
@@ -36438,6 +38030,13 @@ msgid "Now you have §0 and\n"
 "§1. The arithmetic §2 is handled by §3."
 msgstr ""
 
+#. §0: `Finset.mem_sigma`
+#. §1: `mem_product`
+#: Game.Levels.Products.L06_SigmaIntro
+msgid "Use §0 to rewrite the goal into a\n"
+"conjunction, just like you used §1."
+msgstr ""
+
 #. §0: `f`
 #. §1: `s`
 #. §2: `t`
@@ -36553,6 +38152,40 @@ msgstr ""
 msgid "Split with §0. For the membership part,\n"
 "§1 implies §2 — use §3\n"
 "and §4."
+msgstr ""
+
+#. §0: $$(s \\times^s s).\\text{card} = s.\\text{diag}.\\text{card} + s.\\text{offDiag}.\\text{card}$$
+#. §1: `s`
+#. §2: `s ×ˢ s`
+#. §3: `card_union_of_disjoint`
+#. §4: `diag_card`
+#. §5: `offDiag_card`
+#. §6: `s.card`
+#: Game.Levels.Products.L19_GeneralDecomposition
+msgid "You've proved the **general decomposition identity**:\n"
+"\n"
+"§0\n"
+"\n"
+"This holds for any finset §1 — no specific cardinality assumed.\n"
+"\n"
+"**The partition-then-count pattern**:\n"
+"1. Recognize that §2 splits into two disjoint pieces\n"
+"2. Apply §3 to convert the union\n"
+"   cardinality into a sum\n"
+"\n"
+"This is the abstract skeleton. In the next level, you'll\n"
+"substitute §4 and §5 to derive the\n"
+"full algebraic identity, and then the boss will instantiate\n"
+"it with a specific value of §6."
+msgstr ""
+
+#. §0: `s.card * s.card - s.card = s.card * (s.card - 1)`
+#. §1: `Nat.mul_sub_one`
+#. §2: `n * (m - 1) = n * m - n`
+#: Game.Levels.Products.L16_OffDiagBinomial
+msgid "Now you need to show §0.\n"
+"Use §1 — it says §2,\n"
+"which is exactly the reverse of this equation."
 msgstr ""
 
 #. §0: `rw [Fintype.card_sum]`
@@ -36771,6 +38404,71 @@ msgstr ""
 
 #: Game.Levels.PsetFin.L08_ObtainDestructure
 msgid "Obtain: Existential Destructuring"
+msgstr ""
+
+#. §0: `s ×ˢ t`
+#. §1: `card_product`
+#. §2: `s ×ˢ t`
+#. §3: `(a, b)`
+#. §4: `a ∈ s`
+#. §5: `b ∈ t`
+#. §6: `mem_product`
+#. §7: `mk_mem_product`
+#. §8: `s.sigma t`
+#. §9: $|s.\\text{sigma}\\ t| = \\sum_{i \\in s} |t\\,i|$
+#. §10: `s.diag`
+#. §11: `s.offDiag`
+#. §12: `s ×ˢ s`
+#. §13: `Finset.mem_product`
+#. §14: `p ∈ s ×ˢ t ↔ p.1 ∈ s ∧ p.2 ∈ t`
+#. §15: `Finset.mk_mem_product`
+#. §16: `a ∈ s → b ∈ t → (a, b) ∈ s ×ˢ t`
+#. §17: `Finset.mem_sigma`
+#. §18: `a ∈ s.sigma t ↔ a.1 ∈ s ∧ a.2 ∈ t a.1`
+#. §19: `Finset.card_sigma`
+#. §20: `(s.sigma t).card = ∑ a ∈ s, (t a).card`
+#. §21: `Finset.mem_diag`
+#. §22: `x ∈ s.diag ↔ x.1 ∈ s ∧ x.1 = x.2`
+#. §23: `Finset.mem_offDiag`
+#. §24: `x ∈ s.offDiag ↔ x.1 ∈ s ∧ x.2 ∈ s ∧ x.1 ≠ x.2`
+#. §25: `Finset.diag_union_offDiag`
+#. §26: `s.diag ∪ s.offDiag = s ×ˢ s`
+#: Game.Levels.Products
+msgid "# Product Constructions\n"
+"\n"
+"You've already used §0 and §1 in the Cardinality\n"
+"world. This world goes deeper into the **product construction**\n"
+"family — the tools for building and reasoning about pairs drawn\n"
+"from finsets.\n"
+"\n"
+"**Cartesian product** §2:\n"
+"The set of all pairs §3 with §4 and §5. You know\n"
+"its cardinality. Now you'll learn to characterize its membership\n"
+"with §6, build pairs with §7, and extract\n"
+"component memberships.\n"
+"\n"
+"**Dependent product** §8:\n"
+"A generalization where the set of valid second components depends\n"
+"on which first component was chosen. Its cardinality is a sum\n"
+"rather than a product: §9.\n"
+"\n"
+"**Diagonal** §10 and **off-diagonal** §11:\n"
+"The self-product §12 splits into pairs where coordinates\n"
+"agree (diagonal) and pairs where they differ (off-diagonal).\n"
+"This decomposition is a fundamental technique for counting\n"
+"pairs of elements.\n"
+"\n"
+"**The proof toolkit**:\n"
+"- §13: §14\n"
+"- §15: §16\n"
+"- §17: §18\n"
+"- §19: §20\n"
+"- §21: §22\n"
+"- §23: §24\n"
+"- §25: §26\n"
+"\n"
+"These are the finset-level tools for reasoning about tuples, pairs,\n"
+"and multi-dimensional counting."
 msgstr ""
 
 #: Game.Levels.PsetCombinatorics.L12_AntidiagonalDoubleSum
@@ -37039,6 +38737,14 @@ msgid "§0 closes a goal of the form §1 (reflexivity).\n"
 "\n"
 "## When to use it\n"
 "When both sides of an equality are definitionally equal."
+msgstr ""
+
+#. §0: `t₁`
+#. §1: `t₂`
+#. §2: `Finset.card_union_of_disjoint`
+#: Game.Levels.Products.L05_ProductCardIntegration
+msgid "Now handle the union cardinality. Since §0 and §1\n"
+"are disjoint, use §2."
 msgstr ""
 
 #. §0: `Finset.sum_range_succ'`
@@ -37389,6 +39095,13 @@ msgid "Start with §0 to introduce the element, then §1\n"
 "to assume §2 for contradiction."
 msgstr ""
 
+#. §0: `s ×ˢ s`
+#. §1: `s.diag ∪ s.offDiag`
+#: Game.Levels.Products.L19_GeneralDecomposition
+msgid "Decompose §0 into §1 using the\n"
+"reverse rewrite."
+msgstr ""
+
 #. §0: `Fin 5`
 #. §1: $\\{0, 1, 2, 3, 4\\}$
 #. §2: `.isLt`
@@ -37464,6 +39177,29 @@ msgstr ""
 
 #: Game.Levels.FinsetImage.L20_ReverseRewriting
 msgid "Reverse rewriting converts between equivalent formulations."
+msgstr ""
+
+#. §0: `card_product`
+#. §1: `s`
+#. §2: `t₁`
+#. §3: `t₂`
+#. §4: `t₁.card = 2`
+#. §5: `t₂.card = 4`
+#. §6: `s ×ˢ (t₁ ∪ t₂)`
+#. §7: `card_product`
+#. §8: `card_union_of_disjoint`
+#: Game.Levels.Products.L05_ProductCardIntegration
+msgid "# Combining Product and Union Cardinalities\n"
+"\n"
+"You know §0 from the Cardinality world. Let's combine\n"
+"it with other cardinality lemmas.\n"
+"\n"
+"If §1 has 3 elements and §2 and §3 are disjoint with\n"
+"§4 and §5, how many pairs are in\n"
+"§6?\n"
+"\n"
+"**Strategy**: Rewrite §7, then §8,\n"
+"then substitute the known sizes."
 msgstr ""
 
 #. §0: `rw [Finset.mem_sdiff, Finset.mem_sdiff, Finset.mem_inter]`
@@ -37700,6 +39436,39 @@ msgid "Three steps:\n"
 "**Bridge level**: This connects §11 back to §12 —\n"
 "every member of §13 is automatically in §14.\n"
 "The extra information (cardinality = k) is carried by §15."
+msgstr ""
+
+#. §0: $$(s \\times^s s).\\text{card} = s.\\text{diag}.\\text{card} + s.\\text{offDiag}.\\text{card}$$
+#. §1: `Finset.diag_card`
+#. §2: $|s.\\text{diag}| = |s|$
+#. §3: `Finset.offDiag_card`
+#. §4: $|s.\\text{offDiag}| = |s|^2 - |s|$
+#. §5: $$|s \\times^s s| = |s| + (|s|^2 - |s|)$$
+#. §6: $n^2 = n + (n^2 - n)$
+#. §7: `s`
+#: Game.Levels.Products.L20_AlgebraicIdentity
+msgid "# From Structure to Algebra\n"
+"\n"
+"In the previous level you proved the *structural* decomposition:\n"
+"\n"
+"§0\n"
+"\n"
+"Now let's cash in the structural result for an *algebraic*\n"
+"identity. You know:\n"
+"\n"
+"- §1: §2\n"
+"- §3: §4\n"
+"\n"
+"Substituting these into the decomposition gives:\n"
+"\n"
+"§5\n"
+"\n"
+"This is the general identity §6, proved\n"
+"not by algebra but by **counting two ways**: the left side\n"
+"counts all pairs, the right side counts same-element pairs\n"
+"plus distinct-element pairs.\n"
+"\n"
+"**Your task**: Prove this algebraic identity for any finset §7."
 msgstr ""
 
 #: Game.Levels.PascalsTriangle.L16_Boss
@@ -38133,6 +39902,14 @@ msgstr ""
 msgid "Compute a product by simplifying and unfolding."
 msgstr ""
 
+#. §0: `obtain ⟨h1, h2⟩ := h`
+#. §1: `exact h1`
+#. §2: `exact h.1`
+#: Game.Levels.Products.L03_ExtractFromProduct
+msgid "Try §0 then §1.\n"
+"Or use §2."
+msgstr ""
+
 #. §0: $\\binom{m+n}{k} = \\sum_{i+j=k} \\binom{m}{i} \\binom{n}{j}$
 #. §1: $k$
 #. §2: $m + n$
@@ -38337,6 +40114,18 @@ msgid "The element is §0. Use §1\n"
 "as witness, then §2."
 msgstr ""
 
+#. §0: `b ∈ s ∧ a ∈ s ∧ b ≠ a`
+#. §1: `h`
+#. §2: `b ≠ a`
+#. §3: `Ne.symm`
+#. §4: `a ≠ b`
+#. §5: `h`
+#: Game.Levels.Products.L13_OffDiagExtraction
+msgid "You need §0. The first two come\n"
+"from §1, and for §2 you can use §3 to flip\n"
+"the §4 from §5."
+msgstr ""
+
 #. §0: `sum_empty`
 #. §1: `sum_insert`
 #. §2: `sum_singleton`
@@ -38441,6 +40230,13 @@ msgid "You've proved **distributivity**: §0.\n"
 "\n"
 "Next: the **dual** distributivity law, where union and intersection\n"
 "swap roles. Then the boss, which brings in set difference."
+msgstr ""
+
+#. §0: `s.diag.card`
+#. §1: `Finset.diag_card`
+#: Game.Levels.Products.L21_Boss
+#: Game.Levels.Products.L21_Boss
+msgid "Compute §0 using §1."
 msgstr ""
 
 #. §0: $\\binom{n}{n} = 1$
@@ -38734,6 +40530,14 @@ msgid "§0 proves §1\n"
 "explicit non-membership argument."
 msgstr ""
 
+#. §0: `s ×ˢ s`
+#. §1: `← Finset.diag_union_offDiag`
+#. §2: `s.diag ∪ s.offDiag`
+#: Game.Levels.Products.L17_DecompositionReverse
+msgid "The goal has §0. Use §1\n"
+"to replace it with §2."
+msgstr ""
+
 #. §0: `Nat.choose n n = Nat.choose n 0`
 #. §1: `0 ≤ n`
 #. §2: `have`
@@ -38743,12 +40547,11 @@ msgid "The goal is now §0.\n"
 "Create a proof that §1 with §2, then apply symmetry."
 msgstr ""
 
-#. §0: `Nat.choose_two_right`
-#. §1: `Nat.choose n 2 = n * (n - 1) / 2`
-#: Game.Metadata
-msgid "Disabled: §0 gives the closed form\n"
-"§1. Bypasses subset counting\n"
-"and symmetry arguments."
+#. §0: `(3, 3).1 ∈ s ∧ (3, 3).1 = (3, 3).2`
+#. §1: `3 ∈ s ∧ 3 = 3`
+#: Game.Levels.Products.L11_Diagonal
+msgid "The goal is §0, which\n"
+"Lean simplifies to §1."
 msgstr ""
 
 #. §0: `use ⟨k, by omega⟩`
@@ -39661,6 +41464,53 @@ msgstr ""
 #: Game.Levels.PsetCombinatorics.L14_Boss
 #: Game.Levels.PsetCombinatorics.L14_Boss
 #: Game.Levels.PsetCombinatorics.L14_Boss
+#: Game.Levels.Products.L01_ProductMembership
+#: Game.Levels.Products.L02_MkMemProduct
+#: Game.Levels.Products.L03_ExtractFromProduct
+#: Game.Levels.Products.L04_ProductSubset
+#: Game.Levels.Products.L04_ProductSubset
+#: Game.Levels.Products.L04_ProductSubset
+#: Game.Levels.Products.L05_ProductCardIntegration
+#: Game.Levels.Products.L05_ProductCardIntegration
+#: Game.Levels.Products.L06_SigmaIntro
+#: Game.Levels.Products.L06_SigmaIntro
+#: Game.Levels.Products.L07_ConcreteSigma
+#: Game.Levels.Products.L07_ConcreteSigma
+#: Game.Levels.Products.L07_ConcreteSigma
+#: Game.Levels.Products.L08_ConcreteSigmaFormula
+#: Game.Levels.Products.L08_ConcreteSigmaFormula
+#: Game.Levels.Products.L08_ConcreteSigmaFormula
+#: Game.Levels.Products.L09_SigmaCardinality
+#: Game.Levels.Products.L09_SigmaCardinality
+#: Game.Levels.Products.L10_SigmaRecovery
+#: Game.Levels.Products.L11_Diagonal
+#: Game.Levels.Products.L11_Diagonal
+#: Game.Levels.Products.L12_OffDiagonal
+#: Game.Levels.Products.L12_OffDiagonal
+#: Game.Levels.Products.L12_OffDiagonal
+#: Game.Levels.Products.L12_OffDiagonal
+#: Game.Levels.Products.L13_OffDiagExtraction
+#: Game.Levels.Products.L13_OffDiagExtraction
+#: Game.Levels.Products.L14_DiagCard
+#: Game.Levels.Products.L15_OffDiagCard
+#: Game.Levels.Products.L15_OffDiagCard
+#: Game.Levels.Products.L16_OffDiagBinomial
+#: Game.Levels.Products.L17_DecompositionReverse
+#: Game.Levels.Products.L18_DisjointnessCoaching
+#: Game.Levels.Products.L18_DisjointnessCoaching
+#: Game.Levels.Products.L19_GeneralDecomposition
+#: Game.Levels.Products.L20_AlgebraicIdentity
+#: Game.Levels.Products.L20_AlgebraicIdentity
+#: Game.Levels.Products.L20_AlgebraicIdentity
+#: Game.Levels.Products.L21_Boss
+#: Game.Levels.Products.L21_Boss
+#: Game.Levels.Products.L21_Boss
+#: Game.Levels.Products.L21_Boss
+#: Game.Levels.Products.L21_Boss
+#: Game.Levels.Products.L21_Boss
+#: Game.Levels.Products.L21_Boss
+#: Game.Levels.Products.L21_Boss
+#: Game.Levels.Products.L21_Boss
 msgid "Try §0."
 msgstr ""
 
@@ -40451,6 +42301,14 @@ msgstr ""
 #: Game.Levels.PsetFin.L18_Boss
 msgid "Good! Now §0.\n"
 "Split the conjunction with §1."
+msgstr ""
+
+#. §0: `Finset.card_union_of_disjoint`
+#. §1: `Finset.disjoint_diag_offDiag`
+#: Game.Levels.Products.L18_DisjointnessCoaching
+msgid "The diagonal and off-diagonal are disjoint. Use\n"
+"§0 with §1\n"
+"to split the union cardinality into a sum."
 msgstr ""
 
 #: Game.Levels.PsetFin.L09_ZeroSuccRetrieval
@@ -41351,6 +43209,12 @@ msgid "§0 states that §1.\n"
 "§6, then §7 fires."
 msgstr ""
 
+#. §0: `constructor`
+#: Game.Levels.Products.L21_Boss
+msgid "The goal is a conjunction of three claims. Split it with\n"
+"§0 to handle each part separately."
+msgstr ""
+
 #. §0: `h`
 #. §1: `(1 + 1) ^ n = ∑ m, 1^m * 1^(n-m) * choose n m`
 #. §2: `have`
@@ -41557,6 +43421,49 @@ msgid "§0 states that §1.\n"
 "to target the right one."
 msgstr ""
 
+#. §0: `Finset.mem_product`
+#. §1: `h : p ∈ s ×ˢ t`
+#. §2: `Finset.mem_product`
+#. §3: `h`
+#. §4: `h : p.1 ∈ s ∧ p.2 ∈ t`
+#. §5: `obtain ⟨h1, h2⟩ := h`
+#. §6: `h : A ∧ B`
+#. §7: `h.1`
+#. §8: `A`
+#. §9: `h.2`
+#. §10: `B`
+#. §11: `h : A ∧ B ∧ C`
+#. §12: `h.1`
+#. §13: `A`
+#. §14: `h.2.1`
+#. §15: `B`
+#. §16: `h.2.2`
+#. §17: `C`
+#. §18: `obtain ⟨h1, h2⟩ := h`
+#. §19: `exact h1`
+#. §20: `p ∈ s ×ˢ t`
+#. §21: `p.1 ∈ s`
+#: Game.Levels.Products.L03_ExtractFromProduct
+msgid "# The Backward Direction\n"
+"\n"
+"Now let's use §0 in the other direction.\n"
+"If you **know** that a pair belongs to a product, you can\n"
+"extract the component memberships.\n"
+"\n"
+"Given §1, rewriting with §2\n"
+"at §3 gives §4. Then you can use\n"
+"§5 to split the conjunction.\n"
+"\n"
+"**Lean tip: dot-notation for conjunctions**. If §6, then\n"
+"§7 is the left conjunct (a proof of §8) and §9 is the right\n"
+"conjunct (a proof of §10). For nested conjunctions like\n"
+"§11, you can chain: §12 is §13, §14 is §15,\n"
+"§16 is §17. This is a shorthand for §18\n"
+"followed by §19.\n"
+"\n"
+"**Your task**: Given that §20, prove that §21."
+msgstr ""
+
 #: Game.Levels.FinsetImage.L23_Boss
 msgid "Boss: Image Membership, Bounds, and Injectivity"
 msgstr ""
@@ -41723,6 +43630,11 @@ msgid "# Filter: Selecting Elements by a Property\n"
 "In words: 4 is in the set of even numbers less than 6."
 msgstr ""
 
+#. §0: `s.card = 4`
+#: Game.Levels.Products.L15_OffDiagCard
+msgid "Now substitute §0 and compute."
+msgstr ""
+
 #. §0: `or_comm`
 #. §1: `a ∨ b ↔ b ∨ a`
 #. §2: `cases`
@@ -41765,6 +43677,41 @@ msgid "You proved the **repair**: when §0 is injective,\n"
 "a membership context rather than a cardinality context. This shows\n"
 "that injectivity is a general-purpose tool, not just a cardinality\n"
 "trick."
+msgstr ""
+
+#. §0: $$|s \\times^s s| = |s| + (|s|^2 - |s|)$$
+#. §1: $n^2 = n + n(n-1)$
+#. §2: $s$
+#. §3: $n$
+#. §4: $n^2 - n$
+#. §5: `card_product`
+#. §6: $|s \\times^s s|$
+#: Game.Levels.Products.L20_AlgebraicIdentity
+msgid "You've derived the **general algebraic identity**:\n"
+"\n"
+"§0\n"
+"\n"
+"This is the mathematical punchline of the decomposition arc.\n"
+"The identity §1 isn't just algebraic\n"
+"manipulation — it reflects a *structural fact*: every pair\n"
+"from §2 is either a same-element pair (there are §3 of\n"
+"those) or a distinct-element pair (there are §4 of\n"
+"those).\n"
+"\n"
+"This is an example of a **combinatorial proof of an algebraic\n"
+"identity**: instead of manipulating symbols, you count the\n"
+"same set two different ways. The decomposition route\n"
+"(diagonal + off-diagonal) and the direct route (§5)\n"
+"both count §6, and equating them gives the\n"
+"identity."
+msgstr ""
+
+#. §0: `Finset.mem_product`
+#. §1: `h`
+#. §2: `p.1 ∈ s ∧ p.2 ∈ t`
+#: Game.Levels.Products.L03_ExtractFromProduct
+msgid "Rewrite §0 at §1 to expose the\n"
+"conjunction §2."
 msgstr ""
 
 #. §0: `ext x`
@@ -42112,6 +44059,38 @@ msgstr ""
 msgid "No injective function from Fin 3 to Fin 2 exists."
 msgstr ""
 
+#. §0: `Finset.offDiag_card`
+#: Game.Levels.Products.L20_AlgebraicIdentity
+msgid "Substitute the off-diagonal cardinality using §0."
+msgstr ""
+
+#. §0: `Finset.disjoint_diag_offDiag`
+#. §1: `Disjoint s.diag s.offDiag`
+#. §2: `(a, a)`
+#. §3: `a ≠ b`
+#. §4: ```
+#. Finset.disjoint_diag_offDiag s
+#. Finset.card_union_of_disjoint (Finset.disjoint_diag_offDiag s)
+#. ```
+#. §5: `s.diag`
+#. §6: `s.offDiag`
+#. §7: `card_union_of_disjoint`
+#: Game.Levels.Products.L18_DisjointnessCoaching
+msgid "§0 states that\n"
+"\n"
+"§1\n"
+"\n"
+"The diagonal and off-diagonal are disjoint: no pair is both\n"
+"§2 and has §3.\n"
+"\n"
+"## Syntax\n"
+"§4\n"
+"\n"
+"## When to use it\n"
+"When you need the disjointness of §5 and §6,\n"
+"typically to apply §7."
+msgstr ""
+
 #. §0: $$|s \\cap t| = |s| + |t| - |s \\cup t| = 7 + 8 - 11 = 4$$
 #: Game.Levels.PsetCardinality.L03_ConverseInclusionExclusion
 msgid "The same inclusion-exclusion identity, applied in the reverse direction:\n"
@@ -42191,6 +44170,38 @@ msgstr ""
 
 #: Game.Levels.CountingTypes.L06_FallingFactorialIdentity
 msgid "Close the base case."
+msgstr ""
+
+#. §0: `card_product`
+#. §1: $|s \\times^s t| = |s| \\cdot |t|$
+#. §2: `card_union_of_disjoint`
+#. §3: $|t_1 \\cup t_2| = |t_1| + |t_2|$
+#. §4: $3 \\times (2 + 4) = 18$
+#. §5: `card_product`
+#. §6: $|s \\times^s t| = |s| \\cdot |t|$
+#. §7: $(s \\times^s t).\\text{card} = (t \\times^s s).\\text{card}$
+#. §8: $(\\emptyset \\times^s t).\\text{card} = 0$
+#. §9: $(\\{a\\} \\times^s t).\\text{card} = t.\\text{card}$
+#. §10: `card_product`
+#: Game.Levels.Products.L05_ProductCardIntegration
+msgid "This level combines two cardinality tools:\n"
+"\n"
+"- §0: §1\n"
+"- §2: §3 when disjoint\n"
+"\n"
+"The result: §4.\n"
+"\n"
+"Integration like this is the point of having a toolkit — individual\n"
+"lemmas combine to solve problems that no single lemma handles.\n"
+"\n"
+"**Observations worth noting**: Since §5 gives\n"
+"§6, commutativity of multiplication\n"
+"immediately tells us §7\n"
+"— swapping the factors doesn't change the count. At the\n"
+"boundary: §8 (the empty product\n"
+"is empty) and §9 (the\n"
+"product with a singleton is a copy of the other set). These\n"
+"edge cases confirm that §10 behaves as expected."
 msgstr ""
 
 #. §0: `have`
@@ -42281,6 +44292,23 @@ msgid "Now §0 sees:\n"
 "- Goal: §2\n"
 "\n"
 "Substituting §3, this becomes §4 — trivially true."
+msgstr ""
+
+#. §0: `rw [Finset.mem_product] at hp`
+#. §1: `hs`
+#. §2: `ht`
+#. §3: `Finset.mk_mem_product`
+#: Game.Levels.Products.L04_ProductSubset
+msgid "You've just used the **membership round-trip** pattern:\n"
+"\n"
+"1. **Extract**: §0 → get component memberships\n"
+"2. **Transform**: apply §1 and §2 to promote to the larger sets\n"
+"3. **Rebuild**: §3 assembles the new product membership\n"
+"\n"
+"This extract-transform-rebuild pattern is one of the most common\n"
+"proof shapes in finset arguments. You'll see it again whenever you\n"
+"need to move membership from one structured set to another — including\n"
+"the off-diagonal levels later in this world."
 msgstr ""
 
 #. §0: `have h1 := Finset.card_sdiff_add_card_inter s t`
@@ -42507,6 +44535,12 @@ msgid "The expression §0 equals §1. Establish this as\n"
 "a rewrite lemma using §2."
 msgstr ""
 
+#. §0: `rw [Finset.card_sigma]`
+#: Game.Levels.Products.L21_Boss
+msgid "Try §0. This converts\n"
+"the sigma cardinality to a sum of fiber sizes."
+msgstr ""
+
 #. §0: $n = 0$
 #. §1: `cases n`
 #: Game.Levels.PsetCombinatorics.L11_WeightedBinomialSum
@@ -42654,6 +44688,10 @@ msgstr ""
 msgid "**This level is deliberately tedious.** The next level introduces\n"
 "§0, a much cleaner approach. The verbosity here motivates why §1\n"
 "is valuable."
+msgstr ""
+
+#: Game.Levels.Products.L01_ProductMembership
+msgid "Prove that a specific pair belongs to a product of finsets."
 msgstr ""
 
 #. §0: $$\\binom{2}{2} = 1, \\quad \\binom{3}{2} = 3, \\quad \\binom{4}{2} = 6, \\quad \\binom{5}{2} = 10, \\ldots$$
@@ -43615,6 +45653,33 @@ msgid "# Intersection: Elements in Both Sets\n"
 "**Your task**: Prove that §10."
 msgstr ""
 
+#. §0: `Finset.card_sigma s t`
+#. §1: `(s.sigma t).card = ∑ a ∈ s, (t a).card`
+#. §2: ```
+#. rw [Finset.card_sigma]
+#. ```
+#. §3: `s.sigma t`
+#. §4: `t`
+#. §5: `card_product`
+#: Game.Levels.Products.L07_ConcreteSigma
+msgid "§0 states that\n"
+"\n"
+"§1\n"
+"\n"
+"The cardinality of a dependent product equals the sum of the\n"
+"fiber cardinalities.\n"
+"\n"
+"## Syntax\n"
+"§2\n"
+"\n"
+"## When to use it\n"
+"When the goal involves the cardinality of §3.\n"
+"\n"
+"## Connection to card_product\n"
+"When §4 is constant (all fibers have the same size), the sum\n"
+"reduces to multiplication, recovering §5."
+msgstr ""
+
 #. §0: `[2, 2, 3]`
 #. §1: `[2, 3, 2]`
 #. §2: `[2, 2, 3]`
@@ -43671,6 +45736,44 @@ msgid "§0 states that §1.\n"
 "When you need to unfold a composition §3 to the explicit\n"
 "application §4 — for example, before substituting formulas\n"
 "for §5 and §6 with §7."
+msgstr ""
+
+#. §0: `Finset.sigma`
+#. §1: ```
+#. Finset.card_sigma : (s.sigma t).card = ∑ a ∈ s, (t a).card
+#. ```
+#. §2: `card_product`
+#. §3: `Finset.range 3 = {0, 1, 2}`
+#. §4: $$1 + 2 + 3 = 6$$
+#. §5: `card_sigma`
+#. §6: `sum_range_succ`
+#. §7: `sum_range_zero`
+#. §8: `(Finset.range 3).sigma t`
+#: Game.Levels.Products.L07_ConcreteSigma
+msgid "# Sigma with Varying Fiber Sizes\n"
+"\n"
+"§0 really shines when fibers have **different sizes**.\n"
+"Here's the cardinality formula:\n"
+"\n"
+"§1\n"
+"\n"
+"Unlike §2 (a single multiplication), sigma cardinality\n"
+"is a **sum** — each index contributes its own fiber size.\n"
+"\n"
+"**A concrete example**: Imagine a network with 3 nodes indexed by\n"
+"§3. Node 0 connects to 1 other node,\n"
+"node 1 connects to 2 others, and node 2 connects to 3 others.\n"
+"The total number of (node, connection) pairs is the sigma of\n"
+"the connection sets:\n"
+"\n"
+"§4\n"
+"\n"
+"§5 converts this counting question into a sum that\n"
+"you can evaluate with familiar tools (§6 and\n"
+"§7).\n"
+"\n"
+"**Your task**: Compute that §8 has\n"
+"6 elements given the fiber sizes above."
 msgstr ""
 
 #. §0: `i.succ ≠ 0`
@@ -44242,6 +46345,40 @@ msgstr ""
 msgid "The sum type Fin n ⊕ Fin m has n + m elements."
 msgstr ""
 
+#. §0: `(a, b) ∈ s.offDiag`
+#. §1: `a ∈ s`
+#. §2: `b ∈ s`
+#. §3: `a ≠ b`
+#. §4: `a ≠ b`
+#. §5: `(a, b) ∈ s.offDiag`
+#. §6: `(b, a) ∈ s.offDiag`
+#. §7: `(a, b)`
+#. §8: `(b, a)`
+#. §9: `Ne.symm`
+#: Game.Levels.Products.L13_OffDiagExtraction
+msgid "# Extracting from the Off-Diagonal\n"
+"\n"
+"In the previous level you built off-diagonal membership from\n"
+"component memberships and a disequality. Now let's go the\n"
+"other direction: **extract** information from an off-diagonal\n"
+"hypothesis.\n"
+"\n"
+"If §0, you can extract three facts:\n"
+"- §1\n"
+"- §2\n"
+"- §3\n"
+"\n"
+"This extraction is more interesting than product extraction\n"
+"(which gives only two facts) because you also get the\n"
+"**distinctness proof** §4.\n"
+"\n"
+"**Your task**: Given §5, prove §6.\n"
+"\n"
+"This shows that the off-diagonal is **symmetric**: if §7 is\n"
+"an ordered pair of distinct elements, then so is §8.\n"
+"You'll need to flip the disequality using §9."
+msgstr ""
+
 #: Game.Levels.Powerset.L21_SingletonSubsets
 msgid "The number of 1-element subsets of s equals s.card."
 msgstr ""
@@ -44404,6 +46541,13 @@ msgstr ""
 msgid "Image Distributes Over Union"
 msgstr ""
 
+#. §0: `s ×ˢ s`
+#. §1: `s.diag ∪ s.offDiag`
+#: Game.Levels.Products.L20_AlgebraicIdentity
+msgid "Start the same way as the structural decomposition:\n"
+"replace §0 with §1."
+msgstr ""
+
 #. §0: `rw [Finset.mem_antidiagonal] at hp`
 #. §1: `rw [sq]`
 #. §2: `have h_eq : p.2 = n - p.1 := by omega`
@@ -44521,6 +46665,13 @@ msgstr ""
 
 #: Game.Levels.CountingTypes.L06_FallingFactorialIdentity
 msgid "The falling factorial 3^(3) = 3! = 6."
+msgstr ""
+
+#. §0: `5 • 5 = 25`
+#. §1: `rfl`
+#: Game.Levels.Products.L21_Boss
+msgid "The goal §0 is true by\n"
+"definition. Try §1."
 msgstr ""
 
 #: Game.Levels.FinsetImage.L22_ShowTactic
@@ -45095,6 +47246,10 @@ msgstr ""
 msgid "The Vandermonde m=1 sum equals Pascal's recurrence terms."
 msgstr ""
 
+#: Game.Levels.Products.L19_GeneralDecomposition
+msgid "The General Decomposition Identity"
+msgstr ""
+
 #. §0: `sum_comm`
 #. §1: `f(x, y)`
 #. §2: `s`
@@ -45125,6 +47280,43 @@ msgstr ""
 #: Game.Levels.PsetCardinality.L10_InjectionCounting
 msgid "Convert to falling factorial, resolve the abstract domain via\n"
 "equivalence, evaluate, then unfold. Two worlds combined."
+msgstr ""
+
+#. §0: `s ×ˢ s = s.diag ∪ s.offDiag`
+#. §1: `Finset.disjoint_diag_offDiag`
+#. §2: ```
+#. Finset.disjoint_diag_offDiag : Disjoint s.diag s.offDiag
+#. ```
+#. §3: `(a, b)`
+#. §4: `a = b`
+#. §5: `a ≠ b`
+#. §6: `card_union_of_disjoint`
+#. §7: $$|A \\cup B| = |A| + |B| \\quad \\text{when } A \\cap B = \\emptyset$$
+#. §8: `s.card = 3`
+#. §9: `(s.diag ∪ s.offDiag).card`
+#: Game.Levels.Products.L18_DisjointnessCoaching
+msgid "# The Diagonal and Off-Diagonal Are Disjoint\n"
+"\n"
+"The previous level showed that §0.\n"
+"For this decomposition to be useful for **counting**, we need\n"
+"to know the union is **disjoint** — no pair belongs to both\n"
+"the diagonal and the off-diagonal.\n"
+"\n"
+"This is §1:\n"
+"\n"
+"§2\n"
+"\n"
+"A pair §3 in the diagonal has §4. A pair in the\n"
+"off-diagonal has §5. These conditions are contradictory,\n"
+"so the intersection is empty.\n"
+"\n"
+"**Combined with §6**: When two finsets\n"
+"are disjoint, the cardinality of their union is the sum:\n"
+"\n"
+"§7\n"
+"\n"
+"**Your task**: Given §8, compute\n"
+"§9."
 msgstr ""
 
 #: Game.Levels.Cardinality.L07_InsertIdempotency
@@ -45293,6 +47485,12 @@ msgid "The summand §0 has the form §1.\n"
 "You'll use §4 at the end to close the algebra."
 msgstr ""
 
+#. §0: `card_union_of_disjoint`
+#. §1: `disjoint_diag_offDiag`
+#: Game.Levels.Products.L21_Boss
+msgid "Apply §0 with §1."
+msgstr ""
+
 #. §0: `a.val = b.val`
 #. §1: `«{ha}»`
 #. §2: `«{hb}»`
@@ -45312,11 +47510,6 @@ msgstr ""
 #: Game.Levels.BigOpIntro.L02_SumSingleton
 #: Game.Levels.BigOpIntro.L09_BaseCaseContrast
 msgid "First substitute §0 with its value using §1."
-msgstr ""
-
-#: Game.Levels.BinomialCoefficients.L16_Boss
-msgid "Disabled: gives a closed form for choose n 2 that bypasses the\n"
-"intended induction proof."
 msgstr ""
 
 #. §0: `ring_nf`
@@ -45802,6 +47995,10 @@ msgstr ""
 msgid "Evaluate the remaining §0 types to get concrete numbers."
 msgstr ""
 
+#: Game.Levels.Products.L13_OffDiagExtraction
+msgid "Off-Diagonal Extraction"
+msgstr ""
+
 #. §0: `«{h}»`
 #. §1: `rw [Finset.mem_insert, Finset.mem_insert, Finset.mem_singleton] at h`
 #: Game.Levels.FinsetBasics.L12_ProvingNonMembership
@@ -45959,6 +48156,53 @@ msgstr ""
 
 #: Game.Levels.FinsetInduction.L03_InductiveStep
 msgid "The inductive step: given IH for s, prove for insert a s."
+msgstr ""
+
+#. §0: `s ×ˢ t`
+#. §1: `Finset.sigma`
+#. §2: ```
+#. Finset.sigma : Finset ι → (∀ i, Finset (α i)) → Finset (Σ i, α i)
+#. ```
+#. §3: `s`
+#. §4: `t i`
+#. §5: `i`
+#. §6: `s.sigma t`
+#. §7: `⟨i, a⟩`
+#. §8: `i ∈ s`
+#. §9: `a ∈ t i`
+#. §10: ```
+#. Finset.mem_sigma : a ∈ s.sigma t ↔ a.1 ∈ s ∧ a.2 ∈ t a.1
+#. ```
+#. §11: `mem_product`
+#. §12: `a.2 ∈ t a.1`
+#. §13: `⟨1, 3⟩ ∈ s.sigma t`
+#. §14: `1 ∈ s`
+#. §15: `3 ∈ t 1`
+#: Game.Levels.Products.L06_SigmaIntro
+msgid "# When the Second Component Depends on the First\n"
+"\n"
+"In §0, the two finsets are independent — every first\n"
+"component is paired with every second component. But what if the\n"
+"set of valid second components *depends* on which first component\n"
+"you chose?\n"
+"\n"
+"§1 handles this:\n"
+"\n"
+"§2\n"
+"\n"
+"Given a finset §3 of indices and a family of finsets §4 (one\n"
+"for each index §5), §6 is the finset of dependent pairs\n"
+"§7 where §8 and §9.\n"
+"\n"
+"**Membership characterization**:\n"
+"§10\n"
+"\n"
+"Notice the key difference from §11: the second condition\n"
+"is §12 — the finset for the second component **depends\n"
+"on the value of the first component**.\n"
+"\n"
+"**Your task**: Prove that §13 given that\n"
+"§14 and §15."
 msgstr ""
 
 #. §0: `Finset.Subset.antisymm`
@@ -46298,6 +48542,10 @@ msgstr ""
 msgid "Try §0 again."
 msgstr ""
 
+#: Game.Levels.Products.L18_DisjointnessCoaching
+msgid "Compute the cardinality of a disjoint diagonal/off-diagonal union."
+msgstr ""
+
 #: Game.Levels.PsetFinset.L02_DoubleComplementSubset
 msgid "Under subset, double complement recovers the subset exactly."
 msgstr ""
@@ -46494,6 +48742,13 @@ msgid "You need §0. You know §1 and §2,\n"
 "so §3. Then §4, so §5."
 msgstr ""
 
+#. §0: `(s.sigma (fun _ => s)).card`
+#. §1: `Finset.card_sigma`
+#: Game.Levels.Products.L21_Boss
+msgid "**Part 2**: Compute §0. This is a\n"
+"constant-fiber sigma. What does §1 give you?"
+msgstr ""
+
 #. §0: `Nat.choose_symm (h : k ≤ n)`
 #. §1: `choose n (n - k) = choose n k`
 #. §2: `n := n+6`
@@ -46558,6 +48813,10 @@ msgstr ""
 
 #: Game.Levels.Cardinality.L14_ConcreteInclusionExclusion
 msgid "Concrete Inclusion-Exclusion"
+msgstr ""
+
+#: Game.Levels.Products.L18_DisjointnessCoaching
+msgid "Disjointness and Cardinality"
 msgstr ""
 
 #. §0: `Finset.mem_antidiagonal`
@@ -46965,6 +49224,13 @@ msgid "You need §0 to transfer the cardinality fact. How do\n"
 "you prove two finsets are equal from element-wise equivalence?"
 msgstr ""
 
+#. §0: `s`
+#. §1: `Finset.sum_const`
+#: Game.Levels.Products.L21_Boss
+msgid "The fibers are all §0, so the sum is constant. Use\n"
+"§1 to simplify."
+msgstr ""
+
 #. §0: `rw [← Finset.card_eq_zero]`
 #. §1: `s.card = 0`
 #. §2: `exact hs`
@@ -47036,6 +49302,14 @@ msgstr ""
 #. §0: `constructor`
 #: Game.Levels.FinsetImage.L17_WhyInjectivityMatters
 msgid "Use §0 to split into the membership and non-membership parts."
+msgstr ""
+
+#. §0: `rw [Finset.sum_range_succ]`
+#. §1: `i = 2`
+#: Game.Levels.Products.L07_ConcreteSigma
+#: Game.Levels.Products.L08_ConcreteSigmaFormula
+msgid "Try §0 to peel off\n"
+"the §1 term."
 msgstr ""
 
 #: Game.Levels.FinsetBasics.L04_RangeOfNaturals
@@ -47205,6 +49479,35 @@ msgstr ""
 msgid "§0: use §1"
 msgstr ""
 
+#. §0: $$|s.\\text{sigma}\\ (\\lambda\\_.\\ t)| = \\sum_{i \\in s} |t| = |s| \\cdot |t| = |s \\times^s t|$$
+#. §1: `Finset.product`
+#. §2: `Finset.sigma`
+#. §3: `Σ _ : α, β`
+#. §4: `α × β`
+#. §5: `s.sigma (fun _ => t)`
+#. §6: `s ×ˢ t`
+#. §7: `sum_const`
+#. §8: $\\sum_{i \\in s} c = |s| \\cdot c$
+#: Game.Levels.Products.L10_SigmaRecovery
+msgid "You've proved that constant-fiber sigma is exactly product:\n"
+"\n"
+"§0\n"
+"\n"
+"This confirms that §1 is the special case of\n"
+"§2 where the fiber doesn't depend on the index.\n"
+"Sigma is the generalization; product is the uniform case.\n"
+"\n"
+"This isn't just a cardinality coincidence — it reflects a\n"
+"structural fact. The type §3 is isomorphic to\n"
+"§4 (a dependent pair with a constant family is just an\n"
+"ordinary pair). So §5 and §6 have\n"
+"the same elements, not just the same count.\n"
+"\n"
+"**Connection to §7**: The identity\n"
+"§8 from the Big Operators world\n"
+"is what bridges sigma cardinality to product cardinality."
+msgstr ""
+
 #. §0: $\\{1, 2, 3\\}$
 #. §1: $n \\mapsto 0$
 #. §2: $\\{0\\}$
@@ -47271,6 +49574,14 @@ msgstr ""
 #: Game.Levels.FinNavigation.L16_Boss
 msgid "Now §0 and §1. Case-split on §2:\n"
 "§3"
+msgstr ""
+
+#. §0: `rw [Finset.sum_range_succ]`
+#. §1: `i = 0`
+#: Game.Levels.Products.L07_ConcreteSigma
+#: Game.Levels.Products.L08_ConcreteSigmaFormula
+msgid "Try §0 once more\n"
+"for §1."
 msgstr ""
 
 #: Game.Levels.CountingTypes.L08_CountingInjections
@@ -47490,7 +49801,7 @@ msgstr ""
 #. §4: `s ×ˢ t`
 #. §5: `\\x\\^s`
 #. §6: `\\times\\^s`
-#: Game.Levels.Cardinality.L18_MultiplicationPrinciple
+#: Game.Metadata
 msgid "§0 states that\n"
 "§1.\n"
 "\n"
@@ -47561,6 +49872,31 @@ msgid "The goal has §0 on the left — the\n"
 "composition applied to the index. Use §1\n"
 "to unfold this to §2, then substitute both\n"
 "formulas with §3."
+msgstr ""
+
+#. §0: `Ne.symm`
+#. §1: `Ne.symm : a ≠ b → b ≠ a`
+#. §2: `h : a ≠ b`
+#. §3: `Ne.symm h : b ≠ a`
+#. §4: ```
+#. Ne.symm h       -- flip h : a ≠ b to b ≠ a
+#. exact Ne.symm h -- use the flipped disequality
+#. ```
+#. §5: `b ≠ a`
+#. §6: `a ≠ b`
+#: Game.Levels.Products.L13_OffDiagExtraction
+msgid "§0 flips a disequality:\n"
+"\n"
+"§1\n"
+"\n"
+"If you have §2, then §3.\n"
+"\n"
+"## Syntax\n"
+"§4\n"
+"\n"
+"## When to use it\n"
+"When you need §5 but have §6 — for example, when\n"
+"swapping the components of an off-diagonal pair."
 msgstr ""
 
 #. §0: `Finset.mem_insert_self a s`
@@ -47857,6 +50193,42 @@ msgid "Step 1: Compute the image size. Use §0\n"
 "with §1, then simplify with §2 and §3."
 msgstr ""
 
+#. §0: `rw [Finset.mem_product] at h`
+#. §1: `∧`
+#. §2: `exact h.1`
+#. §3: `exact h.2`
+#. §4: `Finset.mem_product`
+#. §5: `↔`
+#. §6: `.mp`
+#. §7: `.mpr`
+#. §8: `Finset.mem_product.mp h`
+#. §9: `h.1 ∈ s ∧ h.2 ∈ t`
+#. §10: `Finset.mem_product.mpr ⟨ha, hb⟩`
+#. §11: `.mp`
+#. §12: `.mpr`
+#. §13: `↔`
+#. §14: `rw`
+#. §15: `exact`
+#: Game.Levels.Products.L03_ExtractFromProduct
+msgid "Extraction from products is the reverse of construction. The\n"
+"pattern is:\n"
+"\n"
+"1. §0 — turn product membership into §1\n"
+"2. §2 or §3 — extract the component you need\n"
+"\n"
+"This is how product membership feeds into other reasoning: you\n"
+"don't work with the product directly, you extract what you need.\n"
+"\n"
+"**Lean tip**: Since §4 is an §5, you can also\n"
+"use §6 and §7 directly without rewriting:\n"
+"- §8 gives the conjunction §9\n"
+"- §10 builds product membership\n"
+"\n"
+"The §11/§12 pattern works with any §13 lemma and is common\n"
+"in Lean library proofs. We teach the §14 + §15 approach\n"
+"because it makes the proof state visible at each step."
+msgstr ""
+
 #: Game.Levels.FinNavigation.L12_RecognizingLast
 msgid "Recognizing the Last Element"
 msgstr ""
@@ -48014,6 +50386,10 @@ msgid "Destructure §0 into its value and bound:\n"
 "§1"
 msgstr ""
 
+#: Game.Levels.Products.L15_OffDiagCard
+msgid "The off-diagonal has card^2 - card elements."
+msgstr ""
+
 #. §0: `n`
 #: Game.Levels.PsetFin.L15_ObtainMeetsDecomposition
 msgid "This is the separation fact from FinNavigation L07, now\n"
@@ -48115,6 +50491,16 @@ msgstr ""
 
 #: Game.Levels.CountingTypes.L06_FallingFactorialIdentity
 msgid "Keep unfolding — peel off the next factor."
+msgstr ""
+
+#. §0: `rw [← Finset.diag_union_offDiag]`
+#. §1: `s ×ˢ s`
+#. §2: `s.diag ∪ s.offDiag`
+#. §3: `hp`
+#: Game.Levels.Products.L17_DecompositionReverse
+msgid "Try §0.\n"
+"This replaces §1 with §2 in the goal,\n"
+"making it match §3 exactly."
 msgstr ""
 
 #. §0: `ring`
@@ -48880,6 +51266,10 @@ msgid "Rewrite both intersection memberships:\n"
 "The first rewrite handles §1, the second handles §2."
 msgstr ""
 
+#: Game.Levels.Products.L14_DiagCard
+msgid "Diagonal Cardinality"
+msgstr ""
+
 #. §0: `rw [hlen, hcard]`
 #. §1: `4 ≠ 3`
 #: Game.Levels.AbstractionLadder.L19_ContrastLevel
@@ -49248,6 +51638,10 @@ msgid "§0 proves §1 for any semilattice with sup.\n"
 "Disabled alongside §5."
 msgstr ""
 
+#: Game.Levels.Products.L05_ProductCardIntegration
+msgid "Product Cardinality Integration"
+msgstr ""
+
 #. §0: `List.Perm.length_eq`
 #. §1: `l₁.Perm l₂ → l₁.length = l₂.length`
 #. §2: ```
@@ -49286,6 +51680,36 @@ msgid "The **peel-IH-ring** pattern is the standard approach for algebraic\n"
 "\n"
 "You'll use this pattern for every sum identity in this world and\n"
 "in the SummationFormulas world that follows."
+msgstr ""
+
+#. §0: `s`
+#. §1: `s.diag`
+#. §2: $$s.\\text{diag} = \\{(a, a) \\mid a \\in s\\}$$
+#. §3: ```
+#. Finset.mem_diag : x ∈ s.diag ↔ x.1 ∈ s ∧ x.1 = x.2
+#. ```
+#. §4: `s`
+#. §5: `s.diag`
+#. §6: `s ×ˢ s`
+#. §7: `(3, 3) ∈ s.diag`
+#. §8: `3 ∈ s`
+#: Game.Levels.Products.L11_Diagonal
+msgid "# Diagonal Pairs\n"
+"\n"
+"Given a finset §0, its **diagonal** §1 is the set of\n"
+"'same-element' pairs:\n"
+"\n"
+"§2\n"
+"\n"
+"The membership characterization is:\n"
+"\n"
+"§3\n"
+"\n"
+"Notice the two conditions: the first component must be in §4,\n"
+"and both components must be **equal**. This means §5 is a\n"
+"subset of §6 — specifically, the pairs on the 'main diagonal.'\n"
+"\n"
+"**Your task**: Prove that §7 given §8."
 msgstr ""
 
 #. §0: `choose n p.1`
@@ -49488,6 +51912,14 @@ msgid "Two rewrites: §0 then §1.\n"
 "\n"
 "These three anchor points help build intuition for the general\n"
 "formula before encountering it in complex proofs."
+msgstr ""
+
+#. §0: `Finset.diag_card`
+#. §1: `s.diag.card`
+#. §2: `s.card`
+#: Game.Levels.Products.L14_DiagCard
+msgid "Rewrite with §0 to replace\n"
+"§1 with §2."
 msgstr ""
 
 #. §0: $$(s \\setminus t) \\cup (s \\setminus u) \\subseteq s \\setminus (t \\cap u)$$
@@ -50138,6 +52570,42 @@ msgid "# Boss: Integrate Everything\n"
 "getting §6."
 msgstr ""
 
+#. §0: `Finset.mem_sigma`
+#. §1: `s.sigma t`
+#. §2: `a ∈ s.sigma t ↔ a.1 ∈ s ∧ a.2 ∈ t a.1`
+#. §3: `⟨i, x⟩`
+#. §4: `s.sigma t`
+#. §5: `i`
+#. §6: `s`
+#. §7: `x`
+#. §8: `t i`
+#. §9: ```
+#. rw [Finset.mem_sigma]       -- rewrite sigma membership
+#. rw [Finset.mem_sigma] at h  -- rewrite a hypothesis
+#. ```
+#. §10: `_ ∈ s.sigma t`
+#. §11: `mem_product`
+#. §12: `a.2 ∈ t a.1`
+#. §13: `a.2 ∈ t`
+#: Game.Levels.Products.L06_SigmaIntro
+msgid "§0 characterizes membership in §1:\n"
+"\n"
+"§2\n"
+"\n"
+"A dependent pair §3 belongs to §4 iff the index\n"
+"§5 belongs to §6 and the value §7 belongs to §8.\n"
+"\n"
+"## Syntax\n"
+"§9\n"
+"\n"
+"## When to use it\n"
+"When the goal or a hypothesis involves §10.\n"
+"\n"
+"## Key difference from §11\n"
+"The second condition is §12 (dependent on the first\n"
+"component), not just §13 (independent)."
+msgstr ""
+
 #. §0: `inl`
 #. §1: `right`
 #. §2: `inr`
@@ -50500,6 +52968,13 @@ msgid "After the rewrites, §0 says §1.\n"
 "§4 sees both facts and closes the goal."
 msgstr ""
 
+#. §0: `rw [Finset.card_product]`
+#. §1: `s.card * (t₁ ∪ t₂).card`
+#: Game.Levels.Products.L05_ProductCardIntegration
+msgid "Start with §0 to split the\n"
+"product cardinality into §1."
+msgstr ""
+
 #. §0: `s ∪ t`
 #. §1: `intro h`
 #. §2: `rw [Finset.mem_union] at h`
@@ -50577,6 +53052,12 @@ msgstr ""
 #: Game.Levels.BigOpAlgebra.L04_ProdConst
 msgid "First split the product §0 into two products using\n"
 "§1."
+msgstr ""
+
+#. §0: `2 ∈ s`
+#. §1: `exact h2`
+#: Game.Levels.Products.L12_OffDiagonal
+msgid "The first goal is §0. Try §1."
 msgstr ""
 
 #. §0: `Finset.subset_univ s`
@@ -50740,6 +53221,47 @@ msgid "§0\n"
 "§4"
 msgstr ""
 
+#. §0: `t`
+#. §1: `card_sigma`
+#. §2: $\\sum_{i \\in s} |t| = |s| \\cdot |t|$
+#. §3: `card_product`
+#. §4: `(s.sigma (fun _ => t)).card = s.card * t.card`
+#. §5: `Finset.card_sigma`
+#. §6: `Finset.sum_const`
+#. §7: `Finset.sum_const`
+#. §8: `\\sum_{x \\in s} c = s.card \\bullet c`
+#. §9: `\\bullet`
+#. §10: `sum_const`
+#. §11: `s.card • t.card`
+#. §12: `•`
+#. §13: `•`
+#. §14: `*`
+#. §15: `rfl`
+#: Game.Levels.Products.L10_SigmaRecovery
+msgid "# When Sigma Reduces to Product\n"
+"\n"
+"The previous level's conclusion claimed that when every fiber\n"
+"has the same size, sigma cardinality recovers product cardinality.\n"
+"Let's **prove** that claim.\n"
+"\n"
+"If §0 is constant — every index gets the same finset — then\n"
+"§1 gives §2,\n"
+"which is exactly §3.\n"
+"\n"
+"**Your task**: Prove that §4.\n"
+"\n"
+"You'll need §5 to convert to a sum, then\n"
+"§6 to evaluate the constant sum. Recall that\n"
+"§7 gives §8\n"
+"where §9 is scalar multiplication.\n"
+"\n"
+"**Heads up**: After applying §10, the goal will show\n"
+"§11 using the §12 (nsmul) notation. Don't worry\n"
+"— for natural numbers, scalar multiplication §13 is the same\n"
+"as ordinary multiplication §14. The goal will close with §15\n"
+"because Lean recognizes this definitional equality."
+msgstr ""
+
 #: Game.Levels.PsetFin.L18_Boss
 msgid "Boss: Phase 1 Complete"
 msgstr ""
@@ -50835,6 +53357,13 @@ msgstr ""
 
 #: Game.Levels.BinomialCoefficients.L11_RetrievalPractice
 msgid "Retrieval Practice"
+msgstr ""
+
+#. §0: `2 ∈ s ∧ 5 ∈ s ∧ 2 ≠ 5`
+#. §1: `constructor`
+#: Game.Levels.Products.L12_OffDiagonal
+msgid "You need §0. Split with §1\n"
+"and handle each part."
 msgstr ""
 
 #. §0: `(n + 1) * Nat.choose n 3 = Nat.choose (n + 1) 4 * 4`

@@ -23,6 +23,7 @@ import Game.Levels.Powerset
 import Game.Levels.BinomialTheorem
 import Game.Levels.PascalsTriangle
 import Game.Levels.PsetCombinatorics
+import Game.Levels.Products
 
 Title "Finite Mathematics"
 Introduction
@@ -68,6 +69,10 @@ Dependency BinomialCoefficients → Powerset
 Dependency Powerset → BinomialTheorem
 Dependency BigOpAlgebra → BinomialTheorem
 Dependency BinomialTheorem → PascalsTriangle
+
+-- Phase 6: Advanced
+Dependency Cardinality → Products
+Dependency SummationFormulas → Products
 
 -- Phase 5 Pset: Combinatorics
 Dependency BinomialCoefficients → PsetCombinatorics

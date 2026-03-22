@@ -1437,7 +1437,67 @@ TheoremDoc Nat.choose_succ_self_right as "Nat.choose_succ_self_right" in "Choose
 Trivializes boundary-value exercises. -/
 TheoremDoc Nat.choose_eq_one_iff as "Nat.choose_eq_one_iff" in "Choose"
 
-/-- Disabled: `Nat.choose_two_right` gives the closed form
-`Nat.choose n 2 = n * (n - 1) / 2`. Bypasses subset counting
-and symmetry arguments. -/
+/-- `Nat.choose_two_right` gives the closed form for choosing 2:
+
+`Nat.choose n 2 = n * (n - 1) / 2`
+
+This is the formula C(n, 2) = n(n-1)/2.
+
+## Syntax
+```
+rw [Nat.choose_two_right]
+```
+
+## When to use it
+When the goal involves `n.choose 2` and you want to work with
+the explicit formula.
+
+## Connection to offDiag
+Since `offDiag_card` gives n^2 - n and `choose_two_right`
+gives n(n-1)/2, the identity offDiag.card = 2 * C(n, 2)
+bridges ordered and unordered pair counting.
+
+## Note
+Disabled in BinomialCoefficients (where the induction proof
+is the lesson). Introduced in Products.
+-/
 TheoremDoc Nat.choose_two_right as "Nat.choose_two_right" in "Choose"
+
+/-- `Finset.card_product s t` states that
+`(s ×ˢ t).card = s.card * t.card`.
+
+This is the **multiplication principle**: the number of pairs
+is the product of the individual counts.
+
+## Syntax
+```
+have h := Finset.card_product s t
+```
+
+## When to use it
+When the goal involves the cardinality of a product `s ×ˢ t`.
+
+## Notation
+`s ×ˢ t` is typed as `\x\^s` or `\times\^s`.
+-/
+TheoremDoc Finset.card_product as "Finset.card_product" in "Card"
+
+/-! ### Products-specific disabled theorems -/
+
+/-- `Finset.product_subset_product` proves `s ×ˢ t ⊆ s' ×ˢ t'`
+from `s ⊆ s'` and `t ⊆ t'`.
+
+Disabled to force the learner to use `mem_product` extraction
+and `mk_mem_product` construction manually.
+-/
+TheoremDoc Finset.product_subset_product as "Finset.product_subset_product" in "Product"
+
+/-- `Finset.product_subset_product_left` proves `s ×ˢ t ⊆ s' ×ˢ t`
+from `s ⊆ s'`.
+-/
+TheoremDoc Finset.product_subset_product_left as "Finset.product_subset_product_left" in "Product"
+
+/-- `Finset.product_subset_product_right` proves `s ×ˢ t ⊆ s ×ˢ t'`
+from `t ⊆ t'`.
+-/
+TheoremDoc Finset.product_subset_product_right as "Finset.product_subset_product_right" in "Product"

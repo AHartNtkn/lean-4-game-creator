@@ -57,25 +57,6 @@ Together they handle the two fundamental counting scenarios:
 'choose from A or B' vs. 'choose from A and B.'
 "
 
-/-- `Finset.card_product s t` states that
-`(s ×ˢ t).card = s.card * t.card`.
-
-This is the **multiplication principle**: the number of pairs
-is the product of the individual counts.
-
-## Syntax
-```
-have h := Finset.card_product s t
-```
-
-## When to use it
-When the goal involves the cardinality of a product `s ×ˢ t`.
-
-## Notation
-`s ×ˢ t` is typed as `\x\^s` or `\times\^s`.
--/
-TheoremDoc Finset.card_product as "Finset.card_product" in "Card"
-
 TheoremTab "Card"
 NewTheorem Finset.card_product
 

@@ -36,10 +36,6 @@ $\\binom{n}{2} = n(n-1)/2$, shifted to avoid natural number subtraction.
   then close with `ring`.
 "
 
-/-- Disabled: gives a closed form for choose n 2 that bypasses the
-intended induction proof. -/
-TheoremDoc Nat.choose_two_right as "Nat.choose_two_right" in "Choose"
-
 /-- 2 * C(n+2, 2) = (n+1) * (n+2). -/
 Statement (n : ℕ) : 2 * Nat.choose (n + 2) 2 = (n + 1) * (n + 2) := by
   Hint "This requires **induction** on `n`.
