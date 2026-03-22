@@ -1,0 +1,31 @@
+{
+  "action": "continue",
+  "reason": "2 P0 defects and 3 P1 defects. The factorial dependency inversion is a concrete authoring blocker. Inclusion-exclusion lacks a supported practice stage. Both must be fixed before authoring can begin.",
+  "p0Defects": [
+    "Factorial dependency inversion: W17 L03 uses Nat.factorial, which is not introduced until W19. W17's inventory says 'None new.' Fix: move factorial introduction to W17, or replace W17 L03 with a product identity that doesn't use factorial.",
+    "Inclusion-exclusion has no supported practice stage: introduced in W09 L06, jumps directly to unsupported retrieval in pset W13. Fix: add a scaffolded inclusion-exclusion level between W09 and W13 (best candidate: W12)."
+  ],
+  "p1Defects": [
+    "Double counting / pigeonhole coverage is weak: both introduced and practiced only in W26-W27 (two worlds). Core item #10. Fix: add PsetCounting world (W26b) or add practice levels into W23.",
+    "'Choose element from nonempty finset' core proof move is absent from the plan entirely. Fix: add Finset.Nonempty → witness level in W05 or W09.",
+    "W25 has two unrelated centers of gravity (Finsupp and Matrix). Fix: split into two worlds or merge Matrix into W12."
+  ],
+  "p2Defects": [
+    "simp with Finset lemmas never taught — a pervasive real-Lean skill omitted.",
+    "calc blocks not introduced — listed as core LEAN item in coverage map.",
+    "ℕ not Fintype counterexample missing from W11.",
+    "List→Multiset→Finset supported practice compressed into single world W10.",
+    "Branching structure (phases 3/4 parallelism) undocumented for implementers."
+  ],
+  "recommendations": [
+    "1. (P0) Move Nat.factorial introduction to W17 or replace W17 L03 with a factorial-free product identity. Update closure table.",
+    "2. (P0) Add scaffolded inclusion-exclusion level in W12 (CountingTypes) computing card(A ∪ B) for concrete finsets.",
+    "3. (P1) Add PsetCounting world (W26b) with 5-6 levels for bijective proofs, pigeonhole, and double counting practice before Finale.",
+    "4. (P1) Add Finset.Nonempty → witness extraction level in W05 or W09.",
+    "5. (P1) Split W25 into Finsupp and Matrix worlds, or merge Matrix into W12.",
+    "6. (P2) Add one simp-with-Finset-lemmas consolidation level.",
+    "7. (P2) Introduce calc blocks in W09 or W15.",
+    "8. (P2) Document world dependency DAG explicitly."
+  ],
+  "notes": "The plan is strong overall — the coverage closure table, boss map, transfer plan, inventory release plan, and example plan are all well above average. The P0 fixes are straightforward (factorial move + one added level). The P1 fixes require adding ~1-2 worlds and ~2 levels but are clearly scoped. After fixing P0 and P1, this plan should pass."
+}

@@ -1,0 +1,22 @@
+{
+  "completed": [
+    "MeetFin",
+    "FinNavigation",
+    "FinTuples",
+    "PsetFin",
+    "FinsetBasics",
+    "FinsetOperations",
+    "FinsetImage",
+    "PsetFinset",
+    "Cardinality",
+    "AbstractionLadder",
+    "Fintype",
+    "CountingTypes",
+    "PsetCardinality",
+    "BigOpIntro",
+    "BigOpAlgebra",
+    "FinsetInduction",
+    "SummationFormulas",
+    "PsetBigOp"
+  ]
+}

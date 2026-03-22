@@ -388,6 +388,14 @@ json.dump(wp, open(f, 'w'), indent=2)
       echo "  $WORLD: completed (did not pass review)"
     fi
 
+    # Commit and push after each world
+    cd "$PROJECT_DIR"
+    git add "$COURSE/" .studio-state/world-progress.json
+    git commit -m "$COURSE: complete world $WORLD
+
+Co-Authored-By: Claude <noreply@anthropic.com>" || echo "  Nothing to commit"
+    git push || echo "  Push failed"
+
   done < "$WORLD_LIST"
 
   # --- Phase 3: Cross-world review ---

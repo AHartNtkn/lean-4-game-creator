@@ -1,0 +1,17 @@
+{
+  "action": "done",
+  "reason": "Round 3 review finds 0 P0, 0 P1 defects. All 5 prior P0s and 4 prior P1s are resolved. Scope covers all long_term.md topics. Proof-move map tracks 8 moves with full 5-stage cycles. All 18 definitions have example plans, all 6 counterexamples addressed. Transfer plan is present and detailed. Coverage closure has 27/33 strong items, 6 partial (all defensible supporting topics), 0 weak, 0 illusory.",
+  "p0Defects": [],
+  "p1Defects": [],
+  "p2Defects": [
+    "List→Multiset→Finset supported practice compressed into W10 — introduction and practice in same world, only a cross-connection in W14 L08",
+    "Phase 6 (W24-W26) has no dedicated pset — learner jumps from introduction to capstone W29",
+    "Finsupp and Matrix have no transfer stage — introduced in own world and only retrieved in W29"
+  ],
+  "recommendations": [
+    "During W13 authoring, add one level requiring the learner to choose between List/Multiset/Finset reasoning — gives the abstraction ladder a retrieval point outside W10",
+    "During W29 authoring, ensure at least one level uses Finsupp or Matrix in a genuinely new context to convert retrieval into transfer",
+    "If Phase 6 worlds prove substantial during authoring, consider inserting a short PsetAdvanced between W26 and W27 — decision can be deferred"
+  ],
+  "notes": "All 3 P2 items are actionable during authoring without plan revision. The review is round 3 with clear evidence of prior defect resolution."
+}
