@@ -8,7 +8,7 @@ You are authoring a complete world for a lean4game course. This is Phase 2a of t
 
 1. `current-course.txt` — the course directory name
 2. `current-world.txt` — the world you will author
-3. `{course}/PLAN.md` — full course architecture (read the section for your world)
+3. `{course}/PLAN.md` — full course architecture (read the section for your world). **The plan contains level sketches — these are starting points, not templates. You must substantially develop them**: add layered hints, write conclusions, craft docstrings to house standard, design branch hints for common wrong turns, verify exploit resistance, and ensure proofs are interactive tactic sequences. Copying a plan sketch into GameServer boilerplate is not authoring.
 4. `{course}/Game.lean` — current game structure, imports, dependencies
 5. `{course}/Game/Levels/` — list existing world directories to understand what's already built
 6. `{course}/Game/Metadata.lean` — if it exists, read for shared definitions and instances
@@ -26,6 +26,7 @@ Treat the course as a layered object. Every world must address all five layers:
 ## Non-negotiable behavior
 
 - Never output skeleton Lean code. Write complete code or do not write code yet.
+- Never copy PLAN.md level sketches as-is. The plan provides statements and sample proofs. You must add: layered hint sequences (strategy → tool → rescue), Branch hints for wrong turns, level conclusions, full docstrings, exploit-resistance checks, and interactive proof design. If your output for a level is close to the plan sketch, you have not done your job.
 - Never let theorem coverage substitute for proof-move coverage.
 - Never let abstract coverage substitute for concrete example coverage.
 

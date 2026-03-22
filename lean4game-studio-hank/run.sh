@@ -37,7 +37,7 @@ step() {
 
   local log_file="$STATE_DIR/logs/${description//[ \/]/_}.jsonl"
   mkdir -p "$STATE_DIR/logs"
-  echo "  [$description]"
+  echo "  [$(date '+%Y-%m-%d %H:%M:%S')] [$description]"
   cd "$PROJECT_DIR"
 
   # Build reference file args
@@ -48,6 +48,8 @@ step() {
     fi
   done
 
+  echo "{\"type\":\"studio\",\"event\":\"step_start\",\"step\":\"$description\",\"timestamp\":\"$(date -Iseconds)\"}" > "$log_file"
+
   claude -p "$(cat "$prompt_file")" \
     --model "$model" \
     --tools "$TOOLS" \
@@ -56,7 +58,7 @@ step() {
     --output-format stream-json \
     --verbose \
     "${ref_args[@]}" \
-    | tee "$log_file" \
+    | tee -a "$log_file" \
     | python3 -uc "
 import sys, json
 for line in sys.stdin:
@@ -89,8 +91,12 @@ for line in sys.stdin:
 " \
     || {
       echo "  WARNING: claude exited with error during: $description"
+      echo "{\"type\":\"studio\",\"event\":\"step_end\",\"step\":\"$description\",\"status\":\"error\",\"timestamp\":\"$(date -Iseconds)\"}" >> "$log_file"
       return 1
     }
+
+  echo "{\"type\":\"studio\",\"event\":\"step_end\",\"step\":\"$description\",\"status\":\"ok\",\"timestamp\":\"$(date -Iseconds)\"}" >> "$log_file"
+  echo "  [$(date '+%Y-%m-%d %H:%M:%S')] [$description] done"
 }
 
 read_json_field() {
@@ -364,8 +370,7 @@ while true; do
     done
 
     if [ "$WORLD_PASSED" = false ]; then
-      echo "FATAL: $WORLD did not pass after $MAX_REVIEW_ROUNDS rounds"
-      exit 1
+      echo "  WARNING: $WORLD did not pass after $MAX_REVIEW_ROUNDS rounds — moving on"
     fi
 
     # Mark complete
@@ -377,7 +382,11 @@ wp['completed'].append('$WORLD')
 json.dump(wp, open(f, 'w'), indent=2)
 "
     archive_reviews "$COURSE" "$WORLD"
-    echo "  $WORLD: PASSED"
+    if [ "$WORLD_PASSED" = true ]; then
+      echo "  $WORLD: PASSED"
+    else
+      echo "  $WORLD: completed (did not pass review)"
+    fi
 
   done < "$WORLD_LIST"
 
