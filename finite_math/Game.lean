@@ -26,6 +26,7 @@ import Game.Levels.PsetCombinatorics
 import Game.Levels.Products
 import Game.Levels.Finsupp
 import Game.Levels.Matrices
+import Game.Levels.CountingTechniques
 
 Title "Finite Mathematics"
 Introduction
@@ -79,6 +80,11 @@ Dependency Fintype → Finsupp
 Dependency Fintype → Matrices
 Dependency FinTuples → Matrices
 Dependency BigOpAlgebra → Matrices
+
+-- Phase 7: Capstone (counting techniques)
+Dependency PsetCardinality → CountingTechniques
+Dependency PsetBigOp → CountingTechniques
+Dependency PsetCombinatorics → CountingTechniques
 
 -- Phase 5 Pset: Combinatorics
 Dependency BinomialCoefficients → PsetCombinatorics

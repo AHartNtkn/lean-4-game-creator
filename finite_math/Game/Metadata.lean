@@ -1164,9 +1164,22 @@ TacticDoc «change»
 /-! ### push_neg tactic -/
 
 /-- `push_neg` pushes negations inward through quantifiers and connectives.
-For example, `¬∀ x, P x` becomes `∃ x, ¬P x`.
 
-Disabled in levels where `by_contra` is the intended technique.
+## Syntax
+```
+push_neg at h    -- transform hypothesis h
+push_neg         -- transform the goal
+```
+
+## Transformations
+- `¬(∀ x, P x)` becomes `∃ x, ¬P x`
+- `¬(∃ x, P x)` becomes `∀ x, ¬P x`
+- `¬(a ≤ b)` becomes `b < a`
+- `¬(a < b)` becomes `b ≤ a`
+
+## When to use it
+After `by_contra` gives you a negated hypothesis. `push_neg`
+makes the negation usable by converting it to a positive form.
 -/
 TacticDoc push_neg
 
