@@ -5,7 +5,8 @@ import Game.Levels.PsetBigOp.L04_DoubleSumSwap
 import Game.Levels.PsetBigOp.L05_FilteredSum
 import Game.Levels.PsetBigOp.L06_ProductInduction
 import Game.Levels.PsetBigOp.L07_CalcChain
-import Game.Levels.PsetBigOp.L08_Boss
+import Game.Levels.PsetBigOp.L08_TelescopingRetrieval
+import Game.Levels.PsetBigOp.L09_Boss
 
 World "PsetBigOp"
 Title "Problem Set: Big Operators"
@@ -35,5 +36,6 @@ transfer to integration:
 5. Filtered sum conversion (`sum_filter`)
 6. Product identity by finset induction
 7. Calc chain: sum-product decomposition
-8. Boss: finset induction with natural subtraction
+8. Telescoping retrieval: consecutive products
+9. Boss: finset induction with natural subtraction
 "

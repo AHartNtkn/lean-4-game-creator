@@ -1,7 +1,7 @@
 import Game.Metadata
 
 World "PsetBigOp"
-Level 8
+Level 9
 
 Title "Boss: Squared Differences"
 

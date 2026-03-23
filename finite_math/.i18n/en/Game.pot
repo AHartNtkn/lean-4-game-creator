@@ -11114,7 +11114,7 @@ msgstr ""
 #. §1: `    Finset.card_insert_of_notMem ha]`
 #. §2: `have h : (f a + 1) ^ 2 = f a ^ 2 + 2 * f a + 1 := by ring`
 #. §3: `omega`
-#: Game.Levels.PsetBigOp.L08_Boss
+#: Game.Levels.PsetBigOp.L09_Boss
 msgid "Try:\n"
 "§0\n"
 "§1\n"
@@ -12938,6 +12938,15 @@ msgid "§0 resolves a conditional expression when the condition is true:\n"
 "\n"
 "## When to use it\n"
 "When the goal contains §3 and you have a proof §4."
+msgstr ""
+
+#. §0: `have h : (n + 1) * (n + 2) = n * (n + 1) + 2 * (n + 1) := by ring`
+#. §1: `rw [h]`
+#. §2: `omega`
+#: Game.Levels.PsetBigOp.L08_TelescopingRetrieval
+msgid "Try:\n"
+"§0\n"
+"then §1 then §2."
 msgstr ""
 
 #. §0: `Finset.powersetCard k s`
@@ -16579,7 +16588,8 @@ msgstr ""
 #: Game.Levels.SummationFormulas.L11_Factorial
 #: Game.Levels.SummationFormulas.L12_TelescopingSum
 #: Game.Levels.SummationFormulas.L14_Boss
-#: Game.Levels.PsetBigOp.L08_Boss
+#: Game.Levels.PsetBigOp.L08_TelescopingRetrieval
+#: Game.Levels.PsetBigOp.L09_Boss
 #: Game.Levels.BinomialCoefficients.L12_CoachingBossPattern
 #: Game.Levels.BinomialCoefficients.L14_GaussSum
 #: Game.Levels.BinomialCoefficients.L15_HockeyStick
@@ -17184,7 +17194,7 @@ msgstr ""
 #. §5: `ring`
 #. §6: `omega`
 #. §7: `ih`
-#: Game.Levels.PsetBigOp.L08_Boss
+#: Game.Levels.PsetBigOp.L09_Boss
 msgid "After peeling, the goal has §0.\n"
 "§1 can't handle natural subtraction, and §2 alone\n"
 "can't see that §3.\n"
@@ -17644,6 +17654,10 @@ msgid "Use\n"
 "§0\n"
 "to get §1.\n"
 "Then §2 simplifies to §3."
+msgstr ""
+
+#: Game.Levels.PsetBigOp.L08_TelescopingRetrieval
+msgid "The sum of (i+1)*(i+2) - i*(i+1) over range n equals n*(n+1). A telescoping sum."
 msgstr ""
 
 #. §0: `n`
@@ -25651,6 +25665,11 @@ msgstr ""
 msgid "If s and t have the same elements, they are equal."
 msgstr ""
 
+#. §0: `range 0`
+#: Game.Levels.PsetBigOp.L08_TelescopingRetrieval
+msgid "**Base case**: The sum over §0 is empty."
+msgstr ""
+
 #. §0: `x ∈ s ∩ t`
 #. §1: `x ∈ s`
 #. §2: `x ∈ t`
@@ -25923,7 +25942,7 @@ msgstr ""
 #. §19: `sum_empty`
 #. §20: `card_empty`
 #. §21: `ring`
-#: Game.Levels.PsetBigOp.L08_Boss
+#: Game.Levels.PsetBigOp.L09_Boss
 msgid "Congratulations! You've completed the **Big Operators Problem Set**.\n"
 "\n"
 "You proved:\n"
@@ -28808,7 +28827,7 @@ msgstr ""
 #. §5: `omega`
 #. §6: `ih`
 #. §7: `have`
-#: Game.Levels.PsetBigOp.L08_Boss
+#: Game.Levels.PsetBigOp.L09_Boss
 msgid "**Inductive step**: Peel three things using §0:\n"
 "1. The left sum with §1\n"
 "2. The right sum with §2\n"
@@ -30785,6 +30804,46 @@ msgstr ""
 msgid "One factor down. Keep unfolding — peel off the next factor."
 msgstr ""
 
+#. §0: $\\sum_{i=0}^{n-1} ((i+1)(i+2) - i(i+1)) = n(n+1)$
+#. §1: $(i+1)(i+2) - i(i+1)$
+#. §2: $f(i) = i(i+1)$
+#. §3: $f(n) - f(0) = n(n+1) - 0 = n(n+1)$
+#. §4: $(i+1)(i+2) - i(i+1) = (i+1)(i+2-i) = 2(i+1)$
+#. §5: $\\sum 2(i+1) = 2(1 + 2 + \\cdots + n) = n(n+1)$
+#. §6: $f(i) = i^2$
+#. §7: $f(i) = i!$
+#. §8: $f(i) = i(i+1)$
+#. §9: `have`
+#. §10: `ring`
+#. §11: `rw`
+#. §12: `omega`
+#. §13: `rw`
+#. §14: `omega`
+#. §15: `rw`
+#. §16: `omega`
+#: Game.Levels.PsetBigOp.L08_TelescopingRetrieval
+msgid "You proved that §0.\n"
+"\n"
+"**Telescoping with consecutive products**: Each term\n"
+"§1 is the difference between consecutive values\n"
+"of §2. All intermediate values cancel, leaving\n"
+"§3.\n"
+"\n"
+"**Arithmetic check**: §4.\n"
+"So this is also §5 — the\n"
+"familiar sum-of-first-n formula. The telescoping viewpoint and the\n"
+"direct computation give the same answer, as they must.\n"
+"\n"
+"**The technique transfers**: In SummationFormulas you telescoped\n"
+"with §6 (squares) and §7 (factorial). Here,\n"
+"§8 (consecutive products). The proof skeleton is\n"
+"identical every time: induction, range-peel, IH, then §9 +\n"
+"§10 + §11 + §12 to close the gap. (In simpler cases like\n"
+"squares, the §13 step is optional — §14 can handle it directly.\n"
+"With products of distinct factors, the extra §15 helps §16\n"
+"by reducing the number of nonlinear terms.)"
+msgstr ""
+
 #. §0: `Function.Injective f`
 #. §1: $$\\forall a\\; b,\\; f(a) = f(b) \\implies a = b$$
 #. §2: `f`
@@ -31704,7 +31763,7 @@ msgstr ""
 #: Game.Levels.SummationFormulas.L08_ExponentialBound
 #: Game.Levels.SummationFormulas.L12_TelescopingSum
 #: Game.Levels.SummationFormulas.L14_Boss
-#: Game.Levels.PsetBigOp.L08_Boss
+#: Game.Levels.PsetBigOp.L09_Boss
 #: Game.Levels.CountingTechniques.L05_SurjectionApplication
 #: Game.Levels.Finale.L10_FinsuppIntegration
 #: Game.Levels.Finale.L11_FinsetInductionIntegration
@@ -33835,7 +33894,7 @@ msgid "# Identifying a Tuple from a Formula\n"
 msgstr ""
 
 #. §0: `s`
-#: Game.Levels.PsetBigOp.L08_Boss
+#: Game.Levels.PsetBigOp.L09_Boss
 msgid "This is a finset induction problem. Set up induction on §0."
 msgstr ""
 
@@ -35434,6 +35493,38 @@ msgstr ""
 msgid "Create a helper:\n"
 "§0\n"
 "Then §1."
+msgstr ""
+
+#. §0: $(i+1)^2 - i^2$
+#. §1: $$\\sum_{i=0}^{n-1} \\bigl((i+1)(i+2) - i(i+1)\\bigr) = n(n+1)$$
+#. §2: $f(i+1) - f(i)$
+#. §3: $f(i) = i(i+1)$
+#. §4: $$(1 \\cdot 2 - 0 \\cdot 1) + (2 \\cdot 3 - 1 \\cdot 2) + \\cdots + (n(n+1) - (n-1)n) = n(n+1) - 0 = n(n+1)$$
+#. §5: `n`
+#. §6: `have`
+#. §7: `ring`
+#. §8: `omega`
+#: Game.Levels.PsetBigOp.L08_TelescopingRetrieval
+msgid "# Telescoping Retrieval\n"
+"\n"
+"In SummationFormulas, you proved a **telescoping sum** where each\n"
+"term was a difference of consecutive squares: §0.\n"
+"Here is a fresh instance of the same technique with a different\n"
+"function.\n"
+"\n"
+"Prove:\n"
+"\n"
+"§1\n"
+"\n"
+"**Why does it telescope?** Each term is §2 where\n"
+"§3. When you write out the sum:\n"
+"\n"
+"§4\n"
+"\n"
+"All intermediate products cancel — only the endpoints survive.\n"
+"\n"
+"**Your task**: Prove this by induction on §5, using the same\n"
+"range-peel + IH + §6/§7/§8 technique as before."
 msgstr ""
 
 #. §0: `∅ ⊆ s`
@@ -37733,7 +37824,7 @@ msgid "The two sums range over the same finset. Use\n"
 "equal for each index."
 msgstr ""
 
-#: Game.Levels.PsetBigOp.L08_Boss
+#: Game.Levels.PsetBigOp.L09_Boss
 msgid "The sum of (f(x)+1)^2 - f(x)^2 over s equals 2 times the sum of f plus card."
 msgstr ""
 
@@ -40686,6 +40777,7 @@ msgstr ""
 
 #. §0: `sum_range_succ`
 #: Game.Levels.SummationFormulas.L12_TelescopingSum
+#: Game.Levels.PsetBigOp.L08_TelescopingRetrieval
 msgid "**Inductive step**: Peel the last term with §0\n"
 "and substitute the IH."
 msgstr ""
@@ -43263,7 +43355,7 @@ msgstr ""
 
 #. §0: `rw [Finset.sum_empty, Finset.sum_empty, Finset.card_empty]`
 #. §1: `ring`
-#: Game.Levels.PsetBigOp.L08_Boss
+#: Game.Levels.PsetBigOp.L09_Boss
 msgid "Rewrite both sums and the cardinality:\n"
 "§0\n"
 "then §1."
@@ -47887,6 +47979,26 @@ msgid "# Connecting Fin to Finset.range\n"
 "carries."
 msgstr ""
 
+#. §0: `n * (n + 1) + ((n + 1) * (n + 2) - n * (n + 1)) = (n + 1) * (n + 2)`
+#. §1: `have`
+#. §2: `ring`
+#. §3: `rw`
+#. §4: `omega`
+#. §5: $(n+1)(n+2) = n(n+1) + 2(n+1)$
+#. §6: `ring`
+#. §7: `rw [h]`
+#. §8: $(n+1)(n+2)$
+#. §9: `omega`
+#: Game.Levels.PsetBigOp.L08_TelescopingRetrieval
+msgid "The goal involves natural number subtraction:\n"
+"§0.\n"
+"\n"
+"Use the §1 + §2 + §3 + §4 technique: establish that\n"
+"§5 with §6, rewrite with §7\n"
+"to eliminate the product §8, then §9 handles the\n"
+"resulting subtraction arithmetic."
+msgstr ""
+
 #. §0: `show`
 #. §1: `Function.Injective (fun n => n * 2)`
 #. §2: `intro`
@@ -48215,53 +48327,6 @@ msgstr ""
 msgid "You need §0. The first two come\n"
 "from §1, and for §2 you can use §3 to flip\n"
 "the §4 from §5."
-msgstr ""
-
-#. §0: `sum_empty`
-#. §1: `sum_insert`
-#. §2: `sum_singleton`
-#. §3: `sum_congr`
-#. §4: `card_eq_sum_ones`
-#. §5: `sum_add_distrib`
-#. §6: `sum_const`
-#. §7: `sum_union`
-#. §8: `sum_comm`
-#. §9: `sum_filter`
-#. §10: `calc`
-#. §11: `ring`
-#. §12: `Finset.induction_on`
-#. §13: `have`
-#. §14: `ring`
-#. §15: `omega`
-#. §16: `sum_const`
-#. §17: `sum_comm`
-#. §18: `sum_filter`
-#: Game.Levels.PsetBigOp
-msgid "# Problem Set: Big Operators\n"
-"\n"
-"You've completed four worlds on big operators and induction:\n"
-"\n"
-"- **BigOpIntro**: §0, §1, §2,\n"
-"  §3, §4\n"
-"- **BigOpAlgebra**: §5, §6, §7,\n"
-"  §8, §9, §10, §11\n"
-"- **FinsetInduction**: §12, the collect-and-close\n"
-"  pattern for sums and products\n"
-"- **SummationFormulas**: range-peel + IH + ring, the\n"
-"  §13 + §14 + §15 technique, factorial\n"
-"\n"
-"Now apply these skills to **fresh problems** with sparser hints\n"
-"and no new definitions. The levels progress from retrieval to\n"
-"transfer to integration:\n"
-"\n"
-"1. Concrete sum computation\n"
-"2. Union sum with a constant offset (§16)\n"
-"3. Sum identity by finset induction\n"
-"4. Double-sum interchange (§17)\n"
-"5. Filtered sum conversion (§18)\n"
-"6. Product identity by finset induction\n"
-"7. Calc chain: sum-product decomposition\n"
-"8. Boss: finset induction with natural subtraction"
 msgstr ""
 
 #. §0: `v = m + 1`
@@ -49512,6 +49577,7 @@ msgstr ""
 #: Game.Levels.SummationFormulas.L13_SumComm
 #: Game.Levels.SummationFormulas.L14_Boss
 #: Game.Levels.SummationFormulas.L14_Boss
+#: Game.Levels.PsetBigOp.L08_TelescopingRetrieval
 #: Game.Levels.BinomialCoefficients.L01_BoundaryValues
 #: Game.Levels.BinomialCoefficients.L01_BoundaryValues
 #: Game.Levels.BinomialCoefficients.L01_BoundaryValues
@@ -50647,6 +50713,10 @@ msgid "You have §0 saying §1 and §2 saying\n"
 "§3. These contradict each other — §4 sees this."
 msgstr ""
 
+#: Game.Levels.PsetBigOp.L08_TelescopingRetrieval
+msgid "Telescoping: Consecutive Products"
+msgstr ""
+
 #. §0: `rw [Finset.mem_range]`
 #: Game.Levels.FinsetBasics.L04_RangeOfNaturals
 msgid "Use §0 to convert membership into an inequality."
@@ -51619,6 +51689,23 @@ msgid "§0 states that §1.\n"
 "\n"
 "## Syntax\n"
 "§4"
+msgstr ""
+
+#. §0: `h`
+#. §1: $(n+1)(n+2)$
+#. §2: `rw [h]`
+#. §3: $n(n+1)$
+#. §4: $n(n+1) + 2(n+1) - n(n+1)$
+#. §5: $2(n+1)$
+#. §6: `omega`
+#: Game.Levels.PsetBigOp.L08_TelescopingRetrieval
+msgid "Now rewrite with §0 to replace §1 everywhere:\n"
+"\n"
+"§2\n"
+"\n"
+"After rewriting, the only nonlinear term is §3, and\n"
+"the subtraction §4 simplifies to\n"
+"§5. Then §6 closes the linear arithmetic."
 msgstr ""
 
 #: Game.Levels.Finsupp.L16_SupportCoaching
@@ -52785,6 +52872,54 @@ msgstr ""
 msgid "Rewrite with the formula, then simplify §0's value."
 msgstr ""
 
+#. §0: `sum_empty`
+#. §1: `sum_insert`
+#. §2: `sum_singleton`
+#. §3: `sum_congr`
+#. §4: `card_eq_sum_ones`
+#. §5: `sum_add_distrib`
+#. §6: `sum_const`
+#. §7: `sum_union`
+#. §8: `sum_comm`
+#. §9: `sum_filter`
+#. §10: `calc`
+#. §11: `ring`
+#. §12: `Finset.induction_on`
+#. §13: `have`
+#. §14: `ring`
+#. §15: `omega`
+#. §16: `sum_const`
+#. §17: `sum_comm`
+#. §18: `sum_filter`
+#: Game.Levels.PsetBigOp
+msgid "# Problem Set: Big Operators\n"
+"\n"
+"You've completed four worlds on big operators and induction:\n"
+"\n"
+"- **BigOpIntro**: §0, §1, §2,\n"
+"  §3, §4\n"
+"- **BigOpAlgebra**: §5, §6, §7,\n"
+"  §8, §9, §10, §11\n"
+"- **FinsetInduction**: §12, the collect-and-close\n"
+"  pattern for sums and products\n"
+"- **SummationFormulas**: range-peel + IH + ring, the\n"
+"  §13 + §14 + §15 technique, factorial\n"
+"\n"
+"Now apply these skills to **fresh problems** with sparser hints\n"
+"and no new definitions. The levels progress from retrieval to\n"
+"transfer to integration:\n"
+"\n"
+"1. Concrete sum computation\n"
+"2. Union sum with a constant offset (§16)\n"
+"3. Sum identity by finset induction\n"
+"4. Double-sum interchange (§17)\n"
+"5. Filtered sum conversion (§18)\n"
+"6. Product identity by finset induction\n"
+"7. Calc chain: sum-product decomposition\n"
+"8. Telescoping retrieval: consecutive products\n"
+"9. Boss: finset induction with natural subtraction"
+msgstr ""
+
 #. §0: `Finset.Nat.sum_antidiagonal_swap`
 #. §1: `∑ p ∈ antidiagonal n, f p.swap = ∑ p ∈ antidiagonal n, f p`
 #. §2: ```
@@ -53854,7 +53989,7 @@ msgid "Both directions of §0 are now concrete:\n"
 "goal) using §22."
 msgstr ""
 
-#: Game.Levels.PsetBigOp.L08_Boss
+#: Game.Levels.PsetBigOp.L09_Boss
 msgid "Boss: Squared Differences"
 msgstr ""
 
@@ -55032,6 +55167,8 @@ msgstr ""
 #: Game.Levels.SummationFormulas.L07_GeneralGeometricSum
 #: Game.Levels.SummationFormulas.L12_TelescopingSum
 #: Game.Levels.SummationFormulas.L14_Boss
+#: Game.Levels.PsetBigOp.L08_TelescopingRetrieval
+#: Game.Levels.PsetBigOp.L08_TelescopingRetrieval
 #: Game.Levels.BinomialCoefficients.L16_Boss
 #: Game.Levels.PascalsTriangle.L09_SwapPractice
 #: Game.Levels.PascalsTriangle.L12_PascalFromVandermonde
@@ -55486,7 +55623,7 @@ msgstr ""
 #. §12: `card_insert_of_notMem ha`
 #. §13: `have ... := by ring`
 #. §14: `omega`
-#: Game.Levels.PsetBigOp.L08_Boss
+#: Game.Levels.PsetBigOp.L09_Boss
 msgid "# Boss: Summing Squared Differences\n"
 "\n"
 "Prove by finset induction:\n"
@@ -56977,6 +57114,7 @@ msgstr ""
 #: Game.Levels.SummationFormulas.L08_ExponentialBound
 #: Game.Levels.SummationFormulas.L12_TelescopingSum
 #: Game.Levels.SummationFormulas.L14_Boss
+#: Game.Levels.PsetBigOp.L08_TelescopingRetrieval
 msgid "Induct on §0."
 msgstr ""
 
