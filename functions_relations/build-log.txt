@@ -1,8 +1,8 @@
-⚠ [38/519] Replayed GameServer.RpcHandlers
+⚠ [38/536] Replayed GameServer.RpcHandlers
 warning: GameServer/RpcHandlers.lean:165:25: No translation (en) found for: level completed! 🎉
 warning: GameServer/RpcHandlers.lean:173:25: No translation (en) found for: level completed with warnings… 🎭
 warning: GameServer/RpcHandlers.lean:186:25: No translation (en) found for: intermediate goal solved! 🎉
-⚠ [489/519] Replayed Game.Metadata
+⚠ [489/536] Replayed Game.Metadata
 warning: Game/Metadata.lean:16:0: No translation (en) found for: §0 closes the goal if §1 has exactly the type of the goal.
 
 ## Syntax
@@ -211,7 +211,7 @@ but §6 needs the arithmetic form. Use §7 to convert.
 §9 does NOT prove anything — it only changes the display.
 The new goal must be definitionally equal to the old one, or
 Lean will reject the §10.
-⚠ [490/519] Replayed Game.Levels.SetWorld.L01_WelcomeToSets
+⚠ [490/536] Replayed Game.Levels.SetWorld.L01_WelcomeToSets
 warning: Game/Levels/SetWorld/L01_WelcomeToSets.lean:6:0: No translation (en) found for: Welcome to Sets
 warning: Game/Levels/SetWorld/L01_WelcomeToSets.lean:10:0: No translation (en) found for: # Welcome to Sets
 
@@ -287,7 +287,7 @@ It is defined as §2, so §3 is always §4.
 ## Related
 §7 is the proof that §8.
 warning: Game/Levels/SetWorld/L01_WelcomeToSets.lean:111:0: No translation (en) found for: §0 proves §1 for any §2.
-⚠ [491/519] Replayed Game.Levels.SetWorld.L02_SetBuilder
+⚠ [491/536] Replayed Game.Levels.SetWorld.L02_SetBuilder
 warning: Game/Levels/SetWorld/L02_SetBuilder.lean:6:0: No translation (en) found for: Set Builder Notation
 warning: Game/Levels/SetWorld/L02_SetBuilder.lean:8:0: No translation (en) found for: # Set Builder Notation
 
@@ -354,7 +354,7 @@ is really just wrapping a predicate.
 The variable after §12 is a *binder* — it is local to the expression
 after §13. Writing §14 defines a predicate; §15 does not
 refer to any §16 in the surrounding context.
-⚠ [492/519] Replayed Game.Levels.SetWorld.L03_NonMembership
+⚠ [492/536] Replayed Game.Levels.SetWorld.L03_NonMembership
 warning: Game/Levels/SetWorld/L03_NonMembership.lean:6:0: No translation (en) found for: Non-Membership
 warning: Game/Levels/SetWorld/L03_NonMembership.lean:8:0: No translation (en) found for: # Non-Membership: §0 means §1
 
@@ -386,7 +386,7 @@ will use other tools to derive §8 from the hypothesis.
 
 In ordinary mathematics, this is a *proof by contradiction*: assume
 7 is in the set, observe this means 7 < 5, which is absurd.
-⚠ [493/519] Replayed Game.Levels.SetWorld.L04_InfiniteSet
+⚠ [493/536] Replayed Game.Levels.SetWorld.L04_InfiniteSet
 warning: Game/Levels/SetWorld/L04_InfiniteSet.lean:6:0: No translation (en) found for: An Infinite Set
 warning: Game/Levels/SetWorld/L04_InfiniteSet.lean:8:0: No translation (en) found for: # Sets Need Not Be Finite
 
@@ -438,7 +438,7 @@ warning: Game/Levels/SetWorld/L04_InfiniteSet.lean:57:0: No translation (en) fou
 - §11 because §12 (witness: §13)
 - §14 because §15 (witness: §16)
 - §17 because no natural number §18 satisfies §19
-⚠ [494/519] Replayed Game.Levels.SetWorld.L05_NonMembershipExistential
+⚠ [494/536] Replayed Game.Levels.SetWorld.L05_NonMembershipExistential
 warning: Game/Levels/SetWorld/L05_NonMembershipExistential.lean:6:0: No translation (en) found for: Disproving Membership in an Existential Set
 warning: Game/Levels/SetWorld/L05_NonMembershipExistential.lean:8:0: No translation (en) found for: # Non-Membership with Existential Predicates
 
@@ -505,7 +505,7 @@ After §9, the components are available as separate hypotheses.
 ## Example
 If §10, then §11 gives
 §12 and §13.
-⚠ [495/519] Replayed Game.Levels.SetWorld.L06_EmptySet
+⚠ [495/536] Replayed Game.Levels.SetWorld.L06_EmptySet
 warning: Game/Levels/SetWorld/L06_EmptySet.lean:6:0: No translation (en) found for: The Empty Set
 warning: Game/Levels/SetWorld/L06_EmptySet.lean:8:0: No translation (en) found for: # The Empty Set
 
@@ -567,7 +567,7 @@ It is defined as §1, so §2 reduces to
 - §10 is the proof that §11
 - §12 is the opposite extreme: everything is a member
 warning: Game/Levels/SetWorld/L06_EmptySet.lean:93:0: No translation (en) found for: §0 proves §1 for any §2.
-⚠ [496/519] Replayed Game.Levels.SetWorld.L07_UniversalSet
+⚠ [496/536] Replayed Game.Levels.SetWorld.L07_UniversalSet
 warning: Game/Levels/SetWorld/L07_UniversalSet.lean:6:0: No translation (en) found for: Everything is in Set.univ
 warning: Game/Levels/SetWorld/L07_UniversalSet.lean:8:0: No translation (en) found for: # Universal Membership
 
@@ -597,7 +597,7 @@ These two sets are the extreme cases. Every other set lies between
 them: §7 for any §8. You will prove these
 containments in the next world.
 warning: Game/Levels/SetWorld/L07_UniversalSet.lean:48:0: No translation (en) found for: §0 proves §1 for any §2.
-⚠ [497/519] Replayed Game.Levels.SetWorld.L08_CompoundPredicate
+⚠ [497/536] Replayed Game.Levels.SetWorld.L08_CompoundPredicate
 warning: Game/Levels/SetWorld/L08_CompoundPredicate.lean:6:0: No translation (en) found for: Compound Predicates
 warning: Game/Levels/SetWorld/L08_CompoundPredicate.lean:8:0: No translation (en) found for: # Compound Predicates
 
@@ -634,7 +634,7 @@ membership requires proving both §2 and §3.
 
 You will see these patterns again when you learn about set **intersection**
 (which corresponds to §14) and **union** (which corresponds to §15).
-⚠ [498/519] Replayed Game.Levels.SetWorld.L09_Boss
+⚠ [498/536] Replayed Game.Levels.SetWorld.L09_Boss
 warning: Game/Levels/SetWorld/L09_Boss.lean:6:0: No translation (en) found for: Boss: Sets are Predicates
 warning: Game/Levels/SetWorld/L09_Boss.lean:8:0: No translation (en) found for: # Boss: Putting It All Together
 
@@ -684,7 +684,7 @@ In the next world, you will learn about **subsets** and **set equality**.
 The key idea will be *extensionality*: two sets are equal when they have
 the same elements, which means proving §24. The
 membership skills you just mastered are exactly what those proofs require.
-⚠ [499/519] Replayed Game.Levels.SetWorld
+⚠ [499/536] Replayed Game.Levels.SetWorld
 warning: Game/Levels/SetWorld.lean:12:0: No translation (en) found for: Set World
 warning: Game/Levels/SetWorld.lean:14:0: No translation (en) found for: # Set World
 
@@ -717,7 +717,7 @@ By the end of this world, you will be able to:
 
 The boss at the end will ask you to combine all these moves on an
 abstract predicate. Let's begin!
-⚠ [500/519] Replayed Game.Levels.SubsetWorld.L01_FirstSubset
+⚠ [500/536] Replayed Game.Levels.SubsetWorld.L01_FirstSubset
 warning: Game/Levels/SubsetWorld/L01_FirstSubset.lean:6:0: No translation (en) found for: First Subset Proof
 warning: Game/Levels/SubsetWorld/L01_FirstSubset.lean:10:0: No translation (en) found for: # Subsets: The ⊆ Relation
 
@@ -794,7 +794,7 @@ unwrap the goal with §15 and close with §16.
 ## Warning
 §17 is a *proposition* (a statement that may or may not be true),
 not an operation that produces a new set.
-⚠ [501/519] Replayed Game.Levels.SubsetWorld.L02_ChangeTactic
+⚠ [501/536] Replayed Game.Levels.SubsetWorld.L02_ChangeTactic
 warning: Game/Levels/SubsetWorld/L02_ChangeTactic.lean:6:0: No translation (en) found for: The Change Tactic
 warning: Game/Levels/SubsetWorld/L02_ChangeTactic.lean:8:0: No translation (en) found for: # Unwrapping Hypotheses with §0
 
@@ -864,7 +864,7 @@ implies weak inequality.
 
 ## When to use it
 When you have §4 and need §5.
-⚠ [502/519] Replayed Game.Levels.SubsetWorld.L03_SubsetRefl
+⚠ [502/536] Replayed Game.Levels.SubsetWorld.L03_SubsetRefl
 warning: Game/Levels/SubsetWorld/L03_SubsetRefl.lean:6:0: No translation (en) found for: Subset Reflexivity
 warning: Game/Levels/SubsetWorld/L03_SubsetRefl.lean:8:0: No translation (en) found for: # Every Set Is a Subset of Itself
 
@@ -906,7 +906,7 @@ info: Game/Levels/SubsetWorld/L03_SubsetRefl.lean:53:88: Missing Theorem Documen
 Add `TheoremDoc Eq.le` somewhere above this statement.
 info: Game/Levels/SubsetWorld/L03_SubsetRefl.lean:53:94: Missing Theorem Documentation. Using existing docstring. Add Eq.subset
 Add `TheoremDoc Eq.subset` somewhere above this statement.
-⚠ [503/519] Replayed Game.Levels.SubsetWorld.L04_EmptySubset
+⚠ [503/536] Replayed Game.Levels.SubsetWorld.L04_EmptySubset
 warning: Game/Levels/SubsetWorld/L04_EmptySubset.lean:6:0: No translation (en) found for: The Empty Subset
 warning: Game/Levels/SubsetWorld/L04_EmptySubset.lean:8:0: No translation (en) found for: # Vacuous Truth: ∅ ⊆ s
 
@@ -944,7 +944,7 @@ warning: Game/Levels/SubsetWorld/L04_EmptySubset.lean:64:81: Missing Theorem Doc
 Add `TheoremDoc bot_le` somewhere above this statement.
 info: Game/Levels/SubsetWorld/L04_EmptySubset.lean:64:88: Missing Theorem Documentation. Using existing docstring. Add OrderBot.bot_le
 Add `TheoremDoc OrderBot.bot_le` somewhere above this statement.
-⚠ [504/519] Replayed Game.Levels.SubsetWorld.L05_SubsetUniv
+⚠ [504/536] Replayed Game.Levels.SubsetWorld.L05_SubsetUniv
 warning: Game/Levels/SubsetWorld/L05_SubsetUniv.lean:6:0: No translation (en) found for: Every Set is in Set.univ
 warning: Game/Levels/SubsetWorld/L05_SubsetUniv.lean:8:0: No translation (en) found for: # The Universal Superset: s ⊆ Set.univ
 
@@ -981,7 +981,7 @@ warning: Game/Levels/SubsetWorld/L05_SubsetUniv.lean:58:63: Missing Theorem Docu
 Add `TheoremDoc le_top` somewhere above this statement.
 info: Game/Levels/SubsetWorld/L05_SubsetUniv.lean:58:70: Missing Theorem Documentation. Using existing docstring. Add OrderTop.le_top
 Add `TheoremDoc OrderTop.le_top` somewhere above this statement.
-⚠ [505/519] Replayed Game.Levels.SubsetWorld.L06_SubsetHypAsFunction
+⚠ [505/536] Replayed Game.Levels.SubsetWorld.L06_SubsetHypAsFunction
 warning: Game/Levels/SubsetWorld/L06_SubsetHypAsFunction.lean:6:0: No translation (en) found for: Subset Hypotheses as Functions
 warning: Game/Levels/SubsetWorld/L06_SubsetHypAsFunction.lean:8:0: No translation (en) found for: # Using a Subset Hypothesis
 
@@ -1020,7 +1020,7 @@ the expression §2 is a proof of §3.
 This pattern — applying a subset hypothesis to a membership proof —
 is the fundamental way to *use* subset facts. You will chain multiple
 such applications in the next levels.
-⚠ [506/519] Replayed Game.Levels.SubsetWorld.L07_NonSubset
+⚠ [506/536] Replayed Game.Levels.SubsetWorld.L07_NonSubset
 warning: Game/Levels/SubsetWorld/L07_NonSubset.lean:6:0: No translation (en) found for: Disproving a Subset
 warning: Game/Levels/SubsetWorld/L07_NonSubset.lean:8:0: No translation (en) found for: # When ⊆ Fails: Proving ¬(s ⊆ t)
 
@@ -1076,7 +1076,7 @@ In ordinary math: "Suppose §11. Then in
 particular §12, which is false. Contradiction."
 warning: Game/Levels/SubsetWorld/L07_NonSubset.lean:96:47: Missing Theorem Documentation: Set.not_subset
 Add `TheoremDoc Set.not_subset` somewhere above this statement.
-⚠ [507/519] Replayed Game.Levels.SubsetWorld.L08_SubsetTrans
+⚠ [507/536] Replayed Game.Levels.SubsetWorld.L08_SubsetTrans
 warning: Game/Levels/SubsetWorld/L08_SubsetTrans.lean:6:0: No translation (en) found for: Subset Transitivity
 warning: Game/Levels/SubsetWorld/L08_SubsetTrans.lean:8:0: No translation (en) found for: # Chaining Subsets
 
@@ -1134,7 +1134,7 @@ info: Game/Levels/SubsetWorld/L08_SubsetTrans.lean:106:77: Missing Theorem Docum
 Add `TheoremDoc Trans.trans` somewhere above this statement.
 warning: Game/Levels/SubsetWorld/L08_SubsetTrans.lean:106:89: Missing Theorem Documentation: Preorder.le_trans
 Add `TheoremDoc Preorder.le_trans` somewhere above this statement.
-⚠ [508/519] Replayed Game.Levels.SubsetWorld.L09_NonArithSubset
+⚠ [508/536] Replayed Game.Levels.SubsetWorld.L09_NonArithSubset
 warning: Game/Levels/SubsetWorld/L09_NonArithSubset.lean:6:0: No translation (en) found for: Beyond Arithmetic
 warning: Game/Levels/SubsetWorld/L09_NonArithSubset.lean:8:0: No translation (en) found for: # Subsets Are About Predicates, Not Just Arithmetic
 
@@ -1177,7 +1177,7 @@ The proof pattern is always the same:
 
 This table will keep growing as you encounter more types of predicates
 throughout the course.
-⚠ [509/519] Replayed Game.Levels.SubsetWorld.L10_ExtIntro
+⚠ [509/536] Replayed Game.Levels.SubsetWorld.L10_ExtIntro
 warning: Game/Levels/SubsetWorld/L10_ExtIntro.lean:6:0: No translation (en) found for: Set Equality with ext
 warning: Game/Levels/SubsetWorld/L10_ExtIntro.lean:8:0: No translation (en) found for: # Extensionality: When Two Sets Are Equal
 
@@ -1283,7 +1283,7 @@ info: Game/Levels/SubsetWorld/L10_ExtIntro.lean:176:148: Missing Theorem Documen
 Add `TheoremDoc LE.le.antisymm` somewhere above this statement.
 warning: Game/Levels/SubsetWorld/L10_ExtIntro.lean:176:163: Missing Theorem Documentation: Set.ext_iff
 Add `TheoremDoc Set.ext_iff` somewhere above this statement.
-⚠ [510/519] Replayed Game.Levels.SubsetWorld.L11_ExtPractice
+⚠ [510/536] Replayed Game.Levels.SubsetWorld.L11_ExtPractice
 warning: Game/Levels/SubsetWorld/L11_ExtPractice.lean:6:0: No translation (en) found for: Ext Practice
 warning: Game/Levels/SubsetWorld/L11_ExtPractice.lean:8:0: No translation (en) found for: # Practice: Another Set Equality
 
@@ -1327,7 +1327,7 @@ info: Game/Levels/SubsetWorld/L11_ExtPractice.lean:72:148: Missing Theorem Docum
 Add `TheoremDoc LE.le.antisymm` somewhere above this statement.
 warning: Game/Levels/SubsetWorld/L11_ExtPractice.lean:72:163: Missing Theorem Documentation: Set.ext_iff
 Add `TheoremDoc Set.ext_iff` somewhere above this statement.
-⚠ [511/519] Replayed Game.Levels.SubsetWorld.L12_SetNonEquality
+⚠ [511/536] Replayed Game.Levels.SubsetWorld.L12_SetNonEquality
 warning: Game/Levels/SubsetWorld/L12_SetNonEquality.lean:6:0: No translation (en) found for: Disproving Set Equality
 warning: Game/Levels/SubsetWorld/L12_SetNonEquality.lean:8:0: No translation (en) found for: # When Two Sets Are Not Equal
 
@@ -1378,7 +1378,7 @@ In ordinary math: "Suppose §14. Then
 But §17 is false. Contradiction."
 warning: Game/Levels/SubsetWorld/L12_SetNonEquality.lean:93:47: Missing Theorem Documentation: Set.ext_iff
 Add `TheoremDoc Set.ext_iff` somewhere above this statement.
-⚠ [512/519] Replayed Game.Levels.SubsetWorld.L13_Antisymm
+⚠ [512/536] Replayed Game.Levels.SubsetWorld.L13_Antisymm
 warning: Game/Levels/SubsetWorld/L13_Antisymm.lean:6:0: No translation (en) found for: Double Containment
 warning: Game/Levels/SubsetWorld/L13_Antisymm.lean:8:0: No translation (en) found for: # An Alternative Route to Set Equality
 
@@ -1459,7 +1459,7 @@ warning: Game/Levels/SubsetWorld/L13_Antisymm.lean:134:70: Missing Theorem Docum
 Add `TheoremDoc Set.eq_of_subset_of_subset` somewhere above this statement.
 info: Game/Levels/SubsetWorld/L13_Antisymm.lean:134:97: Missing Theorem Documentation. Using existing docstring. Add LE.le.antisymm
 Add `TheoremDoc LE.le.antisymm` somewhere above this statement.
-⚠ [513/519] Replayed Game.Levels.SubsetWorld.L14_ProperSubset
+⚠ [513/536] Replayed Game.Levels.SubsetWorld.L14_ProperSubset
 warning: Game/Levels/SubsetWorld/L14_ProperSubset.lean:6:0: No translation (en) found for: Proper Subsets
 warning: Game/Levels/SubsetWorld/L14_ProperSubset.lean:8:0: No translation (en) found for: # Strict Containment: The Proper Subset ⊂
 
@@ -1508,7 +1508,7 @@ containment fails.
 | §18 | §19 and §20 differ on some element | §21 |
 warning: Game/Levels/SubsetWorld/L14_ProperSubset.lean:99:47: Missing Theorem Documentation: Set.not_subset
 Add `TheoremDoc Set.not_subset` somewhere above this statement.
-⚠ [514/519] Replayed Game.Levels.SubsetWorld.L15_AntisymmFromExt
+⚠ [514/536] Replayed Game.Levels.SubsetWorld.L15_AntisymmFromExt
 warning: Game/Levels/SubsetWorld/L15_AntisymmFromExt.lean:6:0: No translation (en) found for: Deriving Antisymmetry from Extensionality
 warning: Game/Levels/SubsetWorld/L15_AntisymmFromExt.lean:8:0: No translation (en) found for: # Proving Antisymmetry Without §0
 
@@ -1558,7 +1558,7 @@ warning: Game/Levels/SubsetWorld/L15_AntisymmFromExt.lean:78:90: Missing Theorem
 Add `TheoremDoc Set.eq_of_subset_of_subset` somewhere above this statement.
 info: Game/Levels/SubsetWorld/L15_AntisymmFromExt.lean:78:117: Missing Theorem Documentation. Using existing docstring. Add LE.le.antisymm
 Add `TheoremDoc LE.le.antisymm` somewhere above this statement.
-⚠ [515/519] Replayed Game.Levels.SubsetWorld.L16_ExtFromAntisymm
+⚠ [515/536] Replayed Game.Levels.SubsetWorld.L16_ExtFromAntisymm
 warning: Game/Levels/SubsetWorld/L16_ExtFromAntisymm.lean:6:0: No translation (en) found for: Deriving Extensionality from Antisymmetry
 warning: Game/Levels/SubsetWorld/L16_ExtFromAntisymm.lean:8:0: No translation (en) found for: # The Other Direction
 
@@ -1605,7 +1605,7 @@ info: Game/Levels/SubsetWorld/L16_ExtFromAntisymm.lean:77:88: Missing Tactic Doc
 Add `TacticDoc ext` somewhere above this statement.
 warning: Game/Levels/SubsetWorld/L16_ExtFromAntisymm.lean:78:16: Missing Theorem Documentation: Set.ext_iff
 Add `TheoremDoc Set.ext_iff` somewhere above this statement.
-⚠ [516/519] Replayed Game.Levels.SubsetWorld.L17_Boss
+⚠ [516/536] Replayed Game.Levels.SubsetWorld.L17_Boss
 warning: Game/Levels/SubsetWorld/L17_Boss.lean:6:0: No translation (en) found for: Boss: Subset Chain
 warning: Game/Levels/SubsetWorld/L17_Boss.lean:8:0: No translation (en) found for: # Boss: Chaining Subsets to Prove Equality
 
@@ -1658,7 +1658,7 @@ In the next world, you will learn about **set operations**: union (§28),
 intersection (§29), complement (§30), and difference (§31intro x hx` proof
 pattern you mastered here will be the foundation for every one of
 those proofs.
-⚠ [517/519] Replayed Game.Levels.SubsetWorld
+⚠ [517/536] Replayed Game.Levels.SubsetWorld
 warning: Game/Levels/SubsetWorld.lean:20:0: No translation (en) found for: Subset World
 warning: Game/Levels/SubsetWorld.lean:22:0: No translation (en) found for: # Subset World
 
@@ -1697,12 +1697,913 @@ course.
 - §22 — unwrap a hypothesis to a definitionally equal form
 - §23 — reduce set equality to element-wise membership
 - §24 — derive equality from mutual subsets
-⚠ [518/519] Replayed Game
-warning: Game.lean:6:0: No translation (en) found for: Functions & Relations
-warning: Game.lean:7:0: No translation (en) found for: # Functions & Relations
+⚠ [518/536] Replayed Game.Levels.SetOpsWorld.L01_UnionMembership
+warning: Game/Levels/SetOpsWorld/L01_UnionMembership.lean:6:0: No translation (en) found for: Union Membership
+warning: Game/Levels/SetOpsWorld/L01_UnionMembership.lean:10:0: No translation (en) found for: # Set Operations: Union
+
+In the last two worlds, you learned that sets are predicates and that
+subset/equality proofs reduce to propositional logic. Now you will learn
+the **set operations** — union, intersection, complement, and difference —
+and see that each one corresponds to a logical connective.
+
+The first operation is **union**. The union of two sets §0 and §1,
+written §2, contains every element that belongs to §3 **or** §4
+(or both):
+
+§5
+
+So union IS disjunction. When you need to prove §6, you are
+proving a disjunction. You choose which side to prove using two new
+tactics:
+
+- §7 — reduces the goal to the left disjunct (§8)
+- §9 — reduces the goal to the right disjunct (§10)
+
+**Your task**: Prove that 3 is in the union of two sets. Since §11,
+the left set contains 3, so use §12.
+
+**Proof plan**:
+1. §13 — choose the left disjunct (3 is in the left set)
+2. §14 — unfold the set-builder membership
+3. §15 — close the arithmetic goal
+warning: Game/Levels/SetOpsWorld/L01_UnionMembership.lean:40:0: No translation (en) found for: 3 belongs to the union because it satisfies the left set's predicate.
+warning: Game/Levels/SetOpsWorld/L01_UnionMembership.lean:59:0: No translation (en) found for: You proved union membership by choosing a side with §0.
+
+The key insight: **union (§1) corresponds to disjunction (§2)**. To
+prove §3, you prove §4 (using §5) or §6
+(using §7). This is the first of four set-operation-to-logic
+correspondences you will learn in this world:
+
+| Operation | Logic |
+|---|---|
+| §8 (union) | §9 (or) |
+
+In ordinary math: "§10
+because §11."
+
+You could also have written §12 first to see the
+full unfolding from set notation to propositions. Try it if you want
+to redo the level — it makes the §13 = §14 connection visible.
+warning: Game/Levels/SetOpsWorld/L01_UnionMembership.lean:79:0: No translation (en) found for: §0 (typed §1 or §2) is the **union** of sets §3 and §4.
+
+An element belongs to §5 if it belongs to §6 **or** §7:
+§8
+
+## Proof strategies
+
+**To prove** §9:
+- §10 then prove §11, OR
+- §12 then prove §13
+
+**Given** §14:
+- §15 to split into two cases
+
+## Warning
+You must **choose** a side: §16 or §17. You cannot prove both
+and let Lean pick — you must commit to one.
+⚠ [519/536] Replayed Game.Levels.SetOpsWorld.L02_IntersectionMembership
+warning: Game/Levels/SetOpsWorld/L02_IntersectionMembership.lean:6:0: No translation (en) found for: Intersection Membership
+warning: Game/Levels/SetOpsWorld/L02_IntersectionMembership.lean:8:0: No translation (en) found for: # Intersection: ∩ means ∧
+
+The **intersection** of two sets §0 contains elements that belong
+to **both** §1 and §2:
+
+§3
+
+Intersection IS conjunction. To prove §4, you prove both
+§5 AND §6 — and you already know the tactic for that:
+§7 splits a conjunction into two goals.
+
+**Your task**: Prove that 4 is in the intersection. You need both
+§8 and §9.
+
+**Proof plan**:
+1. §10 — split the conjunction into two goals
+2. First goal: prove §11 using §12
+3. Second goal: prove §13 using §14
+warning: Game/Levels/SetOpsWorld/L02_IntersectionMembership.lean:29:0: No translation (en) found for: 4 is both even and less than 10.
+warning: Game/Levels/SetOpsWorld/L02_IntersectionMembership.lean:53:0: No translation (en) found for: You proved intersection membership using §0 — the same
+tactic you use for any conjunction.
+
+| Operation | Logic | Proof tactic |
+|---|---|---|
+| §1 (union) | §2 (or) | §3 / §4 |
+| §5 (intersection) | §6 (and) | §7 |
+
+**Extracting from intersections**: If you have a hypothesis
+§8, you can extract the components just like a
+conjunction:
+- §9 (left component)
+- §10 (right component)
+- §11 destructures into both components
+
+You will use extraction in later levels when an intersection
+hypothesis appears on the left side of an implication.
+warning: Game/Levels/SetOpsWorld/L02_IntersectionMembership.lean:73:0: No translation (en) found for: §0 (typed §1 or §2) is the **intersection** of
+sets §3 and §4.
+
+An element belongs to §5 if it belongs to **both** §6 and §7:
+§8
+
+## Proof strategies
+
+**To prove** §9:
+- §10 then prove §11 and §12 separately
+
+**Given** §13:
+- §14 and §15 (dot projection)
+- §16 (destructuring)
+
+## Warning
+Unlike union, you must prove **both** components — you cannot
+choose just one.
+⚠ [520/536] Replayed Game.Levels.SetOpsWorld.L03_ComplementMembership
+warning: Game/Levels/SetOpsWorld/L03_ComplementMembership.lean:6:0: No translation (en) found for: Complement Membership
+warning: Game/Levels/SetOpsWorld/L03_ComplementMembership.lean:8:0: No translation (en) found for: # Complement: ᶜ means ¬
+
+The **complement** of a set §0, written §1, contains everything
+NOT in §2:
+
+§3
+
+This is exactly the non-membership you already proved in Set World!
+The complement notation §4 is just a way of turning non-membership
+into a set: §5.
+
+To prove §6, you prove §7, which means showing
+§8. The proof shape is:
+1. §9 — assume §10
+2. Derive a contradiction from §11
+
+**Your task**: Prove that 3 is in the complement of the even numbers.
+This is the same as proving §12 — which you did
+in Set World. The only difference is the notation.
+warning: Game/Levels/SetOpsWorld/L03_ComplementMembership.lean:30:0: No translation (en) found for: 3 is not even, so it belongs to the complement of the even set.
+warning: Game/Levels/SetOpsWorld/L03_ComplementMembership.lean:50:0: No translation (en) found for: You proved §0 using the exact same technique as
+proving §1 from Set World. That is the point:
+
+**§2 and §3 are the same statement.**
+
+The complement notation §4 (typed §5 or §6) lets you treat
+non-membership as a set. This is useful because you can now apply
+set operations to complements — for example, §7 is the set
+of elements in neither §8 nor §9.
+
+| Operation | Logic | Proof tactic |
+|---|---|---|
+| §10 (union) | §11 (or) | §12 / §13 |
+| §14 (intersection) | §15 (and) | §16 |
+| §17 (complement) | §18 (not) | §19 then contradiction |
+
+**Common confusion**: Complement is not difference. §20 contains
+everything outside §21 (relative to the whole type), while §22
+contains elements in §23 but not §24. You will see set difference
+in the next level.
+warning: Game/Levels/SetOpsWorld/L03_ComplementMembership.lean:73:0: No translation (en) found for: §0 (typed §1 or §2) is the **complement** of set §3.
+
+An element belongs to §4 if it does NOT belong to §5:
+§6
+
+## Proof strategies
+
+**To prove** §7:
+- §8 (assume §9), then derive contradiction
+
+**Given** §10:
+- §11 is a function from §12 to §13
+- Apply it: §14 if §15
+
+## Example
+§16 reduces to §17.
+
+## Warning
+§18 is the complement relative to the entire type §19, not relative
+to some ambient set. §20.
+⚠ [521/536] Replayed Game.Levels.SetOpsWorld.L06_IntersectionSubset
+warning: Game/Levels/SetOpsWorld/L06_IntersectionSubset.lean:6:0: No translation (en) found for: Intersection and Subsets
+warning: Game/Levels/SetOpsWorld/L06_IntersectionSubset.lean:8:0: No translation (en) found for: # s ∩ t ⊆ s
+
+You know that §0 means §1. It follows immediately that the
+intersection of two sets is a subset of each:
+
+§2
+
+because if §3, then certainly §4.
+
+**Your task**: Prove this formally. The proof combines the §5 proof
+shape (§6) with extraction from an intersection hypothesis.
+
+Since §7 is definitionally a conjunction, you can
+extract the left component with §8 — the same dot projection
+you used on §9 in Subset World.
+warning: Game/Levels/SetOpsWorld/L06_IntersectionSubset.lean:26:0: No translation (en) found for: The intersection of two sets is a subset of the first.
+warning: Game/Levels/SetOpsWorld/L06_IntersectionSubset.lean:46:0: No translation (en) found for: A one-line extraction: §0 pulls out the left component of an
+intersection hypothesis, just as it does for any conjunction.
+
+This fact — §1 — is called §2 in the
+library. The symmetric version §3 (using §4) is
+§5.
+
+The proof shape is worth remembering: when you have a hypothesis
+with more information than you need (like §6 when you only
+need §7), just project out the relevant component.
+warning: Game/Levels/SetOpsWorld/L06_IntersectionSubset.lean:59:0: No translation (en) found for: §0 proves §1 — the intersection
+is a subset of the first set.
+
+## Statement
+§2
+
+## Proof idea
+If §3 then §4, so in particular §5.
+warning: Game/Levels/SetOpsWorld/L06_IntersectionSubset.lean:72:0: No translation (en) found for: §0 proves §1.
+warning: Game/Levels/SetOpsWorld/L06_IntersectionSubset.lean:75:0: No translation (en) found for: §0 is the lattice version of §1.
+warning: Game/Levels/SetOpsWorld/L06_IntersectionSubset.lean:78:0: No translation (en) found for: §0 is the lattice version of §1.
+⚠ [522/536] Replayed Game.Levels.SetOpsWorld.L08_UnionSubset
+warning: Game/Levels/SetOpsWorld/L08_UnionSubset.lean:6:0: No translation (en) found for: Union and Subsets
+warning: Game/Levels/SetOpsWorld/L08_UnionSubset.lean:8:0: No translation (en) found for: # s ⊆ s ∪ t
+
+Just as intersection is a subset of each component, each component
+is a subset of the union:
+
+§0
+
+because if §1, then §2 (by choosing the left side).
+
+**Your task**: Prove this formally. After §3, the goal
+is §4. Since this is a disjunction, use §5 to select
+the left side, then close with §6.
+warning: Game/Levels/SetOpsWorld/L08_UnionSubset.lean:23:0: No translation (en) found for: Every set is a subset of its union with another set.
+warning: Game/Levels/SetOpsWorld/L08_UnionSubset.lean:38:0: No translation (en) found for: The proof is three lines: §0, §1, §2. Each
+operation-to-logic correspondence gives you immediate subset facts:
+
+| Fact | Proof sketch |
+|---|---|
+| §3 | extract left component (§4) |
+| §5 | inject left component (§6) |
+
+These are dual: intersection *removes* information (you extract one
+component), while union *adds* information (you inject one component).
+
+The library names are §7 and
+§8 (for §9).
+warning: Game/Levels/SetOpsWorld/L08_UnionSubset.lean:54:0: No translation (en) found for: §0 proves §1 — every set is
+a subset of its union with another set.
+
+## Statement
+§2
+
+## Proof idea
+If §3, then §4 by choosing left.
+warning: Game/Levels/SetOpsWorld/L08_UnionSubset.lean:67:0: No translation (en) found for: §0 proves §1.
+warning: Game/Levels/SetOpsWorld/L08_UnionSubset.lean:70:0: No translation (en) found for: §0 is the lattice version of §1.
+warning: Game/Levels/SetOpsWorld/L08_UnionSubset.lean:73:0: No translation (en) found for: §0 is the lattice version of §1.
+⚠ [523/536] Replayed Game.Levels.SetOpsWorld.L09_ComplementLaw
+warning: Game/Levels/SetOpsWorld/L09_ComplementLaw.lean:6:0: No translation (en) found for: Complement Law
+warning: Game/Levels/SetOpsWorld/L09_ComplementLaw.lean:8:0: No translation (en) found for: # s ∩ sᶜ = ∅
+
+The most fundamental fact about complements is that a set and its
+complement have **no elements in common**:
+
+§0
+
+This makes sense: §1 means §2 AND §3, which is
+a contradiction. So no element can belong to both.
+
+**Proving a set equals ∅**: Use §4 to reduce to
+§5. Since §6 is definitionally §7,
+the forward direction asks you to derive a contradiction from
+§8, and the backward direction asks you to prove anything
+from §9.
+
+**Proof plan**:
+1. §10 then §11
+2. **Forward**: §12, then §13 to get
+   §14 and §15. Apply §16 to §17.
+3. **Backward**: §18 — but §19, so use §20.
+warning: Game/Levels/SetOpsWorld/L09_ComplementLaw.lean:32:0: No translation (en) found for: A set and its complement have empty intersection.
+warning: Game/Levels/SetOpsWorld/L09_ComplementLaw.lean:64:0: No translation (en) found for: You proved §0 — a set and its complement are disjoint.
+
+This level introduced two new proof shapes:
+
+1. **Contradiction from §1 and §2**: When you have both §3
+   and §4, apply the negation to derive §5:
+   §6.
+
+2. **Proving from §7 membership**: Since §8 is §9, and
+   §10 implies anything, use §11 (or §12).
+
+This proof used the **standard proof pattern for set equalities**:
+§13, then §14, then prove each direction at the element
+level. You will see this pattern many times — it is THE way to prove
+that two sets are equal.
+
+The companion identity §15 (every element is in §16
+or its complement) is also true but requires classical reasoning
+(the law of excluded middle). You will prove it later in this world
+once you learn §17.
+
+The library name is §18.
+warning: Game/Levels/SetOpsWorld/L09_ComplementLaw.lean:89:0: No translation (en) found for: §0 states §1.
+warning: Game/Levels/SetOpsWorld/L09_ComplementLaw.lean:92:0: No translation (en) found for: §0 states §1.
+warning: Game/Levels/SetOpsWorld/L09_ComplementLaw.lean:95:0: No translation (en) found for: §0 is the lattice version: §1.
+⚠ [524/536] Replayed Game.Levels.SetOpsWorld.L10_UnionCaseAnalysis
+warning: Game/Levels/SetOpsWorld/L10_UnionCaseAnalysis.lean:6:0: No translation (en) found for: Case Analysis on Unions
+warning: Game/Levels/SetOpsWorld/L10_UnionCaseAnalysis.lean:8:0: No translation (en) found for: # Case Analysis: Splitting a Union Hypothesis
+
+So far you have been **proving** union membership (choosing §0 or
+§1). Now you must **use** a union hypothesis — when you KNOW
+§2 and must derive something from it.
+
+Since §3 is a disjunction, you handle it by **case analysis**:
+consider the case §4 and the case §5 separately. The tactic
+is §6:
+
+§7
+
+This creates two subgoals:
+- **Case §8**: §9 in context ("inject left" — the left
+  disjunct holds)
+- **Case §10**: §11 in context ("inject right" — the right
+  disjunct holds)
+
+Handle each subgoal with a §12 prefix, just like after §13.
+
+**Your task**: Prove union commutativity at the element level. Given
+§14, prove §15. You will need to "swap sides":
+in the §16 case (knowing §17), use §18; in the §19 case
+(knowing §20), use §21.
+warning: Game/Levels/SetOpsWorld/L10_UnionCaseAnalysis.lean:37:0: No translation (en) found for: If x is in s ∪ t, then x is in t ∪ s.
+warning: Game/Levels/SetOpsWorld/L10_UnionCaseAnalysis.lean:61:0: No translation (en) found for: You performed case analysis on a union hypothesis for the first time!
+
+The pattern §0 is the standard way to
+handle any hypothesis that is a disjunction (or, equivalently, a union
+membership). It creates two subgoals — one for each case — and you
+handle them separately.
+
+The names §1 and §2 stand for "inject left" and "inject right" —
+the two constructors of §3 (disjunction). They tell you which
+branch of the §4 holds:
+- §5 — the LEFT disjunct holds (§6)
+- §7 — the RIGHT disjunct holds (§8)
+
+This pattern will appear again in De Morgan's law and the boss level.
+It is the set-operation counterpart of the §9 pattern you used
+for natural numbers and existentials.
+
+**Note**: You proved the element-level version §10.
+Combining this with §11 would give the set equality §12
+(§13). You will see this §14 + element-level-fact pattern
+in later levels.
+warning: Game/Levels/SetOpsWorld/L10_UnionCaseAnalysis.lean:85:0: No translation (en) found for: §0 states §1.
+warning: Game/Levels/SetOpsWorld/L10_UnionCaseAnalysis.lean:88:0: No translation (en) found for: §0 is the lattice version of §1.
+warning: Game/Levels/SetOpsWorld/L10_UnionCaseAnalysis.lean:91:0: No translation (en) found for: §0 states §1 (propositional commutativity of ∨).
+⚠ [525/536] Replayed Game.Levels.SetOpsWorld.L12_DeMorgan
+warning: Game/Levels/SetOpsWorld/L12_DeMorgan.lean:6:0: No translation (en) found for: De Morgan's Law
+warning: Game/Levels/SetOpsWorld/L12_DeMorgan.lean:8:0: No translation (en) found for: # De Morgan's Law for Sets
+
+One of the most important identities in set theory is **De Morgan's law**:
+
+§0
+
+In words: the complement of a union equals the intersection of the
+complements. An element is outside §1 if and only if it is
+outside both §2 and §3.
+
+You already proved the §4 direction in Level 11 using §5.
+Now you must prove the full **equality** — both directions.
+
+**Proof plan**:
+1. §6 — reduce to membership biconditional
+2. §7 — split the §8 into forward (§9) and backward (§10)
+3. **Forward** (§11): Given §12, prove §13.
+   Use §14 and §15 as in Level 11.
+4. **Backward** (§16): Given §17, prove §18.
+   Destructure the hypothesis, introduce the union assumption,
+   then case-split.
+
+This is the longest proof in the world so far. Take it step by step —
+each individual step is familiar from earlier levels.
+warning: Game/Levels/SetOpsWorld/L12_DeMorgan.lean:35:0: No translation (en) found for: De Morgan's law: the complement of a union is the intersection
+of the complements.
+warning: Game/Levels/SetOpsWorld/L12_DeMorgan.lean:91:0: No translation (en) found for: You proved De Morgan's law for sets! The proof combined:
+
+- **§0** — reduce set equality to element-wise biconditional
+- **§1** — convert the negated disjunction (forward direction)
+- **§2** — case analysis on the union hypothesis (backward direction)
+- **Complement application** — §3 applies §4 to §5
+
+In ordinary math, this proof reads: "Let §6. Then
+§7, so §8 and §9 (De Morgan),
+hence §10. Conversely, let §11.
+Suppose §12. If §13, this contradicts §14.
+If §15, this contradicts §16. Either way, contradiction."
+
+The library name is §17. In the next level, you will
+prove the dual: §18 (§19).
+warning: Game/Levels/SetOpsWorld/L12_DeMorgan.lean:109:0: No translation (en) found for: §0 states that the complement of a union is the
+intersection of the complements: §1.
+
+This is **De Morgan's law** for sets.
+
+## Statement
+§2
+
+## Dual
+§3
+warning: Game/Levels/SetOpsWorld/L12_DeMorgan.lean:124:0: No translation (en) found for: §0 states §1 (dual De Morgan).
+warning: Game/Levels/SetOpsWorld/L12_DeMorgan.lean:127:0: No translation (en) found for: §0 is the lattice version: §1.
+warning: Game/Levels/SetOpsWorld/L12_DeMorgan.lean:130:0: No translation (en) found for: §0 is the lattice version of De Morgan: §1.
+warning: Game/Levels/SetOpsWorld/L12_DeMorgan.lean:133:0: No translation (en) found for: §0 states §1 (propositional De Morgan).
+⚠ [526/536] Replayed Game.Levels.SetOpsWorld.L15_DoubleComplement
+warning: Game/Levels/SetOpsWorld/L15_DoubleComplement.lean:6:0: No translation (en) found for: Double Complement
+warning: Game/Levels/SetOpsWorld/L15_DoubleComplement.lean:8:0: No translation (en) found for: # sᶜᶜ = s
+
+The complement of the complement returns you to the original set:
+
+§0
+
+This is set-theoretic **double negation elimination**: §1
+means §2, and in classical logic §3.
+
+**Proof plan**:
+1. §4, §5
+2. **Forward** (§6): This is the classical direction.
+   You have §7 and need §8. Use §9 to
+   assume §10, then §11.
+3. **Backward** (§12): This is constructive. You have
+   §13 and need §14, i.e., §15.
+   Introduce the negation and apply it to §16.
+warning: Game/Levels/SetOpsWorld/L15_DoubleComplement.lean:28:0: No translation (en) found for: The complement of the complement is the original set.
+warning: Game/Levels/SetOpsWorld/L15_DoubleComplement.lean:59:0: No translation (en) found for: You proved §0 — double complementation is the identity.
+
+The forward direction is pure **double negation elimination**: from
+§1, conclude §2. This required §3 (classical logic),
+just like the complement union law in the previous level.
+
+The backward direction is **double negation introduction**: from §4,
+conclude §5. This is constructive — no §6 needed. Given
+§7 and assuming §8, we have a direct contradiction.
+
+This identity tells us that complement is an **involution**: applying
+it twice returns to the starting point. This is the set-theoretic
+analogue of the logical fact §9.
+
+The library name is §10.
+warning: Game/Levels/SetOpsWorld/L15_DoubleComplement.lean:77:0: No translation (en) found for: §0 states §1 — double complement is the identity.
+⚠ [527/536] Built Game.Levels.SetOpsWorld.L04_SetDifference (838ms)
+warning: Game/Levels/SetOpsWorld/L04_SetDifference.lean:6:0: No translation (en) found for: Set Difference
+warning: Game/Levels/SetOpsWorld/L04_SetDifference.lean:8:0: No translation (en) found for: # Set Difference: \\ means ∧ ¬
+
+The **set difference** §0 contains elements in §1 that are
+NOT in §2:
+
+§3
+
+This combines conjunction and negation: you must be IN the first set
+AND NOT IN the second.
+
+To prove §4:
+1. §5 — split into two goals (§6 and §7)
+2. Prove §8 (the positive part)
+3. Prove §9 (the negative part: §10 then contradiction)
+
+**Your task**: Prove that 3 is in the set of numbers less than 10 but
+not even. This requires: §11 (true) and §12 is not even (true).
+warning: Game/Levels/SetOpsWorld/L04_SetDifference.lean:28:0: No translation (en) found for: 3 is less than 10 and not even.
+warning: Game/Levels/SetOpsWorld/L04_SetDifference.lean:56:0: No translation (en) found for: You now know all four set operations:
+
+| Operation | Notation | Logic | Proof tactic |
+|---|---|---|---|
+| Union | §0 | §1 | §2 / §3 |
+| Intersection | §4 | §5 | §6 |
+| Complement | §7 | §8 | §9, then contradiction |
+| Difference | §10 | §11 | §12, then prove each |
+
+Every set operation reduces to propositional logic. This is the
+central design principle of Lean's set library: there is no special
+set-theoretic machinery. All set reasoning IS logical reasoning.
+
+Note that set difference combines intersection and complement:
+§13. You will prove this identity in the next level.
+
+**Fun fact**: The **symmetric difference** §14
+contains elements in exactly one of the two sets. With this operation,
+the subsets of any type form an abelian group (with identity §15).
+We will not prove this in this course, but it is a fascinating
+structural fact worth knowing.
+warning: Game/Levels/SetOpsWorld/L04_SetDifference.lean:80:0: No translation (en) found for: §0 (typed §1 or §2) is the **set difference**:
+elements in §3 that are NOT in §4.
+
+§5
+
+## Proof strategies
+
+**To prove** §6:
+- §7 then prove §8 and §9 separately
+
+**Given** §10:
+- §11 and §12 (dot projection)
+- §13 (destructuring)
+
+## Example
+§14 reduces to §15.
+
+## Related
+§16 — difference is intersection with complement.
+⚠ [528/536] Built Game.Levels.SetOpsWorld.L05_DiffAsIntersect (868ms)
+warning: Game/Levels/SetOpsWorld/L05_DiffAsIntersect.lean:6:0: No translation (en) found for: Difference as Intersection with Complement
+warning: Game/Levels/SetOpsWorld/L05_DiffAsIntersect.lean:8:0: No translation (en) found for: # s \\ t = s ∩ tᶜ
+
+In Level 4, we noted that set difference combines intersection and
+complement: §0. Now let us **prove** this identity.
+
+At the element level, both sides say the same thing:
+- §1 means §2
+- §3 means §4, which is §5
+
+So the proof is: §6, then §7, then show each direction
+by extracting and reassembling the components.
+
+**Proof plan**:
+1. §8 — reduce to membership biconditional
+2. §9 — split the §10
+3. **Forward**: §11, §12, §13
+4. **Backward**: same structure in reverse
+warning: Game/Levels/SetOpsWorld/L05_DiffAsIntersect.lean:28:0: No translation (en) found for: Set difference equals intersection with complement.
+warning: Game/Levels/SetOpsWorld/L05_DiffAsIntersect.lean:59:0: No translation (en) found for: You proved that set difference is not a new primitive — it is
+**intersection with complement**: §0.
+
+This is a common pattern in mathematics: seemingly distinct operations
+turn out to be combinations of more fundamental ones. Here, the four
+set operations (∪, ∩, ᶜ, \\) reduce to just three (∪, ∩, ᶜ), since
+difference is derivable.
+
+The proof was straightforward because both sides have *exactly the
+same logical content* — §1. The §2 + §3
+pattern made this visible.
+
+**New idiom: §4**. You already know that
+§5 *destructs* a pair (splits §6 into
+its components). In this proof you saw the dual: §7
+*constructs* a pair — it builds a conjunction from two pieces already
+in context. Think of §8 as anonymous pair notation: §9
+takes it apart, §10 puts it together.
+warning: Game/Levels/SetOpsWorld/L05_DiffAsIntersect.lean:80:0: No translation (en) found for: §0 states §1.
+warning: Game/Levels/SetOpsWorld/L05_DiffAsIntersect.lean:86:59: Missing Theorem Documentation: sdiff_eq
+Add `TheoremDoc sdiff_eq` somewhere above this statement.
+⚠ [529/536] Built Game.Levels.SetOpsWorld.L07_IntersectionCommutativity (888ms)
+warning: Game/Levels/SetOpsWorld/L07_IntersectionCommutativity.lean:6:0: No translation (en) found for: Intersection Commutativity
+warning: Game/Levels/SetOpsWorld/L07_IntersectionCommutativity.lean:8:0: No translation (en) found for: # s ∩ t ⊆ t ∩ s
+
+In Level 6, you extracted a single component from an intersection
+hypothesis using §0. But sometimes you need **both** components.
+
+The §1 tactic destructures a conjunction (or intersection
+hypothesis) into its parts:
+
+§2
+
+This replaces §3 with §4 and §5.
+
+**Your task**: Prove that intersection is commutative as a subset
+relation: §6. You need to extract **both** components
+from the hypothesis and reassemble them in swapped order using
+§7.
+
+**Proof plan**:
+1. §8 — start the subset proof
+2. §9 — extract both components
+3. §10 — split the goal into §11 and §12
+4. Close each subgoal with the appropriate component
+warning: Game/Levels/SetOpsWorld/L07_IntersectionCommutativity.lean:35:0: No translation (en) found for: The intersection is commutative (subset direction).
+warning: Game/Levels/SetOpsWorld/L07_IntersectionCommutativity.lean:55:0: No translation (en) found for: You used §0 to extract **both** components from an intersection
+hypothesis for the first time. This is a move you will use repeatedly:
+
+§1
+
+Compare with Level 6, where you only needed one component (§2).
+When you need both, §3 is the right tool.
+
+**§4 vs §5**: In Level 5 you saw
+§6 build a conjunction in one shot. In this level you
+used §7 followed by two §8 calls. When should you use
+which? Use §9 when both components are already in context
+as hypotheses. Use §10 when the subgoals need further tactic
+work (e.g., rewriting or case analysis before you can close them).
+
+The full set equality §11 (§12) follows by
+applying §13 and using this element-level argument in both directions.
+warning: Game/Levels/SetOpsWorld/L07_IntersectionCommutativity.lean:78:0: No translation (en) found for: §0 states §1.
+warning: Game/Levels/SetOpsWorld/L07_IntersectionCommutativity.lean:81:0: No translation (en) found for: §0 is the lattice version of §1.
+warning: Game/Levels/SetOpsWorld/L07_IntersectionCommutativity.lean:84:0: No translation (en) found for: §0 states §1 (propositional commutativity of ∧).
+⚠ [530/536] Built Game.Levels.SetOpsWorld.L11_PushNeg (928ms)
+warning: Game/Levels/SetOpsWorld/L11_PushNeg.lean:6:0: No translation (en) found for: Pushing Negation
+warning: Game/Levels/SetOpsWorld/L11_PushNeg.lean:8:0: No translation (en) found for: # The push_neg Tactic
+
+When working with complements, you often encounter negated
+propositions: §0, §1, §2, etc.
+You *could* break these apart manually, but there is a faster way.
+
+The §3 tactic pushes negation through logical connectives
+using standard equivalences:
+
+| Before push_neg | After push_neg |
+|---|---|
+| §4 | §5 |
+| §6 | §7 |
+| §8 | §9 |
+| §10 | §11 |
+
+You can apply it to a hypothesis with §12, or to the
+goal with just §13.
+
+**Your task**: Prove that the complement of a union is contained in
+the intersection of the complements. This is one direction of
+**De Morgan's law** for sets:
+
+§14
+
+After §15, you will have §16, which is
+definitionally §17. Use §18 to make the negated
+disjunction explicit, then §19 to convert it to
+§20 — which matches the goal.
+
+**Why §21 is needed here**: Lean displays §22
+using set-theoretic complement notation, but §23 needs to see
+the negation explicitly as §24. The tactic
+§25 converts to this definitionally
+equal logical form so §26 can process it. This
+§27 + §28 pattern will recur whenever you work with
+complements of compound sets.
+warning: Game/Levels/SetOpsWorld/L11_PushNeg.lean:48:0: No translation (en) found for: The complement of a union is a subset of the intersection of
+complements (one direction of De Morgan).
+warning: Game/Levels/SetOpsWorld/L11_PushNeg.lean:79:0: No translation (en) found for: You used §0 to convert a negated disjunction into a conjunction
+of negations:
+
+§1
+
+This is the propositional De Morgan law, which §2 applies
+automatically. The tactic handles much more than this — it can push
+negation through §3, §4, §5, §6, §7, and arithmetic comparisons.
+
+**Key workflow**: When you encounter a negated compound proposition
+(in a hypothesis or goal):
+1. §8 to make the negation explicit (if needed)
+2. §9 to simplify
+
+In the next level, you will prove the full De Morgan equality
+§10 using §11, §12, and case analysis.
+warning: Game/Levels/SetOpsWorld/L11_PushNeg.lean:98:0: No translation (en) found for: §0 pushes negation through logical connectives.
+
+## Syntax
+§1
+
+## Transformations
+| Before | After |
+|---|---|
+| §2 | §3 |
+| §4 | §5 |
+| §6 | §7 |
+| §8 | §9 |
+| §10 | §11 |
+
+## When to use it
+When a hypothesis or goal contains a negated compound proposition
+that you want to simplify. Especially useful with complement
+membership (§12 = §13).
+warning: Game/Levels/SetOpsWorld/L11_PushNeg.lean:124:0: No translation (en) found for: §0 states §1 (De Morgan).
+warning: Game/Levels/SetOpsWorld/L11_PushNeg.lean:127:0: No translation (en) found for: §0 is the lattice version of De Morgan: §1.
+warning: Game/Levels/SetOpsWorld/L11_PushNeg.lean:130:0: No translation (en) found for: §0 states §1 (propositional De Morgan).
+⚠ [531/536] Built Game.Levels.SetOpsWorld.L14_ComplementUnion (868ms)
+warning: Game/Levels/SetOpsWorld/L14_ComplementUnion.lean:6:0: No translation (en) found for: Complement Union Law
+warning: Game/Levels/SetOpsWorld/L14_ComplementUnion.lean:8:0: No translation (en) found for: # s ∪ sᶜ = Set.univ
+
+Back in Level 9, you proved §0 — a set and its complement
+are disjoint. We mentioned that the companion identity
+§1 also holds but requires classical reasoning.
+
+Now you have that technique: §2 + §3. Time to fulfill
+the promise.
+
+§4
+
+Every element belongs to §5 or to §6 — there is no third option.
+This is the **law of excluded middle** applied to set membership.
+
+**Proof plan**:
+1. §7, §8
+2. **Forward** (§9): §10. Since
+   §11 unfolds to §12, use §13 then §14
+   (which closes any §15 goal).
+3. **Backward** (§16): §17. This is the
+   interesting direction. You need §18 but cannot choose
+   a side without more information. Use §19, then
+   §20 + §21 to convert §22 to
+   §23 — a direct contradiction.
+warning: Game/Levels/SetOpsWorld/L14_ComplementUnion.lean:35:0: No translation (en) found for: Every element is in s or in the complement of s.
+warning: Game/Levels/SetOpsWorld/L14_ComplementUnion.lean:70:0: No translation (en) found for: You proved §0 — every element is in §1 or its
+complement. This is the **law of excluded middle** for sets.
+
+Together with Level 9, you now have both complement laws:
+
+| Identity | Meaning | Classical? |
+|---|---|---|
+| §2 | No element is in both | No (constructive) |
+| §3 | Every element is in one | Yes (§4) |
+
+The asymmetry is revealing: proving that §5 and §6 are *disjoint*
+requires no classical reasoning, but proving they *cover everything*
+does. This is because the first only says "having both leads to
+contradiction," while the second says "one must hold" — and asserting
+existence without construction is exactly what classical logic adds.
+
+The library name is §7.
+warning: Game/Levels/SetOpsWorld/L14_ComplementUnion.lean:90:0: No translation (en) found for: §0 states §1.
+warning: Game/Levels/SetOpsWorld/L14_ComplementUnion.lean:93:0: No translation (en) found for: §0 is the lattice version: §1.
+warning: Game/Levels/SetOpsWorld/L14_ComplementUnion.lean:99:85: Missing Theorem Documentation: Set.compl_union_self
+Add `TheoremDoc Set.compl_union_self` somewhere above this statement.
+warning: Game/Levels/SetOpsWorld/L14_ComplementUnion.lean:99:106: Missing Theorem Documentation: compl_sup_eq_top
+Add `TheoremDoc compl_sup_eq_top` somewhere above this statement.
+⚠ [532/536] Built Game.Levels.SetOpsWorld.L13_DualDeMorgan (1.1s)
+warning: Game/Levels/SetOpsWorld/L13_DualDeMorgan.lean:6:0: No translation (en) found for: Dual De Morgan
+warning: Game/Levels/SetOpsWorld/L13_DualDeMorgan.lean:8:0: No translation (en) found for: # Dual De Morgan: (s ∩ t)ᶜ = sᶜ ∪ tᶜ
+
+In Level 12, you proved §0. Now prove the
+**dual**: the complement of an intersection is the union of the
+complements:
+
+§1
+
+The proof has a **genuinely different structure** from the union version.
+The forward direction requires a new technique: **proof by contradiction**.
+
+**New tactic: §2**
+
+When you cannot build the goal directly, assume its negation and derive
+a contradiction:
+
+§3
+
+**Why is this needed here?** The forward direction gives you
+§4 and asks for §5. You cannot
+directly choose §6 or §7 without knowing which of §8 or
+§9 fails. But if you assume the goal is FALSE (§10),
+then §11 converts §12 to §13
+— which contradicts §14.
+
+**Proof plan**:
+1. §15, §16
+2. **Forward**: §17, §18, §19 + §20, §21
+3. **Backward**: §22, §23, destructure and case-split
+warning: Game/Levels/SetOpsWorld/L13_DualDeMorgan.lean:44:0: No translation (en) found for: Dual De Morgan: the complement of an intersection is the union
+of the complements.
+warning: Game/Levels/SetOpsWorld/L13_DualDeMorgan.lean:104:0: No translation (en) found for: You proved the dual De Morgan law! Notice how the proof structure
+differs from Level 12:
+
+| | Union De Morgan | Intersection De Morgan |
+|---|---|---|
+| **Forward** | §0 + §1 (direct) | §2 + §3 (indirect) |
+| **Backward** | §4 + §5 on union | §6 + §7 + §8 on union |
+
+The forward direction required **proof by contradiction** (§9)
+because the goal was a disjunction where neither side could be chosen
+without more information. This is a fundamental technique:
+
+> When you cannot build the goal directly, assume its negation and
+> derive a contradiction.
+
+The §10 + §11 combination is especially powerful: it
+converts a goal you cannot prove constructively into hypotheses you
+can use to find a contradiction.
+
+**The pattern**: Conjunction/intersection results tend to be
+constructive (you can build §12 by producing each piece), while
+disjunction/union results tend to require classical reasoning (you
+must *choose* a side, and sometimes you cannot know which is true
+without indirect argument). Watch for this asymmetry in future proofs:
+if your goal is a disjunction and you cannot pick a side, §13
+is likely the way forward.
+
+**What is classical reasoning?** Classical logic means we accept that
+every proposition is either true or false — there is no middle ground.
+Not all proof systems accept this (constructive logic does not), but
+Lean does, so §14 is always available. The philosophical
+difference: in constructive logic, to prove §15 you must *exhibit*
+which one holds. In classical logic, you can prove §16 by showing
+that assuming neither leads to contradiction.
+
+The library name is §17.
+warning: Game/Levels/SetOpsWorld/L13_DualDeMorgan.lean:143:0: No translation (en) found for: §0 proves the goal by contradiction. It introduces the
+negation of the goal as a hypothesis, and changes the goal to §1.
+
+## Syntax
+§2
+
+## When to use it
+When you cannot build the goal directly. After §3, you have
+§4 in context and must derive §5.
+
+## Example
+If the goal is §6:
+§7
+
+## Warning
+§8 uses classical logic (the law of excluded middle).
+Every Lean proof may use it — there is no constructivity restriction.
+warning: Game/Levels/SetOpsWorld/L13_DualDeMorgan.lean:170:0: No translation (en) found for: §0 states §1 (dual De Morgan).
+warning: Game/Levels/SetOpsWorld/L13_DualDeMorgan.lean:173:0: No translation (en) found for: §0 is the lattice version: §1.
+warning: Game/Levels/SetOpsWorld/L13_DualDeMorgan.lean:176:0: No translation (en) found for: §0 states §1 (propositional dual De Morgan).
+⚠ [533/536] Built Game.Levels.SetOpsWorld.L16_Boss (1.1s)
+warning: Game/Levels/SetOpsWorld/L16_Boss.lean:6:0: No translation (en) found for: Boss: Distributivity
+warning: Game/Levels/SetOpsWorld/L16_Boss.lean:8:0: No translation (en) found for: # Boss: Intersection Distributes over Union
+
+Time to integrate everything. Prove the **distributive law** for sets:
+
+§0
+
+This says: being in §1 AND in §2 is the same as being in
+§3 OR in §4. It is the set-theoretic version of the
+propositional identity §5.
+
+**Skills required** (all taught in this world):
+- §6 to start a set equality proof
+- §7 to split the §8
+- §9 to destructure §10 hypotheses
+- §11 to split §12 hypotheses
+- §13 / §14 to build §15 goals
+- §16 again to build §17 goals
+
+The proof has two directions. Each direction requires destructuring
+one side and building the other. There are no new tricks — just the
+moves you have practiced. Take it one step at a time.
+warning: Game/Levels/SetOpsWorld/L16_Boss.lean:32:0: No translation (en) found for: Intersection distributes over union.
+warning: Game/Levels/SetOpsWorld/L16_Boss.lean:147:0: No translation (en) found for: Congratulations — you have completed **Set Operations World**!
+
+You proved the distributive law by working through every step
+of the propositional logic underlying the set operations:
+
+| Set Operation | Logic | Proving | Using |
+|---|---|---|---|
+| §0 (union) | §1 (or) | §2/§3 | §4 |
+| §5 (intersection) | §6 (and) | §7 | §8/§9 or §10 |
+| §11 (complement) | §12 (not) | §13 | apply §14 |
+| §15∧ ¬§16constructor§17.1§18.2§19obtain§20ext§21push_neg§22by_contra§23cases h with | inl ... | inr ...§24(s ∪ t)ᶜ = sᶜ ∩ tᶜ§25(s ∩ t)ᶜ = sᶜ ∪ tᶜ§26s ∩ sᶜ = ∅§27s ∪ sᶜ = Set.univ§28sᶜᶜ = s§29s ∩ (t ∪ u) = (s ∩ t) ∪ (s ∩ u)§30s ∪ (t ∩ u) = (s ∪ t) ∩ (s ∪ u)§31∪§32∩§33⋃§34⋂§35∨§36∃§37∧§38∀§39f⁻¹(s ∪ t) = f⁻¹(s) ∪ f⁻¹(t)§40∩§41ᶜ§42f(s ∩ t) ⊆ f(s) ∩ f(t)` is merely a subset, not an equality in
+general. This asymmetry between images and preimages will be a central
+theme of later worlds.
+warning: Game/Levels/SetOpsWorld/L16_Boss.lean:189:0: No translation (en) found for: §0 states §1.
+warning: Game/Levels/SetOpsWorld/L16_Boss.lean:192:0: No translation (en) found for: §0 is the lattice version: §1.
+warning: Game/Levels/SetOpsWorld/L16_Boss.lean:195:0: No translation (en) found for: §0 is the dual distributivity law.
+warning: Game/Levels/SetOpsWorld/L16_Boss.lean:198:0: No translation (en) found for: §0 is the lattice version of the dual distributivity.
+warning: Game/Levels/SetOpsWorld/L16_Boss.lean:201:0: No translation (en) found for: §0 is an alias for §1.
+warning: Game/Levels/SetOpsWorld/L16_Boss.lean:204:0: No translation (en) found for: §0 states §1.
+warning: Game/Levels/SetOpsWorld/L16_Boss.lean:207:0: No translation (en) found for: §0 states §1.
+warning: Game/Levels/SetOpsWorld/L16_Boss.lean:210:0: No translation (en) found for: §0 states §1.
+warning: Game/Levels/SetOpsWorld/L16_Boss.lean:213:0: No translation (en) found for: §0 states §1.
+⚠ [534/536] Built Game.Levels.SetOpsWorld (628ms)
+warning: Game/Levels/SetOpsWorld.lean:19:0: No translation (en) found for: Set Operations World
+warning: Game/Levels/SetOpsWorld.lean:21:0: No translation (en) found for: # Set Operations World
+
+In Set World, you learned that sets are predicates. In Subset World,
+you learned to prove subset and equality relationships between sets.
+Now you will learn the four fundamental **set operations** — and
+discover that each one is a logical connective in disguise:
+
+| Operation | Notation | Logical meaning |
+|---|---|---|
+| Union | §0 | §1 |
+| Intersection | §2 | §3 |
+| Complement | §4 | §5 |
+| Difference | §6 | §7 |
+
+This correspondence is the deepest fact about sets in Lean: **every
+set operation reduces to a propositional connective**. Set-theoretic
+reasoning IS logical reasoning.
+
+By the end of this world, you will be able to:
+- Prove membership in unions, intersections, complements, and differences
+- Prove subset relations involving these operations
+- Perform case analysis on union hypotheses
+- Use §8 to simplify negated compound propositions
+- Prove De Morgan's laws for sets (both directions)
+- Use §9 for proof by contradiction
+- Prove the complement laws, double complement, and distributivity
+
+**New tools in this world**:
+- §10 / §11 — choose a side of a disjunction (or union)
+- §12 — push negation through logical connectives
+- §13 — proof by contradiction
+- §14 — case analysis on disjunctions
+  (the §15 tactic is familiar; what is new here are the constructor
+  names §16 and §17 for the two branches of §18)
+
+**Prerequisites**: Set World (membership, show/change) and Subset World
+(intro x hx, ext, constructor, obtain).
+⚠ [535/536] Built Game (937ms)
+warning: Game.lean:7:0: No translation (en) found for: Functions & Relations
+warning: Game.lean:8:0: No translation (en) found for: # Functions & Relations
 
 Functions, Relations, Equivalences, and Encodability
 
 This course is under construction.
-info: Game.lean:21:0: i18n: file created at /home/ahart/Documents/autogame/lean-4-game-creator/functions_relations/.i18n/en/Game.pot
-Build completed successfully (519 jobs).
+info: Game.lean:25:0: i18n: file created at /home/ahart/Documents/autogame/lean-4-game-creator/functions_relations/.i18n/en/Game.pot
+Build completed successfully (536 jobs).

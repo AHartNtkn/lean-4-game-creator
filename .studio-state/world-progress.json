@@ -1,6 +1,7 @@
 {
   "completed": [
     "SetWorld",
-    "SubsetWorld"
+    "SubsetWorld",
+    "SetOpsWorld"
   ]
 }
