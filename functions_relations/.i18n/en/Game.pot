@@ -8,70 +8,126 @@ msgstr "Project-Id-Version: Game v4.29.0-rc6\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit"
 
-#. §0: `show P`
-#. §1: `P`
-#. §2: `P`
-#. §3: ```
-#. show P
-#. ```
-#. §4: `x ∈ {n | n < 5}`
-#. §5: `x < 5`
-#. §6: `omega`
-#. §7: `show x < 5`
-#. §8: ```
-#. -- Goal: 3 ∈ {n | n < 5}
-#. show 3 < 5
-#. -- Goal: 3 < 5
-#. omega
-#. ```
-#. §9: `show`
-#. §10: `show`
-#: Game.Metadata
-msgid "§0 converts the goal to §1, as long as §2 is\n"
-"definitionally equal to the current goal.\n"
-"\n"
-"## Syntax\n"
-"§3\n"
-"\n"
-"## When to use it\n"
-"When the goal is correct but in a form that other tactics cannot\n"
-"parse. For example, §4 is definitionally §5,\n"
-"but §6 needs the arithmetic form. Use §7 to convert.\n"
-"\n"
-"## Example\n"
-"§8\n"
-"\n"
-"## Warning\n"
-"§9 does NOT prove anything — it only changes the display.\n"
-"The new goal must be definitionally equal to the old one, or\n"
-"Lean will reject the §10."
+#. §0: `hle`
+#. §1: `x`
+#. §2: `x ≤ 4`
+#. §3: `change x ≤ 4 at hle`
+#. §4: `show x < 5`
+#. §5: `omega`
+#: Game.Levels.SubsetWorld.L17_Boss
+msgid "§0 says §1 is in the arithmetic set, which is\n"
+"definitionally §2. Unwrap with §3,\n"
+"then §4 and §5."
 msgstr ""
 
-#. §0: `intro x`
-#. §1: ```
-#. intro x       -- introduce one variable
-#. intro x y z   -- introduce multiple variables
-#. intro h       -- introduce an implication hypothesis
-#. ```
-#. §2: `∀ x, P x`
-#. §3: `P → Q`
-#: Game.Metadata
-msgid "§0 introduces a universally quantified variable or an\n"
-"antecedent of an implication into the context.\n"
-"\n"
-"## Syntax\n"
-"§1\n"
-"\n"
-"## When to use it\n"
-"When the goal is §2 or §3."
+#: Game.Levels.SubsetWorld.L13_Antisymm
+msgid "Two sets that contain each other are equal."
+msgstr ""
+
+#. §0: `hx`
+#. §1: `x < 3`
+#. §2: `x ≤ 3`
+#. §3: `show x ≤ 3`
+#: Game.Levels.SubsetWorld.L02_ChangeTactic
+msgid "Good — §0 is now §1. The goal is definitionally §2.\n"
+"Use §3 to make it explicit."
 msgstr ""
 
 #: GameServer.RpcHandlers
 msgid "intermediate goal solved! 🎉"
 msgstr ""
 
+#. §0: `hx`
+#. §1: `x ∈ the arithmetic set`
+#. §2: `x < 5`
+#. §3: `change x < 5 at hx`
+#. §4: `exact h5 x hx`
+#: Game.Levels.SubsetWorld.L17_Boss
+msgid "§0 is §1, i.e., §2.\n"
+"Unwrap with §3, then §4."
+msgstr ""
+
+#. §0: `intro h`
+#. §1: `h h4`
+#. §2: `4 < 3`
+#. §3: `∀ x, P x`
+#. §4: `x₀`
+#. §5: `P x₀`
+#. §6: `∀ x, x < 5 → x < 3`
+#. §7: `x₀ = 4`
+#. §8: `h h4`
+#. §9: `h`
+#. §10: `h4`
+#. §11: `{n | n < 5} ⊆ {n | n < 3}`
+#. §12: `4 < 3`
+#: Game.Levels.SubsetWorld.L07_NonSubset
+msgid "You just proved your first **negative** subset statement! The proof\n"
+"structure was:\n"
+"\n"
+"1. **Assume** the subset holds (§0)\n"
+"2. **Exhibit** a counterexample element (4)\n"
+"3. **Apply** the assumed subset to the counterexample (§1)\n"
+"4. **Derive contradiction** from the impossible conclusion (§2)\n"
+"\n"
+"This is a **proof by counterexample**: to disprove a universal\n"
+"statement §3, you assume it holds and exhibit a specific\n"
+"§4 where §5 leads to a contradiction. Here, the universal\n"
+"statement is §6, and the counterexample is §7.\n"
+"\n"
+"This is a specific form of proof by contradiction, but the key\n"
+"technique — **finding a witness that breaks the claim** — deserves its\n"
+"own name. You will use proof by counterexample throughout this course:\n"
+"to disprove injectivity (find two inputs with the same output), to\n"
+"disprove surjectivity (find an output with no input), and to disprove\n"
+"set equality (find an element in one set but not the other).\n"
+"\n"
+"Notice how Step 3 used the subset-as-function pattern from Level 6:\n"
+"§8 applies the subset hypothesis §9 to the membership proof\n"
+"§10. The difference is that here, the conclusion is *absurd* — which\n"
+"is exactly how we know the assumption was wrong.\n"
+"\n"
+"In ordinary math: \"Suppose §11. Then in\n"
+"particular §12, which is false. Contradiction.\""
+msgstr ""
+
 #: Game.Levels.SetWorld.L02_SetBuilder
 msgid "Prove that 3 belongs to the set of naturals less than 5."
+msgstr ""
+
+#. §0: `x ∈ Set.univ`
+#. §1: `True`
+#. §2: `hx`
+#. §3: `True`
+#. §4: `constructor`
+#: Game.Levels.SubsetWorld.L05_SubsetUniv
+msgid "The goal is §0, which is §1. The hypothesis\n"
+"§2 is not needed here — §3 holds unconditionally. Use\n"
+"§4."
+msgstr ""
+
+#. §0: `intro hx`
+#. §1: `exact hx.1`
+#. §2: `intro ⟨h1, _⟩`
+#. §3: `exact h1`
+#: Game.Levels.SubsetWorld.L10_ExtIntro
+msgid "§0 then §1 extracts the\n"
+"first component of the conjunction.\n"
+"\n"
+"Alternatively: §2 destructures on introduction,\n"
+"then §3."
+msgstr ""
+
+#: Game.Levels.SubsetWorld.L07_NonSubset
+msgid "The set of numbers less than 5 is NOT a subset of the set of\n"
+"numbers less than 3."
+msgstr ""
+
+#. §0: `h4' : 4 < 3`
+#. §1: `omega`
+#. §2: `False`
+#: Game.Levels.SubsetWorld.L07_NonSubset
+msgid "§0 is clearly false. §1 can derive §2\n"
+"from contradictory arithmetic hypotheses."
 msgstr ""
 
 #. §0: `cases x with | constructor₁ args | constructor₂ args`
@@ -106,43 +162,13 @@ msgid "§0 performs\n"
 "§3 has §4 and §5, §6 has §7)."
 msgstr ""
 
-#. §0: `3 ∉ {n | Even n}`
-#. §1: `n < 5`
-#. §2: `Even n`
-#. §3: `show`
-#. §4: `intro`
-#. §5: `omega`
-#. §6: `obtain`
-#. §7: `omega`
-#. §8: `obtain`
-#. §9: `h : ∃ x, P x`
-#. §10: `obtain ⟨x, hx⟩ := h`
-#. §11: `x`
-#. §12: `hx : P x`
-#: Game.Levels.SetWorld.L05_NonMembershipExistential
-msgid "You proved §0 by assuming membership, destructuring\n"
-"the existential witness, and deriving an arithmetic contradiction.\n"
-"\n"
-"This is a different proof shape from Level 3:\n"
-"\n"
-"| Level 3 | This level |\n"
-"|---|---|\n"
-"| Predicate: §1 (arithmetic) | Predicate: §2 (existential) |\n"
-"| §3 unfolds to arithmetic | §4 gets the existential |\n"
-"| §5 on the arithmetic | §6 extracts witness, THEN §7 |\n"
-"\n"
-"Notice the recurring pattern across Levels 2, 3, and this level: **unfold\n"
-"the set notation, assume or provide, then close with arithmetic**. This is\n"
-"the *membership reduction* pattern — every set membership question reduces\n"
-"to a question about the underlying predicate, and the proof works directly\n"
-"with that predicate. This pattern transfers to every set concept in this\n"
-"course.\n"
-"\n"
-"The §8 tactic is your tool for destructuring existentials. Whenever\n"
-"you have §9, use §10 to get the witness\n"
-"§11 and the proof §12. You will use this pattern throughout the\n"
-"course — it appears whenever set membership involves existential\n"
-"conditions."
+#. §0: `intro x hx`
+#. §1: `show x < 5`
+#. §2: `change x < 3 at hx`
+#. §3: `omega`
+#: Game.Levels.SubsetWorld.L14_ProperSubset
+msgid "§0 then §1 then\n"
+"§2 then §3."
 msgstr ""
 
 #. §0: `tauto`
@@ -158,10 +184,6 @@ msgid "§0 closes goals that are propositional tautologies. It handles\n"
 "§1, §2, §3, §4, §5, §6, §7.\n"
 "\n"
 "Disabled in levels where the learner should construct proofs manually."
-msgstr ""
-
-#: Game.Levels.SetWorld.L04_InfiniteSet
-msgid "An Infinite Set"
 msgstr ""
 
 #. §0: `right`
@@ -181,48 +203,12 @@ msgid "§0 selects the right disjunct of a goal §1.\n"
 "When the goal is §3 and you want to prove §4."
 msgstr ""
 
-#. §0: `p`
-#. §1: `hp : ∀ n, Even n → p n`
-#. §2: `p`
-#. §3: `hq : ∀ n, p n → Even n`
-#. §4: `p`
-#. §5: `p`
-#. §6: `4 ∈ {n | p n}`
-#. §7: `3 ∉ {n | p n}`
-#. §8: `apply hp`
-#. §9: `Even 4`
-#. §10: `p 3`
-#. §11: `Even 3`
-#. §12: `hq`
-#. §13: `obtain`
-#. §14: `constructor`
-#: Game.Levels.SetWorld.L09_Boss
-msgid "# Boss: Putting It All Together\n"
-"\n"
-"Time to combine everything. You are given an abstract predicate §0\n"
-"on natural numbers, with two hypotheses:\n"
-"\n"
-"- §1 — every even number satisfies §2\n"
-"- §3 — every number satisfying §4 is even\n"
-"\n"
-"Together these say: §5 holds for exactly the even numbers.\n"
-"\n"
-"You must prove two things:\n"
-"1. §6 — 4 is in the p-set (because 4 is even)\n"
-"2. §7 — 3 is NOT in the p-set (because 3 is odd)\n"
-"\n"
-"This combines:\n"
-"- Membership via hypothesis (Levels 1–2, 4): use §8 then\n"
-"  provide a witness for §9\n"
-"- Non-membership via contradiction (Levels 3, 5): assume §10,\n"
-"  derive §11 from §12, destructure the existential with\n"
-"  §13, then reach an arithmetic contradiction\n"
-"\n"
-"Start with §14 to split the conjunction."
-msgstr ""
-
-#: Game.Levels.SetWorld.L06_EmptySet
-msgid "The Empty Set"
+#. §0: `s ⊂ t`
+#. §1: `s ⊆ t ∧ ¬ (t ⊆ s)`
+#. §2: `constructor`
+#: Game.Levels.SubsetWorld.L14_ProperSubset
+msgid "The goal is §0, which means §1.\n"
+"Use §2 to split it into the two components."
 msgstr ""
 
 #. §0: `Set.univ`
@@ -234,17 +220,12 @@ msgstr ""
 msgid "7 does not belong to the set of naturals less than 5."
 msgstr ""
 
-#. §0: `Set.mem_univ x`
-#. §1: `x ∈ Set.univ`
-#. §2: `x`
-#: Game.Levels.SetWorld.L01_WelcomeToSets
-#: Game.Levels.SetWorld.L06_EmptySet
-#: Game.Levels.SetWorld.L07_UniversalSet
-msgid "§0 proves §1 for any §2."
-msgstr ""
-
-#: GameServer.RpcHandlers
-msgid "level completed with warnings… 🎭"
+#. §0: `s ≠ t`
+#. §1: `(s = t) → False`
+#. §2: `intro h`
+#: Game.Levels.SubsetWorld.L12_SetNonEquality
+msgid "The goal is §0, which means §1.\n"
+"Use §2 to assume the sets are equal and aim for a contradiction."
 msgstr ""
 
 #. §0: `6 < 10`
@@ -297,6 +278,21 @@ msgid "# The Empty Set\n"
 "**Your task**: Prove the statement step by step."
 msgstr ""
 
+#. §0: `change x < 5 at hx`
+#. §1: `exact h5 x hx`
+#: Game.Levels.SubsetWorld.L17_Boss
+msgid "§0 then §1."
+msgstr ""
+
+#. §0: `x < 3 ∧ x < 5`
+#. §1: `constructor`
+#. §2: `x < 3`
+#. §3: `x < 5`
+#: Game.Levels.SubsetWorld.L10_ExtIntro
+msgid "The goal is definitionally §0. Use §1\n"
+"to split into two goals: §2 and §3."
+msgstr ""
+
 #. §0: `simp_all`
 #. §1: `simp`
 #. §2: `simp`
@@ -307,62 +303,91 @@ msgid "§0 applies §1 to all hypotheses and the goal\n"
 "Disabled for the same reason as §2."
 msgstr ""
 
+#. §0: `Set.univ`
+#: Game.Levels.SetWorld.L07_UniversalSet
+msgid "Every natural number belongs to §0."
+msgstr ""
+
 #. §0: `omega`
 #. §1: `3 < 5`
 #: Game.Levels.SetWorld.L02_SetBuilder
 msgid "§0 can now see the goal §1 and close it."
 msgstr ""
 
-#. §0: `Set.univ`
-#: Game.Levels.SetWorld.L07_UniversalSet
-msgid "Every natural number belongs to §0."
+#. §0: `apply htu`
+#. §1: `x ∈ u`
+#. §2: `htu`
+#. §3: `x ∈ t`
+#: Game.Levels.SubsetWorld.L08_SubsetTrans
+msgid "§0 matches the conclusion §1\n"
+"against the output of §2 and leaves §3 as the new goal."
 msgstr ""
 
-#. §0: `∉`
-#. §1: `¬ ∈`
-#. §2: `x ∈ s`
-#. §3: `s`
-#. §4: `x`
-#. §5: `x ∉ s`
-#. §6: $$x \\notin s \\;\\;\\Longleftrightarrow\\;\\; \\neg\\, (x \\in s) \\;\\;\\Longleftrightarrow\\;\\; (x \\in s) \\to \\text{False}$$
-#. §7: `7 ∉ {n | n < 5}`
-#. §8: `¬ (7 < 5)`
-#. §9: `7 < 5 → False`
-#. §10: `¬ P`
-#. §11: `P`
-#. §12: `intro h`
-#. §13: `¬ P`
-#. §14: `False`
-#. §15: `h : P`
-#. §16: `show ¬ (7 < 5)`
-#. §17: `intro h`
-#. §18: `7 < 5`
-#. §19: `omega`
-#: Game.Levels.SetWorld.L03_NonMembership
-msgid "# Non-Membership: §0 means §1\n"
+#. §0: `s ⊆ t`
+#. §1: `∀ x, x ∈ s → x ∈ t`
+#. §2: `intro x hx`
+#. §3: `x ∈ t`
+#. §4: `s ⊆ s`
+#. §5: `intro x hx; exact hx`
+#. §6: `∅ ⊆ s`
+#. §7: `intro x hx; contradiction`
+#. §8: `s ⊆ Set.univ`
+#. §9: `intro x _; constructor`
+#. §10: `s ⊆ t → t ⊆ u → s ⊆ u`
+#. §11: `Set.Subset.trans`
+#. §12: `s = t ↔ ∀ x, x ∈ s ↔ x ∈ t`
+#. §13: `ext x; constructor; ...`
+#. §14: `s ⊆ t → t ⊆ s → s = t`
+#. §15: `exact Set.Subset.antisymm h1 h2`
+#. §16: `s ≠ t`
+#. §17: `(s = t) → False`
+#. §18: `s ⊂ t`
+#. §19: `s ⊆ t ∧ ¬ (t ⊆ s)`
+#. §20: `constructor`
+#. §21: `change P at h`
+#. §22: `h.1`
+#. §23: `h.2`
+#. §24: `∧`
+#. §25: `↔`
+#. §26: `⊆`
+#. §27: `⊂`
+#. §28: `∪`
+#. §29: `∩`
+#. §30: `ᶜ`
+#. §31: ``). Each
+#. operation corresponds to a logical connective, extending the
+#. sets-as-predicates theme from Set World. The `
+#: Game.Levels.SubsetWorld.L17_Boss
+msgid "Congratulations — you have completed **Subset World**!\n"
 "\n"
-"Just as §2 means the predicate §3 holds at §4, non-membership\n"
-"§5 means the predicate does NOT hold. Formally:\n"
+"Here is your toolkit:\n"
 "\n"
-"§6\n"
+"| Concept | Lean | Proof move |\n"
+"|---|---|---|\n"
+"| Subset §0 | §1 | §2 then show §3 |\n"
+"| Reflexivity §4 | identity | §5 |\n"
+"| §6 | vacuously true | §7 |\n"
+"| §8 | trivially true | §9 |\n"
+"| Transitivity | §10 | chain with §11 or function application |\n"
+"| Set equality via ext | §12 | §13 |\n"
+"| Set equality via antisymm | §14 | §15 |\n"
+"| Set non-equality §16 | §17 | assume equality, find contradictory witness |\n"
+"| Proper subset §18 | §19 | §20, then prove ⊆ and ¬⊆ |\n"
+"| Unwrap hypothesis | §21 | converts display to def-equal form |\n"
+"| Dot projection | §22, §23 | extract components of §24 or §25 |\n"
 "\n"
-"So §7 unfolds to §8, which is §9.\n"
+"The §26 relation is a **partial order** on sets: it is reflexive\n"
+"(Level 3), transitive (Level 8), and antisymmetric (Level 13). The\n"
+"strict variant §27 (proper subset, Level 14) excludes equality.\n"
 "\n"
-"To prove a negation §10, you assume §11 and derive a contradiction.\n"
-"The tactic §12 turns a goal §13 into a goal §14 with\n"
-"hypothesis §15.\n"
-"\n"
-"**Your task**: First use §16 to make the goal explicit.\n"
-"Then use §17 to assume §18, and §19 to derive the\n"
-"contradiction."
+"In the next world, you will learn about **set operations**: union (§28),\n"
+"intersection (§29), complement (§30), and difference (§31intro x hx` proof\n"
+"pattern you mastered here will be the foundation for every one of\n"
+"those proofs."
 msgstr ""
 
-#: Game
-msgid "# Functions & Relations\n"
-"\n"
-"Functions, Relations, Equivalences, and Encodability\n"
-"\n"
-"This course is under construction."
+#: Game.Levels.SubsetWorld.L11_ExtPractice
+msgid "The set of naturals at most 2 equals the set of naturals less than 3."
 msgstr ""
 
 #. §0: `use 3`
@@ -375,6 +400,18 @@ msgstr ""
 
 #: Game.Levels.SetWorld.L02_SetBuilder
 msgid "Set Builder Notation"
+msgstr ""
+
+#. §0: `hst`
+#. §1: `x ∈ t`
+#. §2: `ht`
+#. §3: `have hxt := hst hx`
+#. §4: `have hle := ht hxt`
+#: Game.Levels.SubsetWorld.L17_Boss
+msgid "Now chain the subset hypotheses. Use §0 to get §1,\n"
+"then §2 to get the arithmetic membership.\n"
+"\n"
+"Try: §3 then §4."
 msgstr ""
 
 #. §0: `Set.univ : Set α`
@@ -399,11 +436,24 @@ msgid "§0 is the universal set — the set containing every\n"
 "§7 is the proof that §8."
 msgstr ""
 
-#. §0: `intro n`
-#: Game.Levels.SetWorld.L06_EmptySet
-#: Game.Levels.SetWorld.L07_UniversalSet
-msgid "Start with §0 to introduce the universally quantified\n"
-"variable."
+#. §0: `h4'`
+#. §1: `4 < 3`
+#. §2: `change (4 : ℕ) < 3 at h4'`
+#. §3: `omega`
+#. §4: `False`
+#: Game.Levels.SubsetWorld.L07_NonSubset
+msgid "§0 says 4 is in the right set, which is definitionally §1.\n"
+"Unwrap it with §2, then §3 sees the\n"
+"contradiction and closes the §4 goal."
+msgstr ""
+
+#: Game.Levels.SubsetWorld.L09_NonArithSubset
+msgid "If p implies q pointwise, then the set defined by p is a subset of the set defined by q."
+msgstr ""
+
+#: Game.Levels.SubsetWorld.L10_ExtIntro
+msgid "A conjunction with a weaker condition is equivalent to the\n"
+"stronger condition alone."
 msgstr ""
 
 #. §0: `contradiction`
@@ -436,6 +486,47 @@ msgid "§0 closes the goal by finding a contradiction among the\n"
 "more powerful than §7 because it can see through definitional\n"
 "wrappers — for example, it can detect that §8\n"
 "is impossible, even though §9 cannot."
+msgstr ""
+
+#. §0: `s`
+#. §1: `h5 : ∀ x, x < 5 → x ∈ s`
+#. §2: `intro x hx`
+#: Game.Levels.SubsetWorld.L17_Boss
+msgid "Second goal: the arithmetic set ⊆ §0. The hypothesis\n"
+"§1 gives this. Start with §2."
+msgstr ""
+
+#. §0: `s ⊆ s`
+#. §1: `x ∈ s`
+#. §2: `s ⊆ s`
+#. §3: `s`
+#. §4: `⊆`
+#. §5: `Set.Subset.refl`
+#. §6: `le_refl`
+#: Game.Levels.SubsetWorld.L03_SubsetRefl
+msgid "The proof of §0 is the identity function on membership: take the\n"
+"proof that §1 and hand it right back.\n"
+"\n"
+"This is **reflexivity**: §2 for every §3. Together with\n"
+"transitivity (coming in Level 8) and antisymmetry (Level 13), this\n"
+"makes §4 a **partial order** on sets. You will prove all three\n"
+"axioms in this world.\n"
+"\n"
+"The library name for this fact is §5 (or §6\n"
+"in the order-theoretic form)."
+msgstr ""
+
+#: Game.Levels.SubsetWorld.L10_ExtIntro
+msgid "Set Equality with ext"
+msgstr ""
+
+#. §0: `change x < 3 at h`
+#. §1: `omega`
+#. §2: `x < 5`
+#. §3: `x < 3`
+#: Game.Levels.SubsetWorld.L10_ExtIntro
+msgid "After §0, use §1\n"
+"to derive §2 from §3."
 msgstr ""
 
 #. §0: $$\\texttt{Set } \\alpha = \\alpha \\to \\texttt{Prop}$$
@@ -485,6 +576,10 @@ msgid "# Welcome to Sets\n"
 "applies it.)"
 msgstr ""
 
+#: Game.Levels.SubsetWorld.L15_AntisymmFromExt
+msgid "Deriving Antisymmetry from Extensionality"
+msgstr ""
+
 #. §0: `p 3 → False`
 #. §1: `intro h`
 #. §2: `p 3`
@@ -493,9 +588,56 @@ msgid "The goal asks that 3 is not in the p-set, which means\n"
 "§0. Use §1 to assume §2."
 msgstr ""
 
-#: Game.Levels.SetWorld.L09_Boss
-msgid "Given hypotheses about a predicate p, prove membership and\n"
-"non-membership in the set defined by p."
+#. §0: `s`
+#. §1: `t`
+#. §2: `hst : s ⊆ t`
+#. §3: `s`
+#. §4: `t`
+#. §5: `ht : t ⊆ {n | n ≤ 4}`
+#. §6: `t`
+#. §7: `h5 : ∀ x, x < 5 → x ∈ s`
+#. §8: `s`
+#. §9: `s = {n | n < 5}`
+#. §10: `h5`
+#. §11: `{n | n < 5} ⊆ s`
+#. §12: `hst`
+#. §13: `ht`
+#. §14: `s ⊆ t ⊆ {n | n ≤ 4}`
+#. §15: `n ≤ 4`
+#. §16: `n < 5`
+#. §17: `s ⊆ {n | n < 5}`
+#. §18: `{n | n < 5} ⊆ s`
+#. §19: `ext`
+#. §20: `Set.Subset.antisymm`
+#. §21: `intro x hx`
+#. §22: `change`
+#. §23: `show`
+#. §24: `omega`
+#: Game.Levels.SubsetWorld.L17_Boss
+msgid "# Boss: Chaining Subsets to Prove Equality\n"
+"\n"
+"You have two sets §0 and §1 of natural numbers, with three\n"
+"hypotheses:\n"
+"- §2 — §3 is contained in §4\n"
+"- §5 — §6 is contained in the numbers at most 4\n"
+"- §7 — every number less than 5 is in §8\n"
+"\n"
+"Your task: prove §9.\n"
+"\n"
+"Think about what this means. The hypothesis §10 tells you that\n"
+"§11. And from §12 and §13, you can chain:\n"
+"§14. Since §15 is the same as §16 for\n"
+"natural numbers, this gives §17. Together with\n"
+"§18, you get equality by antisymmetry.\n"
+"\n"
+"This problem integrates the core skills of this world:\n"
+"- **§19 or §20** to prove equality\n"
+"- **§21** to prove subsets\n"
+"- **§22/§23** to unwrap set membership\n"
+"- **Chaining subset hypotheses** (transitivity from Level 8)\n"
+"- **§24** to bridge arithmetic facts\n"
+"\n"
+"There are multiple valid strategies. Choose your own path!"
 msgstr ""
 
 #. §0: `hr : 3 = r + r`
@@ -503,51 +645,6 @@ msgstr ""
 #: Game.Levels.SetWorld.L09_Boss
 msgid "The equation §0 has no solution — 3 is odd.\n"
 "§1 derives the contradiction."
-msgstr ""
-
-#. §0: $$\\texttt{Set } \\alpha = \\alpha \\to \\texttt{Prop}$$
-#. §1: `False`
-#. §2: `True`
-#. §3: `obtain`
-#. §4: `Set.univ`
-#. §5: `∅`
-#. §6: `intro`
-#. §7: `exact`
-#. §8: `constructor`
-#. §9: `use`
-#. §10: `omega`
-#: Game.Levels.SetWorld
-msgid "# Set World\n"
-"\n"
-"Welcome to the first world of **Functions & Relations**!\n"
-"\n"
-"In Lean 4, a set is not a primitive concept — it is built from\n"
-"predicates. The definition is strikingly simple:\n"
-"\n"
-"§0\n"
-"\n"
-"A set of natural numbers is just a function from natural numbers to\n"
-"propositions. An element is *in* the set when the proposition it maps\n"
-"to is true.\n"
-"\n"
-"This means all set-theoretic reasoning reduces to propositional logic.\n"
-"Membership is function application. The empty set uses §1. The\n"
-"universal set uses §2. In this world, you will internalize this\n"
-"reduction by working through concrete examples.\n"
-"\n"
-"By the end of this world, you will be able to:\n"
-"- Prove membership in sets defined by predicates\n"
-"- Prove non-membership using negation\n"
-"- Destructure existential witnesses with §3\n"
-"- Work with §4 and §5\n"
-"- Handle compound predicates with logical connectives\n"
-"- Recognize that set membership IS predicate evaluation\n"
-"\n"
-"**Prerequisites**: You should be comfortable with §6, §7,\n"
-"§8, §9, and §10 from the Natural Number Game.\n"
-"\n"
-"The boss at the end will ask you to combine all these moves on an\n"
-"abstract predicate. Let's begin!"
 msgstr ""
 
 #. §0: `assumption`
@@ -565,12 +662,56 @@ msgid "§0 closes the goal if a hypothesis in the context has\n"
 "When a hypothesis matches the goal."
 msgstr ""
 
-#. §0: `Even 4`
-#. §1: `∃ r, 4 = r + r`
-#. §2: `use 2`
-#: Game.Levels.SetWorld.L09_Boss
-msgid "The goal is §0, meaning §1. Provide\n"
-"the witness: §2."
+#. §0: `ext`
+#. §1: `s ≠ t`
+#. §2: `s ≠ t`
+#. §3: `(s = t) → False`
+#. §4: `s ≠ t`
+#. §5: `intro h`
+#. §6: `h : s = t`
+#. §7: `False`
+#. §8: `⊆`
+#. §9: `s = t`
+#. §10: `s`
+#. §11: `t`
+#. §12: `s = t`
+#. §13: `{n | n < 3} ≠ {n | n < 5}`
+#. §14: `3`
+#. §15: `3 < 5`
+#. §16: `3`
+#. §17: `3 < 3`
+#. §18: `3`
+#. §19: `3`
+#. §20: `intro h`
+#. §21: `3 ∈ {n | n < 5}`
+#. §22: `rw [← h]`
+#. §23: `3 ∈ {n | n < 3}`
+#. §24: `3 < 3`
+#: Game.Levels.SubsetWorld.L12_SetNonEquality
+msgid "# When Two Sets Are Not Equal\n"
+"\n"
+"In Levels 10–11, you proved set equalities using §0. But what if\n"
+"two sets are NOT equal? How do you prove §1?\n"
+"\n"
+"In Lean, §2 is defined as §3. So to prove\n"
+"§4, you use §5 to **assume** the sets are equal, getting\n"
+"§6, and then derive a contradiction (§7).\n"
+"\n"
+"The strategy mirrors Level 7 (disproving §8): **find a witness** that\n"
+"leads to contradiction. If §9, then every element of §10 is in §11\n"
+"and vice versa. Find an element that is in one set but not the other —\n"
+"then the assumption §12 forces a false arithmetic conclusion.\n"
+"\n"
+"In this level, you will prove §13. The\n"
+"witness is §14: it satisfies §15 (so §16 is in the right set) but\n"
+"not §17 (so §18 is not in the left set). If the sets were equal,\n"
+"§19 would have to be in both — contradiction.\n"
+"\n"
+"**Proof plan**:\n"
+"1. §20 — assume the sets are equal\n"
+"2. Prove §21 — show the witness is in the right set\n"
+"3. Use §22 to transport: if equal, §23\n"
+"4. Unwrap and derive contradiction — §24 is false"
 msgstr ""
 
 #. §0: `obtain ⟨x, hx⟩ := h`
@@ -611,6 +752,26 @@ msgid "§0 destructures a hypothesis §1 with structure\n"
 "§12 and §13."
 msgstr ""
 
+#. §0: `x ∈ t`
+#. §1: `h : s ⊆ t`
+#. §2: `x ∈ s`
+#. §3: `x ∈ t`
+#. §4: `hx : x ∈ s`
+#. §5: `h`
+#. §6: `hx`
+#. §7: `exact h hx`
+#: Game.Levels.SubsetWorld.L06_SubsetHypAsFunction
+msgid "The goal is §0. You have §1 (a function from\n"
+"§2 to §3) and §4. Apply §5 to §6:\n"
+"use §7."
+msgstr ""
+
+#. §0: `intro x hx`
+#: Game.Levels.SubsetWorld.L14_ProperSubset
+msgid "First goal: prove the subset inclusion. This is the same\n"
+"as Level 1! Use §0, unwrap, and close."
+msgstr ""
+
 #. §0: `h : p 3`
 #. §1: `hq : ∀ n, p n → Even n`
 #. §2: `hq`
@@ -623,19 +784,195 @@ msgid "You have §0 and §1. Apply §2\n"
 "§5."
 msgstr ""
 
+#. §0: `s ⊆ the right set`
+#. §1: `s ⊆ t`
+#. §2: `t ⊆ the arithmetic set`
+#. §3: `intro x hx`
+#: Game.Levels.SubsetWorld.L17_Boss
+msgid "First goal: §0. You know §1 and\n"
+"§2. Chain these subsets, then bridge the\n"
+"arithmetic. Start with §3."
+msgstr ""
+
 #. §0: `constructor`
 #: Game.Levels.SetWorld.L09_Boss
 msgid "The goal is a conjunction. Use §0 to split it\n"
 "into two parts."
 msgstr ""
 
-#. §0: `True`
-#. §1: `x ∈ Set.univ`
-#. §2: `True`
-#. §3: `constructor`
-#: Game.Levels.SetWorld.L01_WelcomeToSets
-msgid "The goal is §0 because §1 unfolds to §2.\n"
-"Use §3 to prove it."
+#. §0: `h : s ⊆ t`
+#. §1: `hx : x ∈ s`
+#. §2: `h hx`
+#. §3: `x ∈ t`
+#. §4: `h`
+#. §5: `s ⊆ t`
+#. §6: `hx`
+#. §7: `x ∈ s`
+#. §8: `h hx`
+#. §9: `x ∈ t`
+#: Game.Levels.SubsetWorld.L06_SubsetHypAsFunction
+msgid "You just used a subset hypothesis as a function for the first time!\n"
+"\n"
+"The key insight: §0 is not just a statement — it is a\n"
+"**function** that converts membership proofs. Given §1,\n"
+"the expression §2 is a proof of §3.\n"
+"\n"
+"| Expression | Type | Meaning |\n"
+"|---|---|---|\n"
+"| §4 | §5 | \"every element of s is in t\" |\n"
+"| §6 | §7 | \"x is in s\" |\n"
+"| §8 | §9 | \"therefore x is in t\" |\n"
+"\n"
+"This pattern — applying a subset hypothesis to a membership proof —\n"
+"is the fundamental way to *use* subset facts. You will chain multiple\n"
+"such applications in the next levels."
+msgstr ""
+
+#. §0: `Set.Subset.antisymm`
+#. §1: `ext x`
+#: Game.Levels.SubsetWorld.L15_AntisymmFromExt
+msgid "Without §0, use §1 to reduce\n"
+"the equality to membership equivalences."
+msgstr ""
+
+#. §0: `h`
+#. §1: `3`
+#. §2: `3 < 5`
+#. §3: `3 < 3`
+#. §4: `(3 : ℕ) < 5`
+#. §5: `show`
+#. §6: `omega`
+#: Game.Levels.SubsetWorld.L12_SetNonEquality
+msgid "Now §0 says the two sets are equal. Find a witness that breaks\n"
+"this — an element in one set but not the other. The number §1 works:\n"
+"§2 is true but §3 is false.\n"
+"\n"
+"First, establish that 3 is in the right set. Prove membership by\n"
+"showing §4 using §5 and §6."
+msgstr ""
+
+#: Game.Levels.SubsetWorld.L06_SubsetHypAsFunction
+msgid "If s ⊆ t and x ∈ s, then x ∈ t."
+msgstr ""
+
+#. §0: `constructor`
+#. §1: `⊂`
+#. §2: `⊆`
+#. §3: `¬ (reverse ⊆)`
+#. §4: `⊆`
+#. §5: `=`
+#. §6: `s ⊆ t`
+#. §7: `s`
+#. §8: `t`
+#. §9: `∀ x, x ∈ s → x ∈ t`
+#. §10: `s ⊂ t`
+#. §11: `s`
+#. §12: `t`
+#. §13: `s ⊆ t ∧ ¬ (t ⊆ s)`
+#. §14: `s = t`
+#. §15: `s`
+#. §16: `t`
+#. §17: `∀ x, x ∈ s ↔ x ∈ t`
+#. §18: `s ≠ t`
+#. §19: `s`
+#. §20: `t`
+#. §21: `(s = t) → False`
+#: Game.Levels.SubsetWorld.L14_ProperSubset
+msgid "You proved your first **proper subset**! The structure was:\n"
+"\n"
+"1. §0 — split §1 into §2 and §3\n"
+"2. Prove the subset (Level 1 technique)\n"
+"3. Disprove the reverse (Level 7 technique)\n"
+"\n"
+"This is a satisfying integration: proper subset combines two skills\n"
+"you already know. The concept connects directly to antisymmetry —\n"
+"antisymmetry says mutual §4 implies §5, so proper subset is\n"
+"exactly the case where equality is ruled out because the reverse\n"
+"containment fails.\n"
+"\n"
+"| Relation | Meaning | Lean |\n"
+"|---|---|---|\n"
+"| §6 | §7 is contained in §8 (possibly equal) | §9 |\n"
+"| §10 | §11 is strictly contained in §12 | §13 |\n"
+"| §14 | §15 and §16 have the same elements | §17 |\n"
+"| §18 | §19 and §20 differ on some element | §21 |"
+msgstr ""
+
+#. §0: `intro x hx`
+#. §1: `h : s ⊆ t`
+#. §2: `h`
+#. §3: `x ∈ s`
+#. §4: `x ∈ t`
+#. §5: `s ⊆ t`
+#. §6: `∀ x, x ∈ s → x ∈ t`
+#. §7: `h : s ⊆ t`
+#. §8: `hx : x ∈ s`
+#. §9: `x ∈ t`
+#. §10: `h`
+#. §11: `x ∈ s`
+#. §12: `x ∈ t`
+#. §13: `exact h hx`
+#. §14: `apply h`
+#. §15: `x ∈ t`
+#. §16: `x ∈ s`
+#. §17: `exact hx`
+#. §18: `exact h hx`
+#. §19: `h`
+#. §20: `hx`
+#. §21: `apply h`
+#. §22: `exact hx`
+#: Game.Levels.SubsetWorld.L06_SubsetHypAsFunction
+msgid "# Using a Subset Hypothesis\n"
+"\n"
+"So far, you have been **proving** subset relations from scratch using\n"
+"§0. But what about **using** a subset hypothesis that you\n"
+"already have?\n"
+"\n"
+"If §1, then §2 is essentially a **function**: give it a\n"
+"proof that §3, and it returns a proof that §4. This is\n"
+"because §5 unfolds to §6, which is exactly\n"
+"the type of a function from membership proofs to membership proofs.\n"
+"\n"
+"In this level, you have §7 and §8. Your goal is\n"
+"§9. Since §10 is a function that takes §11 to §12,\n"
+"you can close the goal with §13.\n"
+"\n"
+"Alternatively, you can use §14 to reduce the goal from §15\n"
+"to §16, then close with §17.\n"
+"\n"
+"**Proof plan**:\n"
+"- §18 — apply §19 to §20 directly\n"
+"- OR: §21 then §22 — reduce goal, then close"
+msgstr ""
+
+#. §0: `h`
+#. §1: `4`
+#. §2: `4 < 5`
+#. §3: `h`
+#. §4: `have h4 : (4 : ℕ) < 5 := by omega`
+#: Game.Levels.SubsetWorld.L14_ProperSubset
+msgid "Now §0 says every number less than 5 is less than 3. Use\n"
+"the counterexample §1: prove §2 then apply §3.\n"
+"\n"
+"§4"
+msgstr ""
+
+#. §0: `x`
+#. §1: `constructor`
+#: Game.Levels.SubsetWorld.L10_ExtIntro
+msgid "The backward direction: assume §0 is in the right set and\n"
+"prove it is in the left set. The goal is a conjunction —\n"
+"use §1 to split it."
+msgstr ""
+
+#. §0: `Set.mem_setOf`
+#. §1: `x ∈ {a | p a} ↔ p x`
+#. §2: `Set.mem_setOf_eq`
+#: Game.Metadata
+msgid "§0 states §1 — the iff version\n"
+"of set-builder membership unfolding.\n"
+"\n"
+"Disabled for the same reason as §2."
 msgstr ""
 
 #. §0: `setOf p`
@@ -680,44 +1017,61 @@ msgid "§0 creates the set §1 from a predicate §2.\n"
 "refer to any §16 in the surrounding context."
 msgstr ""
 
-#. §0: `Set.mem_setOf`
-#. §1: `x ∈ {a | p a} ↔ p x`
-#. §2: `Set.mem_setOf_eq`
-#: Game.Metadata
-msgid "§0 states §1 — the iff version\n"
-"of set-builder membership unfolding.\n"
+#. §0: `hx : x ∈ s`
+#. §1: `h x`
+#. §2: `↔`
+#. §3: `x ∈ s`
+#. §4: `x ∈ t`
+#. §5: `.1`
+#. §6: `(h x).1`
+#. §7: `x ∈ s → x ∈ t`
+#. §8: `hx`
+#. §9: `exact (h x).1 hx`
+#: Game.Levels.SubsetWorld.L16_ExtFromAntisymm
+msgid "§0. The hypothesis §1 gives an §2 between\n"
+"§3 and §4. Use §5 to extract the forward direction:\n"
+"§6 is the implication §7. Apply it to §8\n"
+"with §9."
+msgstr ""
+
+#. §0: `ext`
+#: Game.Levels.SubsetWorld.L15_AntisymmFromExt
+msgid "Deriving set equality from mutual subsets using §0."
+msgstr ""
+
+#. §0: `hx`
+#. §1: `x`
+#. §2: `x ≤ 2`
+#. §3: `x`
+#. §4: `x < 3`
+#. §5: `change x ≤ 2 at hx`
+#. §6: `show x < 3`
+#. §7: `omega`
+#: Game.Levels.SubsetWorld.L11_ExtPractice
+msgid "You have §0 saying §1 is in the left set (i.e., §2)\n"
+"and the goal says §3 is in the right set (i.e., §4).\n"
+"Use §5 and §6 to unwrap both,\n"
+"then §7."
+msgstr ""
+
+#. §0: `h1 : s ⊆ t`
+#. §1: `h2 : t ⊆ s`
+#. §2: `Set.Subset.antisymm`
+#. §3: `s = t`
+#. §4: `exact Set.Subset.antisymm h1 h2`
+#: Game.Levels.SubsetWorld.L13_Antisymm
+msgid "You have §0 and §1. The theorem\n"
+"§2 says exactly that these two facts imply §3.\n"
 "\n"
-"Disabled for the same reason as §2."
+"Use §4."
 msgstr ""
 
-#: Game.Levels.SetWorld.L01_WelcomeToSets
-msgid "Welcome to Sets"
-msgstr ""
-
-#. §0: `norm_num`
-#: Game.Metadata
-msgid "§0 evaluates numerical expressions and closes arithmetic\n"
-"goals that can be decided by computation.\n"
-"\n"
-"Disabled in levels where manual arithmetic reasoning is the lesson."
-msgstr ""
-
-#. §0: `simp`
-#: Game.Metadata
-msgid "§0 applies a set of simplification lemmas to the goal\n"
-"and hypotheses.\n"
-"\n"
-"Disabled in early levels to force manual rewriting and to ensure\n"
-"the player understands each proof step."
-msgstr ""
-
-#. §0: `h3 : Even 3`
-#. §1: `r`
-#. §2: `3 = r + r`
-#. §3: `obtain ⟨r, hr⟩ := h3`
-#: Game.Levels.SetWorld.L09_Boss
-msgid "§0 means there exists §1 with §2.\n"
-"Destructure it: §3."
+#. §0: `h4'`
+#. §1: `4`
+#. §2: `4 < 3`
+#: Game.Levels.SubsetWorld.L14_ProperSubset
+msgid "§0 says §1 is in the left set, i.e., §2. Unwrap\n"
+"and derive contradiction."
 msgstr ""
 
 #. §0: `h`
@@ -733,6 +1087,22 @@ msgstr ""
 
 #: Game.Levels.SetWorld.L09_Boss
 msgid "Boss: Sets are Predicates"
+msgstr ""
+
+#. §0: `exact h x hx`
+#. §1: `h x`
+#. §2: `hx`
+#. §3: `p x`
+#. §4: `h x hx`
+#. §5: `q x`
+#: Game.Levels.SubsetWorld.L09_NonArithSubset
+msgid "§0 — §1 specializes the\n"
+"implication to our element, and §2 provides the premise §3.\n"
+"So §4 is a proof of §5, which matches the goal."
+msgstr ""
+
+#: Game.Levels.SubsetWorld
+msgid "Subset World"
 msgstr ""
 
 #. §0: `use 2`
@@ -761,41 +1131,10 @@ msgid "§0 provided the witness §1 and Lean verified\n"
 "exactly what you just proved — no more, no less."
 msgstr ""
 
-#. §0: `exact h`
-#. §1: `h`
-#. §2: `False`
-#: Game.Levels.SetWorld.L06_EmptySet
-msgid "§0 closes the goal since §1 has\n"
-"exactly the type §2."
-msgstr ""
-
-#. §0: `rw [h]`
-#. §1: `h`
-#. §2: ```
-#. rw [h]           -- rewrite the goal
-#. rw [h] at hyp    -- rewrite a hypothesis
-#. rw [← h]         -- rewrite right-to-left
-#. rw [h1, h2, h3]  -- chain multiple rewrites
-#. ```
-#. §3: `h : a = b`
-#. §4: `h : P ↔ Q`
-#. §5: `a`
-#. §6: `b`
-#. §7: `P`
-#. §8: `Q`
-#. §9: `rw`
-#: Game.Metadata
-msgid "§0 rewrites the goal using an equation or iff §1.\n"
-"\n"
-"## Syntax\n"
-"§2\n"
-"\n"
-"## When to use it\n"
-"When you have an equation §3 or iff §4 and want\n"
-"to replace §5 with §6 (or §7 with §8) in the goal or a hypothesis.\n"
-"\n"
-"## Warning\n"
-"§9 replaces ALL occurrences of the pattern, not just the first."
+#. §0: `s ⊆ t`
+#. §1: `intro x hx`
+#: Game.Levels.SubsetWorld.L16_ExtFromAntisymm
+msgid "Goal: §0. Use §1 as always for a subset proof."
 msgstr ""
 
 #. §0: `have h := expr`
@@ -814,6 +1153,19 @@ msgid "§0 introduces a new hypothesis §1 with value §2.\n"
 "\n"
 "## When to use it\n"
 "When you need an intermediate fact that isn't directly in your context."
+msgstr ""
+
+#. §0: `hx`
+#. §1: `x < 3 ∧ x < 5`
+#. §2: `exact hx.1`
+#. §3: `x < 3`
+#: Game.Levels.SubsetWorld.L10_ExtIntro
+msgid "§0 is a conjunction §1. Use §2\n"
+"to extract the first component (§3), which matches the goal."
+msgstr ""
+
+#: Game.Levels.SubsetWorld.L16_ExtFromAntisymm
+msgid "Set equality from pointwise membership equivalence, without ext."
 msgstr ""
 
 #. §0: `show 3 < 5`
@@ -851,58 +1203,58 @@ msgid "You used §0 to convert the goal, then §1 to close it.\n"
 "When you see §10, you can always think of it as §11."
 msgstr ""
 
-#. §0: `apply hp`
-#. §1: `p n`
-#. §2: `p 4`
-#. §3: `n = 4`
-#. §4: `Even 4`
-#: Game.Levels.SetWorld.L09_Boss
-msgid "§0 matches the conclusion §1\n"
-"against the goal §2, setting §3 and leaving goal §4."
-msgstr ""
-
-#. §0: `hr : 3 = r + r`
-#. §1: `r`
-#. §2: `omega`
-#: Game.Levels.SetWorld.L05_NonMembershipExistential
-msgid "Now §0 but 3 is odd — no natural number §1\n"
-"satisfies this. §2 sees this contradiction and closes the goal."
-msgstr ""
-
-#: Game.Levels.SetWorld.L06_EmptySet
-msgid "No natural number belongs to the empty set."
-msgstr ""
-
-#. §0: `True`
-#. §1: `n ∈ Set.univ`
-#. §2: `constructor`
-#: Game.Levels.SetWorld.L07_UniversalSet
-msgid "The goal is §0 (from §1). Use §2."
-msgstr ""
-
-#: Game.Levels.SetWorld.L05_NonMembershipExistential
-msgid "Disproving Membership in an Existential Set"
-msgstr ""
-
-#. §0: `show 3 < 5`
-#. §1: `omega`
-#: Game.Levels.SetWorld.L02_SetBuilder
-msgid "After §0, use §1 to close\n"
-"the arithmetic goal."
+#. §0: `hx : x ∈ ∅`
+#. §1: `False`
+#. §2: `False`
+#. §3: `contradiction`
+#: Game.Levels.SubsetWorld.L04_EmptySubset
+msgid "§0 is definitionally §1 — nothing belongs\n"
+"to the empty set. Since you have a §2 hypothesis, any goal\n"
+"follows. Use §3."
 msgstr ""
 
 #: Game.Levels.SetWorld.L08_CompoundPredicate
 msgid "Compound Predicates"
 msgstr ""
 
-#. §0: `native_decide`
-#. §1: `decide`
-#. §2: `decide`
-#: Game.Metadata
-msgid "§0 is like §1 but uses native code evaluation\n"
-"for faster computation.\n"
+#. §0: `Set.univ`
+#. §1: $$s \\subseteq \\texttt{Set.univ} \\quad \\text{for any } s$$
+#. §2: `x ∈ Set.univ`
+#. §3: `True`
+#. §4: `x ∈ s → x ∈ Set.univ`
+#. §5: `x ∈ s → True`
+#. §6: `True`
+#. §7: `constructor`
+#. §8: `intro x hx`
+#. §9: `x ∈ Set.univ`
+#. §10: `True`
+#. §11: `hx`
+#. §12: `intro x hx`
+#. §13: `constructor`
+#. §14: `True`
+#. §15: `x ∈ Set.univ`
+#: Game.Levels.SubsetWorld.L05_SubsetUniv
+msgid "# The Universal Superset: s ⊆ Set.univ\n"
 "\n"
-"Disabled for the same reason as §2."
+"The mirror image of Level 3: every set is a subset of §0.\n"
+"\n"
+"§1\n"
+"\n"
+"Why? Because §2 is always §3, so the obligation\n"
+"§4 reduces to §5 — and §6\n"
+"needs no proof beyond §7.\n"
+"\n"
+"After §8, the goal is §9, which reduces to\n"
+"§10. You can ignore §11 entirely.\n"
+"\n"
+"**Proof plan**:\n"
+"1. §12 — introduce element and membership hypothesis\n"
+"2. §13 — prove §14 (which is what §15 reduces to)"
+msgstr ""
+
+#: Game.Levels.SubsetWorld.L14_ProperSubset
+msgid "The set of numbers less than 3 is a proper subset of the set\n"
+"of numbers less than 5."
 msgstr ""
 
 #. §0: `constructor`
@@ -912,65 +1264,81 @@ msgid "§0 applies §1 and closes\n"
 "the goal."
 msgstr ""
 
-#. §0: `constructor`
-#. §1: `∧`
-#. §2: `↔`
-#. §3: ```
-#. constructor
-#. ```
-#. §4: `P ∧ Q`
-#. §5: `P`
-#. §6: `Q`
-#. §7: `P ↔ Q`
-#. §8: `P → Q`
-#. §9: `Q → P`
-#. §10: `True`
-#: Game.Metadata
-msgid "§0 splits a goal with a single constructor (like §1 or §2)\n"
-"into its components.\n"
+#. §0: `x ∈ u`
+#. §1: `htu : t ⊆ u`
+#. §2: `t`
+#. §3: `u`
+#. §4: `apply htu`
+#. §5: `x ∈ t`
+#: Game.Levels.SubsetWorld.L08_SubsetTrans
+msgid "The goal is §0. You know §1, which says\n"
+"anything in §2 is in §3. Use §4 — this reduces the\n"
+"goal to §5."
+msgstr ""
+
+#. §0: `Set.empty_subset s`
+#. §1: `∅ ⊆ s`
+#. §2: `s`
+#: Game.Levels.SubsetWorld.L04_EmptySubset
+#: Game.Levels.SubsetWorld.L05_SubsetUniv
+msgid "§0 proves §1 for any set §2."
+msgstr ""
+
+#: Game.Levels.SubsetWorld.L04_EmptySubset
+msgid "The empty set is a subset of any set."
+msgstr ""
+
+#. §0: $A \\subseteq B$
+#. §1: $A$
+#. §2: $B$
+#. §3: $$s \\subseteq t \\;\\;\\Longleftrightarrow\\;\\; \\forall\\, x,\\; x \\in s \\to x \\in t$$
+#. §4: `x`
+#. §5: `hx`
+#. §6: `x ∈ s`
+#. §7: `x ∈ t`
+#. §8: `intro x hx`
+#. §9: `hx : x ∈ {n | n < 3}`
+#. §10: `x < 3`
+#. §11: `x ∈ {n | n < 5}`
+#. §12: `x < 5`
+#. §13: `show`
+#. §14: `show x < 5`
+#. §15: `have`
+#. §16: `have h : x < 3 := hx`
+#. §17: `omega`
+#. §18: `intro x hx`
+#. §19: `have h : x < 3 := hx`
+#. §20: `hx`
+#. §21: `show x < 5`
+#. §22: `omega`
+#. §23: `x < 5`
+#. §24: `x < 3`
+#: Game.Levels.SubsetWorld.L01_FirstSubset
+msgid "# Subsets: The ⊆ Relation\n"
 "\n"
-"## Syntax\n"
+"In mathematics, §0 means every element of §1 is also an\n"
+"element of §2. In Lean, this is exactly what it means:\n"
+"\n"
 "§3\n"
 "\n"
-"## When to use it\n"
-"When the goal is §4 (splits into §5 and §6), §7\n"
-"(splits into §8 and §9), or §10 (closes immediately)."
-msgstr ""
-
-#. §0: `show ¬ (P x)`
-#. §1: `x ∉ {y | P y}`
-#. §2: `intro h`
-#. §3: `P x`
-#. §4: `False`
-#. §5: `omega`
-#. §6: `h : 7 < 5`
-#. §7: `show ... ; intro h; omega`
-#. §8: `False`
-#: Game.Levels.SetWorld.L03_NonMembership
-msgid "The proof pattern for non-membership:\n"
+"So a subset proof has the shape: **introduce** an arbitrary element §4\n"
+"and a hypothesis §5 that §6, then **show** that §7.\n"
 "\n"
-"1. §0 — unfold §1 to its arithmetic content\n"
-"2. §2 — assume §3, changing the goal to §4\n"
-"3. Derive the contradiction (here, §5 saw that §6 is\n"
-"   impossible)\n"
+"After §8, you will have:\n"
+"- §9 — this is §10 wrapped in set notation\n"
+"- Goal: §11 — this is §12 wrapped in set notation\n"
 "\n"
-"The §7 pattern works whenever the predicate\n"
-"is a false arithmetic statement. For non-arithmetic predicates, you\n"
-"will use other tools to derive §8 from the hypothesis.\n"
+"Both are wrapped in set notation. You already know §13 for\n"
+"converting the goal to an equivalent form — use §14 to\n"
+"unwrap the goal. For the hypothesis, you can use §15 to extract\n"
+"the arithmetic: §16 creates a clean arithmetic\n"
+"hypothesis that §17 can read.\n"
 "\n"
-"In ordinary mathematics, this is a *proof by contradiction*: assume\n"
-"7 is in the set, observe this means 7 < 5, which is absurd."
-msgstr ""
-
-#. §0: `Set.mem_setOf_eq`
-#. §1: `x ∈ {a | p a} = p x`
-#. §2: `show`
-#: Game.Metadata
-msgid "§0 states §1 — membership in a\n"
-"set-builder set equals the predicate applied to the element.\n"
-"\n"
-"This theorem is disabled in early levels because the course teaches §2\n"
-"as the primary method for unfolding set membership."
+"**Proof plan**:\n"
+"1. §18 — fix an element and assume it is in the smaller set\n"
+"2. §19 — extract the arithmetic content of §20\n"
+"3. §21 — unwrap the set membership on the goal\n"
+"4. §22 — derive §23 from §24"
 msgstr ""
 
 #. §0: `apply e`
@@ -991,6 +1359,14 @@ msgid "§0 reduces the goal by applying §1, leaving any\n"
 "## When to use it\n"
 "When the goal matches the conclusion of some known fact §3.\n"
 "After §4, the remaining goals are the premises of §5."
+msgstr ""
+
+#. §0: `change x < 3 at hx`
+#. §1: `show x ≤ 2`
+#. §2: `omega`
+#: Game.Levels.SubsetWorld.L11_ExtPractice
+msgid "§0 then §1\n"
+"then §2."
 msgstr ""
 
 #. §0: `∅ : Set α`
@@ -1026,6 +1402,19 @@ msgid "§0 is the empty set — the set containing no elements.\n"
 "- §12 is the opposite extreme: everything is a member"
 msgstr ""
 
+#. §0: `h`
+#. §1: `have h4 : (4 : ℕ) < 5 := by omega`
+#. §2: `4 ∈ (the left set)`
+#. §3: `4 < 5`
+#: Game.Levels.SubsetWorld.L07_NonSubset
+msgid "Now §0 says every number less than 5 is less than 3. This is\n"
+"false — 4 is less than 5 but not less than 3. First, prove that\n"
+"4 < 5: use §1.\n"
+"\n"
+"Since §2 is definitionally §3, Lean will\n"
+"accept this as a membership proof."
+msgstr ""
+
 #. §0: `3 ∉ setOf fun n => Even n`
 #. §1: `Even 3 → False`
 #. §2: `intro h`
@@ -1050,35 +1439,6 @@ msgid "§0 selects the left disjunct of a goal §1.\n"
 "\n"
 "## When to use it\n"
 "When the goal is §3 and you want to prove §4."
-msgstr ""
-
-#. §0: `x ∈ Set.univ`
-#. §1: `True`
-#. §2: `Set.univ`
-#. §3: `fun _ => True`
-#. §4: `x ∈ Set.univ`
-#. §5: `Set.univ x`
-#. §6: `(fun _ => True) x`
-#. §7: `True`
-#. §8: `constructor`
-#. §9: `True`
-#. §10: `True.intro`
-#. §11: `Set.mem_univ`
-#. §12: `x`
-#. §13: `x ∈ Set.univ`
-#: Game.Levels.SetWorld.L01_WelcomeToSets
-msgid "You proved §0 by proving §1. This worked because:\n"
-"\n"
-"1. §2 is defined as §3\n"
-"2. §4 means §5 = §6 = §7\n"
-"3. §8 proves §9 via §10\n"
-"\n"
-"The key insight: **set membership is predicate evaluation**. There is\n"
-"no special set-theoretic machinery — just function application and\n"
-"propositions. This is how all sets work in Lean.\n"
-"\n"
-"The library name for this fact is §11: for any §12, §13\n"
-"holds."
 msgstr ""
 
 #. §0: `7 ∉ {n | n < 5}`
@@ -1136,48 +1496,66 @@ msgstr ""
 msgid "Non-Membership"
 msgstr ""
 
-#. §0: $\\{n \\in \\mathbb{N} \\mid n < 5\\}$
-#. §1: `{n : ℕ | n < 5}`
-#. §2: `setOf (fun n => n < 5)`
-#. §3: `fun n => n < 5`
-#. §4: `setOf`
-#. §5: `Set`
-#. §6: $$3 \\in \\{n \\mid n < 5\\} = (\\text{fun } n \\Rightarrow n < 5) \\; 3 = 3 < 5$$
-#. §7: `3 ∈ {n | n < 5}`
-#. §8: `3 < 5`
-#. §9: `omega`
-#. §10: `show`
-#. §11: `show 3 < 5`
-#. §12: `3 < 5`
-#. §13: `omega`
-#. §14: `show 3 < 5`
-#. §15: `omega`
-#: Game.Levels.SetWorld.L02_SetBuilder
-msgid "# Set Builder Notation\n"
+#. §0: `s ⊆ t`
+#. §1: `t ⊆ u`
+#. §2: `s ⊆ u`
+#. §3: `apply`
+#. §4: ```
+#. apply htu    -- goal: x ∈ u → x ∈ t
+#. apply hst    -- goal: x ∈ t → x ∈ s
+#. exact hx     -- done
+#. ```
+#. §5: `apply`
+#. §6: `x ∈ u`
+#. §7: `x ∈ t`
+#. §8: `x ∈ s`
+#. §9: `exact htu (hst hx)`
+#. §10: `hst hx`
+#. §11: `x ∈ t`
+#. §12: `htu`
+#. §13: `x ∈ u`
+#. §14: `Set.Subset.trans`
+#. §15: `exact?`
+#. §16: `s ⊆ u`
+#. §17: `hst`
+#. §18: `htu`
+#. §19: `exact?`
+#. §20: `exact Set.Subset.trans hst htu`
+#: Game.Levels.SubsetWorld.L08_SubsetTrans
+msgid "Subset transitivity chains: from §0 and §1, you derive\n"
+"§2 by composing the two inclusions.\n"
 "\n"
-"In mathematics, you write sets like §0.\n"
-"In Lean, this becomes §1.\n"
+"The backward proof with §3:\n"
+"§4\n"
 "\n"
-"This notation is syntactic sugar for §2, which is\n"
-"defined as... just §3 itself! The function §4 is\n"
-"literally the identity: it takes a predicate and returns it as a §5.\n"
+"Notice how §5 traces the chain in reverse: to prove §6,\n"
+"first reduce to §7, then to §8. This is backward reasoning —\n"
+"working from the goal toward what you know.\n"
 "\n"
-"So what happens when you check membership?\n"
+"The forward alternative §9 composes the functions\n"
+"directly: §10 gives §11, then §12 applied to that gives\n"
+"§13. Both styles are valid; use whichever feels natural.\n"
 "\n"
-"§6\n"
+"The library name is §14.\n"
 "\n"
-"The set builder notation just wraps a predicate. Membership evaluates\n"
-"the predicate at the given point.\n"
-"\n"
-"**Look at your goal**: it says §7. We know this is\n"
-"*definitionally* equal to §8, but some tactics (like §9)\n"
-"need the goal in explicit arithmetic form to work.\n"
-"\n"
-"The §10 tactic converts the goal to a definitionally equal form.\n"
-"Try §11 — this tells Lean to display the goal as §12\n"
-"(which it can verify is the same thing). Then §13 closes it.\n"
-"\n"
-"**Your task**: Use §14 then §15."
+"**Discovery tool**: When you are unsure which lemma closes the current\n"
+"goal, try typing §15 in your proof. It searches the library for\n"
+"a term that matches the goal. For instance, if the goal is\n"
+"§16 and you have §17 and §18 in context, §19 might\n"
+"suggest §20. This becomes increasingly\n"
+"useful as the API grows in later worlds."
+msgstr ""
+
+#: Game.Levels.SubsetWorld.L03_SubsetRefl
+msgid "Every set is a subset of itself."
+msgstr ""
+
+#: Game.Levels.SubsetWorld.L06_SubsetHypAsFunction
+msgid "Subset Hypotheses as Functions"
+msgstr ""
+
+#: Game.Levels.SubsetWorld.L11_ExtPractice
+msgid "Ext Practice"
 msgstr ""
 
 #. §0: `α → Prop`
@@ -1232,70 +1610,62 @@ msgid "Congratulations — you have completed **SetWorld**!\n"
 "membership skills you just mastered are exactly what those proofs require."
 msgstr ""
 
-#. §0: `use expr`
-#. §1: `∃ x, P x`
-#. §2: ```
-#. use expr
-#. ```
-#. §3: `∃ x, P x`
-#. §4: `x`
-#. §5: `use expr`
-#. §6: `P expr`
-#: Game.Metadata
-msgid "§0 provides a witness for an existential goal §1.\n"
-"\n"
-"## Syntax\n"
-"§2\n"
-"\n"
-"## When to use it\n"
-"When the goal is §3 and you know which §4 works.\n"
-"After §5, the goal becomes §6."
+#. §0: `change x < 3 at hx`
+#. §1: `hx`
+#. §2: `hx : x < 3`
+#. §3: `show x ≤ 3`
+#. §4: `exact le_of_lt hx`
+#: Game.Levels.SubsetWorld.L02_ChangeTactic
+msgid "§0 replaces the set-membership\n"
+"form of §1 with §2. Then §3 unwraps the goal\n"
+"and §4 closes it."
 msgstr ""
 
-#. §0: `show ¬ (7 < 5)`
-#: Game.Levels.SetWorld.L03_NonMembership
-msgid "Use §0 to unfold the set membership and\n"
-"non-membership. This reveals the arithmetic content."
+#. §0: `ext`
+#. §1: `=`
+#. §2: `↔`
+#. §3: `↔`
+#. §4: `↔`
+#. §5: `.1`
+#. §6: `.2`
+#. §7: `↔`
+#. §8: `hiff : P ↔ Q`
+#. §9: `hiff.1 : P → Q`
+#. §10: `Iff.mp`
+#. §11: `hiff.2 : Q → P`
+#. §12: `Iff.mpr`
+#. §13: `ext`
+#. §14: `antisymm`
+#. §15: `s`
+#. §16: `t`
+#. §17: `s = t`
+#. §18: `s ⊆ t ∧ t ⊆ s`
+#. §19: `⊆`
+#: Game.Levels.SubsetWorld.L16_ExtFromAntisymm
+msgid "You have now proved both directions of the equivalence:\n"
+"\n"
+"| Level | Proved | Strategy |\n"
+"|---|---|---|\n"
+"| Level 15 | antisymm from ext | §0 decomposes §1 into §2, matching two ⊆ proofs |\n"
+"| This level | ext from antisymm | §3 decomposes into two ⊆ proofs, matching antisymm |\n"
+"\n"
+"**Decomposing §4**: The §5 and §6 projections on an §7 extract\n"
+"the two directions. If §8, then:\n"
+"- §9 (forward, also called §10)\n"
+"- §11 (backward, also called §12)\n"
+"\n"
+"This equivalence confirms that §13 and §14 are two faces of\n"
+"the same principle. Stated as a single theorem:\n"
+"\n"
+"**For sets §15 and §16, §17 if and only if §18.**\n"
+"\n"
+"The axiom of extensionality and the antisymmetry of §19 are logically\n"
+"interchangeable — use whichever is more convenient for the problem\n"
+"at hand."
 msgstr ""
 
-#. §0: `omega`
-#. §1: `r + r`
-#: Game.Levels.SetWorld.L05_NonMembershipExistential
-msgid "§0 handles the linear arithmetic:\n"
-"§1 is always even, so it can never equal 3."
-msgstr ""
-
-#. §0: `induction x with | case args`
-#. §1: `x`
-#. §2: ```
-#. -- natural number induction:
-#. induction n with | zero | succ m ih
-#. 
-#. -- list induction:
-#. induction xs with | nil | cons x xs ih
-#. ```
-#. §3: `ih`
-#: Game.Metadata
-msgid "§0 performs structural induction on §1.\n"
-"\n"
-"## Syntax\n"
-"§2\n"
-"\n"
-"Each case creates a separate subgoal that you handle one at a time.\n"
-"The §3 variable is the induction hypothesis.\n"
-"\n"
-"## When to use it\n"
-"When you need to prove a statement for all natural numbers\n"
-"(or elements of another inductive type) by induction."
-msgstr ""
-
-#. §0: `Even 4`
-#. §1: `∃ r, 4 = r + r`
-#. §2: `use 2`
-#: Game.Levels.SetWorld.L04_InfiniteSet
-#: Game.Levels.SetWorld.L08_CompoundPredicate
-msgid "The goal is §0, which means §1.\n"
-"Provide the witness: §2."
+#: Game.Levels.SubsetWorld.L17_Boss
+msgid "Boss: Subset Chain"
 msgstr ""
 
 #: Game.Levels.SetWorld.L07_UniversalSet
@@ -1310,45 +1680,22 @@ msgid "§0 examines all arithmetic hypotheses.\n"
 "Since §1 contradicts basic arithmetic, it derives §2."
 msgstr ""
 
-#. §0: `n < 5`
-#. §1: `{n : ℕ | Even n}`
-#. §2: $\\{0, 2, 4, 6, 8, \\ldots\\}$
-#. §3: `Even n`
-#. §4: $$\\texttt{Even } n \\;\\;\\Longleftrightarrow\\;\\; \\exists\\, r,\\; n = r + r$$
-#. §5: `4 ∈ {n | Even n}`
-#. §6: `Even 4`
-#. §7: `∃ r, 4 = r + r`
-#. §8: `∃ r, P r`
-#. §9: `r`
-#. §10: `use`
-#. §11: `use 2`
-#. §12: `4 = 2 + 2`
-#. §13: `2`
-#. §14: `use 2`
-#: Game.Levels.SetWorld.L04_InfiniteSet
-msgid "# Sets Need Not Be Finite\n"
-"\n"
-"So far you have seen sets defined by arithmetic bounds like §0.\n"
-"But predicates can describe infinite collections too.\n"
-"\n"
-"The set §1 contains all even natural numbers:\n"
-"§2 — infinitely many elements.\n"
-"\n"
-"What does §3 mean? It is defined as:\n"
-"§4\n"
-"\n"
-"So §5 unfolds to §6, which is §7.\n"
-"\n"
-"To prove an existential §8, you provide a **witness** — a\n"
-"specific value of §9 — using the §10 tactic. Here, §11 turns\n"
-"the goal into §12, which is true by computation.\n"
-"\n"
-"**Your task**: Prove that 4 is even by providing the witness §13.\n"
-"Use §14."
-msgstr ""
-
 #: Game
 msgid "Functions & Relations"
+msgstr ""
+
+#: Game.Levels.SubsetWorld.L03_SubsetRefl
+msgid "Subset Reflexivity"
+msgstr ""
+
+#. §0: `have h : x < 3 := hx`
+#. §1: `h : x < 3`
+#. §2: `hx`
+#. §3: `show x < 5`
+#. §4: `omega`
+#: Game.Levels.SubsetWorld.L01_FirstSubset
+msgid "§0 creates §1\n"
+"from §2. Then §3 unwraps the goal and §4 closes it."
 msgstr ""
 
 #. §0: `constructor`
@@ -1386,51 +1733,98 @@ msgid "You proved that 6 is both less than 10 AND even. The proof split\n"
 "(which corresponds to §14) and **union** (which corresponds to §15)."
 msgstr ""
 
-#. §0: `Even n`
-#. §1: `r`
-#. §2: `n = r + r`
-#. §3: ```
-#. Even n ↔ ∃ r, n = r + r
-#. ```
-#. §4: `Even n`
-#. §5: `use r`
-#. §6: `n = r + r`
-#. §7: `h : Even n`
-#. §8: `obtain ⟨r, hr⟩ := h`
-#. §9: `r`
-#. §10: `hr : n = r + r`
-#. §11: `Even 4`
-#. §12: `4 = 2 + 2`
-#. §13: `r = 2`
-#. §14: `Even 0`
-#. §15: `0 = 0 + 0`
-#. §16: `r = 0`
-#. §17: `¬ Even 3`
-#. §18: `r`
-#. §19: `3 = r + r`
-#: Game.Levels.SetWorld.L04_InfiniteSet
-msgid "§0 means there exists §1 such that §2.\n"
-"\n"
-"## Definition\n"
-"§3\n"
-"\n"
-"## Proof strategy\n"
-"- To prove §4: provide a witness with §5, then show §6\n"
-"- To use §7: destructure with §8 to get the\n"
-"  witness §9 and equation §10\n"
-"\n"
-"## Examples\n"
-"- §11 because §12 (witness: §13)\n"
-"- §14 because §15 (witness: §16)\n"
-"- §17 because no natural number §18 satisfies §19"
+#: Game.Levels.SubsetWorld.L04_EmptySubset
+msgid "The Empty Subset"
 msgstr ""
 
-#: GameServer.RpcHandlers
-msgid "level completed! 🎉"
+#. §0: `exact le_of_lt hx`
+#. §1: `le_of_lt`
+#. §2: `hx : x < 3`
+#. §3: `x ≤ 3`
+#: Game.Levels.SubsetWorld.L02_ChangeTactic
+msgid "§0 — §1 converts\n"
+"§2 into a proof of §3."
 msgstr ""
 
-#: Game.Levels.SetWorld.L04_InfiniteSet
-msgid "4 belongs to the set of even natural numbers."
+#. §0: `s = t`
+#. §1: `ext`
+#. §2: `apply Set.Subset.antisymm`
+#: Game.Levels.SubsetWorld.L16_ExtFromAntisymm
+msgid "You need to prove §0 without §1 (which is disabled).\n"
+"Use §2 to split into two subset goals."
+msgstr ""
+
+#. §0: `Set.Subset.antisymm`
+#. §1: `ext x; constructor; ...`
+#. §2: `Set.Subset.antisymm h1 h2`
+#. §3: `ext`
+#. §4: `antisymm`
+#. §5: $a \\leq a$
+#. §6: $a$
+#. §7: $a \\leq b$
+#. §8: $b \\leq c$
+#. §9: $a \\leq c$
+#. §10: $a \\leq b$
+#. §11: $b \\leq a$
+#. §12: $a = b$
+#. §13: `⊆`
+#. §14: `Set α`
+#. §15: `Set.Subset.refl`
+#. §16: `Set.Subset.trans`
+#. §17: `Set.Subset.antisymm`
+#. §18: `⊆`
+#. §19: `ext`
+#. §20: `antisymm`
+#. §21: `ext`
+#. §22: `antisymm`
+#. §23: `antisymm`
+#. §24: `ext`
+#: Game.Levels.SubsetWorld.L13_Antisymm
+msgid "§0 gives you a one-step path from two ⊆ proofs to\n"
+"set equality. Compare the two routes:\n"
+"\n"
+"| Route | When to use |\n"
+"|---|---|\n"
+"| §1 | When you need to prove both directions from scratch |\n"
+"| §2 | When you already have both ⊆ proofs in hand |\n"
+"\n"
+"In practice, many set equality proofs start with §3 because you\n"
+"rarely have the subset proofs pre-packaged. But §4 is\n"
+"valuable when subset facts are available from other lemmas or\n"
+"hypotheses.\n"
+"\n"
+"In ordinary math, this is the well-known principle: \"two sets are\n"
+"equal iff each is a subset of the other.\" Every proof of set equality\n"
+"by \"double inclusion\" (showing ⊆ in both directions) is implicitly\n"
+"using antisymmetry.\n"
+"\n"
+"A **partial order** is a relation that satisfies three properties:\n"
+"1. **Reflexive**: §5 for all §6\n"
+"2. **Transitive**: §7 and §8 imply §9\n"
+"3. **Antisymmetric**: §10 and §11 imply §12\n"
+"\n"
+"You have now proved all three for §13 on §14:\n"
+"- **Reflexive**: §15 (Level 3)\n"
+"- **Transitive**: §16 (Level 8)\n"
+"- **Antisymmetric**: §17 (this level)\n"
+"\n"
+"Together, these make §18 a **partial order** on sets. The partial\n"
+"order concept is central to mathematics — you will study it in depth\n"
+"in the Orders \\\\& Lattices course.\n"
+"\n"
+"These two routes — §19 and §20 — are logically *equivalent*.\n"
+"You can derive §21 from §22 and §23 from §24. You\n"
+"will prove this equivalence yourself in Levels 15 and 16."
+msgstr ""
+
+#. §0: `x ∈ t`
+#. §1: `x ∈ s`
+#. §2: `h2`
+#. §3: `intro hx`
+#. §4: `exact h2 hx`
+#: Game.Levels.SubsetWorld.L15_AntisymmFromExt
+msgid "The backward direction: assume §0 and show §1.\n"
+"Use §2 the same way: §3 then §4."
 msgstr ""
 
 #. §0: `linarith`
@@ -1494,12 +1888,69 @@ msgid "§0 (for §1) means that the predicate §2 holds at §3.\n"
 "If §8, then §9 is §10."
 msgstr ""
 
-#. §0: `obtain ⟨r, hr⟩ := h`
-#. §1: `r : ℕ`
-#. §2: `hr : 3 = r + r`
-#: Game.Levels.SetWorld.L05_NonMembershipExistential
-msgid "§0 destructures the\n"
-"existential. After this, you will have §1 and §2."
+#. §0: `⊆`
+#. §1: `=`
+#. §2: `s ⊆ t`
+#. §3: `s`
+#. §4: `t`
+#. §5: `intro x hx`
+#. §6: `s = t`
+#. §7: `ext`
+#. §8: `∀ x, x ∈ s ↔ x ∈ t`
+#. §9: `Set.Subset.antisymm`
+#. §10: `s ⊆ t`
+#. §11: `t ⊆ s`
+#. §12: `intro x hx`
+#. §13: `∅ ⊆ s`
+#. §14: `s ⊆ Set.univ`
+#. §15: `ext`
+#. §16: `Set.Subset.antisymm`
+#. §17: `⊂`
+#. §18: `⊆`
+#. §19: `¬⊆`
+#. §20: `change`
+#. §21: `ext`
+#. §22: `change P at h`
+#. §23: `ext x`
+#. §24: `Set.Subset.antisymm`
+#: Game.Levels.SubsetWorld
+msgid "# Subset World\n"
+"\n"
+"In Set World, you learned that sets are predicates and membership is\n"
+"predicate evaluation. Now you will learn the two fundamental\n"
+"relationships between sets: **subset** (§0) and **equality** (§1).\n"
+"\n"
+"A **subset** proof §2 means: for every element, if it is in §3\n"
+"then it is in §4. The proof shape is always §5 — fix an\n"
+"element, assume it is in the smaller set, then show it is in the\n"
+"larger set.\n"
+"\n"
+"A **set equality** proof §6 means: the two sets have exactly the\n"
+"same elements. There are two routes:\n"
+"- **Extensionality** (§7): prove §8 directly\n"
+"- **Double containment** (§9): prove §10 and\n"
+"  §11 separately\n"
+"\n"
+"By the end of this world, you will:\n"
+"- Prove subset relations with the §12 pattern\n"
+"- Handle the boundary cases §13 and §14\n"
+"- Use subset hypotheses as functions\n"
+"- Disprove false subset claims by contradiction\n"
+"- Chain subset proofs transitively\n"
+"- Prove set equality via §15 (extensionality)\n"
+"- Prove set equality via §16 (double containment)\n"
+"- Prove set non-equality by finding a contradictory witness\n"
+"- Prove proper subset (§17) by combining §18 and §19\n"
+"- Use §20 to unwrap set notation on hypotheses\n"
+"\n"
+"You will also gain a new tactic (§21) and a new proof strategy\n"
+"(double containment) that you will use throughout the rest of this\n"
+"course.\n"
+"\n"
+"**New tools in this world**:\n"
+"- §22 — unwrap a hypothesis to a definitionally equal form\n"
+"- §23 — reduce set equality to element-wise membership\n"
+"- §24 — derive equality from mutual subsets"
 msgstr ""
 
 #. §0: `have h3 := hq 3 h`
@@ -1510,67 +1961,36 @@ msgid "§0 gives\n"
 "§1 (meaning §2)."
 msgstr ""
 
-#. §0: `show 3 < 5`
-#. §1: `3 < 5`
-#: Game.Levels.SetWorld.L02_SetBuilder
-msgid "Use §0 to convert the goal to arithmetic form.\n"
-"This works because membership in the set-builder set\n"
-"is definitionally equal to §1."
-msgstr ""
-
-#. §0: `decide`
-#: Game.Metadata
-msgid "§0 closes goals that are decidable propositions by\n"
-"evaluating them computationally.\n"
+#. §0: `∅`
+#. §1: `Set.univ`
+#. §2: $$s \\subseteq s$$
+#. §3: `⊆`
+#. §4: `⊆`
+#. §5: `intro x hx`
+#. §6: `x ∈ s`
+#. §7: `hx : x ∈ s`
+#. §8: `intro x hx`
+#. §9: `x ∈ s`
+#. §10: `exact hx`
+#: Game.Levels.SubsetWorld.L03_SubsetRefl
+msgid "# Every Set Is a Subset of Itself\n"
 "\n"
-"Disabled because it bypasses manual reasoning."
-msgstr ""
-
-#. §0: `¬ (7 < 5)`
-#. §1: `7 < 5 → False`
-#. §2: `intro h`
-#. §3: `7 < 5`
-#: Game.Levels.SetWorld.L03_NonMembership
-#: Game.Levels.SetWorld.L06_EmptySet
-msgid "The goal is §0, which means §1. Use\n"
-"§2 to assume §3."
+"Before exploring boundary cases (§0 and §1), let us prove\n"
+"the simplest subset fact: every set is a subset of itself.\n"
+"\n"
+"§2\n"
+"\n"
+"This is **reflexivity** of §3. The proof is the simplest possible\n"
+"§4 proof: after §5, the goal is §6 and you already\n"
+"have §7. The hypothesis IS the goal.\n"
+"\n"
+"**Proof plan**:\n"
+"1. §8 — assume §9\n"
+"2. §10 — the hypothesis is exactly the goal"
 msgstr ""
 
 #: Game.Levels.SetWorld.L08_CompoundPredicate
 msgid "6 belongs to the set of even naturals less than 10."
-msgstr ""
-
-#. §0: `Set α`
-#. §1: `α`
-#. §2: `Set α`
-#. §3: `α → Prop`
-#. §4: `x : α`
-#. §5: `s : Set α`
-#. §6: `s x`
-#. §7: `x ∈ s`
-#. §8: `s x`
-#. §9: `Set.ext`
-#. §10: `Set α`
-#. §11: `α`
-#. §12: `Set.univ : Set α`
-#. §13: `α`
-#. §14: `Set α`
-#. §15: `α`
-#: Game.Levels.SetWorld.L01_WelcomeToSets
-msgid "§0 is the type of sets with elements of type §1.\n"
-"\n"
-"In Lean, §2 is defined as §3 — a set IS its membership\n"
-"predicate. An element §4 belongs to §5 when §6 is true.\n"
-"\n"
-"## Key facts\n"
-"- Sets are predicates, not collections\n"
-"- §7 means §8 (function application)\n"
-"- Two sets are equal when they have the same elements (§9)\n"
-"\n"
-"## Warning\n"
-"§10 is not the same as a type §11. A set is a *predicate on* a type.\n"
-"§12 contains all elements of §13, but it is still a term\n"
-"of type §14, not the type §15 itself."
 msgstr ""
 
 #. §0: `Set.univ`
@@ -1631,35 +2051,20 @@ msgid "# Compound Predicates\n"
 "**Your task**: Prove that 6 belongs to the set of even numbers less than 10."
 msgstr ""
 
-#. §0: `trivial`
-#. §1: `rfl`
-#. §2: `exact True.intro`
-#. §3: `assumption`
-#: Game.Metadata
-msgid "§0 attempts to close the goal using a combination of\n"
-"basic tactics (§1, §2, §3).\n"
-"\n"
-"Disabled because it bypasses the learning of specific proof steps."
+#. §0: `h`
+#. §1: `x < 3`
+#. §2: `exact h`
+#: Game.Levels.SubsetWorld.L10_ExtIntro
+msgid "§0 is definitionally §1, which matches the goal.\n"
+"Use §2."
 msgstr ""
 
-#: Game.Levels.SetWorld
-msgid "Set World"
-msgstr ""
-
-#. §0: `exact e`
-#. §1: `e`
-#. §2: ```
-#. exact expression
-#. ```
-#: Game.Metadata
-msgid "§0 closes the goal if §1 has exactly the type of the goal.\n"
-"\n"
-"## Syntax\n"
-"§2\n"
-"\n"
-"## When to use it\n"
-"When you have a term (variable, function application, constructor)\n"
-"whose type matches the goal exactly."
+#. §0: `h5 : 3 < 3`
+#. §1: `omega`
+#. §2: `False`
+#: Game.Levels.SubsetWorld.L12_SetNonEquality
+msgid "§0 is clearly false. §1 can derive §2\n"
+"from contradictory arithmetic."
 msgstr ""
 
 #. §0: `h`
@@ -1670,8 +2075,63 @@ msgid "Now §0 says §1, which is impossible. §2 sees the\n"
 "contradiction and closes the goal."
 msgstr ""
 
-#: Game.Levels.SetWorld.L05_NonMembershipExistential
-msgid "3 does not belong to the set of even natural numbers."
+#. §0: `intro x hx`
+#. §1: `have h : x < 3 := hx`
+#. §2: `hx`
+#. §3: `show x < 5`
+#. §4: `omega`
+#. §5: `⊆`
+#. §6: `intro x hx`
+#. §7: `have`
+#. §8: `change`
+#. §9: `⊆`
+#. §10: `∈`
+#. §11: `s ⊆ t`
+#. §12: `s`
+#. §13: `t`
+#. §14: `x ∈ s`
+#. §15: `x`
+#. §16: `s`
+#. §17: `s ⊆ t`
+#. §18: `s t : Set α`
+#. §19: `x ∈ s`
+#. §20: `x : α`
+#. §21: `{n | n < 3} ⊆ {n | n < 5}`
+#. §22: `{n | n < 5} ⊆ {n | n < 3}`
+#. §23: `⊆`
+#. §24: `s ⊆ t`
+#. §25: `t ⊆ s`
+#. §26: `⊆`
+#: Game.Levels.SubsetWorld.L01_FirstSubset
+msgid "You just proved your first subset relation! The proof shape was:\n"
+"\n"
+"1. §0 — introduce element and membership hypothesis\n"
+"2. §1 — extract the arithmetic from §2\n"
+"3. §3 — unwrap the goal from set notation to arithmetic\n"
+"4. §4 — close the arithmetic goal\n"
+"\n"
+"This pattern — **intro, unwrap, prove** — is the standard shape for\n"
+"every §5 proof. The §6 step is universal; the unwrapping\n"
+"and closing steps depend on the specific sets.\n"
+"\n"
+"Using §7 to extract hypothesis content works, but it is a bit\n"
+"verbose — you need to write out the type explicitly. In the next\n"
+"level, you will learn §8, a tactic designed specifically for\n"
+"this unwrapping job.\n"
+"\n"
+"**§9 vs §10 — a common confusion**: These are fundamentally different\n"
+"relations. §11 relates two *sets* and says every element of §12\n"
+"is also in §13. §14 relates an *element* and a *set* and says\n"
+"§15 belongs to §16. In Lean, the types enforce this: §17 requires\n"
+"§18, while §19 requires §20. If you are ever unsure,\n"
+"check the types: are you relating two sets, or an element to a set?\n"
+"\n"
+"**Note on asymmetry**: We proved §21, but the\n"
+"reverse §22 is **false** — the number 4 is in\n"
+"the right set but not the left. You will prove this formally in\n"
+"Level 7. So §23 has a *direction*: unlike equality, §24 does\n"
+"not imply §25. This makes §26 a one-way relationship, which\n"
+"we will explore further in this world."
 msgstr ""
 
 #. §0: `h : Even 3`
@@ -1685,15 +2145,6 @@ msgstr ""
 msgid "§0 means §1. Use\n"
 "§2 to extract the witness §3 and equation\n"
 "§4. (Type ⟨ as §5 and ⟩ as §6.)"
-msgstr ""
-
-#. §0: `p 4`
-#. §1: `hp : ∀ n, Even n → p n`
-#. §2: `apply hp`
-#. §3: `Even 4`
-#: Game.Levels.SetWorld.L09_Boss
-msgid "The goal is §0. You have §1.\n"
-"Use §2 to reduce the goal to §3."
 msgstr ""
 
 #. §0: `aesop`
@@ -1728,6 +2179,2157 @@ msgid "§0 solves linear arithmetic goals over §1 and §2.\n"
 "## Warning\n"
 "§6 only handles *linear* arithmetic. It cannot solve goals\n"
 "involving multiplication of variables."
+msgstr ""
+
+#. §0: `ext x`
+#: Game.Levels.SubsetWorld.L10_ExtIntro
+msgid "The goal is a set equality. Use §0 to reduce it to\n"
+"\"for all x, membership in the left equals membership in the right\"."
+msgstr ""
+
+#. §0: `constructor`
+#. §1: `↔`
+#: Game.Levels.SubsetWorld.L11_ExtPractice
+msgid "Now §0 to split the §1."
+msgstr ""
+
+#. §0: `change P at h`
+#. §1: `h`
+#. §2: `P`
+#. §3: `P`
+#. §4: `h`
+#. §5: `change P`
+#. §6: `at`
+#. §7: `P`
+#. §8: `show P`
+#. §9: ```
+#. change P at h    -- convert hypothesis h to P
+#. change P         -- convert the goal to P (same as show P)
+#. ```
+#. §10: ```
+#. -- hx : x ∈ {n | n < 3}
+#. change x < 3 at hx
+#. -- hx : x < 3
+#. ```
+#. §11: `change`
+#. §12: `change`
+#: Game.Levels.SubsetWorld.L02_ChangeTactic
+msgid "§0 converts hypothesis §1 to display as §2,\n"
+"where §3 must be definitionally equal to the current type of §4.\n"
+"\n"
+"§5 (without §6) converts the goal to §7 — this is\n"
+"equivalent to §8.\n"
+"\n"
+"## Syntax\n"
+"§9\n"
+"\n"
+"## When to use it\n"
+"When a hypothesis is wrapped in notation (like set membership) and\n"
+"you need the underlying content (like an arithmetic inequality).\n"
+"\n"
+"## Example\n"
+"§10\n"
+"\n"
+"## Warning\n"
+"§11 only changes the display — the new type must be\n"
+"**definitionally equal** to the old one. If Lean rejects the\n"
+"§12, the types are not definitionally equal."
+msgstr ""
+
+#. §0: `x < 3 ∧ x < 5`
+#. §1: `.1`
+#. §2: `.2`
+#. §3: `hx : P ∧ Q`
+#. §4: `hx.1 : P`
+#. §5: `hx.2 : Q`
+#. §6: `x < 3`
+#. §7: `x < 3 ∧ x < 5`
+#. §8: `.1`
+#: Game.Levels.SubsetWorld.L10_ExtIntro
+msgid "The forward direction: assume membership in the left set.\n"
+"The hypothesis encodes a conjunction §0.\n"
+"\n"
+"The §1 and §2 projections extract components from a conjunction:\n"
+"if §3, then §4 and §5.\n"
+"\n"
+"Since you need §6 and the hypothesis is §7,\n"
+"you can use §8 to extract the first component."
+msgstr ""
+
+#. §0: `exact h hx`
+#. §1: `h`
+#. §2: `hx`
+#. §3: `x ∈ t`
+#. §4: `apply h`
+#. §5: `x ∈ s`
+#. §6: `exact hx`
+#: Game.Levels.SubsetWorld.L06_SubsetHypAsFunction
+msgid "§0 applies the subset hypothesis §1\n"
+"to the membership proof §2, producing a proof of §3.\n"
+"\n"
+"Alternatively: §4 reduces the goal to §5, then §6."
+msgstr ""
+
+#: Game.Levels.SubsetWorld.L05_SubsetUniv
+msgid "Every Set is in Set.univ"
+msgstr ""
+
+#: Game.Levels.SubsetWorld.L07_NonSubset
+msgid "Disproving a Subset"
+msgstr ""
+
+#: Game.Levels.SubsetWorld.L01_FirstSubset
+msgid "Every number less than 3 is also less than 5."
+msgstr ""
+
+#. §0: `h5`
+#. §1: `h`
+#. §2: `rw [← h] at h5`
+#. §3: `h5`
+#. §4: `← h`
+#. §5: `h : A = B`
+#. §6: `← h`
+#. §7: `B`
+#. §8: `A`
+#: Game.Levels.SubsetWorld.L12_SetNonEquality
+msgid "Good — §0 proves 3 is in the right set. Now use the equality\n"
+"§1 to transport this membership to the other set. Rewriting with\n"
+"§2 replaces the right set with the left set in §3.\n"
+"\n"
+"(§4 rewrites backward: if §5, then §6 replaces §7\n"
+"with §8.)"
+msgstr ""
+
+#. §0: `s ⊆ t`
+#. §1: `∀ x, x ∈ s → x ∈ t`
+#. §2: `intro x hx`
+#: Game.Levels.SubsetWorld.L01_FirstSubset
+msgid "The goal is §0, which means §1.\n"
+"Use §2 to introduce the element and the membership assumption."
+msgstr ""
+
+#. §0: `show P`
+#. §1: `P`
+#. §2: `P`
+#. §3: ```
+#. show P
+#. ```
+#. §4: `x ∈ {n | n < 5}`
+#. §5: `x < 5`
+#. §6: `omega`
+#. §7: `show x < 5`
+#. §8: ```
+#. -- Goal: 3 ∈ {n | n < 5}
+#. show 3 < 5
+#. -- Goal: 3 < 5
+#. omega
+#. ```
+#. §9: `show`
+#. §10: `show`
+#: Game.Metadata
+msgid "§0 converts the goal to §1, as long as §2 is\n"
+"definitionally equal to the current goal.\n"
+"\n"
+"## Syntax\n"
+"§3\n"
+"\n"
+"## When to use it\n"
+"When the goal is correct but in a form that other tactics cannot\n"
+"parse. For example, §4 is definitionally §5,\n"
+"but §6 needs the arithmetic form. Use §7 to convert.\n"
+"\n"
+"## Example\n"
+"§8\n"
+"\n"
+"## Warning\n"
+"§9 does NOT prove anything — it only changes the display.\n"
+"The new goal must be definitionally equal to the old one, or\n"
+"Lean will reject the §10."
+msgstr ""
+
+#. §0: `intro x`
+#. §1: ```
+#. intro x       -- introduce one variable
+#. intro x y z   -- introduce multiple variables
+#. intro h       -- introduce an implication hypothesis
+#. ```
+#. §2: `∀ x, P x`
+#. §3: `P → Q`
+#: Game.Metadata
+msgid "§0 introduces a universally quantified variable or an\n"
+"antecedent of an implication into the context.\n"
+"\n"
+"## Syntax\n"
+"§1\n"
+"\n"
+"## When to use it\n"
+"When the goal is §2 or §3."
+msgstr ""
+
+#. §0: `h1`
+#. §1: `hx`
+#. §2: `x ∈ t`
+#. §3: `exact h1 hx`
+#: Game.Levels.SubsetWorld.L15_AntisymmFromExt
+#: Game.Levels.SubsetWorld.L15_AntisymmFromExt
+msgid "§0 applied to §1 gives §2. Use §3."
+msgstr ""
+
+#. §0: `hxt : x ∈ t`
+#. §1: `ht`
+#. §2: `have hle := ht hxt`
+#: Game.Levels.SubsetWorld.L17_Boss
+msgid "§0. Now apply §1: §2."
+msgstr ""
+
+#. §0: `3 ∉ {n | Even n}`
+#. §1: `n < 5`
+#. §2: `Even n`
+#. §3: `show`
+#. §4: `intro`
+#. §5: `omega`
+#. §6: `obtain`
+#. §7: `omega`
+#. §8: `obtain`
+#. §9: `h : ∃ x, P x`
+#. §10: `obtain ⟨x, hx⟩ := h`
+#. §11: `x`
+#. §12: `hx : P x`
+#: Game.Levels.SetWorld.L05_NonMembershipExistential
+msgid "You proved §0 by assuming membership, destructuring\n"
+"the existential witness, and deriving an arithmetic contradiction.\n"
+"\n"
+"This is a different proof shape from Level 3:\n"
+"\n"
+"| Level 3 | This level |\n"
+"|---|---|\n"
+"| Predicate: §1 (arithmetic) | Predicate: §2 (existential) |\n"
+"| §3 unfolds to arithmetic | §4 gets the existential |\n"
+"| §5 on the arithmetic | §6 extracts witness, THEN §7 |\n"
+"\n"
+"Notice the recurring pattern across Levels 2, 3, and this level: **unfold\n"
+"the set notation, assume or provide, then close with arithmetic**. This is\n"
+"the *membership reduction* pattern — every set membership question reduces\n"
+"to a question about the underlying predicate, and the proof works directly\n"
+"with that predicate. This pattern transfers to every set concept in this\n"
+"course.\n"
+"\n"
+"The §8 tactic is your tool for destructuring existentials. Whenever\n"
+"you have §9, use §10 to get the witness\n"
+"§11 and the proof §12. You will use this pattern throughout the\n"
+"course — it appears whenever set membership involves existential\n"
+"conditions."
+msgstr ""
+
+#. §0: `Set.Subset.trans`
+#. §1: `s ⊆ t → t ⊆ u → s ⊆ u`
+#: Game.Levels.SubsetWorld.L08_SubsetTrans
+msgid "§0 proves §1 (subset transitivity)."
+msgstr ""
+
+#. §0: `Set.Subset.refl s`
+#. §1: `s ⊆ s`
+#: Game.Levels.SubsetWorld.L03_SubsetRefl
+msgid "§0 proves §1 (subset reflexivity)."
+msgstr ""
+
+#: Game.Levels.SetWorld.L04_InfiniteSet
+msgid "An Infinite Set"
+msgstr ""
+
+#. §0: $$s = t \\;\\;\\Longleftrightarrow\\;\\; \\forall\\, x,\\; x \\in s \\leftrightarrow x \\in t$$
+#. §1: `ext x`
+#. §2: `x`
+#. §3: `x ∈ s ↔ x ∈ t`
+#. §4: `ext x`
+#. §5: `↔`
+#. §6: `constructor`
+#. §7: `constructor`
+#. §8: `·`
+#. §9: `·`
+#. §10: `· tactic`
+#. §11: `tactic`
+#. §12: `·`
+#. §13: `·`
+#. §14: `{n | n < 3 ∧ n < 5} = {n | n < 3}`
+#. §15: `n < 3 ∧ n < 5`
+#. §16: `n < 3`
+#. §17: `n < 3`
+#. §18: `n < 5`
+#. §19: `ext x`
+#. §20: `constructor`
+#. §21: `↔`
+#. §22: `→`
+#. §23: `x < 3 ∧ x < 5`
+#. §24: `x < 3`
+#. §25: `←`
+#. §26: `x < 3`
+#. §27: `x < 3 ∧ x < 5`
+#: Game.Levels.SubsetWorld.L10_ExtIntro
+msgid "# Extensionality: When Two Sets Are Equal\n"
+"\n"
+"Two sets are equal when they have exactly the same elements:\n"
+"\n"
+"§0\n"
+"\n"
+"This is the **Axiom of Extensionality** — one of the foundational\n"
+"axioms of set theory. It says that a set is nothing more than its\n"
+"elements: two sets with the same members are the same set, regardless\n"
+"of how they are described. The tactic §1\n"
+"converts a set equality goal into: for each §2, prove the membership\n"
+"biconditional §3.\n"
+"\n"
+"After §4, the goal becomes an §5. Use §6 to split it\n"
+"into two implications (forward and backward), then prove each direction.\n"
+"\n"
+"After §7, you will see the §8 (focus dot) for the first time.\n"
+"When Lean creates multiple subgoals, §9 **focuses** on one subgoal at\n"
+"a time. Write §10 to apply §11 to the current subgoal only.\n"
+"After that subgoal is closed, the next §12 picks up the next subgoal.\n"
+"Think of §13 as \"now working on this case.\"\n"
+"\n"
+"**Your task**: Prove that §14.\n"
+"\n"
+"The conjunction §15 is equivalent to just §16 because\n"
+"§17 already implies §18. So the second condition is redundant.\n"
+"\n"
+"This level is longer than previous ones — the proof has several steps.\n"
+"Do not worry: each step is guided by hints, and the math is simple.\n"
+"The length comes from the proof structure, not from difficulty.\n"
+"\n"
+"**Proof plan**:\n"
+"1. §19 — reduce to membership biconditional\n"
+"2. §20 — split the §21 into two directions\n"
+"3. **Forward** (§22): given §23, extract §24\n"
+"4. **Backward** (§25): given §26, build §27"
+msgstr ""
+
+#. §0: `p`
+#. §1: `hp : ∀ n, Even n → p n`
+#. §2: `p`
+#. §3: `hq : ∀ n, p n → Even n`
+#. §4: `p`
+#. §5: `p`
+#. §6: `4 ∈ {n | p n}`
+#. §7: `3 ∉ {n | p n}`
+#. §8: `apply hp`
+#. §9: `Even 4`
+#. §10: `p 3`
+#. §11: `Even 3`
+#. §12: `hq`
+#. §13: `obtain`
+#. §14: `constructor`
+#: Game.Levels.SetWorld.L09_Boss
+msgid "# Boss: Putting It All Together\n"
+"\n"
+"Time to combine everything. You are given an abstract predicate §0\n"
+"on natural numbers, with two hypotheses:\n"
+"\n"
+"- §1 — every even number satisfies §2\n"
+"- §3 — every number satisfying §4 is even\n"
+"\n"
+"Together these say: §5 holds for exactly the even numbers.\n"
+"\n"
+"You must prove two things:\n"
+"1. §6 — 4 is in the p-set (because 4 is even)\n"
+"2. §7 — 3 is NOT in the p-set (because 3 is odd)\n"
+"\n"
+"This combines:\n"
+"- Membership via hypothesis (Levels 1–2, 4): use §8 then\n"
+"  provide a witness for §9\n"
+"- Non-membership via contradiction (Levels 3, 5): assume §10,\n"
+"  derive §11 from §12, destructure the existential with\n"
+"  §13, then reach an arithmetic contradiction\n"
+"\n"
+"Start with §14 to split the conjunction."
+msgstr ""
+
+#. §0: `have h4' := h h4`
+#: Game.Levels.SubsetWorld.L14_ProperSubset
+msgid "Apply the assumed reverse inclusion to the witness:\n"
+"§0."
+msgstr ""
+
+#. §0: `ext`
+#. §1: `s ⊆ t`
+#. §2: `t ⊆ s`
+#. §3: `s = t`
+#. §4: `Set.Subset.antisymm`
+#. §5: $$\\texttt{Set.Subset.antisymm} : s \\subseteq t \\to t \\subseteq s \\to s = t$$
+#. §6: `exact Set.Subset.antisymm h1 h2`
+#. §7: `ext`
+#. §8: `h1 : s ⊆ t`
+#. §9: `h2 : t ⊆ s`
+#. §10: `s = t`
+#: Game.Levels.SubsetWorld.L13_Antisymm
+msgid "# An Alternative Route to Set Equality\n"
+"\n"
+"In Levels 10–11, you proved set equalities using §0 — reducing to\n"
+"a membership biconditional and proving both directions.\n"
+"\n"
+"There is another route: **double containment** (also called\n"
+"**antisymmetry**). If §1 AND §2, then §3.\n"
+"\n"
+"The theorem §4 captures this:\n"
+"\n"
+"§5\n"
+"\n"
+"If you already have two subset proofs, you can combine them with\n"
+"§6 to get equality directly — no\n"
+"§7 needed.\n"
+"\n"
+"**Your task**: Given §8 and §9, prove §10."
+msgstr ""
+
+#. §0: `intro x hx`
+#: Game.Levels.SubsetWorld.L03_SubsetRefl
+msgid "Use §0 to introduce the element and the membership\n"
+"assumption, just as in Level 1."
+msgstr ""
+
+#. §0: `↔`
+#. §1: `constructor`
+#. §2: `→`
+#. §3: `←`
+#: Game.Levels.SubsetWorld.L10_ExtIntro
+msgid "The goal is now an §0 (biconditional). Use §1 to\n"
+"split it into two implications: forward (§2) and backward (§3)."
+msgstr ""
+
+#: Game.Levels.SetWorld.L06_EmptySet
+msgid "The Empty Set"
+msgstr ""
+
+#. §0: $A \\subseteq B$
+#. §1: $B \\subseteq C$
+#. §2: $A \\subseteq C$
+#. §3: `h : s ⊆ t`
+#. §4: `x ∈ s`
+#. §5: `x ∈ t`
+#. §6: `apply`
+#. §7: `x ∈ u`
+#. §8: `apply htu`
+#. §9: `x ∈ t`
+#. §10: `htu`
+#. §11: `t`
+#. §12: `u`
+#. §13: `apply hst`
+#. §14: `x ∈ s`
+#. §15: `exact hx`
+#. §16: `have`
+#. §17: `hx : x ∈ s`
+#. §18: `have hxt := hst hx`
+#. §19: `hxt : x ∈ t`
+#. §20: `have hxu := htu hxt`
+#. §21: `hxu : x ∈ u`
+#. §22: `exact hxu`
+#. §23: `apply`
+#: Game.Levels.SubsetWorld.L08_SubsetTrans
+msgid "# Chaining Subsets\n"
+"\n"
+"If §0 and §1, then §2. This is\n"
+"**transitivity** of the subset relation.\n"
+"\n"
+"In Level 6, you learned that a subset hypothesis §3 acts as\n"
+"a function: given a proof that §4, it returns a proof that\n"
+"§5. Now you will **chain** two such function applications to\n"
+"prove transitivity.\n"
+"\n"
+"There are two natural proof strategies:\n"
+"\n"
+"**Backward (with §6)**: Start from the goal §7 and work\n"
+"backward. §8 reduces the goal to §9 (since §10 says\n"
+"\"if in §11, then in §12\"). Then §13 reduces to §14.\n"
+"Then §15 closes it.\n"
+"\n"
+"**Forward (with §16)**: Start from §17 and work forward.\n"
+"§18 gives §19. Then\n"
+"§20 gives §21. Then §22.\n"
+"\n"
+"Try the backward approach — it is shorter and builds your §23 skills."
+msgstr ""
+
+#. §0: `Set.mem_univ x`
+#. §1: `x ∈ Set.univ`
+#. §2: `x`
+#: Game.Levels.SetWorld.L01_WelcomeToSets
+#: Game.Levels.SetWorld.L06_EmptySet
+#: Game.Levels.SetWorld.L07_UniversalSet
+msgid "§0 proves §1 for any §2."
+msgstr ""
+
+#: Game.Levels.SubsetWorld.L01_FirstSubset
+msgid "First Subset Proof"
+msgstr ""
+
+#. §0: `omega`
+#. §1: `h : x < 3`
+#. §2: `x < 5`
+#: Game.Levels.SubsetWorld.L01_FirstSubset
+msgid "§0 can now see both §1 and the goal §2."
+msgstr ""
+
+#: Game.Levels.SubsetWorld.L02_ChangeTactic
+msgid "Every natural number less than 3 is at most 3."
+msgstr ""
+
+#. §0: `x ∈ s`
+#. §1: `hx : x ∈ s`
+#. §2: `exact hx`
+#: Game.Levels.SubsetWorld.L08_SubsetTrans
+msgid "The goal is §0 and you have §1. Use §2."
+msgstr ""
+
+#: GameServer.RpcHandlers
+msgid "level completed with warnings… 🎭"
+msgstr ""
+
+#. §0: `le_trans`
+#. §1: `a ≤ b → b ≤ c → a ≤ c`
+#. §2: `≤`
+#. §3: `⊆`
+#: Game.Levels.SubsetWorld.L08_SubsetTrans
+msgid "§0 proves §1 for any preorder.\n"
+"For sets, §2 is §3, so this is transitivity of subset inclusion."
+msgstr ""
+
+#. §0: `show P`
+#. §1: `P`
+#. §2: `change P at h`
+#. §3: `h`
+#. §4: `P`
+#. §5: `change P`
+#. §6: `show P`
+#. §7: `change`
+#. §8: `show`
+#. §9: `show P`
+#. §10: `P`
+#. §11: `change P at h`
+#. §12: `h`
+#. §13: `P`
+#. §14: `P`
+#. §15: `change`
+#. §16: `hx : x ∈ {n | n < 3}`
+#. §17: `hx : x < 3`
+#. §18: `change`
+#. §19: `change`
+#: Game.Levels.SubsetWorld.L02_ChangeTactic
+msgid "You now have both halves of the unwrapping toolkit:\n"
+"\n"
+"| Tactic | Target | Effect |\n"
+"|---|---|---|\n"
+"| §0 | Goal | Converts goal to §1 (def-equal) |\n"
+"| §2 | Hypothesis | Converts §3 to §4 (def-equal) |\n"
+"| §5 | Goal | Same as §6 |\n"
+"\n"
+"**§7 vs §8**: They are the same concept applied to different\n"
+"targets. §9 changes the goal to §10. §11 changes\n"
+"hypothesis §12 to §13. Both require §14 to be definitionally equal\n"
+"to the current type — they only change the *display*, not the *meaning*.\n"
+"\n"
+"Note that §15 is a **convenience** tool for readability — Lean\n"
+"can often see through the definitional wrapper without it. But when\n"
+"the proof state has §16 instead of §17,\n"
+"§18 makes the arithmetic content visible so you can find the\n"
+"right closing move. You will use §19 throughout this course."
+msgstr ""
+
+#. §0: `hx`
+#. §1: `x`
+#. §2: `x < 3`
+#. §3: `have h : x < 3 := hx`
+#: Game.Levels.SubsetWorld.L01_FirstSubset
+msgid "Now §0 says §1 is in the left set, but the arithmetic fact\n"
+"§2 is hidden inside the set notation. Use\n"
+"§3 to extract it into a clean hypothesis."
+msgstr ""
+
+#. §0: `∉`
+#. §1: `¬ ∈`
+#. §2: `x ∈ s`
+#. §3: `s`
+#. §4: `x`
+#. §5: `x ∉ s`
+#. §6: $$x \\notin s \\;\\;\\Longleftrightarrow\\;\\; \\neg\\, (x \\in s) \\;\\;\\Longleftrightarrow\\;\\; (x \\in s) \\to \\text{False}$$
+#. §7: `7 ∉ {n | n < 5}`
+#. §8: `¬ (7 < 5)`
+#. §9: `7 < 5 → False`
+#. §10: `¬ P`
+#. §11: `P`
+#. §12: `intro h`
+#. §13: `¬ P`
+#. §14: `False`
+#. §15: `h : P`
+#. §16: `show ¬ (7 < 5)`
+#. §17: `intro h`
+#. §18: `7 < 5`
+#. §19: `omega`
+#: Game.Levels.SetWorld.L03_NonMembership
+msgid "# Non-Membership: §0 means §1\n"
+"\n"
+"Just as §2 means the predicate §3 holds at §4, non-membership\n"
+"§5 means the predicate does NOT hold. Formally:\n"
+"\n"
+"§6\n"
+"\n"
+"So §7 unfolds to §8, which is §9.\n"
+"\n"
+"To prove a negation §10, you assume §11 and derive a contradiction.\n"
+"The tactic §12 turns a goal §13 into a goal §14 with\n"
+"hypothesis §15.\n"
+"\n"
+"**Your task**: First use §16 to make the goal explicit.\n"
+"Then use §17 to assume §18, and §19 to derive the\n"
+"contradiction."
+msgstr ""
+
+#. §0: `have h4 : (4 : ℕ) < 5 := by omega`
+#. §1: `have h4' := h h4`
+#. §2: `change (4 : ℕ) < 3 at h4'`
+#. §3: `omega`
+#: Game.Levels.SubsetWorld.L07_NonSubset
+#: Game.Levels.SubsetWorld.L12_SetNonEquality
+#: Game.Levels.SubsetWorld.L14_ProperSubset
+msgid "Step by step:\n"
+"1. §0\n"
+"2. §1\n"
+"3. §2\n"
+"4. §3"
+msgstr ""
+
+#. §0: `intro x hx`
+#. §1: `∅`
+#: Game.Levels.SubsetWorld.L04_EmptySubset
+msgid "Start with §0 to introduce an element and assume\n"
+"it belongs to §1."
+msgstr ""
+
+#. §0: `change`
+#. §1: `show`
+#. §2: `omega`
+#. §3: $n \\leq 2$
+#. §4: $n < 3$
+#. §5: $\\leq$
+#. §6: $<$
+#: Game.Levels.SubsetWorld.L11_ExtPractice
+msgid "Both directions followed the same pattern: unwrap hypothesis, unwrap\n"
+"goal, close with arithmetic. Call this the **unwrap-and-close** pattern:\n"
+"§0 to reveal the arithmetic, §1 to reveal the goal, then a\n"
+"closer like §2. This pattern will recur whenever set descriptions\n"
+"involve arithmetic predicates.\n"
+"\n"
+"Notice how symmetric the proof was — both directions used the same\n"
+"three-step structure. This symmetry is typical when the set descriptions\n"
+"are equivalent arithmetic conditions.\n"
+"\n"
+"In plain math: §3 if and only if §4 (for natural numbers).\n"
+"This is because §5 and §6 differ by exactly 1 on the integers,\n"
+"and there are no naturals between 2 and 3."
+msgstr ""
+
+#. §0: `¬ (... ⊆ ...)`
+#. §1: `(... ⊆ ...) → False`
+#. §2: `intro h`
+#: Game.Levels.SubsetWorld.L07_NonSubset
+msgid "The goal is §0, which means §1.\n"
+"Use §2 to assume the subset holds and aim for a contradiction."
+msgstr ""
+
+#: Game
+msgid "# Functions & Relations\n"
+"\n"
+"Functions, Relations, Equivalences, and Encodability\n"
+"\n"
+"This course is under construction."
+msgstr ""
+
+#. §0: `contradiction`
+#. §1: `hx : x ∈ ∅`
+#. §2: `False`
+#: Game.Levels.SubsetWorld.L04_EmptySubset
+msgid "§0 finds §1 (which\n"
+"is §2) and closes the goal via *ex falso quodlibet*."
+msgstr ""
+
+#. §0: `h4 : 4 < 5`
+#. §1: `have h4' := h h4`
+#. §2: `h`
+#: Game.Levels.SubsetWorld.L07_NonSubset
+msgid "Good — §0 also serves as a proof that 4 is in the\n"
+"left set (since set membership unfolds to the predicate). Now apply\n"
+"the assumed subset to this witness: §1. This uses\n"
+"§2 as a function (just like Level 6)."
+msgstr ""
+
+#. §0: `intro n`
+#: Game.Levels.SetWorld.L06_EmptySet
+#: Game.Levels.SetWorld.L07_UniversalSet
+msgid "Start with §0 to introduce the universally quantified\n"
+"variable."
+msgstr ""
+
+#: Game.Levels.SubsetWorld.L08_SubsetTrans
+msgid "Subset Transitivity"
+msgstr ""
+
+#. §0: `x ∈ t`
+#. §1: `apply hst`
+#. §2: `x ∈ s`
+#: Game.Levels.SubsetWorld.L08_SubsetTrans
+msgid "Now the goal is §0. Use §1 to reduce it to\n"
+"§2."
+msgstr ""
+
+#. §0: `ext`
+#. §1: `Set.Subset.antisymm`
+#. §2: `h : ∀ x, x ∈ s ↔ x ∈ t`
+#. §3: `s = t`
+#. §4: `Set.Subset.antisymm`
+#. §5: `ext`
+#. §6: `↔`
+#. §7: `hiff : P ↔ Q`
+#. §8: `hiff.1`
+#. §9: `P → Q`
+#. §10: `hiff.2`
+#. §11: `Q → P`
+#. §12: `(h x).1`
+#. §13: `x ∈ s → x ∈ t`
+#. §14: `(h x).2`
+#. §15: `x ∈ t → x ∈ s`
+#. §16: `apply Set.Subset.antisymm`
+#. §17: `s ⊆ t`
+#. §18: `intro x hx; exact (h x).1 hx`
+#. §19: `t ⊆ s`
+#. §20: `intro x hx; exact (h x).2 hx`
+#: Game.Levels.SubsetWorld.L16_ExtFromAntisymm
+msgid "# The Other Direction\n"
+"\n"
+"In Level 15, you derived antisymmetry from extensionality: given two\n"
+"subset proofs, you used §0 to prove equality without\n"
+"§1.\n"
+"\n"
+"Now prove the reverse direction: given a pointwise membership\n"
+"equivalence §2, prove §3 using\n"
+"§4 alone — without §5 (which is disabled).\n"
+"\n"
+"The key insight: an §6 contains two implications. If §7,\n"
+"then §8 is the forward direction §9 and §10 is the\n"
+"backward direction §11. So §12 gives §13 and\n"
+"§14 gives §15 — exactly the membership implications\n"
+"you need for two subset proofs.\n"
+"\n"
+"**Proof plan**:\n"
+"1. §16 — reduce to two subset goals\n"
+"2. **First subset** (§17): §18\n"
+"3. **Second subset** (§19): §20"
+msgstr ""
+
+#. §0: `Set.Subset.antisymm`
+#. §1: `Set.Subset.antisymm`
+#. §2: `ext`
+#. §3: `h1 : s ⊆ t`
+#. §4: `h2 : t ⊆ s`
+#. §5: `s = t`
+#. §6: `ext`
+#. §7: `Set.Subset.antisymm`
+#. §8: `ext x`
+#. §9: `↔`
+#. §10: `constructor`
+#. §11: `↔`
+#. §12: `intro hx; exact h1 hx`
+#. §13: `h1`
+#. §14: `intro hx; exact h2 hx`
+#. §15: `h2`
+#: Game.Levels.SubsetWorld.L15_AntisymmFromExt
+msgid "# Proving Antisymmetry Without §0\n"
+"\n"
+"In Level 13, you used §1 to combine two subset\n"
+"proofs into an equality. But you can also derive the same result\n"
+"using only §2 — proving that the two approaches are interchangeable.\n"
+"\n"
+"Given §3 and §4, prove §5 using §6\n"
+"and the subset hypotheses as functions. §7 is\n"
+"disabled for this level.\n"
+"\n"
+"**Proof plan**:\n"
+"1. §8 — reduce to a membership §9\n"
+"2. §10 — split the §11\n"
+"3. **Forward**: §12 — use §13 as a function\n"
+"4. **Backward**: §14 — use §15 as a function"
+msgstr ""
+
+#: Game.Levels.SetWorld.L09_Boss
+msgid "Given hypotheses about a predicate p, prove membership and\n"
+"non-membership in the set defined by p."
+msgstr ""
+
+#. §0: $$\\texttt{Set } \\alpha = \\alpha \\to \\texttt{Prop}$$
+#. §1: `False`
+#. §2: `True`
+#. §3: `obtain`
+#. §4: `Set.univ`
+#. §5: `∅`
+#. §6: `intro`
+#. §7: `exact`
+#. §8: `constructor`
+#. §9: `use`
+#. §10: `omega`
+#: Game.Levels.SetWorld
+msgid "# Set World\n"
+"\n"
+"Welcome to the first world of **Functions & Relations**!\n"
+"\n"
+"In Lean 4, a set is not a primitive concept — it is built from\n"
+"predicates. The definition is strikingly simple:\n"
+"\n"
+"§0\n"
+"\n"
+"A set of natural numbers is just a function from natural numbers to\n"
+"propositions. An element is *in* the set when the proposition it maps\n"
+"to is true.\n"
+"\n"
+"This means all set-theoretic reasoning reduces to propositional logic.\n"
+"Membership is function application. The empty set uses §1. The\n"
+"universal set uses §2. In this world, you will internalize this\n"
+"reduction by working through concrete examples.\n"
+"\n"
+"By the end of this world, you will be able to:\n"
+"- Prove membership in sets defined by predicates\n"
+"- Prove non-membership using negation\n"
+"- Destructure existential witnesses with §3\n"
+"- Work with §4 and §5\n"
+"- Handle compound predicates with logical connectives\n"
+"- Recognize that set membership IS predicate evaluation\n"
+"\n"
+"**Prerequisites**: You should be comfortable with §6, §7,\n"
+"§8, §9, and §10 from the Natural Number Game.\n"
+"\n"
+"The boss at the end will ask you to combine all these moves on an\n"
+"abstract predicate. Let's begin!"
+msgstr ""
+
+#. §0: `Even 4`
+#. §1: `∃ r, 4 = r + r`
+#. §2: `use 2`
+#: Game.Levels.SetWorld.L09_Boss
+msgid "The goal is §0, meaning §1. Provide\n"
+"the witness: §2."
+msgstr ""
+
+#. §0: `omega`
+#. §1: `n < 3`
+#. §2: `n ≤ 5`
+#. §3: `⊆`
+#. §4: `s ⊆ t`
+#. §5: `s`
+#. §6: `t`
+#. §7: `p`
+#. §8: `q`
+#. §9: `α`
+#. §10: `ℕ`
+#. §11: `h : ∀ x, p x → q x`
+#. §12: `intro x hx`
+#. §13: `omega`
+#. §14: `exact h x hx`
+#. §15: `intro x hx`
+#. §16: `x`
+#. §17: `p x`
+#. §18: `exact h x hx`
+#. §19: `q x`
+#: Game.Levels.SubsetWorld.L09_NonArithSubset
+msgid "# Subsets Are About Predicates, Not Just Arithmetic\n"
+"\n"
+"Every subset proof so far ended with §0 — because every set was\n"
+"defined by an arithmetic inequality like §1 or §2.\n"
+"\n"
+"But §3 is not about arithmetic. It is about **predicates**: §4\n"
+"means that the predicate defining §5 implies the predicate defining §6.\n"
+"The closing move depends entirely on what those predicates are.\n"
+"\n"
+"In this level, the sets are defined by abstract predicates §7 and §8\n"
+"on a general type §9 (not necessarily §10). You are given\n"
+"§11 — a pointwise implication between the\n"
+"predicates. Your task is to prove the subset inclusion.\n"
+"\n"
+"The proof follows the same §12 pattern. But the closing move\n"
+"is not §13 — it is §14, applying the given implication.\n"
+"\n"
+"**Proof plan**:\n"
+"1. §15 — assume §16 is in the left set (i.e., §17 holds)\n"
+"2. §18 — apply the implication to get §19"
+msgstr ""
+
+#. §0: `x < 5`
+#. §1: `x < 3`
+#. §2: `h`
+#. §3: `change x < 3 at h`
+#. §4: `omega`
+#: Game.Levels.SubsetWorld.L10_ExtIntro
+msgid "The goal is §0. You need §1 to derive this —\n"
+"but §2 is wrapped in set notation. Use §3\n"
+"to unwrap, then §4."
+msgstr ""
+
+#: Game.Levels.SubsetWorld.L12_SetNonEquality
+msgid "Disproving Set Equality"
+msgstr ""
+
+#. §0: `constructor`
+#. §1: `↔`
+#: Game.Levels.SubsetWorld.L15_AntisymmFromExt
+msgid "Now §0 to split the §1 into two directions."
+msgstr ""
+
+#. §0: `intro h`
+#. §1: `rw [← h]`
+#. §2: `3 < 3`
+#. §3: `⊆`
+#. §4: `¬ (s ⊆ t)`
+#. §5: `h : s ⊆ t`
+#. §6: `s`
+#. §7: `t`
+#. §8: `h`
+#. §9: `s ≠ t`
+#. §10: `h : s = t`
+#. §11: `h`
+#. §12: `⊆`
+#. §13: `=`
+#. §14: `{n | n < 3} = {n | n < 5}`
+#. §15: `3 ∈ {n | n < 3}`
+#. §16: `3 ∈ {n | n < 5}`
+#. §17: `3 < 3`
+#: Game.Levels.SubsetWorld.L12_SetNonEquality
+msgid "You proved your first set **non-equality**! The proof structure was:\n"
+"\n"
+"1. **Assume** the sets are equal (§0)\n"
+"2. **Exhibit** a witness element (3)\n"
+"3. **Transport** membership using the equality (§1)\n"
+"4. **Derive contradiction** from the impossible conclusion (§2)\n"
+"\n"
+"Compare this with Level 7 (disproving §3):\n"
+"\n"
+"| Goal | Assume | Witness | Contradiction from |\n"
+"|---|---|---|---|\n"
+"| §4 | §5 | element in §6 but not §7 | applying §8 to witness |\n"
+"| §9 | §10 | element in one but not other | rewriting with §11 |\n"
+"\n"
+"Both use the same strategy — assume and contradict — but the mechanism\n"
+"differs. For §12, you apply the subset hypothesis as a function. For\n"
+"§13, you rewrite with the equality hypothesis to transport membership.\n"
+"\n"
+"In ordinary math: \"Suppose §14. Then\n"
+"§15 (since §16 and the sets are equal).\n"
+"But §17 is false. Contradiction.\""
+msgstr ""
+
+#. §0: `x ∈ s`
+#. §1: `x ∈ t`
+#. §2: `h1 : s ⊆ t`
+#. §3: `x ∈ s`
+#. §4: `x ∈ t`
+#. §5: `intro hx`
+#. §6: `exact h1 hx`
+#: Game.Levels.SubsetWorld.L15_AntisymmFromExt
+msgid "The forward direction: assume §0 and show §1.\n"
+"The hypothesis §2 is a function from §3 to §4.\n"
+"Use §5 then §6."
+msgstr ""
+
+#. §0: `x ∈ s`
+#. §1: `hx : x ∈ s`
+#. §2: `exact hx`
+#: Game.Levels.SubsetWorld.L03_SubsetRefl
+msgid "The goal is §0 and you have §1. The hypothesis\n"
+"matches the goal exactly — use §2."
+msgstr ""
+
+#. §0: `True`
+#. §1: `x ∈ Set.univ`
+#. §2: `True`
+#. §3: `constructor`
+#: Game.Levels.SetWorld.L01_WelcomeToSets
+msgid "The goal is §0 because §1 unfolds to §2.\n"
+"Use §3 to prove it."
+msgstr ""
+
+#. §0: `change`
+#. §1: `show`
+#. §2: `have`
+#. §3: `change P at hx`
+#. §4: `hx`
+#. §5: `P`
+#. §6: `show P`
+#. §7: `P`
+#. §8: `intro x hx`
+#. §9: `hx : x ∈ {n | n < 3}`
+#. §10: `x < 3`
+#. §11: `change x < 3 at hx`
+#. §12: `show x ≤ 3`
+#. §13: `exact le_of_lt hx`
+#. §14: `intro x hx`
+#. §15: `x ∈ {n | n < 3}`
+#. §16: `change x < 3 at hx`
+#. §17: `show x ≤ 3`
+#. §18: `exact le_of_lt hx`
+#. §19: `x ≤ 3`
+#. §20: `x < 3`
+#: Game.Levels.SubsetWorld.L02_ChangeTactic
+msgid "# Unwrapping Hypotheses with §0\n"
+"\n"
+"In Level 1, you used §1 to unwrap the **goal** from set notation\n"
+"to arithmetic, and §2 to extract the hypothesis content. Both\n"
+"techniques work, but there is a more direct tool for hypotheses.\n"
+"\n"
+"The tactic §3 converts §4 to display as §5, just\n"
+"as §6 does for the goal. Both require §7 to be\n"
+"**definitionally equal** to the current type. They only change the\n"
+"*display*, not the *meaning*.\n"
+"\n"
+"After §8, the hypothesis §9 is\n"
+"definitionally §10. Use §11 to make this\n"
+"explicit. Then §12 unwraps the goal, and §13\n"
+"closes it — since being strictly less than 3 implies being at most 3.\n"
+"\n"
+"**Proof plan**:\n"
+"1. §14 — fix an element and assume §15\n"
+"2. §16 — unwrap the hypothesis to arithmetic\n"
+"3. §17 — unwrap the goal to arithmetic\n"
+"4. §18 — derive §19 from §20"
+msgstr ""
+
+#. §0: `t ⊆ s`
+#. §1: `.2`
+#: Game.Levels.SubsetWorld.L16_ExtFromAntisymm
+msgid "Goal: §0. Same pattern, but use §1 for the backward\n"
+"direction."
+msgstr ""
+
+#. §0: `change x ≤ 2 at hx`
+#. §1: `show x < 3`
+#. §2: `x < 3`
+#. §3: `x ≤ 2`
+#. §4: `omega`
+#: Game.Levels.SubsetWorld.L11_ExtPractice
+msgid "After §0 and\n"
+"§1, the goal §2 follows from §3 by §4."
+msgstr ""
+
+#. §0: `simp`
+#: Game.Metadata
+msgid "§0 applies a set of simplification lemmas to the goal\n"
+"and hypotheses.\n"
+"\n"
+"Disabled in early levels to force manual rewriting and to ensure\n"
+"the player understands each proof step."
+msgstr ""
+
+#. §0: `norm_num`
+#: Game.Metadata
+msgid "§0 evaluates numerical expressions and closes arithmetic\n"
+"goals that can be decided by computation.\n"
+"\n"
+"Disabled in levels where manual arithmetic reasoning is the lesson."
+msgstr ""
+
+#: Game.Levels.SetWorld.L01_WelcomeToSets
+msgid "Welcome to Sets"
+msgstr ""
+
+#. §0: `h3 : Even 3`
+#. §1: `r`
+#. §2: `3 = r + r`
+#. §3: `obtain ⟨r, hr⟩ := h3`
+#: Game.Levels.SetWorld.L09_Boss
+msgid "§0 means there exists §1 with §2.\n"
+"Destructure it: §3."
+msgstr ""
+
+#. §0: $$\\emptyset \\subseteq s \\quad \\text{for any } s$$
+#. §1: `∅ ⊆ s`
+#. §2: `∀ x, x ∈ ∅ → x ∈ s`
+#. §3: `x ∈ ∅`
+#. §4: `∅`
+#. §5: `fun _ => False`
+#. §6: `s`
+#. §7: `intro x hx`
+#. §8: `hx : x ∈ ∅`
+#. §9: `x ∈ ∅`
+#. §10: `False`
+#. §11: `contradiction`
+#. §12: `intro x hx`
+#. §13: `x ∈ ∅`
+#. §14: `contradiction`
+#. §15: `hx`
+#: Game.Levels.SubsetWorld.L04_EmptySubset
+msgid "# Vacuous Truth: ∅ ⊆ s\n"
+"\n"
+"A fundamental fact in mathematics: the empty set is a subset of every set.\n"
+"\n"
+"§0\n"
+"\n"
+"Why? Because §1 means §2. This is\n"
+"**vacuously true**: the premise §3 is always false (recall from\n"
+"Set World that §4 has predicate §5), so the implication\n"
+"holds no matter what §6 is.\n"
+"\n"
+"After §7, you will have §8. Since §9 is\n"
+"definitionally §10, the §11 tactic can detect this\n"
+"and close the goal immediately — regardless of what the goal is.\n"
+"\n"
+"**Proof plan**:\n"
+"1. §12 — assume some §13\n"
+"2. §14 — §15 is impossible, so anything follows"
+msgstr ""
+
+#. §0: `exact h`
+#. §1: `h`
+#. §2: `False`
+#: Game.Levels.SetWorld.L06_EmptySet
+msgid "§0 closes the goal since §1 has\n"
+"exactly the type §2."
+msgstr ""
+
+#. §0: `rw [h]`
+#. §1: `h`
+#. §2: ```
+#. rw [h]           -- rewrite the goal
+#. rw [h] at hyp    -- rewrite a hypothesis
+#. rw [← h]         -- rewrite right-to-left
+#. rw [h1, h2, h3]  -- chain multiple rewrites
+#. ```
+#. §3: `h : a = b`
+#. §4: `h : P ↔ Q`
+#. §5: `a`
+#. §6: `b`
+#. §7: `P`
+#. §8: `Q`
+#. §9: `rw`
+#: Game.Metadata
+msgid "§0 rewrites the goal using an equation or iff §1.\n"
+"\n"
+"## Syntax\n"
+"§2\n"
+"\n"
+"## When to use it\n"
+"When you have an equation §3 or iff §4 and want\n"
+"to replace §5 with §6 (or §7 with §8) in the goal or a hypothesis.\n"
+"\n"
+"## Warning\n"
+"§9 replaces ALL occurrences of the pattern, not just the first."
+msgstr ""
+
+#. §0: `have hxt := hst hx`
+#. §1: `x ∈ s`
+#. §2: `x ∈ t`
+#. §3: `have hle := ht hxt`
+#. §4: `x ∈ t`
+#. §5: `x ∈ the arithmetic set`
+#. §6: `change x ≤ 4 at hle`
+#. §7: `show x < 5`
+#. §8: `omega`
+#. §9: `x ≤ 4`
+#. §10: `x < 5`
+#: Game.Levels.SubsetWorld.L17_Boss
+msgid "Step by step:\n"
+"1. §0 — from §1 to §2\n"
+"2. §3 — from §4 to §5\n"
+"3. §6 — unwrap\n"
+"4. §7 — unwrap the goal\n"
+"5. §8 — §9 implies §10"
+msgstr ""
+
+#. §0: `⊆`
+#. §1: `\\sub`
+#. §2: `\\subseteq`
+#. §3: `s t : Set α`
+#. §4: `s ⊆ t`
+#. §5: $$\\forall\\, x,\\; x \\in s \\to x \\in t$$
+#. §6: `s ⊆ t`
+#. §7: `intro x hx`
+#. §8: `x`
+#. §9: `hx : x ∈ s`
+#. §10: `x ∈ t`
+#. §11: `hx`
+#. §12: ```
+#. s ⊆ t     -- s is a subset of t (\\sub or \\subseteq)
+#. ```
+#. §13: `{n | n < 3} ⊆ {n | n < 5}`
+#. §14: `intro x hx`
+#. §15: `show x < 5`
+#. §16: `omega`
+#. §17: `⊆`
+#: Game.Levels.SubsetWorld.L01_FirstSubset
+msgid "§0 (typed §1 or §2) is the subset relation.\n"
+"\n"
+"For sets §3, the statement §4 means:\n"
+"§5\n"
+"\n"
+"## Proof strategy\n"
+"To prove §6:\n"
+"1. §7 — introduce element §8 and hypothesis §9\n"
+"2. Show that §10 using §11 and any other available facts\n"
+"\n"
+"## Syntax\n"
+"§12\n"
+"\n"
+"## Example\n"
+"To prove §13: after §14,\n"
+"unwrap the goal with §15 and close with §16.\n"
+"\n"
+"## Warning\n"
+"§17 is a *proposition* (a statement that may or may not be true),\n"
+"not an operation that produces a new set."
+msgstr ""
+
+#. §0: `ext x`
+#. §1: `s = t`
+#. §2: ```
+#. ext x      -- introduces x and produces goal: x ∈ s ↔ x ∈ t
+#. ```
+#. §3: `s = t`
+#. §4: `ext x`
+#. §5: `x ∈ s ↔ x ∈ t`
+#. §6: `constructor`
+#. §7: ```
+#. -- Goal: {n | n < 3} = {n | n ≤ 2}
+#. ext x
+#. -- Goal: x ∈ {n | n < 3} ↔ x ∈ {n | n ≤ 2}
+#. constructor
+#. · intro h; ...  -- forward direction
+#. · intro h; ...  -- backward direction
+#. ```
+#. §8: `ext`
+#. §9: `↔`
+#. §10: `exact`
+#: Game.Levels.SubsetWorld.L10_ExtIntro
+msgid "§0 applies the extensionality principle to convert a set\n"
+"equality §1 into a membership biconditional for each element.\n"
+"\n"
+"## Syntax\n"
+"§2\n"
+"\n"
+"## When to use it\n"
+"When the goal is §3 for two sets. After §4, you get\n"
+"the goal §5, which you split with §6 into\n"
+"two directions.\n"
+"\n"
+"## Example\n"
+"§7\n"
+"\n"
+"## Warning\n"
+"§8 works for sets, functions, and other extensional types. For\n"
+"sets, it always produces a membership §9. Do not confuse with\n"
+"§10 (which closes a goal with a proof term)."
+msgstr ""
+
+#: Game.Levels.SetWorld.L06_EmptySet
+msgid "No natural number belongs to the empty set."
+msgstr ""
+
+#. §0: `hr : 3 = r + r`
+#. §1: `r`
+#. §2: `omega`
+#: Game.Levels.SetWorld.L05_NonMembershipExistential
+msgid "Now §0 but 3 is odd — no natural number §1\n"
+"satisfies this. §2 sees this contradiction and closes the goal."
+msgstr ""
+
+#. §0: `apply hp`
+#. §1: `p n`
+#. §2: `p 4`
+#. §3: `n = 4`
+#. §4: `Even 4`
+#: Game.Levels.SetWorld.L09_Boss
+msgid "§0 matches the conclusion §1\n"
+"against the goal §2, setting §3 and leaving goal §4."
+msgstr ""
+
+#. §0: `True`
+#. §1: `n ∈ Set.univ`
+#. §2: `constructor`
+#: Game.Levels.SetWorld.L07_UniversalSet
+msgid "The goal is §0 (from §1). Use §2."
+msgstr ""
+
+#: Game.Levels.SetWorld.L05_NonMembershipExistential
+msgid "Disproving Membership in an Existential Set"
+msgstr ""
+
+#. §0: `show 3 < 5`
+#. §1: `omega`
+#: Game.Levels.SetWorld.L02_SetBuilder
+msgid "After §0, use §1 to close\n"
+"the arithmetic goal."
+msgstr ""
+
+#. §0: `{n : ℕ | n ≤ 2}`
+#. §1: `{n | n < 3}`
+#. §2: $\\{0, 1, 2\\}$
+#. §3: `n ≤ 2 ↔ n < 3`
+#. §4: `change`
+#. §5: `omega`
+#. §6: `ext x`
+#. §7: `↔`
+#. §8: `constructor`
+#. §9: `intro`
+#. §10: `change`
+#. §11: `show`
+#. §12: `omega`
+#: Game.Levels.SubsetWorld.L11_ExtPractice
+msgid "# Practice: Another Set Equality\n"
+"\n"
+"The sets §0 and §1 contain exactly the\n"
+"same natural numbers: §2. Prove they are equal.\n"
+"\n"
+"Both directions require arithmetic reasoning: §3 for\n"
+"natural numbers. Unlike Level 10, neither direction is trivial — you\n"
+"will need §4 and §5 in both.\n"
+"\n"
+"**Proof plan**:\n"
+"1. §6 — reduce to membership §7\n"
+"2. §8 — split into two directions\n"
+"3. Each direction: §9, §10 to unwrap, §11 to unwrap\n"
+"   the goal, §12 to close"
+msgstr ""
+
+#. §0: `native_decide`
+#. §1: `decide`
+#. §2: `decide`
+#: Game.Metadata
+msgid "§0 is like §1 but uses native code evaluation\n"
+"for faster computation.\n"
+"\n"
+"Disabled for the same reason as §2."
+msgstr ""
+
+#. §0: `show ¬ (P x)`
+#. §1: `x ∉ {y | P y}`
+#. §2: `intro h`
+#. §3: `P x`
+#. §4: `False`
+#. §5: `omega`
+#. §6: `h : 7 < 5`
+#. §7: `show ... ; intro h; omega`
+#. §8: `False`
+#: Game.Levels.SetWorld.L03_NonMembership
+msgid "The proof pattern for non-membership:\n"
+"\n"
+"1. §0 — unfold §1 to its arithmetic content\n"
+"2. §2 — assume §3, changing the goal to §4\n"
+"3. Derive the contradiction (here, §5 saw that §6 is\n"
+"   impossible)\n"
+"\n"
+"The §7 pattern works whenever the predicate\n"
+"is a false arithmetic statement. For non-arithmetic predicates, you\n"
+"will use other tools to derive §8 from the hypothesis.\n"
+"\n"
+"In ordinary mathematics, this is a *proof by contradiction*: assume\n"
+"7 is in the set, observe this means 7 < 5, which is absurd."
+msgstr ""
+
+#. §0: `constructor`
+#. §1: `∧`
+#. §2: `↔`
+#. §3: ```
+#. constructor
+#. ```
+#. §4: `P ∧ Q`
+#. §5: `P`
+#. §6: `Q`
+#. §7: `P ↔ Q`
+#. §8: `P → Q`
+#. §9: `Q → P`
+#. §10: `True`
+#: Game.Metadata
+msgid "§0 splits a goal with a single constructor (like §1 or §2)\n"
+"into its components.\n"
+"\n"
+"## Syntax\n"
+"§3\n"
+"\n"
+"## When to use it\n"
+"When the goal is §4 (splits into §5 and §6), §7\n"
+"(splits into §8 and §9), or §10 (closes immediately)."
+msgstr ""
+
+#. §0: `⊆`
+#. §1: `intro x hx`
+#: Game.Levels.SubsetWorld.L05_SubsetUniv
+msgid "As with any §0 proof, start with §1."
+msgstr ""
+
+#. §0: `Set.bot_eq_empty`
+#. §1: `⊥ = ∅`
+#: Game.Levels.SubsetWorld.L04_EmptySubset
+msgid "§0 states that §1 for sets (the lattice bottom is the empty set)."
+msgstr ""
+
+#. §0: `Set.mem_setOf_eq`
+#. §1: `x ∈ {a | p a} = p x`
+#. §2: `show`
+#: Game.Metadata
+msgid "§0 states §1 — membership in a\n"
+"set-builder set equals the predicate applied to the element.\n"
+"\n"
+"This theorem is disabled in early levels because the course teaches §2\n"
+"as the primary method for unfolding set membership."
+msgstr ""
+
+#: Game.Levels.SubsetWorld.L05_SubsetUniv
+msgid "Any set is a subset of the universal set."
+msgstr ""
+
+#. §0: `hx`
+#. §1: `change x < 3 at hx`
+#. §2: `show x ≤ 2`
+#. §3: `omega`
+#: Game.Levels.SubsetWorld.L11_ExtPractice
+msgid "Unwrap §0 with §1 and the goal with\n"
+"§2, then close with §3."
+msgstr ""
+
+#. §0: `ext x`
+#: Game.Levels.SubsetWorld.L11_ExtPractice
+msgid "Use §0 to start the set equality proof."
+msgstr ""
+
+#. §0: `exact (h x).1 hx`
+#. §1: `(h x).1`
+#. §2: `hx`
+#. §3: `x ∈ s`
+#: Game.Levels.SubsetWorld.L16_ExtFromAntisymm
+msgid "§0 — §1 is the\n"
+"forward implication of the biconditional, and §2 provides §3."
+msgstr ""
+
+#. §0: `exact Set.Subset.antisymm h1 h2`
+#: Game.Levels.SubsetWorld.L13_Antisymm
+msgid "§0 combines the\n"
+"two subset proofs into a set equality proof."
+msgstr ""
+
+#. §0: `x ∈ Set.univ`
+#. §1: `True`
+#. §2: `Set.univ`
+#. §3: `fun _ => True`
+#. §4: `x ∈ Set.univ`
+#. §5: `Set.univ x`
+#. §6: `(fun _ => True) x`
+#. §7: `True`
+#. §8: `constructor`
+#. §9: `True`
+#. §10: `True.intro`
+#. §11: `Set.mem_univ`
+#. §12: `x`
+#. §13: `x ∈ Set.univ`
+#: Game.Levels.SetWorld.L01_WelcomeToSets
+msgid "You proved §0 by proving §1. This worked because:\n"
+"\n"
+"1. §2 is defined as §3\n"
+"2. §4 means §5 = §6 = §7\n"
+"3. §8 proves §9 via §10\n"
+"\n"
+"The key insight: **set membership is predicate evaluation**. There is\n"
+"no special set-theoretic machinery — just function application and\n"
+"propositions. This is how all sets work in Lean.\n"
+"\n"
+"The library name for this fact is §11: for any §12, §13\n"
+"holds."
+msgstr ""
+
+#. §0: $\\{n \\in \\mathbb{N} \\mid n < 5\\}$
+#. §1: `{n : ℕ | n < 5}`
+#. §2: `setOf (fun n => n < 5)`
+#. §3: `fun n => n < 5`
+#. §4: `setOf`
+#. §5: `Set`
+#. §6: $$3 \\in \\{n \\mid n < 5\\} = (\\text{fun } n \\Rightarrow n < 5) \\; 3 = 3 < 5$$
+#. §7: `3 ∈ {n | n < 5}`
+#. §8: `3 < 5`
+#. §9: `omega`
+#. §10: `show`
+#. §11: `show 3 < 5`
+#. §12: `3 < 5`
+#. §13: `omega`
+#. §14: `show 3 < 5`
+#. §15: `omega`
+#: Game.Levels.SetWorld.L02_SetBuilder
+msgid "# Set Builder Notation\n"
+"\n"
+"In mathematics, you write sets like §0.\n"
+"In Lean, this becomes §1.\n"
+"\n"
+"This notation is syntactic sugar for §2, which is\n"
+"defined as... just §3 itself! The function §4 is\n"
+"literally the identity: it takes a predicate and returns it as a §5.\n"
+"\n"
+"So what happens when you check membership?\n"
+"\n"
+"§6\n"
+"\n"
+"The set builder notation just wraps a predicate. Membership evaluates\n"
+"the predicate at the given point.\n"
+"\n"
+"**Look at your goal**: it says §7. We know this is\n"
+"*definitionally* equal to §8, but some tactics (like §9)\n"
+"need the goal in explicit arithmetic form to work.\n"
+"\n"
+"The §10 tactic converts the goal to a definitionally equal form.\n"
+"Try §11 — this tells Lean to display the goal as §12\n"
+"(which it can verify is the same thing). Then §13 closes it.\n"
+"\n"
+"**Your task**: Use §14 then §15."
+msgstr ""
+
+#. §0: `intro h`
+#: Game.Levels.SubsetWorld.L14_ProperSubset
+msgid "Second goal: prove the reverse inclusion is false. This is\n"
+"the same technique as Level 7 — assume the reverse subset holds,\n"
+"exhibit a counterexample, and derive contradiction.\n"
+"\n"
+"Use §0 to assume the reverse subset."
+msgstr ""
+
+#. §0: `use expr`
+#. §1: `∃ x, P x`
+#. §2: ```
+#. use expr
+#. ```
+#. §3: `∃ x, P x`
+#. §4: `x`
+#. §5: `use expr`
+#. §6: `P expr`
+#: Game.Metadata
+msgid "§0 provides a witness for an existential goal §1.\n"
+"\n"
+"## Syntax\n"
+"§2\n"
+"\n"
+"## When to use it\n"
+"When the goal is §3 and you know which §4 works.\n"
+"After §5, the goal becomes §6."
+msgstr ""
+
+#. §0: `omega`
+#. §1: `r + r`
+#: Game.Levels.SetWorld.L05_NonMembershipExistential
+msgid "§0 handles the linear arithmetic:\n"
+"§1 is always even, so it can never equal 3."
+msgstr ""
+
+#. §0: `show ¬ (7 < 5)`
+#: Game.Levels.SetWorld.L03_NonMembership
+msgid "Use §0 to unfold the set membership and\n"
+"non-membership. This reveals the arithmetic content."
+msgstr ""
+
+#: Game.Levels.SubsetWorld.L13_Antisymm
+msgid "Double Containment"
+msgstr ""
+
+#. §0: `induction x with | case args`
+#. §1: `x`
+#. §2: ```
+#. -- natural number induction:
+#. induction n with | zero | succ m ih
+#. 
+#. -- list induction:
+#. induction xs with | nil | cons x xs ih
+#. ```
+#. §3: `ih`
+#: Game.Metadata
+msgid "§0 performs structural induction on §1.\n"
+"\n"
+"## Syntax\n"
+"§2\n"
+"\n"
+"Each case creates a separate subgoal that you handle one at a time.\n"
+"The §3 variable is the induction hypothesis.\n"
+"\n"
+"## When to use it\n"
+"When you need to prove a statement for all natural numbers\n"
+"(or elements of another inductive type) by induction."
+msgstr ""
+
+#. §0: `omega`
+#. §1: `exact h x hx`
+#. §2: `intro x hx`
+#. §3: `n < 3`
+#. §4: `n ≤ 5`
+#. §5: `omega`
+#. §6: `exact h x hx`
+#. §7: `apply h; exact hx`
+#. §8: `x ∈ ∅`
+#. §9: `contradiction`
+#. §10: `x ∈ Set.univ`
+#. §11: `constructor`
+#. §12: `intro x hx`
+#. §13: `change`
+#. §14: `show`
+#: Game.Levels.SubsetWorld.L09_NonArithSubset
+msgid "No §0! The closing move was §1 — applying a hypothesis.\n"
+"\n"
+"This level demonstrates the key insight: **subset proofs are about\n"
+"predicates**. The §2 pattern is universal, but the closing\n"
+"move depends on the relationship between the predicates:\n"
+"\n"
+"| Predicate type | Closing move |\n"
+"|---|---|\n"
+"| Arithmetic (§3, §4) | §5 |\n"
+"| Implication from hypothesis | §6 or §7 |\n"
+"| Vacuously true (§8) | §9 |\n"
+"| Trivially true (§10) | §11 |\n"
+"\n"
+"The proof pattern is always the same:\n"
+"1. §12 — enter the subset proof\n"
+"2. (optional) unwrap with §13/§14\n"
+"3. Close with whatever fits the specific predicates\n"
+"\n"
+"This table will keep growing as you encounter more types of predicates\n"
+"throughout the course."
+msgstr ""
+
+#. §0: `Even 4`
+#. §1: `∃ r, 4 = r + r`
+#. §2: `use 2`
+#: Game.Levels.SetWorld.L04_InfiniteSet
+#: Game.Levels.SetWorld.L08_CompoundPredicate
+msgid "The goal is §0, which means §1.\n"
+"Provide the witness: §2."
+msgstr ""
+
+#. §0: `Set.Subset.antisymm`
+#. §1: ```
+#. exact Set.Subset.antisymm h1 h2
+#. ```
+#. §2: `ext`
+#. §3: ```
+#. ext x; constructor
+#. · intro hx; exact h1 hx
+#. · intro hx; exact h2 hx
+#. ```
+#. §4: `ext`
+#. §5: `h1`
+#. §6: `h2`
+#. §7: `⊆`
+#. §8: `=`
+#. §9: `↔`
+#. §10: `ext`
+#. §11: `antisymm`
+#. §12: `antisymm`
+#. §13: `ext`
+#: Game.Levels.SubsetWorld.L15_AntisymmFromExt
+msgid "You just proved antisymmetry from extensionality! Compare the two proofs:\n"
+"\n"
+"**Using §0** (Level 13):\n"
+"§1\n"
+"\n"
+"**Using §2** (this level):\n"
+"§3\n"
+"\n"
+"The §4 proof is longer but reveals what is happening: subset\n"
+"hypotheses §5 and §6 serve as the forward and backward directions\n"
+"of the membership biconditional. This is why §7 in both directions\n"
+"implies §8 — it is precisely the data needed for §9 on every element.\n"
+"\n"
+"You have now shown one direction of the equivalence: that §10 can\n"
+"simulate §11. In the next level, you will prove the other\n"
+"direction — deriving extensionality from antisymmetry — completing the\n"
+"proof that the two approaches are interchangeable.\n"
+"\n"
+"Choose based on *convenience*: §12 when you have subset proofs\n"
+"in hand, §13 when you want to work element-by-element."
+msgstr ""
+
+#. §0: `n < 5`
+#. §1: `{n : ℕ | Even n}`
+#. §2: $\\{0, 2, 4, 6, 8, \\ldots\\}$
+#. §3: `Even n`
+#. §4: $$\\texttt{Even } n \\;\\;\\Longleftrightarrow\\;\\; \\exists\\, r,\\; n = r + r$$
+#. §5: `4 ∈ {n | Even n}`
+#. §6: `Even 4`
+#. §7: `∃ r, 4 = r + r`
+#. §8: `∃ r, P r`
+#. §9: `r`
+#. §10: `use`
+#. §11: `use 2`
+#. §12: `4 = 2 + 2`
+#. §13: `2`
+#. §14: `use 2`
+#: Game.Levels.SetWorld.L04_InfiniteSet
+msgid "# Sets Need Not Be Finite\n"
+"\n"
+"So far you have seen sets defined by arithmetic bounds like §0.\n"
+"But predicates can describe infinite collections too.\n"
+"\n"
+"The set §1 contains all even natural numbers:\n"
+"§2 — infinitely many elements.\n"
+"\n"
+"What does §3 mean? It is defined as:\n"
+"§4\n"
+"\n"
+"So §5 unfolds to §6, which is §7.\n"
+"\n"
+"To prove an existential §8, you provide a **witness** — a\n"
+"specific value of §9 — using the §10 tactic. Here, §11 turns\n"
+"the goal into §12, which is true by computation.\n"
+"\n"
+"**Your task**: Prove that 4 is even by providing the witness §13.\n"
+"Use §14."
+msgstr ""
+
+#. §0: `x < 3`
+#. §1: `x ≤ 3`
+#. §2: `le_of_lt`
+#. §3: `le_of_lt : a < b → a ≤ b`
+#. §4: `exact le_of_lt hx`
+#: Game.Levels.SubsetWorld.L02_ChangeTactic
+msgid "The hypothesis says §0 and the goal is §1. The library\n"
+"fact §2 says that strict inequality implies weak inequality:\n"
+"§3. Use §4."
+msgstr ""
+
+#. §0: `Set.Subset.antisymm`
+#. §1: ```
+#. Set.Subset.antisymm : s ⊆ t → t ⊆ s → s = t
+#. ```
+#. §2: ```
+#. exact Set.Subset.antisymm h1 h2    -- from two subset proofs
+#. apply Set.Subset.antisymm           -- leaving two subset goals
+#. ```
+#. §3: `s ⊆ t`
+#. §4: `t ⊆ s`
+#. §5: `s = t`
+#. §6: ```
+#. -- h1 : s ⊆ t, h2 : t ⊆ s
+#. exact Set.Subset.antisymm h1 h2
+#. -- closes the goal s = t
+#. ```
+#: Game.Levels.SubsetWorld.L13_Antisymm
+msgid "§0 proves that two sets are equal if each is\n"
+"a subset of the other.\n"
+"\n"
+"## Statement\n"
+"§1\n"
+"\n"
+"## Syntax\n"
+"§2\n"
+"\n"
+"## When to use it\n"
+"When you have (or can prove) both §3 and §4 and want to\n"
+"conclude §5. This is the \\\\\"double containment\\\\\" proof strategy.\n"
+"\n"
+"## Example\n"
+"§6"
+msgstr ""
+
+#. §0: `Even n`
+#. §1: `r`
+#. §2: `n = r + r`
+#. §3: ```
+#. Even n ↔ ∃ r, n = r + r
+#. ```
+#. §4: `Even n`
+#. §5: `use r`
+#. §6: `n = r + r`
+#. §7: `h : Even n`
+#. §8: `obtain ⟨r, hr⟩ := h`
+#. §9: `r`
+#. §10: `hr : n = r + r`
+#. §11: `Even 4`
+#. §12: `4 = 2 + 2`
+#. §13: `r = 2`
+#. §14: `Even 0`
+#. §15: `0 = 0 + 0`
+#. §16: `r = 0`
+#. §17: `¬ Even 3`
+#. §18: `r`
+#. §19: `3 = r + r`
+#: Game.Levels.SetWorld.L04_InfiniteSet
+msgid "§0 means there exists §1 such that §2.\n"
+"\n"
+"## Definition\n"
+"§3\n"
+"\n"
+"## Proof strategy\n"
+"- To prove §4: provide a witness with §5, then show §6\n"
+"- To use §7: destructure with §8 to get the\n"
+"  witness §9 and equation §10\n"
+"\n"
+"## Examples\n"
+"- §11 because §12 (witness: §13)\n"
+"- §14 because §15 (witness: §16)\n"
+"- §17 because no natural number §18 satisfies §19"
+msgstr ""
+
+#. §0: `(h x).2`
+#. §1: `exact (h x).2 hx`
+#: Game.Levels.SubsetWorld.L16_ExtFromAntisymm
+msgid "Use §0 for the backward direction: §1."
+msgstr ""
+
+#: GameServer.RpcHandlers
+msgid "level completed! 🎉"
+msgstr ""
+
+#. §0: `hx`
+#. §1: `x`
+#. §2: `p x`
+#. §3: `x`
+#. §4: `q x`
+#. §5: `h`
+#. §6: `∀ x, p x → q x`
+#. §7: `x`
+#. §8: `hx`
+#. §9: `q x`
+#. §10: `exact h x hx`
+#: Game.Levels.SubsetWorld.L09_NonArithSubset
+msgid "Now §0 says §1 is in the left set, which is definitionally\n"
+"§2. The goal says §3 is in the right set, which is definitionally\n"
+"§4. The hypothesis §5 says §6 — applied to §7\n"
+"and §8, it gives exactly §9. Use §10."
+msgstr ""
+
+#. §0: `ext`
+#. §1: ```
+#. ext x          -- reduce to: ∀ x, x ∈ LHS ↔ x ∈ RHS
+#. constructor    -- split the ↔ into → and ←
+#. · ...          -- prove the forward direction
+#. · ...          -- prove the backward direction
+#. ```
+#. §2: `ext`
+#. §3: `ext`
+#. §4: $n < 3$
+#. §5: $n < 5$
+#. §6: $n < 3$
+#. §7: $n < 3$
+#. §8: $n < 5$
+#. §9: $3 < 5$
+#. §10: $n < 3 \\wedge n < 5$
+#. §11: `·`
+#. §12: `constructor`
+#. §13: `·`
+#. §14: `·`
+#. §15: `constructor`
+#. §16: `∧`
+#. §17: `hx : P ∧ Q`
+#. §18: `hx.1 : P`
+#. §19: `hx.2 : Q`
+#. §20: `.1`
+#. §21: `.2`
+#. §22: `↔`
+#. §23: `intro`
+#. §24: `P ∧ Q`
+#. §25: `intro ⟨h1, h2⟩`
+#. §26: `intro h`
+#. §27: `obtain ⟨h1, h2⟩ := h`
+#. §28: `∩`
+#. §29: `ext`
+#: Game.Levels.SubsetWorld.L10_ExtIntro
+msgid "You proved your first set equality using §0! The structure was:\n"
+"\n"
+"§1\n"
+"\n"
+"**Why §2 works**: §3 applies the **extensionality** axiom for\n"
+"sets: two sets are equal if and only if they have the same elements.\n"
+"This converts a single equation into universally quantified membership\n"
+"equivalences — exactly the type of claim you can prove element by\n"
+"element.\n"
+"\n"
+"In ordinary math, this proof would read: \"We show the sets are equal\n"
+"by double inclusion. If §4 and §5, then certainly §6.\n"
+"Conversely, if §7, then also §8 (since §9), so\n"
+"§10.\"\n"
+"\n"
+"**The §11 (focus dot)**: After §12 splits a goal into two\n"
+"subgoals, §13 focuses on one at a time. This keeps your proof\n"
+"organized — you handle one case completely before moving to the next.\n"
+"You will use §14 in nearly every proof that involves §15.\n"
+"\n"
+"**Dot projections on §16**: If §17, then §18 and\n"
+"§19. This is the quickest way to extract one component of a\n"
+"conjunction. The same §20/§21 pattern works on §22 (biconditionals)\n"
+"too — you will use it later to extract the forward and backward\n"
+"implications.\n"
+"\n"
+"**Destructuring §23**: When a hypothesis is a conjunction §24,\n"
+"you can write §25 to introduce and split it in one step,\n"
+"instead of §26 followed by §27. This\n"
+"shorthand will be especially useful in the next world when working\n"
+"with intersections (§28), which are defined as conjunctions.\n"
+"\n"
+"The §29 tactic is the primary tool for set equality proofs in Lean.\n"
+"You will use it frequently throughout this course."
+msgstr ""
+
+#: Game.Levels.SubsetWorld.L09_NonArithSubset
+msgid "Beyond Arithmetic"
+msgstr ""
+
+#: Game.Levels.SetWorld.L04_InfiniteSet
+msgid "4 belongs to the set of even natural numbers."
+msgstr ""
+
+#: Game.Levels.SubsetWorld.L17_Boss
+msgid "If s ⊆ t ⊆ {n | n ≤ 4} and every n < 5 is in s, then s = {n | n < 5}."
+msgstr ""
+
+#: Game.Levels.SubsetWorld.L16_ExtFromAntisymm
+msgid "Deriving Extensionality from Antisymmetry"
+msgstr ""
+
+#. §0: `hx`
+#. §1: `x`
+#. §2: `x < 3`
+#. §3: `change x < 3 at hx`
+#. §4: `change`
+#. §5: `show`
+#. §6: `change P at h`
+#. §7: `h`
+#. §8: `P`
+#: Game.Levels.SubsetWorld.L02_ChangeTactic
+msgid "Now §0 says §1 is in the left set — the arithmetic fact §2\n"
+"is hidden inside the set notation. Use §3 to unwrap it.\n"
+"\n"
+"(§4 is like §5 but works on hypotheses: §6\n"
+"converts §7 to display as §8.)"
+msgstr ""
+
+#: Game.Levels.SubsetWorld.L14_ProperSubset
+msgid "Unwrap the set membership and use arithmetic."
+msgstr ""
+
+#. §0: `apply Set.Subset.antisymm`
+#. §1: `ext x`
+#: Game.Levels.SubsetWorld.L17_Boss
+msgid "The goal is a set equality. Use §0\n"
+"to split into two subset proofs, or §1 to reduce to a\n"
+"membership biconditional."
+msgstr ""
+
+#. §0: `h5`
+#. §1: `3`
+#. §2: `3 < 3`
+#. §3: `change (3 : ℕ) < 3 at h5`
+#. §4: `omega`
+#. §5: `False`
+#. §6: `3 < 3`
+#: Game.Levels.SubsetWorld.L12_SetNonEquality
+msgid "§0 now says §1 is in the left set, which is definitionally\n"
+"§2. Unwrap with §3, then §4\n"
+"derives §5 from §6."
+msgstr ""
+
+#. §0: `obtain ⟨r, hr⟩ := h`
+#. §1: `r : ℕ`
+#. §2: `hr : 3 = r + r`
+#: Game.Levels.SetWorld.L05_NonMembershipExistential
+msgid "§0 destructures the\n"
+"existential. After this, you will have §1 and §2."
+msgstr ""
+
+#. §0: `exact (h x).2 hx`
+#. §1: `(h x).2`
+#: Game.Levels.SubsetWorld.L16_ExtFromAntisymm
+msgid "§0 — §1 is the\n"
+"backward implication of the biconditional."
+msgstr ""
+
+#. §0: `∅ ⊆ s`
+#. §1: `∅`
+#. §2: `P → Q`
+#. §3: `P`
+#. §4: `Q`
+#. §5: `P`
+#. §6: `x ∈ ∅`
+#. §7: `x ∈ ∅ → x ∈ s`
+#. §8: `s`
+#. §9: `Set.empty_subset`
+#: Game.Levels.SubsetWorld.L04_EmptySubset
+msgid "The proof of §0 is a single pattern: assume membership in §1,\n"
+"then observe the assumption is impossible.\n"
+"\n"
+"This is **vacuous truth**: an implication §2 is true whenever\n"
+"§3 is false, regardless of §4. Here, §5 is §6 (always false),\n"
+"so the implication §7 holds for any §8.\n"
+"\n"
+"Vacuous truth appears throughout mathematics. The statement\n"
+"\"every element of ∅ is a purple unicorn\" is true — vacuously.\n"
+"\n"
+"The library name for this fact is §9."
+msgstr ""
+
+#. §0: `intro x hx`
+#. §1: `⊆`
+#: Game.Levels.SubsetWorld.L02_ChangeTactic
+#: Game.Levels.SubsetWorld.L08_SubsetTrans
+#: Game.Levels.SubsetWorld.L09_NonArithSubset
+msgid "Start with §0 as always for a §1 proof."
+msgstr ""
+
+#: Game.Levels.SubsetWorld.L14_ProperSubset
+msgid "Proper Subsets"
+msgstr ""
+
+#. §0: `show 3 < 5`
+#. §1: `3 < 5`
+#: Game.Levels.SetWorld.L02_SetBuilder
+msgid "Use §0 to convert the goal to arithmetic form.\n"
+"This works because membership in the set-builder set\n"
+"is definitionally equal to §1."
+msgstr ""
+
+#. §0: `decide`
+#: Game.Metadata
+msgid "§0 closes goals that are decidable propositions by\n"
+"evaluating them computationally.\n"
+"\n"
+"Disabled because it bypasses manual reasoning."
+msgstr ""
+
+#: Game.Levels.SubsetWorld.L08_SubsetTrans
+msgid "Subset inclusion is transitive."
+msgstr ""
+
+#. §0: `h : x < 3`
+#. §1: `show x < 5`
+#: Game.Levels.SubsetWorld.L01_FirstSubset
+msgid "Good — you now have §0. The goal is still in\n"
+"set-notation form. Use §1 to unwrap it."
+msgstr ""
+
+#: Game.Levels.SubsetWorld.L11_ExtPractice
+msgid "The backward direction is similar: unwrap and use arithmetic."
+msgstr ""
+
+#. §0: `¬ (7 < 5)`
+#. §1: `7 < 5 → False`
+#. §2: `intro h`
+#. §3: `7 < 5`
+#: Game.Levels.SetWorld.L03_NonMembership
+#: Game.Levels.SetWorld.L06_EmptySet
+msgid "The goal is §0, which means §1. Use\n"
+"§2 to assume §3."
+msgstr ""
+
+#. §0: `Set α`
+#. §1: `α`
+#. §2: `Set α`
+#. §3: `α → Prop`
+#. §4: `x : α`
+#. §5: `s : Set α`
+#. §6: `s x`
+#. §7: `x ∈ s`
+#. §8: `s x`
+#. §9: `Set.ext`
+#. §10: `Set α`
+#. §11: `α`
+#. §12: `Set.univ : Set α`
+#. §13: `α`
+#. §14: `Set α`
+#. §15: `α`
+#: Game.Levels.SetWorld.L01_WelcomeToSets
+msgid "§0 is the type of sets with elements of type §1.\n"
+"\n"
+"In Lean, §2 is defined as §3 — a set IS its membership\n"
+"predicate. An element §4 belongs to §5 when §6 is true.\n"
+"\n"
+"## Key facts\n"
+"- Sets are predicates, not collections\n"
+"- §7 means §8 (function application)\n"
+"- Two sets are equal when they have the same elements (§9)\n"
+"\n"
+"## Warning\n"
+"§10 is not the same as a type §11. A set is a *predicate on* a type.\n"
+"§12 contains all elements of §13, but it is still a term\n"
+"of type §14, not the type §15 itself."
+msgstr ""
+
+#. §0: `le_antisymm`
+#. §1: `a ≤ b → b ≤ a → a = b`
+#. §2: `≤`
+#. §3: `⊆`
+#. §4: `Set.Subset.antisymm`
+#: Game.Levels.SubsetWorld.L13_Antisymm
+msgid "§0 proves §1 for any partial order.\n"
+"For sets, §2 is §3, so this is another way to prove set equality\n"
+"from mutual subsets. §4 is the set-specific version."
+msgstr ""
+
+#. §0: `trivial`
+#. §1: `rfl`
+#. §2: `exact True.intro`
+#. §3: `assumption`
+#: Game.Metadata
+msgid "§0 attempts to close the goal using a combination of\n"
+"basic tactics (§1, §2, §3).\n"
+"\n"
+"Disabled because it bypasses the learning of specific proof steps."
+msgstr ""
+
+#: Game.Levels.SetWorld
+msgid "Set World"
+msgstr ""
+
+#: Game.Levels.SetWorld.L05_NonMembershipExistential
+msgid "3 does not belong to the set of even natural numbers."
+msgstr ""
+
+#. §0: `exact e`
+#. §1: `e`
+#. §2: ```
+#. exact expression
+#. ```
+#: Game.Metadata
+msgid "§0 closes the goal if §1 has exactly the type of the goal.\n"
+"\n"
+"## Syntax\n"
+"§2\n"
+"\n"
+"## When to use it\n"
+"When you have a term (variable, function application, constructor)\n"
+"whose type matches the goal exactly."
+msgstr ""
+
+#: Game.Levels.SubsetWorld.L02_ChangeTactic
+msgid "The Change Tactic"
+msgstr ""
+
+#. §0: `p 4`
+#. §1: `hp : ∀ n, Even n → p n`
+#. §2: `apply hp`
+#. §3: `Even 4`
+#: Game.Levels.SetWorld.L09_Boss
+msgid "The goal is §0. You have §1.\n"
+"Use §2 to reduce the goal to §3."
+msgstr ""
+
+#. §0: `∅ ⊆ s`
+#. §1: `∅`
+#. §2: `contradiction`
+#. §3: `s ⊆ Set.univ`
+#. §4: `Set.univ`
+#. §5: `constructor`
+#. §6: `∅`
+#. §7: `Set.univ`
+#. §8: `s`
+#. §9: $$\\emptyset \\subseteq s \\subseteq \\texttt{Set.univ}$$
+#. §10: `Set.empty_subset`
+#. §11: `Set.subset_univ`
+#: Game.Levels.SubsetWorld.L05_SubsetUniv
+msgid "Two boundary facts about subsets are now established:\n"
+"\n"
+"| Statement | Intuition | Proof key |\n"
+"|---|---|---|\n"
+"| §0 | Nothing is in §1, so the claim is vacuously true | §2 |\n"
+"| §3 | Everything is in §4, so the obligation is trivial | §5 |\n"
+"\n"
+"These are the extreme cases: §6 is the smallest set (contained in\n"
+"everything) and §7 is the largest (contains everything).\n"
+"For any set §8:\n"
+"§9\n"
+"\n"
+"The library names are §10 and §11."
 msgstr ""
 
 #. §0: `∅`
@@ -1793,6 +4395,59 @@ msgid "The membership unfolds to §0 — a conjunction.\n"
 "Use §1 to split it into two goals."
 msgstr ""
 
+#. §0: `¬(s ⊆ t)`
+#. §1: `¬ P`
+#. §2: `P → False`
+#. §3: `¬(s ⊆ t)`
+#. §4: `intro h`
+#. §5: `h : s ⊆ t`
+#. §6: `False`
+#. §7: `s`
+#. §8: `t`
+#. §9: `False`
+#. §10: `{n | n < 5} ⊆ {n | n < 3}`
+#. §11: `intro h`
+#. §12: `False`
+#. §13: `4 ∈ {n | n < 5}`
+#. §14: `h`
+#. §15: `4 ∈ {n | n < 3}`
+#. §16: `4 < 3`
+#: Game.Levels.SubsetWorld.L07_NonSubset
+msgid "# When ⊆ Fails: Proving ¬(s ⊆ t)\n"
+"\n"
+"All the subset proofs so far have been **positive**: you showed that\n"
+"one set is contained in another. But what if the containment is\n"
+"**false**? How do you prove §0?\n"
+"\n"
+"In Lean, §1 is defined as §2. So to prove §3,\n"
+"you use §4 to **assume** the subset holds, getting\n"
+"§5, and then derive a contradiction (§6).\n"
+"\n"
+"To derive the contradiction, exhibit a **counterexample**: find an\n"
+"element that is in §7 but not in §8. If the subset held, this\n"
+"element would have to be in both — but it is not, so we get §9.\n"
+"\n"
+"In Level 1, we noted that §10 is false\n"
+"because 4 is in the first set but not the second. Now you will prove\n"
+"this formally.\n"
+"\n"
+"**Proof plan**:\n"
+"1. §11 — assume the subset holds (goal becomes §12)\n"
+"2. Prove §13 — show the witness is in the domain\n"
+"3. Apply §14 to get §15 — use the assumed subset\n"
+"4. Unwrap and derive contradiction — §16 is false"
+msgstr ""
+
+#: Game.Levels.SubsetWorld.L12_SetNonEquality
+msgid "The set of numbers less than 3 is not equal to the set of\n"
+"numbers less than 5."
+msgstr ""
+
+#: Game.Levels.SubsetWorld.L11_ExtPractice
+msgid "Assume membership in the left set. Then unwrap both sides\n"
+"and use arithmetic."
+msgstr ""
+
 #. §0: `use 2`
 #. §1: `r = 2`
 #. §2: `4 = 2 + 2`
@@ -1800,6 +4455,55 @@ msgstr ""
 #: Game.Levels.SetWorld.L04_InfiniteSet
 msgid "§0 substitutes §1 and the remaining\n"
 "goal §2 is closed automatically by §3."
+msgstr ""
+
+#. §0: `⊆`
+#. §1: `s ⊆ t`
+#. §2: `t ⊆ s`
+#. §3: `s = t`
+#. §4: `s ⊂ t`
+#. §5: `s ⊂ t`
+#. §6: `s ⊆ t ∧ ¬ (t ⊆ s)`
+#. §7: `s`
+#. §8: `t`
+#. §9: `t`
+#. §10: `s`
+#. §11: `s ⊂ t`
+#. §12: `constructor`
+#. §13: `s ⊆ t`
+#. §14: `¬ (t ⊆ s)`
+#. §15: `constructor`
+#. §16: `⊂`
+#. §17: `⊆`
+#. §18: `¬ ⊆`
+#. §19: `⊆`
+#. §20: `¬ ⊆`
+#: Game.Levels.SubsetWorld.L14_ProperSubset
+msgid "# Strict Containment: The Proper Subset ⊂\n"
+"\n"
+"You have proved all three partial order axioms for §0 (reflexivity,\n"
+"transitivity, antisymmetry). Antisymmetry says: if §1 and\n"
+"§2, then §3. In other words, mutual containment forces\n"
+"equality.\n"
+"\n"
+"But what about **strict** containment — when one set is inside\n"
+"another but they are NOT equal? This is the **proper subset**\n"
+"relation, written §4.\n"
+"\n"
+"In Lean, §5 means §6 — §7 is contained in\n"
+"§8, and the containment is strict (there is something in §9 that is\n"
+"not in §10).\n"
+"\n"
+"To prove §11, use §12 to split into two goals:\n"
+"1. Prove §13 — a familiar subset proof\n"
+"2. Prove §14 — a familiar non-subset proof (Level 7)\n"
+"\n"
+"This level integrates two skills you have already mastered!\n"
+"\n"
+"**Proof plan**:\n"
+"1. §15 — split §16 into §17 and §18\n"
+"2. **First goal** (§19): prove the subset as in Level 1\n"
+"3. **Second goal** (§20): disprove the reverse as in Level 7"
 msgstr ""
 
 #. §0: `rfl`
@@ -1815,4 +4519,34 @@ msgid "§0 closes a goal of the form §1 (reflexivity).\n"
 "\n"
 "## When to use it\n"
 "When both sides of an equality are definitionally equal."
+msgstr ""
+
+#. §0: `le_of_lt`
+#. §1: `a ≤ b`
+#. §2: `a < b`
+#. §3: ```
+#. le_of_lt : a < b → a ≤ b
+#. ```
+#. §4: `h : a < b`
+#. §5: `a ≤ b`
+#: Game.Levels.SubsetWorld.L02_ChangeTactic
+msgid "§0 proves §1 from §2 — strict inequality\n"
+"implies weak inequality.\n"
+"\n"
+"## Statement\n"
+"§3\n"
+"\n"
+"## When to use it\n"
+"When you have §4 and need §5."
+msgstr ""
+
+#. §0: `LE.le.trans`
+#. §1: `le_trans`
+#. §2: `hab.trans hbc`
+#. §3: `a ≤ c`
+#. §4: `hab : a ≤ b`
+#. §5: `hbc : b ≤ c`
+#: Game.Levels.SubsetWorld.L08_SubsetTrans
+msgid "§0 is the dot-notation form of §1:\n"
+"§2 proves §3 from §4 and §5."
 msgstr ""

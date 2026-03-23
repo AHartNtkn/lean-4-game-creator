@@ -1,8 +1,8 @@
-⚠ [38/501] Replayed GameServer.RpcHandlers
+⚠ [38/519] Replayed GameServer.RpcHandlers
 warning: GameServer/RpcHandlers.lean:165:25: No translation (en) found for: level completed! 🎉
 warning: GameServer/RpcHandlers.lean:173:25: No translation (en) found for: level completed with warnings… 🎭
 warning: GameServer/RpcHandlers.lean:186:25: No translation (en) found for: intermediate goal solved! 🎉
-⚠ [489/501] Built Game.Metadata (634ms)
+⚠ [489/519] Replayed Game.Metadata
 warning: Game/Metadata.lean:16:0: No translation (en) found for: §0 closes the goal if §1 has exactly the type of the goal.
 
 ## Syntax
@@ -211,7 +211,7 @@ but §6 needs the arithmetic form. Use §7 to convert.
 §9 does NOT prove anything — it only changes the display.
 The new goal must be definitionally equal to the old one, or
 Lean will reject the §10.
-⚠ [490/501] Built Game.Levels.SetWorld.L01_WelcomeToSets (836ms)
+⚠ [490/519] Replayed Game.Levels.SetWorld.L01_WelcomeToSets
 warning: Game/Levels/SetWorld/L01_WelcomeToSets.lean:6:0: No translation (en) found for: Welcome to Sets
 warning: Game/Levels/SetWorld/L01_WelcomeToSets.lean:10:0: No translation (en) found for: # Welcome to Sets
 
@@ -287,213 +287,7 @@ It is defined as §2, so §3 is always §4.
 ## Related
 §7 is the proof that §8.
 warning: Game/Levels/SetWorld/L01_WelcomeToSets.lean:111:0: No translation (en) found for: §0 proves §1 for any §2.
-⚠ [491/501] Built Game.Levels.SetWorld.L04_InfiniteSet (824ms)
-warning: Game/Levels/SetWorld/L04_InfiniteSet.lean:6:0: No translation (en) found for: An Infinite Set
-warning: Game/Levels/SetWorld/L04_InfiniteSet.lean:8:0: No translation (en) found for: # Sets Need Not Be Finite
-
-So far you have seen sets defined by arithmetic bounds like §0.
-But predicates can describe infinite collections too.
-
-The set §1 contains all even natural numbers:
-§2 — infinitely many elements.
-
-What does §3 mean? It is defined as:
-§4
-
-So §5 unfolds to §6, which is §7.
-
-To prove an existential §8, you provide a **witness** — a
-specific value of §9 — using the §10 tactic. Here, §11 turns
-the goal into §12, which is true by computation.
-
-**Your task**: Prove that 4 is even by providing the witness §13.
-Use §14.
-warning: Game/Levels/SetWorld/L04_InfiniteSet.lean:30:0: No translation (en) found for: 4 belongs to the set of even natural numbers.
-warning: Game/Levels/SetWorld/L04_InfiniteSet.lean:38:0: No translation (en) found for: §0 provided the witness §1 and Lean verified
-§2 by computation.
-
-This level illustrates two things:
-
-1. **Sets can be infinite.** The predicate §3 has no upper bound —
-   the set §4 has infinitely many elements. Lean sets
-   are just predicates, so finite vs. infinite is not a structural
-   distinction.
-
-2. **Existential membership proofs need witnesses.** When the
-   membership predicate involves §5, you must exhibit a concrete
-   value. The §6 tactic is your tool for this.
-
-In ordinary mathematics: *4 is even because 4 = 2 + 2.* That is
-exactly what you just proved — no more, no less.
-warning: Game/Levels/SetWorld/L04_InfiniteSet.lean:57:0: No translation (en) found for: §0 means there exists §1 such that §2.
-
-## Definition
-§3
-
-## Proof strategy
-- To prove §4: provide a witness with §5, then show §6
-- To use §7: destructure with §8 to get the
-  witness §9 and equation §10
-
-## Examples
-- §11 because §12 (witness: §13)
-- §14 because §15 (witness: §16)
-- §17 because no natural number §18 satisfies §19
-⚠ [492/501] Built Game.Levels.SetWorld.L05_NonMembershipExistential (880ms)
-warning: Game/Levels/SetWorld/L05_NonMembershipExistential.lean:6:0: No translation (en) found for: Disproving Membership in an Existential Set
-warning: Game/Levels/SetWorld/L05_NonMembershipExistential.lean:8:0: No translation (en) found for: # Non-Membership with Existential Predicates
-
-In Level 3, you proved §0 — the predicate was a simple
-arithmetic comparison, and §1 dispatched it directly after §2.
-
-But what happens when the predicate involves an **existential**?
-
-The set §3 has predicate §4, which means
-§5. To prove §6, you must show that
-NO witness §7 can satisfy §8.
-
-The proof pattern:
-1. §9 — assume §10, giving §11
-   (i.e., §12)
-2. §13 — destructure the existential: extract the
-   witness §14 and the equation §15
-3. §16 — the equation §17 has no natural number solution
-   (3 is odd), so §18 derives §19
-
-The new tactic here is §20. It takes an existential hypothesis
-and breaks it apart into its components. The syntax uses angle brackets:
-§21 (type ⟨ as §22 and ⟩ as §23).
-
-**Your task**: Prove that 3 is not even.
-warning: Game/Levels/SetWorld/L05_NonMembershipExistential.lean:35:0: No translation (en) found for: 3 does not belong to the set of even natural numbers.
-warning: Game/Levels/SetWorld/L05_NonMembershipExistential.lean:52:0: No translation (en) found for: You proved §0 by assuming membership, destructuring
-the existential witness, and deriving an arithmetic contradiction.
-
-This is a different proof shape from Level 3:
-
-| Level 3 | This level |
-|---|---|
-| Predicate: §1 (arithmetic) | Predicate: §2 (existential) |
-| §3 unfolds to arithmetic | §4 gets the existential |
-| §5 on the arithmetic | §6 extracts witness, THEN §7 |
-
-Notice the recurring pattern across Levels 2, 3, and this level: **unfold
-the set notation, assume or provide, then close with arithmetic**. This is
-the *membership reduction* pattern — every set membership question reduces
-to a question about the underlying predicate, and the proof works directly
-with that predicate. This pattern transfers to every set concept in this
-course.
-
-The §8 tactic is your tool for destructuring existentials. Whenever
-you have §9, use §10 to get the witness
-§11 and the proof §12. You will use this pattern throughout the
-course — it appears whenever set membership involves existential
-conditions.
-warning: Game/Levels/SetWorld/L05_NonMembershipExistential.lean:78:0: No translation (en) found for: §0 destructures a hypothesis §1 with structure
-(such as §2 or §3) into its components.
-
-## Syntax
-§4
-
-## Angle bracket input
-Type ⟨ as §5 and ⟩ as §6 in the editor.
-
-## When to use it
-When you have a hypothesis whose type is an existential §7,
-a conjunction §8, or any structure with a single constructor.
-After §9, the components are available as separate hypotheses.
-
-## Example
-If §10, then §11 gives
-§12 and §13.
-⚠ [493/501] Built Game.Levels.SetWorld.L08_CompoundPredicate (834ms)
-warning: Game/Levels/SetWorld/L08_CompoundPredicate.lean:6:0: No translation (en) found for: Compound Predicates
-warning: Game/Levels/SetWorld/L08_CompoundPredicate.lean:8:0: No translation (en) found for: # Compound Predicates
-
-So far, each set predicate has tested a single condition. But predicates
-can combine conditions using logical connectives.
-
-The set §0 contains even numbers less than 10:
-the set §1.
-
-Membership unfolds to the conjunction: §2
-becomes §3. To prove a conjunction, you split it with
-§4 and prove each part separately.
-
-The proof strategy:
-1. §5 — split §6 into two goals
-2. Prove §7 with §8
-3. Prove §9 by providing the witness §10 (since §11)
-
-**Your task**: Prove that 6 belongs to the set of even numbers less than 10.
-warning: Game/Levels/SetWorld/L08_CompoundPredicate.lean:29:0: No translation (en) found for: 6 belongs to the set of even naturals less than 10.
-warning: Game/Levels/SetWorld/L08_CompoundPredicate.lean:42:0: No translation (en) found for: You proved that 6 is both less than 10 AND even. The proof split
-the conjunction with §0 and handled each part separately.
-
-This illustrates a key principle: **compound set predicates reduce to
-compound logical statements**. When a set is defined by §1,
-membership requires proving both §2 and §3.
-
-| Set predicate | Membership requires |
-|---|---|
-| §4 (simple) | Prove §5 |
-| §6 (conjunction) | Prove both — use §7 |
-| §8 (disjunction) | Prove either — use §9 or §10 |
-| §11 (negation) | Prove §12 — use §13 |
-
-You will see these patterns again when you learn about set **intersection**
-(which corresponds to §14) and **union** (which corresponds to §15).
-⚠ [494/501] Built Game.Levels.SetWorld.L09_Boss (918ms)
-warning: Game/Levels/SetWorld/L09_Boss.lean:6:0: No translation (en) found for: Boss: Sets are Predicates
-warning: Game/Levels/SetWorld/L09_Boss.lean:8:0: No translation (en) found for: # Boss: Putting It All Together
-
-Time to combine everything. You are given an abstract predicate §0
-on natural numbers, with two hypotheses:
-
-- §1 — every even number satisfies §2
-- §3 — every number satisfying §4 is even
-
-Together these say: §5 holds for exactly the even numbers.
-
-You must prove two things:
-1. §6 — 4 is in the p-set (because 4 is even)
-2. §7 — 3 is NOT in the p-set (because 3 is odd)
-
-This combines:
-- Membership via hypothesis (Levels 1–2, 4): use §8 then
-  provide a witness for §9
-- Non-membership via contradiction (Levels 3, 5): assume §10,
-  derive §11 from §12, destructure the existential with
-  §13, then reach an arithmetic contradiction
-
-Start with §14 to split the conjunction.
-warning: Game/Levels/SetWorld/L09_Boss.lean:33:0: No translation (en) found for: Given hypotheses about a predicate p, prove membership and
-non-membership in the set defined by p.
-warning: Game/Levels/SetWorld/L09_Boss.lean:71:0: No translation (en) found for: Congratulations — you have completed **SetWorld**!
-
-Here is what you now know:
-
-| Concept | Lean definition | Proof move |
-|---|---|---|
-| Set | §0 | — |
-| Membership §1 | §2 (predicate evaluation) | unfolds automatically |
-| Set builder §3 | §4 | unfolds to §5 |
-| §6 | §7 | §8 |
-| §9 | §10 | impossible (§11) |
-| §12 | §13 | §14 with witness |
-| Non-membership §15 | §16 | §17 then contradiction |
-| Compound predicate | §18 | §19 then prove each part |
-
-The central insight: **sets in Lean are predicates, and set operations
-reduce to logical operations.** This principle extends throughout the
-course: union will correspond to §20, intersection to §21, complement
-to §22, subset to §23.
-
-In the next world, you will learn about **subsets** and **set equality**.
-The key idea will be *extensionality*: two sets are equal when they have
-the same elements, which means proving §24. The
-membership skills you just mastered are exactly what those proofs require.
-⚠ [495/501] Built Game.Levels.SetWorld.L02_SetBuilder (958ms)
+⚠ [491/519] Replayed Game.Levels.SetWorld.L02_SetBuilder
 warning: Game/Levels/SetWorld/L02_SetBuilder.lean:6:0: No translation (en) found for: Set Builder Notation
 warning: Game/Levels/SetWorld/L02_SetBuilder.lean:8:0: No translation (en) found for: # Set Builder Notation
 
@@ -560,37 +354,7 @@ is really just wrapping a predicate.
 The variable after §12 is a *binder* — it is local to the expression
 after §13. Writing §14 defines a predicate; §15 does not
 refer to any §16 in the surrounding context.
-⚠ [496/501] Built Game.Levels.SetWorld.L07_UniversalSet (1.1s)
-warning: Game/Levels/SetWorld/L07_UniversalSet.lean:6:0: No translation (en) found for: Everything is in Set.univ
-warning: Game/Levels/SetWorld/L07_UniversalSet.lean:8:0: No translation (en) found for: # Universal Membership
-
-In Level 1, you proved that a specific §0 belongs to §1.
-Now prove the stronger statement: **every** natural number belongs
-to §2.
-
-The statement is §3. The proof is the same
-pattern as Level 1, but with an §4 step first.
-
-After §5, the goal becomes §6, which reduces to
-§7. Then §8 closes it — exactly as in Level 1.
-
-**Your task**: Prove the statement.
-warning: Game/Levels/SetWorld/L07_UniversalSet.lean:24:0: No translation (en) found for: Every natural number belongs to §0.
-warning: Game/Levels/SetWorld/L07_UniversalSet.lean:32:0: No translation (en) found for: This is the universal counterpart of Level 1: instead of proving
-membership for one element, you proved it for all elements.
-
-Compare the two *boundary sets*:
-
-| Set | Predicate | Membership | Proof |
-|---|---|---|---|
-| §0 | §1 | always §2 | §3 |
-| §4 | §5 | always §6 | impossible |
-
-These two sets are the extreme cases. Every other set lies between
-them: §7 for any §8. You will prove these
-containments in the next world.
-warning: Game/Levels/SetWorld/L07_UniversalSet.lean:48:0: No translation (en) found for: §0 proves §1 for any §2.
-⚠ [497/501] Built Game.Levels.SetWorld.L03_NonMembership (1.1s)
+⚠ [492/519] Replayed Game.Levels.SetWorld.L03_NonMembership
 warning: Game/Levels/SetWorld/L03_NonMembership.lean:6:0: No translation (en) found for: Non-Membership
 warning: Game/Levels/SetWorld/L03_NonMembership.lean:8:0: No translation (en) found for: # Non-Membership: §0 means §1
 
@@ -622,7 +386,126 @@ will use other tools to derive §8 from the hypothesis.
 
 In ordinary mathematics, this is a *proof by contradiction*: assume
 7 is in the set, observe this means 7 < 5, which is absurd.
-⚠ [498/501] Built Game.Levels.SetWorld.L06_EmptySet (1.2s)
+⚠ [493/519] Replayed Game.Levels.SetWorld.L04_InfiniteSet
+warning: Game/Levels/SetWorld/L04_InfiniteSet.lean:6:0: No translation (en) found for: An Infinite Set
+warning: Game/Levels/SetWorld/L04_InfiniteSet.lean:8:0: No translation (en) found for: # Sets Need Not Be Finite
+
+So far you have seen sets defined by arithmetic bounds like §0.
+But predicates can describe infinite collections too.
+
+The set §1 contains all even natural numbers:
+§2 — infinitely many elements.
+
+What does §3 mean? It is defined as:
+§4
+
+So §5 unfolds to §6, which is §7.
+
+To prove an existential §8, you provide a **witness** — a
+specific value of §9 — using the §10 tactic. Here, §11 turns
+the goal into §12, which is true by computation.
+
+**Your task**: Prove that 4 is even by providing the witness §13.
+Use §14.
+warning: Game/Levels/SetWorld/L04_InfiniteSet.lean:30:0: No translation (en) found for: 4 belongs to the set of even natural numbers.
+warning: Game/Levels/SetWorld/L04_InfiniteSet.lean:38:0: No translation (en) found for: §0 provided the witness §1 and Lean verified
+§2 by computation.
+
+This level illustrates two things:
+
+1. **Sets can be infinite.** The predicate §3 has no upper bound —
+   the set §4 has infinitely many elements. Lean sets
+   are just predicates, so finite vs. infinite is not a structural
+   distinction.
+
+2. **Existential membership proofs need witnesses.** When the
+   membership predicate involves §5, you must exhibit a concrete
+   value. The §6 tactic is your tool for this.
+
+In ordinary mathematics: *4 is even because 4 = 2 + 2.* That is
+exactly what you just proved — no more, no less.
+warning: Game/Levels/SetWorld/L04_InfiniteSet.lean:57:0: No translation (en) found for: §0 means there exists §1 such that §2.
+
+## Definition
+§3
+
+## Proof strategy
+- To prove §4: provide a witness with §5, then show §6
+- To use §7: destructure with §8 to get the
+  witness §9 and equation §10
+
+## Examples
+- §11 because §12 (witness: §13)
+- §14 because §15 (witness: §16)
+- §17 because no natural number §18 satisfies §19
+⚠ [494/519] Replayed Game.Levels.SetWorld.L05_NonMembershipExistential
+warning: Game/Levels/SetWorld/L05_NonMembershipExistential.lean:6:0: No translation (en) found for: Disproving Membership in an Existential Set
+warning: Game/Levels/SetWorld/L05_NonMembershipExistential.lean:8:0: No translation (en) found for: # Non-Membership with Existential Predicates
+
+In Level 3, you proved §0 — the predicate was a simple
+arithmetic comparison, and §1 dispatched it directly after §2.
+
+But what happens when the predicate involves an **existential**?
+
+The set §3 has predicate §4, which means
+§5. To prove §6, you must show that
+NO witness §7 can satisfy §8.
+
+The proof pattern:
+1. §9 — assume §10, giving §11
+   (i.e., §12)
+2. §13 — destructure the existential: extract the
+   witness §14 and the equation §15
+3. §16 — the equation §17 has no natural number solution
+   (3 is odd), so §18 derives §19
+
+The new tactic here is §20. It takes an existential hypothesis
+and breaks it apart into its components. The syntax uses angle brackets:
+§21 (type ⟨ as §22 and ⟩ as §23).
+
+**Your task**: Prove that 3 is not even.
+warning: Game/Levels/SetWorld/L05_NonMembershipExistential.lean:35:0: No translation (en) found for: 3 does not belong to the set of even natural numbers.
+warning: Game/Levels/SetWorld/L05_NonMembershipExistential.lean:52:0: No translation (en) found for: You proved §0 by assuming membership, destructuring
+the existential witness, and deriving an arithmetic contradiction.
+
+This is a different proof shape from Level 3:
+
+| Level 3 | This level |
+|---|---|
+| Predicate: §1 (arithmetic) | Predicate: §2 (existential) |
+| §3 unfolds to arithmetic | §4 gets the existential |
+| §5 on the arithmetic | §6 extracts witness, THEN §7 |
+
+Notice the recurring pattern across Levels 2, 3, and this level: **unfold
+the set notation, assume or provide, then close with arithmetic**. This is
+the *membership reduction* pattern — every set membership question reduces
+to a question about the underlying predicate, and the proof works directly
+with that predicate. This pattern transfers to every set concept in this
+course.
+
+The §8 tactic is your tool for destructuring existentials. Whenever
+you have §9, use §10 to get the witness
+§11 and the proof §12. You will use this pattern throughout the
+course — it appears whenever set membership involves existential
+conditions.
+warning: Game/Levels/SetWorld/L05_NonMembershipExistential.lean:78:0: No translation (en) found for: §0 destructures a hypothesis §1 with structure
+(such as §2 or §3) into its components.
+
+## Syntax
+§4
+
+## Angle bracket input
+Type ⟨ as §5 and ⟩ as §6 in the editor.
+
+## When to use it
+When you have a hypothesis whose type is an existential §7,
+a conjunction §8, or any structure with a single constructor.
+After §9, the components are available as separate hypotheses.
+
+## Example
+If §10, then §11 gives
+§12 and §13.
+⚠ [495/519] Replayed Game.Levels.SetWorld.L06_EmptySet
 warning: Game/Levels/SetWorld/L06_EmptySet.lean:6:0: No translation (en) found for: The Empty Set
 warning: Game/Levels/SetWorld/L06_EmptySet.lean:8:0: No translation (en) found for: # The Empty Set
 
@@ -684,7 +567,124 @@ It is defined as §1, so §2 reduces to
 - §10 is the proof that §11
 - §12 is the opposite extreme: everything is a member
 warning: Game/Levels/SetWorld/L06_EmptySet.lean:93:0: No translation (en) found for: §0 proves §1 for any §2.
-⚠ [499/501] Built Game.Levels.SetWorld (633ms)
+⚠ [496/519] Replayed Game.Levels.SetWorld.L07_UniversalSet
+warning: Game/Levels/SetWorld/L07_UniversalSet.lean:6:0: No translation (en) found for: Everything is in Set.univ
+warning: Game/Levels/SetWorld/L07_UniversalSet.lean:8:0: No translation (en) found for: # Universal Membership
+
+In Level 1, you proved that a specific §0 belongs to §1.
+Now prove the stronger statement: **every** natural number belongs
+to §2.
+
+The statement is §3. The proof is the same
+pattern as Level 1, but with an §4 step first.
+
+After §5, the goal becomes §6, which reduces to
+§7. Then §8 closes it — exactly as in Level 1.
+
+**Your task**: Prove the statement.
+warning: Game/Levels/SetWorld/L07_UniversalSet.lean:24:0: No translation (en) found for: Every natural number belongs to §0.
+warning: Game/Levels/SetWorld/L07_UniversalSet.lean:32:0: No translation (en) found for: This is the universal counterpart of Level 1: instead of proving
+membership for one element, you proved it for all elements.
+
+Compare the two *boundary sets*:
+
+| Set | Predicate | Membership | Proof |
+|---|---|---|---|
+| §0 | §1 | always §2 | §3 |
+| §4 | §5 | always §6 | impossible |
+
+These two sets are the extreme cases. Every other set lies between
+them: §7 for any §8. You will prove these
+containments in the next world.
+warning: Game/Levels/SetWorld/L07_UniversalSet.lean:48:0: No translation (en) found for: §0 proves §1 for any §2.
+⚠ [497/519] Replayed Game.Levels.SetWorld.L08_CompoundPredicate
+warning: Game/Levels/SetWorld/L08_CompoundPredicate.lean:6:0: No translation (en) found for: Compound Predicates
+warning: Game/Levels/SetWorld/L08_CompoundPredicate.lean:8:0: No translation (en) found for: # Compound Predicates
+
+So far, each set predicate has tested a single condition. But predicates
+can combine conditions using logical connectives.
+
+The set §0 contains even numbers less than 10:
+the set §1.
+
+Membership unfolds to the conjunction: §2
+becomes §3. To prove a conjunction, you split it with
+§4 and prove each part separately.
+
+The proof strategy:
+1. §5 — split §6 into two goals
+2. Prove §7 with §8
+3. Prove §9 by providing the witness §10 (since §11)
+
+**Your task**: Prove that 6 belongs to the set of even numbers less than 10.
+warning: Game/Levels/SetWorld/L08_CompoundPredicate.lean:29:0: No translation (en) found for: 6 belongs to the set of even naturals less than 10.
+warning: Game/Levels/SetWorld/L08_CompoundPredicate.lean:42:0: No translation (en) found for: You proved that 6 is both less than 10 AND even. The proof split
+the conjunction with §0 and handled each part separately.
+
+This illustrates a key principle: **compound set predicates reduce to
+compound logical statements**. When a set is defined by §1,
+membership requires proving both §2 and §3.
+
+| Set predicate | Membership requires |
+|---|---|
+| §4 (simple) | Prove §5 |
+| §6 (conjunction) | Prove both — use §7 |
+| §8 (disjunction) | Prove either — use §9 or §10 |
+| §11 (negation) | Prove §12 — use §13 |
+
+You will see these patterns again when you learn about set **intersection**
+(which corresponds to §14) and **union** (which corresponds to §15).
+⚠ [498/519] Replayed Game.Levels.SetWorld.L09_Boss
+warning: Game/Levels/SetWorld/L09_Boss.lean:6:0: No translation (en) found for: Boss: Sets are Predicates
+warning: Game/Levels/SetWorld/L09_Boss.lean:8:0: No translation (en) found for: # Boss: Putting It All Together
+
+Time to combine everything. You are given an abstract predicate §0
+on natural numbers, with two hypotheses:
+
+- §1 — every even number satisfies §2
+- §3 — every number satisfying §4 is even
+
+Together these say: §5 holds for exactly the even numbers.
+
+You must prove two things:
+1. §6 — 4 is in the p-set (because 4 is even)
+2. §7 — 3 is NOT in the p-set (because 3 is odd)
+
+This combines:
+- Membership via hypothesis (Levels 1–2, 4): use §8 then
+  provide a witness for §9
+- Non-membership via contradiction (Levels 3, 5): assume §10,
+  derive §11 from §12, destructure the existential with
+  §13, then reach an arithmetic contradiction
+
+Start with §14 to split the conjunction.
+warning: Game/Levels/SetWorld/L09_Boss.lean:33:0: No translation (en) found for: Given hypotheses about a predicate p, prove membership and
+non-membership in the set defined by p.
+warning: Game/Levels/SetWorld/L09_Boss.lean:71:0: No translation (en) found for: Congratulations — you have completed **SetWorld**!
+
+Here is what you now know:
+
+| Concept | Lean definition | Proof move |
+|---|---|---|
+| Set | §0 | — |
+| Membership §1 | §2 (predicate evaluation) | unfolds automatically |
+| Set builder §3 | §4 | unfolds to §5 |
+| §6 | §7 | §8 |
+| §9 | §10 | impossible (§11) |
+| §12 | §13 | §14 with witness |
+| Non-membership §15 | §16 | §17 then contradiction |
+| Compound predicate | §18 | §19 then prove each part |
+
+The central insight: **sets in Lean are predicates, and set operations
+reduce to logical operations.** This principle extends throughout the
+course: union will correspond to §20, intersection to §21, complement
+to §22, subset to §23.
+
+In the next world, you will learn about **subsets** and **set equality**.
+The key idea will be *extensionality*: two sets are equal when they have
+the same elements, which means proving §24. The
+membership skills you just mastered are exactly what those proofs require.
+⚠ [499/519] Replayed Game.Levels.SetWorld
 warning: Game/Levels/SetWorld.lean:12:0: No translation (en) found for: Set World
 warning: Game/Levels/SetWorld.lean:14:0: No translation (en) found for: # Set World
 
@@ -717,12 +717,992 @@ By the end of this world, you will be able to:
 
 The boss at the end will ask you to combine all these moves on an
 abstract predicate. Let's begin!
-⚠ [500/501] Built Game (705ms)
-warning: Game.lean:5:0: No translation (en) found for: Functions & Relations
-warning: Game.lean:6:0: No translation (en) found for: # Functions & Relations
+⚠ [500/519] Replayed Game.Levels.SubsetWorld.L01_FirstSubset
+warning: Game/Levels/SubsetWorld/L01_FirstSubset.lean:6:0: No translation (en) found for: First Subset Proof
+warning: Game/Levels/SubsetWorld/L01_FirstSubset.lean:10:0: No translation (en) found for: # Subsets: The ⊆ Relation
+
+In mathematics, §0 means every element of §1 is also an
+element of §2. In Lean, this is exactly what it means:
+
+§3
+
+So a subset proof has the shape: **introduce** an arbitrary element §4
+and a hypothesis §5 that §6, then **show** that §7.
+
+After §8, you will have:
+- §9 — this is §10 wrapped in set notation
+- Goal: §11 — this is §12 wrapped in set notation
+
+Both are wrapped in set notation. You already know §13 for
+converting the goal to an equivalent form — use §14 to
+unwrap the goal. For the hypothesis, you can use §15 to extract
+the arithmetic: §16 creates a clean arithmetic
+hypothesis that §17 can read.
+
+**Proof plan**:
+1. §18 — fix an element and assume it is in the smaller set
+2. §19 — extract the arithmetic content of §20
+3. §21 — unwrap the set membership on the goal
+4. §22 — derive §23 from §24
+warning: Game/Levels/SubsetWorld/L01_FirstSubset.lean:38:0: No translation (en) found for: Every number less than 3 is also less than 5.
+warning: Game/Levels/SubsetWorld/L01_FirstSubset.lean:55:0: No translation (en) found for: You just proved your first subset relation! The proof shape was:
+
+1. §0 — introduce element and membership hypothesis
+2. §1 — extract the arithmetic from §2
+3. §3 — unwrap the goal from set notation to arithmetic
+4. §4 — close the arithmetic goal
+
+This pattern — **intro, unwrap, prove** — is the standard shape for
+every §5 proof. The §6 step is universal; the unwrapping
+and closing steps depend on the specific sets.
+
+Using §7 to extract hypothesis content works, but it is a bit
+verbose — you need to write out the type explicitly. In the next
+level, you will learn §8, a tactic designed specifically for
+this unwrapping job.
+
+**§9 vs §10 — a common confusion**: These are fundamentally different
+relations. §11 relates two *sets* and says every element of §12
+is also in §13. §14 relates an *element* and a *set* and says
+§15 belongs to §16. In Lean, the types enforce this: §17 requires
+§18, while §19 requires §20. If you are ever unsure,
+check the types: are you relating two sets, or an element to a set?
+
+**Note on asymmetry**: We proved §21, but the
+reverse §22 is **false** — the number 4 is in
+the right set but not the left. You will prove this formally in
+Level 7. So §23 has a *direction*: unlike equality, §24 does
+not imply §25. This makes §26 a one-way relationship, which
+we will explore further in this world.
+warning: Game/Levels/SubsetWorld/L01_FirstSubset.lean:87:0: No translation (en) found for: §0 (typed §1 or §2) is the subset relation.
+
+For sets §3, the statement §4 means:
+§5
+
+## Proof strategy
+To prove §6:
+1. §7 — introduce element §8 and hypothesis §9
+2. Show that §10 using §11 and any other available facts
+
+## Syntax
+§12
+
+## Example
+To prove §13: after §14,
+unwrap the goal with §15 and close with §16.
+
+## Warning
+§17 is a *proposition* (a statement that may or may not be true),
+not an operation that produces a new set.
+⚠ [501/519] Replayed Game.Levels.SubsetWorld.L02_ChangeTactic
+warning: Game/Levels/SubsetWorld/L02_ChangeTactic.lean:6:0: No translation (en) found for: The Change Tactic
+warning: Game/Levels/SubsetWorld/L02_ChangeTactic.lean:8:0: No translation (en) found for: # Unwrapping Hypotheses with §0
+
+In Level 1, you used §1 to unwrap the **goal** from set notation
+to arithmetic, and §2 to extract the hypothesis content. Both
+techniques work, but there is a more direct tool for hypotheses.
+
+The tactic §3 converts §4 to display as §5, just
+as §6 does for the goal. Both require §7 to be
+**definitionally equal** to the current type. They only change the
+*display*, not the *meaning*.
+
+After §8, the hypothesis §9 is
+definitionally §10. Use §11 to make this
+explicit. Then §12 unwraps the goal, and §13
+closes it — since being strictly less than 3 implies being at most 3.
+
+**Proof plan**:
+1. §14 — fix an element and assume §15
+2. §16 — unwrap the hypothesis to arithmetic
+3. §17 — unwrap the goal to arithmetic
+4. §18 — derive §19 from §20
+warning: Game/Levels/SubsetWorld/L02_ChangeTactic.lean:32:0: No translation (en) found for: Every natural number less than 3 is at most 3.
+warning: Game/Levels/SubsetWorld/L02_ChangeTactic.lean:57:0: No translation (en) found for: You now have both halves of the unwrapping toolkit:
+
+| Tactic | Target | Effect |
+|---|---|---|
+| §0 | Goal | Converts goal to §1 (def-equal) |
+| §2 | Hypothesis | Converts §3 to §4 (def-equal) |
+| §5 | Goal | Same as §6 |
+
+**§7 vs §8**: They are the same concept applied to different
+targets. §9 changes the goal to §10. §11 changes
+hypothesis §12 to §13. Both require §14 to be definitionally equal
+to the current type — they only change the *display*, not the *meaning*.
+
+Note that §15 is a **convenience** tool for readability — Lean
+can often see through the definitional wrapper without it. But when
+the proof state has §16 instead of §17,
+§18 makes the arithmetic content visible so you can find the
+right closing move. You will use §19 throughout this course.
+warning: Game/Levels/SubsetWorld/L02_ChangeTactic.lean:78:0: No translation (en) found for: §0 converts hypothesis §1 to display as §2,
+where §3 must be definitionally equal to the current type of §4.
+
+§5 (without §6) converts the goal to §7 — this is
+equivalent to §8.
+
+## Syntax
+§9
+
+## When to use it
+When a hypothesis is wrapped in notation (like set membership) and
+you need the underlying content (like an arithmetic inequality).
+
+## Example
+§10
+
+## Warning
+§11 only changes the display — the new type must be
+**definitionally equal** to the old one. If Lean rejects the
+§12, the types are not definitionally equal.
+warning: Game/Levels/SubsetWorld/L02_ChangeTactic.lean:108:0: No translation (en) found for: §0 proves §1 from §2 — strict inequality
+implies weak inequality.
+
+## Statement
+§3
+
+## When to use it
+When you have §4 and need §5.
+⚠ [502/519] Replayed Game.Levels.SubsetWorld.L03_SubsetRefl
+warning: Game/Levels/SubsetWorld/L03_SubsetRefl.lean:6:0: No translation (en) found for: Subset Reflexivity
+warning: Game/Levels/SubsetWorld/L03_SubsetRefl.lean:8:0: No translation (en) found for: # Every Set Is a Subset of Itself
+
+Before exploring boundary cases (§0 and §1), let us prove
+the simplest subset fact: every set is a subset of itself.
+
+§2
+
+This is **reflexivity** of §3. The proof is the simplest possible
+§4 proof: after §5, the goal is §6 and you already
+have §7. The hypothesis IS the goal.
+
+**Proof plan**:
+1. §8 — assume §9
+2. §10 — the hypothesis is exactly the goal
+warning: Game/Levels/SubsetWorld/L03_SubsetRefl.lean:25:0: No translation (en) found for: Every set is a subset of itself.
+warning: Game/Levels/SubsetWorld/L03_SubsetRefl.lean:34:0: No translation (en) found for: The proof of §0 is the identity function on membership: take the
+proof that §1 and hand it right back.
+
+This is **reflexivity**: §2 for every §3. Together with
+transitivity (coming in Level 8) and antisymmetry (Level 13), this
+makes §4 a **partial order** on sets. You will prove all three
+axioms in this world.
+
+The library name for this fact is §5 (or §6
+in the order-theoretic form).
+warning: Game/Levels/SubsetWorld/L03_SubsetRefl.lean:47:0: No translation (en) found for: §0 proves §1 (subset reflexivity).
+info: Game/Levels/SubsetWorld/L03_SubsetRefl.lean:53:32: Missing Theorem Documentation. Using existing docstring. Add le_refl
+Add `TheoremDoc le_refl` somewhere above this statement.
+warning: Game/Levels/SubsetWorld/L03_SubsetRefl.lean:53:40: Missing Theorem Documentation: Preorder.le_refl
+Add `TheoremDoc Preorder.le_refl` somewhere above this statement.
+warning: Game/Levels/SubsetWorld/L03_SubsetRefl.lean:53:57: Missing Theorem Documentation: Set.Subset.rfl
+Add `TheoremDoc Set.Subset.rfl` somewhere above this statement.
+info: Game/Levels/SubsetWorld/L03_SubsetRefl.lean:53:72: Missing Theorem Documentation. Using existing docstring. Add le_rfl
+Add `TheoremDoc le_rfl` somewhere above this statement.
+warning: Game/Levels/SubsetWorld/L03_SubsetRefl.lean:53:79: Missing Theorem Documentation: le_of_eq
+Add `TheoremDoc le_of_eq` somewhere above this statement.
+info: Game/Levels/SubsetWorld/L03_SubsetRefl.lean:53:88: Missing Theorem Documentation. Using existing docstring. Add Eq.le
+Add `TheoremDoc Eq.le` somewhere above this statement.
+info: Game/Levels/SubsetWorld/L03_SubsetRefl.lean:53:94: Missing Theorem Documentation. Using existing docstring. Add Eq.subset
+Add `TheoremDoc Eq.subset` somewhere above this statement.
+⚠ [503/519] Replayed Game.Levels.SubsetWorld.L04_EmptySubset
+warning: Game/Levels/SubsetWorld/L04_EmptySubset.lean:6:0: No translation (en) found for: The Empty Subset
+warning: Game/Levels/SubsetWorld/L04_EmptySubset.lean:8:0: No translation (en) found for: # Vacuous Truth: ∅ ⊆ s
+
+A fundamental fact in mathematics: the empty set is a subset of every set.
+
+§0
+
+Why? Because §1 means §2. This is
+**vacuously true**: the premise §3 is always false (recall from
+Set World that §4 has predicate §5), so the implication
+holds no matter what §6 is.
+
+After §7, you will have §8. Since §9 is
+definitionally §10, the §11 tactic can detect this
+and close the goal immediately — regardless of what the goal is.
+
+**Proof plan**:
+1. §12 — assume some §13
+2. §14 — §15 is impossible, so anything follows
+warning: Game/Levels/SubsetWorld/L04_EmptySubset.lean:29:0: No translation (en) found for: The empty set is a subset of any set.
+warning: Game/Levels/SubsetWorld/L04_EmptySubset.lean:41:0: No translation (en) found for: The proof of §0 is a single pattern: assume membership in §1,
+then observe the assumption is impossible.
+
+This is **vacuous truth**: an implication §2 is true whenever
+§3 is false, regardless of §4. Here, §5 is §6 (always false),
+so the implication §7 holds for any §8.
+
+Vacuous truth appears throughout mathematics. The statement
+"every element of ∅ is a purple unicorn" is true — vacuously.
+
+The library name for this fact is §9.
+warning: Game/Levels/SubsetWorld/L04_EmptySubset.lean:55:0: No translation (en) found for: §0 proves §1 for any set §2.
+warning: Game/Levels/SubsetWorld/L04_EmptySubset.lean:58:0: No translation (en) found for: §0 states that §1 for sets (the lattice bottom is the empty set).
+warning: Game/Levels/SubsetWorld/L04_EmptySubset.lean:64:81: Missing Theorem Documentation: bot_le
+Add `TheoremDoc bot_le` somewhere above this statement.
+info: Game/Levels/SubsetWorld/L04_EmptySubset.lean:64:88: Missing Theorem Documentation. Using existing docstring. Add OrderBot.bot_le
+Add `TheoremDoc OrderBot.bot_le` somewhere above this statement.
+⚠ [504/519] Replayed Game.Levels.SubsetWorld.L05_SubsetUniv
+warning: Game/Levels/SubsetWorld/L05_SubsetUniv.lean:6:0: No translation (en) found for: Every Set is in Set.univ
+warning: Game/Levels/SubsetWorld/L05_SubsetUniv.lean:8:0: No translation (en) found for: # The Universal Superset: s ⊆ Set.univ
+
+The mirror image of Level 3: every set is a subset of §0.
+
+§1
+
+Why? Because §2 is always §3, so the obligation
+§4 reduces to §5 — and §6
+needs no proof beyond §7.
+
+After §8, the goal is §9, which reduces to
+§10. You can ignore §11 entirely.
+
+**Proof plan**:
+1. §12 — introduce element and membership hypothesis
+2. §13 — prove §14 (which is what §15 reduces to)
+warning: Game/Levels/SubsetWorld/L05_SubsetUniv.lean:27:0: No translation (en) found for: Any set is a subset of the universal set.
+warning: Game/Levels/SubsetWorld/L05_SubsetUniv.lean:36:0: No translation (en) found for: Two boundary facts about subsets are now established:
+
+| Statement | Intuition | Proof key |
+|---|---|---|
+| §0 | Nothing is in §1, so the claim is vacuously true | §2 |
+| §3 | Everything is in §4, so the obligation is trivial | §5 |
+
+These are the extreme cases: §6 is the smallest set (contained in
+everything) and §7 is the largest (contains everything).
+For any set §8:
+§9
+
+The library names are §10 and §11.
+warning: Game/Levels/SubsetWorld/L05_SubsetUniv.lean:52:0: No translation (en) found for: §0 proves §1 for any set §2.
+warning: Game/Levels/SubsetWorld/L05_SubsetUniv.lean:58:63: Missing Theorem Documentation: le_top
+Add `TheoremDoc le_top` somewhere above this statement.
+info: Game/Levels/SubsetWorld/L05_SubsetUniv.lean:58:70: Missing Theorem Documentation. Using existing docstring. Add OrderTop.le_top
+Add `TheoremDoc OrderTop.le_top` somewhere above this statement.
+⚠ [505/519] Replayed Game.Levels.SubsetWorld.L06_SubsetHypAsFunction
+warning: Game/Levels/SubsetWorld/L06_SubsetHypAsFunction.lean:6:0: No translation (en) found for: Subset Hypotheses as Functions
+warning: Game/Levels/SubsetWorld/L06_SubsetHypAsFunction.lean:8:0: No translation (en) found for: # Using a Subset Hypothesis
+
+So far, you have been **proving** subset relations from scratch using
+§0. But what about **using** a subset hypothesis that you
+already have?
+
+If §1, then §2 is essentially a **function**: give it a
+proof that §3, and it returns a proof that §4. This is
+because §5 unfolds to §6, which is exactly
+the type of a function from membership proofs to membership proofs.
+
+In this level, you have §7 and §8. Your goal is
+§9. Since §10 is a function that takes §11 to §12,
+you can close the goal with §13.
+
+Alternatively, you can use §14 to reduce the goal from §15
+to §16, then close with §17.
+
+**Proof plan**:
+- §18 — apply §19 to §20 directly
+- OR: §21 then §22 — reduce goal, then close
+warning: Game/Levels/SubsetWorld/L06_SubsetHypAsFunction.lean:32:0: No translation (en) found for: If s ⊆ t and x ∈ s, then x ∈ t.
+warning: Game/Levels/SubsetWorld/L06_SubsetHypAsFunction.lean:49:0: No translation (en) found for: You just used a subset hypothesis as a function for the first time!
+
+The key insight: §0 is not just a statement — it is a
+**function** that converts membership proofs. Given §1,
+the expression §2 is a proof of §3.
+
+| Expression | Type | Meaning |
+|---|---|---|
+| §4 | §5 | "every element of s is in t" |
+| §6 | §7 | "x is in s" |
+| §8 | §9 | "therefore x is in t" |
+
+This pattern — applying a subset hypothesis to a membership proof —
+is the fundamental way to *use* subset facts. You will chain multiple
+such applications in the next levels.
+⚠ [506/519] Replayed Game.Levels.SubsetWorld.L07_NonSubset
+warning: Game/Levels/SubsetWorld/L07_NonSubset.lean:6:0: No translation (en) found for: Disproving a Subset
+warning: Game/Levels/SubsetWorld/L07_NonSubset.lean:8:0: No translation (en) found for: # When ⊆ Fails: Proving ¬(s ⊆ t)
+
+All the subset proofs so far have been **positive**: you showed that
+one set is contained in another. But what if the containment is
+**false**? How do you prove §0?
+
+In Lean, §1 is defined as §2. So to prove §3,
+you use §4 to **assume** the subset holds, getting
+§5, and then derive a contradiction (§6).
+
+To derive the contradiction, exhibit a **counterexample**: find an
+element that is in §7 but not in §8. If the subset held, this
+element would have to be in both — but it is not, so we get §9.
+
+In Level 1, we noted that §10 is false
+because 4 is in the first set but not the second. Now you will prove
+this formally.
+
+**Proof plan**:
+1. §11 — assume the subset holds (goal becomes §12)
+2. Prove §13 — show the witness is in the domain
+3. Apply §14 to get §15 — use the assumed subset
+4. Unwrap and derive contradiction — §16 is false
+warning: Game/Levels/SubsetWorld/L07_NonSubset.lean:34:0: No translation (en) found for: The set of numbers less than 5 is NOT a subset of the set of
+numbers less than 3.
+warning: Game/Levels/SubsetWorld/L07_NonSubset.lean:65:0: No translation (en) found for: You just proved your first **negative** subset statement! The proof
+structure was:
+
+1. **Assume** the subset holds (§0)
+2. **Exhibit** a counterexample element (4)
+3. **Apply** the assumed subset to the counterexample (§1)
+4. **Derive contradiction** from the impossible conclusion (§2)
+
+This is a **proof by counterexample**: to disprove a universal
+statement §3, you assume it holds and exhibit a specific
+§4 where §5 leads to a contradiction. Here, the universal
+statement is §6, and the counterexample is §7.
+
+This is a specific form of proof by contradiction, but the key
+technique — **finding a witness that breaks the claim** — deserves its
+own name. You will use proof by counterexample throughout this course:
+to disprove injectivity (find two inputs with the same output), to
+disprove surjectivity (find an output with no input), and to disprove
+set equality (find an element in one set but not the other).
+
+Notice how Step 3 used the subset-as-function pattern from Level 6:
+§8 applies the subset hypothesis §9 to the membership proof
+§10. The difference is that here, the conclusion is *absurd* — which
+is exactly how we know the assumption was wrong.
+
+In ordinary math: "Suppose §11. Then in
+particular §12, which is false. Contradiction."
+warning: Game/Levels/SubsetWorld/L07_NonSubset.lean:96:47: Missing Theorem Documentation: Set.not_subset
+Add `TheoremDoc Set.not_subset` somewhere above this statement.
+⚠ [507/519] Replayed Game.Levels.SubsetWorld.L08_SubsetTrans
+warning: Game/Levels/SubsetWorld/L08_SubsetTrans.lean:6:0: No translation (en) found for: Subset Transitivity
+warning: Game/Levels/SubsetWorld/L08_SubsetTrans.lean:8:0: No translation (en) found for: # Chaining Subsets
+
+If §0 and §1, then §2. This is
+**transitivity** of the subset relation.
+
+In Level 6, you learned that a subset hypothesis §3 acts as
+a function: given a proof that §4, it returns a proof that
+§5. Now you will **chain** two such function applications to
+prove transitivity.
+
+There are two natural proof strategies:
+
+**Backward (with §6)**: Start from the goal §7 and work
+backward. §8 reduces the goal to §9 (since §10 says
+"if in §11, then in §12"). Then §13 reduces to §14.
+Then §15 closes it.
+
+**Forward (with §16)**: Start from §17 and work forward.
+§18 gives §19. Then
+§20 gives §21. Then §22.
+
+Try the backward approach — it is shorter and builds your §23 skills.
+warning: Game/Levels/SubsetWorld/L08_SubsetTrans.lean:33:0: No translation (en) found for: Subset inclusion is transitive.
+warning: Game/Levels/SubsetWorld/L08_SubsetTrans.lean:63:0: No translation (en) found for: Subset transitivity chains: from §0 and §1, you derive
+§2 by composing the two inclusions.
+
+The backward proof with §3:
+§4
+
+Notice how §5 traces the chain in reverse: to prove §6,
+first reduce to §7, then to §8. This is backward reasoning —
+working from the goal toward what you know.
+
+The forward alternative §9 composes the functions
+directly: §10 gives §11, then §12 applied to that gives
+§13. Both styles are valid; use whichever feels natural.
+
+The library name is §14.
+
+**Discovery tool**: When you are unsure which lemma closes the current
+goal, try typing §15 in your proof. It searches the library for
+a term that matches the goal. For instance, if the goal is
+§16 and you have §17 and §18 in context, §19 might
+suggest §20. This becomes increasingly
+useful as the API grows in later worlds.
+warning: Game/Levels/SubsetWorld/L08_SubsetTrans.lean:92:0: No translation (en) found for: §0 proves §1 (subset transitivity).
+warning: Game/Levels/SubsetWorld/L08_SubsetTrans.lean:95:0: No translation (en) found for: §0 proves §1 for any preorder.
+For sets, §2 is §3, so this is transitivity of subset inclusion.
+warning: Game/Levels/SubsetWorld/L08_SubsetTrans.lean:99:0: No translation (en) found for: §0 is the dot-notation form of §1:
+§2 proves §3 from §4 and §5.
+info: Game/Levels/SubsetWorld/L08_SubsetTrans.lean:106:54: Missing Theorem Documentation. Using existing docstring. Add HasSubset.Subset.trans
+Add `TheoremDoc HasSubset.Subset.trans` somewhere above this statement.
+info: Game/Levels/SubsetWorld/L08_SubsetTrans.lean:106:77: Missing Theorem Documentation. Using existing docstring. Add Trans.trans
+Add `TheoremDoc Trans.trans` somewhere above this statement.
+warning: Game/Levels/SubsetWorld/L08_SubsetTrans.lean:106:89: Missing Theorem Documentation: Preorder.le_trans
+Add `TheoremDoc Preorder.le_trans` somewhere above this statement.
+⚠ [508/519] Replayed Game.Levels.SubsetWorld.L09_NonArithSubset
+warning: Game/Levels/SubsetWorld/L09_NonArithSubset.lean:6:0: No translation (en) found for: Beyond Arithmetic
+warning: Game/Levels/SubsetWorld/L09_NonArithSubset.lean:8:0: No translation (en) found for: # Subsets Are About Predicates, Not Just Arithmetic
+
+Every subset proof so far ended with §0 — because every set was
+defined by an arithmetic inequality like §1 or §2.
+
+But §3 is not about arithmetic. It is about **predicates**: §4
+means that the predicate defining §5 implies the predicate defining §6.
+The closing move depends entirely on what those predicates are.
+
+In this level, the sets are defined by abstract predicates §7 and §8
+on a general type §9 (not necessarily §10). You are given
+§11 — a pointwise implication between the
+predicates. Your task is to prove the subset inclusion.
+
+The proof follows the same §12 pattern. But the closing move
+is not §13 — it is §14, applying the given implication.
+
+**Proof plan**:
+1. §15 — assume §16 is in the left set (i.e., §17 holds)
+2. §18 — apply the implication to get §19
+warning: Game/Levels/SubsetWorld/L09_NonArithSubset.lean:31:0: No translation (en) found for: If p implies q pointwise, then the set defined by p is a subset of the set defined by q.
+warning: Game/Levels/SubsetWorld/L09_NonArithSubset.lean:48:0: No translation (en) found for: No §0! The closing move was §1 — applying a hypothesis.
+
+This level demonstrates the key insight: **subset proofs are about
+predicates**. The §2 pattern is universal, but the closing
+move depends on the relationship between the predicates:
+
+| Predicate type | Closing move |
+|---|---|
+| Arithmetic (§3, §4) | §5 |
+| Implication from hypothesis | §6 or §7 |
+| Vacuously true (§8) | §9 |
+| Trivially true (§10) | §11 |
+
+The proof pattern is always the same:
+1. §12 — enter the subset proof
+2. (optional) unwrap with §13/§14
+3. Close with whatever fits the specific predicates
+
+This table will keep growing as you encounter more types of predicates
+throughout the course.
+⚠ [509/519] Replayed Game.Levels.SubsetWorld.L10_ExtIntro
+warning: Game/Levels/SubsetWorld/L10_ExtIntro.lean:6:0: No translation (en) found for: Set Equality with ext
+warning: Game/Levels/SubsetWorld/L10_ExtIntro.lean:8:0: No translation (en) found for: # Extensionality: When Two Sets Are Equal
+
+Two sets are equal when they have exactly the same elements:
+
+§0
+
+This is the **Axiom of Extensionality** — one of the foundational
+axioms of set theory. It says that a set is nothing more than its
+elements: two sets with the same members are the same set, regardless
+of how they are described. The tactic §1
+converts a set equality goal into: for each §2, prove the membership
+biconditional §3.
+
+After §4, the goal becomes an §5. Use §6 to split it
+into two implications (forward and backward), then prove each direction.
+
+After §7, you will see the §8 (focus dot) for the first time.
+When Lean creates multiple subgoals, §9 **focuses** on one subgoal at
+a time. Write §10 to apply §11 to the current subgoal only.
+After that subgoal is closed, the next §12 picks up the next subgoal.
+Think of §13 as "now working on this case."
+
+**Your task**: Prove that §14.
+
+The conjunction §15 is equivalent to just §16 because
+§17 already implies §18. So the second condition is redundant.
+
+This level is longer than previous ones — the proof has several steps.
+Do not worry: each step is guided by hints, and the math is simple.
+The length comes from the proof structure, not from difficulty.
+
+**Proof plan**:
+1. §19 — reduce to membership biconditional
+2. §20 — split the §21 into two directions
+3. **Forward** (§22): given §23, extract §24
+4. **Backward** (§25): given §26, build §27
+warning: Game/Levels/SubsetWorld/L10_ExtIntro.lean:47:0: No translation (en) found for: A conjunction with a weaker condition is equivalent to the
+stronger condition alone.
+warning: Game/Levels/SubsetWorld/L10_ExtIntro.lean:101:0: No translation (en) found for: You proved your first set equality using §0! The structure was:
+
+§1
+
+**Why §2 works**: §3 applies the **extensionality** axiom for
+sets: two sets are equal if and only if they have the same elements.
+This converts a single equation into universally quantified membership
+equivalences — exactly the type of claim you can prove element by
+element.
+
+In ordinary math, this proof would read: "We show the sets are equal
+by double inclusion. If §4 and §5, then certainly §6.
+Conversely, if §7, then also §8 (since §9), so
+§10."
+
+**The §11 (focus dot)**: After §12 splits a goal into two
+subgoals, §13 focuses on one at a time. This keeps your proof
+organized — you handle one case completely before moving to the next.
+You will use §14 in nearly every proof that involves §15.
+
+**Dot projections on §16**: If §17, then §18 and
+§19. This is the quickest way to extract one component of a
+conjunction. The same §20/§21 pattern works on §22 (biconditionals)
+too — you will use it later to extract the forward and backward
+implications.
+
+**Destructuring §23**: When a hypothesis is a conjunction §24,
+you can write §25 to introduce and split it in one step,
+instead of §26 followed by §27. This
+shorthand will be especially useful in the next world when working
+with intersections (§28), which are defined as conjunctions.
+
+The §29 tactic is the primary tool for set equality proofs in Lean.
+You will use it frequently throughout this course.
+warning: Game/Levels/SubsetWorld/L10_ExtIntro.lean:143:0: No translation (en) found for: §0 applies the extensionality principle to convert a set
+equality §1 into a membership biconditional for each element.
+
+## Syntax
+§2
+
+## When to use it
+When the goal is §3 for two sets. After §4, you get
+the goal §5, which you split with §6 into
+two directions.
+
+## Example
+§7
+
+## Warning
+§8 works for sets, functions, and other extensional types. For
+sets, it always produces a membership §9. Do not confuse with
+§10 (which closes a goal with a proof term).
+warning: Game/Levels/SubsetWorld/L10_ExtIntro.lean:176:47: Missing Theorem Documentation: Set.Subset.antisymm
+Add `TheoremDoc Set.Subset.antisymm` somewhere above this statement.
+warning: Game/Levels/SubsetWorld/L10_ExtIntro.lean:176:67: Missing Theorem Documentation: le_antisymm
+Add `TheoremDoc le_antisymm` somewhere above this statement.
+info: Game/Levels/SubsetWorld/L10_ExtIntro.lean:176:79: Missing Theorem Documentation. Using existing docstring. Add HasSubset.Subset.antisymm
+Add `TheoremDoc HasSubset.Subset.antisymm` somewhere above this statement.
+warning: Game/Levels/SubsetWorld/L10_ExtIntro.lean:176:105: Missing Theorem Documentation: subset_antisymm
+Add `TheoremDoc subset_antisymm` somewhere above this statement.
+warning: Game/Levels/SubsetWorld/L10_ExtIntro.lean:176:121: Missing Theorem Documentation: Set.eq_of_subset_of_subset
+Add `TheoremDoc Set.eq_of_subset_of_subset` somewhere above this statement.
+info: Game/Levels/SubsetWorld/L10_ExtIntro.lean:176:148: Missing Theorem Documentation. Using existing docstring. Add LE.le.antisymm
+Add `TheoremDoc LE.le.antisymm` somewhere above this statement.
+warning: Game/Levels/SubsetWorld/L10_ExtIntro.lean:176:163: Missing Theorem Documentation: Set.ext_iff
+Add `TheoremDoc Set.ext_iff` somewhere above this statement.
+⚠ [510/519] Replayed Game.Levels.SubsetWorld.L11_ExtPractice
+warning: Game/Levels/SubsetWorld/L11_ExtPractice.lean:6:0: No translation (en) found for: Ext Practice
+warning: Game/Levels/SubsetWorld/L11_ExtPractice.lean:8:0: No translation (en) found for: # Practice: Another Set Equality
+
+The sets §0 and §1 contain exactly the
+same natural numbers: §2. Prove they are equal.
+
+Both directions require arithmetic reasoning: §3 for
+natural numbers. Unlike Level 10, neither direction is trivial — you
+will need §4 and §5 in both.
+
+**Proof plan**:
+1. §6 — reduce to membership §7
+2. §8 — split into two directions
+3. Each direction: §9, §10 to unwrap, §11 to unwrap
+   the goal, §12 to close
+warning: Game/Levels/SubsetWorld/L11_ExtPractice.lean:25:0: No translation (en) found for: The set of naturals at most 2 equals the set of naturals less than 3.
+warning: Game/Levels/SubsetWorld/L11_ExtPractice.lean:55:0: No translation (en) found for: Both directions followed the same pattern: unwrap hypothesis, unwrap
+goal, close with arithmetic. Call this the **unwrap-and-close** pattern:
+§0 to reveal the arithmetic, §1 to reveal the goal, then a
+closer like §2. This pattern will recur whenever set descriptions
+involve arithmetic predicates.
+
+Notice how symmetric the proof was — both directions used the same
+three-step structure. This symmetry is typical when the set descriptions
+are equivalent arithmetic conditions.
+
+In plain math: §3 if and only if §4 (for natural numbers).
+This is because §5 and §6 differ by exactly 1 on the integers,
+and there are no naturals between 2 and 3.
+warning: Game/Levels/SubsetWorld/L11_ExtPractice.lean:72:47: Missing Theorem Documentation: Set.Subset.antisymm
+Add `TheoremDoc Set.Subset.antisymm` somewhere above this statement.
+warning: Game/Levels/SubsetWorld/L11_ExtPractice.lean:72:67: Missing Theorem Documentation: le_antisymm
+Add `TheoremDoc le_antisymm` somewhere above this statement.
+info: Game/Levels/SubsetWorld/L11_ExtPractice.lean:72:79: Missing Theorem Documentation. Using existing docstring. Add HasSubset.Subset.antisymm
+Add `TheoremDoc HasSubset.Subset.antisymm` somewhere above this statement.
+warning: Game/Levels/SubsetWorld/L11_ExtPractice.lean:72:105: Missing Theorem Documentation: subset_antisymm
+Add `TheoremDoc subset_antisymm` somewhere above this statement.
+warning: Game/Levels/SubsetWorld/L11_ExtPractice.lean:72:121: Missing Theorem Documentation: Set.eq_of_subset_of_subset
+Add `TheoremDoc Set.eq_of_subset_of_subset` somewhere above this statement.
+info: Game/Levels/SubsetWorld/L11_ExtPractice.lean:72:148: Missing Theorem Documentation. Using existing docstring. Add LE.le.antisymm
+Add `TheoremDoc LE.le.antisymm` somewhere above this statement.
+warning: Game/Levels/SubsetWorld/L11_ExtPractice.lean:72:163: Missing Theorem Documentation: Set.ext_iff
+Add `TheoremDoc Set.ext_iff` somewhere above this statement.
+⚠ [511/519] Replayed Game.Levels.SubsetWorld.L12_SetNonEquality
+warning: Game/Levels/SubsetWorld/L12_SetNonEquality.lean:6:0: No translation (en) found for: Disproving Set Equality
+warning: Game/Levels/SubsetWorld/L12_SetNonEquality.lean:8:0: No translation (en) found for: # When Two Sets Are Not Equal
+
+In Levels 10–11, you proved set equalities using §0. But what if
+two sets are NOT equal? How do you prove §1?
+
+In Lean, §2 is defined as §3. So to prove
+§4, you use §5 to **assume** the sets are equal, getting
+§6, and then derive a contradiction (§7).
+
+The strategy mirrors Level 7 (disproving §8): **find a witness** that
+leads to contradiction. If §9, then every element of §10 is in §11
+and vice versa. Find an element that is in one set but not the other —
+then the assumption §12 forces a false arithmetic conclusion.
+
+In this level, you will prove §13. The
+witness is §14: it satisfies §15 (so §16 is in the right set) but
+not §17 (so §18 is not in the left set). If the sets were equal,
+§19 would have to be in both — contradiction.
+
+**Proof plan**:
+1. §20 — assume the sets are equal
+2. Prove §21 — show the witness is in the right set
+3. Use §22 to transport: if equal, §23
+4. Unwrap and derive contradiction — §24 is false
+warning: Game/Levels/SubsetWorld/L12_SetNonEquality.lean:35:0: No translation (en) found for: The set of numbers less than 3 is not equal to the set of
+numbers less than 5.
+warning: Game/Levels/SubsetWorld/L12_SetNonEquality.lean:68:0: No translation (en) found for: You proved your first set **non-equality**! The proof structure was:
+
+1. **Assume** the sets are equal (§0)
+2. **Exhibit** a witness element (3)
+3. **Transport** membership using the equality (§1)
+4. **Derive contradiction** from the impossible conclusion (§2)
+
+Compare this with Level 7 (disproving §3):
+
+| Goal | Assume | Witness | Contradiction from |
+|---|---|---|---|
+| §4 | §5 | element in §6 but not §7 | applying §8 to witness |
+| §9 | §10 | element in one but not other | rewriting with §11 |
+
+Both use the same strategy — assume and contradict — but the mechanism
+differs. For §12, you apply the subset hypothesis as a function. For
+§13, you rewrite with the equality hypothesis to transport membership.
+
+In ordinary math: "Suppose §14. Then
+§15 (since §16 and the sets are equal).
+But §17 is false. Contradiction."
+warning: Game/Levels/SubsetWorld/L12_SetNonEquality.lean:93:47: Missing Theorem Documentation: Set.ext_iff
+Add `TheoremDoc Set.ext_iff` somewhere above this statement.
+⚠ [512/519] Replayed Game.Levels.SubsetWorld.L13_Antisymm
+warning: Game/Levels/SubsetWorld/L13_Antisymm.lean:6:0: No translation (en) found for: Double Containment
+warning: Game/Levels/SubsetWorld/L13_Antisymm.lean:8:0: No translation (en) found for: # An Alternative Route to Set Equality
+
+In Levels 10–11, you proved set equalities using §0 — reducing to
+a membership biconditional and proving both directions.
+
+There is another route: **double containment** (also called
+**antisymmetry**). If §1 AND §2, then §3.
+
+The theorem §4 captures this:
+
+§5
+
+If you already have two subset proofs, you can combine them with
+§6 to get equality directly — no
+§7 needed.
+
+**Your task**: Given §8 and §9, prove §10.
+warning: Game/Levels/SubsetWorld/L13_Antisymm.lean:28:0: No translation (en) found for: Two sets that contain each other are equal.
+warning: Game/Levels/SubsetWorld/L13_Antisymm.lean:61:0: No translation (en) found for: §0 gives you a one-step path from two ⊆ proofs to
+set equality. Compare the two routes:
+
+| Route | When to use |
+|---|---|
+| §1 | When you need to prove both directions from scratch |
+| §2 | When you already have both ⊆ proofs in hand |
+
+In practice, many set equality proofs start with §3 because you
+rarely have the subset proofs pre-packaged. But §4 is
+valuable when subset facts are available from other lemmas or
+hypotheses.
+
+In ordinary math, this is the well-known principle: "two sets are
+equal iff each is a subset of the other." Every proof of set equality
+by "double inclusion" (showing ⊆ in both directions) is implicitly
+using antisymmetry.
+
+A **partial order** is a relation that satisfies three properties:
+1. **Reflexive**: §5 for all §6
+2. **Transitive**: §7 and §8 imply §9
+3. **Antisymmetric**: §10 and §11 imply §12
+
+You have now proved all three for §13 on §14:
+- **Reflexive**: §15 (Level 3)
+- **Transitive**: §16 (Level 8)
+- **Antisymmetric**: §17 (this level)
+
+Together, these make §18 a **partial order** on sets. The partial
+order concept is central to mathematics — you will study it in depth
+in the Orders \\& Lattices course.
+
+These two routes — §19 and §20 — are logically *equivalent*.
+You can derive §21 from §22 and §23 from §24. You
+will prove this equivalence yourself in Levels 15 and 16.
+warning: Game/Levels/SubsetWorld/L13_Antisymm.lean:99:0: No translation (en) found for: §0 proves that two sets are equal if each is
+a subset of the other.
+
+## Statement
+§1
+
+## Syntax
+§2
+
+## When to use it
+When you have (or can prove) both §3 and §4 and want to
+conclude §5. This is the \\"double containment\\" proof strategy.
+
+## Example
+§6
+warning: Game/Levels/SubsetWorld/L13_Antisymm.lean:128:0: No translation (en) found for: §0 proves §1 for any partial order.
+For sets, §2 is §3, so this is another way to prove set equality
+from mutual subsets. §4 is the set-specific version.
+info: Game/Levels/SubsetWorld/L13_Antisymm.lean:134:28: Missing Theorem Documentation. Using existing docstring. Add HasSubset.Subset.antisymm
+Add `TheoremDoc HasSubset.Subset.antisymm` somewhere above this statement.
+warning: Game/Levels/SubsetWorld/L13_Antisymm.lean:134:54: Missing Theorem Documentation: subset_antisymm
+Add `TheoremDoc subset_antisymm` somewhere above this statement.
+warning: Game/Levels/SubsetWorld/L13_Antisymm.lean:134:70: Missing Theorem Documentation: Set.eq_of_subset_of_subset
+Add `TheoremDoc Set.eq_of_subset_of_subset` somewhere above this statement.
+info: Game/Levels/SubsetWorld/L13_Antisymm.lean:134:97: Missing Theorem Documentation. Using existing docstring. Add LE.le.antisymm
+Add `TheoremDoc LE.le.antisymm` somewhere above this statement.
+⚠ [513/519] Replayed Game.Levels.SubsetWorld.L14_ProperSubset
+warning: Game/Levels/SubsetWorld/L14_ProperSubset.lean:6:0: No translation (en) found for: Proper Subsets
+warning: Game/Levels/SubsetWorld/L14_ProperSubset.lean:8:0: No translation (en) found for: # Strict Containment: The Proper Subset ⊂
+
+You have proved all three partial order axioms for §0 (reflexivity,
+transitivity, antisymmetry). Antisymmetry says: if §1 and
+§2, then §3. In other words, mutual containment forces
+equality.
+
+But what about **strict** containment — when one set is inside
+another but they are NOT equal? This is the **proper subset**
+relation, written §4.
+
+In Lean, §5 means §6 — §7 is contained in
+§8, and the containment is strict (there is something in §9 that is
+not in §10).
+
+To prove §11, use §12 to split into two goals:
+1. Prove §13 — a familiar subset proof
+2. Prove §14 — a familiar non-subset proof (Level 7)
+
+This level integrates two skills you have already mastered!
+
+**Proof plan**:
+1. §15 — split §16 into §17 and §18
+2. **First goal** (§19): prove the subset as in Level 1
+3. **Second goal** (§20): disprove the reverse as in Level 7
+warning: Game/Levels/SubsetWorld/L14_ProperSubset.lean:36:0: No translation (en) found for: The set of numbers less than 3 is a proper subset of the set
+of numbers less than 5.
+warning: Game/Levels/SubsetWorld/L14_ProperSubset.lean:77:0: No translation (en) found for: You proved your first **proper subset**! The structure was:
+
+1. §0 — split §1 into §2 and §3
+2. Prove the subset (Level 1 technique)
+3. Disprove the reverse (Level 7 technique)
+
+This is a satisfying integration: proper subset combines two skills
+you already know. The concept connects directly to antisymmetry —
+antisymmetry says mutual §4 implies §5, so proper subset is
+exactly the case where equality is ruled out because the reverse
+containment fails.
+
+| Relation | Meaning | Lean |
+|---|---|---|
+| §6 | §7 is contained in §8 (possibly equal) | §9 |
+| §10 | §11 is strictly contained in §12 | §13 |
+| §14 | §15 and §16 have the same elements | §17 |
+| §18 | §19 and §20 differ on some element | §21 |
+warning: Game/Levels/SubsetWorld/L14_ProperSubset.lean:99:47: Missing Theorem Documentation: Set.not_subset
+Add `TheoremDoc Set.not_subset` somewhere above this statement.
+⚠ [514/519] Replayed Game.Levels.SubsetWorld.L15_AntisymmFromExt
+warning: Game/Levels/SubsetWorld/L15_AntisymmFromExt.lean:6:0: No translation (en) found for: Deriving Antisymmetry from Extensionality
+warning: Game/Levels/SubsetWorld/L15_AntisymmFromExt.lean:8:0: No translation (en) found for: # Proving Antisymmetry Without §0
+
+In Level 13, you used §1 to combine two subset
+proofs into an equality. But you can also derive the same result
+using only §2 — proving that the two approaches are interchangeable.
+
+Given §3 and §4, prove §5 using §6
+and the subset hypotheses as functions. §7 is
+disabled for this level.
+
+**Proof plan**:
+1. §8 — reduce to a membership §9
+2. §10 — split the §11
+3. **Forward**: §12 — use §13 as a function
+4. **Backward**: §14 — use §15 as a function
+warning: Game/Levels/SubsetWorld/L15_AntisymmFromExt.lean:26:0: No translation (en) found for: Deriving set equality from mutual subsets using §0.
+warning: Game/Levels/SubsetWorld/L15_AntisymmFromExt.lean:48:0: No translation (en) found for: You just proved antisymmetry from extensionality! Compare the two proofs:
+
+**Using §0** (Level 13):
+§1
+
+**Using §2** (this level):
+§3
+
+The §4 proof is longer but reveals what is happening: subset
+hypotheses §5 and §6 serve as the forward and backward directions
+of the membership biconditional. This is why §7 in both directions
+implies §8 — it is precisely the data needed for §9 on every element.
+
+You have now shown one direction of the equivalence: that §10 can
+simulate §11. In the next level, you will prove the other
+direction — deriving extensionality from antisymmetry — completing the
+proof that the two approaches are interchangeable.
+
+Choose based on *convenience*: §12 when you have subset proofs
+in hand, §13 when you want to work element-by-element.
+warning: Game/Levels/SubsetWorld/L15_AntisymmFromExt.lean:78:16: Missing Theorem Documentation: Set.Subset.antisymm
+Add `TheoremDoc Set.Subset.antisymm` somewhere above this statement.
+warning: Game/Levels/SubsetWorld/L15_AntisymmFromExt.lean:78:36: Missing Theorem Documentation: le_antisymm
+Add `TheoremDoc le_antisymm` somewhere above this statement.
+info: Game/Levels/SubsetWorld/L15_AntisymmFromExt.lean:78:48: Missing Theorem Documentation. Using existing docstring. Add HasSubset.Subset.antisymm
+Add `TheoremDoc HasSubset.Subset.antisymm` somewhere above this statement.
+warning: Game/Levels/SubsetWorld/L15_AntisymmFromExt.lean:78:74: Missing Theorem Documentation: subset_antisymm
+Add `TheoremDoc subset_antisymm` somewhere above this statement.
+warning: Game/Levels/SubsetWorld/L15_AntisymmFromExt.lean:78:90: Missing Theorem Documentation: Set.eq_of_subset_of_subset
+Add `TheoremDoc Set.eq_of_subset_of_subset` somewhere above this statement.
+info: Game/Levels/SubsetWorld/L15_AntisymmFromExt.lean:78:117: Missing Theorem Documentation. Using existing docstring. Add LE.le.antisymm
+Add `TheoremDoc LE.le.antisymm` somewhere above this statement.
+⚠ [515/519] Replayed Game.Levels.SubsetWorld.L16_ExtFromAntisymm
+warning: Game/Levels/SubsetWorld/L16_ExtFromAntisymm.lean:6:0: No translation (en) found for: Deriving Extensionality from Antisymmetry
+warning: Game/Levels/SubsetWorld/L16_ExtFromAntisymm.lean:8:0: No translation (en) found for: # The Other Direction
+
+In Level 15, you derived antisymmetry from extensionality: given two
+subset proofs, you used §0 to prove equality without
+§1.
+
+Now prove the reverse direction: given a pointwise membership
+equivalence §2, prove §3 using
+§4 alone — without §5 (which is disabled).
+
+The key insight: an §6 contains two implications. If §7,
+then §8 is the forward direction §9 and §10 is the
+backward direction §11. So §12 gives §13 and
+§14 gives §15 — exactly the membership implications
+you need for two subset proofs.
+
+**Proof plan**:
+1. §16 — reduce to two subset goals
+2. **First subset** (§17): §18
+3. **Second subset** (§19): §20
+warning: Game/Levels/SubsetWorld/L16_ExtFromAntisymm.lean:31:0: No translation (en) found for: Set equality from pointwise membership equivalence, without ext.
+warning: Game/Levels/SubsetWorld/L16_ExtFromAntisymm.lean:54:0: No translation (en) found for: You have now proved both directions of the equivalence:
+
+| Level | Proved | Strategy |
+|---|---|---|
+| Level 15 | antisymm from ext | §0 decomposes §1 into §2, matching two ⊆ proofs |
+| This level | ext from antisymm | §3 decomposes into two ⊆ proofs, matching antisymm |
+
+**Decomposing §4**: The §5 and §6 projections on an §7 extract
+the two directions. If §8, then:
+- §9 (forward, also called §10)
+- §11 (backward, also called §12)
+
+This equivalence confirms that §13 and §14 are two faces of
+the same principle. Stated as a single theorem:
+
+**For sets §15 and §16, §17 if and only if §18.**
+
+The axiom of extensionality and the antisymmetry of §19 are logically
+interchangeable — use whichever is more convenient for the problem
+at hand.
+info: Game/Levels/SubsetWorld/L16_ExtFromAntisymm.lean:77:88: Missing Tactic Documentation. Using existing docstring. Add ext
+Add `TacticDoc ext` somewhere above this statement.
+warning: Game/Levels/SubsetWorld/L16_ExtFromAntisymm.lean:78:16: Missing Theorem Documentation: Set.ext_iff
+Add `TheoremDoc Set.ext_iff` somewhere above this statement.
+⚠ [516/519] Replayed Game.Levels.SubsetWorld.L17_Boss
+warning: Game/Levels/SubsetWorld/L17_Boss.lean:6:0: No translation (en) found for: Boss: Subset Chain
+warning: Game/Levels/SubsetWorld/L17_Boss.lean:8:0: No translation (en) found for: # Boss: Chaining Subsets to Prove Equality
+
+You have two sets §0 and §1 of natural numbers, with three
+hypotheses:
+- §2 — §3 is contained in §4
+- §5 — §6 is contained in the numbers at most 4
+- §7 — every number less than 5 is in §8
+
+Your task: prove §9.
+
+Think about what this means. The hypothesis §10 tells you that
+§11. And from §12 and §13, you can chain:
+§14. Since §15 is the same as §16 for
+natural numbers, this gives §17. Together with
+§18, you get equality by antisymmetry.
+
+This problem integrates the core skills of this world:
+- **§19 or §20** to prove equality
+- **§21** to prove subsets
+- **§22/§23** to unwrap set membership
+- **Chaining subset hypotheses** (transitivity from Level 8)
+- **§24** to bridge arithmetic facts
+
+There are multiple valid strategies. Choose your own path!
+warning: Game/Levels/SubsetWorld/L17_Boss.lean:35:0: No translation (en) found for: If s ⊆ t ⊆ {n | n ≤ 4} and every n < 5 is in s, then s = {n | n < 5}.
+warning: Game/Levels/SubsetWorld/L17_Boss.lean:127:0: No translation (en) found for: Congratulations — you have completed **Subset World**!
+
+Here is your toolkit:
+
+| Concept | Lean | Proof move |
+|---|---|---|
+| Subset §0 | §1 | §2 then show §3 |
+| Reflexivity §4 | identity | §5 |
+| §6 | vacuously true | §7 |
+| §8 | trivially true | §9 |
+| Transitivity | §10 | chain with §11 or function application |
+| Set equality via ext | §12 | §13 |
+| Set equality via antisymm | §14 | §15 |
+| Set non-equality §16 | §17 | assume equality, find contradictory witness |
+| Proper subset §18 | §19 | §20, then prove ⊆ and ¬⊆ |
+| Unwrap hypothesis | §21 | converts display to def-equal form |
+| Dot projection | §22, §23 | extract components of §24 or §25 |
+
+The §26 relation is a **partial order** on sets: it is reflexive
+(Level 3), transitive (Level 8), and antisymmetric (Level 13). The
+strict variant §27 (proper subset, Level 14) excludes equality.
+
+In the next world, you will learn about **set operations**: union (§28),
+intersection (§29), complement (§30), and difference (§31intro x hx` proof
+pattern you mastered here will be the foundation for every one of
+those proofs.
+⚠ [517/519] Replayed Game.Levels.SubsetWorld
+warning: Game/Levels/SubsetWorld.lean:20:0: No translation (en) found for: Subset World
+warning: Game/Levels/SubsetWorld.lean:22:0: No translation (en) found for: # Subset World
+
+In Set World, you learned that sets are predicates and membership is
+predicate evaluation. Now you will learn the two fundamental
+relationships between sets: **subset** (§0) and **equality** (§1).
+
+A **subset** proof §2 means: for every element, if it is in §3
+then it is in §4. The proof shape is always §5 — fix an
+element, assume it is in the smaller set, then show it is in the
+larger set.
+
+A **set equality** proof §6 means: the two sets have exactly the
+same elements. There are two routes:
+- **Extensionality** (§7): prove §8 directly
+- **Double containment** (§9): prove §10 and
+  §11 separately
+
+By the end of this world, you will:
+- Prove subset relations with the §12 pattern
+- Handle the boundary cases §13 and §14
+- Use subset hypotheses as functions
+- Disprove false subset claims by contradiction
+- Chain subset proofs transitively
+- Prove set equality via §15 (extensionality)
+- Prove set equality via §16 (double containment)
+- Prove set non-equality by finding a contradictory witness
+- Prove proper subset (§17) by combining §18 and §19
+- Use §20 to unwrap set notation on hypotheses
+
+You will also gain a new tactic (§21) and a new proof strategy
+(double containment) that you will use throughout the rest of this
+course.
+
+**New tools in this world**:
+- §22 — unwrap a hypothesis to a definitionally equal form
+- §23 — reduce set equality to element-wise membership
+- §24 — derive equality from mutual subsets
+⚠ [518/519] Replayed Game
+warning: Game.lean:6:0: No translation (en) found for: Functions & Relations
+warning: Game.lean:7:0: No translation (en) found for: # Functions & Relations
 
 Functions, Relations, Equivalences, and Encodability
 
 This course is under construction.
-info: Game.lean:18:0: i18n: file created at /home/ahart/Documents/autogame/lean-4-game-creator/functions_relations/.i18n/en/Game.pot
-Build completed successfully (501 jobs).
+info: Game.lean:21:0: i18n: file created at /home/ahart/Documents/autogame/lean-4-game-creator/functions_relations/.i18n/en/Game.pot
+Build completed successfully (519 jobs).
