@@ -20,6 +20,8 @@ import Mathlib.Data.Nat.Choose.Sum
 import Mathlib.Data.Nat.Choose.Vandermonde
 import Mathlib.Data.Finset.Powerset
 import Mathlib.Algebra.Group.Finsupp
+import Mathlib.Data.Matrix.Diagonal
+import Mathlib.Algebra.BigOperators.Fin
 
 /-- The binomial theorem for natural numbers, without Nat.cast coercion.
 
@@ -375,6 +377,20 @@ integer variable whose value is bounded by hypotheses.
 Disabled in early levels to force manual case analysis.
 -/
 TacticDoc interval_cases
+
+/-- `unfold` unfolds definitions in the goal.
+
+Disabled in levels where definitions are marked `irreducible` to
+prevent bypassing the intended proof structure.
+-/
+TacticDoc unfold
+
+/-- `delta` unfolds definitions by delta-reduction.
+
+Disabled in levels where definitions are marked `irreducible` to
+prevent bypassing the intended proof structure.
+-/
+TacticDoc delta
 
 /-- `Fin.forall_fin_two` states that a predicate holds for all
 elements of `Fin 2` if and only if it holds for `0` and `1`.

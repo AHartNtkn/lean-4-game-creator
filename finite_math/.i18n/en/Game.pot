@@ -56,6 +56,43 @@ msgstr ""
 msgid "Combine prod_mul_distrib and prod_const."
 msgstr ""
 
+#. §0: `Matrix.diagonal_apply_ne`
+#. §1: `i ≠ j → (diagonal d) i j = 0`
+#. §2: `0`
+#. §3: ```
+#. rw [Matrix.diagonal_apply_ne d h]     -- where h : i ≠ j
+#. exact Matrix.diagonal_apply_ne d h    -- close the goal directly
+#. exact Matrix.diagonal_apply_ne d (by omega)  -- inline proof
+#. ```
+#. §4: `(diagonal d) i j`
+#. §5: `i ≠ j`
+#. §6: `h : (0 : Fin 3) ≠ 2`
+#. §7: `rw [diagonal_apply_ne d h]`
+#. §8: `(diagonal d) 0 2 = 0`
+#. §9: `0 = 0`
+#. §10: `d`
+#. §11: `h`
+#: Game.Levels.Matrices.L09_DiagonalOffDiag
+msgid "§0 evaluates a diagonal matrix off the diagonal:\n"
+"\n"
+"§1\n"
+"\n"
+"When the row and column indices differ, the diagonal matrix returns §2.\n"
+"\n"
+"## Syntax\n"
+"§3\n"
+"\n"
+"## When to use it\n"
+"When the goal contains §4 where you know §5.\n"
+"\n"
+"## Example\n"
+"Given §6, the tactic §7\n"
+"turns §8 into §9.\n"
+"\n"
+"## Warning\n"
+"You must supply the function §10 and the inequality proof §11 explicitly."
+msgstr ""
+
 #. §0: `Nat.add_choose_eq m n k`
 #. §1: `(m + n).choose k = ∑ ij ∈ antidiagonal k, m.choose ij.1 * n.choose ij.2`
 #. §2: $m = n$
@@ -524,8 +561,21 @@ msgstr ""
 msgid "Evaluate using the unified §0 lemma."
 msgstr ""
 
+#. §0: `M i j = N i j`
+#. §1: `h`
+#. §2: `i`
+#. §3: `j`
+#: Game.Levels.Matrices.L04_MatrixExtensionality
+msgid "Now the goal is §0. The hypothesis §1 tells you\n"
+"exactly this for all §2 and §3."
+msgstr ""
+
 #: Game.Levels.MeetFin.L08_TransferringBounds
 msgid "Transferring Bounds"
+msgstr ""
+
+#: Game.Levels.Matrices.L11_DiagDiagonalCounterexample
+msgid "Round-tripping through diag then diagonal loses off-diagonal information."
 msgstr ""
 
 #. §0: `hnt : x ∉ t`
@@ -1377,6 +1427,13 @@ msgstr ""
 #: Game.Levels.Products.L21_Boss
 msgid "Prove product membership, compute sigma cardinality, and compute\n"
 "self-product cardinality via decomposition."
+msgstr ""
+
+#. §0: `2`
+#. §1: `1`
+#: Game.Levels.Matrices.L14_TransposeDiagonalEntries
+msgid "Now you have an off-diagonal entry of a diagonal matrix.\n"
+"The indices §0 and §1 are different."
 msgstr ""
 
 #. §0: `induction n`
@@ -2261,6 +2318,13 @@ msgstr ""
 #: Game.Levels.FinsetOperations.L24_DualDistributivity
 msgid "You have §0 and §1.\n"
 "Use §2 and choose §3 for both parts."
+msgstr ""
+
+#. §0: `Finset.univ`
+#. §1: `Finset.sum_congr rfl`
+#: Game.Levels.Matrices.L16_TraceLinearity
+msgid "Now both sides are sums over §0. Use\n"
+"§1 to reduce to showing each summand is equal."
 msgstr ""
 
 #. §0: `prod_empty`
@@ -3469,6 +3533,10 @@ msgid "One step: §0.\n"
 "shows you the cubic case."
 msgstr ""
 
+#: Game.Levels.Matrices.L09_DiagonalOffDiag
+msgid "Read an off-diagonal entry of a diagonal matrix."
+msgstr ""
+
 #. §0: `rw [Finset.mem_insert, Finset.mem_singleton] at h`
 #. §1: `h : 1 = 2 ∨ 1 = 4`
 #. §2: `omega`
@@ -3598,6 +3666,10 @@ msgstr ""
 msgid "A finset with 5 elements is nonempty."
 msgstr ""
 
+#: Game.Levels.Matrices.L04_MatrixExtensionality
+msgid "Matrix Extensionality"
+msgstr ""
+
 #. §0: `α`
 #. §1: `Fin 5 × Bool`
 #. §2: `P`
@@ -3702,6 +3774,44 @@ msgstr ""
 #: Game.Levels.FinsetOperations.L03_SetDifference
 msgid "Prove non-membership in the second set. Use §0 to\n"
 "assume membership, then derive a contradiction."
+msgstr ""
+
+#. §0: `diagonal d + N`
+#. §1: `ext i j`
+#. §2: `transpose_apply`
+#. §3: `add_apply`
+#. §4: `eq_or_ne i j`
+#. §5: `h.symm`
+#. §6: `h.symm`
+#: Game.Levels.Matrices.L20_Boss
+msgid "You proved that the transpose distributes over §0 in\n"
+"a way that leaves the diagonal part unchanged. The proof required\n"
+"genuine integration of five tools:\n"
+"\n"
+"1. **§1** — reduced matrix equality to entry equality\n"
+"2. **§2** and **§3** — simplified both sides\n"
+"   to raw entries via the peel strategy\n"
+"3. **§4** — split into diagonal vs. off-diagonal cases,\n"
+"   because the diagonal part behaves differently\n"
+"4. **§5** — flipped the inequality direction to match the\n"
+"   swapped indices left over from the transpose\n"
+"\n"
+"No tool worked in isolation. The transpose created swapped indices\n"
+"that required the case split; the case split needed §6 because\n"
+"of the specific index order left by the transpose. This is the kind\n"
+"of reasoning you will do constantly in matrix proofs: reduce to entries,\n"
+"handle the diagonal and off-diagonal cases separately, and track\n"
+"how operations rearrange the indices.\n"
+"\n"
+"**The big picture**: Matrices in Lean are functions. All matrix reasoning\n"
+"reduces to function reasoning — accessing entries, proving entry-wise\n"
+"equality, and tracking how operations (transpose, diagonal, addition)\n"
+"affect individual entries. There is no magic; every matrix fact is a\n"
+"statement about indices.\n"
+"\n"
+"The entry-wise reasoning and big-operator skills from this world will\n"
+"reappear in the counting and capstone worlds, where matrices over finite\n"
+"index types connect to combinatorial identities and enumeration problems."
 msgstr ""
 
 #. §0: `sum_congr`
@@ -4157,6 +4267,16 @@ msgid "Now §0. Construct the §1 element using\n"
 "the anonymous constructor: §2."
 msgstr ""
 
+#. §0: `![![3, 1], ![0, 7]]`
+#. §1: `1`
+#. §2: `0`
+#. §3: `rfl`
+#: Game.Levels.Matrices.L02_ConcreteMatrixEntries
+msgid "The matrix wrapper is gone. Lean now sees the concrete\n"
+"function §0 applied to indices §1 and §2.\n"
+"Both sides are equal by computation — use §3."
+msgstr ""
+
 #. §0: `Fin`
 #. §1: `Fin n`
 #. §2: `Fin n → α`
@@ -4272,6 +4392,55 @@ msgstr ""
 msgid "The goal is now a concrete arithmetic inequality."
 msgstr ""
 
+#. §0: `ext i`
+#. §1: `diag_apply`
+#. §2: `diag`
+#. §3: `M i i`
+#. §4: `diagonal_apply_eq`
+#. §5: `rw [Matrix.diag_apply, Matrix.diagonal_apply_eq]`
+#. §6: `diag`
+#. §7: `diagonal`
+#. §8: `diag (diagonal d) = d`
+#. §9: `diagonal (diag M) = M`
+#. §10: `diagonal (diag M)`
+#. §11: `M`
+#. §12: `M`
+#. §13: `diag`
+#. §14: `diagonal`
+#. §15: `diag`
+#. §16: `diagonal`
+#. §17: `diag M`
+#. §18: `∑ i, diag M i`
+#. §19: `M`
+#. §20: `diag (diagonal d) = d`
+#: Game.Levels.Matrices.L10_DiagOfDiagonal
+msgid "The proof combined three moves:\n"
+"\n"
+"1. §0 — reduced function equality to pointwise equality\n"
+"2. §1 — unfolded §2 to raw entry access §3\n"
+"3. §4 — evaluated the diagonal matrix on the diagonal\n"
+"\n"
+"Steps 2 and 3 are a natural chained rewrite:\n"
+"§5 peels both layers\n"
+"in one tactic call.\n"
+"\n"
+"This is a mini-integration: §6 and §7 are inverse\n"
+"operations on the diagonal values. Building a diagonal matrix and\n"
+"reading its diagonal gives back the original function.\n"
+"\n"
+"**Important**: This result goes in ONE direction only: §8.\n"
+"The reverse — §9 — is NOT true in general.\n"
+"§10 keeps only the diagonal entries of §11 and sets\n"
+"everything else to zero. If §12 has any nonzero off-diagonal entries,\n"
+"they are lost. So §13 and §14 are not full inverses; §15\n"
+"is a left inverse of §16, but not a right inverse.\n"
+"\n"
+"In linear algebra, §17 feeds directly into §18\n"
+"(the **trace** of §19), connecting diagonal extraction to the\n"
+"big-operator machinery from earlier worlds. The relationship\n"
+"§20 is the starting point for these applications."
+msgstr ""
+
 #. §0: $\\prod_{i=0}^{n-1} 2 = 2^n$
 #. §1: `sum_range_zero`
 #. §2: `prod_range_zero`
@@ -4351,6 +4520,20 @@ msgstr ""
 
 #: Game.Levels.PsetFin.L10_ModularEquality
 msgid "Modular Equality"
+msgstr ""
+
+#. §0: `h : i ≠ j`
+#. §1: `0`
+#. §2: `diagonal_apply_ne`
+#. §3: `h.symm`
+#. §4: `j ≠ i`
+#. §5: `h`
+#. §6: `i ≠ j`
+#: Game.Levels.Matrices.L18_DiagonalTransposeEquality
+msgid "You have §0. Both sides are off-diagonal entries,\n"
+"so both equal §1. Use §2 twice — once with\n"
+"§3 (for §4) on the left side, and once with §5\n"
+"(for §6) on the right side."
 msgstr ""
 
 #. §0: `apply Nat.choose_eq_zero_of_lt`
@@ -4894,6 +5077,49 @@ msgid "§0\n"
 "then inside: §1"
 msgstr ""
 
+#. §0: $$M : \\text{Fin}\\ m \\to \\text{Fin}\\ n \\to \\alpha$$
+#. §1: `Matrix (Fin m) (Fin n) α`
+#. §2: `Fin m → Fin n → α`
+#. §3: `Fin 2 → Fin 3 → ℤ`
+#. §4: `Matrix.of`
+#. §5: ```
+#. Matrix.of f    -- wraps a function f : m → n → α as a matrix
+#. ```
+#. §6: `Matrix.of_apply`
+#. §7: ```
+#. Matrix.of_apply : Matrix.of f i j = f i j
+#. ```
+#. §8: `(i, j)`
+#. §9: `f`
+#. §10: `f`
+#. §11: `i`
+#. §12: `j`
+#: Game.Levels.Matrices.L01_MatricesAreFunctions
+msgid "# What is a Matrix?\n"
+"\n"
+"In Lean, a matrix is nothing more than a **function of two indices**:\n"
+"\n"
+"§0\n"
+"\n"
+"The type §1 is literally defined as\n"
+"§2. A 2×3 matrix of integers is a function\n"
+"§3.\n"
+"\n"
+"To build a matrix from a function, use §4:\n"
+"\n"
+"§5\n"
+"\n"
+"To read an entry, use §6:\n"
+"\n"
+"§7\n"
+"\n"
+"This says: accessing entry §8 of the matrix built from §9 is the\n"
+"same as applying §10 to §11 and §12. Matrices are functions — nothing\n"
+"is hidden.\n"
+"\n"
+"**Your task**: Build a matrix from a function and read off one of its entries."
+msgstr ""
+
 #. §0: `(Finset.range k).card`
 #. §1: `k`
 #. §2: `Finset.card_range`
@@ -5218,6 +5444,29 @@ msgid "# Practice: Complement Counting + Products\n"
 "then substitute the known values."
 msgstr ""
 
+#. §0: `rw [Matrix.transpose_apply]`
+#. §1: $$M^{TT}\\,i\\,j \\xrightarrow{\\text{transpose\\_apply}} M^T\\,j\\,i \\xrightarrow{\\text{transpose\\_apply}} M\\,i\\,j$$
+#. §2: `f (f x) = x`
+#. §3: `Mᵀᵀ`
+#. §4: `rw`
+#: Game.Levels.Matrices.L05_DoubleTranspose
+msgid "Each §0 peeled off one layer of transpose:\n"
+"\n"
+"§1\n"
+"\n"
+"Swapping twice restores the original order. This is a general fact\n"
+"about involutions: any function that is its own inverse satisfies\n"
+"§2.\n"
+"\n"
+"**The 'peel' strategy**: This proof introduced a pattern you will use\n"
+"repeatedly in this world. When you have nested matrix operations\n"
+"(like §3), rewrite with the **outermost** operation's lemma first\n"
+"to simplify the outer layer, then rewrite again to handle the next\n"
+"layer. Each §4 peels off one operation. You will see this same\n"
+"layer-by-layer simplification when combining transpose with diagonal\n"
+"matrices later."
+msgstr ""
+
 #. §0: `Finset.mem_diag`
 #. §1: `s.diag`
 #. §2: `x ∈ s.diag ↔ x.1 ∈ s ∧ x.1 = x.2`
@@ -5275,6 +5524,10 @@ msgstr ""
 msgid "Good — the goal is now\n"
 "§0.\n"
 "Use §1 to simplify §2."
+msgstr ""
+
+#: Game.Levels.Matrices.L08_DiagonalOnDiag
+msgid "Read an on-diagonal entry of a diagonal matrix."
 msgstr ""
 
 #. §0: `g circ f = ![g (f 0), g (f 1)]`
@@ -5603,6 +5856,31 @@ msgid "# Constant Products: ∏ c = c ^ card\n"
 "simplify the constant part with §14."
 msgstr ""
 
+#. §0: `tr(diagonal d) = 3 + 0 + 7 = 10`
+#. §1: `Fin.sum_univ_three`
+#. §2: `Fin 3`
+#. §3: `f 0 + f 1 + f 2`
+#. §4: `Fin.sum_univ_three`
+#. §5: `diag_apply`
+#. §6: `diagonal_apply_eq`
+#: Game.Levels.Matrices.L13_ConcreteTrace
+msgid "You computed a trace with actual numbers: §0.\n"
+"\n"
+"The key new tool was §1, which converts an abstract\n"
+"sum over §2 into an explicit expression §3. This\n"
+"is the bridge between the summation machinery and concrete computation.\n"
+"\n"
+"The full pipeline was:\n"
+"1. §4 — expand the sum into three terms\n"
+"2. §5 + §6 — evaluate each summand\n"
+"3. Substitute known values and compute\n"
+"\n"
+"In practice, the trace of a matrix is how you compute important\n"
+"quantities: the trace of a projection gives its rank, the trace of a\n"
+"density matrix gives a probability, and the trace of the identity gives\n"
+"the dimension of the space."
+msgstr ""
+
 #. §0: `Finsupp.mem_support_iff`
 #. §1: `Finsupp.mem_support_iff : a ∈ f.support ↔ f a ≠ 0`
 #. §2: ```
@@ -5657,6 +5935,28 @@ msgid "The goal is §0.\n"
 "with §4, then §5 handles the subtraction arithmetic."
 msgstr ""
 
+#. §0: `diag_apply`
+#. §1: `diag`
+#. §2: `transpose_apply`
+#. §3: $M^T_{ii} = M_{ii}$
+#. §4: `tr(A + B) = tr(A) + tr(B)`
+#. §5: `tr(AB) = tr(BA)`
+#. §6: `sum_congr rfl`
+#: Game.Levels.Matrices.L15_TraceOfTranspose
+msgid "The proof was short: §0 unfolded both §1 applications\n"
+"to raw entries, and §2 showed that §3.\n"
+"\n"
+"This is a fundamental property of the trace. Together with linearity\n"
+"(§4) and the cyclic property\n"
+"(§5), transpose-invariance is one of the three\n"
+"defining features that make the trace useful throughout linear algebra.\n"
+"\n"
+"The proof technique — §6 to reduce a sum equality to\n"
+"pointwise equality of summands — is the same one you used in Level 12.\n"
+"It works whenever two sums range over the same finset and you want\n"
+"to show corresponding terms are equal."
+msgstr ""
+
 #. §0: `ha : 3 ∈ s`
 #. §1: `hb : 7 ∈ t`
 #. §2: `Finset.mk_mem_product`
@@ -5672,6 +5972,10 @@ msgstr ""
 #: Game.Levels.PsetCombinatorics.L03_WeightedRowSum
 msgid "Now §0 says §1.\n"
 "The goal is §2. Flip §3 and close."
+msgstr ""
+
+#: Game.Levels.Matrices.L17_DiagonalAddition
+msgid "The sum of two diagonal matrices is the diagonal of the sum."
 msgstr ""
 
 #. §0: `t ⊆ s`
@@ -5727,6 +6031,10 @@ msgstr ""
 
 #: Game.Levels.CountingTypes.L08_CountingInjections
 msgid "There are 20 injections from Fin 2 to Fin 5."
+msgstr ""
+
+#: Game.Levels.Matrices.L08_DiagonalOnDiag
+msgid "Diagonal Matrix: On-Diagonal Entry"
 msgstr ""
 
 #: Game.Levels.Cardinality.L23_GeneralPigeonhole
@@ -5942,6 +6250,10 @@ msgstr ""
 msgid "§0 states that §1.\n"
 "\n"
 "The last element of a snoc'd tuple is the appended element."
+msgstr ""
+
+#: Game.Levels.Matrices.L10_DiagOfDiagonal
+msgid "Extracting the Diagonal"
 msgstr ""
 
 #: Game.Levels.CountingTypes.L10_TheGap
@@ -6290,6 +6602,10 @@ msgid "The goal is §0. You have §1.\n"
 "Use §2 to close it."
 msgstr ""
 
+#: Game.Levels.Matrices.L07_TransposeAddition
+msgid "Transpose Distributes Over Addition"
+msgstr ""
+
 #. §0: `rw [Finset.card_insert_of_notMem h2]`
 #: Game.Levels.Cardinality.L08_ConcreteCardinality
 msgid "Peel the next layer: §0."
@@ -6392,6 +6708,31 @@ msgstr ""
 
 #: GameServer.RpcHandlers
 msgid "level completed! 🎉"
+msgstr ""
+
+#. §0: `eq_or_ne a b`
+#. §1: `a = b ∨ a ≠ b`
+#. §2: `obtain`
+#. §3: ```
+#. obtain rfl | h := eq_or_ne i j
+#. ```
+#. §4: `rfl`
+#. §5: `j`
+#. §6: `i`
+#. §7: `h`
+#. §8: `h : i ≠ j`
+#: Game.Levels.Matrices.L17_DiagonalAddition
+msgid "§0 produces a proof of §1.\n"
+"\n"
+"Use with §2 to split into cases:\n"
+"§3\n"
+"- In the §4 case, §5 is replaced by §6 everywhere.\n"
+"- In the §7 case, you have §8.\n"
+"\n"
+"## When to use it\n"
+"When a proof requires different reasoning depending on whether two\n"
+"values are equal or not — especially for diagonal vs. off-diagonal\n"
+"entries in matrix proofs."
 msgstr ""
 
 #: Game.Levels.Powerset.L27_Boss
@@ -6767,6 +7108,43 @@ msgstr ""
 #. §0: `rw [Fintype.card_fun]`
 #: Game.Levels.Fintype.L14_ConcreteComputation
 msgid "Start by decomposing the function type: §0."
+msgstr ""
+
+#. §0: `diagonal (diag M)`
+#. §1: `M`
+#. §2: `(0, 1)`
+#. §3: `diagonal (diag M) 0 1 = 0`
+#. §4: `M 0 1 = 1`
+#. §5: `diagonal ∘ diag`
+#. §6: `diag ∘ diagonal = id`
+#. §7: `(diagonal, diag)`
+#. §8: `diag`
+#. §9: `diagonal`
+#. §10: `diag (diagonal d) = d`
+#. §11: `diag`
+#. §12: `diagonal`
+#. §13: `diagonal (diag M) ≠ M`
+#. §14: `diagonal`
+#. §15: `diag`
+#: Game.Levels.Matrices.L11_DiagDiagonalCounterexample
+msgid "You proved that §0 and §1 differ at entry §2:\n"
+"- §3 — the round-trip zeroed out the off-diagonal\n"
+"- §4 — but the original entry was nonzero\n"
+"\n"
+"This means §5 is NOT the identity function on matrices.\n"
+"It is a **projection**: it keeps the diagonal and discards everything else.\n"
+"\n"
+"Contrast this with Level 10, where you proved §6.\n"
+"The pair §7 satisfies:\n"
+"- §8 is a **left inverse** of §9: §10\n"
+"- §11 is NOT a **right inverse** of §12: §13\n"
+"  in general\n"
+"\n"
+"This asymmetry is a fundamental pattern: a function can have a left\n"
+"inverse without having a right inverse. It happens whenever the function\n"
+"is injective but not surjective — §14 embeds the space of\n"
+"diagonal functions into the larger space of all matrices, and §15\n"
+"retracts back, but the retraction loses the off-diagonal information."
 msgstr ""
 
 #. §0: `![1, 2, 0]`
@@ -7620,6 +7998,14 @@ msgstr ""
 msgid "Swapping the first two elements gives a permutation."
 msgstr ""
 
+#. §0: `rw [Matrix.of_apply]`
+#. §1: `show (2 : ℤ) ≠ 0`
+#. §2: `omega`
+#: Game.Levels.Matrices.L19_SymmetricCounterexample
+msgid "Try §0 then\n"
+"§1 then §2."
+msgstr ""
+
 #. §0: `rfl`
 #: Game.Levels.PsetCombinatorics.L09_ConcreteVerification
 msgid "Both sides reduce to 30. Try §0."
@@ -7853,6 +8239,17 @@ msgid "The goal is now §0. Use §1 to substitute\n"
 "the known cardinality, then §2 closes the goal."
 msgstr ""
 
+#. §0: `Matrix.diag_diagonal`
+#. §1: `diag (diagonal d) = d`
+#. §2: `ext`
+#. §3: `diag_apply`
+#. §4: `diagonal_apply_eq`
+#: Game.Levels.Matrices.Imports
+msgid "§0 proves §1 directly.\n"
+"Disabled so you prove it yourself using §2, §3, and\n"
+"§4."
+msgstr ""
+
 #. §0: `Fin n -> alpha`
 #. §1: `ext`
 #. §2: `\\sum`
@@ -8031,6 +8428,10 @@ msgid "Inside the §0, use §1 to assume\n"
 "In the left branch: §4. In the right: §5."
 msgstr ""
 
+#: Game.Levels.Matrices.L06_MatrixAddition
+msgid "Entry-wise addition of matrices."
+msgstr ""
+
 #. §0: `prod_congr rfl`
 #. §1: `prod_insert h`
 #. §2: `prod_singleton`
@@ -8087,6 +8488,14 @@ msgstr ""
 msgid "**Step 2 — Apply IH**: The induction hypothesis §0 tells\n"
 "you that §1.\n"
 "Use §2 to substitute."
+msgstr ""
+
+#. §0: `ext i j`
+#: Game.Levels.Matrices.L05_DoubleTranspose
+#: Game.Levels.Matrices.L07_TransposeAddition
+#: Game.Levels.Matrices.L17_DiagonalAddition
+#: Game.Levels.Matrices.L18_DiagonalTransposeEquality
+msgid "You need to prove two matrices are equal. Start with §0."
 msgstr ""
 
 #: Game.Levels.BinomialTheorem.L14_ConcreteAlternatingSum
@@ -8228,6 +8637,12 @@ msgid "§0 proves that\n"
 "Under injectivity, image distributes over intersection.\n"
 "\n"
 "Disabled to force manual proof combining extraction and injectivity."
+msgstr ""
+
+#. §0: `h : 0 ≠ 2`
+#. §1: `diagonal_apply_ne`
+#: Game.Levels.Matrices.L09_DiagonalOffDiag
+msgid "Now you have §0. Use it with §1."
 msgstr ""
 
 #. §0: `and_comm`
@@ -8782,6 +9197,55 @@ msgid "Use §0 to split the goal.\n"
 "introduces §3, then §4."
 msgstr ""
 
+#. §0: `ext i j`
+#. §1: `Matrix.transpose_apply`
+#. §2: `Mᵀ i j = M j i`
+#. §3: `Matrix.add_apply`
+#. §4: `(M + N) i j = M i j + N i j`
+#. §5: `Matrix.diagonal_apply_eq`
+#. §6: `(diagonal d) i i = d i`
+#. §7: `Matrix.diagonal_apply_ne`
+#. §8: `i != j -> (diagonal d) i j = 0`
+#. §9: `eq_or_ne i j`
+#. §10: `i = j`
+#. §11: `i != j`
+#. §12: `h.symm`
+#. §13: `i != j`
+#. §14: `j != i`
+#. §15: $$(\\text{diagonal}\\,d + N)^T = \\text{diagonal}\\,d + N^T$$
+#. §16: `diagonal d`
+#. §17: `N`
+#. §18: `diagonal d`
+#. §19: `N`
+#: Game.Levels.Matrices.L20_Boss
+msgid "# Boss: Transpose of a Shifted Diagonal\n"
+"\n"
+"You have a complete matrix toolkit:\n"
+"\n"
+"| Tool | What it does |\n"
+"|------|-------------|\n"
+"| §0 | proves matrix equality entry-wise |\n"
+"| §1 | swaps indices: §2 |\n"
+"| §3 | splits a sum: §4 |\n"
+"| §5 | on-diagonal: §6 |\n"
+"| §7 | off-diagonal: §8 |\n"
+"| §9 | case split: §10 or §11 |\n"
+"| §12 | flips §13 to §14 |\n"
+"\n"
+"Now prove a single result that requires all these tools to interact:\n"
+"\n"
+"§15\n"
+"\n"
+"Adding a diagonal matrix §16 to an arbitrary matrix §17\n"
+"and then transposing is the same as adding §18 to the\n"
+"transpose of §19. The diagonal part is symmetric (does not change\n"
+"under transpose), while the arbitrary part transposes normally.\n"
+"\n"
+"This requires planning: you must reduce both sides to entries,\n"
+"then handle the diagonal part (which needs a case split) and\n"
+"the arbitrary part (which does not) in a single coordinated proof."
+msgstr ""
+
 #. §0: $$|s| = \\sum_{x \\in s} 1$$
 #. §1: `card_insert`
 #. §2: `card_singleton`
@@ -8829,6 +9293,50 @@ msgstr ""
 msgid "Simplify the §0 values:\n"
 "§1.\n"
 "This gives §2."
+msgstr ""
+
+#. §0: `diagonal d`
+#. §1: `∑ i, d i`
+#. §2: `Finset.sum_congr rfl`
+#. §3: `d`
+#. §4: `d 0 = 3`
+#. §5: `d 1 = 0`
+#. §6: `d 2 = 7`
+#. §7: `diagonal d`
+#. §8: `3 + 0 + 7 = 10`
+#. §9: `Fin.sum_univ_three`
+#. §10: `Fin 3`
+#. §11: ```
+#. Fin.sum_univ_three : ∑ i : Fin 3, f i = f 0 + f 1 + f 2
+#. ```
+#. §12: `∑`
+#. §13: `diag_apply`
+#. §14: `diagonal_apply_eq`
+#. §15: `ring`
+#: Game.Levels.Matrices.L13_ConcreteTrace
+msgid "# Trace of a Concrete Matrix\n"
+"\n"
+"In Level 12, you proved that the trace of §0 equals §1\n"
+"using §2 and entry-level rewrites. That was a\n"
+"symbolic result — you showed two sums are equal without computing a\n"
+"number.\n"
+"\n"
+"Now you will compute a trace with **actual numbers**.\n"
+"\n"
+"Given a diagonal function §3 with known values §4, §5,\n"
+"§6, the trace of §7 should be §8.\n"
+"\n"
+"**New tool: §9**\n"
+"\n"
+"To evaluate a sum over §10 to a concrete expression, use:\n"
+"\n"
+"§11\n"
+"\n"
+"This converts the abstract §12 into an explicit sum of three terms.\n"
+"After that, you can use §13 and §14 to\n"
+"evaluate each term, and §15 to close the arithmetic.\n"
+"\n"
+"**Your task**: Compute the trace of a diagonal matrix with known values."
 msgstr ""
 
 #: Game.Levels.Powerset.L01_EmptyInPowerset
@@ -9054,6 +9562,25 @@ msgid "# Row Sum: §0\n"
 "them for the first time into a complete derivation."
 msgstr ""
 
+#. §0: `rw [h0, h1, h2]`
+#. §1: `3 + 0 + 7 = 10`
+#. §2: `ring`
+#: Game.Levels.Matrices.L13_ConcreteTrace
+msgid "Try §0. The goal becomes\n"
+"§1. Close with §2."
+msgstr ""
+
+#. §0: `(diagonal d) i j + (diagonal e) i j = (diagonal (d + e)) i j`
+#. §1: `i = j`
+#. §2: `i != j`
+#. §3: `eq_or_ne`
+#: Game.Levels.Matrices.L17_DiagonalAddition
+msgid "The goal is now\n"
+"§0.\n"
+"The value depends on whether §1 (diagonal) or §2\n"
+"(off-diagonal). Split into cases with §3."
+msgstr ""
+
 #: Game.Levels.AbstractionLadder.L02_ListsAreOrdered
 msgid "Lists Are Ordered"
 msgstr ""
@@ -9265,6 +9792,19 @@ msgid "# Rewriting Hypotheses with §0\n"
 "\n"
 "Strategy: use §13 to extract the value equality,\n"
 "then §14 can combine §15 and §16 to close the goal."
+msgstr ""
+
+#. §0: `rw [Matrix.of_apply]`
+#. §1: `![![1, 2], ![2, 3]] 0 1`
+#. §2: `2`
+#. §3: `(2 : ℤ) ≠ 0`
+#. §4: `show (2 : ℤ) ≠ 0`
+#. §5: `omega`
+#: Game.Levels.Matrices.L19_SymmetricCounterexample
+msgid "After §0, the vector notation\n"
+"§1 evaluates to §2. The goal becomes\n"
+"§3. Use §4 to make this explicit,\n"
+"then §5 closes it."
 msgstr ""
 
 #: Game.Levels.BinomialTheorem.L06_FlippingEquations
@@ -9662,6 +10202,17 @@ msgid "The exponentiation principle for types:\n"
 "| Multiplication | §4 | §5 |\n"
 "| Addition | §6 | §7 |\n"
 "| Exponentiation | §8 | §9 |"
+msgstr ""
+
+#. §0: `Matrix.diagonal_apply`
+#. §1: `(diagonal d) i j = if i = j then d i else 0`
+#. §2: `diagonal_apply_eq`
+#. §3: `diagonal_apply_ne`
+#: Game.Levels.Matrices.Imports
+msgid "§0 gives the if-then-else form:\n"
+"§1.\n"
+"Disabled so you use the more explicit §2 and\n"
+"§3 lemmas instead."
 msgstr ""
 
 #. §0: `hle : t.card ≤ s.card`
@@ -11168,6 +11719,40 @@ msgid "# Extensionality for Functions\n"
 "**Your task**: Prove §13 given that they agree on every input."
 msgstr ""
 
+#. §0: `Matrix.ext_iff`
+#. §1: `M = N ↔ ∀ i j, M i j = N i j`
+#. §2: ```
+#. ext i j    -- introduces i and j, changes goal from M = N to M i j = N i j
+#. ```
+#. §3: ```
+#. Matrix.ext (fun i j => ...)    -- build proof from entry-wise proof
+#. ```
+#. §4: `M = N`
+#. §5: `M`
+#. §6: `N`
+#. §7: `ext i j`
+#. §8: `Mᵀᵀ = M`
+#. §9: `Mᵀᵀ i j = M i j`
+#: Game.Levels.Matrices.L04_MatrixExtensionality
+msgid "§0 characterizes matrix equality:\n"
+"\n"
+"§1\n"
+"\n"
+"Two matrices are equal exactly when they agree at every entry.\n"
+"\n"
+"## Syntax (tactic form)\n"
+"§2\n"
+"\n"
+"## Syntax (term form)\n"
+"§3\n"
+"\n"
+"## When to use it\n"
+"When the goal is §4 for two matrices §5 and §6.\n"
+"\n"
+"## Example\n"
+"After §7, the goal §8 becomes §9."
+msgstr ""
+
 #. §0: `Fin 0`
 #: Game.Levels.MeetFin.L13_EmptyType
 msgid "An element of §0 leads to a contradiction."
@@ -11386,6 +11971,15 @@ msgid "Two steps: §0 then §1.\n"
 "structure."
 msgstr ""
 
+#. §0: `Mᵀᵀ i j = M i j`
+#. §1: `Mᵀᵀ i j = Mᵀ j i`
+#. §2: `Matrix.transpose_apply`
+#: Game.Levels.Matrices.L05_DoubleTranspose
+msgid "The goal is §0. The outer transpose swaps the\n"
+"indices: §1. Rewrite with §2\n"
+"to peel off the outer transpose."
+msgstr ""
+
 #. §0: `Fintype.card α`
 #. §1: `α`
 #. §2: ```
@@ -11565,6 +12159,14 @@ msgid "# Practicing Multiset.card\n"
 "**Your task**: Given a list §4 of known length, compute the\n"
 "cardinality of §5 (an element consed onto the multiset\n"
 "version of §6)."
+msgstr ""
+
+#. §0: `rw [← Finset.sum_add_distrib]`
+#. §1: `∑ f + ∑ g`
+#. §2: `∑ (f + g)`
+#: Game.Levels.Matrices.L16_TraceLinearity
+msgid "Try §0.\n"
+"This rewrites the right side from §1 to §2."
 msgstr ""
 
 #. §0: `ext ⟨v, hv⟩`
@@ -11905,6 +12507,14 @@ msgstr ""
 msgid "Obtain Meets Decomposition"
 msgstr ""
 
+#. §0: `Matrix.diag_transpose`
+#. §1: `diag (Mᵀ)`
+#. §2: `diag M`
+#: Game.Levels.Matrices.Imports
+msgid "§0 relates §1 to §2.\n"
+"Disabled so you work with transpose and diagonal individually."
+msgstr ""
+
 #. §0: `s.card = 5`
 #: Game.Levels.Products.L21_Boss
 msgid "Substitute §0."
@@ -11975,6 +12585,14 @@ msgstr ""
 #: Game.Levels.BigOpIntro.L11_CardSumPractice
 msgid "First use §0 to replace §1 with the constant\n"
 "function 1 inside the sum."
+msgstr ""
+
+#: Game.Levels.Matrices.L18_DiagonalTransposeEquality
+msgid "Symmetric Matrices: Diagonal Transpose"
+msgstr ""
+
+#: Game.Levels.Matrices.L03_TransposeEntries
+msgid "Transpose: Flipping Rows and Columns"
 msgstr ""
 
 #. §0: `List.toFinset_card_of_nodup`
@@ -12092,6 +12710,12 @@ msgstr ""
 #: Game.Levels.Products.L19_GeneralDecomposition
 #: Game.Levels.Products.L20_AlgebraicIdentity
 #: Game.Levels.Products.L21_Boss
+#: Game.Levels.Matrices.L12_TraceBigOp
+#: Game.Levels.Matrices.L15_TraceOfTranspose
+#: Game.Levels.Matrices.L16_TraceLinearity
+#: Game.Levels.Matrices.L17_DiagonalAddition
+#: Game.Levels.Matrices.L18_DiagonalTransposeEquality
+#: Game.Levels.Matrices.L20_Boss
 msgid "Try\n"
 "§0."
 msgstr ""
@@ -12279,6 +12903,10 @@ msgstr ""
 msgid "Unfolding a two-element sum with an abstract function."
 msgstr ""
 
+#: Game.Levels.Matrices.L12_TraceBigOp
+msgid "The trace of a diagonal matrix equals the sum of the diagonal values."
+msgstr ""
+
 #. §0: `intro h`
 #. §1: `rw [Finset.mem_image] at h`
 #. §2: `obtain ⟨x, hx, hfx⟩ := h`
@@ -12420,6 +13048,12 @@ msgid "The goal is §0.\n"
 "Close with §1 (multiplication is commutative)."
 msgstr ""
 
+#. §0: `j`
+#. §1: `i`
+#: Game.Levels.Matrices.L20_Boss
+msgid "With §0 replaced by §1, both sides are identical."
+msgstr ""
+
 #. §0: `card_union_of_disjoint`
 #. §1: `disjoint_diag_offDiag`
 #: Game.Levels.Products.L19_GeneralDecomposition
@@ -12534,6 +13168,10 @@ msgid "This is the **forward containment** for a constant function's image:\n"
 "\n"
 "But is §8 contained in the image? That's the reverse direction\n"
 "— you'll prove the full equality soon."
+msgstr ""
+
+#: Game.Levels.Matrices.L15_TraceOfTranspose
+msgid "Trace of a Transpose"
 msgstr ""
 
 #. §0: `s`
@@ -13056,6 +13694,10 @@ msgid "# Why Reindexing Works\n"
 "antidiagonal. You are proving the converse direction."
 msgstr ""
 
+#: Game.Levels.Matrices.L16_TraceLinearity
+msgid "The trace distributes over matrix addition."
+msgstr ""
+
 #. §0: `2 * n = n + n`
 #: Game.Levels.PascalsTriangle.L16_Boss
 msgid "First reshape: §0, then expand using Vandermonde.\n"
@@ -13338,6 +13980,10 @@ msgid "§0 states that\n"
 "§4 is the full self-product."
 msgstr ""
 
+#: Game.Levels.Matrices.L13_ConcreteTrace
+msgid "Computing a Trace with Actual Numbers"
+msgstr ""
+
 #: Game.Levels.Finsupp.L13_Extensionality
 msgid "Proving Finsupp Equality"
 msgstr ""
@@ -13372,6 +14018,14 @@ msgid "# Grounding Finset.univ in Concrete Terms\n"
 "the literal finset §10."
 msgstr ""
 
+#. §0: `Matrix.diagonal_transpose`
+#. §1: `(diagonal d)ᵀ = diagonal d`
+#: Game.Levels.Matrices.Imports
+msgid "§0 proves §1\n"
+"directly. Disabled so you prove entry-level facts about transposed\n"
+"diagonal matrices yourself."
+msgstr ""
+
 #. §0: `hp : p ∈ s ×ˢ t`
 #: Game.Levels.Products.L04_ProductSubset
 msgid "Now extract the components from §0."
@@ -13379,6 +14033,14 @@ msgstr ""
 
 #: Game.Levels.FinsetBasics.L14_InsertIsIdempotent
 msgid "Insert is Idempotent"
+msgstr ""
+
+#. §0: `diag`
+#. §1: `Matrix.diag_apply`
+#. §2: `diag M i = M i i`
+#: Game.Levels.Matrices.L10_DiagOfDiagonal
+msgid "Now unfold §0 using §1. This says\n"
+"§2."
 msgstr ""
 
 #. §0: `∑`
@@ -13596,6 +14258,15 @@ msgid "Use §0, then §1\n"
 "Second part: §5."
 msgstr ""
 
+#. §0: `apply Finset.sum_congr rfl`
+#. §1: `i ∈ Finset.univ`
+#. §2: `diag (diagonal d) i = d i`
+#: Game.Levels.Matrices.L12_TraceBigOp
+msgid "Try §0. This\n"
+"creates a goal: for each §1, show\n"
+"§2."
+msgstr ""
+
 #. §0: `«{h}»`
 #. §1: `j.val = 3`
 #. §2: `j : Fin 3`
@@ -13633,6 +14304,54 @@ msgstr ""
 #: Game.Levels.BinomialTheorem.L01_MeetAddPow
 msgid "The goal is exactly the statement of §0 applied to\n"
 "natural numbers. Close it with §1."
+msgstr ""
+
+#. §0: $$\\text{diagonal}\\,d + \\text{diagonal}\\,e = \\text{diagonal}\\,(d + e)$$
+#. §1: `i = j`
+#. §2: `d i + e i`
+#. §3: `i != j`
+#. §4: `0 + 0 = 0`
+#. §5: `eq_or_ne`
+#. §6: `eq_or_ne a b`
+#. §7: `a = b ∨ a != b`
+#. §8: `obtain`
+#. §9: ```
+#. obtain rfl | h := eq_or_ne i j
+#. ```
+#. §10: `rfl`
+#. §11: `j`
+#. §12: `i`
+#. §13: `h`
+#. §14: `h : i != j`
+#: Game.Levels.Matrices.L17_DiagonalAddition
+msgid "# Diagonal Matrices Are Closed Under Addition\n"
+"\n"
+"Adding two diagonal matrices produces another diagonal matrix: the\n"
+"diagonal values add, and the off-diagonal entries remain zero.\n"
+"\n"
+"§0\n"
+"\n"
+"To prove this, you need a **case split** on whether the row and\n"
+"column indices are equal. On the diagonal (§1), both sides\n"
+"give §2. Off the diagonal (§3), both sides give\n"
+"§4.\n"
+"\n"
+"**New tool: §5**\n"
+"\n"
+"§6 produces a proof of §7. Use it with\n"
+"§8 to split into cases:\n"
+"\n"
+"§9\n"
+"\n"
+"This creates two subgoals:\n"
+"- The §10 case: §11 has been replaced by §12 everywhere.\n"
+"- The §13 case: you have §14.\n"
+"\n"
+"This pattern is essential for diagonal matrix proofs, where the\n"
+"behavior depends on whether you are at a diagonal or off-diagonal\n"
+"entry.\n"
+"\n"
+"**Your task**: Prove that diagonal matrices add component-wise."
 msgstr ""
 
 #. §0: `5`
@@ -13854,6 +14573,25 @@ msgstr ""
 msgid "Support membership implies nonzero value."
 msgstr ""
 
+#. §0: `Matrix.diag M`
+#. §1: `M`
+#. §2: `diag M i = M i i`
+#. §3: ```
+#. Matrix.diag M     -- the diagonal function
+#. Matrix.diag M i   -- the i-th diagonal entry
+#. ```
+#. §4: `Matrix.diag_apply : diag M i = M i i`
+#: Game.Levels.Matrices.L10_DiagOfDiagonal
+msgid "§0 extracts the diagonal of a square matrix §1 as a\n"
+"function: §2.\n"
+"\n"
+"## Syntax\n"
+"§3\n"
+"\n"
+"## Key lemma\n"
+"§4"
+msgstr ""
+
 #. §0: `obtain ⟨a, ha, hfa⟩ := h`
 #. §1: `a`
 #. §2: `ha : a ∈ s ∪ t`
@@ -14035,6 +14773,10 @@ msgid "# Powers of One: §0 and §1\n"
 "when specializing §22 to §23."
 msgstr ""
 
+#: Game.Levels.Matrices.L05_DoubleTranspose
+msgid "Double Transpose"
+msgstr ""
+
 #. §0: `hp : p.1 + p.2 = n`
 #. §1: `p.2 = n - p.1`
 #: Game.Levels.PascalsTriangle.L14_SymmetryOnAntidiagonal
@@ -14078,6 +14820,11 @@ msgid "§0\n"
 "replacement) and permutations (§14, no replacement). When §15,\n"
 "every item must be used, so the falling factorial recovers the\n"
 "factorial."
+msgstr ""
+
+#. §0: `transpose_apply`
+#: Game.Levels.Matrices.L03_TransposeEntries
+msgid "Read a transpose entry using §0."
 msgstr ""
 
 #. §0: `Finset.card_le_card h`
@@ -15266,6 +16013,32 @@ msgid "The goal is now:\n"
 "Reshape first."
 msgstr ""
 
+#. §0: `Matrix.of`
+#. §1: `Matrix.of_apply`
+#. §2: `(i, j)`
+#. §3: `(i, j)`
+#. §4: `M i j`
+#. §5: `M`
+#. §6: `M`
+#. §7: `i`
+#. §8: `Fin n → α`
+#. §9: `j`
+#: Game.Levels.Matrices.L01_MatricesAreFunctions
+msgid "§0 wraps a function as a matrix, and §1 unwraps\n"
+"it: accessing the matrix at §2 is the same as calling the function\n"
+"at §3.\n"
+"\n"
+"**The takeaway**: In Lean, a matrix IS a function. All matrix reasoning\n"
+"reduces to function reasoning. If you know how to work with functions\n"
+"(and you do, from the Fin Tuples world), you know how to work with\n"
+"matrices.\n"
+"\n"
+"The entry access §4 works for any matrix §5 — the first index\n"
+"selects the row, the second selects the column. This is just double\n"
+"function application: §6 applied to §7 gives a row (a function\n"
+"§8), which applied to §9 gives the entry."
+msgstr ""
+
 #. §0: `have h := Finset.card_image_of_injective (Finset.range n) hf`
 #. §1: `((Finset.range n).image f).card = (Finset.range n).card`
 #. §2: `rw [Finset.card_range] at h`
@@ -16207,6 +16980,10 @@ msgid "§0 evaluates a single away from its\n"
 "not the other way around."
 msgstr ""
 
+#: Game.Levels.Matrices.L19_SymmetricCounterexample
+msgid "Symmetric Does Not Mean Diagonal"
+msgstr ""
+
 #. §0: `≠`
 #. §1: `= → False`
 #. §2: `intro h`
@@ -16719,6 +17496,15 @@ msgid "Permutations are invisible to §0 — rearranging a list doesn't\n"
 "apply §7."
 msgstr ""
 
+#. §0: `M 0 1 + N 0 1 = 5`
+#. §1: `hM`
+#. §2: `hN`
+#: Game.Levels.Matrices.L06_MatrixAddition
+msgid "Now the goal is §0. You know the individual\n"
+"entries from your hypotheses §1 and §2. Rewrite with both to\n"
+"substitute the concrete values."
+msgstr ""
+
 #: Game.Levels.AbstractionLadder.L09_MeetTheMultiset
 msgid "Two permuted lists give the same multiset."
 msgstr ""
@@ -16892,6 +17678,49 @@ msgid "§0 is the key quantitative bridge: for nodup lists,\n"
 "with the others only when the list has no duplicates."
 msgstr ""
 
+#. §0: `eq_or_ne`
+#. §1: ```
+#. obtain rfl | h := eq_or_ne i j
+#. ```
+#. §2: `ext i j`
+#. §3: `obtain rfl | h := eq_or_ne i j`
+#. §4: `rfl`
+#. §5: `j`
+#. §6: `i`
+#. §7: `diagonal_apply_eq`
+#. §8: `h`
+#. §9: `h : i != j`
+#. §10: `diagonal_apply_ne`
+#: Game.Levels.Matrices.L17_DiagonalAddition
+msgid "You proved that diagonal matrices are **closed under addition**: adding\n"
+"two diagonal matrices produces another diagonal matrix whose diagonal\n"
+"values are the sums of the original diagonal values.\n"
+"\n"
+"The proof introduced the §0 case-split pattern:\n"
+"\n"
+"§1\n"
+"\n"
+"We will call the combination §2 followed by\n"
+"§3 the **diagonal case-split** strategy.\n"
+"Just as the **peel** strategy (rewrite outermost operation first) is\n"
+"the standard move for nested operations, the diagonal case-split is\n"
+"the standard move for proving identities involving diagonal matrices.\n"
+"You will use it again in the next two levels and in the boss.\n"
+"\n"
+"In the §4 case, Lean substitutes §5 with §6 automatically, so\n"
+"all §7 rewrites match. In the §8 case, you supply\n"
+"§9 to each §10.\n"
+"\n"
+"In linear algebra, the set of diagonal matrices forms a\n"
+"**commutative subalgebra**: it is closed under addition, scalar\n"
+"multiplication, and matrix multiplication. You just proved the\n"
+"addition part."
+msgstr ""
+
+#: Game.Levels.Matrices.L06_MatrixAddition
+msgid "Matrix Addition Is Entry-wise"
+msgstr ""
+
 #. §0: $\\{a\\}$
 #. §1: $f$
 #. §2: $\\{f(a)\\}$
@@ -16955,6 +17784,35 @@ msgstr ""
 #: Game.Levels.Powerset.L27_Boss
 msgid "First, extract the subset fact from §0. This is the Level 5\n"
 "pattern: rewrite §1 in a hypothesis."
+msgstr ""
+
+#. §0: `0`
+#. §1: `Matrix.diagonal_apply_ne`
+#. §2: `have h : i ≠ j := by omega`
+#. §3: `rw [Matrix.diagonal_apply_ne d h]`
+#. §4: `0`
+#. §5: `exact Matrix.diagonal_apply_ne d (by omega)`
+#. §6: `diagonal_apply_eq`
+#. §7: `i = j`
+#. §8: `i ≠ j`
+#: Game.Levels.Matrices.L09_DiagonalOffDiag
+msgid "Off-diagonal entries of a diagonal matrix are always §0. To use\n"
+"§1, you need to supply a proof that the two\n"
+"indices are different.\n"
+"\n"
+"The two-step pattern is:\n"
+"1. §2 — establish the inequality\n"
+"2. §3 — rewrite the entry to §4\n"
+"\n"
+"Or in one step: §5.\n"
+"\n"
+"Together with §6 from the previous level, you now\n"
+"have complete control over reading any entry of a diagonal matrix.\n"
+"\n"
+"**Vocabulary**: The terms **on-diagonal** (where §7) and\n"
+"**off-diagonal** (where §8) come up constantly in linear algebra.\n"
+"Diagonal matrices are exactly the matrices where every off-diagonal\n"
+"entry is zero."
 msgstr ""
 
 #. §0: `omega`
@@ -17379,6 +18237,43 @@ msgstr ""
 
 #: Game.Levels.FinsetOperations.L20_ComplementViaSdiff
 msgid "Complement via Set Difference"
+msgstr ""
+
+#: Game.Levels.Matrices.L11_DiagDiagonalCounterexample
+#: Game.Levels.Matrices.L14_TransposeDiagonalEntries
+#: Game.Levels.Matrices.L19_SymmetricCounterexample
+msgid "Split the conjunction into two parts."
+msgstr ""
+
+#. §0: `tr(M + N) = tr(M) + tr(N)`
+#. §1: `← Finset.sum_add_distrib`
+#. §2: `∑ f + ∑ g`
+#. §3: `∑ (f + g)`
+#. §4: `sum_congr rfl`
+#. §5: `tr(A + B) = tr(A) + tr(B)`
+#. §6: `tr(Aᵀ) = tr(A)`
+#. §7: `tr(AB) = tr(BA)`
+#. §8: `tr(c * M) = c * tr(M)`
+#: Game.Levels.Matrices.L16_TraceLinearity
+msgid "You proved that the trace is **linear**: §0.\n"
+"\n"
+"The proof combined two tools:\n"
+"1. §1 collapsed §2 into §3\n"
+"2. §4 + entry-level rewrites showed each summand matches\n"
+"\n"
+"Together with transpose-invariance (Level 15), you now have two of the\n"
+"three fundamental trace properties:\n"
+"- **Linearity**: §5\n"
+"- **Transpose-invariance**: §6\n"
+"- **Cyclicity**: §7 (not covered here — it requires\n"
+"  matrix multiplication)\n"
+"\n"
+"The trace is **additive**: it sends a matrix to a number (the sum of\n"
+"its diagonal entries) in a way that respects addition. Full linearity\n"
+"also requires scalar homogeneity (§8), which we\n"
+"have not proven here. But additivity alone makes the trace one of the\n"
+"most important tools in linear algebra, spectral theory, and quantum\n"
+"mechanics."
 msgstr ""
 
 #. §0: `sum_congr rfl`
@@ -18122,6 +19017,15 @@ msgid "§0 is the finset of all values §1 for §2.\n"
 "§6 gives the finset containing 0, 2, and 4."
 msgstr ""
 
+#. §0: `Matrix.of`
+#. §1: `rw [Matrix.of_apply]`
+#: Game.Levels.Matrices.L19_SymmetricCounterexample
+msgid "**Part 1**: Show that the off-diagonal entries match.\n"
+"Unwrap both §0 expressions with §1\n"
+"(you need it twice — once for each side). Both entries evaluate\n"
+"to the same value."
+msgstr ""
+
 #. §0: `sum_congr`
 #. §1: `one_pow`
 #. §2: `one_mul`
@@ -18394,6 +19298,13 @@ msgid "# Boss: Putting It All Together\n"
 "as a §5 block for readability. Both are valid."
 msgstr ""
 
+#. §0: `3 + 2 = 5`
+#. §1: `ring`
+#. §2: `omega`
+#: Game.Levels.Matrices.L06_MatrixAddition
+msgid "The goal is §0. Try §1 or §2."
+msgstr ""
+
 #. §0: `4 ∈ Finset.range 6`
 #. §1: `rw [Finset.mem_range]`
 #. §2: `4 < 6`
@@ -18579,6 +19490,17 @@ msgstr ""
 #. §1: `h`
 #: Game.Levels.AbstractionLadder.L11_MultisetCardinality
 msgid "The goal is §0. Use the hypothesis §1."
+msgstr ""
+
+#. §0: `(diagonal d) 0 2 = 0`
+#. §1: `0`
+#. §2: `2`
+#. §3: `Matrix.diagonal_apply_ne`
+#. §4: `0 ≠ 2`
+#: Game.Levels.Matrices.L09_DiagonalOffDiag
+msgid "The goal is §0. The indices §1 and §2\n"
+"differ, so this is an off-diagonal entry. You need\n"
+"§3, but it requires a proof that §4."
 msgstr ""
 
 #. §0: `Finsupp.support_add`
@@ -18886,6 +19808,10 @@ msgid "You've proved that the containment §0\n"
 "*existence* of a preimage (one witness anywhere), which image always\n"
 "provides. Intersection needs a *shared* preimage (one witness in both\n"
 "sets), which image can't guarantee without injectivity."
+msgstr ""
+
+#: Game.Levels.Matrices.L14_TransposeDiagonalEntries
+msgid "Evaluate entries of a transposed diagonal matrix."
 msgstr ""
 
 #. §0: `Finset.card_singleton 7`
@@ -19229,6 +20155,16 @@ msgstr ""
 #: Game.Levels.PsetFin.L02_CastSuccNeverLast
 msgid "Apply the val lemmas to simplify:\n"
 "§0."
+msgstr ""
+
+#. §0: `Matrix.transpose_add`
+#. §1: `(M + N)ᵀ = Mᵀ + Nᵀ`
+#. §2: `ext`
+#. §3: `transpose_apply`
+#. §4: `add_apply`
+#: Game.Levels.Matrices.Imports
+msgid "§0 proves §1 directly.\n"
+"Disabled so you prove it using §2, §3, and §4."
 msgstr ""
 
 #. §0: `hsu : x ∈ s ∧ x ∈ u`
@@ -20109,6 +21045,49 @@ msgstr ""
 msgid "Intersection Repaired: Injectivity Gives Equality"
 msgstr ""
 
+#. §0: `Matrix.diag`
+#. §1: ```
+#. Matrix.diag_apply : Matrix.diag M i = M i i
+#. ```
+#. §2: `Matrix.diagonal`
+#. §3: `diagonal`
+#. §4: `diag`
+#. §5: `d`
+#. §6: `d`
+#. §7: `ext`
+#. §8: `Matrix.diag_apply`
+#. §9: `Matrix.diagonal_apply_eq`
+#. §10: `rw [A, B]`
+#. §11: `rw [A]`
+#. §12: `rw [B]`
+#. §13: `A`
+#. §14: `B`
+#. §15: `diag (diagonal d) = d`
+#: Game.Levels.Matrices.L10_DiagOfDiagonal
+msgid "# The Diag Function\n"
+"\n"
+"§0 extracts the diagonal entries of a square matrix as a\n"
+"function:\n"
+"\n"
+"§1\n"
+"\n"
+"This is the inverse operation to §2: while §3\n"
+"builds a matrix from diagonal values, §4 reads the diagonal values\n"
+"from a matrix.\n"
+"\n"
+"If you build a diagonal matrix from §5 and then extract the diagonal,\n"
+"you should get §6 back. Proving this requires combining §7,\n"
+"§8, and §9.\n"
+"\n"
+"**Chained rewrites**: When you need to apply two rewrites in sequence,\n"
+"you can write §10 instead of §11 followed by §12.\n"
+"This applies §13 first, then §14, in a single tactic call. This is\n"
+"especially natural with the 'peel' strategy — each comma peels one\n"
+"more layer.\n"
+"\n"
+"**Your task**: Prove that §15."
+msgstr ""
+
 #. §0: `Fin 2`
 #. §1: `Fin 3`
 #. §2: `fin_cases`
@@ -20665,6 +21644,19 @@ msgid "This level showed the **extract-and-reuse** pattern:\n"
 "**monotone**: bigger input sets produce bigger images."
 msgstr ""
 
+#. §0: `diag (M + N) i = diag M i + diag N i`
+#. §1: `diag`
+#. §2: `diag_apply`
+#. §3: `add_apply`
+#. §4: `diag_apply`
+#. §5: `diag X i`
+#. §6: `X i i`
+#: Game.Levels.Matrices.L16_TraceLinearity
+msgid "The goal is §0. Unfold\n"
+"§1 with §2, then expand the addition with §3.\n"
+"Each §4 rewrite turns §5 into §6."
+msgstr ""
+
 #: Game.Levels.FinsetBasics.L17_DecideShortcut
 msgid "The decide Shortcut"
 msgstr ""
@@ -20704,6 +21696,11 @@ msgstr ""
 
 #: Game.Levels.FinTuples.L08_RoundTripProperty
 msgid "The Round Trip"
+msgstr ""
+
+#. §0: `Matrix.transpose_apply`
+#: Game.Levels.Matrices.L18_DiagonalTransposeEquality
+msgid "Peel off the transpose with §0."
 msgstr ""
 
 #. §0: `Finset.card_powersetCard`
@@ -20986,6 +21983,13 @@ msgstr ""
 
 #: Game.Levels.BinomialCoefficients.L04_PascalComputation
 msgid "Computing with Pascal's Identity"
+msgstr ""
+
+#. §0: `have h : (0 : Fin 3) ≠ 2 := by omega`
+#. §1: `rw [Matrix.diagonal_apply_ne d h]`
+#: Game.Levels.Matrices.L09_DiagonalOffDiag
+msgid "Try §0\n"
+"to establish the inequality, then §1."
 msgstr ""
 
 #. §0: `v`
@@ -21467,6 +22471,15 @@ msgid "The algebraic tools just produced the number 65 from abstract\n"
 "to manage."
 msgstr ""
 
+#. §0: `Matrix.transpose_transpose`
+#. §1: `Mᵀᵀ = M`
+#. §2: `ext`
+#. §3: `transpose_apply`
+#: Game.Levels.Matrices.Imports
+msgid "§0 proves §1 directly.\n"
+"Disabled so you prove it yourself using §2 and §3."
+msgstr ""
+
 #. §0: `False`
 #. §1: `h.2`
 #. §2: `h_neg`
@@ -21787,6 +22800,29 @@ msgid "Now peel elements with §0. Prove non-membership\n"
 "first."
 msgstr ""
 
+#. §0: `i = j`
+#. §1: `i ≠ j`
+#. §2: `obtain rfl | h := eq_or_ne i j`
+#: Game.Levels.Matrices.L18_DiagonalTransposeEquality
+msgid "You proved that diagonal matrices are **symmetric** — they equal their\n"
+"own transpose.\n"
+"\n"
+"The proof used a case split on index equality. This is a fundamental\n"
+"pattern for matrices: many matrix properties depend on whether you are\n"
+"looking at a diagonal entry (§0) or an off-diagonal entry\n"
+"(§1). The §2 move cleanly\n"
+"separates these two worlds.\n"
+"\n"
+"In linear algebra, symmetric matrices form one of the most important\n"
+"classes: they have real eigenvalues, orthogonal eigenvectors, and are\n"
+"diagonalizable. The fact that every diagonal matrix is symmetric is the\n"
+"simplest example of this class.\n"
+"\n"
+"But beware: **not every symmetric matrix is diagonal**. A matrix can be\n"
+"symmetric (equal to its transpose) while having nonzero off-diagonal\n"
+"entries. The next level will show you a concrete example."
+msgstr ""
+
 #. §0: `hx`
 #. §1: `rw [Finset.mem_insert, Finset.mem_singleton] at hx`
 #: Game.Levels.FinsetOperations.L07_EqualityByAntisymmetry
@@ -21861,6 +22897,10 @@ msgstr ""
 
 #: Game.Levels.CountingTypes.L05_FallingFactorials
 msgid "Two factors down. One more unfolding exposes the base case."
+msgstr ""
+
+#: Game.Levels.Matrices.L16_TraceLinearity
+msgid "Trace Is Additive"
 msgstr ""
 
 #. §0: `constructor`
@@ -22062,6 +23102,13 @@ msgid "You have §0 and need to choose which side of\n"
 "or §2. Use §3 to split on this."
 msgstr ""
 
+#. §0: `M 2 0 = 7`
+#. §1: `«{h}»`
+#: Game.Levels.Matrices.L03_TransposeEntries
+msgid "Now the goal is §0, which is exactly your hypothesis\n"
+"§1."
+msgstr ""
+
 #. §0: $|s.\\text{offDiag}| = 4 \\times 4 - 4 = 16 - 4 = 12$
 #. §1: $$P(4, 2) = 4 \\times 3 = 12$$
 #. §2: `offDiag_card`
@@ -22127,6 +23174,25 @@ msgstr ""
 #: Game.Levels.FinTuples.L18_ProvingTupleEquality
 msgid "The goal is §0, which simplifies to §1.\n"
 "You have §2. Use §3."
+msgstr ""
+
+#. §0: `![![1, 2], ![2, 3]]`
+#. §1: `M 0 1 = 2 = M 1 0`
+#. §2: `M 0 1 = 2 ≠ 0`
+#: Game.Levels.Matrices.L19_SymmetricCounterexample
+msgid "The matrix §0 is symmetric but not diagonal:\n"
+"- **Symmetric**: §1 — the off-diagonal entries mirror.\n"
+"- **Not diagonal**: §2 — there IS a nonzero off-diagonal entry.\n"
+"\n"
+"This is important to remember:\n"
+"- **Diagonal** ⟹ **Symmetric** (Level 18 proved this)\n"
+"- **Symmetric** ⟹ **Diagonal** is FALSE (this level showed it)\n"
+"\n"
+"The set of diagonal matrices is a proper SUBSET of the set of symmetric\n"
+"matrices. Symmetric matrices are a much richer class — they include\n"
+"correlation matrices, covariance matrices, Laplacian matrices in graph\n"
+"theory, and many more. All diagonal matrices are symmetric, but most\n"
+"symmetric matrices are not diagonal."
 msgstr ""
 
 #. §0: $$|s| = \\sum_{x \\in s} 1$$
@@ -22229,6 +23295,19 @@ msgstr ""
 #. §0: `Fin 3 → ℕ`
 #: Game.Levels.FinTuples.L03_BuildingTuples
 msgid "A function §0 that maps 0 to 10, 1 to 20, and 2 to 30."
+msgstr ""
+
+#. §0: `rw [Matrix.transpose_apply]`
+#. §1: `rw [Matrix.add_apply]`
+#. §2: `rw [Matrix.add_apply]`
+#. §3: `rw [Matrix.transpose_apply]`
+#. §4: `rw`
+#: Game.Levels.Matrices.L07_TransposeAddition
+msgid "Start with §0 to peel\n"
+"the outer transpose on the left. Then §1 to expand\n"
+"the sum (this hits both sides). Then §2 again for\n"
+"the remaining sum. Then §3 twice more for\n"
+"the transposes on the right. Each §4 peels one layer."
 msgstr ""
 
 #. §0: `norm_num`
@@ -22340,6 +23419,45 @@ msgstr ""
 msgid "The empty sum is 0 and the empty product is 1."
 msgstr ""
 
+#. §0: `Matrix.of_apply`
+#. §1: `f`
+#. §2: `Matrix.of ![![3, 1], ![0, 7]]`
+#. §3: $$\\begin{pmatrix} 3 & 1 \\\\ 0 & 7 \\end{pmatrix}$$
+#. §4: `![![3, 1], ![0, 7]]`
+#. §5: `Fin 2 → Fin 2 → ℤ`
+#. §6: `![3, 1]`
+#. §7: `f 0 0 = 3`
+#. §8: `f 0 1 = 1`
+#. §9: `![0, 7]`
+#. §10: `f 1 0 = 0`
+#. §11: `f 1 1 = 7`
+#. §12: `(0, 1)`
+#. §13: `diagonal`
+#. §14: `(1, 0)`
+#. §15: `Matrix.of_apply`
+#: Game.Levels.Matrices.L02_ConcreteMatrixEntries
+msgid "# A Matrix with Visible Entries\n"
+"\n"
+"In the previous level you applied §0 to an abstract\n"
+"function §1. Let's now see a **concrete** matrix — one with actual\n"
+"numbers.\n"
+"\n"
+"The matrix §2 is a 2×2 integer matrix\n"
+"built from two row vectors:\n"
+"\n"
+"§3\n"
+"\n"
+"Here §4 is a function §5:\n"
+"- Row 0 is §6, so §7 and §8\n"
+"- Row 1 is §9, so §10 and §11\n"
+"\n"
+"Notice this matrix is NOT diagonal — it has a nonzero entry at\n"
+"position §12. Not all matrices are diagonal; §13 is a\n"
+"special construction.\n"
+"\n"
+"**Your task**: Read entry §14 of this matrix using §15."
+msgstr ""
+
 #. §0: `s`
 #. §1: `rw [hs]`
 #: Game.Levels.BigOpIntro.L04_TwoElementSum
@@ -22390,6 +23508,10 @@ msgid "Now §0 says §1 and §2 says §3.\n"
 "§4 combines these to prove §5."
 msgstr ""
 
+#: Game.Levels.Matrices.L01_MatricesAreFunctions
+msgid "Accessing an entry of a matrix built from a function."
+msgstr ""
+
 #. §0: `ha : a ∈ s`
 #. §1: `False`
 #. §2: `f a ∈ s.image f`
@@ -22403,6 +23525,37 @@ msgstr ""
 #: Game.Levels.PsetBigOp.L04_DoubleSumSwap
 msgid "Use §0 to split the\n"
 "summand into the double sum and the single sum."
+msgstr ""
+
+#. §0: $$\\text{tr}(M) = \\sum_i M_{ii} = \\sum_i \\text{diag}\\,M\\,i$$
+#. §1: `∑ i ∈ Finset.univ, diag M i`
+#. §2: `diag (diagonal d) = d`
+#. §3: $$\\text{tr}(\\text{diagonal}\\,d) = \\sum_i d\\,i$$
+#. §4: `Finset.sum_congr rfl`
+#. §5: `diagonal d`
+#. §6: `∑ i, d i`
+#: Game.Levels.Matrices.L12_TraceBigOp
+msgid "# The Trace of a Diagonal Matrix\n"
+"\n"
+"The **trace** of a square matrix is the sum of its diagonal entries:\n"
+"\n"
+"§0\n"
+"\n"
+"In Lean, this is §1.\n"
+"\n"
+"You already know that §2 — extracting the diagonal\n"
+"of a diagonal matrix recovers the original function. This means:\n"
+"\n"
+"§3\n"
+"\n"
+"The trace of a diagonal matrix is just the sum of the diagonal values.\n"
+"\n"
+"To prove this, you need a tool from the big operator worlds:\n"
+"§4. It says: if you can show that corresponding\n"
+"summands are equal for each index, then the sums are equal. You used\n"
+"this in the Big Operator Algebra and Binomial Theorem worlds.\n"
+"\n"
+"**Your task**: Prove that the trace of §5 equals §6."
 msgstr ""
 
 #: Game.Levels.FinsetOperations.L01_UnionMembership
@@ -22596,6 +23749,31 @@ msgid "The goal is an iff. Use §0 to split into both\n"
 "directions."
 msgstr ""
 
+#. §0: `Matrix.transpose_apply`
+#. §1: `Mᵀ i j = M j i`
+#. §2: `i`
+#. §3: `j`
+#. §4: `j`
+#. §5: `i`
+#. §6: `Matrix`
+#. §7: `transpose M i j = M j i`
+#. §8: `ᵀ`
+#. §9: `Mᵀ i j`
+#. §10: `Matrix.transpose_apply`
+#. §11: `M j i`
+#: Game.Levels.Matrices.L03_TransposeEntries
+msgid "§0 is the workhorse for transpose reasoning.\n"
+"It says §1 — reading row §2, column §3 of the\n"
+"transpose is the same as reading row §4, column §5 of the original.\n"
+"\n"
+"Since §6 is just a function type, §7 —\n"
+"the transpose literally swaps the two function arguments. The §8\n"
+"notation is cosmetic sugar for this argument swap.\n"
+"\n"
+"**Pattern**: When you see §9 in a goal, rewrite with\n"
+"§10 to get §11."
+msgstr ""
+
 #: Game.Levels.BigOpAlgebra.L06_SumUnion
 msgid "Splitting by Disjoint Union"
 msgstr ""
@@ -22735,6 +23913,15 @@ msgstr ""
 msgid "Provide §0 as the witness for the outer image.\n"
 "§1, §2, then build §3\n"
 "with witness §4, and show §5 from the composition."
+msgstr ""
+
+#. §0: `delta`
+#. §1: `irreducible`
+#: Game.Metadata
+msgid "§0 unfolds definitions by delta-reduction.\n"
+"\n"
+"Disabled in levels where definitions are marked §1 to\n"
+"prevent bypassing the intended proof structure."
 msgstr ""
 
 #. §0: $\\sum (f(x) + 1) = \\sum f(x) + |s|$
@@ -23290,8 +24477,19 @@ msgstr ""
 msgid "A Partially Non-Injective Function"
 msgstr ""
 
+#. §0: `Fin 3`
+#. §1: `Fin.sum_univ_three`
+#: Game.Levels.Matrices.L13_ConcreteTrace
+msgid "First, expand the sum over §0 into three explicit terms\n"
+"using §1."
+msgstr ""
+
 #: Game.Levels.FinsetOperations.L07_EqualityByAntisymmetry
 msgid "{1, 2} = {2, 1} by mutual containment."
+msgstr ""
+
+#: Game.Levels.Matrices.L20_Boss
+msgid "The transpose of a diagonal plus an arbitrary matrix."
 msgstr ""
 
 #. §0: $\\mathbb{Z}$
@@ -23595,6 +24793,12 @@ msgid "You proved the **full identity**: §0.\n"
 "why in Level 8."
 msgstr ""
 
+#. §0: `diagonal_apply_eq`
+#: Game.Levels.Matrices.L14_TransposeDiagonalEntries
+msgid "Now you have an on-diagonal entry. Evaluate it with\n"
+"§0."
+msgstr ""
+
 #. §0: `Finset.mem_product`
 #. §1: `s ×ˢ t`
 #. §2: `p ∈ s ×ˢ t ↔ p.1 ∈ s ∧ p.2 ∈ t`
@@ -23695,6 +24899,47 @@ msgstr ""
 
 #: Game.Levels.BigOpAlgebra.L02_ProdMulDistrib
 msgid "Using prod_mul_distrib with known component products."
+msgstr ""
+
+#. §0: `diag (diagonal d) = d`
+#. §1: `diagonal (diag M) = M`
+#. §2: $$M = \\begin{pmatrix} 3 & 1 \\\\ 0 & 7 \\end{pmatrix}$$
+#. §3: `diagonal (diag M)`
+#. §4: `(0, 1)`
+#. §5: `1`
+#. §6: `M`
+#. §7: `0`
+#. §8: `diagonal (diag M)`
+#. §9: `0`
+#. §10: `(0, 1)`
+#. §11: `1`
+#. §12: `(0, 1)`
+#. §13: `diagonal (diag M) ≠ M`
+#: Game.Levels.Matrices.L11_DiagDiagonalCounterexample
+msgid "# Left Inverse Is Not Right Inverse\n"
+"\n"
+"In Level 10, you proved that §0 — extracting the\n"
+"diagonal of a diagonal matrix recovers the original function. The\n"
+"conclusion warned that the reverse, §1, is NOT\n"
+"true in general.\n"
+"\n"
+"Now you will prove this with a **concrete counterexample**.\n"
+"\n"
+"Consider the matrix from Level 2:\n"
+"\n"
+"§2\n"
+"\n"
+"If you build §3, you keep the diagonal entries (3 and 7)\n"
+"but **set all off-diagonal entries to zero**. So the off-diagonal entry\n"
+"at position §4 goes from §5 in §6 to §7 in §8.\n"
+"\n"
+"**Your task**: Prove both facts:\n"
+"1. The round-tripped matrix has §9 at position §10 (the\n"
+"   off-diagonal entry is lost).\n"
+"2. The original matrix has §11 at position §12 (the entry was\n"
+"   nonzero to begin with).\n"
+"\n"
+"Together these show that §13 for this matrix."
 msgstr ""
 
 #. §0: `use expr`
@@ -24190,6 +25435,41 @@ msgid "If §0, choose the left side of the disjunction:\n"
 "§1."
 msgstr ""
 
+#. §0: `M`
+#. §1: $m \\times n$
+#. §2: $M^T$
+#. §3: $n \\times m$
+#. §4: $(i, j)$
+#. §5: $M^T$
+#. §6: $(j, i)$
+#. §7: $M$
+#. §8: `Mᵀ`
+#. §9: `ᵀ`
+#. §10: `Matrix`
+#. §11: ```
+#. Matrix.transpose_apply : Mᵀ i j = M j i
+#. ```
+#. §12: `Mᵀ i j = M j i`
+#. §13: `M 2 0 = 7`
+#. §14: `Mᵀ 0 2`
+#: Game.Levels.Matrices.L03_TransposeEntries
+msgid "# Transposing a Matrix\n"
+"\n"
+"The **transpose** of a matrix swaps rows and columns. If §0 is an\n"
+"§1 matrix, then §2 is an §3 matrix where\n"
+"entry §4 of §5 is entry §6 of §7.\n"
+"\n"
+"In Lean, the transpose is written §8 (using the notation §9\n"
+"from the §10 scope). The key lemma is:\n"
+"\n"
+"§11\n"
+"\n"
+"Since a matrix is a function, transposing just swaps the arguments:\n"
+"§12.\n"
+"\n"
+"**Your task**: Given that §13, read the entry §14."
+msgstr ""
+
 #. §0: `Finset.sum_insert ha`
 #. §1: `Finset.card_insert_of_notMem ha`
 #. §2: `ih`
@@ -24372,6 +25652,30 @@ msgstr ""
 
 #: Game.Levels.PsetCombinatorics.L03_WeightedRowSum
 msgid "The weighted alternating sum with x = -1, y = 3 over Z."
+msgstr ""
+
+#. §0: `Matrix.add_apply`
+#. §1: `M + N`
+#. §2: `M`
+#. §3: `N`
+#. §4: `0`
+#: Game.Levels.Matrices.L06_MatrixAddition
+msgid "One rewrite — that is all it takes. §0 says that\n"
+"reading an entry of §1 is the same as reading the entries of\n"
+"§2 and §3 separately, then adding.\n"
+"\n"
+"This is the 'matrices are functions' thesis at its most powerful.\n"
+"Matrix addition is not a separate concept that needs its own rules —\n"
+"it is just function addition, which is just pointwise addition of\n"
+"values. Everything about matrix algebra follows from the fact that\n"
+"matrices are functions of two indices.\n"
+"\n"
+"The same principle applies to other operations: subtraction is\n"
+"entry-wise, scalar multiplication is entry-wise, and the zero\n"
+"matrix is the function that returns §4 at every entry. The\n"
+"exceptions — matrix multiplication and transpose — are the\n"
+"interesting ones precisely because they mix entries from different\n"
+"positions."
 msgstr ""
 
 #: Game.Levels.Products.L12_OffDiagonal
@@ -24603,6 +25907,15 @@ msgid "§0 states that if §1, then\n"
 "## When to use it\n"
 "When the goal involves a product over §5 and §6 and §7 are\n"
 "disjoint. Splits the union product into two independent products."
+msgstr ""
+
+#. §0: `diag Mᵀ i = diag M i`
+#. §1: `diag`
+#. §2: `diag_apply`
+#. §3: `transpose_apply`
+#: Game.Levels.Matrices.L15_TraceOfTranspose
+msgid "The goal is §0. Unfold §1 with\n"
+"§2, then peel the transpose with §3."
 msgstr ""
 
 #. §0: `Finset α`
@@ -25433,6 +26746,32 @@ msgstr ""
 #: Game.Levels.FinsetBasics.L02_FindingDeeperElements
 msgid "Again a disjunction: §0 or §1 in the remaining\n"
 "singleton. Take §2."
+msgstr ""
+
+#. §0: `Mᵀ`
+#. §1: `M + N`
+#. §2: `Matrix.transpose_apply : Mᵀ i j = M j i`
+#. §3: `Matrix.add_apply : (M + N) i j = M i j + N i j`
+#. §4: $$(M + N)^T = M^T + N^T$$
+#. §5: `ext i j`
+#: Game.Levels.Matrices.L07_TransposeAddition
+msgid "# Combining Transpose and Addition\n"
+"\n"
+"You now know two matrix operations — **transpose** (§0) and\n"
+"**addition** (§1) — and their entry-level lemmas:\n"
+"- §2\n"
+"- §3\n"
+"\n"
+"A natural question: how do they interact? The answer is that\n"
+"transposing a sum equals the sum of the transposes:\n"
+"\n"
+"§4\n"
+"\n"
+"The proof uses §5 to reduce to entries, then the peel strategy:\n"
+"rewrite with the outermost operation's lemma, then simplify layer by\n"
+"layer.\n"
+"\n"
+"**Your task**: Prove that transpose distributes over addition."
 msgstr ""
 
 #. §0: `(uparrow l : Multiset N).card`
@@ -26626,6 +27965,15 @@ msgid "The proof is identical to Level 3 — extract §0, close with\n"
 "practiced here."
 msgstr ""
 
+#. §0: `Fin.forall_fin_two`
+#. §1: `Fin 2`
+#. §2: `eq_or_ne`
+#: Game.Levels.Matrices.L20_Boss
+#: Game.Levels.Matrices.L20_Boss
+msgid "§0 allows case enumeration on §1.\n"
+"Disabled so you use §2 instead of enumeration."
+msgstr ""
+
 #. §0: `rw [Finset.sum_empty, Finset.sum_empty, Finset.card_empty]`
 #: Game.Levels.PsetBigOp.L03_SumInduction
 msgid "Rewrite both sums and the cardinality:\n"
@@ -26889,6 +28237,12 @@ msgstr ""
 msgid "Union and Intersection Subset"
 msgstr ""
 
+#. §0: `(diagonal d)ᵀ 1 2 = 0`
+#: Game.Levels.Matrices.L14_TransposeDiagonalEntries
+msgid "**Part 1**: The goal is §0. Peel off the\n"
+"transpose — this is the peel strategy from Level 5."
+msgstr ""
+
 #: Game.Levels.PsetCombinatorics.L14_Boss
 msgid "The Vandermonde convolution through powerset counting."
 msgstr ""
@@ -27096,6 +28450,14 @@ msgstr ""
 
 #: Game.Levels.PsetFinset.L13_NonMembershipFromImage
 msgid "Non-Membership from Image"
+msgstr ""
+
+#. §0: `ext i`
+#. §1: `diag (diagonal d) i = d i`
+#: Game.Levels.Matrices.L10_DiagOfDiagonal
+#: Game.Levels.Matrices.L10_DiagOfDiagonal
+msgid "Try §0. The goal becomes\n"
+"§1."
 msgstr ""
 
 #. §0: `n`
@@ -27486,6 +28848,10 @@ msgstr ""
 
 #: Game.Levels.PsetBigOp.L07_CalcChain
 msgid "Combine sum_add_distrib and prod_mul_distrib in a calc chain."
+msgstr ""
+
+#: Game.Levels.Matrices.L09_DiagonalOffDiag
+msgid "Diagonal Matrix: Off-Diagonal Entry"
 msgstr ""
 
 #. §0: `0 = Nat.choose 1 2`
@@ -27953,6 +29319,15 @@ msgid "# Organizing a Mixed Sum-Product Proof\n"
 "approaches are valid."
 msgstr ""
 
+#. §0: `(diagonal d) j i = (diagonal d) i j`
+#. §1: `i = j`
+#. §2: `obtain rfl | h := eq_or_ne i j`
+#: Game.Levels.Matrices.L18_DiagonalTransposeEquality
+msgid "The goal is §0. Whether\n"
+"the diagonal entries match depends on whether §1. Split into\n"
+"cases with §2."
+msgstr ""
+
 #. §0: `n`
 #: Game.Levels.SummationFormulas.L01_ConstantSum
 msgid "This is a natural number induction proof. Induct on §0."
@@ -28313,6 +29688,10 @@ msgstr ""
 #. §0: `rw [Finset.sum_comm]`
 #: Game.Levels.BigOpAlgebra.L08_SumComm
 msgid "Use §0 to swap the summation order."
+msgstr ""
+
+#: Game.Levels.Matrices.L14_TransposeDiagonalEntries
+msgid "Now use the hypothesis."
 msgstr ""
 
 #: Game.Levels.FinsetInduction.L06_MixedInduction
@@ -28835,6 +30214,10 @@ msgid "# From Sums to Products\n"
 "This is the product analogue of Level 1's §7."
 msgstr ""
 
+#: Game.Levels.Matrices.L14_TransposeDiagonalEntries
+msgid "Transpose + Diagonal: Coached Practice"
+msgstr ""
+
 #. §0: `have hsimp : ∑ x ∈ s, f x = ∑ x ∈ s, 1 := by
 #. apply Finset.sum_congr rfl
 #. intro x hx
@@ -29069,6 +30452,31 @@ msgstr ""
 msgid "Decompose the addition."
 msgstr ""
 
+#. §0: `Matrix.diagonal d`
+#. §1: `d`
+#. §2: `0`
+#. §3: ```
+#. Matrix.diagonal d    -- where d : n → α
+#. ```
+#. §4: `Matrix.diagonal_apply_eq : (diagonal d) i i = d i`
+#. §5: `Matrix.diagonal_apply_ne : i ≠ j → (diagonal d) i j = 0`
+#. §6: `diagonal (fun i : Fin 3 => i.val + 1)`
+#: Game.Levels.Matrices.L08_DiagonalOnDiag
+msgid "§0 builds a square matrix with §1 on the diagonal\n"
+"and §2 everywhere else.\n"
+"\n"
+"## Syntax\n"
+"§3\n"
+"\n"
+"## Key lemmas\n"
+"- §4\n"
+"- §5\n"
+"\n"
+"## Example\n"
+"§6 is the matrix\n"
+"with entries 1, 2, 3 on the diagonal and 0 elsewhere."
+msgstr ""
+
 #. §0: `Finset.range 0`
 #. §1: `Fin 0`
 #. §2: `Fin 0`
@@ -29141,6 +30549,10 @@ msgstr ""
 #: Game.Levels.Fintype.L06_FinitenessMatters
 msgid "Use §0 to decompose the function type,\n"
 "then evaluate §1 with §2."
+msgstr ""
+
+#: Game.Levels.Matrices.L17_DiagonalAddition
+msgid "Addition of Diagonal Matrices"
 msgstr ""
 
 #. §0: $n$
@@ -29519,6 +30931,13 @@ msgstr ""
 msgid "Now split the remaining conjunction."
 msgstr ""
 
+#. §0: `M = N`
+#. §1: `ext i j`
+#: Game.Levels.Matrices.L04_MatrixExtensionality
+msgid "The goal is §0. Use §1 to reduce this to showing\n"
+"they agree at each entry."
+msgstr ""
+
 #. §0: `Fin (n+1)`
 #. §1: `0`
 #. §2: `j.succ`
@@ -29622,6 +31041,42 @@ msgid "The round-trip is now complete. §0 and §1 are\n"
 "\n"
 "Next, you'll learn the dual construction: appending an element\n"
 "at the *end* of a tuple using §9."
+msgstr ""
+
+#. §0: `transpose_apply`
+#. §1: $(M + N)^T\\,i\\,j \\to (M + N)\\,j\\,i$
+#. §2: `add_apply`
+#. §3: $M\\,j\\,i + N\\,j\\,i = M^T\\,i\\,j + N^T\\,i\\,j$
+#. §4: `transpose_apply`
+#. §5: $M^T\\,i\\,j + N^T\\,i\\,j \\to M\\,j\\,i + N\\,j\\,i$
+#. §6: `rw`
+#. §7: `rw [Matrix.add_apply]`
+#. §8: `rw [Matrix.transpose_apply]`
+#. §9: `ext i j`
+#. §10: `ring`
+#: Game.Levels.Matrices.L07_TransposeAddition
+msgid "The proof used four rewrites in a chain:\n"
+"\n"
+"1. §0 peeled the outer transpose on the left:\n"
+"   §1\n"
+"2. §2 expanded both sums:\n"
+"   §3\n"
+"3. §4 simplified the remaining transposes on the right:\n"
+"   §5\n"
+"\n"
+"The key insight: since §6 replaces ALL occurrences of a pattern,\n"
+"one §7 can expand both sides at once, and one\n"
+"§8 can simplify both transposes on the\n"
+"right. The peel strategy scales naturally when operations are nested.\n"
+"\n"
+"This is your first result combining two operations, and you will see\n"
+"this pattern again: prove a matrix identity by reducing both sides\n"
+"to the same entry-level expression via chained rewrites.\n"
+"\n"
+"**Alternative strategy**: After §9, you could expand both sides\n"
+"fully with rewrites until the goal is a pure integer expression, then\n"
+"close with §10. The 'expand then ring' approach works whenever both\n"
+"sides reduce to the same algebraic expression over entries."
 msgstr ""
 
 #. §0: $\\{0, 1, \\ldots, n-1\\}$
@@ -30256,6 +31711,16 @@ msgid "You have §0 and §1.\n"
 "§4."
 msgstr ""
 
+#. §0: `diag (diagonal d) i`
+#. §1: `diag_apply`
+#. §2: `diag`
+#. §3: `diagonal_apply_eq`
+#: Game.Levels.Matrices.L13_ConcreteTrace
+msgid "Now each term has the form §0. Use\n"
+"§1 to peel §2, then §3 to evaluate\n"
+"the on-diagonal entries."
+msgstr ""
+
 #. §0: `Finset.powersetCard_zero`
 #: Game.Levels.Powerset.L20_PowersetCardZero
 msgid "The Mathlib lemma §0 states this\n"
@@ -30500,6 +31965,15 @@ msgstr ""
 #: Game.Levels.AbstractionLadder.L06_Permutations
 msgid "The lists §0 and §1 differ only in the order\n"
 "of the first two elements. This is exactly §2."
+msgstr ""
+
+#. §0: `(0, 1)`
+#. §1: `M + N`
+#. §2: `Matrix.add_apply`
+#: Game.Levels.Matrices.L06_MatrixAddition
+msgid "The goal asks about entry §0 of the sum §1.\n"
+"Rewrite with §2 to split this into the sum of\n"
+"individual entries."
 msgstr ""
 
 #. §0: `Int.alternating_sum_range_choose`
@@ -31145,6 +32619,28 @@ msgid "# The 0/succ Decomposition Applied\n"
 "- If §8: provide the witness"
 msgstr ""
 
+#. §0: `Matrix.transpose M`
+#. §1: `Mᵀ`
+#. §2: `M`
+#. §3: `m × n`
+#. §4: `Mᵀ`
+#. §5: `n × m`
+#. §6: ```
+#. Mᵀ      -- transpose notation
+#. ```
+#. §7: `Matrix.transpose_apply : Mᵀ i j = M j i`
+#: Game.Levels.Matrices.L03_TransposeEntries
+msgid "§0 (notation: §1) swaps the rows and columns\n"
+"of a matrix. If §2 is an §3 matrix, then §4 is an §5\n"
+"matrix.\n"
+"\n"
+"## Syntax\n"
+"§6\n"
+"\n"
+"## Key lemma\n"
+"§7"
+msgstr ""
+
 #: Game.Levels.FinsetBasics
 msgid "Finset Basics"
 msgstr ""
@@ -31294,6 +32790,36 @@ msgstr ""
 msgid "Meet Fin"
 msgstr ""
 
+#. §0: `(diagonal d)ᵀ = diagonal d`
+#. §1: $$M = \\begin{pmatrix} 1 & 2 \\\\ 2 & 3 \\end{pmatrix}$$
+#. §2: `M 0 1 = M 1 0 = 2`
+#. §3: `M 0 1 = 2`
+#. §4: `0`
+#. §5: `(i, j)`
+#. §6: `(j, i)`
+#: Game.Levels.Matrices.L19_SymmetricCounterexample
+msgid "# A Symmetric Matrix That Is Not Diagonal\n"
+"\n"
+"In the previous level, you proved that every diagonal matrix is\n"
+"symmetric: §0. You might wonder: is\n"
+"every symmetric matrix also diagonal?\n"
+"\n"
+"The answer is **no**. Here is a concrete counterexample:\n"
+"\n"
+"§1\n"
+"\n"
+"This matrix is symmetric because §2 (the\n"
+"off-diagonal entries match when you transpose). But it is NOT\n"
+"diagonal because the off-diagonal entry §3 is nonzero.\n"
+"\n"
+"A diagonal matrix has ALL off-diagonal entries equal to §4. A\n"
+"symmetric matrix only requires that entry §5 equals entry\n"
+"§6 — the off-diagonal entries can be anything, as long as\n"
+"they mirror across the main diagonal.\n"
+"\n"
+"**Your task**: Prove both facts about this concrete matrix."
+msgstr ""
+
 #. §0: `1 * 1 * c`
 #. §1: `1 *`
 #. §2: `rw [one_mul]`
@@ -31420,6 +32946,10 @@ msgstr ""
 #: Game.Levels.CountingTypes.L11_Boss
 msgid "Resolve the codomain §0:\n"
 "§1."
+msgstr ""
+
+#: Game.Levels.Matrices.L10_DiagOfDiagonal
+msgid "Extracting the diagonal of a diagonal matrix recovers the original function."
 msgstr ""
 
 #: Game.Levels.FinsetImage.L11_ConstantFunctionForward
@@ -31729,6 +33259,59 @@ msgstr ""
 
 #: Game.Levels.Cardinality.L03_NonemptyBridge
 msgid "Nonempty finsets have positive cardinality."
+msgstr ""
+
+#. §0: `Matrix (Fin m) (Fin n) α`
+#. §1: `Fin m → Fin n → α`
+#. §2: `(i, j)`
+#. §3: `M i j`
+#. §4: `Matrix.of`
+#. §5: `M i j`
+#. §6: `Matrix.of_apply`
+#. §7: `(M + N) i j = M i j + N i j`
+#. §8: `Matrix.add_apply`
+#. §9: `Mᵀ i j = M j i`
+#. §10: `Matrix.transpose_apply`
+#. §11: `ext i j`
+#. §12: `diagonal d`
+#. §13: `d i`
+#. §14: `0`
+#. §15: `diagonal_apply_eq`
+#. §16: `diagonal_apply_ne`
+#. §17: `diag M i = M i i`
+#. §18: `diag_apply`
+#. §19: `∑ i, diag M i`
+#: Game.Levels.Matrices
+msgid "# Matrices: Functions of Two Indices\n"
+"\n"
+"Matrices are everywhere in mathematics: they represent linear maps\n"
+"between vector spaces, systems of linear equations, adjacency\n"
+"structures in graphs, and data tables in statistics. They are the\n"
+"central computational tool of linear algebra.\n"
+"\n"
+"In Lean, a matrix is nothing more than a **function of two indices**.\n"
+"\n"
+"A §0 is literally §1. Entry\n"
+"§2 is accessed by §3 — double function application. The\n"
+"first index selects the row, the second selects the column.\n"
+"\n"
+"This world teaches you to:\n"
+"- **Build** matrices using §4 from functions\n"
+"- **Access** entries using §5 and §6\n"
+"- **Add**: §7 via §8\n"
+"- **Transpose**: §9 via §10\n"
+"- **Prove equality**: §11 reduces matrix equality to entry equality\n"
+"- **Diagonal matrices**: §12 has §13 on the diagonal and §14\n"
+"  off it, via §15 and §16\n"
+"- **Extract diagonals**: §17 via §18\n"
+"- **Connect to big operators**: the trace §19 bridges\n"
+"  matrices to the summation machinery from earlier worlds\n"
+"- **Combine** these tools to prove properties of structured matrices\n"
+"\n"
+"The central insight is that matrices ARE functions. Every matrix fact\n"
+"is a statement about indices. Every matrix proof is an exercise in\n"
+"function reasoning — the same reasoning you used for tuples in an\n"
+"earlier world, now applied to functions of two arguments."
 msgstr ""
 
 #: Game.Levels.PsetFinset.L01_CompoundMembership
@@ -32716,6 +34299,38 @@ msgid "§0 states that §1 in any commutative monoid.\n"
 "(§2 + §3) rather than arithmetic commutativity."
 msgstr ""
 
+#. §0: `Matrix m n α`
+#. §1: `α`
+#. §2: `m`
+#. §3: `n`
+#. §4: `Matrix m n α`
+#. §5: `m → n → α`
+#. §6: `Matrix (Fin m) (Fin n) α`
+#. §7: `Matrix.of f`
+#. §8: `M i j`
+#. §9: `i`
+#. §10: `j`
+#. §11: `Mᵀ`
+#. §12: `Matrix.diagonal d`
+#. §13: `d`
+#. §14: `Matrix.ext_iff : (∀ i j, M i j = N i j) ↔ M = N`
+#: Game.Levels.Matrices.L01_MatricesAreFunctions
+msgid "§0 is the type of matrices with entries in §1, rows\n"
+"indexed by §2, and columns indexed by §3.\n"
+"\n"
+"Internally, §4 is just §5 — a function of two\n"
+"indices. For finite matrices, use §6.\n"
+"\n"
+"## Key operations\n"
+"- §7 — build a matrix from a function\n"
+"- §8 — access entry at row §9, column §10\n"
+"- §11 — transpose (swap rows and columns)\n"
+"- §12 — square matrix with §13 on the diagonal\n"
+"\n"
+"## Key lemma\n"
+"§14"
+msgstr ""
+
 #: Game.Levels.CountingTypes.L09_InjectionPractice
 msgid "There are 120 injections from Fin 3 to Bool ⊕ Fin 4."
 msgstr ""
@@ -32788,6 +34403,13 @@ msgstr ""
 msgid "Dependent Products with Sigma"
 msgstr ""
 
+#. §0: `Finset.sum_congr rfl`
+#: Game.Levels.Matrices.L15_TraceOfTranspose
+msgid "The two sums range over the same finset. Use\n"
+"§0 to reduce to showing the summands are\n"
+"equal for each index."
+msgstr ""
+
 #: Game.Levels.PsetBigOp.L08_Boss
 msgid "The sum of (f(x)+1)^2 - f(x)^2 over s equals 2 times the sum of f plus card."
 msgstr ""
@@ -32808,6 +34430,15 @@ msgstr ""
 #: Game.Levels.Finsupp.L16_SupportCoaching
 msgid "**Part 1**: The support of §0 is the singleton\n"
 "containing §1. Use §2."
+msgstr ""
+
+#. §0: `(1, 0)`
+#. §1: `Matrix.of_apply`
+#. §2: `Matrix.of`
+#: Game.Levels.Matrices.L02_ConcreteMatrixEntries
+msgid "The goal asks for entry §0 of the matrix. Use\n"
+"§1 to unwrap §2, reducing the matrix\n"
+"access to raw function application."
 msgstr ""
 
 #. §0: `Finset`
@@ -33095,6 +34726,38 @@ msgid "You need §0 to apply injectivity. You have\n"
 "Use §4 with both hypotheses to build the equality."
 msgstr ""
 
+#. §0: `M + N`
+#. §1: `M`
+#. §2: `N`
+#. §3: ```
+#. Matrix.add_apply : (M + N) i j = M i j + N i j
+#. ```
+#. §4: `(f + g) x = f x + g x`
+#. §5: `(M + N) i j = M i j + N i j`
+#: Game.Levels.Matrices.L06_MatrixAddition
+msgid "# Adding Matrices\n"
+"\n"
+"Since matrices are functions of two indices, matrix addition is\n"
+"**entry-wise**: each entry of §0 is the sum of the corresponding\n"
+"entries of §1 and §2. The key lemma is:\n"
+"\n"
+"§3\n"
+"\n"
+"This is a direct consequence of the fact that matrices ARE functions.\n"
+"Function addition in Lean is pointwise: §4.\n"
+"For matrices (functions of two arguments), you get\n"
+"§5.\n"
+"\n"
+"This might seem trivially obvious — of course matrix addition is\n"
+"entry-wise. But the point is deeper: in Lean, this is not a\n"
+"definition you need to memorize, it is a CONSEQUENCE of the fact\n"
+"that matrices are functions. The algebraic structure of matrices\n"
+"is inherited directly from the algebraic structure of entries.\n"
+"\n"
+"**Your task**: Given specific values for individual matrix entries,\n"
+"compute the entry of the sum."
+msgstr ""
+
 #. §0: `f : X -> X`
 #. §1: `card_image_of_injective`
 #. §2: `subset_univ`
@@ -33158,6 +34821,69 @@ msgid "§0 states that\n"
 "the base case in inductions over antidiagonal."
 msgstr ""
 
+#. §0: `0`
+#. §1: `Matrix.diagonal_apply_ne`
+#. §2: ```
+#. Matrix.diagonal_apply_ne : i ≠ j → (diagonal d) i j = 0
+#. ```
+#. §3: `i ≠ j`
+#. §4: `0`
+#. §5: `1`
+#. §6: `omega`
+#. §7: `diagonal_apply_ne`
+#. §8: `have h : ... := by omega`
+#: Game.Levels.Matrices.L09_DiagonalOffDiag
+msgid "# Off-Diagonal Entries Are Zero\n"
+"\n"
+"A diagonal matrix has §0 at every position where the row and column\n"
+"indices differ. The key lemma is §1:\n"
+"\n"
+"§2\n"
+"\n"
+"Notice this requires a **proof** that §3. When the indices are\n"
+"concrete (like §4 and §5), you can produce this proof with §6.\n"
+"\n"
+"**Your task**: Read an off-diagonal entry of a diagonal matrix.\n"
+"\n"
+"**Hint**: You will need to establish that the two indices are different\n"
+"before you can apply §7. Try building a proof with\n"
+"§8."
+msgstr ""
+
+#. §0: `diagonal d`
+#. §1: `d i`
+#. §2: `Matrix.diagonal_apply_eq`
+#. §3: $$\\text{diagonal}\\,d\\,i\\,i = d\\,i$$
+#. §4: `rw [Matrix.diagonal_apply_eq]`
+#. §5: `(diagonal d) i i`
+#. §6: `diagonal (fun _ => 1)`
+#. §7: `diagonal_apply_eq`
+#. §8: `(diagonal (fun _ => 1)) i i = 1`
+#. §9: `diagonal_apply_ne`
+#. §10: `0`
+#. §11: `(1 : Matrix (Fin n) (Fin n) α)`
+#. §12: `diagonal`
+#. §13: `1`
+#: Game.Levels.Matrices.L08_DiagonalOnDiag
+msgid "When both indices are the same, §0 just returns the diagonal\n"
+"value §1. The lemma §2 captures this:\n"
+"\n"
+"§3\n"
+"\n"
+"This is one half of the diagonal definition. The other half — what\n"
+"happens when the indices differ — comes in the next level.\n"
+"\n"
+"**Pattern**: §4 when you see\n"
+"§5 (same index twice).\n"
+"\n"
+"**Connection**: The most famous diagonal matrix is the **identity\n"
+"matrix**, which is §6. By §7,\n"
+"each on-diagonal entry §8, and by\n"
+"§9 (next level), each off-diagonal entry is §10.\n"
+"In Lean, §11 is exactly this §12\n"
+"applied to the constant function §13."
+msgstr ""
+
 #. §0: `hb : b ∈ singleton a`
 #. §1: `rw [Finset.mem_singleton] at hb`
 #. §2: `hb : b = a`
@@ -33177,6 +34903,11 @@ msgstr ""
 
 #: Game.Levels.PsetFin.L16_SimplePigeonhole
 msgid "Any function from Fin 2 to Fin 1 has a collision."
+msgstr ""
+
+#. §0: `i`
+#: Game.Levels.Matrices.L12_TraceBigOp
+msgid "Now introduce the index §0 and the membership proof."
 msgstr ""
 
 #. §0: `s ⊆ t`
@@ -33398,6 +35129,34 @@ msgstr ""
 
 #: Game.Levels.BigOpIntro.L04_TwoElementSum
 msgid "A Two-Element Sum"
+msgstr ""
+
+#. §0: `Matrix.of_apply`
+#. §1: `Matrix.of f i j = f i j`
+#. §2: ```
+#. rw [Matrix.of_apply]       -- in the goal
+#. rw [Matrix.of_apply] at h  -- in a hypothesis
+#. ```
+#. §3: `Matrix.of f i j`
+#. §4: `f i j`
+#. §5: `rw [Matrix.of_apply]`
+#. §6: `Matrix.of (fun i j => i + j) 1 2 = 3`
+#. §7: `1 + 2 = 3`
+#: Game.Levels.Matrices.L01_MatricesAreFunctions
+msgid "§0 evaluates a matrix built from a function:\n"
+"\n"
+"§1\n"
+"\n"
+"## Syntax\n"
+"§2\n"
+"\n"
+"## When to use it\n"
+"When the goal or a hypothesis contains §3 and you want\n"
+"to simplify it to §4.\n"
+"\n"
+"## Example\n"
+"§5 turns §6\n"
+"into §7."
 msgstr ""
 
 #. §0: `rw [Finset.mem_filter]`
@@ -34250,6 +36009,37 @@ msgstr ""
 msgid "Start with §0 to assume they're equal."
 msgstr ""
 
+#. §0: `Matrix.ext_iff`
+#. §1: $$M = N \\iff \\forall\\ i\\ j,\\; M\\,i\\,j = N\\,i\\,j$$
+#. §2: `ext i j`
+#. §3: `M = N`
+#. §4: `M i j = N i j`
+#. §5: `i`
+#. §6: `j`
+#. §7: `ext`
+#. §8: `M`
+#. §9: `N`
+#: Game.Levels.Matrices.L04_MatrixExtensionality
+msgid "# When Are Two Matrices Equal?\n"
+"\n"
+"Two matrices are equal when they agree at **every entry**. This is\n"
+"§0:\n"
+"\n"
+"§1\n"
+"\n"
+"You already know this pattern from the Fin Tuples world: two functions\n"
+"are equal when they agree on all inputs. Since matrices ARE functions\n"
+"(of two arguments), matrix extensionality is just function\n"
+"extensionality applied twice.\n"
+"\n"
+"The tactic §2 converts a goal §3 into a goal\n"
+"§4 where §5 and §6 are fresh index variables. This\n"
+"is the matrix version of the §7 tactic you used for tuples.\n"
+"\n"
+"**Your task**: Given that §8 and §9 agree at every entry, prove\n"
+"they are equal."
+msgstr ""
+
 #. §0: `Finset.prod_pair`
 #. §1: `prod_insert`
 #. §2: `prod_singleton`
@@ -34453,6 +36243,13 @@ msgid "The pattern: unfold everything, extract the parts, reassemble.\n"
 "filter. Keeping exactly the parts you need is the essence of subset proofs."
 msgstr ""
 
+#. §0: `0 + 0 = 0`
+#. §1: `ring`
+#: Game.Levels.Matrices.L17_DiagonalAddition
+msgid "The goal is §0. The §1 tactic closes algebraic\n"
+"equalities like this — you learned it in the Big Operator Algebra world."
+msgstr ""
+
 #. §0: `s.diag`
 #. §1: `(a, a)`
 #. §2: `a ∈ s`
@@ -34632,6 +36429,17 @@ msgid "§0 splits §1 into\n"
 "and choose §3 or §4."
 msgstr ""
 
+#. §0: `rw [Matrix.of_apply]`
+#. §1: `rfl`
+#. §2: `![![3, 1], ![0, 7]]`
+#. §3: `0`
+#. §4: `1`
+#. §5: `1`
+#: Game.Levels.Matrices.L11_DiagDiagonalCounterexample
+msgid "Try §0 then §1. The vector\n"
+"§2 at indices §3, §4 evaluates to §5."
+msgstr ""
+
 #. §0: `card_image_of_injective`
 #: Game.Levels.PsetFinset.L09_CardinalityRange
 msgid "What does §0 tell you about the left side?"
@@ -34729,6 +36537,54 @@ msgid "You've proved the **general** factored form:\n"
 "the *subset-counting* framework (choose). The handshake lemma\n"
 "is the classic instance: §8 people shake hands\n"
 "§9 times."
+msgstr ""
+
+#. §0: $M = M^T$
+#. §1: `i = j`
+#. §2: `(diagonal d) i i`
+#. §3: `(diagonal d)ᵀ i i`
+#. §4: `d i`
+#. §5: `i ≠ j`
+#. §6: `0`
+#. §7: `ext i j`
+#. §8: `transpose_apply`
+#. §9: `obtain rfl | h := eq_or_ne i j`
+#. §10: `(diagonal d) j i = (diagonal d) i j`
+#. §11: `j i`
+#. §12: `i ≠ j`
+#. §13: `h : i ≠ j`
+#. §14: `j ≠ i`
+#. §15: `h.symm`
+#. §16: `.symm`
+#. §17: `Ne`
+#. §18: `h : i ≠ j`
+#. §19: `h.symm : j ≠ i`
+#. §20: `diagonal_apply_ne`
+#. §21: `(diagonal d)ᵀ = diagonal d`
+#: Game.Levels.Matrices.L18_DiagonalTransposeEquality
+msgid "# Diagonal Matrices Are Symmetric\n"
+"\n"
+"A matrix is **symmetric** if it equals its own transpose: §0.\n"
+"The transpose of a diagonal matrix is still the same diagonal matrix —\n"
+"diagonal matrices are symmetric.\n"
+"\n"
+"Why? On the diagonal (§1), both §2 and\n"
+"§3 equal §4. Off the diagonal (§5), both\n"
+"equal §6. So every entry matches.\n"
+"\n"
+"You know the tools: §7, §8, and\n"
+"§9 to split into cases. But after\n"
+"peeling the transpose, the goal becomes\n"
+"§10 — notice the indices are\n"
+"**swapped**. The left side has §11, but your hypothesis says §12.\n"
+"\n"
+"**Flipping inequalities**: When you have §13 and need §14,\n"
+"use §15. The §16 method on §17 (≠) flips the arguments:\n"
+"if §18 then §19. This is needed because\n"
+"§20 expects a proof that the FIRST index differs from\n"
+"the SECOND.\n"
+"\n"
+"**Your task**: Prove that §21."
 msgstr ""
 
 #. §0: `x ∈ t`
@@ -34870,6 +36726,12 @@ msgid "# Proving a Product Identity\n"
 "- **Base case**: three §2 rewrites, then §3\n"
 "- **Inductive step**: three §4 rewrites, then §5,\n"
 "  then §6"
+msgstr ""
+
+#. §0: `Matrix.of_apply`
+#: Game.Levels.Matrices.L19_SymmetricCounterexample
+msgid "**Part 2**: Show that the off-diagonal entry is not zero.\n"
+"Unwrap with §0 to evaluate the concrete entry."
 msgstr ""
 
 #. §0: `have h0`
@@ -35022,12 +36884,6 @@ msgid "The §0 syntax is a powerful tool: it rewrites inside\n"
 "This completes your understanding of the support-value bridge."
 msgstr ""
 
-#. §0: `i.val = j.val`
-#. §1: `«{h}»`
-#: Game.Levels.MeetFin.L05_FinEquality
-msgid "Now the goal is §0, which is exactly §1."
-msgstr ""
-
 #. §0: `Eq.symm`
 #. §1: `h : a = b`
 #. §2: `h.symm : b = a`
@@ -35059,6 +36915,12 @@ msgid "§0 flips an equality: if §1, then §2.\n"
 "\n"
 "## Example\n"
 "§9"
+msgstr ""
+
+#. §0: `i.val = j.val`
+#. §1: `«{h}»`
+#: Game.Levels.MeetFin.L05_FinEquality
+msgid "Now the goal is §0, which is exactly §1."
 msgstr ""
 
 #. §0: $|s \\cup t| + |s \\cap t| = |s| + |t|$
@@ -35206,6 +37068,12 @@ msgstr ""
 
 #: Game.Levels.BigOpAlgebra.L01_SumAddDistrib
 msgid "Splitting a Sum of Sums"
+msgstr ""
+
+#. §0: `rw [hM, hN]`
+#. §1: `3 + 2 = 5`
+#: Game.Levels.Matrices.L06_MatrixAddition
+msgid "Try §0. The goal becomes §1."
 msgstr ""
 
 #. §0: `∑ x ∈ s, f x`
@@ -35568,6 +37436,10 @@ msgid "§0 proves §1 directly.\n"
 "Disabled to force manual proof using §2."
 msgstr ""
 
+#: Game.Levels.Matrices.L13_ConcreteTrace
+msgid "The trace of a diagonal matrix with known values evaluates to a number."
+msgstr ""
+
 #. §0: `Fin 2`
 #. §1: `0`
 #. §2: `1`
@@ -35736,6 +37608,7 @@ msgstr ""
 #: Game.Levels.Finsupp.L13_Extensionality
 #: Game.Levels.Finsupp.L17_Boss
 #: Game.Levels.Finsupp.L17_Boss
+#: Game.Levels.Matrices.L15_TraceOfTranspose
 msgid "Try §0 then\n"
 "§1."
 msgstr ""
@@ -35845,6 +37718,32 @@ msgid "The exponent is §0, but §1 is abstract. Use the\n"
 "with §4."
 msgstr ""
 
+#. §0: `Matrix.of`
+#. §1: `f : m → n → α`
+#. §2: `Matrix m n α`
+#. §3: `Matrix m n α`
+#. §4: `m → n → α`
+#. §5: `Matrix.of`
+#. §6: ```
+#. Matrix.of (fun i j => ...)
+#. ```
+#. §7: `Matrix.of_apply : Matrix.of f i j = f i j`
+#: Game.Levels.Matrices.L01_MatricesAreFunctions
+msgid "§0 wraps a function §1 as a §2.\n"
+"\n"
+"Since §3 is defined as §4, §5 is just\n"
+"a type cast — it changes the type without changing the data.\n"
+"\n"
+"## Syntax\n"
+"§6\n"
+"\n"
+"## When to use it\n"
+"When you want to explicitly construct a matrix from a function.\n"
+"\n"
+"## Key lemma\n"
+"§7"
+msgstr ""
+
 #. §0: `x`
 #. §1: `intro x h`
 #: Game.Levels.FinsetBasics.L06_RangeEmpty
@@ -35914,6 +37813,10 @@ msgstr ""
 #: Game.Levels.FinsetOperations.L16_LatticeNotation
 msgid "Now both goal and hypothesis use familiar notation.\n"
 "Use §0 and §1."
+msgstr ""
+
+#: Game.Levels.Matrices.L02_ConcreteMatrixEntries
+msgid "Read a specific entry from a concrete matrix."
 msgstr ""
 
 #. §0: `f`
@@ -36151,6 +38054,35 @@ msgstr ""
 #. §1: `rw [hj]`
 #: Game.Levels.PsetFin.L08_ObtainDestructure
 msgid "Rewrite §0 using the equation: §1."
+msgstr ""
+
+#. §0: `Fin.sum_univ_three`
+#. §1: `Fin 3`
+#. §2: `∑ i : Fin 3, f i = f 0 + f 1 + f 2`
+#. §3: ```
+#. rw [Fin.sum_univ_three]
+#. ```
+#. §4: `Fin 3`
+#. §5: `Fin.sum_univ_two`
+#. §6: `Fin 2`
+#. §7: `rw [Fin.sum_univ_three]`
+#. §8: `∑ i, d i = 10`
+#. §9: `d 0 + d 1 + d 2 = 10`
+#: Game.Levels.Matrices.L13_ConcreteTrace
+msgid "§0 expands a sum over §1 into three terms:\n"
+"\n"
+"§2\n"
+"\n"
+"## Syntax\n"
+"§3\n"
+"\n"
+"## When to use it\n"
+"When you need to evaluate a sum over §4 to a concrete expression.\n"
+"Also available: §5 for §6.\n"
+"\n"
+"## Example\n"
+"§7 turns §8 into\n"
+"§9."
 msgstr ""
 
 #. §0: $(s \\cap t) \\cup u \\subseteq s \\cup u$
@@ -36456,6 +38388,30 @@ msgid "Now the goal is §0. Rewrite with\n"
 "the hypotheses §1 and §2."
 msgstr ""
 
+#. §0: `ext i j`
+#. §1: `ext`
+#. §2: `Fin n → α`
+#. §3: `Fin m → Fin n → α`
+#. §4: `M = N`
+#. §5: `ext i j`
+#. §6: `M i j = N i j`
+#: Game.Levels.Matrices.L04_MatrixExtensionality
+msgid "§0 is the standard opening move when you need to prove two\n"
+"matrices are equal. It reduces the problem to checking each entry.\n"
+"\n"
+"This is the same §1 you used for tuples (§2), but now\n"
+"applied to functions of two arguments (§3). The\n"
+"tactic introduces BOTH index variables at once.\n"
+"\n"
+"**Pattern**: To prove §4, use §5 then show §6.\n"
+"\n"
+"In plain mathematics, this is the obvious fact that two matrices\n"
+"are equal iff they have the same entries. In Lean, you need to\n"
+"invoke this fact explicitly because matrix equality is not checked\n"
+"entry-by-entry by default — the kernel compares the matrices as\n"
+"whole objects."
+msgstr ""
+
 #. §0: `Fin n`
 #. §1: `Fin (n+1)`
 #. §2: `Fin.castSucc`
@@ -36489,6 +38445,12 @@ msgid "# Fin.castSucc: Same Value, Bigger Type\n"
 "So the same number satisfies the stricter bound.\n"
 "\n"
 "**Your task**: Prove that §13 preserves the value."
+msgstr ""
+
+#. §0: `(diagonal d)ᵀ 1 1 = 5`
+#: Game.Levels.Matrices.L14_TransposeDiagonalEntries
+msgid "**Part 2**: The goal is §0. Again,\n"
+"peel off the transpose."
 msgstr ""
 
 #: Game.Levels.FinsetImage.L05_ImageDistributes
@@ -37129,6 +39091,18 @@ msgid "§0 destructures a hypothesis into its components.\n"
 "destructuring."
 msgstr ""
 
+#. §0: `obtain rfl | h := eq_or_ne i j`
+#. §1: `rfl`
+#. §2: `i = j`
+#. §3: `(diagonal d) i i`
+#. §4: `i ≠ j`
+#: Game.Levels.Matrices.L18_DiagonalTransposeEquality
+msgid "Try §0.\n"
+"The §1 pattern automatically handles the §2 case (both\n"
+"sides become §3). You are left with the §4\n"
+"case."
+msgstr ""
+
 #. §0: `card_congr e`
 #. §1: `card α → card (Fin 2 × Fin 3)`
 #. §2: `card_prod`
@@ -37762,6 +39736,16 @@ msgid "Try §0 then extract the\n"
 "witness and embed into the union."
 msgstr ""
 
+#. §0: `rfl`
+#. §1: `j`
+#. §2: `i`
+#. §3: `diagonal_apply_eq`
+#: Game.Levels.Matrices.L17_DiagonalAddition
+msgid "In the §0 case, §1 has been replaced by §2. All three\n"
+"diagonal entries are on-diagonal. Use §3 to\n"
+"evaluate each one."
+msgstr ""
+
 #. §0: $m = 1$
 #. §1: $$\\binom{1 + n}{k} = \\sum_{(i,j) \\in \\text{antidiagonal}(k)} \\binom{1}{i} \\cdot \\binom{n}{j}$$
 #. §2: $\\binom{1}{i} = 0$
@@ -37939,6 +39923,10 @@ msgstr ""
 msgid "When two singles share a support point, their integer values add."
 msgstr ""
 
+#: Game.Levels.Matrices.L11_DiagDiagonalCounterexample
+msgid "Round-Tripping Loses Off-Diagonal Entries"
+msgstr ""
+
 #. §0: `e`
 #. §1: `Fintype.card α`
 #. §2: `rw [Fintype.card_congr e]`
@@ -38048,6 +40036,14 @@ msgstr ""
 msgid "The goal is now §0, which is exactly your hypothesis §1."
 msgstr ""
 
+#. §0: `rw [Matrix.diagonal_apply_ne d h, Matrix.diagonal_apply_ne e h, Matrix.diagonal_apply_ne (d + e) h]`
+#. §1: `0 + 0 = 0`
+#: Game.Levels.Matrices.L17_DiagonalAddition
+msgid "Try\n"
+"§0.\n"
+"After the three rewrites, the goal becomes §1."
+msgstr ""
+
 #. §0: $(x + y)^2$
 #. §1: $$(x + y)^2 = x^2 + 2xy + y^2$$
 #. §2: $n = 2$
@@ -38120,6 +40116,15 @@ msgstr ""
 
 #: Game.Levels.BigOpAlgebra.L13_ConcreteComputation
 msgid "Computing a Concrete Sum"
+msgstr ""
+
+#. §0: `rw [Matrix.transpose_apply, Matrix.add_apply, Matrix.add_apply, Matrix.transpose_apply]`
+#. §1: `(diagonal d) j i + N j i = (diagonal d) i j + N j i`
+#: Game.Levels.Matrices.L20_Boss
+msgid "Try\n"
+"§0.\n"
+"After these four rewrites, the goal reduces to\n"
+"§1."
 msgstr ""
 
 #. §0: `linarith`
@@ -38611,6 +40616,16 @@ msgstr ""
 msgid "Here §0. Choose §1 then §2 then §3."
 msgstr ""
 
+#. §0: `(0, 1)`
+#. §1: `Matrix.of f`
+#. §2: `f 0 1`
+#. §3: `Matrix.of_apply`
+#: Game.Levels.Matrices.L01_MatricesAreFunctions
+msgid "The goal asks you to show that accessing entry §0 of\n"
+"§1 gives the same result as §2. Rewrite with\n"
+"§3."
+msgstr ""
+
 #. §0: `intro h; cases h with`
 #: Game.Levels.FinsetOperations.L14_UnionCommutativity
 msgid "Same pattern in reverse: §0."
@@ -38654,6 +40669,14 @@ msgid "§0 characterizes membership in §1:\n"
 "\n"
 "## When to use it\n"
 "When the goal or a hypothesis involves §8."
+msgstr ""
+
+#. §0: `Finset.univ`
+#. §1: `Finset.sum_congr rfl`
+#: Game.Levels.Matrices.L12_TraceBigOp
+msgid "The two sums range over the same finset (§0).\n"
+"You need to show the summands are equal for each index. Use\n"
+"§1 to reduce to a pointwise argument."
 msgstr ""
 
 #: Game.Levels.Finsupp.L04_SingleZero
@@ -39050,6 +41073,10 @@ msgid "§0 replaces hypothesis §1 with §2, provided §3 is\n"
 "want to convert it to finset notation (§11, §12, §13)."
 msgstr ""
 
+#: Game.Levels.Matrices
+msgid "Matrices"
+msgstr ""
+
 #. §0: `h`
 #: Game.Levels.Finsupp.L06_MemSupportIffReverse
 msgid "Now §0 says exactly what the goal needs."
@@ -39076,6 +41103,15 @@ msgid "Try\n"
 "§0 where §1 and §2\n"
 "are your two concrete finsets. Since these are concrete, §3 can\n"
 "close the remaining goal. The simplest approach: just §4."
+msgstr ""
+
+#. §0: `d i + e i = (d + e) i`
+#. §1: `(d + e) i`
+#. §2: `d i + e i`
+#. §3: `rfl`
+#: Game.Levels.Matrices.L17_DiagonalAddition
+msgid "The goal is §0. Function addition is\n"
+"pointwise — §1 is definitionally §2. Use §3."
 msgstr ""
 
 #. §0: `have`
@@ -39759,6 +41795,32 @@ msgid "You've now used §0 in both directions:\n"
 "§9 is the tool."
 msgstr ""
 
+#. §0: `Matrix.diag_apply`
+#. §1: `Matrix.diag M i = M i i`
+#. §2: ```
+#. rw [Matrix.diag_apply]
+#. ```
+#. §3: `Matrix.diag M i`
+#. §4: `M i i`
+#. §5: `rw [Matrix.diag_apply]`
+#. §6: `diag M 2 = 5`
+#. §7: `M 2 2 = 5`
+#: Game.Levels.Matrices.L10_DiagOfDiagonal
+msgid "§0 evaluates the diagonal extraction:\n"
+"\n"
+"§1\n"
+"\n"
+"## Syntax\n"
+"§2\n"
+"\n"
+"## When to use it\n"
+"When the goal contains §3 and you want to\n"
+"replace it with §4.\n"
+"\n"
+"## Example\n"
+"§5 turns §6 into §7."
+msgstr ""
+
 #: Game.Levels.PascalsTriangle.L16_Boss
 msgid "Three sums plus arithmetic. The first sum has squares —\n"
 "use the Level 15 pattern (sum_congr + sq + choose_symm) to\n"
@@ -39959,6 +42021,25 @@ msgstr ""
 msgid "Now you need to show §0.\n"
 "Use §1 — it says §2,\n"
 "which is exactly the reverse of this equation."
+msgstr ""
+
+#. §0: `rw [Matrix.of_apply]`
+#. §1: `![![3, 1], ![0, 7]]`
+#. §2: `1`
+#. §3: `0`
+#. §4: `![0, 7]`
+#. §5: `0`
+#: Game.Levels.Matrices.L02_ConcreteMatrixEntries
+msgid "After §0, the matrix wrapper is removed and Lean\n"
+"sees the raw function §1 applied to indices §2\n"
+"and §3. It evaluates row 1 (§4), then column 0 (§5), giving\n"
+"the result directly.\n"
+"\n"
+"This is the 'matrices are functions' thesis in action: a concrete\n"
+"matrix is just a function from index pairs to values, and reading\n"
+"an entry is just function application. Every matrix operation you\n"
+"learn in this world — transpose, diagonal, extensionality — ultimately\n"
+"reduces to manipulating these function applications."
 msgstr ""
 
 #. §0: `rw [Fintype.card_sum]`
@@ -40471,6 +42552,11 @@ msgstr ""
 
 #: Game.Levels.FinTuples.L13_TupleComposition
 msgid "Composing Tuples with Functions"
+msgstr ""
+
+#. §0: `f`
+#: Game.Levels.Matrices.L01_MatricesAreFunctions
+msgid "Introduce the function §0."
 msgstr ""
 
 #. §0: `Finset.filter_inter_distrib`
@@ -41112,6 +43198,47 @@ msgstr ""
 
 #: Game.Levels.Cardinality.L07_InsertIdempotency
 msgid "Inserting an existing element doesn't change cardinality."
+msgstr ""
+
+#. §0: `transpose_apply`
+#. §1: `diagonal_apply_eq`
+#. §2: `diagonal_apply_ne`
+#. §3: `d`
+#. §4: `d 1 = 5`
+#. §5: `diagonal d`
+#. §6: `(diagonal d)ᵀ 1 2`
+#. §7: `0`
+#. §8: `(diagonal d)ᵀ 1 1`
+#. §9: `5`
+#. §10: `constructor`
+#. §11: `P ∧ Q`
+#. §12: `refine ⟨?_, ?_⟩`
+#. §13: `?_`
+#. §14: `constructor`
+#. §15: `refine`
+#. §16: `constructor`
+#: Game.Levels.Matrices.L14_TransposeDiagonalEntries
+msgid "# Combining Transpose and Diagonal\n"
+"\n"
+"You will recognize the **peel strategy** from Level 5: when you have\n"
+"nested matrix operations, rewrite with the outermost operation's lemma\n"
+"first to simplify layer by layer.\n"
+"\n"
+"Here you can read entries of a transposed diagonal matrix by applying\n"
+"§0 first (to swap the indices) and then\n"
+"§1 or §2 (to evaluate the\n"
+"diagonal matrix).\n"
+"\n"
+"**Your task**: Given a diagonal function §3 with §4, prove\n"
+"two things about the transpose of §5:\n"
+"1. The off-diagonal entry §6 is §7.\n"
+"2. The on-diagonal entry §8 is §9.\n"
+"\n"
+"**Aside**: You have been using §10 to split §11 into\n"
+"two goals. There is a more flexible alternative — §12 —\n"
+"where each §13 becomes a separate subgoal. For a 2-way conjunction\n"
+"this is equivalent to §14, but §15 scales to any number\n"
+"of parts. We will stick with §16 here."
 msgstr ""
 
 #. §0: `t`
@@ -41881,6 +44008,16 @@ msgstr ""
 msgid "The universal finset of Fin 5 has 5 elements."
 msgstr ""
 
+#. §0: `diag (diagonal d) i = d i`
+#. §1: `diag_apply`
+#. §2: `diag`
+#. §3: `diagonal_apply_eq`
+#: Game.Levels.Matrices.L12_TraceBigOp
+msgid "The goal is §0. Use the chained\n"
+"rewrite from Level 9: §1 peels §2, then\n"
+"§3 evaluates the on-diagonal entry."
+msgstr ""
+
 #: Game.Levels.SummationFormulas.L02_GaussSum
 msgid "The Gauss sum: twice the sum of 0..n equals n times (n+1)."
 msgstr ""
@@ -41909,6 +44046,10 @@ msgstr ""
 #. §1: `exact h.1`
 #: Game.Levels.FinsetOperations.L21_PartitionIdentity
 msgid "§0 then §1 in both branches."
+msgstr ""
+
+#: Game.Levels.Matrices.L02_ConcreteMatrixEntries
+msgid "Reading a Concrete Matrix"
 msgstr ""
 
 #: Game.Levels.MeetFin.L06_ConverseDirection
@@ -42087,6 +44228,12 @@ msgstr ""
 msgid "Compute §0 using §1."
 msgstr ""
 
+#. §0: `(diagonal d) i i`
+#. §1: `rfl`
+#: Game.Levels.Matrices.L18_DiagonalTransposeEquality
+msgid "Both sides are §0. This is §1."
+msgstr ""
+
 #. §0: $\\binom{n}{n} = 1$
 #. §1: `Nat.choose_self`
 #. §2: $\\binom{n}{n} = 1$
@@ -42231,6 +44378,13 @@ msgstr ""
 #. §1: `(if 3 = 5 then 7 else 0) = 0`
 #: Game.Levels.Finsupp.L07_SingleApply
 #: Game.Levels.Finsupp.L08_PointwiseAddition
+#: Game.Levels.Matrices.L03_TransposeEntries
+#: Game.Levels.Matrices.L05_DoubleTranspose
+#: Game.Levels.Matrices.L13_ConcreteTrace
+#: Game.Levels.Matrices.L14_TransposeDiagonalEntries
+#: Game.Levels.Matrices.L14_TransposeDiagonalEntries
+#: Game.Levels.Matrices.L14_TransposeDiagonalEntries
+#: Game.Levels.Matrices.L18_DiagonalTransposeEquality
 msgid "Try §0. The goal\n"
 "becomes §1."
 msgstr ""
@@ -42408,6 +44562,12 @@ msgstr ""
 msgid "The goal is now §0.\n"
 "This is exactly what symmetry says (with k = 0).\n"
 "Create a proof that §1 with §2, then apply symmetry."
+msgstr ""
+
+#. §0: `ext i`
+#: Game.Levels.Matrices.L10_DiagOfDiagonal
+msgid "You need to prove two functions are equal. Use §0 to\n"
+"reduce to a pointwise statement."
 msgstr ""
 
 #. §0: `(3, 3).1 ∈ s ∧ (3, 3).1 = (3, 3).2`
@@ -43415,6 +45575,33 @@ msgstr ""
 #: Game.Levels.Finsupp.L17_Boss
 #: Game.Levels.Finsupp.L17_Boss
 #: Game.Levels.Finsupp.L17_Boss
+#: Game.Levels.Matrices.L01_MatricesAreFunctions
+#: Game.Levels.Matrices.L02_ConcreteMatrixEntries
+#: Game.Levels.Matrices.L02_ConcreteMatrixEntries
+#: Game.Levels.Matrices.L03_TransposeEntries
+#: Game.Levels.Matrices.L04_MatrixExtensionality
+#: Game.Levels.Matrices.L05_DoubleTranspose
+#: Game.Levels.Matrices.L05_DoubleTranspose
+#: Game.Levels.Matrices.L06_MatrixAddition
+#: Game.Levels.Matrices.L07_TransposeAddition
+#: Game.Levels.Matrices.L08_DiagonalOnDiag
+#: Game.Levels.Matrices.L09_DiagonalOffDiag
+#: Game.Levels.Matrices.L10_DiagOfDiagonal
+#: Game.Levels.Matrices.L11_DiagDiagonalCounterexample
+#: Game.Levels.Matrices.L12_TraceBigOp
+#: Game.Levels.Matrices.L13_ConcreteTrace
+#: Game.Levels.Matrices.L14_TransposeDiagonalEntries
+#: Game.Levels.Matrices.L14_TransposeDiagonalEntries
+#: Game.Levels.Matrices.L14_TransposeDiagonalEntries
+#: Game.Levels.Matrices.L17_DiagonalAddition
+#: Game.Levels.Matrices.L17_DiagonalAddition
+#: Game.Levels.Matrices.L17_DiagonalAddition
+#: Game.Levels.Matrices.L17_DiagonalAddition
+#: Game.Levels.Matrices.L17_DiagonalAddition
+#: Game.Levels.Matrices.L18_DiagonalTransposeEquality
+#: Game.Levels.Matrices.L19_SymmetricCounterexample
+#: Game.Levels.Matrices.L20_Boss
+#: Game.Levels.Matrices.L20_Boss
 msgid "Try §0."
 msgstr ""
 
@@ -43746,6 +45933,10 @@ msgid "Choosing 8 from 10 is the same as leaving out 2.\n"
 "\n"
 "Step 1: Create the inequality proof with §2.\n"
 "Step 2: Apply symmetry with §3."
+msgstr ""
+
+#: Game.Levels.Matrices.L05_DoubleTranspose
+msgid "Transposing a matrix twice gives back the original."
 msgstr ""
 
 #. §0: $\\sum_{i=0}^{n-1} ((i+1)^2 - i^2) = n^2$
@@ -44436,6 +46627,10 @@ msgid "Two steps: §0 then §1.\n"
 "The k > n case gives 0. These boundary behaviors are consistent\n"
 "with the symmetry §10: when §11,\n"
 "§12 would be negative, so the symmetric case doesn't exist."
+msgstr ""
+
+#: Game.Levels.Matrices.L15_TraceOfTranspose
+msgid "The trace of a transpose equals the trace of the original matrix."
 msgstr ""
 
 #. §0: `Finset.prod_eq_one`
@@ -46048,6 +48243,14 @@ msgid "You need to show §0.\n"
 "§3"
 msgstr ""
 
+#. §0: `h : i != j`
+#. §1: `diagonal_apply_ne`
+#. §2: `h`
+#: Game.Levels.Matrices.L17_DiagonalAddition
+msgid "You have §0. All three entries are off-diagonal.\n"
+"Use §1 with §2 for each one."
+msgstr ""
+
 #: Game.Levels.Powerset.L01_EmptyInPowerset
 msgid "The empty set is in the powerset of any finset."
 msgstr ""
@@ -46789,6 +48992,10 @@ msgid "You've completed the **dual** of Level 11:\n"
 "image of §27 plus the singleton §28."
 msgstr ""
 
+#: Game.Levels.Matrices.L04_MatrixExtensionality
+msgid "Two matrices that agree at every entry are equal."
+msgstr ""
+
 #. §0: `ext`
 #. §1: `ext`
 #: Game.Levels.FinsetOperations.L07_EqualityByAntisymmetry
@@ -47171,6 +49378,33 @@ msgid "The goal is §0. Apply the bound hypothesis to your\n"
 "specific element: §1."
 msgstr ""
 
+#. §0: $$\\text{tr}(M + N) = \\text{tr}(M) + \\text{tr}(N)$$
+#. §1: `diag (M + N) i = (M + N) i i = M i i + N i i = diag M i + diag N i`
+#. §2: `Finset.sum_add_distrib`
+#. §3: `∑ i, (f i + g i) = ∑ i, f i + ∑ i, g i`
+#. §4: `Finset.sum_congr rfl`
+#: Game.Levels.Matrices.L16_TraceLinearity
+msgid "# Trace Distributes Over Addition\n"
+"\n"
+"In Level 12 you computed the trace of a diagonal matrix, and in\n"
+"Level 15 you proved that the trace is invariant under transpose.\n"
+"Now you will prove another fundamental property:\n"
+"\n"
+"§0\n"
+"\n"
+"The trace is **linear**: the trace of a sum is the sum of the traces.\n"
+"\n"
+"Why? Because §1.\n"
+"Each diagonal entry of the sum is the sum of the diagonal entries.\n"
+"Summing over all indices preserves this.\n"
+"\n"
+"The proof uses two tools:\n"
+"- §2 to split a sum of sums: §3\n"
+"- §4 to show each summand matches\n"
+"\n"
+"**Your task**: Prove trace linearity."
+msgstr ""
+
 #. §0: `Nat.choose_symm`
 #. §1: `exact`
 #. §2: `rw`
@@ -47483,6 +49717,11 @@ msgid "§0 proves that for §1 on a\n"
 "finite type, surjectivity is equivalent to bijectivity.\n"
 "\n"
 "Disabled in the capstone level."
+msgstr ""
+
+#. §0: `Matrix.add_apply`
+#: Game.Levels.Matrices.L17_DiagonalAddition
+msgid "Now expand the addition on the left with §0."
 msgstr ""
 
 #: Game.Levels.FinsetImage.L17_WhyInjectivityMatters
@@ -48012,6 +50251,17 @@ msgid "This completes the picture of how §0 and §1 relate:\n"
 "partitioned by these two embedding functions."
 msgstr ""
 
+#. §0: `transpose_apply`
+#. §1: `add_apply`
+#. §2: `transpose_apply`
+#. §3: `Nᵀ i j`
+#: Game.Levels.Matrices.L20_Boss
+msgid "Now simplify both sides using the entry-level lemmas.\n"
+"Use §0 to peel the outer transpose, then\n"
+"§1 to expand each sum, then §2 again\n"
+"to simplify §3."
+msgstr ""
+
 #. §0: `rw [List.mem_toFinset]`
 #. §1: `exact h`
 #: Game.Levels.AbstractionLadder.L14_ToFinset
@@ -48032,6 +50282,7 @@ msgstr ""
 #: Game.Levels.PsetCombinatorics.L04_BinomialTheoremRetrieval
 #: Game.Levels.PsetCombinatorics.L12_AntidiagonalDoubleSum
 #: Game.Levels.PsetCombinatorics.L14_Boss
+#: Game.Levels.Matrices.L16_TraceLinearity
 msgid "Try §0 then §1."
 msgstr ""
 
@@ -48054,6 +50305,38 @@ msgstr ""
 
 #: Game.Levels.BinomialTheorem.L04_PowersOfOne
 msgid "Simplifying Powers of One"
+msgstr ""
+
+#. §0: `Finset.sum_congr rfl`
+#. §1: `diag_apply`
+#. §2: `diagonal_apply_eq`
+#. §3: `tr(A + B) = tr(A) + tr(B)`
+#. §4: `tr(AB) = tr(BA)`
+#. §5: `AB ≠ BA`
+#. §6: `tr(diagonal d) = ∑ i, d i`
+#. §7: `Finset.sum_congr rfl`
+#: Game.Levels.Matrices.L12_TraceBigOp
+msgid "You connected matrices to big operators. The proof used\n"
+"§0 to reduce a sum equality to a pointwise\n"
+"argument, then §1 and §2 to simplify\n"
+"each summand.\n"
+"\n"
+"The **trace** is one of the most important invariants in linear\n"
+"algebra. It satisfies remarkable properties:\n"
+"- §3 — the trace is linear (you will prove\n"
+"  this soon)\n"
+"- §4 — the trace is cyclic (even when §5)\n"
+"- The trace of a projection is its rank\n"
+"\n"
+"What you proved here — §6 — is the starting\n"
+"point. The diagonal entries of a matrix encode its most important\n"
+"spectral information, and summing them (the trace) captures a key\n"
+"piece of that information.\n"
+"\n"
+"This level bridges the matrix world to the big operator machinery\n"
+"you built in earlier worlds — specifically, you used\n"
+"§7 from the Big Operator Algebra world to\n"
+"reduce a sum equality to pointwise equality of summands."
 msgstr ""
 
 #. §0: `rw [h]`
@@ -48163,6 +50446,12 @@ msgid "Use §0 to split the sum into\n"
 "§1."
 msgstr ""
 
+#. §0: `have him : (s.image f).card ≤ s.card := Finset.card_image_le`
+#: Game.Levels.FinsetImage.L14_ImageCanOnlyShrink
+msgid "Use §0\n"
+"to get the key inequality."
+msgstr ""
+
 #. §0: `Finset.card_insert_of_notMem h`
 #. §1: `h : a ∉ s`
 #. §2: `(insert a s).card = s.card + 1`
@@ -48197,12 +50486,6 @@ msgid "§0 states that when §1,\n"
 "\n"
 "## Example\n"
 "§9"
-msgstr ""
-
-#. §0: `have him : (s.image f).card ≤ s.card := Finset.card_image_le`
-#: Game.Levels.FinsetImage.L14_ImageCanOnlyShrink
-msgid "Use §0\n"
-"to get the key inequality."
 msgstr ""
 
 #. §0: `n`
@@ -48317,6 +50600,37 @@ msgstr ""
 msgid "The element at index 1 of §0 is 20."
 msgstr ""
 
+#. §0: $\\text{tr}(M) = \\sum_i M_{ii}$
+#. §1: $$\\text{tr}(M^T) = \\text{tr}(M)$$
+#. §2: $i$
+#. §3: $M^T$
+#. §4: $M^T_{ii} = M_{ii}$
+#. §5: `Finset.sum_congr rfl`
+#. §6: `diag_apply`
+#. §7: `transpose_apply`
+#. §8: `tr(Mᵀ) = tr(M)`
+#: Game.Levels.Matrices.L15_TraceOfTranspose
+msgid "# The Trace Is Transpose-Invariant\n"
+"\n"
+"The trace of a matrix is the sum of its diagonal entries:\n"
+"§0. In Level 12 you computed the trace\n"
+"of a diagonal matrix. Now you will prove a key property:\n"
+"\n"
+"§1\n"
+"\n"
+"The trace of a transpose equals the trace of the original matrix.\n"
+"\n"
+"Why? Because the §2-th diagonal entry of §3 is §4\n"
+"— transposing swaps rows and columns, but diagonal entries have\n"
+"the same row and column index, so they do not move.\n"
+"\n"
+"The proof uses §5 (from Level 12) to reduce to\n"
+"showing each summand is equal, then §6 and\n"
+"§7 to simplify.\n"
+"\n"
+"**Your task**: Prove that §8."
+msgstr ""
+
 #: Game.Levels.BigOpAlgebra.L01_SumAddDistrib
 msgid "Using sum_add_distrib with known component sums."
 msgstr ""
@@ -48410,6 +50724,14 @@ msgid "# Boss: Summing Squared Differences\n"
 "- §14 with IH (SummationFormulas)"
 msgstr ""
 
+#. §0: `(0, 1)`
+#. §1: `Matrix.of`
+#. §2: `of_apply`
+#: Game.Levels.Matrices.L11_DiagDiagonalCounterexample
+msgid "**Part 2**: Evaluate the concrete matrix entry at §0.\n"
+"Unwrap §1 with §2 to see the raw vector notation."
+msgstr ""
+
 #. §0: `castSucc`
 #. §1: `Fin.last`
 #. §2: `n`
@@ -48462,6 +50784,11 @@ msgid "Establish the inequality with\n"
 "§1."
 msgstr ""
 
+#. §0: `ext i j`
+#: Game.Levels.Matrices.L20_Boss
+msgid "Two matrices are equal entry-wise. Start with §0."
+msgstr ""
+
 #. §0: `Fin.val_zero`
 #. §1: `(0 : Fin (n + 1)).val = 0`
 #. §2: ```
@@ -48496,8 +50823,45 @@ msgid "§0 states §1 in a semilattice.\n"
 "Disabled to force element-wise reasoning about intersection via §3 and §4."
 msgstr ""
 
+#. §0: `← Finset.sum_add_distrib`
+#. §1: `∑ i, (diag M i + diag N i)`
+#: Game.Levels.Matrices.L16_TraceLinearity
+msgid "The right side is a sum of two separate sums. Use\n"
+"§0 to combine them into a single sum\n"
+"§1, then show the summands match."
+msgstr ""
+
 #: Game.Levels.Fintype.L04_SumTypes
 msgid "The sum type Fin n ⊕ Fin m has n + m elements."
+msgstr ""
+
+#. §0: `Matrix.diagonal_apply_eq`
+#. §1: `(diagonal d) i i = d i`
+#. §2: ```
+#. rw [Matrix.diagonal_apply_eq]
+#. ```
+#. §3: `(diagonal d) i i`
+#. §4: `rw [Matrix.diagonal_apply_eq]`
+#. §5: `(diagonal d) 2 2 = d 2`
+#. §6: `d 2 = d 2`
+#: Game.Levels.Matrices.L08_DiagonalOnDiag
+msgid "§0 evaluates a diagonal matrix on the diagonal:\n"
+"\n"
+"§1\n"
+"\n"
+"When the row and column indices are equal, the diagonal matrix\n"
+"returns the diagonal value.\n"
+"\n"
+"## Syntax\n"
+"§2\n"
+"\n"
+"## When to use it\n"
+"When the goal contains §3 where both indices are\n"
+"the same variable or the same concrete value.\n"
+"\n"
+"## Example\n"
+"§4 turns §5\n"
+"into §6."
 msgstr ""
 
 #. §0: `(a, b) ∈ s.offDiag`
@@ -48735,6 +51099,26 @@ msgid "§0 proves §1 directly.\n"
 "\n"
 "Disabled in levels where the learner should prove this by rewriting with\n"
 "§2 and using §3."
+msgstr ""
+
+#. §0: $M^{TT} = M$
+#. §1: `Mᵀᵀ = M`
+#. §2: `ext i j`
+#. §3: `Matrix.transpose_apply`
+#: Game.Levels.Matrices.L05_DoubleTranspose
+msgid "# Transposing Twice Returns the Original\n"
+"\n"
+"If you transpose a matrix and then transpose the result, you get back\n"
+"the original matrix. This makes intuitive sense: swapping rows and\n"
+"columns twice undoes itself.\n"
+"\n"
+"Formally: §0, or in Lean: §1.\n"
+"\n"
+"You now have the tools to prove this:\n"
+"1. §2 — reduce matrix equality to entry-wise equality\n"
+"2. §3 — evaluate a transpose entry\n"
+"\n"
+"**Your task**: Prove that transposing twice is the identity."
 msgstr ""
 
 #: Game.Levels.FinsetImage.L05_ImageDistributes
@@ -50542,6 +52926,19 @@ msgid "The goal is §0. Use backward image\n"
 "Surjectivity gives you such an §4."
 msgstr ""
 
+#. §0: `h : i != j`
+#. §1: `(diagonal d) j i`
+#. §2: `0`
+#. §3: `j != i`
+#. §4: `h.symm`
+#. §5: `(diagonal d) i j`
+#. §6: `h`
+#: Game.Levels.Matrices.L20_Boss
+msgid "You have §0. The left side has §1\n"
+"— to show this is §2, you need §3, which is §4.\n"
+"The right side has §5 — use §6 directly."
+msgstr ""
+
 #: Game.Levels.BinomialCoefficients.L06_Symmetry
 msgid "C(10, 8) = C(10, 2): symmetry of binomial coefficients."
 msgstr ""
@@ -50808,6 +53205,15 @@ msgstr ""
 
 #: Game.Levels.Products.L18_DisjointnessCoaching
 msgid "Compute the cardinality of a disjoint diagonal/off-diagonal union."
+msgstr ""
+
+#. §0: `(0, 1)`
+#. §1: `diagonal (diag M)`
+#. §2: `0 ≠ 1`
+#: Game.Levels.Matrices.L11_DiagDiagonalCounterexample
+msgid "**Part 1**: The entry §0 of §1 is\n"
+"off-diagonal (since §2). What do you know about off-diagonal\n"
+"entries of diagonal matrices?"
 msgstr ""
 
 #: Game.Levels.PsetFinset.L02_DoubleComplementSubset
@@ -51098,6 +53504,10 @@ msgid "Now apply absorption to each summand. The absorption\n"
 "Prove this pointwise, then apply §3."
 msgstr ""
 
+#: Game.Levels.Matrices.L07_TransposeAddition
+msgid "Transpose distributes over matrix addition."
+msgstr ""
+
 #. §0: `Nat.choose s.card k = 0`
 #. §1: `Nat.choose_eq_zero_of_lt`
 #. §2: `Nat.choose n k = 0`
@@ -51380,6 +53790,11 @@ msgid "Start by converting the powersetCard cardinality to a\n"
 "binomial coefficient using §0."
 msgstr ""
 
+#: Game.Levels.Matrices.L19_SymmetricCounterexample
+msgid "A matrix can be symmetric (matching off-diagonal entries) but not diagonal\n"
+"(nonzero off-diagonal entry)."
+msgstr ""
+
 #. §0: $$\\sum_{m=0}^{n} \\binom{n}{m} = 2^n$$
 #. §1: `Nat.sum_range_choose`
 #. §2: `x = 2, y = 1`
@@ -51622,6 +54037,10 @@ msgstr ""
 
 #: Game.Levels.SummationFormulas.L12_TelescopingSum
 msgid "A Telescoping Sum"
+msgstr ""
+
+#: Game.Levels.Matrices.L18_DiagonalTransposeEquality
+msgid "The transpose of a diagonal matrix equals itself."
 msgstr ""
 
 #. §0: `constructor`
@@ -52065,6 +54484,10 @@ msgstr ""
 msgid "Split a sum and convert the constant part to cardinality."
 msgstr ""
 
+#: Game.Levels.Matrices.L12_TraceBigOp
+msgid "Trace: Connecting Diagonal to Big Operators"
+msgstr ""
+
 #: Game.Levels.Finsupp.L05_MemSupportIff
 msgid "Reading Support Membership"
 msgstr ""
@@ -52250,6 +54673,26 @@ msgstr ""
 
 #: Game.Levels.BigOpIntro.L14_ProdIntegration
 msgid "Close the singleton product."
+msgstr ""
+
+#. §0: `(diagonal d)ᵀ`
+#. §1: `transpose_apply`
+#. §2: `(diagonal d)ᵀ i j`
+#. §3: `(diagonal d) j i`
+#. §4: `diagonal_apply_eq`
+#. §5: `diagonal_apply_ne`
+#. §6: `j = i`
+#. §7: `j ≠ i`
+#: Game.Levels.Matrices.L14_TransposeDiagonalEntries
+msgid "Reading entries of §0 is a two-step peel:\n"
+"\n"
+"1. §1 to swap the indices: §2 becomes\n"
+"   §3\n"
+"2. §4 or §5 depending on whether\n"
+"   §6 or §7\n"
+"\n"
+"The transpose of a diagonal matrix is still diagonal — transposing\n"
+"doesn't move entries on the main diagonal, and zeros stay zero."
 msgstr ""
 
 #. §0: `n`
@@ -52532,6 +54975,16 @@ msgstr ""
 msgid "Componentwise addition of two concrete vectors."
 msgstr ""
 
+#. §0: `rw [Matrix.diag_apply, Matrix.diagonal_apply_eq, Matrix.diag_apply, Matrix.diagonal_apply_eq, Matrix.diag_apply, Matrix.diagonal_apply_eq]`
+#. §1: `d 0`
+#. §2: `d 1`
+#. §3: `d 2`
+#: Game.Levels.Matrices.L13_ConcreteTrace
+msgid "Try\n"
+"§0.\n"
+"This turns each term into §1, §2, §3."
+msgstr ""
+
 #. §0: `↑i`
 #. §1: `i.val`
 #: Game.Levels.MeetFin.L02_TheNumberInside
@@ -52647,6 +55100,37 @@ msgid "§0 evaluates decidable propositions by computation.\n"
 "§7"
 msgstr ""
 
+#. §0: `Matrix.diagonal d`
+#. §1: `d : n → α`
+#. §2: $$\\text{diagonal}\\,d\\,i\\,j = \\begin{cases} d\\,i & \\text{if } i = j \\\\ 0 & \\text{if } i \\neq j \\end{cases}$$
+#. §3: `Matrix.diagonal_apply_eq`
+#. §4: ```
+#. Matrix.diagonal_apply_eq : (diagonal d) i i = d i
+#. ```
+#. §5: `i = i`
+#. §6: `d i`
+#: Game.Levels.Matrices.L08_DiagonalOnDiag
+msgid "# Diagonal Matrices\n"
+"\n"
+"A **diagonal matrix** has nonzero entries only on the main diagonal\n"
+"(where the row index equals the column index). All off-diagonal entries\n"
+"are zero.\n"
+"\n"
+"In Lean, §0 builds a square matrix from a function\n"
+"§1:\n"
+"\n"
+"§2\n"
+"\n"
+"The key lemma for **on-diagonal** entries is §3:\n"
+"\n"
+"§4\n"
+"\n"
+"When the row and column indices are the same (§5), the diagonal\n"
+"matrix returns §6.\n"
+"\n"
+"**Your task**: Read an on-diagonal entry of a diagonal matrix."
+msgstr ""
+
 #: Game.Levels.Fintype.L14_ConcreteComputation
 msgid "There are 25 functions from Bool to Fin 2 ⊕ Fin 3."
 msgstr ""
@@ -52659,6 +55143,13 @@ msgstr ""
 msgid "The goal is §0. Both sides are\n"
 "zero because §1 and §2. Use §3\n"
 "with explicit proofs."
+msgstr ""
+
+#. §0: `Matrix.diagonal_add`
+#. §1: `diagonal d + diagonal e = diagonal (d + e)`
+#: Game.Levels.Matrices.Imports
+msgid "§0 proves §1\n"
+"directly. Disabled so you prove it using ext, case split, and diagonal lemmas."
 msgstr ""
 
 #. §0: `hα`
@@ -52864,6 +55355,13 @@ msgid "§0 closes goals that are equalities in commutative (semi)rings\n"
 "\n"
 "Disabled in levels where the learner should use specific card_* lemmas\n"
 "rather than letting ring close arithmetic goals directly."
+msgstr ""
+
+#: Game.Levels.Matrices.L07_TransposeAddition
+msgid "Now simplify each side using the entry-level lemmas. The left\n"
+"side has a transpose of a sum — peel the transpose first, then\n"
+"expand the addition. The right side has a sum of transposes —\n"
+"expand the addition, then peel each transpose."
 msgstr ""
 
 #. §0: `(1, 2, 5)`
@@ -53637,6 +56135,19 @@ msgstr ""
 msgid "Diagonal Cardinality"
 msgstr ""
 
+#. §0: `Mᵀ 0 2`
+#. §1: `Mᵀ 0 2 = M 2 0`
+#. §2: `Matrix.transpose_apply`
+#: Game.Levels.Matrices.L03_TransposeEntries
+msgid "The goal involves §0. Transpose swaps the indices, so\n"
+"§1. Rewrite with §2 to make\n"
+"this substitution."
+msgstr ""
+
+#: Game.Levels.Matrices.L20_Boss
+msgid "Boss: Transpose of a Shifted Diagonal"
+msgstr ""
+
 #. §0: `rw [hlen, hcard]`
 #. §1: `4 ≠ 3`
 #: Game.Levels.AbstractionLadder.L19_ContrastLevel
@@ -53684,6 +56195,15 @@ msgstr ""
 
 #: Game.Levels.Powerset.L09_ComplementInPowerset
 msgid "The complement of a powerset member is also in the powerset."
+msgstr ""
+
+#. §0: `rw [Matrix.of_apply, Matrix.of_apply]`
+#. §1: `of_apply`
+#. §2: `Matrix.of`
+#: Game.Levels.Matrices.L19_SymmetricCounterexample
+msgid "Try §0.\n"
+"Each §1 unwraps one §2, and the resulting\n"
+"concrete values are equal."
 msgstr ""
 
 #. §0: `Fin 0`
@@ -53814,6 +56334,24 @@ msgstr ""
 
 #: Game.Levels.SummationFormulas.L06_GeometricSum3
 msgid "Twice the sum of powers of 3, plus 1, equals 3 to the n."
+msgstr ""
+
+#. §0: `0 ≠ 1`
+#. §1: `have h : (0 : Fin 2) ≠ 1 := by omega`
+#. §2: `exact Matrix.diagonal_apply_ne _ h`
+#: Game.Levels.Matrices.L11_DiagDiagonalCounterexample
+msgid "Establish that §0 with\n"
+"§1, then use\n"
+"§2."
+msgstr ""
+
+#. §0: `unfold`
+#. §1: `irreducible`
+#: Game.Metadata
+msgid "§0 unfolds definitions in the goal.\n"
+"\n"
+"Disabled in levels where definitions are marked §1 to\n"
+"prevent bypassing the intended proof structure."
 msgstr ""
 
 #. §0: `f`
@@ -54053,6 +56591,15 @@ msgid "The **peel-IH-ring** pattern is the standard approach for algebraic\n"
 "in the SummationFormulas world that follows."
 msgstr ""
 
+#. §0: `diagonal d`
+#. §1: `(1, 1)`
+#. §2: `Matrix.diagonal_apply_eq`
+#: Game.Levels.Matrices.L08_DiagonalOnDiag
+msgid "The goal asks for the value of §0 at position §1.\n"
+"Since the row and column match, this is an on-diagonal entry.\n"
+"Use §2."
+msgstr ""
+
 #. §0: `s`
 #. §1: `s.diag`
 #. §2: $$s.\\text{diag} = \\{(a, a) \\mid a \\in s\\}$$
@@ -54090,6 +56637,14 @@ msgstr ""
 msgid "First, prove that each summand equals §0.\n"
 "Declare a §1 with type\n"
 "§2."
+msgstr ""
+
+#. §0: `(diagonal d) i i = d i`
+#. §1: `rw [Matrix.diag_apply, Matrix.diagonal_apply_eq]`
+#: Game.Levels.Matrices.L10_DiagOfDiagonal
+msgid "The goal is now §0 — an on-diagonal entry.\n"
+"You know this one. You could also have done both rewrites in one step\n"
+"with §1."
 msgstr ""
 
 #. §0: `s`
@@ -54180,6 +56735,34 @@ msgid "# Bounding the Support of a Sum\n"
 "\n"
 "**Your task**: Given that §10 is in the support of §11, prove\n"
 "that §12 is in the union of the supports."
+msgstr ""
+
+#. §0: `Matrix.add_apply`
+#. §1: `(M + N) i j = M i j + N i j`
+#. §2: ```
+#. rw [Matrix.add_apply]       -- in the goal
+#. rw [Matrix.add_apply] at h  -- in a hypothesis
+#. ```
+#. §3: `(M + N) i j`
+#. §4: `M i j + N i j`
+#. §5: `rw [Matrix.add_apply]`
+#. §6: `(M + N) 0 1 = 5`
+#. §7: `M 0 1 + N 0 1 = 5`
+#: Game.Levels.Matrices.L06_MatrixAddition
+msgid "§0 evaluates entry-wise addition:\n"
+"\n"
+"§1\n"
+"\n"
+"## Syntax\n"
+"§2\n"
+"\n"
+"## When to use it\n"
+"When the goal or a hypothesis contains §3 and you want\n"
+"to split it into §4.\n"
+"\n"
+"## Example\n"
+"§5 turns §6 into\n"
+"§7."
 msgstr ""
 
 #. §0: `card_union_add_card_inter`
@@ -55093,6 +57676,36 @@ msgid "Swap the sides again: §0 case gets\n"
 "§1, §2 case gets §3."
 msgstr ""
 
+#. §0: `Matrix.transpose_apply`
+#. §1: `Mᵀ i j = M j i`
+#. §2: `(i, j)`
+#. §3: `(j, i)`
+#. §4: ```
+#. rw [Matrix.transpose_apply]       -- in the goal
+#. rw [Matrix.transpose_apply] at h  -- in a hypothesis
+#. ```
+#. §5: `Mᵀ i j`
+#. §6: `rw [Matrix.transpose_apply]`
+#. §7: `Mᵀ 0 2 = 7`
+#. §8: `M 2 0 = 7`
+#: Game.Levels.Matrices.L03_TransposeEntries
+msgid "§0 evaluates a transpose entry:\n"
+"\n"
+"§1\n"
+"\n"
+"The transpose swaps rows and columns: entry §2 of the\n"
+"transpose is entry §3 of the original.\n"
+"\n"
+"## Syntax\n"
+"§4\n"
+"\n"
+"## When to use it\n"
+"When the goal or a hypothesis contains §5.\n"
+"\n"
+"## Example\n"
+"§6 turns §7 into §8."
+msgstr ""
+
 #. §0: `Multiset.card_cons`
 #. §1: `(a ::ₘ m).card = m.card + 1`
 #. §2: ```
@@ -55169,8 +57782,22 @@ msgid "The pattern §0 provides a §1 element as an\n"
 "You'll use this combination in the boss."
 msgstr ""
 
+#. §0: `d 0 + d 1 + d 2 = 10`
+#: Game.Levels.Matrices.L13_ConcreteTrace
+msgid "The goal is now §0. Substitute the known\n"
+"values using the hypotheses."
+msgstr ""
+
 #: Game.Levels.FinsetOperations.L02_IntersectionMembership
 msgid "2 is in the intersection of {1, 2, 3} and {2, 4, 6}."
+msgstr ""
+
+#. §0: `Mᵀ j i`
+#. §1: `Mᵀ j i = M i j`
+#. §2: `Matrix.transpose_apply`
+#: Game.Levels.Matrices.L05_DoubleTranspose
+msgid "Now §0 — the inner transpose swaps again: §1.\n"
+"Rewrite with §2 once more."
 msgstr ""
 
 #. §0: `hfa : f a = y`
@@ -55213,6 +57840,15 @@ msgid "§0 is a list quotiented by permutation. A §1\n"
 "\n"
 "## Key bridge lemma\n"
 "- §9"
+msgstr ""
+
+#. §0: `ext i j`
+#. §1: `i : Fin 2`
+#. §2: `j : Fin 2`
+#. §3: `M i j = N i j`
+#: Game.Levels.Matrices.L04_MatrixExtensionality
+msgid "Try §0. This introduces index variables\n"
+"§1 and §2 and changes the goal to §3."
 msgstr ""
 
 #. §0: `f a`
@@ -55676,6 +58312,16 @@ msgid "# Powerset: All Subsets of a Set\n"
 "Cardinality, and §24 identities from BinomialCoefficients."
 msgstr ""
 
+#. §0: `N j i`
+#. §1: `(diagonal d) j i = (diagonal d) i j`
+#. §2: `i = j`
+#. §3: `i != j`
+#: Game.Levels.Matrices.L20_Boss
+msgid "The §0 terms match on both sides. The challenge is\n"
+"showing §1. This depends on\n"
+"whether §2 or §3. Split into cases."
+msgstr ""
+
 #. §0: $$(n + 1) \\cdot |\\text{powersetCard } (n - 2)\\ s|
 #. = 3 \\cdot \\binom{n+1}{3}$$
 #: Game.Levels.PsetCombinatorics.L10_TwoIdentityChain
@@ -55857,6 +58503,10 @@ msgstr ""
 msgid "**Part 4**: The absorption identity with k = 3:\n"
 "§0.\n"
 "Use §1 to rewrite directly."
+msgstr ""
+
+#: Game.Levels.Matrices.L01_MatricesAreFunctions
+msgid "Matrices Are Functions"
 msgstr ""
 
 #. §0: `∀ y, y ∈ lhs → y ∈ rhs`
