@@ -45,8 +45,8 @@ them: `∅ ⊆ s ⊆ Set.univ` for any `s : Set α`. You will prove these
 containments in the next world.
 "
 
-/-- `Set.mem_univ x` proves `x ∈ Set.univ` for any `x`. -/
-TheoremDoc Set.mem_univ as "Set.mem_univ" in "Set"
+NewTheorem Set.mem_univ
+TheoremTab "Set"
 
 DisabledTactic trivial decide native_decide simp aesop simp_all tauto norm_num linarith
 DisabledTheorem Set.mem_univ Set.mem_setOf_eq Set.mem_setOf

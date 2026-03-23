@@ -33,6 +33,52 @@ msgstr ""
 msgid "Prove that 3 belongs to the set of naturals less than 5."
 msgstr ""
 
+#. §0: `⋂ i ∈ t, s i ⊆ s j`
+#. §1: `rw`
+#. §2: `⋂ i, s i`
+#. §3: `hx : ∀ i, x ∈ s i`
+#. §4: `hx j`
+#. §5: `⋂ i ∈ t, s i`
+#. §6: `hx : ∀ i, i ∈ t → x ∈ s i`
+#. §7: `hx j hj`
+#. §8: `use`
+#. §9: `⋃ i ∈ t, s i`
+#. §10: `∃ i ∈ t, x ∈ s i`
+#. §11: `∃`
+#. §12: `⋂ i ∈ t, s i`
+#. §13: `∀ i ∈ t, x ∈ s i`
+#. §14: `∀`
+#. §15: $x \\in \\bigcap_{i \\in t} s_i$
+#. §16: $j \\in t$
+#. §17: $x \\in s_i$
+#. §18: $i \\in t$
+#. §19: $x \\in s_j$
+#: Game.Levels.IndexedOpsWorld.L08_BoundedIInter
+msgid "You proved that §0 — the bounded intersection is\n"
+"contained in each in-bounds member. Compare the unbounded and bounded\n"
+"extraction patterns:\n"
+"\n"
+"| Variant | After §1 at hypothesis | Specialize |\n"
+"|---|---|---|\n"
+"| §2 | §3 | §4 |\n"
+"| §5 | §6 | §7 |\n"
+"\n"
+"The bounded variant adds one extra argument: the proof that the index\n"
+"is in the bounding set. This mirrors the double §8 from bounded\n"
+"unions, but on the universal (forall) side instead of the existential.\n"
+"\n"
+"**The duality is now complete**:\n"
+"\n"
+"| Operation | Bounded variant | Logic |\n"
+"|---|---|---|\n"
+"| §9 | §10 | bounded §11 |\n"
+"| §12 | §13 | bounded §14 |\n"
+"\n"
+"In ordinary math: \"If §15 and §16,\n"
+"then by definition §17 for every §18; in particular,\n"
+"§19.\""
+msgstr ""
+
 #. §0: `h4' : 4 < 3`
 #. §1: `omega`
 #. §2: `False`
@@ -46,6 +92,7 @@ msgstr ""
 #. §2: `change x < 3 at hx`
 #. §3: `omega`
 #: Game.Levels.SubsetWorld.L14_ProperSubset
+#: Game.Levels.IndexedOpsWorld.L18_DeMorganUnion
 msgid "§0 then §1 then\n"
 "§2 then §3."
 msgstr ""
@@ -76,6 +123,35 @@ msgid "§0 — the §1 projection extracts\n"
 "the first component of the conjunction.\n"
 "\n"
 "Alternatively: §2 then §3."
+msgstr ""
+
+#. §0: `⋂ i, s i`
+#. §1: `∀ i, x ∈ s i`
+#. §2: $$\\bigcap_{i \\in \\emptyset} s_i = \\text{univ}$$
+#. §3: `⋂ i ∈ t, s i`
+#. §4: `Set.univ`
+#: Game.Levels.IndexedOpsWorld.L09_VacuousIntersection
+msgid "# When the Index Type Is Empty\n"
+"\n"
+"What happens when you take the intersection over an *empty* family of\n"
+"sets? If the index type has no elements at all, then §0 should\n"
+"contain everything — because the condition §1 is\n"
+"**vacuously true** when there are no indices to check.\n"
+"\n"
+"This is one of the most surprising properties of indexed intersections.\n"
+"When you intersect over nothing, you get everything:\n"
+"\n"
+"§2\n"
+"\n"
+"Students often picture intersections as always \"shrinking\" a collection.\n"
+"But when there are no constraints, there is nothing to shrink — every\n"
+"element satisfies all zero conditions.\n"
+"\n"
+"This is also why **bounded** variants (§3) exist: they let\n"
+"you restrict to a non-vacuous index set, avoiding this surprise.\n"
+"\n"
+"**Your task**: Prove that the intersection over the empty index type\n"
+"is §4."
 msgstr ""
 
 #. §0: `s ⊂ t`
@@ -124,6 +200,7 @@ msgstr ""
 #. §3: `exact hx h`
 #: Game.Levels.SetOpsWorld.L13_DualDeMorgan
 #: Game.Levels.SetOpsWorld.L14_ComplementUnion
+#: Game.Levels.IndexedOpsWorld.L18_DeMorganUnion
 msgid "§0 then\n"
 "§1 then §2 then\n"
 "§3."
@@ -193,6 +270,12 @@ msgid "§0 matches the conclusion §1\n"
 "against the output of §2 and leaves §3 as the new goal."
 msgstr ""
 
+#. §0: `rw [Set.mem_iUnion] at hx`
+#: Game.Levels.IndexedOpsWorld.L19_DeMorganInter
+#: Game.Levels.IndexedOpsWorld.L23_Boss
+msgid "Unpack the union: §0."
+msgstr ""
+
 #. §0: $$(s \\cup t)^c = s^c \\cap t^c$$
 #. §1: `s ∪ t`
 #. §2: `s`
@@ -239,10 +322,91 @@ msgid "# De Morgan's Law for Sets\n"
 "each individual step is familiar from earlier levels."
 msgstr ""
 
+#. §0: `ext`
+#. §1: `mem_iUnion`
+#. §2: ```
+#. ext x                         -- set equality → membership ↔
+#. constructor
+#. · intro _                     -- forward: trivial (Set.mem_univ)
+#.   exact Set.mem_univ x
+#. · intro _                     -- backward: find the remainder class
+#.   rw [Set.mem_iUnion]
+#.   use ⟨x % 3, by omega⟩      -- witness: x's own remainder
+#. ```
+#. §3: `⋃ i, s i = Set.univ`
+#. §4: `ext`
+#. §5: `Set.univ`
+#. §6: $\\{n : n \\bmod 3 = k\\}$
+#. §7: $k = 0, 1, 2$
+#. §8: $\\mathbb{N}$
+#. §9: $\\bigcup_k S_k = \\text{univ}$
+#. §10: $S_i \\cap S_j = \\emptyset$
+#. §11: $i \\neq j$
+#: Game.Levels.IndexedOpsWorld.L17_IUnionEqualsUniv
+msgid "You proved that the remainder classes mod 3 cover everything. The proof\n"
+"combined §0 (from Subset World) with §1 (from this world):\n"
+"\n"
+"§2\n"
+"\n"
+"**The reusable recipe**: To prove §3, use §4\n"
+"to reduce to membership, then for the backward direction, provide a\n"
+"witness index that covers the given element. The forward direction\n"
+"is always trivial (everything is in §5).\n"
+"\n"
+"**Mathematical content**: The remainder classes §6\n"
+"for §7 form a **partition** of §8. A partition\n"
+"has two properties:\n"
+"\n"
+"1. **Covers everything**: §9 — you just proved this.\n"
+"2. **Pairwise disjoint**: §10 for §11 — you did NOT prove this.\n"
+"\n"
+"You showed the union covers everything, but a partition also requires\n"
+"that the pieces don't overlap. You will prove disjointness properties\n"
+"later when we study partitions and equivalence relations."
+msgstr ""
+
 #. §0: `compl_compl`
 #. §1: `aᶜᶜ = a`
 #: Game.Levels.SetOpsWorld.L15_DoubleComplement
 msgid "§0 states §1 — double complement is the identity."
+msgstr ""
+
+#. §0: `x ∈ ⋃ i, (s i ∩ t)`
+#. §1: `x ∈ (⋃ i, s i) ∩ t`
+#. §2: `intro hx`
+#. §3: `rw [Set.mem_iUnion] at hx`
+#: Game.Levels.IndexedOpsWorld.L23_Boss
+msgid "**Backward direction**: Assume §0 and prove\n"
+"§1.\n"
+"\n"
+"Start with §2, then unpack the indexed union:\n"
+"§3."
+msgstr ""
+
+#. §0: `s`
+#. §1: $$s \\neq \\emptyset \\;\\Longleftrightarrow\\; \\exists\\, x,\\; x \\in s$$
+#. §2: `Set.Nonempty s`
+#. §3: `∃ x, x ∈ s`
+#. §4: `use`
+#. §5: `⋃`
+#. §6: `∃`
+#. §7: `use witness`
+#: Game.Levels.IndexedOpsWorld.L12_Nonempty
+msgid "# Set.Nonempty\n"
+"\n"
+"A set §0 is **nonempty** if it contains at least one element:\n"
+"\n"
+"§1\n"
+"\n"
+"In Lean, §2 is defined as §3. To prove a\n"
+"set is nonempty, you exhibit a witness with §4.\n"
+"\n"
+"This is the same move you use for §5 (which also reduces to §6),\n"
+"and the same move you use for existential statements in general.\n"
+"The pattern is always: §7, then prove the witness satisfies\n"
+"the predicate.\n"
+"\n"
+"**Your task**: Prove that the set of even natural numbers is nonempty."
 msgstr ""
 
 #. §0: `Even 4`
@@ -263,6 +427,135 @@ msgid "§0 substitutes §1 and the\n"
 "remaining goal §2 is closed automatically."
 msgstr ""
 
+#. §0: `x ∈ ⋃ i, s i`
+#. §1: `rw [Set.mem_iUnion]`
+#. §2: `∃ i, x ∈ s i`
+#. §3: `j`
+#: Game.Levels.IndexedOpsWorld.L13_NonemptyPropagation
+msgid "The goal is §0. Use §1 to\n"
+"convert to §2, then provide the index §3."
+msgstr ""
+
+#: Game.Levels.IndexedOpsWorld.L04_IUnionFromSubset
+msgid "Each member of the family is a subset of the indexed union."
+msgstr ""
+
+#. §0: `Set.Nonempty s`
+#. §1: `∃ x, x ∈ s`
+#. §2: `use`
+#: Game.Levels.IndexedOpsWorld.L12_Nonempty
+msgid "§0 is defined as §1. You need to\n"
+"exhibit an even natural number. Use §2 to provide the witness."
+msgstr ""
+
+#. §0: `∀`
+#. §1: ```
+#. intro x hx
+#. rw [Set.mem_iInter] at hx    -- hx : ∀ i, x ∈ s i
+#. rw [Set.mem_iInter]            -- goal: ∀ i, x ∈ t i
+#. intro i                        -- goal: x ∈ t i
+#. exact h i (hx i)               -- transfer via subset
+#. ```
+#. §2: `⋃`
+#. §3: `∃`
+#. §4: `∃`
+#. §5: `⋂`
+#. §6: `∀`
+#. §7: `∀`
+#. §8: $x \\in \\bigcap_i s_i$
+#. §9: $x \\in s_i$
+#. §10: $i$
+#. §11: $s_i \\subseteq t_i$
+#. §12: $x \\in t_i$
+#. §13: $i$
+#. §14: $x \\in \\bigcap_i t_i$
+#: Game.Levels.IndexedOpsWorld.L06_MonotonIInter
+msgid "You proved monotonicity of indexed intersection. The proof is simpler\n"
+"than the union case because both sides reduce to §0:\n"
+"\n"
+"§1\n"
+"\n"
+"**Compare union and intersection monotonicity**:\n"
+"\n"
+"| Operation | Pattern | Key difference |\n"
+"|---|---|---|\n"
+"| §2 (Level 5) | extract §3, reuse witness, repack §4 | must handle existentials |\n"
+"| §5 (this level) | unwrap §6, introduce index, apply subset | only universals |\n"
+"\n"
+"The intersection version is simpler because §7 requires no\n"
+"witness management — you just introduce the index and work with it.\n"
+"The union version required extracting and repacking a witness index.\n"
+"\n"
+"In ordinary math: \"If §8, then §9 for\n"
+"every §10. Since §11, we have §12 for every\n"
+"§13. Therefore §14.\""
+msgstr ""
+
+#. §0: `hx : ∃ i, x ∈ s i`
+#. §1: `obtain ⟨j, hj⟩ := hx`
+#: Game.Levels.IndexedOpsWorld.L14_NonemptyConverse
+msgid "Now §0. Extract the index witness:\n"
+"§1."
+msgstr ""
+
+#. §0: `Set.univ`
+#. §1: `∀ i, x ∈ s i`
+#. §2: `∅`
+#. §3: $$\\bigcup_{i \\in \\emptyset} s_i = \\emptyset$$
+#. §4: `∃ i, x ∈ s i`
+#. §5: `Empty`
+#. §6: `∃`
+#. §7: `∀`
+#. §8: `Empty`
+#. §9: `⋂ i, s i`
+#. §10: `Set.univ`
+#. §11: `∀ i : Empty, P i`
+#. §12: `⋃ i, s i`
+#. §13: `∅`
+#. §14: `∃ i : Empty, P i`
+#. §15: `∅`
+#: Game.Levels.IndexedOpsWorld.L10_VacuousUnion
+msgid "# The Dual: Union over Nothing\n"
+"\n"
+"In the previous level, you proved the surprising fact that intersecting\n"
+"over an empty family gives §0 — because the condition\n"
+"§1 is vacuously true when there are no indices.\n"
+"\n"
+"Now prove the **dual**: unioning over an empty family gives §2.\n"
+"\n"
+"§3\n"
+"\n"
+"This is less surprising: if there are no sets to contribute elements,\n"
+"the union is empty. The membership condition §4 is false\n"
+"when the index type §5 has no elements — you cannot produce a\n"
+"witness that does not exist.\n"
+"\n"
+"Together, these two results give the cleanest illustration of the\n"
+"§6/§7 duality in indexed operations:\n"
+"\n"
+"| Operation | Over §8 | Reason |\n"
+"|---|---|---|\n"
+"| §9 | §10 | §11 is vacuously true |\n"
+"| §12 | §13 | §14 is impossible |\n"
+"\n"
+"**Your task**: Prove that the union over an empty index type is §15."
+msgstr ""
+
+#. §0: `hx : ∃ i, x ∈ s i`
+#. §1: `obtain ⟨i, hsi⟩ := hx`
+#: Game.Levels.IndexedOpsWorld.L05_MonotonIUnion
+msgid "Now §0. Extract the witness with\n"
+"§1."
+msgstr ""
+
+#. §0: `5 % 3 = 2`
+#. §1: `show 5 % 3 = 2`
+#. §2: `omega`
+#: Game.Levels.IndexedOpsWorld.L01_IndexedUnion
+msgid "The goal is now a set membership that unfolds to §0.\n"
+"Use §1 to make this explicit, then §2."
+msgstr ""
+
 #: Game.Levels.SubsetWorld.L10_ExtIntro
 msgid "A conjunction with a weaker condition is equivalent to the\n"
 "stronger condition alone."
@@ -270,6 +563,14 @@ msgstr ""
 
 #: Game.Levels.SubsetWorld.L09_NonArithSubset
 msgid "If p implies q pointwise, then the set defined by p is a subset of the set defined by q."
+msgstr ""
+
+#. §0: `⋂ i, s i`
+#. §1: `s i`
+#: Game.Levels.IndexedOpsWorld.Imports
+msgid "The indexed intersection §0 is the set of all elements\n"
+"that belong to every §1. It generalizes binary intersection to\n"
+"arbitrary families of sets."
 msgstr ""
 
 #. §0: `contradiction`
@@ -371,6 +672,52 @@ msgid "# Welcome to Sets\n"
 "applies it.)"
 msgstr ""
 
+#. §0: `s j ⊆ ⋃ i ∈ t, s i`
+#. §1: `rw`
+#. §2: `⋃ i, s i`
+#. §3: `∃ i, x ∈ s i`
+#. §4: `use j`
+#. §5: `⋃ i ∈ t, s i`
+#. §6: `∃ i, ∃ (_ : i ∈ t), x ∈ s i`
+#. §7: `use j, hj`
+#. §8: $j \\in t$
+#. §9: $x \\in s_j$
+#. §10: $x \\in \\bigcup_{i \\in t} s_i$
+#. §11: $j$
+#: Game.Levels.IndexedOpsWorld.L07_BoundedIUnion
+msgid "You proved §0 — each member of a bounded family\n"
+"is contained in the bounded union, as long as the index is in bounds.\n"
+"\n"
+"Compare the unbounded and bounded patterns:\n"
+"\n"
+"| Variant | After §1 | Proof pattern |\n"
+"|---|---|---|\n"
+"| §2 | §3 | §4 |\n"
+"| §5 | §6 | §7 |\n"
+"\n"
+"The bounded variant adds one extra obligation: proving the witness\n"
+"index belongs to the bounding set. This double-existential pattern\n"
+"will appear whenever you work with restricted index ranges.\n"
+"\n"
+"In ordinary math: \"If §8 and §9, then\n"
+"§10 because §11 is a valid index.\""
+msgstr ""
+
+#. §0: `Set.univ`
+#. §1: `exact Set.mem_univ x`
+#. §2: `trivial`
+#. §3: `Set.mem_univ x`
+#. §4: `x ∈ Set.univ`
+#. §5: `x`
+#: Game.Levels.IndexedOpsWorld.L17_IUnionEqualsUniv
+msgid "The forward direction is trivial: everything is in §0.\n"
+"Introduce the hypothesis and close with §1.\n"
+"\n"
+"Note: §2 is disabled in this course, so it cannot close this\n"
+"for you. The explicit tool is §3, which proves\n"
+"§4 for any §5."
+msgstr ""
+
 #: Game.Levels.SetOpsWorld.L01_UnionMembership
 msgid "3 belongs to the union because it satisfies the left set's predicate."
 msgstr ""
@@ -436,6 +783,40 @@ msgid "§0. But §1 says §2.\n"
 "These contradict: §3."
 msgstr ""
 
+#. §0: `constructor`
+#. §1: `↔`
+#: Game.Levels.IndexedOpsWorld.L09_VacuousIntersection
+#: Game.Levels.IndexedOpsWorld.L10_VacuousUnion
+#: Game.Levels.IndexedOpsWorld.L19_DeMorganInter
+#: Game.Levels.IndexedOpsWorld.L22_IInterDistrib
+msgid "Use §0 to split the §1."
+msgstr ""
+
+#. §0: `∀ k : Fin 4, 10 ∈ ...`
+#. §1: `intro k`
+#: Game.Levels.IndexedOpsWorld.L02_IndexedIntersection
+msgid "The goal is now §0. Use §1 to\n"
+"introduce the index variable."
+msgstr ""
+
+#. §0: `Empty`
+#. §1: `False`
+#. §2: `i : Empty`
+#. §3: `i.elim`
+#. §4: `Empty.elim i`
+#. §5: `i`
+#. §6: `False.elim`
+#: Game.Levels.IndexedOpsWorld.Imports
+msgid "§0 is a type with no elements — no constructors at all.\n"
+"It is the type-level analogue of §1 (which is a proposition\n"
+"with no proofs).\n"
+"\n"
+"If you have §2, then §3 (equivalently, §4)\n"
+"can prove any goal — because such an §5 cannot exist. This is the\n"
+"principle of explosion for types, just as §6 is the\n"
+"principle of explosion for propositions."
+msgstr ""
+
 #. §0: `∪`
 #. §1: `∨`
 #. §2: `left`
@@ -481,6 +862,32 @@ msgid "§0 destructures a hypothesis §1 with structure\n"
 "## Example\n"
 "If §10, then §11 gives\n"
 "§12 and §13."
+msgstr ""
+
+#. §0: `by_contra h`
+#. §1: `¬ goal`
+#. §2: `False`
+#. §3: ```
+#. by_contra h
+#. ```
+#. §4: ```
+#. -- Goal: ∃ i, P i
+#. by_contra h
+#. -- h : ¬ ∃ i, P i
+#. -- Goal: False
+#. ```
+#: Game.Metadata
+msgid "§0 assumes §1 and changes the goal to §2.\n"
+"\n"
+"## Syntax\n"
+"§3\n"
+"\n"
+"## When to use it\n"
+"When you cannot prove the goal directly but can derive a contradiction\n"
+"from its negation. This is classical reasoning.\n"
+"\n"
+"## Example\n"
+"§4"
 msgstr ""
 
 #. §0: `intro h`
@@ -629,6 +1036,10 @@ msgid "You proved union membership by choosing a side with §0.\n"
 "to redo the level — it makes the §13 = §14 connection visible."
 msgstr ""
 
+#: Game.Levels.IndexedOpsWorld.L17_IUnionEqualsUniv
+msgid "Indexed Union Equals Univ"
+msgstr ""
+
 #. §0: `ht : x ∈ t`
 #. §1: `hs : x ∈ s`
 #. §2: `x ∈ (s ∩ t) ∪ (s ∩ u)`
@@ -708,6 +1119,49 @@ msgstr ""
 
 #: Game.Levels.SetOpsWorld.L01_UnionMembership
 msgid "Union Membership"
+msgstr ""
+
+#. §0: `mem_iInter`
+#. §1: `rw [Set.mem_iInter]`
+#. §2: `x ∈ ⋂ i, s i`
+#. §3: `∀ i, x ∈ s i`
+#. §4: `mem_iInter`
+#. §5: `hx : x ∈ ⋂ i, s i`
+#. §6: `rw [Set.mem_iInter] at hx`
+#. §7: `hx`
+#. §8: `hx : ∀ i, x ∈ s i`
+#. §9: `hx j`
+#. §10: `∀`
+#. §11: `s`
+#. §12: `s j`
+#. §13: `j`
+#. §14: `s ∩ t ⊆ s`
+#: Game.Levels.IndexedOpsWorld.L03_IInterSubset
+msgid "# Using §0 in a Hypothesis\n"
+"\n"
+"In the previous level, you used §1 on the **goal**\n"
+"to convert §2 into §3. But §4 is\n"
+"just as useful on a **hypothesis**.\n"
+"\n"
+"If you know §5, then §6\n"
+"converts §7 to §8. After that, you can\n"
+"**specialize** it to any particular index by writing §9.\n"
+"\n"
+"This is the fundamental pattern for *using* an indexed intersection:\n"
+"unwrap the §10, then apply it to the index you need.\n"
+"\n"
+"**Your task**: Prove that the indexed intersection of a family §11\n"
+"is a subset of §12 for any particular index §13. This is the\n"
+"indexed analogue of §14 — if an element is in every set,\n"
+"it is certainly in any one of them."
+msgstr ""
+
+#. §0: `x ∈ ⋃ i ∈ t, s i`
+#. §1: `rw [Set.mem_iUnion₂]`
+#. §2: `∃ i, ∃ (_ : i ∈ t), x ∈ s i`
+#: Game.Levels.IndexedOpsWorld.L07_BoundedIUnion
+msgid "The goal is §0. Use §1\n"
+"to convert to a double existential: §2."
 msgstr ""
 
 #. §0: `constructor`
@@ -831,6 +1285,19 @@ msgid "§0 creates the set §1 from a predicate §2.\n"
 "refer to any §16 in the surrounding context."
 msgstr ""
 
+#. §0: `hx : ∀ i, x ∈ (s i)ᶜ`
+#. §1: `i`
+#. §2: `hx i`
+#. §3: `x ∈ (s i)ᶜ`
+#. §4: `x ∉ s i`
+#. §5: `hsi : x ∈ s i`
+#. §6: `exact hx i hsi`
+#: Game.Levels.IndexedOpsWorld.L18_DeMorganUnion
+msgid "Now §0. Specialize to §1:\n"
+"§2 gives §3, which means §4.\n"
+"But §5 — contradiction. Close with §6."
+msgstr ""
+
 #. §0: `ext`
 #: Game.Levels.SubsetWorld.L15_AntisymmFromExt
 msgid "Deriving set equality from mutual subsets using §0."
@@ -852,9 +1319,53 @@ msgid "You have §0 and §1. The theorem\n"
 "Use §4."
 msgstr ""
 
+#. §0: ```
+#. intro x hx
+#. rw [Set.mem_iUnion] at hx    -- unpack ⋃ from hypothesis
+#. obtain ⟨i, hsi⟩ := hx        -- extract witness index
+#. rw [Set.mem_iUnion]            -- prepare goal ⋃
+#. use i                          -- reuse the same index
+#. exact h i hsi                  -- transfer via subset
+#. ```
+#. §1: `h i`
+#. §2: $x \\in \\bigcup_i s_i$
+#. §3: $x \\in s_j$
+#. §4: $j$
+#. §5: $s_j \\subseteq t_j$
+#. §6: $x \\in t_j$
+#. §7: $x \\in \\bigcup_i t_i$
+#: Game.Levels.IndexedOpsWorld.L05_MonotonIUnion
+msgid "You proved monotonicity of indexed union. The proof pattern is:\n"
+"\n"
+"§0\n"
+"\n"
+"**The extract-transform-repack pattern**: This proof follows a\n"
+"three-step strategy that recurs throughout indexed operations:\n"
+"\n"
+"1. **Extract** — unpack the hypothesis to get a witness or universal\n"
+"2. **Transform** — apply a given relationship (here, §1)\n"
+"3. **Repack** — rebuild the goal using the transformed data\n"
+"\n"
+"We will call this the *extract-transform-repack* pattern. You will\n"
+"see it again in monotonicity of intersection (next level), De Morgan\n"
+"laws, and the boss level.\n"
+"\n"
+"In ordinary math: \"If §2, then §3 for\n"
+"some §4. Since §5, we have §6. Therefore\n"
+"§7.\""
+msgstr ""
+
 #: Game.Levels.SetOpsWorld.L11_PushNeg
 msgid "The complement of a union is a subset of the intersection of\n"
 "complements (one direction of De Morgan)."
+msgstr ""
+
+#. §0: `Set.biInter_subset_of_mem`
+#. §1: `j ∈ t`
+#. §2: `⋂ i ∈ t, s i ⊆ s j`
+#: Game.Levels.IndexedOpsWorld.L08_BoundedIInter
+msgid "§0 states that for §1,\n"
+"§2."
 msgstr ""
 
 #. §0: `x ∈ s ∩ (t ∪ u)`
@@ -906,6 +1417,11 @@ msgstr ""
 msgid "§0 — §1 specializes the\n"
 "implication to our element, and §2 provides the premise §3.\n"
 "So §4 is a proof of §5, which matches the goal."
+msgstr ""
+
+#. §0: `ht`
+#: Game.Levels.IndexedOpsWorld.L23_Boss
+msgid "§0 is exactly what you need."
 msgstr ""
 
 #: Game.Levels.SubsetWorld
@@ -966,6 +1482,14 @@ msgid "**Forward direction**: you have a complement-of-union\n"
 "same as Level 10: §0, then §1 and §2."
 msgstr ""
 
+#. §0: `h : Set.Nonempty (s j)`
+#. §1: `∃ x, x ∈ s j`
+#. §2: `obtain ⟨x, hx⟩ := h`
+#: Game.Levels.IndexedOpsWorld.L13_NonemptyPropagation
+msgid "§0 means §1. Extract the\n"
+"witness with §2."
+msgstr ""
+
 #. §0: `Set.univ`
 #. §1: $$s \\subseteq \\texttt{Set.univ} \\quad \\text{for any } s$$
 #. §2: `x ∈ Set.univ`
@@ -1005,6 +1529,14 @@ msgstr ""
 msgid "Compound Predicates"
 msgstr ""
 
+#. §0: `Set.univ`
+#. §1: `intro _`
+#. §2: `exact Set.mem_univ x`
+#: Game.Levels.IndexedOpsWorld.L09_VacuousIntersection
+msgid "The forward direction is trivial: everything is in §0.\n"
+"Use §1 then §2."
+msgstr ""
+
 #. §0: `constructor`
 #. §1: `True.intro`
 #: Game.Levels.SetWorld.L01_WelcomeToSets
@@ -1024,6 +1556,10 @@ msgid "The goal is §0. You know §1, which says\n"
 "goal to §5."
 msgstr ""
 
+#: Game.Levels.IndexedOpsWorld.L18_DeMorganUnion
+msgid "De Morgan for Indexed Unions"
+msgstr ""
+
 #. §0: `Set.empty_subset s`
 #. §1: `∅ ⊆ s`
 #. §2: `s`
@@ -1040,6 +1576,12 @@ msgstr ""
 #: Game.Levels.SetOpsWorld.L03_ComplementMembership
 msgid "§0 says §1, meaning there exists §2 with §3.\n"
 "Destructure with §4."
+msgstr ""
+
+#. §0: `∀ i, x ∈ t i`
+#. §1: `intro i`
+#: Game.Levels.IndexedOpsWorld.L06_MonotonIInter
+msgid "The goal is §0. Introduce the index with §1."
 msgstr ""
 
 #: Game.Levels.SubsetWorld.L04_EmptySubset
@@ -1070,6 +1612,7 @@ msgstr ""
 #. §1: `show x ≤ 2`
 #. §2: `omega`
 #: Game.Levels.SubsetWorld.L11_ExtPractice
+#: Game.Levels.IndexedOpsWorld.L22_IInterDistrib
 msgid "§0 then §1\n"
 "then §2."
 msgstr ""
@@ -1081,6 +1624,10 @@ msgstr ""
 #: Game.Levels.SetWorld.L05_NonMembershipExistential
 msgid "The goal is §0, which means\n"
 "§1. Use §2 to assume §3."
+msgstr ""
+
+#: Game.Levels.IndexedOpsWorld.L23_Boss
+msgid "Indexed union distributes over intersection."
 msgstr ""
 
 #. §0: `left`
@@ -1098,6 +1645,49 @@ msgid "§0 selects the left disjunct of a goal §1.\n"
 "\n"
 "## When to use it\n"
 "When the goal is §3 and you want to prove §4."
+msgstr ""
+
+#. §0: `Set.mem_iUnion`
+#. §1: `x ∈ ⋃ i, s i ↔ ∃ i, x ∈ s i`
+#. §2: ```
+#. rw [Set.mem_iUnion]       -- in the goal
+#. rw [Set.mem_iUnion] at h  -- in a hypothesis
+#. ```
+#. §3: `⋃ i, s i`
+#. §4: `∃`
+#. §5: ```
+#. -- Goal: x ∈ ⋃ i, s i
+#. rw [Set.mem_iUnion]
+#. -- Goal: ∃ i, x ∈ s i
+#. use j
+#. -- Goal: x ∈ s j
+#. ```
+#. §6: `rw [Set.mem_iUnion]`
+#. §7: `∃`
+#. §8: `use`
+#. §9: `left`
+#. §10: `right`
+#. §11: `∨`
+#. §12: `∪`
+#: Game.Levels.IndexedOpsWorld.Imports
+msgid "§0 states §1 —\n"
+"membership in an indexed union is equivalent to existence of a\n"
+"witness index.\n"
+"\n"
+"## Syntax\n"
+"§2\n"
+"\n"
+"## When to use it\n"
+"When you see §3 in a goal or hypothesis and need to\n"
+"work with the underlying §4 statement.\n"
+"\n"
+"## Example\n"
+"§5\n"
+"\n"
+"## Warning\n"
+"After §6, you get an §7 — use §8 to provide\n"
+"the witness. Do not confuse with §9/§10 (which are for binary\n"
+"§11 / §12)."
 msgstr ""
 
 #: Game.Levels.SetWorld.L03_NonMembership
@@ -1216,6 +1806,18 @@ msgid "You have now proved both directions of the equivalence:\n"
 "at hand."
 msgstr ""
 
+#: Game.Levels.IndexedOpsWorld.L11_CartesianProduct
+msgid "(2, 3) belongs to the product of even numbers with numbers less than 5."
+msgstr ""
+
+#. §0: `x ∈ ⋃ i, s i`
+#. §1: `rw [Set.mem_iUnion]`
+#. §2: `∃ i, x ∈ s i`
+#: Game.Levels.IndexedOpsWorld.L04_IUnionFromSubset
+msgid "The goal is §0. Use §1 to\n"
+"convert to §2."
+msgstr ""
+
 #: Game.Levels.SetWorld.L07_UniversalSet
 msgid "Everything is in Set.univ"
 msgstr ""
@@ -1300,6 +1902,10 @@ msgstr ""
 
 #. §0: `ext x`
 #: Game.Levels.SetOpsWorld.L16_Boss
+#: Game.Levels.IndexedOpsWorld.L18_DeMorganUnion
+#: Game.Levels.IndexedOpsWorld.L19_DeMorganInter
+#: Game.Levels.IndexedOpsWorld.L22_IInterDistrib
+#: Game.Levels.IndexedOpsWorld.L23_Boss
 msgid "Start with §0 to reduce to a membership biconditional."
 msgstr ""
 
@@ -1315,8 +1921,22 @@ msgid "You need to prove §0 without §1 (which is disabled).\n"
 "Use §2 to split into two subset goals."
 msgstr ""
 
+#: Game.Levels.IndexedOpsWorld.L09_VacuousIntersection
+msgid "Vacuous Intersection"
+msgstr ""
+
 #: Game.Levels.SetOpsWorld.L05_DiffAsIntersect
 msgid "Set difference equals intersection with complement."
+msgstr ""
+
+#. §0: `intro i`
+#: Game.Levels.IndexedOpsWorld.L18_DeMorganUnion
+#: Game.Levels.IndexedOpsWorld.L22_IInterDistrib
+msgid "Use §0 to introduce the index."
+msgstr ""
+
+#: Game.Levels.IndexedOpsWorld.L07_BoundedIUnion
+msgid "Each member of a bounded family is a subset of the bounded union."
 msgstr ""
 
 #. §0: `linarith`
@@ -1333,6 +1953,15 @@ msgstr ""
 #: Game.Levels.SetOpsWorld.L05_DiffAsIntersect
 msgid "Given §0, prove §1. Same idea:\n"
 "destructure and reassemble."
+msgstr ""
+
+#. §0: `exact hu.trans h`
+#. §1: `u ⊆ s`
+#. §2: `s ⊆ t`
+#. §3: `u ⊆ t`
+#: Game.Levels.IndexedOpsWorld.L16_PowersetMonotonicity
+msgid "§0 — subset transitivity chains\n"
+"§1 with §2 to get §3."
 msgstr ""
 
 #. §0: `show 3 < 5`
@@ -1444,12 +2073,68 @@ msgid "# Subset World\n"
 "- §24 — derive equality from mutual subsets"
 msgstr ""
 
+#: Game.Levels.IndexedOpsWorld.L08_BoundedIInter
+msgid "The bounded intersection is a subset of each in-bounds member."
+msgstr ""
+
+#. §0: `hx : x ∈ ⋂ i, s i`
+#. §1: `rw [Set.mem_iInter] at hx`
+#. §2: `∀ i, x ∈ s i`
+#: Game.Levels.IndexedOpsWorld.L06_MonotonIInter
+#: Game.Levels.IndexedOpsWorld.L08_BoundedIInter
+#: Game.Levels.IndexedOpsWorld.L14_NonemptyConverse
+#: Game.Levels.IndexedOpsWorld.L16_PowersetMonotonicity
+msgid "You have §0. Use §1\n"
+"to convert to §2."
+msgstr ""
+
 #. §0: `have h3 := hq 3 h`
 #. §1: `h3 : Even 3`
 #. §2: `∃ r, 3 = r + r`
 #: Game.Levels.SetWorld.L09_Boss
 msgid "§0 gives\n"
 "§1 (meaning §2)."
+msgstr ""
+
+#. §0: `𝒫 s`
+#. §1: `s`
+#. §2: $$t \\in \\mathcal{P}(s) \\;\\Longleftrightarrow\\; t \\subseteq s$$
+#. §3: `𝒫 s`
+#. §4: `∈`
+#. §5: `∪`
+#. §6: `∩`
+#. §7: `rw [Set.mem_powerset_iff]`
+#. §8: `t ∈ 𝒫 s`
+#. §9: `t ⊆ s`
+#. §10: `𝒫`
+#. §11: `\\powerset`
+#. §12: `\\P`
+#. §13: `{n : ℕ | n < 3}`
+#. §14: `{n : ℕ | n < 5}`
+#: Game.Levels.IndexedOpsWorld.L15_Powerset
+msgid "# The Powerset\n"
+"\n"
+"The **powerset** §0 is the set of all subsets of §1:\n"
+"\n"
+"§2\n"
+"\n"
+"Notice that §3 is a set whose *elements are sets*. While §4, §5,\n"
+"§6, etc. are about elements belonging to sets, the powerset is about\n"
+"sets belonging to a collection of sets.\n"
+"\n"
+"**New tool**: §7 converts §8 into\n"
+"§9. After that, you prove a subset relation — which you\n"
+"already know how to do from Subset World.\n"
+"\n"
+"**Notation**: Type §10 as §11 or §12.\n"
+"\n"
+"**Your task**: Prove that §13 is in the powerset of\n"
+"§14 — that is, every number less than 3 is also less\n"
+"than 5."
+msgstr ""
+
+#: Game.Levels.IndexedOpsWorld.L06_MonotonIInter
+msgid "Indexed intersection is monotone: if each s i ⊆ t i, then ⋂ i, s i ⊆ ⋂ i, t i."
 msgstr ""
 
 #. §0: `Set.univ`
@@ -1475,6 +2160,17 @@ msgid "This is the universal counterpart of Level 1: instead of proving\n"
 "These two sets are the extreme cases. Every other set lies between\n"
 "them: §7 for any §8. You will prove these\n"
 "containments in the next world."
+msgstr ""
+
+#. §0: `x`
+#. §1: `x`
+#. §2: `intro hx`
+#: Game.Levels.IndexedOpsWorld.L19_DeMorganInter
+msgid "**Backward direction (constructive)**: You have a specific\n"
+"index where §0 is missing. This directly prevents §1 from being\n"
+"in the full intersection.\n"
+"\n"
+"Start with §2."
 msgstr ""
 
 #. §0: `{n : ℕ | n < 10 ∧ Even n}`
@@ -1620,6 +2316,13 @@ msgid "§0 means §1. Use\n"
 "§4. (Type ⟨ as §5 and ⟩ as §6.)"
 msgstr ""
 
+#. §0: `∀ i, x ∈ s i`
+#. §1: `intro i`
+#: Game.Levels.IndexedOpsWorld.L19_DeMorganInter
+msgid "The goal is §0. Use §1 to introduce\n"
+"the index."
+msgstr ""
+
 #. §0: `x ∈ sᶜ ∩ tᶜ`
 #. §1: `x ∈ (s ∪ t)ᶜ`
 #. §2: `intro hx`
@@ -1629,10 +2332,29 @@ msgid "**Backward direction**: given §0, prove\n"
 "intersection hypothesis."
 msgstr ""
 
+#: Game.Levels.IndexedOpsWorld.L19_DeMorganInter
+msgid "De Morgan for Indexed Intersections"
+msgstr ""
+
+#. §0: `rw [Set.mem_iUnion]`
+#. §1: `∃ i, x ∈ (s i)ᶜ`
+#: Game.Levels.IndexedOpsWorld.L19_DeMorganInter
+#: Game.Levels.IndexedOpsWorld.L22_IInterDistrib
+msgid "Rewrite the goal: §0 to get\n"
+"§1."
+msgstr ""
+
 #. §0: `ext x`
 #: Game.Levels.SubsetWorld.L10_ExtIntro
 msgid "The goal is a set equality. Use §0 to reduce it to\n"
 "\"for all x, membership in the left equals membership in the right\"."
+msgstr ""
+
+#. §0: `Set.iInter_subset`
+#. §1: `⋂ i, s i ⊆ s j`
+#: Game.Levels.IndexedOpsWorld.L03_IInterSubset
+msgid "§0 states §1 — the indexed\n"
+"intersection is contained in each member of the family."
 msgstr ""
 
 #. §0: `left`
@@ -1729,6 +2451,17 @@ msgid "§0 converts hypothesis §1 to display as §2,\n"
 "§12, the types are not definitionally equal."
 msgstr ""
 
+#. §0: `∃ k : ℕ, 5 ∈ ...`
+#. §1: `5 % 3 = 2`
+#. §2: `k = 2`
+#. §3: `use 2`
+#: Game.Levels.IndexedOpsWorld.L01_IndexedUnion
+msgid "The goal is now §0. You need to provide\n"
+"the witness — which remainder class does 5 belong to?\n"
+"\n"
+"Since §1, the witness is §2. Use §3."
+msgstr ""
+
 #. §0: `cases h with | inl hs | inr ht`
 #. §1: `x ∈ s`
 #. §2: `x ∈ t`
@@ -1784,6 +2517,60 @@ msgstr ""
 
 #: Game.Levels.SetOpsWorld.L02_IntersectionMembership
 msgid "Intersection Membership"
+msgstr ""
+
+#. §0: $(\\bigcap_i s_i) \\cup t = \\bigcap_i (s_i \\cup t)$
+#. §1: `⋂`
+#. §2: `∪`
+#. §3: `⋃`
+#. §4: `∩`
+#. §5: $(\\bigcup_i s_i) \\cap t = \\bigcup_i (s_i \\cap t)$
+#. §6: `∃`
+#. §7: `∧`
+#. §8: $(\\bigcap_i s_i) \\cup t = \\bigcap_i (s_i \\cup t)$
+#. §9: `∀`
+#. §10: `∨`
+#. §11: `x ∈ t`
+#. §12: `x ∈ s i`
+#. §13: `i`
+#. §14: $x \\in s_i \\cup t$
+#. §15: $i$
+#. §16: $x \\in t$
+#. §17: $x \\notin t$
+#. §18: $x \\in s_i$
+#. §19: $i$
+#. §20: $x \\in \\bigcap_i s_i$
+#: Game.Levels.IndexedOpsWorld.L22_IInterDistrib
+msgid "You proved the dual distributive law:\n"
+"§0\n"
+"\n"
+"This is the mirror image of the boss (next level), with §1/§2\n"
+"swapped for §3/§4. Compare the two:\n"
+"\n"
+"| Law | Set form | Quantifier form |\n"
+"|---|---|---|\n"
+"| Boss (next) | §5 | §6 distributes over §7 |\n"
+"| This level | §8 | §9 distributes over §10 |\n"
+"\n"
+"**Why the backward direction was harder**: The forward direction is\n"
+"constructive — you just push the union through the intersection pointwise.\n"
+"But the backward direction requires knowing whether §11 globally\n"
+"before you can extract §12 for each §13. This is the same\n"
+"classical/constructive asymmetry you saw in De Morgan (Level 19).\n"
+"\n"
+"In ordinary math: \"If §14 for every §15, either §16\n"
+"(and we are done) or §17, in which case §18 for every\n"
+"§19, so §20.\""
+msgstr ""
+
+#. §0: `hinter`
+#. §1: `rw [Set.mem_iInter] at hinter`
+#: Game.Levels.IndexedOpsWorld.L19_DeMorganInter
+msgid "Rewrite §0: §1."
+msgstr ""
+
+#: Game.Levels.IndexedOpsWorld.L17_IUnionEqualsUniv
+msgid "The remainder classes mod 3 cover all natural numbers."
 msgstr ""
 
 #. §0: `s ⊆ t`
@@ -1858,6 +2645,15 @@ msgid "§0 converts the goal to §1, as long as §2 is\n"
 "Lean will reject the §10."
 msgstr ""
 
+#. §0: `x ∈ (⋃ i, s i)ᶜ`
+#. §1: `x ∉ ⋃ i, s i`
+#. §2: `intro hu`
+#. §3: `x ∈ ⋃ i, s i`
+#: Game.Levels.IndexedOpsWorld.L18_DeMorganUnion
+msgid "The goal is §0, i.e., §1.\n"
+"Use §2 to assume §3 and derive a contradiction."
+msgstr ""
+
 #. §0: `intro x`
 #. §1: ```
 #. intro x       -- introduce one variable
@@ -1877,11 +2673,91 @@ msgid "§0 introduces a universally quantified variable or an\n"
 "When the goal is §2 or §3."
 msgstr ""
 
+#: Game.Levels.IndexedOpsWorld.L05_MonotonIUnion
+msgid "Monotonicity of Indexed Union"
+msgstr ""
+
+#. §0: `Set.mem_powerset_iff`
+#. §1: `t ∈ 𝒫 s ↔ t ⊆ s`
+#. §2: ```
+#. rw [Set.mem_powerset_iff]       -- in the goal
+#. rw [Set.mem_powerset_iff] at h  -- in a hypothesis
+#. ```
+#. §3: `𝒫`
+#. §4: ```
+#. -- Goal: t ∈ 𝒫 s
+#. rw [Set.mem_powerset_iff]
+#. -- Goal: t ⊆ s
+#. intro x hx
+#. ...
+#. ```
+#: Game.Levels.IndexedOpsWorld.Imports
+msgid "§0 states §1 — membership\n"
+"in the powerset is equivalent to being a subset.\n"
+"\n"
+"## Syntax\n"
+"§2\n"
+"\n"
+"## When to use it\n"
+"When you see §3 and need to reduce powerset membership to\n"
+"a subset relation.\n"
+"\n"
+"## Example\n"
+"§4"
+msgstr ""
+
 #. §0: `hxt : x ∈ t`
 #. §1: `ht`
 #. §2: `have hle := ht hxt`
 #: Game.Levels.SubsetWorld.L17_Boss
 msgid "§0. Now apply §1: §2."
+msgstr ""
+
+#. §0: `x ∈ s i`
+#. §1: `by_contra hni`
+#. §2: `x ∉ s i`
+#: Game.Levels.IndexedOpsWorld.L19_DeMorganInter
+msgid "The goal is §0. You cannot prove this directly, but\n"
+"you can assume the opposite and derive a contradiction.\n"
+"\n"
+"Use §1 to assume §2."
+msgstr ""
+
+#. §0: `x ∈ s i ∩ t`
+#. §1: `exact ⟨hsi, ht⟩`
+#. §2: `constructor`
+#: Game.Levels.IndexedOpsWorld.L23_Boss
+msgid "The goal is §0, which is a conjunction. Build it\n"
+"with §1 or use §2."
+msgstr ""
+
+#. §0: `s ⊆ t → 𝒫 s ⊆ 𝒫 t`
+#. §1: `mem_powerset_iff`
+#. §2: ```
+#. intro u hu                       -- assume u ∈ 𝒫 s
+#. rw [Set.mem_powerset_iff] at hu  -- hu : u ⊆ s
+#. rw [Set.mem_powerset_iff]        -- goal: u ⊆ t
+#. exact hu.trans h                  -- chain u ⊆ s ⊆ t
+#. ```
+#. §3: `𝒫`
+#. §4: $u \\subseteq s$
+#. §5: $s \\subseteq t$
+#. §6: $u \\subseteq t$
+#. §7: $\\mathcal{P}(s)$
+#. §8: $\\mathcal{P}(t)$
+#: Game.Levels.IndexedOpsWorld.L16_PowersetMonotonicity
+msgid "You proved that the powerset is monotone: §0.\n"
+"\n"
+"The proof used §1 in both directions:\n"
+"\n"
+"§2\n"
+"\n"
+"**The pattern**: When both hypothesis and goal involve §3, rewrite\n"
+"both to subset relations and connect them with transitivity.\n"
+"\n"
+"In ordinary math: \"If §4 and §5, then\n"
+"§6. Therefore every member of §7 is a\n"
+"member of §8.\""
 msgstr ""
 
 #. §0: `3 ∉ {n | Even n}`
@@ -2002,6 +2878,21 @@ msgid "# Extensionality: When Two Sets Are Equal\n"
 "4. **Backward** (§25): given §26, build §27"
 msgstr ""
 
+#. §0: `Set.subset_iUnion`
+#. §1: `s j ⊆ ⋃ i, s i`
+#: Game.Levels.IndexedOpsWorld.L04_IUnionFromSubset
+msgid "§0 states §1 — each member of\n"
+"the family is contained in the indexed union."
+msgstr ""
+
+#. §0: `⋂`
+#. §1: `rw [Set.mem_iInter]`
+#. §2: `∀ k, 10 ∈ ...`
+#: Game.Levels.IndexedOpsWorld.L02_IndexedIntersection
+msgid "The goal involves §0. Use §1 to convert\n"
+"it to a universal statement: §2."
+msgstr ""
+
 #. §0: `ext`
 #. §1: `s ⊆ t`
 #. §2: `t ⊆ s`
@@ -2043,6 +2934,18 @@ msgstr ""
 msgid "The Empty Set"
 msgstr ""
 
+#. §0: `x ∈ (⋃ i, s i) ∩ t`
+#. §1: `x ∈ ⋃ i, (s i ∩ t)`
+#. §2: `intro hx`
+#. §3: `obtain ⟨hu, ht⟩ := hx`
+#: Game.Levels.IndexedOpsWorld.L23_Boss
+msgid "**Forward direction**: Assume §0 and prove\n"
+"§1.\n"
+"\n"
+"Start with §2, then destructure the intersection:\n"
+"§3."
+msgstr ""
+
 #. §0: `obtain ⟨hs, ht⟩ := hx`
 #. §1: `hs : x ∈ s`
 #. §2: `ht : x ∈ t`
@@ -2053,6 +2956,46 @@ msgstr ""
 msgid "§0 gives §1\n"
 "and §2. Then §3 splits the goal, and you close\n"
 "each part with §4 and §5."
+msgstr ""
+
+#. §0: `by_cases h : P`
+#. §1: `h : P`
+#. §2: `h : ¬P`
+#. §3: ```
+#. by_cases h : P
+#. ```
+#. §4: `cases`
+#. §5: `by_cases`
+#. §6: ```
+#. by_cases h : x ∈ t
+#. · -- h : x ∈ t
+#.   ...
+#. · -- h : x ∉ t
+#.   ...
+#. ```
+#: Game.Levels.IndexedOpsWorld.L22_IInterDistrib
+msgid "§0 splits the proof into two branches: one where\n"
+"§1 holds, and one where §2 holds.\n"
+"\n"
+"## Syntax\n"
+"§3\n"
+"\n"
+"## When to use it\n"
+"When you need to consider two cases based on whether a proposition\n"
+"is true or false. Unlike §4 (which splits a hypothesis), §5\n"
+"creates the case split from nothing — it is classical reasoning.\n"
+"\n"
+"## Example\n"
+"§6"
+msgstr ""
+
+#. §0: `constructor`
+#. §1: `↔`
+#: Game.Levels.IndexedOpsWorld.L17_IUnionEqualsUniv
+#: Game.Levels.IndexedOpsWorld.L18_DeMorganUnion
+#: Game.Levels.IndexedOpsWorld.L23_Boss
+msgid "Use §0 to split the §1 into forward and backward\n"
+"directions."
 msgstr ""
 
 #. §0: $A \\subseteq B$
@@ -2104,6 +3047,17 @@ msgid "# Chaining Subsets\n"
 "Try the backward approach — it is shorter and builds your §23 skills."
 msgstr ""
 
+#. §0: `hsi : x ∈ s i`
+#. §1: `ht : x ∈ t`
+#. §2: `x ∈ ⋃ i, (s i ∩ t)`
+#. §3: `rw [Set.mem_iUnion]`
+#. §4: `use i`
+#: Game.Levels.IndexedOpsWorld.L23_Boss
+msgid "You have §0 and §1. The goal is\n"
+"§2. Rewrite with §3, then\n"
+"§4 to provide the witness index."
+msgstr ""
+
 #. §0: `omega`
 #. §1: `h : x < 3`
 #. §2: `x < 5`
@@ -2115,6 +3069,17 @@ msgstr ""
 msgid "First Subset Proof"
 msgstr ""
 
+#. §0: `∃ i, x ∈ (s i)ᶜ`
+#. §1: `by_contra h`
+#. §2: `¬ ∃ i, x ∈ (s i)ᶜ`
+#. §3: `False`
+#: Game.Levels.IndexedOpsWorld.L19_DeMorganInter
+msgid "The goal is §0. You cannot directly name\n"
+"the witness — you need proof by contradiction.\n"
+"\n"
+"Use §1 to assume §2 and derive §3."
+msgstr ""
+
 #. §0: `x ∈ s`
 #. §1: `hx : x ∈ s`
 #. §2: `exact hx`
@@ -2124,6 +3089,14 @@ msgstr ""
 
 #: Game.Levels.SubsetWorld.L02_ChangeTactic
 msgid "Every natural number less than 3 is at most 3."
+msgstr ""
+
+#. §0: `hx : ∃ i, x ∈ s i ∩ t`
+#. §1: `obtain ⟨i, hsi, ht⟩ := hx`
+#: Game.Levels.IndexedOpsWorld.L23_Boss
+msgid "Now §0. Extract the witness and\n"
+"destructure the intersection in one step:\n"
+"§1."
 msgstr ""
 
 #: GameServer.RpcHandlers
@@ -2187,6 +3160,22 @@ msgid "You now have both halves of the unwrapping toolkit:\n"
 "the proof state has §16 instead of §17,\n"
 "§18 makes the arithmetic content visible so you can find the\n"
 "right closing move. You will use §19 throughout this course."
+msgstr ""
+
+#: Game.Levels.IndexedOpsWorld.L02_IndexedIntersection
+msgid "10 belongs to the indexed intersection of lower-bound sets."
+msgstr ""
+
+#. §0: `a ∈ s`
+#. §1: `b ∈ t`
+#. §2: `Set.Nonempty (s ×ˢ t)`
+#. §3: `∃ p, p ∈ s ×ˢ t`
+#. §4: `use (a, b)`
+#: Game.Levels.IndexedOpsWorld.L20_NonemptyProduct
+msgid "You have §0 and §1. The goal is\n"
+"§2, which means §3.\n"
+"\n"
+"Provide the pair as witness: §4."
 msgstr ""
 
 #: Game.Levels.SetOpsWorld
@@ -2254,6 +3243,39 @@ msgstr ""
 msgid "Boss: Distributivity"
 msgstr ""
 
+#. §0: `x ∈ s j`
+#. §1: `hx : ∀ i, i ∈ u → x ∈ s i`
+#. §2: `j`
+#. §3: `hj`
+#. §4: `exact hx j hj`
+#: Game.Levels.IndexedOpsWorld.L21_BoundedIntegration
+msgid "The goal is §0. You have §1.\n"
+"Apply it to §2 and §3: §4."
+msgstr ""
+
+#. §0: `by_contra h`
+#. §1: `apply hx`
+#. §2: `rw [Set.mem_iInter]`
+#. §3: `intro i`
+#. §4: `by_contra hni`
+#. §5: `exact h ⟨i, hni⟩`
+#: Game.Levels.IndexedOpsWorld.L19_DeMorganInter
+msgid "§0 then §1 then\n"
+"§2 then §3 then §4 then\n"
+"§5."
+msgstr ""
+
+#. §0: `rw [Set.mem_iUnion] at hx`
+#. §1: `obtain ⟨i, hsi⟩ := hx`
+#. §2: `intro hinter`
+#. §3: `rw [Set.mem_iInter] at hinter`
+#. §4: `exact hsi (hinter i)`
+#: Game.Levels.IndexedOpsWorld.L19_DeMorganInter
+msgid "§0 then\n"
+"§1 then §2 then\n"
+"§3 then §4."
+msgstr ""
+
 #. §0: `h4 : 4 < 5`
 #. §1: `have h4' := h h4`
 #. §2: `h`
@@ -2264,6 +3286,14 @@ msgid "Good — §0 also serves as a proof that 4 is in the\n"
 "§2 as a function (just like Level 6)."
 msgstr ""
 
+#. §0: `⋃`
+#. §1: `rw [Set.mem_iUnion]`
+#. §2: `∃ k, 5 ∈ ...`
+#: Game.Levels.IndexedOpsWorld.L01_IndexedUnion
+msgid "The goal involves §0. Use §1 to convert\n"
+"it to an existential: §2."
+msgstr ""
+
 #. §0: `cases hx with | inl hst | inr hsu`
 #. §1: `s ∩ (t ∪ u)`
 #. §2: `constructor`
@@ -2272,6 +3302,65 @@ msgid "§0.\n"
 "\n"
 "In each case, destructure the intersection, then build\n"
 "§1 with §2."
+msgstr ""
+
+#. §0: `hsi : x ∈ s i`
+#. §1: `hx`
+#. §2: `hx`
+#. §3: `rw [Set.mem_iInter] at hx`
+#: Game.Levels.IndexedOpsWorld.L18_DeMorganUnion
+msgid "You have §0. Now use §1 to get the\n"
+"contradiction. Rewrite §2 with §3."
+msgstr ""
+
+#. §0: `⋃ i, s i`
+#. §1: `ι`
+#. §2: `⋃ i ∈ Finset.range 10, s i`
+#. §3: $$\\bigcup_{i \\in t} s_i = \\{x \\mid \\exists\\, i \\in t,\\; x \\in s_i\\}$$
+#. §4: `⋃ i ∈ t, s i`
+#. §5: `rw [Set.mem_iUnion₂]`
+#. §6: `x ∈ ⋃ i ∈ t, s i  ↔  ∃ i, ∃ (_ : i ∈ t), x ∈ s i`
+#. §7: `⋃ i, s i`
+#. §8: `i`
+#. §9: `i ∈ t`
+#. §10: `use`
+#. §11: `use j`
+#. §12: `use hj`
+#. §13: `j ∈ t`
+#. §14: `s j ⊆ ⋃ i ∈ t, s i`
+#. §15: `j ∈ t`
+#. §16: `s j ⊆ ⋃ i, s i`
+#: Game.Levels.IndexedOpsWorld.L07_BoundedIUnion
+msgid "# Bounded Indexed Unions\n"
+"\n"
+"So far, the indexed union §0 ranges over ALL values of the\n"
+"index type §1. But often you want to restrict the index to a subset.\n"
+"For example, if you have sets indexed by all natural numbers but only\n"
+"care about the first ten, §2 restricts the\n"
+"union to those ten indices. Bounded variants let you union or intersect\n"
+"over a sub-collection without changing the index type.\n"
+"\n"
+"More precisely:\n"
+"\n"
+"§3\n"
+"\n"
+"In Lean, this is written §4.\n"
+"\n"
+"**New tool**: §5 converts membership in a bounded\n"
+"indexed union into a **double existential**:\n"
+"\n"
+"§6\n"
+"\n"
+"The key difference from unbounded §7 is that after providing\n"
+"the witness index §8, you must ALSO prove that §9. This gives\n"
+"a two-step §10 pattern:\n"
+"\n"
+"1. §11 — provide the witness index\n"
+"2. §12 — provide the proof that §13\n"
+"\n"
+"**Your task**: Prove that §14 when §15. This\n"
+"is the bounded analogue of Level 4 (§16), with the\n"
+"extra obligation of proving the index is in bounds."
 msgstr ""
 
 #. §0: `x ∈ t`
@@ -2342,6 +3431,10 @@ msgid "Now §0 (meaning §1) and §2\n"
 "§5, meaning §6.\n"
 "\n"
 "Use §7 to assume §8, then case-split on §9."
+msgstr ""
+
+#: Game.Levels.IndexedOpsWorld.L15_Powerset
+msgid "The set of numbers less than 3 is in the powerset of numbers less than 5."
 msgstr ""
 
 #: Game.Levels.SetOpsWorld.L02_IntersectionMembership
@@ -2436,6 +3529,13 @@ msgid "# Subsets Are About Predicates, Not Just Arithmetic\n"
 "2. §18 — apply the implication to get §19"
 msgstr ""
 
+#. §0: `Even 2`
+#. §1: `show Even 2`
+#: Game.Levels.IndexedOpsWorld.L11_CartesianProduct
+msgid "The first component goal unfolds to §0.\n"
+"Use §1 to make it explicit."
+msgstr ""
+
 #. §0: `hns : x ∈ sᶜ`
 #. §1: `x ∉ s`
 #. §2: `hs : x ∈ s`
@@ -2470,6 +3570,40 @@ msgid "# s ⊆ s ∪ t\n"
 "**Your task**: Prove this formally. After §3, the goal\n"
 "is §4. Since this is a disjunction, use §5 to select\n"
 "the left side, then close with §6."
+msgstr ""
+
+#. §0: `x ∈ (⋂ i, s i)ᶜ`
+#. §1: `x ∉ ⋂ i, s i`
+#. §2: `i`
+#. §3: `x ∉ s i`
+#. §4: `by_contra`
+#. §5: `intro hx`
+#: Game.Levels.IndexedOpsWorld.L19_DeMorganInter
+msgid "**Forward direction (the classical one)**: You will assume\n"
+"§0, meaning §1. You must produce\n"
+"a specific index §2 with §3. This requires §4.\n"
+"\n"
+"Start with §5."
+msgstr ""
+
+#. §0: `Set.iUnion_eq_univ_iff`
+#. §1: `⋃ i, f i = Set.univ ↔ ∀ x, ∃ i, x ∈ f i`
+#: Game.Levels.IndexedOpsWorld.L17_IUnionEqualsUniv
+msgid "§0 states\n"
+"§1."
+msgstr ""
+
+#. §0: `u ⊆ t`
+#. §1: `u ⊆ s`
+#. §2: `hu`
+#. §3: `s ⊆ t`
+#. §4: `h`
+#. §5: `exact hu.trans h`
+#. §6: `exact Set.Subset.trans hu h`
+#: Game.Levels.IndexedOpsWorld.L16_PowersetMonotonicity
+msgid "The goal is §0. You know §1 from §2 and §3\n"
+"from §4. Chain them: §5 — or equivalently,\n"
+"§6."
 msgstr ""
 
 #. §0: `ext x`
@@ -2562,6 +3696,37 @@ msgid "# Boss: Intersection Distributes over Union\n"
 "moves you have practiced. Take it one step at a time."
 msgstr ""
 
+#. §0: `ht : x ∉ t`
+#. §1: `i`
+#. §2: `x ∈ s i`
+#. §3: `x ∈ t`
+#. §4: `x ∉ t`
+#. §5: `x ∈ s i`
+#. §6: `i`
+#. §7: `x ∈ ⋂ i, s i`
+#. §8: `left`
+#. §9: `rw [Set.mem_iInter]`
+#. §10: `intro i`
+#: Game.Levels.IndexedOpsWorld.L22_IInterDistrib
+msgid "You have §0. Since for every §1, either §2\n"
+"or §3, and §4, it must be that §5 for every §6.\n"
+"So §7.\n"
+"\n"
+"Use §8 then §9 then §10."
+msgstr ""
+
+#: Game.Levels.IndexedOpsWorld.L19_DeMorganInter
+msgid "De Morgan's law: the complement of an indexed intersection is the\n"
+"indexed union of complements."
+msgstr ""
+
+#. §0: `x ∈ ⋂ i, s i`
+#. §1: `rw [Set.mem_iInter]`
+#: Game.Levels.IndexedOpsWorld.L19_DeMorganInter
+msgid "The goal is §0. Rewrite to a universal:\n"
+"§1."
+msgstr ""
+
 #. §0: `push_neg`
 #. §1: $$\\neg(P \\lor Q) \\;\\;\\longrightarrow\\;\\; \\neg P \\;\\land\\; \\neg Q$$
 #. §2: `push_neg`
@@ -2594,11 +3759,53 @@ msgid "You used §0 to convert a negated disjunction into a conjunction\n"
 "§10 using §11, §12, and case analysis."
 msgstr ""
 
+#. §0: `h : ¬ ∃ i, x ∈ (s i)ᶜ`
+#. §1: `False`
+#. §2: `hx : x ∈ (⋂ i, s i)ᶜ`
+#. §3: `x ∉ ⋂ i, s i`
+#. §4: `False`
+#. §5: `x ∈ ⋂ i, s i`
+#. §6: `hx`
+#. §7: `apply hx`
+#. §8: `x ∈ ⋂ i, s i`
+#: Game.Levels.IndexedOpsWorld.L19_DeMorganInter
+msgid "Now §0 and the goal is §1.\n"
+"You also have §2, meaning §3.\n"
+"\n"
+"To reach §4, show that §5 after all — contradicting\n"
+"§6. Use §7 to change the goal to §8."
+msgstr ""
+
+#. §0: `fin_cases h`
+#. §1: `Fin n`
+#. §2: ```
+#. fin_cases h
+#. ```
+#. §3: `h : Fin n`
+#. §4: `0, 1, ..., n-1`
+#: Game.Metadata
+msgid "§0 performs case analysis on a §1 or other\n"
+"finite type hypothesis, creating one subgoal per value.\n"
+"\n"
+"## Syntax\n"
+"§2\n"
+"\n"
+"## When to use it\n"
+"When §3 and you want to check each value §4\n"
+"individually. This can one-shot many proofs about small finite types.\n"
+"\n"
+"Disabled in levels that require manual reasoning about finite indices."
+msgstr ""
+
 #. §0: `t ⊆ s`
 #. §1: `.2`
 #: Game.Levels.SubsetWorld.L16_ExtFromAntisymm
 msgid "Goal: §0. Same pattern, but use §1 for the backward\n"
 "direction."
+msgstr ""
+
+#: Game.Levels.IndexedOpsWorld.L14_NonemptyConverse
+msgid "Nonemptiness Converse"
 msgstr ""
 
 #. §0: `simp`
@@ -2626,6 +3833,53 @@ msgid "The goal is a set difference membership, which means a conjunction\n"
 "of membership and non-membership. Use §0 to split it."
 msgstr ""
 
+#. §0: `s ×ˢ t`
+#. §1: `s : Set α`
+#. §2: `t : Set β`
+#. §3: `(a, b)`
+#. §4: `a ∈ s`
+#. §5: `b ∈ t`
+#. §6: $$(a, b) \\in s \\times t \\;\\Longleftrightarrow\\; a \\in s \\;\\wedge\\; b \\in t$$
+#. §7: `∧`
+#. §8: `∩`
+#. §9: `∩`
+#. §10: `×ˢ`
+#. §11: `rw [Set.mem_prod]`
+#. §12: `p ∈ s ×ˢ t`
+#. §13: `p.1 ∈ s ∧ p.2 ∈ t`
+#. §14: `constructor`
+#. §15: `∩`
+#. §16: `ˢ`
+#. §17: `×ˢ`
+#. §18: `α × β`
+#. §19: `\\x\\^s`
+#. §20: `\\times\\^s`
+#. §21: `(2, 3)`
+#: Game.Levels.IndexedOpsWorld.L11_CartesianProduct
+msgid "# Cartesian Products of Sets\n"
+"\n"
+"The **cartesian product** §0 of two sets §1 and\n"
+"§2 is the set of all pairs §3 with §4 and §5:\n"
+"\n"
+"§6\n"
+"\n"
+"This is yet another set operation that reduces to a logical connective —\n"
+"this time §7, just like §8. The difference is that §9 combines\n"
+"two sets of the **same** type, while §10 combines sets of\n"
+"**different** types into a set of pairs.\n"
+"\n"
+"**New tool**: §11 converts §12 into\n"
+"§13. After that, use §14 to split the\n"
+"conjunction, just like with §15.\n"
+"\n"
+"**Notation**: The §16 superscript in §17 stands for \"set\". It\n"
+"distinguishes the set product from the type product §18. You type\n"
+"it as §19 or §20.\n"
+"\n"
+"**Your task**: Prove that §21 belongs to the product of the even\n"
+"numbers with the numbers less than 5."
+msgstr ""
+
 #. §0: `hs : x ∈ s`
 #. §1: `ht : x ∈ tᶜ`
 #. §2: `x ∉ t`
@@ -2637,10 +3891,66 @@ msgid "§0 and §1 (= §2). The goal is\n"
 "§3, which is §4. Use §5."
 msgstr ""
 
+#: Game.Levels.IndexedOpsWorld.L23_Boss
+msgid "Boss: Indexed Union Distributes over Intersection"
+msgstr ""
+
+#. §0: `a ∈ s ∧ b ∈ t`
+#. §1: `exact ⟨ha, hb⟩`
+#. §2: `constructor`
+#: Game.Levels.IndexedOpsWorld.L20_NonemptyProduct
+msgid "The goal is §0. You have both pieces. Close with\n"
+"§1 or use §2."
+msgstr ""
+
+#. §0: `hx : x ∈ ⋂ i ∈ u, s i`
+#. §1: `rw [Set.mem_iInter₂] at hx`
+#. §2: `hx : ∀ i, i ∈ u → x ∈ s i`
+#: Game.Levels.IndexedOpsWorld.L21_BoundedIntegration
+msgid "You have §0. Use\n"
+"§1 to convert to\n"
+"§2."
+msgstr ""
+
+#. §0: `rw [Set.mem_powerset_iff]`
+#. §1: `u ⊆ t`
+#: Game.Levels.IndexedOpsWorld.L16_PowersetMonotonicity
+msgid "Now convert the goal. Use §0 to change\n"
+"the goal to §1."
+msgstr ""
+
 #. §0: `Set.compl_union`
 #. §1: `(s ∪ t)ᶜ = sᶜ ∩ tᶜ`
 #: Game.Levels.SetOpsWorld.L11_PushNeg
 msgid "§0 states §1 (De Morgan)."
+msgstr ""
+
+#. §0: ```
+#. rw [Set.mem_prod]    -- convert ×ˢ to ∧
+#. constructor          -- split into two membership goals
+#. · ...                -- prove the first component
+#. · ...                -- prove the second component
+#. ```
+#. §1: `×ˢ`
+#. §2: `∩`
+#. §3: `∧`
+#. §4: `∩`
+#. §5: `×ˢ`
+#. §6: $(2, 3) \\in \\{\\text{evens}\\} \\times \\{n : n < 5\\}$
+#. §7: $2$
+#. §8: $3 < 5$
+#: Game.Levels.IndexedOpsWorld.L11_CartesianProduct
+msgid "You proved membership in a cartesian product. The pattern is:\n"
+"\n"
+"§0\n"
+"\n"
+"**The correspondence**: §1 is to pairs what §2 is to single\n"
+"elements — both reduce to §3. The difference is structural:\n"
+"§4 operates on two sets of the same type, while §5 combines\n"
+"sets of (potentially) different types.\n"
+"\n"
+"In ordinary math: \"§6\n"
+"because §7 is even and §8.\""
 msgstr ""
 
 #. §0: `s \\ t`
@@ -2733,6 +4043,10 @@ msgstr ""
 msgid "No natural number belongs to the empty set."
 msgstr ""
 
+#: Game.Levels.IndexedOpsWorld.L02_IndexedIntersection
+msgid "Indexed Intersection"
+msgstr ""
+
 #. §0: `True`
 #. §1: `n ∈ Set.univ`
 #. §2: `constructor`
@@ -2757,6 +4071,12 @@ msgstr ""
 #: Game.Levels.SetWorld.L02_SetBuilder
 msgid "After §0, use §1 to close\n"
 "the arithmetic goal."
+msgstr ""
+
+#. §0: `use 2`
+#. §1: `k = 2`
+#: Game.Levels.IndexedOpsWorld.L01_IndexedUnion
+msgid "§0 provides the witness §1."
 msgstr ""
 
 #. §0: `native_decide`
@@ -2832,6 +4152,60 @@ msgid "A one-line extraction: §0 pulls out the left component of an\n"
 "need §7), just project out the relevant component."
 msgstr ""
 
+#. §0: `⋃`
+#. §1: `∪`
+#. §2: `⋂ i, s i`
+#. §3: `∩`
+#. §4: $$x \\in \\bigcap_i s_i \\;\\Longleftrightarrow\\; \\forall\\, i,\\; x \\in s_i$$
+#. §5: `s ∩ t`
+#. §6: `s ∩ t`
+#. §7: `x ∈ s ∧ x ∈ t`
+#. §8: `⋂ i, s i`
+#. §9: `∀ i, x ∈ s i`
+#. §10: `rw [Set.mem_iInter]`
+#. §11: `x ∈ ⋂ i, s i`
+#. §12: `∀ i, x ∈ s i`
+#. §13: `intro`
+#. §14: `Fin`
+#. §15: `Fin 4`
+#. §16: `{0, 1, 2, 3}`
+#. §17: `intro k`
+#. §18: `k : Fin 4`
+#. §19: `k.val`
+#. §20: `s k = {n : ℕ | k.val ≤ n}`
+#. §21: `k : Fin 4`
+#. §22: `10`
+#: Game.Levels.IndexedOpsWorld.L02_IndexedIntersection
+msgid "# Indexed Intersections\n"
+"\n"
+"Just as §0 generalizes §1, the **indexed intersection** §2\n"
+"generalizes §3:\n"
+"\n"
+"§4\n"
+"\n"
+"An element is in the indexed intersection if it belongs to **every**\n"
+"set in the family. The binary intersection §5 is the special\n"
+"case with a two-element index:\n"
+"\n"
+"| Operation | Notation | Logical meaning |\n"
+"|---|---|---|\n"
+"| Binary intersection | §6 | §7 |\n"
+"| Indexed intersection | §8 | §9 |\n"
+"\n"
+"**New tool**: §10 converts §11 into\n"
+"§12. After that, you introduce the universally quantified\n"
+"variable with §13.\n"
+"\n"
+"**About §14**: The index type here is §15, which represents\n"
+"the natural numbers less than 4: §16. After §17,\n"
+"you get §18. Use §19 to access its numerical value.\n"
+"This bounded type ensures the intersection is over finitely many sets.\n"
+"\n"
+"**Your task**: The family §20 for §21\n"
+"gives four sets: {n | 0 ≤ n}, {n | 1 ≤ n}, {n | 2 ≤ n}, {n | 3 ≤ n}.\n"
+"Prove that §22 belongs to all of them."
+msgstr ""
+
 #: Game.Levels.SubsetWorld.L05_SubsetUniv
 msgid "Any set is a subset of the universal set."
 msgstr ""
@@ -2860,6 +4234,14 @@ msgstr ""
 #: Game.Levels.SetOpsWorld.L16_Boss
 #: Game.Levels.SetOpsWorld.L16_Boss
 #: Game.Levels.SetOpsWorld.L16_Boss
+#: Game.Levels.IndexedOpsWorld.L16_PowersetMonotonicity
+#: Game.Levels.IndexedOpsWorld.L17_IUnionEqualsUniv
+#: Game.Levels.IndexedOpsWorld.L18_DeMorganUnion
+#: Game.Levels.IndexedOpsWorld.L18_DeMorganUnion
+#: Game.Levels.IndexedOpsWorld.L22_IInterDistrib
+#: Game.Levels.IndexedOpsWorld.L22_IInterDistrib
+#: Game.Levels.IndexedOpsWorld.L23_Boss
+#: Game.Levels.IndexedOpsWorld.L23_Boss
 msgid "§0 states §1."
 msgstr ""
 
@@ -2885,6 +4267,12 @@ msgstr ""
 #: Game.Levels.SetOpsWorld.L14_ComplementUnion
 msgid "The goal is §0, which is §1. Use\n"
 "§2 to assume §3 and derive §4."
+msgstr ""
+
+#. §0: `intro x hx`
+#: Game.Levels.IndexedOpsWorld.L15_Powerset
+msgid "The goal is now a subset relation. This is a familiar subset\n"
+"proof from Subset World. Start with §0."
 msgstr ""
 
 #. §0: `x ∈ s ∩ (t ∪ u)`
@@ -2934,6 +4322,7 @@ msgstr ""
 #: Game.Levels.SetOpsWorld.L05_DiffAsIntersect
 #: Game.Levels.SetOpsWorld.L05_DiffAsIntersect
 #: Game.Levels.SetOpsWorld.L15_DoubleComplement
+#: Game.Levels.IndexedOpsWorld.L20_NonemptyProduct
 msgid "§0 then §1 then\n"
 "§2."
 msgstr ""
@@ -3059,6 +4448,23 @@ msgstr ""
 msgid "§0 states §1 (propositional commutativity of ∨)."
 msgstr ""
 
+#. §0: `hu : ∃ i, x ∈ s i`
+#. §1: `obtain ⟨i, hsi⟩ := hu`
+#: Game.Levels.IndexedOpsWorld.L23_Boss
+msgid "Now §0. Extract the witness:\n"
+"§1."
+msgstr ""
+
+#: Game.Levels.IndexedOpsWorld.L16_PowersetMonotonicity
+msgid "The powerset is monotone: if s ⊆ t, then 𝒫 s ⊆ 𝒫 t."
+msgstr ""
+
+#. §0: `sup_iInf_eq`
+#: Game.Levels.IndexedOpsWorld.L22_IInterDistrib
+#: Game.Levels.IndexedOpsWorld.L23_Boss
+msgid "§0 is the lattice version (commuted order)."
+msgstr ""
+
 #. §0: `n < 5`
 #. §1: `{n : ℕ | Even n}`
 #. §2: $\\{0, 2, 4, 6, 8, \\ldots\\}$
@@ -3153,6 +4559,105 @@ msgid "§0 then\n"
 "In each case, use §2/§3 + §4 + §5."
 msgstr ""
 
+#. §0: `Set.Nonempty`
+#. §1: `×ˢ`
+#. §2: `s`
+#. §3: `t`
+#. §4: `s ×ˢ t`
+#. §5: `Set.Nonempty s`
+#. §6: `Set.Nonempty t`
+#. §7: `obtain`
+#. §8: `(a, b)`
+#. §9: `Set.Nonempty (s ×ˢ t)`
+#. §10: `use`
+#. §11: `rw [Set.mem_prod]`
+#: Game.Levels.IndexedOpsWorld.L20_NonemptyProduct
+msgid "# Integrating Nonemptiness and Cartesian Products\n"
+"\n"
+"This level combines two constructions you learned separately:\n"
+"§0 (Level 11) and §1 (Level 10).\n"
+"\n"
+"**Claim**: If §2 is nonempty and §3 is nonempty, then §4 is\n"
+"nonempty.\n"
+"\n"
+"The proof chains three skills:\n"
+"1. **Extract** witnesses from §5 and §6\n"
+"   using §7 (existential unpacking)\n"
+"2. **Provide** the pair §8 as a witness for §9\n"
+"   using §10\n"
+"3. **Prove** the pair is in the product using §11 and\n"
+"   the individual memberships\n"
+"\n"
+"This is mathematically obvious — if you have an element from each set,\n"
+"you can form a pair — but the formal proof exercises the tools in\n"
+"combination."
+msgstr ""
+
+#. §0: `rw [Set.mem_iInter]`
+#. §1: `∀ i, x ∈ t i`
+#: Game.Levels.IndexedOpsWorld.L06_MonotonIInter
+msgid "Now rewrite the goal: §0 to convert to\n"
+"§1."
+msgstr ""
+
+#. §0: ```
+#. rw [Set.mem_iInter]   -- convert ⋂ to ∀
+#. intro i               -- introduce the index
+#. ...                   -- prove membership for that index
+#. ```
+#. §1: `⋂ i, s i`
+#. §2: `∩`
+#. §3: `∩`
+#. §4: `∧`
+#. §5: `⋂`
+#. §6: `∀`
+#. §7: `s ∪ t`
+#. §8: `⋃ i, s i`
+#. §9: `∨`
+#. §10: `∃`
+#. §11: `s ∩ t`
+#. §12: `⋂ i, s i`
+#. §13: `∧`
+#. §14: `∀`
+#. §15: `s ∩ t`
+#. §16: `⋂`
+#. §17: `s ∪ t`
+#. §18: `⋃`
+#. §19: `∧`
+#. §20: `∨`
+#. §21: `∀`
+#. §22: `∃`
+#. §23: $10 \\in \\bigcap_{k=0}^{3} \\{n : k \\le n\\}$
+#. §24: $k \\in \\{0,1,2,3\\}$
+#. §25: $k \\le 10$
+#: Game.Levels.IndexedOpsWorld.L02_IndexedIntersection
+msgid "You proved membership in an indexed intersection. The pattern is:\n"
+"\n"
+"§0\n"
+"\n"
+"**The key insight**: §1 generalizes §2 from two sets to a\n"
+"whole family. Just as §3 corresponds to §4, the indexed §5\n"
+"corresponds to §6. To prove something is in the intersection, you\n"
+"must show it is in every set of the family — for all indices.\n"
+"\n"
+"**Summary of the ∪/∩ generalization**:\n"
+"\n"
+"| Binary | Indexed | Logic |\n"
+"|---|---|---|\n"
+"| §7 | §8 | §9 → §10 |\n"
+"| §11 | §12 | §13 → §14 |\n"
+"\n"
+"**The binary-as-indexed connection**: The binary intersection §15\n"
+"is really the special case of §16 over a two-element index. Likewise,\n"
+"§17 is the special case of §18 over two elements. Every binary\n"
+"set identity you proved in Set Operations World has an indexed\n"
+"generalization — and the proofs follow the same logical structure,\n"
+"with §19/§20 replaced by §21/§22.\n"
+"\n"
+"In ordinary math: \"§23\n"
+"because for every §24, we have §25.\""
+msgstr ""
+
 #. §0: `Even n`
 #. §1: `r`
 #. §2: `n = r + r`
@@ -3192,6 +4697,14 @@ msgid "§0 means there exists §1 such that §2.\n"
 "- §17 because no natural number §18 satisfies §19"
 msgstr ""
 
+#: Game.Levels.IndexedOpsWorld.L21_BoundedIntegration
+msgid "If u is nonempty, the bounded intersection is inside the bounded union."
+msgstr ""
+
+#: Game.Levels.IndexedOpsWorld.L03_IInterSubset
+msgid "The indexed intersection is a subset of each member of the family."
+msgstr ""
+
 #. §0: `(h x).2`
 #. §1: `exact (h x).2 hx`
 #: Game.Levels.SubsetWorld.L16_ExtFromAntisymm
@@ -3210,8 +4723,52 @@ msgid "§0 says neither §1 nor §2 holds.\n"
 "visible, then §4 to convert to §5."
 msgstr ""
 
+#: Game.Levels.IndexedOpsWorld.L01_IndexedUnion
+msgid "5 belongs to the indexed union of remainder classes mod 3."
+msgstr ""
+
+#. §0: `x ∈ ∅`
+#. §1: `False`
+#. §2: `contradiction`
+#: Game.Levels.IndexedOpsWorld.L10_VacuousUnion
+msgid "**Backward direction**: You have §0, which is impossible\n"
+"— the empty set has no elements. The hypothesis is §1 in\n"
+"disguise, so §2 closes the goal."
+msgstr ""
+
+#. §0: `hx : ∀ i, i ∈ t → x ∈ s i`
+#. §1: `x ∈ s j`
+#. §2: `j ∈ t`
+#. §3: `hj`
+#. §4: `exact hx j hj`
+#: Game.Levels.IndexedOpsWorld.L08_BoundedIInter
+msgid "Now §0. You need §1, and you\n"
+"know §2 from §3. Specialize: §4."
+msgstr ""
+
+#. §0: `x ∈ ⋂ i, (s i)ᶜ`
+#. §1: `∀ i, x ∉ s i`
+#. §2: `x ∈ (⋃ i, s i)ᶜ`
+#. §3: `x ∉ ⋃ i, s i`
+#. §4: `intro hx`
+#: Game.Levels.IndexedOpsWorld.L18_DeMorganUnion
+msgid "**Backward direction**: You have §0, which\n"
+"means §1. You must show §2, which\n"
+"means §3.\n"
+"\n"
+"Start with §4."
+msgstr ""
+
 #: Game.Levels.SubsetWorld.L09_NonArithSubset
 msgid "Beyond Arithmetic"
+msgstr ""
+
+#. §0: `3 < 5`
+#. §1: `show 3 < 5`
+#. §2: `omega`
+#: Game.Levels.IndexedOpsWorld.L11_CartesianProduct
+msgid "The second component goal unfolds to §0.\n"
+"Use §1 then §2."
 msgstr ""
 
 #. §0: `hx`
@@ -3231,12 +4788,134 @@ msgid "Now §0 says §1 is in the left set — the arithmetic fact §2\n"
 "converts §7 to display as §8.)"
 msgstr ""
 
+#. §0: `hinter : ∀ i, x ∈ s i`
+#. §1: `hsi : x ∉ s i`
+#. §2: `hinter`
+#. §3: `i`
+#. §4: `hsi`
+#. §5: `exact hsi (hinter i)`
+#: Game.Levels.IndexedOpsWorld.L19_DeMorganInter
+msgid "Now §0. But §1.\n"
+"Specialize §2 to §3 and apply §4: §5."
+msgstr ""
+
+#. §0: `∪`
+#. §1: `∩`
+#. §2: `ᶜ`
+#. §3: `` — and discovered that each one is a logical connective in
+#. disguise. Now you will learn the **indexed** and **compound**
+#. generalizations:
+#. 
+#. | Construction | Notation | Meaning |
+#. |---|---|---|
+#. | Indexed union | `
+#. §4: ` | `
+#. §5: ` |
+#. | Indexed intersection | `
+#. §6: ` | `
+#. §7: ` |
+#. | Bounded indexed union | `
+#. §8: ` | `
+#. §9: ` |
+#. | Bounded indexed intersection | `
+#. §10: ` | `
+#. §11: ` |
+#. | Cartesian product | `
+#. §12: ` | `
+#. §13: ` |
+#. | Nonemptiness | `
+#. §14: ` | `
+#. §15: ` |
+#. | Powerset | `
+#. §16: ` | `
+#. §17: ` |
+#. 
+#. The indexed union `
+#. §18: ` collects everything that belongs to at
+#. least one set in the family — it generalizes `
+#. §19: ` to `
+#. §20: `. The indexed
+#. intersection `
+#. §21: ` collects everything that belongs to every set
+#. in the family — it generalizes `
+#. §22: ` to `
+#. §23: `.
+#. 
+#. The cartesian product, nonemptiness, and powerset round out the set
+#. constructions you will need for the rest of the course.
+#. 
+#. **New tools in this world**:
+#. - `
+#. §24: ` — convert `
+#. §25: ` membership to `
+#. §26: `
+#. - `
+#. §27: ` — convert `
+#. §28: ` membership to `
+#. §29: `
+#. - `
+#. §30: ` — convert bounded `
+#. §31: ` to double `
+#. §32: `
+#. - `
+#. §33: ` — convert bounded `
+#. §34: ` to double `
+#. §35: `
+#. - `
+#. §36: ` — convert `
+#. §37: ` membership to `
+#. §38: `
+#. - `
+#. §39: ` — convert `
+#. §40: ` membership to `
+#: Game.Levels.IndexedOpsWorld
+msgid "# Indexed Operations World\n"
+"\n"
+"In Set Operations World, you learned the binary operations — §0, §1,\n"
+"§2, §3⋃ i, s i§4∃ i, x ∈ s i§5⋂ i, s i§6∀ i, x ∈ s i§7⋃ i ∈ t, s i§8∃ i ∈ t, x ∈ s i§9⋂ i ∈ t, s i§10∀ i ∈ t, x ∈ s i§11s ×ˢ t§12p.1 ∈ s ∧ p.2 ∈ t§13Set.Nonempty s§14∃ x, x ∈ s§15𝒫 s§16t ⊆ s§17⋃ i, s i§18∨§19∃§20⋂ i, s i§21∧§22∀§23rw [Set.mem_iUnion]§24⋃§25∃§26rw [Set.mem_iInter]§27⋂§28∀§29rw [Set.mem_iUnion₂]§30⋃ i ∈ t§31∃§32rw [Set.mem_iInter₂]§33⋂ i ∈ t§34∀§35rw [Set.mem_prod]§36×ˢ§37∧§38rw [Set.mem_powerset_iff]§39𝒫§40⊆`\n"
+"\n"
+"**Prerequisites**: Set World, Subset World, and Set Operations World."
+msgstr ""
+
+#. §0: `s ⊆ t`
+#. §1: `𝒫 s ⊆ 𝒫 t`
+#. §2: `s`
+#. §3: `t`
+#. §4: `𝒫 s ⊆ 𝒫 t`
+#. §5: `u ∈ 𝒫 s`
+#. §6: `u ⊆ s`
+#. §7: `mem_powerset_iff`
+#. §8: `s ⊆ t`
+#. §9: `u ⊆ t`
+#. §10: `mem_powerset_iff`
+#: Game.Levels.IndexedOpsWorld.L16_PowersetMonotonicity
+msgid "# Powerset Is Monotone\n"
+"\n"
+"In the previous level, you proved a concrete powerset membership. Now\n"
+"prove that the powerset operation is **monotone**: if §0, then\n"
+"§1.\n"
+"\n"
+"In words: every subset of §2 is also a subset of §3, because\n"
+"being a subset of a smaller set is a stronger condition.\n"
+"\n"
+"**Proof strategy**: To show §4, take an element §5,\n"
+"convert to §6 using §7, then use the hypothesis\n"
+"§8 to conclude §9, and convert back.\n"
+"\n"
+"This level exercises §10 on BOTH a hypothesis and the\n"
+"goal — a pattern you have not yet seen with the powerset."
+msgstr ""
+
 #. §0: `obtain ⟨r, hr⟩ := h`
 #. §1: `r : ℕ`
 #. §2: `hr : 3 = r + r`
 #: Game.Levels.SetWorld.L05_NonMembershipExistential
 msgid "§0 destructures the\n"
 "existential. After this, you will have §1 and §2."
+msgstr ""
+
+#: Game.Levels.IndexedOpsWorld.L05_MonotonIUnion
+msgid "Indexed union is monotone: if each s i ⊆ t i, then ⋃ i, s i ⊆ ⋃ i, t i."
 msgstr ""
 
 #. §0: `cases h with | inl h₁ | inr h₂`
@@ -3289,6 +4968,12 @@ msgid "§0 converts the goal to arithmetic\n"
 "form. Then §1 closes it."
 msgstr ""
 
+#. §0: `Set.Nonempty.prod`
+#: Game.Levels.IndexedOpsWorld.L20_NonemptyProduct
+msgid "§0 states that the product of two nonempty sets\n"
+"is nonempty."
+msgstr ""
+
 #. §0: `Set α`
 #. §1: `α`
 #. §2: `Set α`
@@ -3328,6 +5013,96 @@ msgstr ""
 msgid "§0 is an alias for §1."
 msgstr ""
 
+#. §0: `x ∈ s i`
+#. §1: `have hi := hx i`
+#. §2: `hi : x ∈ s i ∪ t`
+#: Game.Levels.IndexedOpsWorld.L22_IInterDistrib
+msgid "The goal is §0. Use §1 to get\n"
+"§2, then split into cases."
+msgstr ""
+
+#. §0: `⋂ i ∈ u, s i ⊆ ⋃ i ∈ u, s i`
+#. §1: ```
+#. intro x hx
+#. rw [Set.mem_iInter₂] at hx  -- hx : ∀ i, i ∈ u → x ∈ s i
+#. rw [Set.mem_iUnion₂]          -- goal: ∃ i, ∃ _ : i ∈ u, x ∈ s i
+#. use j, hj                     -- provide index and membership proof
+#. exact hx j hj                 -- close with the universal
+#. ```
+#. §2: `j ∈ u`
+#. §3: `Set.univ`
+#. §4: `∅`
+#. §5: `⋂ i ∈ ∅, s i = Set.univ`
+#. §6: `⋃ i ∈ ∅, s i = ∅`
+#. §7: `Set.univ ⊆ ∅`
+#. §8: `f`
+#. §9: `Set.range f`
+#. §10: `Set.range f = ⋃ i, {f i}`
+#. §11: $j \\in u$
+#. §12: $x \\in \\bigcap_{i \\in u} s_i$
+#. §13: $x \\in s_j$
+#. §14: $x \\in \\bigcup_{i \\in u} s_i$
+#. §15: $j$
+#: Game.Levels.IndexedOpsWorld.L21_BoundedIntegration
+msgid "You proved that §0 — the bounded\n"
+"intersection is inside the bounded union (assuming the bounding set\n"
+"is nonempty).\n"
+"\n"
+"This used both bounded rewrite lemmas together:\n"
+"\n"
+"§1\n"
+"\n"
+"**Why nonemptiness matters**: Without §2, this is FALSE. Recall\n"
+"from Level 9 that intersecting over an empty index gives §3,\n"
+"while unioning over nothing gives §4. So §5\n"
+"but §6, and §7 is false.\n"
+"\n"
+"**Vocabulary preview**: The set of all values of a function §8 is\n"
+"called its *range*, written §9. You will connect this to\n"
+"indexed unions in the problem set — §10.\n"
+"\n"
+"In ordinary math: \"If §11 and §12,\n"
+"then §13 (specializing the intersection), hence\n"
+"§14 (witnessing the union with §15).\""
+msgstr ""
+
+#. §0: `x ∈ s j`
+#. §1: `j`
+#. §2: `use j`
+#: Game.Levels.IndexedOpsWorld.L04_IUnionFromSubset
+msgid "Now provide the witness. You know §0, so the\n"
+"witness index is §1. Use §2."
+msgstr ""
+
+#. §0: ```
+#. rw [Set.mem_iUnion]   -- convert ⋃ to ∃
+#. use witness           -- provide the index
+#. ...                   -- prove membership in that particular set
+#. ```
+#. §1: `⋃ i, s i`
+#. §2: `∪`
+#. §3: `∪`
+#. §4: `∨`
+#. §5: `⋃`
+#. §6: `∃`
+#. §7: $5 \\in \\bigcup_{k \\in \\mathbb{N}} \\{n : n \\bmod 3 = k\\}$
+#. §8: $5 \\bmod 3 = 2$
+#. §9: $5$
+#. §10: $k=2$
+#: Game.Levels.IndexedOpsWorld.L01_IndexedUnion
+msgid "You proved membership in an indexed union. The pattern is:\n"
+"\n"
+"§0\n"
+"\n"
+"**The key insight**: §1 generalizes §2 from two sets to a\n"
+"whole family. Just as §3 corresponds to §4, the indexed §5\n"
+"corresponds to §6. To prove something is in the union, you exhibit\n"
+"a witness index.\n"
+"\n"
+"In ordinary math: \"§7\n"
+"because §8, so §9 is in the §10 set.\""
+msgstr ""
+
 #: Game.Levels.SetOpsWorld.L13_DualDeMorgan
 msgid "Dual De Morgan"
 msgstr ""
@@ -3354,6 +5129,48 @@ msgid "§0 attempts to close the goal using a combination of\n"
 "Disabled because it bypasses the learning of specific proof steps."
 msgstr ""
 
+#. §0: $(\\bigcup_i s_i)^c =
+#. \\bigcap_i (s_i)^c$
+#. §1: $\\neg\\exists \\Leftrightarrow \\forall\\neg$
+#. §2: $(\\bigcap_i s_i)^c = \\bigcup_i (s_i)^c$
+#. §3: $\\neg\\forall \\Leftrightarrow \\exists\\neg$
+#. §4: $\\neg\\exists \\to
+#. \\forall\\neg$
+#. §5: $\\neg\\forall \\to \\exists\\neg$
+#. §6: `by_contra`
+#. §7: $x \\notin \\bigcap_i s_i \\to
+#. x \\in \\bigcup_i (s_i)^c$
+#. §8: `by_contra`
+#. §9: `x ∈ ⋂ i, s i`
+#. §10: `x ∈ s i`
+#. §11: `i`
+#. §12: `x ∉ s i`
+#: Game.Levels.IndexedOpsWorld.L19_DeMorganInter
+msgid "# De Morgan's Law for Indexed Intersections\n"
+"\n"
+"In the previous level, you proved that §0, which is the set version of\n"
+"§1.\n"
+"\n"
+"Now prove the **dual**: §2,\n"
+"which is the set version of §3.\n"
+"\n"
+"**Why this is harder**: The previous direction (§4) is constructive — if no witness exists, you can show the\n"
+"property holds for all indices directly. But the current direction\n"
+"(§5) is **classical**: knowing that\n"
+"\"not all sets contain x\" does not directly hand you a specific set\n"
+"that excludes x. You need proof by contradiction (§6) to find\n"
+"the witness.\n"
+"\n"
+"**Proof plan for the forward direction** (§7):\n"
+"1. Assume the goal is false (§8)\n"
+"2. Show that this forces §9 — contradicting the hypothesis\n"
+"3. To show §10 for arbitrary §11, assume §12 and derive\n"
+"   a contradiction with the by_contra hypothesis\n"
+"\n"
+"The backward direction is constructive and follows the same pattern as\n"
+"the previous level."
+msgstr ""
+
 #: Game.Levels.SetOpsWorld.L13_DualDeMorgan
 msgid "Dual De Morgan: the complement of an intersection is the union\n"
 "of the complements."
@@ -3377,6 +5194,57 @@ msgstr ""
 
 #: Game.Levels.SetWorld.L05_NonMembershipExistential
 msgid "3 does not belong to the set of even natural numbers."
+msgstr ""
+
+#. §0: `use ⟨x % 3, by omega⟩`
+#. §1: `x % 3`
+#. §2: `rfl`
+#: Game.Levels.IndexedOpsWorld.L17_IUnionEqualsUniv
+msgid "§0 provides the witness.\n"
+"The remaining goal is that §1 equals the value of the\n"
+"witness — close it with §2."
+msgstr ""
+
+#. §0: `Set.mem_iInter`
+#. §1: `x ∈ ⋂ i, s i ↔ ∀ i, x ∈ s i`
+#. §2: ```
+#. rw [Set.mem_iInter]       -- in the goal
+#. rw [Set.mem_iInter] at h  -- in a hypothesis
+#. ```
+#. §3: `⋂ i, s i`
+#. §4: `∀`
+#. §5: ```
+#. -- Goal: x ∈ ⋂ i, s i
+#. rw [Set.mem_iInter]
+#. -- Goal: ∀ i, x ∈ s i
+#. intro i
+#. -- Goal: x ∈ s i
+#. ```
+#. §6: `rw [Set.mem_iInter]`
+#. §7: `∀`
+#. §8: `intro`
+#. §9: `constructor`
+#. §10: `∧`
+#. §11: `∩`
+#: Game.Levels.IndexedOpsWorld.Imports
+msgid "§0 states §1 —\n"
+"membership in an indexed intersection is equivalent to membership\n"
+"in every set of the family.\n"
+"\n"
+"## Syntax\n"
+"§2\n"
+"\n"
+"## When to use it\n"
+"When you see §3 in a goal or hypothesis and need to\n"
+"work with the underlying §4 statement.\n"
+"\n"
+"## Example\n"
+"§5\n"
+"\n"
+"## Warning\n"
+"After §6, you get a §7 — use §8 to\n"
+"introduce the index variable. Do not confuse with §9\n"
+"(which is for binary §10 / §11)."
 msgstr ""
 
 #. §0: `∅ ⊆ s`
@@ -3468,6 +5336,10 @@ msgstr ""
 #: Game.Levels.SetWorld.L08_CompoundPredicate
 msgid "The membership unfolds to §0 — a conjunction.\n"
 "Use §1 to split it into two goals."
+msgstr ""
+
+#: Game.Levels.IndexedOpsWorld.L12_Nonempty
+msgid "The set of even natural numbers is nonempty."
 msgstr ""
 
 #: Game.Levels.SubsetWorld.L11_ExtPractice
@@ -3563,8 +5435,70 @@ msgid "§0 is the dot-notation form of §1:\n"
 "§2 proves §3 from §4 and §5."
 msgstr ""
 
+#. §0: `constructor`
+#: Game.Levels.IndexedOpsWorld.L11_CartesianProduct
+msgid "The goal is a conjunction. Use §0 to split it into\n"
+"two parts."
+msgstr ""
+
 #: Game.Levels.SubsetWorld.L13_Antisymm
 msgid "Two sets that contain each other are equal."
+msgstr ""
+
+#. §0: `hni : x ∉ s i`
+#. §1: `x ∈ (s i)ᶜ`
+#. §2: `h : ¬ ∃ i, x ∈ (s i)ᶜ`
+#. §3: `⟨i, hni⟩`
+#. §4: `∃ i, x ∈ (s i)ᶜ`
+#. §5: `exact h ⟨i, hni⟩`
+#: Game.Levels.IndexedOpsWorld.L19_DeMorganInter
+msgid "Now §0 (which is the same as §1).\n"
+"You also have §2. But §3 IS a\n"
+"witness for §4 — contradiction!\n"
+"\n"
+"Close with §5."
+msgstr ""
+
+#. §0: `Set.mem_iInter₂`
+#. §1: `x ∈ ⋂ (i) (j), s i j ↔ ∀ i j, x ∈ s i j`
+#. §2: `⋂ i ∈ t`
+#. §3: ```
+#. rw [Set.mem_iInter₂]       -- in the goal
+#. rw [Set.mem_iInter₂] at h  -- in a hypothesis
+#. ```
+#. §4: `⋂ i ∈ t, s i`
+#. §5: `∀ i, i ∈ t → x ∈ s i`
+#. §6: ```
+#. -- hx : x ∈ ⋂ i ∈ t, s i
+#. rw [Set.mem_iInter₂] at hx
+#. -- hx : ∀ i, i ∈ t → x ∈ s i
+#. exact hx j hj
+#. -- closes goal x ∈ s j (given hj : j ∈ t)
+#. ```
+#. §7: `Set.mem_iInter`
+#. §8: `Set.mem_iInter`
+#. §9: `∀ i, ...`
+#. §10: `Set.mem_iInter₂`
+#. §11: `∀ i, i ∈ t → ...`
+#: Game.Levels.IndexedOpsWorld.Imports
+msgid "§0 states\n"
+"§1 — membership in a\n"
+"doubly-indexed intersection (including bounded indexed intersections\n"
+"§2) is equivalent to a double universal.\n"
+"\n"
+"## Syntax\n"
+"§3\n"
+"\n"
+"## When to use it\n"
+"When you see §4 (bounded indexed intersection) and need to\n"
+"work with the underlying §5.\n"
+"\n"
+"## Example\n"
+"§6\n"
+"\n"
+"## Comparison with §7\n"
+"- §8: §9 — one specialize step\n"
+"- §10: §11 — two steps (index + guard)"
 msgstr ""
 
 #: GameServer.RpcHandlers
@@ -3643,6 +5577,17 @@ msgid "§0 states that the complement of a union is the\n"
 "§3"
 msgstr ""
 
+#. §0: `x ∈ Set.univ`
+#. §1: `True`
+#. §2: `hx`
+#. §3: `True`
+#. §4: `constructor`
+#: Game.Levels.SubsetWorld.L05_SubsetUniv
+msgid "The goal is §0, which is §1. The hypothesis\n"
+"§2 is not needed here — §3 holds unconditionally. Use\n"
+"§4."
+msgstr ""
+
 #. §0: `intro hx`
 #. §1: `exact hx.1`
 #. §2: `intro ⟨h1, _⟩`
@@ -3655,17 +5600,6 @@ msgid "§0 then §1 extracts the\n"
 "then §3."
 msgstr ""
 
-#. §0: `x ∈ Set.univ`
-#. §1: `True`
-#. §2: `hx`
-#. §3: `True`
-#. §4: `constructor`
-#: Game.Levels.SubsetWorld.L05_SubsetUniv
-msgid "The goal is §0, which is §1. The hypothesis\n"
-"§2 is not needed here — §3 holds unconditionally. Use\n"
-"§4."
-msgstr ""
-
 #: Game.Levels.SetOpsWorld.L05_DiffAsIntersect
 msgid "Difference as Intersection with Complement"
 msgstr ""
@@ -3673,6 +5607,14 @@ msgstr ""
 #: Game.Levels.SubsetWorld.L07_NonSubset
 msgid "The set of numbers less than 5 is NOT a subset of the set of\n"
 "numbers less than 3."
+msgstr ""
+
+#. §0: `×ˢ`
+#. §1: `rw [Set.mem_prod]`
+#. §2: `2 ∈ ... ∧ 3 ∈ ...`
+#: Game.Levels.IndexedOpsWorld.L11_CartesianProduct
+msgid "The goal involves §0. Use §1 to convert\n"
+"to a conjunction: §2."
 msgstr ""
 
 #. §0: $$s^{cc} = s$$
@@ -3763,6 +5705,36 @@ msgid "§0 closes goals that are propositional tautologies. It handles\n"
 "Disabled in levels where the learner should construct proofs manually."
 msgstr ""
 
+#. §0: `use`
+#. §1: `use witness`
+#. §2: `∃ x, P x`
+#. §3: `P witness`
+#. §4: `Set.Nonempty s`
+#. §5: `witness ∈ s`
+#. §6: `x ∈ ⋃ i, s i`
+#. §7: `x ∈ s witness`
+#. §8: `rw [Set.mem_iUnion]`
+#. §9: `0`
+#. §10: `2`
+#. §11: `4`
+#: Game.Levels.IndexedOpsWorld.L12_Nonempty
+msgid "You proved nonemptiness by exhibiting a witness. This is the same\n"
+"§0 move that works for:\n"
+"\n"
+"| Goal shape | After §1 |\n"
+"|---|---|\n"
+"| §2 | §3 |\n"
+"| §4 | §5 |\n"
+"| §6 | §7 (after §8) |\n"
+"\n"
+"All three are existential statements in disguise. The proof strategy\n"
+"is always the same: provide the witness, then verify.\n"
+"\n"
+"**Alternative witnesses**: We used §9, but §10, §11, or any even\n"
+"number would work. The choice of witness does not matter — only\n"
+"its existence."
+msgstr ""
+
 #. §0: `by_contra h`
 #. §1: `h : x ∉ s`
 #. §2: `x ∈ sᶜ`
@@ -3772,9 +5744,80 @@ msgid "Use §0 — this gives §1 (= §2)\n"
 "and changes the goal to §3."
 msgstr ""
 
+#. §0: $(\\bigcup_i s_i)^c = \\bigcap_i (s_i)^c$
+#. §1: `mem_iUnion`
+#. §2: `mem_iInter`
+#. §3: $\\exists i,\\; x \\in s_i$
+#. §4: $\\forall i,\\; x \\notin s_i$
+#. §5: $x \\in \\bigcup_i s_i$
+#. §6: $x \\in \\bigcap_i (s_i)^c$
+#. §7: $\\neg(\\exists i,\\, P(i)) \\iff \\forall i,\\,
+#. \\neg P(i)$
+#. §8: `ᶜ`
+#. §9: `¬`
+#. §10: `⋃`
+#. §11: `∃`
+#. §12: `⋂`
+#. §13: `∀`
+#. §14: $x \\notin \\bigcup_i s_i$
+#. §15: $i$
+#. §16: $x \\in s_i$
+#. §17: $i$
+#. §18: $x \\notin s_i$
+#. §19: $x \\in \\bigcap_i s_i^c$
+#. §20: $(\\bigcap_i s_i)^c = \\bigcup_i (s_i)^c$
+#: Game.Levels.IndexedOpsWorld.L18_DeMorganUnion
+msgid "You proved De Morgan's law for indexed unions:\n"
+"§0\n"
+"\n"
+"This is the first proof where you used BOTH §1 and\n"
+"§2 together. The key insight is how negation swaps\n"
+"quantifiers:\n"
+"\n"
+"| Statement | Negation |\n"
+"|---|---|\n"
+"| §3 | §4 |\n"
+"| §5 | §6 |\n"
+"\n"
+"**The logical core**: De Morgan for sets is just De Morgan for\n"
+"quantifiers in disguise: §7. The complement §8 is §9, the union §10 is §11,\n"
+"and the intersection §12 is §13.\n"
+"\n"
+"In ordinary math: \"§14 means there is no §15\n"
+"with §16, which means for every §17, §18, which\n"
+"means §19.\"\n"
+"\n"
+"**Up next**: The dual De Morgan law §20\n"
+"— the harder direction, where you will need classical reasoning."
+msgstr ""
+
+#. §0: `x`
+#. §1: `x`
+#. §2: `show`
+#. §3: `change`
+#: Game.Levels.IndexedOpsWorld.L15_Powerset
+msgid "You have a hypothesis about §0 being in the left set, and\n"
+"need to show §1 is in the right set. Unfold both with §2\n"
+"and §3."
+msgstr ""
+
+#. §0: `x ∈ t i`
+#. §1: `s i ⊆ t i`
+#. §2: `h i`
+#. §3: `hsi : x ∈ s i`
+#. §4: `exact h i hsi`
+#: Game.Levels.IndexedOpsWorld.L05_MonotonIUnion
+msgid "The goal is §0. You know §1 from §2, and\n"
+"§3. Apply the subset: §4."
+msgstr ""
+
 #. §0: `Set.univ`
 #: Game.Levels.SetWorld.L01_WelcomeToSets
 msgid "Every element belongs to §0."
+msgstr ""
+
+#: Game.Levels.IndexedOpsWorld.L07_BoundedIUnion
+msgid "Bounded Indexed Union"
 msgstr ""
 
 #. §0: `cases hx with | inl hst | inr hsu`
@@ -3795,6 +5838,20 @@ msgstr ""
 #: Game.Levels.SubsetWorld.L12_SetNonEquality
 msgid "The goal is §0, which means §1.\n"
 "Use §2 to assume the sets are equal and aim for a contradiction."
+msgstr ""
+
+#. §0: `rw [Set.mem_iUnion] at hu`
+#. §1: `hu`
+#. §2: `∃ i, x ∈ s i`
+#. §3: `obtain ⟨i, hsi⟩ := hu`
+#. §4: `rw [Set.mem_iUnion]`
+#. §5: `use i`
+#. §6: `exact ⟨hsi, ht⟩`
+#: Game.Levels.IndexedOpsWorld.L23_Boss
+msgid "§0 converts §1\n"
+"to §2. Then §3 to get the\n"
+"witness. Then §4 on the goal, §5, and\n"
+"§6."
 msgstr ""
 
 #. §0: `constructor`
@@ -3858,6 +5915,19 @@ msgstr ""
 #: Game.Levels.SetOpsWorld.L10_UnionCaseAnalysis
 #: Game.Levels.SetOpsWorld.L10_UnionCaseAnalysis
 #: Game.Levels.SetOpsWorld.L14_ComplementUnion
+#: Game.Levels.IndexedOpsWorld.L01_IndexedUnion
+#: Game.Levels.IndexedOpsWorld.L02_IndexedIntersection
+#: Game.Levels.IndexedOpsWorld.L03_IInterSubset
+#: Game.Levels.IndexedOpsWorld.L08_BoundedIInter
+#: Game.Levels.IndexedOpsWorld.L09_VacuousIntersection
+#: Game.Levels.IndexedOpsWorld.L10_VacuousUnion
+#: Game.Levels.IndexedOpsWorld.L11_CartesianProduct
+#: Game.Levels.IndexedOpsWorld.L13_NonemptyPropagation
+#: Game.Levels.IndexedOpsWorld.L14_NonemptyConverse
+#: Game.Levels.IndexedOpsWorld.L17_IUnionEqualsUniv
+#: Game.Levels.IndexedOpsWorld.L21_BoundedIntegration
+#: Game.Levels.IndexedOpsWorld.L22_IInterDistrib
+#: Game.Levels.IndexedOpsWorld.L23_Boss
 msgid "§0 then §1."
 msgstr ""
 
@@ -3885,6 +5955,18 @@ msgstr ""
 msgid "Every natural number belongs to §0."
 msgstr ""
 
+#. §0: `∃ i, ∃ (_ : i ∈ t), x ∈ s i`
+#. §1: `t`
+#. §2: `use j`
+#. §3: `use hj`
+#. §4: `j ∈ t`
+#: Game.Levels.IndexedOpsWorld.L07_BoundedIUnion
+msgid "The goal is now §0. You need to\n"
+"provide two things: the witness index and the proof it is in §1.\n"
+"\n"
+"Use §2 to provide the index, then §3 to prove §4."
+msgstr ""
+
 #. §0: `x ∈ Set.univ`
 #. §1: `True`
 #. §2: `x ∈ s ∪ sᶜ`
@@ -3899,6 +5981,13 @@ msgid "The interesting direction: given §0 (which is just\n"
 "\n"
 "You cannot choose §4 or §5 without knowing whether §6.\n"
 "Use §7 to assume the goal is false."
+msgstr ""
+
+#. §0: `𝒫`
+#. §1: `rw [Set.mem_powerset_iff]`
+#: Game.Levels.IndexedOpsWorld.L15_Powerset
+msgid "The goal involves §0. Use §1 to convert\n"
+"to a subset relation."
 msgstr ""
 
 #: Game.Levels.SetOpsWorld.L14_ComplementUnion
@@ -3977,6 +6066,23 @@ msgid "Prove that 3 is NOT in the second set. This means\n"
 "a contradiction."
 msgstr ""
 
+#. §0: `∀ (i : Empty), x ∈ s i`
+#. §1: `Empty`
+#. §2: `Empty`
+#. §3: `intro i`
+#. §4: `exact i.elim`
+#. §5: `Empty.elim`
+#. §6: `Empty`
+#: Game.Levels.IndexedOpsWorld.L09_VacuousIntersection
+msgid "The goal is §0. Since §1 has no\n"
+"elements, you need to handle every element of §2 — but there\n"
+"are none! Use §3 to introduce a hypothetical index, then\n"
+"§4 to eliminate the impossible case.\n"
+"\n"
+"§5 says: if you have an element of §6, you can prove\n"
+"anything — because such an element cannot exist."
+msgstr ""
+
 #. §0: `x ∈ Set.univ`
 #. §1: `True`
 #. §2: `intro _`
@@ -3991,6 +6097,16 @@ msgstr ""
 msgid "The set of naturals at most 2 equals the set of naturals less than 3."
 msgstr ""
 
+#. §0: `x ∈ ⋃ i, s i`
+#: Game.Levels.IndexedOpsWorld.L18_DeMorganUnion
+msgid "The goal is §0. Rewrite and provide the witness."
+msgstr ""
+
+#. §0: `use 0`
+#: Game.Levels.IndexedOpsWorld.L12_Nonempty
+msgid "§0 — zero is even."
+msgstr ""
+
 #: Game.Levels.SetWorld.L02_SetBuilder
 msgid "Set Builder Notation"
 msgstr ""
@@ -4003,6 +6119,11 @@ msgstr ""
 #: Game.Levels.SetOpsWorld.L10_UnionCaseAnalysis
 msgid "You have §0 and need §1. Since\n"
 "§2 is the LEFT operand of §3, use §4."
+msgstr ""
+
+#: Game.Levels.IndexedOpsWorld.L18_DeMorganUnion
+msgid "De Morgan's law: the complement of an indexed union is the\n"
+"indexed intersection of complements."
 msgstr ""
 
 #. §0: `hst`
@@ -4107,8 +6228,100 @@ msgid "§0 (typed §1 or §2) is the **complement** of set §3.\n"
 "to some ambient set. §20."
 msgstr ""
 
+#. §0: $$\\forall\\, i,\\; s_i \\subseteq t_i \\;\\Longrightarrow\\;
+#. \\bigcup_i s_i \\subseteq \\bigcup_i t_i$$
+#. §1: `s₁ ⊆ s₂ → t₁ ⊆ t₂ → s₁ ∪ t₁ ⊆ s₂ ∪ t₂`
+#. §2: `s k = {n | k ≤ n}`
+#. §3: `t k = {n | k ≤ n + 1}`
+#. §4: `s k ⊆ t k`
+#. §5: `k`
+#. §6: `k`
+#. §7: `⋃ k, s k ⊆ ⋃ k, t k`
+#. §8: `x ∈ ⋃ i, t i`
+#. §9: `x ∈ ⋃ i, s i`
+#. §10: `i`
+#. §11: `h i`
+#. §12: `s i`
+#. §13: `t i`
+#. §14: `mem_iUnion`
+#. §15: `mem_iUnion`
+#: Game.Levels.IndexedOpsWorld.L05_MonotonIUnion
+msgid "# Monotonicity of Indexed Union\n"
+"\n"
+"If every set in one family is contained in the corresponding set of\n"
+"another family, then the union of the first family is contained in the\n"
+"union of the second. In symbols:\n"
+"\n"
+"§0\n"
+"\n"
+"This is the indexed analogue of the binary fact that\n"
+"§1.\n"
+"\n"
+"**Concrete example**: If §2 and §3,\n"
+"then each §4 (every number at least §5 is also at least §6\n"
+"minus 1), so §7.\n"
+"\n"
+"**Proof strategy**: To show §8, unpack §9 to\n"
+"find the witness index §10, then use §11 to transfer membership from\n"
+"§12 to §13, and re-pack into the union.\n"
+"\n"
+"This level chains an indexed-union extraction (§14 on a\n"
+"hypothesis) with a subset application and an indexed-union introduction\n"
+"(§15 on the goal)."
+msgstr ""
+
 #: Game.Levels.SetOpsWorld.L14_ComplementUnion
 msgid "Complement Union Law"
+msgstr ""
+
+#. §0: `Set.mem_iUnion₂`
+#. §1: `⋃ i ∈ t, s i`
+#. §2: $$x \\in \\bigcap_{i \\in t} s_i \\;\\Longleftrightarrow\\;
+#. \\forall\\, i \\in t,\\; x \\in s_i$$
+#. §3: `rw [Set.mem_iInter₂]`
+#. §4: `x ∈ ⋂ i ∈ t, s i`
+#. §5: `∀ i, i ∈ t → x ∈ s i`
+#. §6: `rw [Set.mem_iInter]`
+#. §7: `mem_iUnion₂`
+#. §8: `mem_iUnion`
+#. §9: `rw`
+#. §10: `⋂ i, s i`
+#. §11: `∀ i, x ∈ s i`
+#. §12: `hx i`
+#. §13: `⋂ i ∈ t, s i`
+#. §14: `∀ i, i ∈ t → x ∈ s i`
+#. §15: `hx j hj`
+#. §16: `⋂ i ∈ t, s i`
+#. §17: `s j`
+#. §18: `j ∈ t`
+#. §19: `⋂ i, s i ⊆ s j`
+#: Game.Levels.IndexedOpsWorld.L08_BoundedIInter
+msgid "# Bounded Indexed Intersections\n"
+"\n"
+"In Level 7, you learned §0 for bounded indexed unions\n"
+"(§1). Now learn its dual for bounded indexed intersections:\n"
+"\n"
+"§2\n"
+"\n"
+"**New tool**: §3 converts §4 into\n"
+"§5. This is the bounded analogue of\n"
+"§6, just as §7 was the bounded analogue\n"
+"of §8.\n"
+"\n"
+"The key pattern: after rewriting, you get a **universal with a\n"
+"membership guard** — to use it, you provide both the index AND the\n"
+"proof that the index is in bounds.\n"
+"\n"
+"Compare the bounded and unbounded intersection patterns:\n"
+"\n"
+"| Variant | After §9 | To specialize |\n"
+"|---|---|---|\n"
+"| §10 | §11 | §12 |\n"
+"| §13 | §14 | §15 |\n"
+"\n"
+"**Your task**: Prove that the bounded intersection §16 is\n"
+"a subset of §17 whenever §18. This is the bounded analogue of\n"
+"Level 3 (§19)."
 msgstr ""
 
 #. §0: `constructor`
@@ -4141,6 +6354,20 @@ msgid "You proved intersection membership using §0 — the same\n"
 "\n"
 "You will use extraction in later levels when an intersection\n"
 "hypothesis appears on the left side of an implication."
+msgstr ""
+
+#. §0: `show Even 2`
+#. §1: `exact ⟨1, rfl⟩`
+#. §2: `Even n`
+#. §3: `∃ k, n = k + k`
+#. §4: `Even 2`
+#. §5: `k = 1`
+#. §6: `2 = 1 + 1`
+#: Game.Levels.IndexedOpsWorld.L11_CartesianProduct
+msgid "§0 then §1.\n"
+"\n"
+"Recall: §2 means §3. The witness for\n"
+"§4 is §5, since §6."
 msgstr ""
 
 #. §0: `s`
@@ -4181,6 +6408,28 @@ msgstr ""
 #: Game.Levels.SetOpsWorld.L11_PushNeg
 msgid "Now §0. Use §1 to\n"
 "convert the negated disjunction to a conjunction of negations."
+msgstr ""
+
+#. §0: `Set.Nonempty s`
+#. §1: `∃ x, x ∈ s`
+#. §2: `use`
+#. §3: ```
+#. -- Goal: Set.Nonempty {n | n > 5}
+#. use 6
+#. -- Goal: 6 ∈ {n | n > 5}
+#. show 6 > 5
+#. omega
+#. ```
+#: Game.Levels.IndexedOpsWorld.Imports
+msgid "§0 means §1 — the set has at least one\n"
+"element.\n"
+"\n"
+"## When to use it\n"
+"When a goal asks you to show a set is nonempty. Use §2 to\n"
+"provide the witness element, then prove it belongs to the set.\n"
+"\n"
+"## Example\n"
+"§3"
 msgstr ""
 
 #. §0: `hr : 3 = r + r`
@@ -4283,6 +6532,32 @@ msgid "§0 sets the goal to §1,\n"
 "which §2 closes (or it closes automatically)."
 msgstr ""
 
+#. §0: `push_neg`
+#. §1: `¬∀`
+#. §2: `∃¬`
+#. §3: `¬∃`
+#. §4: `∀¬`
+#. §5: `¬(a < b)`
+#. §6: `b ≤ a`
+#. §7: ```
+#. push_neg            -- on the goal
+#. push_neg at h       -- on a hypothesis
+#. ```
+#: Game.Metadata
+msgid "§0 pushes negation inward through quantifiers and\n"
+"connectives: §1 becomes §2, §3 becomes §4, §5 becomes\n"
+"§6, etc.\n"
+"\n"
+"## Syntax\n"
+"§7\n"
+"\n"
+"## When to use it\n"
+"When you have a negated statement and need to work with its\n"
+"positive form.\n"
+"\n"
+"Disabled in levels where you should see what push_neg does manually."
+msgstr ""
+
 #. §0: `s ⊆ the right set`
 #. §1: `s ⊆ t`
 #. §2: `t ⊆ the arithmetic set`
@@ -4293,10 +6568,124 @@ msgid "First goal: §0. You know §1 and\n"
 "arithmetic. Start with §3."
 msgstr ""
 
+#. §0: `s ×ˢ t`
+#. §1: `(a, b)`
+#. §2: `a ∈ s`
+#. §3: `b ∈ t`
+#: Game.Levels.IndexedOpsWorld.Imports
+msgid "The cartesian product §0 is the set of all pairs §1\n"
+"with §2 and §3."
+msgstr ""
+
 #. §0: `constructor`
 #: Game.Levels.SetWorld.L09_Boss
 msgid "The goal is a conjunction. Use §0 to split it\n"
 "into two parts."
+msgstr ""
+
+#. §0: $(\\bigcup_i s_i) \\cap t = \\bigcup_i (s_i \\cap t)$
+#. §1: `ext x`
+#. §2: `constructor`
+#. §3: `↔`
+#. §4: `∩`
+#. §5: `obtain`
+#. §6: `∩`
+#. §7: `∃`
+#. §8: `rw [Set.mem_iUnion]`
+#. §9: `⋃`
+#. §10: `∃`
+#. §11: `use i`
+#. §12: `exact`
+#. §13: `⋃ i, s i`
+#. §14: `∃ i, x ∈ s i`
+#. §15: `Set.mem_iUnion`
+#. §16: `⋂ i, s i`
+#. §17: `∀ i, x ∈ s i`
+#. §18: `Set.mem_iInter`
+#. §19: `⋃ i ∈ t, s i`
+#. §20: `∃ i ∈ t, x ∈ s i`
+#. §21: `Set.mem_iUnion₂`
+#. §22: `⋂ i ∈ t, s i`
+#. §23: `∀ i ∈ t, x ∈ s i`
+#. §24: `Set.mem_iInter₂`
+#. §25: `s ×ˢ t`
+#. §26: `p.1 ∈ s ∧ p.2 ∈ t`
+#. §27: `Set.mem_prod`
+#. §28: `Set.Nonempty s`
+#. §29: `∃ x, x ∈ s`
+#. §30: `𝒫 s`
+#. §31: `t ⊆ s`
+#. §32: `Set.mem_powerset_iff`
+#. §33: $(\\bigcap_i s_i) \\cup t = \\bigcap_i (s_i \\cup t)$
+#. §34: $(\\bigcup_i s_i) \\cap t = \\bigcup_i (s_i \\cap t)$
+#. §35: `⋃`
+#. §36: `⋂`
+#. §37: `⋃ = iSup`
+#. §38: `⋂ = iInf`
+#. §39: `iSup`
+#. §40: `iInf`
+#. §41: `iSup_inf_eq`
+#. §42: $f(\\bigcup_i s_i) = \\bigcup_i f(s_i)$
+#: Game.Levels.IndexedOpsWorld.L23_Boss
+msgid "Congratulations — you have completed **Indexed Operations World**!\n"
+"\n"
+"You proved that indexed unions distribute over intersection:\n"
+"§0\n"
+"\n"
+"This is the same *extract-transform-repack* pattern from Level 5\n"
+"(monotonicity of indexed union), now with an intersection layer added.\n"
+"In each direction, you extracted data from the hypothesis, transformed\n"
+"it (regrouping the intersection and union membership), and repacked it\n"
+"into the goal.\n"
+"\n"
+"The proof integrated every major skill from this world:\n"
+"\n"
+"| Move | Where used |\n"
+"|---|---|\n"
+"| §1 | start the set equality |\n"
+"| §2 | split §3 and §4 |\n"
+"| §5 | destructure §6 and §7 |\n"
+"| §8 | convert §9 to §10 |\n"
+"| §11 | provide witness index |\n"
+"| §12 | close goals |\n"
+"\n"
+"**Recap of this world**:\n"
+"\n"
+"| Construction | Notation | Meaning | Key lemma |\n"
+"|---|---|---|---|\n"
+"| Indexed union | §13 | §14 | §15 |\n"
+"| Indexed intersection | §16 | §17 | §18 |\n"
+"| Bounded union | §19 | §20 | §21 |\n"
+"| Bounded intersection | §22 | §23 | §24 |\n"
+"| Cartesian product | §25 | §26 | §27 |\n"
+"| Nonemptiness | §28 | §29 | — |\n"
+"| Powerset | §30 | §31 | §32 |\n"
+"\n"
+"Together with Level 22, you proved both distributive laws:\n"
+"\n"
+"| Law | Statement |\n"
+"|---|---|\n"
+"| Level 22 | §33 |\n"
+"| This level | §34 |\n"
+"\n"
+"**The pattern persists**: Every set construction reduces to a logical\n"
+"statement. Indexed unions and intersections are the quantifier versions\n"
+"of binary union and intersection. Cartesian products are conjunctions\n"
+"of pair components. Powerset membership is subset.\n"
+"\n"
+"**A note on naming**: In Lean's Mathlib library, §35 and §36 are\n"
+"special cases of a general lattice structure where §37 and\n"
+"§38. That is why you sometimes see §39 and §40 in\n"
+"theorem names (like the disabled §41).\n"
+"\n"
+"**Looking ahead**: Indexed unions will be essential when studying\n"
+"images and preimages of functions. For example, images distribute\n"
+"over unions: §42 — a fact whose\n"
+"proof uses exactly the skills you just practiced.\n"
+"\n"
+"But first: a problem set that will test all the set theory you have\n"
+"learned so far — membership, subsets, set operations, and indexed\n"
+"operations — on fresh problems with less scaffolding."
 msgstr ""
 
 #. §0: `s`
@@ -4373,6 +6762,64 @@ msgid "You just used a subset hypothesis as a function for the first time!\n"
 "such applications in the next levels."
 msgstr ""
 
+#. §0: `obtain ⟨i, hsi⟩ := hu`
+#: Game.Levels.IndexedOpsWorld.L18_DeMorganUnion
+#: Game.Levels.IndexedOpsWorld.L19_DeMorganInter
+msgid "Extract the witness: §0."
+msgstr ""
+
+#. §0: `Set.mem_iUnion₂`
+#. §1: `x ∈ ⋃ (i) (j), s i j ↔ ∃ i j, x ∈ s i j`
+#. §2: `⋃ i ∈ t`
+#. §3: ```
+#. rw [Set.mem_iUnion₂]       -- in the goal
+#. rw [Set.mem_iUnion₂] at h  -- in a hypothesis
+#. ```
+#. §4: `⋃ i ∈ t, s i`
+#. §5: `∃ i, ∃ (_ : i ∈ t), x ∈ s i`
+#. §6: ```
+#. -- Goal: x ∈ ⋃ i ∈ t, s i
+#. rw [Set.mem_iUnion₂]
+#. -- Goal: ∃ i, ∃ (_ : i ∈ t), x ∈ s i
+#. use j       -- provide the index
+#. use hj      -- provide proof that j ∈ t
+#. -- Goal: x ∈ s j
+#. ```
+#. §7: `Set.mem_iUnion`
+#. §8: `Set.mem_iUnion`
+#. §9: `∃`
+#. §10: `use`
+#. §11: `Set.mem_iUnion₂`
+#. §12: `∃`
+#. §13: `use`
+#: Game.Levels.IndexedOpsWorld.Imports
+msgid "§0 states\n"
+"§1 — membership in a\n"
+"doubly-indexed union (including bounded indexed unions §2)\n"
+"is equivalent to a double existential.\n"
+"\n"
+"## Syntax\n"
+"§3\n"
+"\n"
+"## When to use it\n"
+"When you see §4 (bounded indexed union) and need to\n"
+"work with the underlying §5.\n"
+"\n"
+"## Example\n"
+"§6\n"
+"\n"
+"## Comparison with §7\n"
+"- §8: one §9, one §10\n"
+"- §11: two nested §12, two §13 steps"
+msgstr ""
+
+#. §0: `use j`
+#. §1: `hx`
+#: Game.Levels.IndexedOpsWorld.L04_IUnionFromSubset
+msgid "§0 — Lean will automatically apply §1\n"
+"to close the remaining goal."
+msgstr ""
+
 #. §0: `hu : x ∈ u`
 #. §1: `hs : x ∈ s`
 #. §2: `s ∩ u`
@@ -4433,6 +6880,14 @@ msgid "# Using a Subset Hypothesis\n"
 "- OR: §21 then §22 — reduce goal, then close"
 msgstr ""
 
+#. §0: `obtain ⟨hu, ht⟩ := hx`
+#. §1: `hu : x ∈ ⋃ i, s i`
+#. §2: `ht : x ∈ t`
+#: Game.Levels.IndexedOpsWorld.L23_Boss
+msgid "Destructure the intersection: §0 gives\n"
+"you §1 and §2."
+msgstr ""
+
 #. §0: `Set.mem_setOf`
 #. §1: `x ∈ {a | p a} ↔ p x`
 #. §2: `Set.mem_setOf_eq`
@@ -4441,6 +6896,14 @@ msgid "§0 states §1 — the iff version\n"
 "of set-builder membership unfolding.\n"
 "\n"
 "Disabled for the same reason as §2."
+msgstr ""
+
+#. §0: `i : Empty`
+#. §1: `i.elim`
+#. §2: `exact i.elim`
+#: Game.Levels.IndexedOpsWorld.L10_VacuousUnion
+msgid "You have §0 — an element of the empty type. This is\n"
+"impossible, so §1 closes any goal. Use §2."
 msgstr ""
 
 #: Game.Levels.SetOpsWorld.L08_UnionSubset
@@ -4464,6 +6927,29 @@ msgid "§0. The hypothesis §1 gives an §2 between\n"
 "with §9."
 msgstr ""
 
+#. §0: `Set.Nonempty`
+#. §1: `∃ x, x ∈ s`
+#. §2: `Set.mem_iUnion`
+#. §3: `∃ i, x ∈ s i`
+#. §4: `s j`
+#. §5: `⋃ i, s i`
+#: Game.Levels.IndexedOpsWorld.L13_NonemptyPropagation
+msgid "# Nonemptiness Propagation\n"
+"\n"
+"In the previous level, you proved that a specific set is nonempty by\n"
+"exhibiting a concrete witness. Now prove something more general: if\n"
+"ANY member of a family is nonempty, then the indexed union is nonempty.\n"
+"\n"
+"This combines two tools you have practiced:\n"
+"- §0 — existential over elements (§1)\n"
+"- §2 — existential over indices (§3)\n"
+"\n"
+"The proof chains two existentials: extract a witness from the nonempty\n"
+"member, then place it in the union using the index.\n"
+"\n"
+"**Your task**: Given that §4 is nonempty, prove §5 is nonempty."
+msgstr ""
+
 #. §0: `hx`
 #. §1: `x`
 #. §2: `x ≤ 2`
@@ -4477,6 +6963,13 @@ msgid "You have §0 saying §1 is in the left set (i.e., §2)\n"
 "and the goal says §3 is in the right set (i.e., §4).\n"
 "Use §5 and §6 to unwrap both,\n"
 "then §7."
+msgstr ""
+
+#. §0: `Even 0`
+#. §1: `show Even 0`
+#: Game.Levels.IndexedOpsWorld.L12_Nonempty
+msgid "The goal is a set membership that unfolds to §0.\n"
+"Use §1 to make it explicit."
 msgstr ""
 
 #. §0: `h4'`
@@ -4517,6 +7010,18 @@ msgid "§0 provided the witness §1 and Lean verified\n"
 "exactly what you just proved — no more, no less."
 msgstr ""
 
+#: Game.Levels.IndexedOpsWorld.L11_CartesianProduct
+msgid "Cartesian Product"
+msgstr ""
+
+#. §0: `intro x hx`
+#. §1: `x ∈ s j`
+#: Game.Levels.IndexedOpsWorld.L04_IUnionFromSubset
+#: Game.Levels.IndexedOpsWorld.L07_BoundedIUnion
+#: Game.Levels.IndexedOpsWorld.L21_BoundedIntegration
+msgid "Start with §0 to assume §1."
+msgstr ""
+
 #. §0: `hx`
 #. §1: `x < 3 ∧ x < 5`
 #. §2: `exact hx.1`
@@ -4524,6 +7029,26 @@ msgstr ""
 #: Game.Levels.SubsetWorld.L10_ExtIntro
 msgid "§0 is a conjunction §1. Use §2\n"
 "to extract the first component (§3), which matches the goal."
+msgstr ""
+
+#. §0: `x ∈ s i ∪ t`
+#. §1: `hx : x ∈ (⋂ i, s i) ∪ t`
+#. §2: `hx`
+#. §3: `x`
+#. §4: `t`
+#. §5: `cases hx with | inl hinter | inr ht`
+#: Game.Levels.IndexedOpsWorld.L22_IInterDistrib
+msgid "The goal is §0. You have §1.\n"
+"Split §2 into cases — §3 is either in the intersection or in §4.\n"
+"\n"
+"Use §5."
+msgstr ""
+
+#. §0: `(a, b) ∈ s ×ˢ t`
+#. §1: `rw [Set.mem_prod]`
+#: Game.Levels.IndexedOpsWorld.L20_NonemptyProduct
+msgid "The goal is §0. Use §1 to\n"
+"convert to a conjunction."
 msgstr ""
 
 #. §0: `show 3 < 5`
@@ -4561,6 +7086,44 @@ msgid "You used §0 to convert the goal, then §1 to close it.\n"
 "When you see §10, you can always think of it as §11."
 msgstr ""
 
+#. §0: `iInf_sup_eq`
+#: Game.Levels.IndexedOpsWorld.L22_IInterDistrib
+msgid "§0 is the lattice version of indexed intersection/union\n"
+"distributivity."
+msgstr ""
+
+#. §0: `Set.mem_prod`
+#. §1: `p ∈ s ×ˢ t ↔ p.1 ∈ s ∧ p.2 ∈ t`
+#. §2: ```
+#. rw [Set.mem_prod]       -- in the goal
+#. rw [Set.mem_prod] at h  -- in a hypothesis
+#. ```
+#. §3: `×ˢ`
+#. §4: `∧`
+#. §5: ```
+#. -- Goal: (a, b) ∈ s ×ˢ t
+#. rw [Set.mem_prod]
+#. -- Goal: a ∈ s ∧ b ∈ t
+#. constructor
+#. · ...  -- prove a ∈ s
+#. · ...  -- prove b ∈ t
+#. ```
+#: Game.Levels.IndexedOpsWorld.Imports
+msgid "§0 states §1 —\n"
+"membership in a cartesian product is equivalent to a conjunction of\n"
+"memberships.\n"
+"\n"
+"## Syntax\n"
+"§2\n"
+"\n"
+"## When to use it\n"
+"When you see §3 in a goal or hypothesis and need to work with\n"
+"the underlying §4 (conjunction).\n"
+"\n"
+"## Example\n"
+"§5"
+msgstr ""
+
 #. §0: `not_or`
 #. §1: `¬(a ∨ b) ↔ ¬a ∧ ¬b`
 #: Game.Levels.SetOpsWorld.L11_PushNeg
@@ -4576,7 +7139,33 @@ msgstr ""
 #: Game.Levels.SetOpsWorld.L08_UnionSubset
 #: Game.Levels.SetOpsWorld.L08_UnionSubset
 #: Game.Levels.SetOpsWorld.L10_UnionCaseAnalysis
+#: Game.Levels.IndexedOpsWorld.L18_DeMorganUnion
+#: Game.Levels.IndexedOpsWorld.L18_DeMorganUnion
 msgid "§0 is the lattice version of §1."
+msgstr ""
+
+#. §0: `⋂ i, s i ⊆ s j`
+#. §1: `s j`
+#. §2: `⋃ i, s i`
+#. §3: `s ⊆ s ∪ t`
+#. §4: `s j`
+#. §5: `j`
+#. §6: `x ∈ ⋃ i, s i`
+#. §7: `∃ i, x ∈ s i`
+#. §8: `j`
+#: Game.Levels.IndexedOpsWorld.L04_IUnionFromSubset
+msgid "# Building the Other Direction\n"
+"\n"
+"You just proved that §0 — the intersection is\n"
+"contained in each member. Now prove the dual: each member §1\n"
+"is contained in the indexed union §2.\n"
+"\n"
+"This is the indexed version of §3. If an element is in\n"
+"§4 for some §5, then it is certainly in the union of the whole\n"
+"family.\n"
+"\n"
+"**Proof strategy**: To prove §6, rewrite to §7\n"
+"and provide the witness §8."
 msgstr ""
 
 #. §0: `x ∈ ∅`
@@ -4670,11 +7259,42 @@ msgid "# The push_neg Tactic\n"
 "complements of compound sets."
 msgstr ""
 
+#. §0: `x : α`
+#. §1: `hx : x ∈ s j`
+#. §2: `Set.Nonempty (⋃ i, s i)`
+#. §3: `∃ x, x ∈ ⋃ i, s i`
+#. §4: `use x`
+#: Game.Levels.IndexedOpsWorld.L13_NonemptyPropagation
+msgid "You have §0 with §1. The goal is\n"
+"§2, which means §3.\n"
+"\n"
+"Use §4 to provide the element witness."
+msgstr ""
+
 #. §0: `h`
 #. §1: `change ¬(x ∈ s ∨ x ∉ s) at h`
 #: Game.Levels.SetOpsWorld.L14_ComplementUnion
 msgid "§0 says the goal is false. Use\n"
 "§1 to make the logical form explicit."
+msgstr ""
+
+#. §0: `x ∈ (⋃ i, s i)ᶜ`
+#. §1: `x ∉ ⋃ i, s i`
+#. §2: `x ∈ ⋂ i, (s i)ᶜ`
+#. §3: `∀ i, x ∉ s i`
+#. §4: `push_neg`
+#. §5: `push_neg`
+#. §6: `intro hx`
+#: Game.Levels.IndexedOpsWorld.L18_DeMorganUnion
+msgid "**Forward direction**: You have §0, which\n"
+"means §1. You must show §2, which\n"
+"means §3.\n"
+"\n"
+"If you learned §4 in Set Operations World, you might think\n"
+"of using it here — but it is disabled in this level so you can see\n"
+"exactly what §5 does under the hood for indexed operations.\n"
+"\n"
+"Start with §6 to assume the complement membership."
 msgstr ""
 
 #. §0: `∩`
@@ -4758,6 +7378,34 @@ msgid "# Subsets: The ⊆ Relation\n"
 "4. §22 — derive §23 from §24"
 msgstr ""
 
+#. §0: `s j ⊆ ⋃ i, s i`
+#. §1: `⋂ i, s i ⊆ s j`
+#. §2: `s j ⊆ ⋃ i, s i`
+#. §3: `s ∩ t ⊆ s`
+#. §4: `s ⊆ s ∪ t`
+#. §5: $x \\in s_j$
+#. §6: $j$
+#. §7: $x \\in s_j$
+#. §8: $x \\in \\bigcup_i s_i$
+#: Game.Levels.IndexedOpsWorld.L04_IUnionFromSubset
+msgid "You proved §0 — each set in the family is contained\n"
+"in the indexed union. Together with Level 3, you now know:\n"
+"\n"
+"- §1 — the intersection is inside each member\n"
+"- §2 — each member is inside the union\n"
+"\n"
+"These are the indexed analogues of:\n"
+"- §3 (intersection is inside each factor)\n"
+"- §4 (each factor is inside the union)\n"
+"\n"
+"In ordinary math: \"If §5, then there exists an index\n"
+"(namely §6) such that §7. Therefore §8.\""
+msgstr ""
+
+#: Game.Levels.IndexedOpsWorld.L22_IInterDistrib
+msgid "Indexed intersection distributes over union."
+msgstr ""
+
 #. §0: `h`
 #. §1: `have h4 : (4 : ℕ) < 5 := by omega`
 #. §2: `4 ∈ (the left set)`
@@ -4802,6 +7450,28 @@ msgid "§0 is the empty set — the set containing no elements.\n"
 "## Related\n"
 "- §10 is the proof that §11\n"
 "- §12 is the opposite extreme: everything is a member"
+msgstr ""
+
+#. §0: `x ∈ ⋂ i, (s i ∪ t)`
+#. §1: `∀ i, x ∈ s i ∨ x ∈ t`
+#. §2: `x ∈ (⋂ i, s i) ∪ t`
+#. §3: `x ∈ ⋂ i, s i ∨ x ∈ t`
+#. §4: `x ∈ s i ∨ x ∈ t`
+#. §5: `i`
+#. §6: `by_cases`
+#. §7: `x ∈ t`
+#. §8: `intro hx`
+#. §9: `rw [Set.mem_iInter] at hx`
+#: Game.Levels.IndexedOpsWorld.L22_IInterDistrib
+msgid "**Backward direction (classical)**: You have\n"
+"§0, meaning §1. You must\n"
+"show §2, which is §3.\n"
+"\n"
+"The difficulty: knowing that §4 for EACH §5\n"
+"separately does not tell you which disjunct holds uniformly. You\n"
+"need §6 on §7 to resolve this.\n"
+"\n"
+"Start with §8 and then §9."
 msgstr ""
 
 #. §0: `7 ∉ {n | n < 5}`
@@ -4911,6 +7581,10 @@ msgid "Congratulations — you have completed **SetWorld**!\n"
 "membership skills you just mastered are exactly what those proofs require."
 msgstr ""
 
+#: Game.Levels.IndexedOpsWorld.L22_IInterDistrib
+msgid "Indexed Intersection Distributes over Union"
+msgstr ""
+
 #. §0: `push_neg`
 #. §1: ```
 #. push_neg           -- simplify negation in the goal
@@ -4949,6 +7623,17 @@ msgid "§0 pushes negation through logical connectives.\n"
 "membership (§12 = §13)."
 msgstr ""
 
+#. §0: `hx : ∀ (i : ι), x ∈ s i`
+#. §1: `x ∈ s j`
+#. §2: `hx`
+#. §3: `i`
+#. §4: `j`
+#. §5: `exact hx j`
+#: Game.Levels.IndexedOpsWorld.L03_IInterSubset
+msgid "Now §0. The goal is §1. Since\n"
+"§2 holds for all §3, apply it to §4: §5."
+msgstr ""
+
 #. §0: `hx : x ∈ sᶜ ∩ tᶜ`
 #. §1: `obtain ⟨hs, ht⟩ := hx`
 #: Game.Levels.SetOpsWorld.L12_DeMorgan
@@ -4956,8 +7641,27 @@ msgid "Destructure §0 to get the two complement\n"
 "memberships: §1."
 msgstr ""
 
+#. §0: `k.val ≤ 10`
+#. §1: `show k.val ≤ 10`
+#. §2: `omega`
+#. §3: `k.val < 4`
+#. §4: `4 ≤ 10`
+#: Game.Levels.IndexedOpsWorld.L02_IndexedIntersection
+msgid "The goal is a set membership that unfolds to §0.\n"
+"Use §1 to make it explicit, then §2\n"
+"(since §3 and §4)."
+msgstr ""
+
+#: Game.Levels.IndexedOpsWorld.L12_Nonempty
+msgid "Nonemptiness"
+msgstr ""
+
 #: Game.Levels.SubsetWorld.L17_Boss
 msgid "Boss: Subset Chain"
+msgstr ""
+
+#: Game.Levels.IndexedOpsWorld.L20_NonemptyProduct
+msgid "Nonempty Product"
 msgstr ""
 
 #. §0: `constructor`
@@ -4993,6 +7697,13 @@ msgid "You proved that 6 is both less than 10 AND even. The proof split\n"
 "\n"
 "You will see these patterns again when you learn about set **intersection**\n"
 "(which corresponds to §14) and **union** (which corresponds to §15)."
+msgstr ""
+
+#. §0: `ext x`
+#: Game.Levels.IndexedOpsWorld.L09_VacuousIntersection
+#: Game.Levels.IndexedOpsWorld.L10_VacuousUnion
+msgid "This is a set equality. Start with §0 to reduce to a\n"
+"membership biconditional."
 msgstr ""
 
 #. §0: `exact le_of_lt hx`
@@ -5067,6 +7778,14 @@ msgid "§0 gives you a one-step path from two ⊆ proofs to\n"
 "will prove this equivalence yourself in Levels 15 and 16."
 msgstr ""
 
+#. §0: `hx : ∃ i, x ∈ s i`
+#. §1: `i : Empty`
+#. §2: `obtain ⟨i, _⟩ := hx`
+#: Game.Levels.IndexedOpsWorld.L10_VacuousUnion
+msgid "Now §0 where §1. Extract the\n"
+"witness with §2."
+msgstr ""
+
 #. §0: `x ∈ t`
 #. §1: `x ∈ s`
 #. §2: `h2`
@@ -5075,6 +7794,10 @@ msgstr ""
 #: Game.Levels.SubsetWorld.L15_AntisymmFromExt
 msgid "The backward direction: assume §0 and show §1.\n"
 "Use §2 the same way: §3 then §4."
+msgstr ""
+
+#: Game.Levels.IndexedOpsWorld.L13_NonemptyPropagation
+msgid "If some member of the family is nonempty, so is the indexed union."
 msgstr ""
 
 #. §0: `obtain`
@@ -5139,6 +7862,17 @@ msgid "# Universal Membership\n"
 "**Your task**: Prove the statement."
 msgstr ""
 
+#. §0: `x ∈ ⋃ i, s i`
+#. §1: `x ∈ ∅`
+#. §2: `rw [Set.mem_iUnion]`
+#. §3: `Empty`
+#: Game.Levels.IndexedOpsWorld.L10_VacuousUnion
+msgid "**Forward direction**: You have §0 and must show\n"
+"§1. Use §2 to unpack the union, then\n"
+"extract the witness — but the witness has type §3, so it\n"
+"cannot exist!"
+msgstr ""
+
 #. §0: `s ∩ sᶜ = ∅`
 #. §1: `∩`
 #. §2: `ᶜ`
@@ -5181,6 +7915,10 @@ msgid "You proved §0 — a set and its complement are disjoint.\n"
 "once you learn §17.\n"
 "\n"
 "The library name is §18."
+msgstr ""
+
+#: Game.Levels.IndexedOpsWorld.L06_MonotonIInter
+msgid "Monotonicity of Indexed Intersection"
 msgstr ""
 
 #. §0: `∅`
@@ -5251,11 +7989,32 @@ msgid "**Backward**: §0 and the goal is §1, which\n"
 "assume §5, then derive §6 from §7 and §8."
 msgstr ""
 
+#. §0: `use j`
+#. §1: `use hj`
+#. §2: `x ∈ s j`
+#. §3: `hx`
+#: Game.Levels.IndexedOpsWorld.L07_BoundedIUnion
+msgid "§0 then §1. Lean will close the\n"
+"remaining goal §2 using §3."
+msgstr ""
+
 #. §0: `show 4 < 10`
 #. §1: `omega`
 #: Game.Levels.SetOpsWorld.L02_IntersectionMembership
 msgid "Prove that 4 is less than 10. Use §0 to unfold\n"
 "the set-builder notation, then §1."
+msgstr ""
+
+#: Game.Levels.IndexedOpsWorld.L14_NonemptyConverse
+msgid "If the indexed union is nonempty, some member is nonempty."
+msgstr ""
+
+#. §0: `hx : x ∈ ⋂ i, s i`
+#. §1: `rw [Set.mem_iInter] at hx`
+#. §2: `hx : ∀ i, x ∈ s i`
+#: Game.Levels.IndexedOpsWorld.L03_IInterSubset
+msgid "You have §0. Use §1\n"
+"to unwrap it to §2."
 msgstr ""
 
 #. §0: `h`
@@ -5292,6 +8051,28 @@ msgstr ""
 #: Game.Levels.SetOpsWorld.L05_DiffAsIntersect
 #: Game.Levels.SetOpsWorld.L05_DiffAsIntersect
 msgid "Destructure §0 with §1."
+msgstr ""
+
+#: Game.Levels.IndexedOpsWorld.L09_VacuousIntersection
+msgid "The intersection over an empty index type is the universal set."
+msgstr ""
+
+#. §0: `x ∈ ⋂ i, s i`
+#. §1: `intro _`
+#. §2: `rw [Set.mem_iInter]`
+#. §3: `∀ i, x ∈ s i`
+#: Game.Levels.IndexedOpsWorld.L09_VacuousIntersection
+msgid "The backward direction is the interesting one. You need to show\n"
+"§0. Use §1 to dismiss the trivial hypothesis,\n"
+"then §2 to convert the goal to §3."
+msgstr ""
+
+#. §0: `Set.iInter_mono`
+#. §1: `∀ i, s i ⊆ t i`
+#. §2: `⋂ i, s i ⊆ ⋂ i, t i`
+#: Game.Levels.IndexedOpsWorld.L06_MonotonIInter
+msgid "§0 states that indexed intersection is monotone:\n"
+"if §1 then §2."
 msgstr ""
 
 #. §0: `aesop`
@@ -5341,12 +8122,86 @@ msgstr ""
 msgid "The goal is §0. You have §1."
 msgstr ""
 
+#. §0: `ext`
+#. §1: `Set.mem_iUnion`
+#. §2: `{n | n % 3 = k}`
+#. §3: `k ∈ Fin 3`
+#. §4: `Set.univ`
+#. §5: `Fin`
+#. §6: `Fin 3`
+#. §7: `Fin 3`
+#. §8: `n`
+#. §9: `n < 3`
+#. §10: `⟨n, proof⟩`
+#. §11: `⟨x % 3, by omega⟩`
+#. §12: `Fin 3`
+#. §13: `x % 3 < 3`
+#. §14: `ext x`
+#. §15: `constructor`
+#. §16: `↔`
+#. §17: `→`
+#. §18: `Set.univ`
+#. §19: `←`
+#. §20: `x`
+#: Game.Levels.IndexedOpsWorld.L17_IUnionEqualsUniv
+msgid "# Indexed Union Covers Everything\n"
+"\n"
+"When a family of sets partitions the natural numbers, their indexed\n"
+"union should be the entire universe. This level combines two tools\n"
+"you have practiced separately:\n"
+"\n"
+"- §0 to reduce a set equality to membership (from Subset World)\n"
+"- §1 to handle the indexed union (from this world)\n"
+"\n"
+"**Your task**: The sets §2 for §3 partition\n"
+"the natural numbers by remainder mod 3. Prove that their union is\n"
+"§4 — every natural number has *some* remainder mod 3.\n"
+"\n"
+"**About §5 construction**: The index type here is §6. To create\n"
+"a §7 value from a natural number §8 known to satisfy §9,\n"
+"write §10. For example, §11 creates a valid\n"
+"§12 value because §13 always holds. This angle-bracket\n"
+"constructor packages a value with its proof of validity.\n"
+"\n"
+"**Proof plan**:\n"
+"1. §14 — reduce to membership biconditional\n"
+"2. §15 — split the §16\n"
+"3. **Forward** (§17): anything in a union is in §18 (trivially)\n"
+"4. **Backward** (§19): given §20, find its remainder class"
+msgstr ""
+
+#. §0: `intro x hx`
+#: Game.Levels.IndexedOpsWorld.L05_MonotonIUnion
+#: Game.Levels.IndexedOpsWorld.L06_MonotonIInter
+#: Game.Levels.IndexedOpsWorld.L08_BoundedIInter
+msgid "The goal is a subset relation. Start with §0."
+msgstr ""
+
+#: Game.Levels.IndexedOpsWorld
+msgid "Indexed Operations World"
+msgstr ""
+
 #: Game.Levels.SubsetWorld.L07_NonSubset
 msgid "Disproving a Subset"
 msgstr ""
 
 #: Game.Levels.SubsetWorld.L05_SubsetUniv
 msgid "Every Set is in Set.univ"
+msgstr ""
+
+#. §0: `obtain ⟨i, hsi, ht⟩ := hx`
+#. §1: `i : ι`
+#. §2: `hsi : x ∈ s i`
+#. §3: `ht : x ∈ t`
+#. §4: `constructor`
+#. §5: `rw [Set.mem_iUnion]`
+#. §6: `exact ⟨i, hsi⟩`
+#. §7: `exact ht`
+#: Game.Levels.IndexedOpsWorld.L23_Boss
+msgid "§0 gives\n"
+"§1, §2, §3. Then build the goal\n"
+"with §4, §5 + §6\n"
+"for the first part, and §7 for the second."
 msgstr ""
 
 #: Game.Levels.SubsetWorld.L01_FirstSubset
@@ -5438,6 +8293,12 @@ msgid "§0 proves §1 — the intersection\n"
 "If §3 then §4, so in particular §5."
 msgstr ""
 
+#. §0: `ext x`
+#: Game.Levels.IndexedOpsWorld.L17_IUnionEqualsUniv
+msgid "This is a set equality. Start with §0 to reduce to\n"
+"a membership biconditional."
+msgstr ""
+
 #. §0: `h1`
 #. §1: `hx`
 #. §2: `x ∈ t`
@@ -5451,6 +8312,29 @@ msgstr ""
 #. §1: `omega`
 #: Game.Levels.SetOpsWorld.L04_SetDifference
 msgid "Prove that 3 is in the first set. Use §0 then §1."
+msgstr ""
+
+#. §0: `intro i`
+#. §1: `exact i.elim`
+#. §2: `Empty`
+#: Game.Levels.IndexedOpsWorld.L09_VacuousIntersection
+msgid "§0 then §1 — an element of\n"
+"§2 can prove anything, because it cannot exist."
+msgstr ""
+
+#. §0: `hu`
+#. §1: `rw [Set.mem_iUnion] at hu`
+#: Game.Levels.IndexedOpsWorld.L23_Boss
+msgid "Now unpack the indexed union in §0:\n"
+"§1."
+msgstr ""
+
+#. §0: `show x < 5`
+#. §1: `change x < 3 at hx`
+#. §2: `omega`
+#: Game.Levels.IndexedOpsWorld.L15_Powerset
+msgid "§0 to unfold the goal. Then\n"
+"§1 to unfold the hypothesis. Then §2."
 msgstr ""
 
 #: Game.Levels.SetWorld.L04_InfiniteSet
@@ -5512,6 +8396,79 @@ msgid "Use §0 to introduce the element and the membership\n"
 "assumption, just as in Level 1."
 msgstr ""
 
+#. §0: `s ∪ t`
+#. §1: `∨`
+#. §2: `s`
+#. §3: `t`
+#. §4: `s : ι → Set α`
+#. §5: `ι`
+#. §6: `⋃ i, s i`
+#. §7: $$x \\in \\bigcup_i s_i \\;\\Longleftrightarrow\\; \\exists\\, i,\\; x \\in s_i$$
+#. §8: `s ∪ t`
+#. §9: `Bool`
+#. §10: `∨`
+#. §11: `∃`
+#. §12: `s ∪ t`
+#. §13: `x ∈ s ∨ x ∈ t`
+#. §14: `⋃ i, s i`
+#. §15: `∃ i, x ∈ s i`
+#. §16: `rw [Set.mem_iUnion]`
+#. §17: `x ∈ ⋃ i, s i`
+#. §18: `∃ i, x ∈ s i`
+#. §19: `use`
+#. §20: `s k = {n : ℕ | n % 3 = k}`
+#. §21: `k : ℕ`
+#. §22: `5`
+#: Game.Levels.IndexedOpsWorld.L01_IndexedUnion
+msgid "# Indexed Unions\n"
+"\n"
+"In Set Operations World, you learned that §0 corresponds to §1:\n"
+"an element is in the union if it is in §2 **or** in §3. But what if\n"
+"you have not just two sets, but a whole **family** of sets — one for\n"
+"each value of some index?\n"
+"\n"
+"If §4 is a family of sets indexed by §5, the\n"
+"**indexed union** §6 collects every element that belongs to\n"
+"at least one set in the family:\n"
+"\n"
+"§7\n"
+"\n"
+"The binary union §8 is the special case with a two-element index\n"
+"(§9). The indexed version generalizes §10 to §11:\n"
+"\n"
+"| Operation | Notation | Logical meaning |\n"
+"|---|---|---|\n"
+"| Binary union | §12 | §13 |\n"
+"| Indexed union | §14 | §15 |\n"
+"\n"
+"**New tool**: §16 converts §17 into\n"
+"§18. After that, you provide the witness index with §19.\n"
+"\n"
+"**Your task**: The family §20 for §21\n"
+"gives one set for each possible remainder mod 3 (and more).\n"
+"Prove that §22 belongs to this indexed union by finding the right\n"
+"remainder class."
+msgstr ""
+
+#: Game.Levels.IndexedOpsWorld.L10_VacuousUnion
+msgid "Vacuous Union"
+msgstr ""
+
+#. §0: `ht`
+#. §1: `obtain ⟨b, hb⟩ := ht`
+#: Game.Levels.IndexedOpsWorld.L20_NonemptyProduct
+msgid "Now extract the witness from §0: §1."
+msgstr ""
+
+#. §0: `⋂ i, s i ⊆ s j`
+#. §1: `intro x hx`
+#. §2: `x ∈ ⋂ i, s i`
+#. §3: `x ∈ s j`
+#: Game.Levels.IndexedOpsWorld.L03_IInterSubset
+msgid "The goal is a subset relation §0. Start with\n"
+"§1 to assume §2 and aim to prove §3."
+msgstr ""
+
 #. §0: `.1`
 #. §1: `obtain`
 #. §2: ```
@@ -5561,13 +8518,62 @@ msgstr ""
 #. §2: `x`
 #: Game.Levels.SetWorld.L01_WelcomeToSets
 #: Game.Levels.SetWorld.L06_EmptySet
-#: Game.Levels.SetWorld.L07_UniversalSet
 msgid "§0 proves §1 for any §2."
 msgstr ""
 
 #. §0: `sup_inf_right`
 #: Game.Levels.SetOpsWorld.L16_Boss
 msgid "§0 is the lattice version of the dual distributivity."
+msgstr ""
+
+#. §0: $(\\bigcup_i s_i) \\cap t = \\bigcup_i (s_i \\cap t)$
+#. §1: $$(\\bigcap_i s_i) \\cup t = \\bigcap_i (s_i \\cup t)$$
+#. §2: `s i`
+#. §3: `t`
+#. §4: `s i ∪ t`
+#. §5: `Set.mem_iInter`
+#. §6: `Set.mem_union`
+#. §7: `by_cases`
+#. §8: `x ∈ s i ∪ t`
+#. §9: `i`
+#. §10: `by_cases`
+#. §11: `by_cases h : P`
+#. §12: `h : P`
+#. §13: `h : ¬P`
+#. §14: `by_contra`
+#. §15: `by_contra`
+#. §16: `by_cases`
+#: Game.Levels.IndexedOpsWorld.L22_IInterDistrib
+msgid "# The Dual Distributive Law\n"
+"\n"
+"In the boss (next level), you will prove that indexed union distributes\n"
+"over intersection: §0.\n"
+"Here, prove the **dual**: indexed intersection distributes over union.\n"
+"\n"
+"§1\n"
+"\n"
+"This says: being in every §2 OR in §3 is the same as being in\n"
+"every §4.\n"
+"\n"
+"This level integrates §5 with §6 and\n"
+"requires case analysis on the union. The **backward direction** needs\n"
+"§7 — the classical principle of case analysis — because\n"
+"knowing §8 for every §9 does not directly tell you which\n"
+"disjunct holds globally.\n"
+"\n"
+"**About §10**: §11 splits the proof into two\n"
+"branches: one where §12 holds, and one where §13 holds.\n"
+"This is weaker than §14 (which assumes the negation of the\n"
+"whole goal). You used §15 in the De Morgan levels; §16\n"
+"is the same classical reasoning applied to a specific proposition."
+msgstr ""
+
+#. §0: `rw [Set.mem_iUnion]`
+#. §1: `∃ k : Fin 3, x ∈ ...`
+#: Game.Levels.IndexedOpsWorld.L17_IUnionEqualsUniv
+#: Game.Levels.IndexedOpsWorld.L18_DeMorganUnion
+msgid "Use §0 to convert the goal to\n"
+"§1."
 msgstr ""
 
 #. §0: `s ∩ t`
@@ -5627,6 +8633,13 @@ msgid "§0 proves §1 for any preorder.\n"
 "For sets, §2 is §3, so this is transitivity of subset inclusion."
 msgstr ""
 
+#. §0: `hx : ∀ i, x ∈ s i ∪ t`
+#. §1: `by_cases ht : x ∈ t`
+#: Game.Levels.IndexedOpsWorld.L22_IInterDistrib
+msgid "Now §0. Use §1 to\n"
+"split into two cases."
+msgstr ""
+
 #: Game.Levels.SetOpsWorld.L09_ComplementLaw
 msgid "A set and its complement have empty intersection."
 msgstr ""
@@ -5639,6 +8652,62 @@ msgstr ""
 msgid "Now §0 says §1 is in the left set, but the arithmetic fact\n"
 "§2 is hidden inside the set notation. Use\n"
 "§3 to extract it into a clean hypothesis."
+msgstr ""
+
+#: Game.Levels.IndexedOpsWorld.L13_NonemptyPropagation
+msgid "Nonemptiness Propagates to Unions"
+msgstr ""
+
+#. §0: `⋂ i : Empty, s i = Set.univ`
+#. §1: `∀ i : Empty, P i`
+#. §2: `i`
+#. §3: `Empty`
+#. §4: `i.elim`
+#. §5: `Empty.elim i`
+#. §6: `Empty`
+#. §7: `Empty.elim`
+#. §8: `False.elim`
+#. §9: `i.elim`
+#. §10: `i : Empty`
+#. §11: `False.elim`
+#. §12: `h : False`
+#. §13: `False.elim`
+#. §14: `Empty.elim`
+#. §15: `Fin 0`
+#. §16: `⋂ i ∈ t, s i`
+#. §17: `t`
+#. §18: `Set.univ`
+#. §19: `⋃ i : Empty, s i = ∅`
+#. §20: $\\bigcap_{i \\in \\emptyset} s_i$
+#. §21: $x \\in s_i$
+#. §22: $i \\in \\emptyset$
+#: Game.Levels.IndexedOpsWorld.L09_VacuousIntersection
+msgid "You proved that §0 — intersecting over\n"
+"an empty index gives everything.\n"
+"\n"
+"The key insight is **vacuous truth**: the statement §1\n"
+"is true because there are no §2 to check. In Lean, §3 is a type\n"
+"with no constructors, so §4 (equivalently, §5)\n"
+"discharges any goal about an element of §6.\n"
+"\n"
+"**§7 and §8**: The pattern §9 for §10\n"
+"is the type-level version of §11 for §12. Both say\n"
+"\"from an impossible premise, anything follows\" — the principle of\n"
+"explosion. You will see §13 in propositional logic and\n"
+"§14 when working with uninhabited types (like §15).\n"
+"\n"
+"**Why this matters**: This explains why **bounded** indexed intersections\n"
+"(§16) are needed. If §17 might be empty, the bounded\n"
+"intersection degenerates to §18, which is often not what you\n"
+"want. When you see a bounded intersection in a proof, always consider:\n"
+"what happens if the bounding set is empty?\n"
+"\n"
+"**Up next**: You will prove the dual — §19 —\n"
+"completing the most dramatic duality pair in this world.\n"
+"\n"
+"In ordinary math: \"The intersection §20\n"
+"contains every element, because the defining condition — §21\n"
+"for all §22 — is vacuously satisfied.\""
 msgstr ""
 
 #. §0: `∉`
@@ -5687,6 +8756,16 @@ msgid "Start with §0 to introduce an element and assume\n"
 "it belongs to §1."
 msgstr ""
 
+#. §0: `ht : x ∈ t`
+#. §1: `x ∈ s i ∪ t`
+#. §2: `x ∈ t`
+#. §3: `right`
+#. §4: `exact ht`
+#: Game.Levels.IndexedOpsWorld.L22_IInterDistrib
+msgid "You have §0. The goal is §1. Since\n"
+"§2, use §3 then §4."
+msgstr ""
+
 #. §0: `push_neg at hx`
 #. §1: `¬(x ∈ s ∨ x ∈ t)`
 #. §2: `x ∉ s ∧ x ∉ t`
@@ -5720,6 +8799,15 @@ msgid "Both directions followed the same pattern: unwrap hypothesis, unwrap\n"
 "and there are no naturals between 2 and 3."
 msgstr ""
 
+#. §0: `u`
+#. §1: `j`
+#. §2: `hj : j ∈ u`
+#. §3: `use j, hj`
+#: Game.Levels.IndexedOpsWorld.L21_BoundedIntegration
+msgid "The goal is a double existential. You need an index in §0 — you\n"
+"have §1 with §2. Provide the witness: §3."
+msgstr ""
+
 #: Game
 msgid "# Functions & Relations\n"
 "\n"
@@ -5732,6 +8820,36 @@ msgstr ""
 #. §1: `¬(a ∧ b) ↔ ¬a ∨ ¬b`
 #: Game.Levels.SetOpsWorld.L13_DualDeMorgan
 msgid "§0 states §1 (propositional dual De Morgan)."
+msgstr ""
+
+#. §0: ```
+#. obtain ⟨a, ha⟩ := hs    -- extract witness from s
+#. obtain ⟨b, hb⟩ := ht    -- extract witness from t
+#. use (a, b)               -- provide the pair
+#. rw [Set.mem_prod]        -- reduce to conjunction
+#. exact ⟨ha, hb⟩           -- close with both memberships
+#. ```
+#. §1: `obtain`
+#. §2: `use`
+#. §3: `rw [Set.mem_prod]`
+#. §4: `⟨_, _⟩`
+#. §5: $a \\in s$
+#. §6: $b \\in t$
+#. §7: $(a, b) \\in
+#. s \\times t$
+#. §8: $s \\times t \\neq \\emptyset$
+#: Game.Levels.IndexedOpsWorld.L20_NonemptyProduct
+msgid "You proved that the product of nonempty sets is nonempty. The proof\n"
+"combined three tools:\n"
+"\n"
+"§0\n"
+"\n"
+"**Integration summary**: This level used §1 (for ∃ unpacking),\n"
+"§2 (for ∃ introduction), §3 (for product\n"
+"membership), and anonymous constructors §4 (for conjunctions).\n"
+"These are all tools from earlier in this world, now working together.\n"
+"\n"
+"In ordinary math: \"If §5 and §6, then §7, so §8.\""
 msgstr ""
 
 #. §0: `change ¬(x ∈ s ∨ x ∈ t) at hx`
@@ -5747,6 +8865,18 @@ msgstr ""
 #: Game.Levels.SubsetWorld.L04_EmptySubset
 msgid "§0 finds §1 (which\n"
 "is §2) and closes the goal via *ex falso quodlibet*."
+msgstr ""
+
+#. §0: `hsi : x ∈ (s i)ᶜ`
+#. §1: `x ∉ s i`
+#. §2: `x ∈ (⋂ i, s i)ᶜ`
+#. §3: `x ∉ ⋂ i, s i`
+#. §4: `intro hinter`
+#. §5: `x ∈ ⋂ i, s i`
+#: Game.Levels.IndexedOpsWorld.L19_DeMorganInter
+msgid "You have §0 (i.e., §1). The goal is\n"
+"§2 (i.e., §3). Use §4\n"
+"to assume §5 and derive a contradiction."
 msgstr ""
 
 #. §0: `intro n`
@@ -5770,6 +8900,50 @@ msgstr ""
 #: Game.Levels.SetOpsWorld.L08_UnionSubset
 msgid "The goal is §0, which is a disjunction. Since you\n"
 "have §1, the left side is what you want. Use §2."
+msgstr ""
+
+#. §0: `s i ⊆ t i`
+#. §1: `⋃ i, s i ⊆ ⋃ i, t i`
+#. §2: $$\\forall\\, i,\\; s_i \\subseteq t_i \\;\\Longrightarrow\\;
+#. \\bigcap_i s_i \\subseteq \\bigcap_i t_i$$
+#. §3: `∃`
+#. §4: `∀`
+#. §5: `⋂`
+#. §6: `∀ i, x ∈ s i`
+#. §7: `∀ i, x ∈ t i`
+#. §8: `h i`
+#: Game.Levels.IndexedOpsWorld.L06_MonotonIInter
+msgid "# Monotonicity of Indexed Intersection\n"
+"\n"
+"In the previous level, you proved that indexed union is monotone:\n"
+"if each §0, then §1. Now prove the\n"
+"**dual** for indexed intersection:\n"
+"\n"
+"§2\n"
+"\n"
+"The proof is simpler than the union case because there is no §3\n"
+"to extract — both sides are §4 statements. You unwrap the §5 on\n"
+"both hypothesis and goal to get universals, then apply the pointwise\n"
+"subset.\n"
+"\n"
+"**Proof strategy**: Unwrap the intersection hypothesis to get\n"
+"§6, unwrap the goal to get §7, introduce\n"
+"the index, and transfer membership via §8."
+msgstr ""
+
+#: Game.Levels.IndexedOpsWorld.L10_VacuousUnion
+msgid "The union over an empty index type is the empty set."
+msgstr ""
+
+#. §0: `x ∈ (s i)ᶜ`
+#. §1: `x ∉ s i`
+#. §2: `x ∈ s i → False`
+#. §3: `intro hsi`
+#. §4: `x ∈ s i`
+#: Game.Levels.IndexedOpsWorld.L18_DeMorganUnion
+msgid "The goal is §0, which means §1, i.e.,\n"
+"§2. Use §3 to assume §4 and\n"
+"derive a contradiction."
 msgstr ""
 
 #. §0: `Set.Subset.antisymm`
@@ -5804,6 +8978,10 @@ msgid "# Proving Antisymmetry Without §0\n"
 "2. §10 — split the §11\n"
 "3. **Forward**: §12 — use §13 as a function\n"
 "4. **Backward**: §14 — use §15 as a function"
+msgstr ""
+
+#: Game.Levels.IndexedOpsWorld.L16_PowersetMonotonicity
+msgid "Powerset Monotonicity"
 msgstr ""
 
 #: Game.Levels.SetWorld.L09_Boss
@@ -5965,6 +9143,17 @@ msgid "Build §0 with §1. The first\n"
 "use §5 since §6."
 msgstr ""
 
+#. §0: `obtain ⟨i, hsi⟩ := hx`
+#. §1: `rw [Set.mem_iUnion]`
+#. §2: `use i`
+#. §3: `exact h i hsi`
+#: Game.Levels.IndexedOpsWorld.L05_MonotonIUnion
+#: Game.Levels.IndexedOpsWorld.L10_VacuousUnion
+#: Game.Levels.IndexedOpsWorld.L22_IInterDistrib
+msgid "§0 then §1\n"
+"then §2 then §3."
+msgstr ""
+
 #. §0: `x < 5`
 #. §1: `x < 3`
 #. §2: `h`
@@ -5985,6 +9174,41 @@ msgid "§0 then §1.\n"
 "§2."
 msgstr ""
 
+#. §0: $$\\bigcup_i s_i \\neq \\emptyset \\;\\Longleftrightarrow\\;
+#. \\exists\\, j,\\; s_j \\neq \\emptyset$$
+#. §1: ```
+#. obtain ⟨x, hx⟩ := h         -- extract element from union
+#. rw [Set.mem_iUnion] at hx   -- convert ⋃ to ∃
+#. obtain ⟨j, hj⟩ := hx        -- extract index from ∃
+#. use j                        -- provide index witness
+#. use x                        -- provide element witness
+#. ```
+#. §2: `x`
+#. §3: `j`
+#. §4: $\\bigcup_i s_i$
+#. §5: $x \\in
+#. \\bigcup_i s_i$
+#. §6: $x \\in s_j$
+#. §7: $j$
+#. §8: $s_j$
+#: Game.Levels.IndexedOpsWorld.L14_NonemptyConverse
+msgid "You proved the converse of Level 13: if the indexed union is nonempty,\n"
+"some member must be nonempty. Together, the two results say:\n"
+"\n"
+"§0\n"
+"\n"
+"The proof unpacked two nested existentials and repacked them:\n"
+"\n"
+"§1\n"
+"\n"
+"**The general lesson**: When you need to prove an existential, look for\n"
+"data hiding inside your hypotheses. Here, the element §2 and the index\n"
+"§3 were both buried inside the nonemptiness hypothesis — you just\n"
+"extracted and rearranged them.\n"
+"\n"
+"In ordinary math: \"If §4 is nonempty, pick §5. Then §6 for some §7, so §8 is nonempty.\""
+msgstr ""
+
 #. §0: `Set.subset_union_left`
 #. §1: `s ⊆ s ∪ t`
 #. §2: ```
@@ -6003,6 +9227,60 @@ msgid "§0 proves §1 — every set is\n"
 "If §3, then §4 by choosing left."
 msgstr ""
 
+#: Game.Levels.IndexedOpsWorld.L20_NonemptyProduct
+msgid "The product of two nonempty sets is nonempty."
+msgstr ""
+
+#. §0: $(\\bigcap_i s_i)^c = \\bigcup_i (s_i)^c$
+#. §1: $(\\bigcup_i s_i)^c = \\bigcap_i (s_i)^c$
+#. §2: $\\neg\\exists \\iff \\forall\\neg$
+#. §3: $(\\bigcap_i s_i)^c = \\bigcup_i (s_i)^c$
+#. §4: $\\neg\\forall \\iff \\exists\\neg$
+#. §5: `by_contra`
+#. §6: `i`
+#. §7: `x ∉ s i`
+#. §8: `x`
+#. §9: `∃`
+#. §10: `∀`
+#. §11: `push_neg`
+#. §12: `push_neg`
+#. §13: `by_contra`
+#. §14: `¬∀`
+#. §15: `∃¬`
+#. §16: `by_contra`
+#. §17: `by_contra`
+#. §18: `¬∀ → ∃¬`
+#: Game.Levels.IndexedOpsWorld.L19_DeMorganInter
+msgid "You proved the dual De Morgan law for indexed intersections:\n"
+"§0\n"
+"\n"
+"The two De Morgan laws together:\n"
+"\n"
+"| Law | Set form | Quantifier form |\n"
+"|---|---|---|\n"
+"| Level 18 | §1 | §2 |\n"
+"| This level | §3 | §4 |\n"
+"\n"
+"**Why one direction needed §5**: The forward direction of this\n"
+"level required finding a specific index §6 where §7, given\n"
+"only that §8 is not in ALL of them. You cannot constructively extract\n"
+"a witness from a negated universal — you need classical reasoning\n"
+"(proof by contradiction) to do it. This is the fundamental asymmetry\n"
+"between §9 and §10 under negation.\n"
+"\n"
+"In Set Operations World, §11 handled this automatically. Here\n"
+"you saw what §12 does under the hood: a double §13 that\n"
+"converts §14 into §15.\n"
+"\n"
+"**The double-contradiction extraction**: This proof pattern —\n"
+"assume the goal is false with §16, then show the original\n"
+"hypothesis is contradicted by using a SECOND §17 inside a\n"
+"universal — is a reusable strategy for §18 arguments. Whenever\n"
+"you need to extract a witness from a negated universal, reach for this\n"
+"double-contradiction pattern. You will encounter it again in topology\n"
+"and analysis."
+msgstr ""
+
 #. §0: `constructor`
 #. §1: `↔`
 #: Game.Levels.SubsetWorld.L15_AntisymmFromExt
@@ -6015,6 +9293,11 @@ msgstr ""
 #: Game.Levels.SetOpsWorld.L13_DualDeMorgan
 msgid "Destructure §0 with §1,\n"
 "then case-split on §2 to find the contradiction."
+msgstr ""
+
+#. §0: `x ∈ ⋃ i, s i`
+#: Game.Levels.IndexedOpsWorld.L23_Boss
+msgid "Prove §0. Rewrite and provide the witness."
 msgstr ""
 
 #. §0: `constructor`
@@ -6052,6 +9335,26 @@ msgstr ""
 #: Game.Levels.SetOpsWorld.L13_DualDeMorgan
 msgid "The goal is §0, which is §1.\n"
 "Use §2 to assume §3."
+msgstr ""
+
+#. §0: `x ∈ (⋂ i, s i) ∪ t`
+#. §1: `x ∈ ⋂ i, (s i ∪ t)`
+#. §2: `intro hx`
+#. §3: `rw [Set.mem_iInter]`
+#: Game.Levels.IndexedOpsWorld.L22_IInterDistrib
+msgid "**Forward direction**: Assume §0 and prove\n"
+"§1.\n"
+"\n"
+"Start with §2. Then rewrite the goal to a universal\n"
+"with §3 and introduce the index."
+msgstr ""
+
+#. §0: `⋃ i, s i`
+#. §1: `s i`
+#: Game.Levels.IndexedOpsWorld.Imports
+msgid "The indexed union §0 is the set of all elements that\n"
+"belong to at least one §1. It generalizes binary union to\n"
+"arbitrary families of sets."
 msgstr ""
 
 #. §0: `x ∈ s`
@@ -6170,6 +9473,45 @@ msgid "# s \\\\ t = s ∩ tᶜ\n"
 "4. **Backward**: same structure in reverse"
 msgstr ""
 
+#. §0: `hx : x ∈ (⋃ i, s i)ᶜ`
+#. §1: `x ∉ ⋃ i, s i`
+#. §2: `hsi : x ∈ s i`
+#. §3: `x`
+#. §4: `apply hx`
+#: Game.Levels.IndexedOpsWorld.L18_DeMorganUnion
+msgid "You have §0 (i.e., §1)\n"
+"and §2. Derive a contradiction by showing §3\n"
+"IS in the union: §4."
+msgstr ""
+
+#. §0: `s j`
+#. §1: `⋃ i, s i`
+#. §2: `⋃ i, s i`
+#. §3: `Set.Nonempty`
+#. §4: `Set.mem_iUnion`
+#. §5: `⋃ i, s i`
+#. §6: `j`
+#. §7: `s j`
+#: Game.Levels.IndexedOpsWorld.L14_NonemptyConverse
+msgid "# The Converse: Union Nonempty Implies Some Member Nonempty\n"
+"\n"
+"In the previous level, you proved that if some member §0 is\n"
+"nonempty, then §1 is nonempty. Now prove the **converse**:\n"
+"if the indexed union is nonempty, then at least one member must be\n"
+"nonempty.\n"
+"\n"
+"This is a direct consequence of unpacking what §2 means:\n"
+"an element in the union witnesses BOTH a specific index AND membership\n"
+"in that index's set — which is exactly what it means for that member\n"
+"to be nonempty.\n"
+"\n"
+"The proof chains two existential unpackings (one from §3,\n"
+"one from §4) and then repacks the data into the goal.\n"
+"\n"
+"**Your task**: Given that §5 is nonempty, produce an index\n"
+"§6 such that §7 is nonempty."
+msgstr ""
+
 #. §0: `h3 : Even 3`
 #. §1: `r`
 #. §2: `3 = r + r`
@@ -6281,6 +9623,45 @@ msgid "Destructure §0 with §1, then\n"
 "§2 finds the contradiction."
 msgstr ""
 
+#. §0: `⋃ i ∈ t`
+#. §1: `⋂ i ∈ t`
+#. §2: `u`
+#. §3: `j`
+#. §4: `⋂ i ∈ u, s i ⊆ ⋃ i ∈ u, s i`
+#. §5: `s i`
+#. §6: `i ∈ u`
+#. §7: `rw [Set.mem_iInter₂] at hx`
+#. §8: `rw [Set.mem_iUnion₂]`
+#. §9: `j ∈ u`
+#: Game.Levels.IndexedOpsWorld.L21_BoundedIntegration
+msgid "# Integrating Bounded Variants\n"
+"\n"
+"In Levels 7-8, you learned the bounded indexed operations §0\n"
+"and §1. Now use BOTH in one proof.\n"
+"\n"
+"**Claim**: If the bounding set §2 is nonempty (has some element §3),\n"
+"then the bounded intersection is contained in the bounded union:\n"
+"§4.\n"
+"\n"
+"This is intuitively obvious: if an element is in ALL of the §5 for\n"
+"§6, then it is certainly in SOME of them. But the formal proof\n"
+"exercises both bounded rewrite lemmas together:\n"
+"\n"
+"- §7 on the hypothesis\n"
+"- §8 on the goal\n"
+"\n"
+"**Proof plan**: Extract the universal from the bounded intersection\n"
+"hypothesis, pick any valid index §9, and use it as the witness\n"
+"for the bounded union."
+msgstr ""
+
+#. §0: `rw [Set.mem_iUnion] at hu`
+#. §1: `∃ i, x ∈ s i`
+#: Game.Levels.IndexedOpsWorld.L18_DeMorganUnion
+msgid "Unpack the union: §0 to get\n"
+"§1."
+msgstr ""
+
 #. §0: `⊆`
 #. §1: `\\sub`
 #. §2: `\\subseteq`
@@ -6365,6 +9746,22 @@ msgid "§0 applies the extensionality principle to convert a set\n"
 "§10 (which closes a goal with a proof term)."
 msgstr ""
 
+#. §0: `exact h i (hx i)`
+#. §1: `i`
+#. §2: `hx i`
+#: Game.Levels.IndexedOpsWorld.L06_MonotonIInter
+msgid "§0 — apply the pointwise\n"
+"subset at index §1 to the membership §2."
+msgstr ""
+
+#. §0: `h : Set.Nonempty (⋃ i, s i)`
+#. §1: `∃ x, x ∈ ⋃ i, s i`
+#. §2: `obtain ⟨x, hx⟩ := h`
+#: Game.Levels.IndexedOpsWorld.L14_NonemptyConverse
+msgid "§0 means §1.\n"
+"Extract the witness element with §2."
+msgstr ""
+
 #. §0: `hs : x ∈ s`
 #. §1: `x ∈ t ∪ s`
 #. §2: `s`
@@ -6383,8 +9780,25 @@ msgid "Now §0 but 3 is odd — no natural number §1\n"
 "satisfies this. §2 sees this contradiction and closes the goal."
 msgstr ""
 
+#. §0: `hsi : x ∈ s i`
+#. §1: `h : ∀ i, s i ⊆ t i`
+#. §2: `x ∈ ⋃ i, t i`
+#: Game.Levels.IndexedOpsWorld.L05_MonotonIUnion
+msgid "You have §0 and §1. The goal is\n"
+"§2. Rewrite to an existential and reuse the same index."
+msgstr ""
+
 #: Game.Levels.SetWorld.L05_NonMembershipExistential
 msgid "Disproving Membership in an Existential Set"
+msgstr ""
+
+#. §0: `cases hx with | inl hinter | inr ht`
+#. §1: `hinter : x ∈ ⋂ i, s i`
+#. §2: `ht : x ∈ t`
+#: Game.Levels.IndexedOpsWorld.L22_IInterDistrib
+msgid "§0 creates\n"
+"two subgoals: one where §1, and one where\n"
+"§2."
 msgstr ""
 
 #. §0: `{n : ℕ | n ≤ 2}`
@@ -6506,6 +9920,29 @@ msgid "The proof pattern for non-membership:\n"
 "7 is in the set, observe this means 7 < 5, which is absurd."
 msgstr ""
 
+#. §0: `by_cases ht : x ∈ t`
+#. §1: `x ∈ t`
+#. §2: `x ∉ t`
+#. §3: `x ∈ ⋂ i, s i`
+#. §4: `hx`
+#: Game.Levels.IndexedOpsWorld.L22_IInterDistrib
+msgid "§0 — if §1, go right;\n"
+"if §2, show §3 using §4."
+msgstr ""
+
+#. §0: `𝒫 s`
+#. §1: `s`
+#: Game.Levels.IndexedOpsWorld.Imports
+msgid "The powerset §0 is the set of all subsets of §1."
+msgstr ""
+
+#. §0: `intro u hu`
+#. §1: `u ∈ 𝒫 s`
+#: Game.Levels.IndexedOpsWorld.L16_PowersetMonotonicity
+msgid "The goal is a subset relation between powersets. Start with\n"
+"§0 to assume §1."
+msgstr ""
+
 #. §0: `ext x`
 #. §1: `push_neg`
 #. §2: `cases h`
@@ -6552,6 +9989,44 @@ msgstr ""
 msgid "Pushing Negation"
 msgstr ""
 
+#: Game.Levels.IndexedOpsWorld.L15_Powerset
+msgid "Powerset"
+msgstr ""
+
+#. §0: $(s \\cup t)^c = s^c \\cap t^c$
+#. §1: $$(\\bigcup_i s_i)^c = \\bigcap_i (s_i)^c$$
+#. §2: $\\neg(\\exists i,\\, P(i))
+#. \\Longleftrightarrow \\forall i,\\, \\neg P(i)$
+#. §3: `mem_iUnion`
+#. §4: `mem_iInter`
+#. §5: `ext`
+#. §6: `constructor`
+#. §7: `∈`
+#. §8: `∉`
+#. §9: `False`
+#. §10: `⋃`
+#. §11: `⋂`
+#: Game.Levels.IndexedOpsWorld.L18_DeMorganUnion
+msgid "# De Morgan's Law for Indexed Unions\n"
+"\n"
+"In Set Operations World, you proved De Morgan's law for binary unions:\n"
+"§0. Now prove the indexed generalization:\n"
+"\n"
+"§1\n"
+"\n"
+"In words: an element is outside the union of a family if and only if\n"
+"it is outside every member of the family. This is the set-theoretic\n"
+"version of the logical equivalence §2.\n"
+"\n"
+"This is the first level that requires BOTH §3 and\n"
+"§4 in the same proof — one for each side of the equation.\n"
+"\n"
+"**Proof plan**: Use §5 and §6 as usual. In each\n"
+"direction, the complement turns §7 into §8 (an implication to\n"
+"§9), and you bridge between §10 and §11 through the\n"
+"negation of quantifiers."
+msgstr ""
+
 #. §0: `exact (h x).1 hx`
 #. §1: `(h x).1`
 #. §2: `hx`
@@ -6593,6 +10068,17 @@ msgid "You proved that set difference is not a new primitive — it is\n"
 "takes it apart, §10 puts it together."
 msgstr ""
 
+#. §0: `k : Fin 3`
+#. §1: `x % 3 = k.val`
+#. §2: `x % 3`
+#. §3: `use ⟨x % 3, by omega⟩`
+#: Game.Levels.IndexedOpsWorld.L17_IUnionEqualsUniv
+msgid "You need a §0 such that §1. The\n"
+"natural witness is §2 itself (which is always less than 3).\n"
+"\n"
+"Use §3 to provide this witness."
+msgstr ""
+
 #. §0: `obtain ⟨hs, ht⟩ := hst`
 #. §1: `cases hx with | inl hns | inr hnt`
 #: Game.Levels.SetOpsWorld.L13_DualDeMorgan
@@ -6601,10 +10087,52 @@ msgid "§0 then\n"
 "In each case, apply the complement to the membership."
 msgstr ""
 
+#. §0: `⋂ i, s i ⊆ s j`
+#. §1: ```
+#. intro x hx                   -- assume x ∈ ⋂ i, s i
+#. rw [Set.mem_iInter] at hx    -- unwrap: hx : ∀ i, x ∈ s i
+#. exact hx j                   -- specialize to the index j
+#. ```
+#. §2: `⋂`
+#. §3: `mem_iInter`
+#. §4: `∀`
+#. §5: `h.1`
+#. §6: `h.2`
+#. §7: `∧`
+#. §8: $x \\in \\bigcap_i s_i$
+#. §9: $x \\in s_i$
+#. §10: $i$
+#. §11: $x \\in s_j$
+#: Game.Levels.IndexedOpsWorld.L03_IInterSubset
+msgid "You proved that §0 — the intersection of all sets is\n"
+"contained in each individual set. The proof shape is:\n"
+"\n"
+"§1\n"
+"\n"
+"**The reusable pattern**: When a hypothesis involves §2, rewrite\n"
+"with §3 to get a §4, then specialize to the index you need.\n"
+"This is analogous to extracting §5 or §6 from an §7 hypothesis —\n"
+"but instead of two components, you have one for each index.\n"
+"\n"
+"In ordinary math: \"If §8, then by definition\n"
+"§9 for every §10. In particular, §11.\""
+msgstr ""
+
 #. §0: `exact Set.Subset.antisymm h1 h2`
 #: Game.Levels.SubsetWorld.L13_Antisymm
 msgid "§0 combines the\n"
 "two subset proofs into a set equality proof."
+msgstr ""
+
+#. §0: `ht : x ∈ t`
+#. §1: `right`
+#. §2: `exact ht`
+#: Game.Levels.IndexedOpsWorld.L22_IInterDistrib
+msgid "You have §0. Use §1 then §2."
+msgstr ""
+
+#: Game.Levels.IndexedOpsWorld.L04_IUnionFromSubset
+msgid "Subset of Indexed Union"
 msgstr ""
 
 #: Game.Levels.SetOpsWorld.L15_DoubleComplement
@@ -6650,6 +10178,14 @@ msgid "You proved §0 — every element is in §1 or its\n"
 "existence without construction is exactly what classical logic adds.\n"
 "\n"
 "The library name is §7."
+msgstr ""
+
+#. §0: `Set.iUnion_mono`
+#. §1: `∀ i, s i ⊆ t i`
+#. §2: `⋃ i, s i ⊆ ⋃ i, t i`
+#: Game.Levels.IndexedOpsWorld.L05_MonotonIUnion
+msgid "§0 states that indexed union is monotone:\n"
+"if §1 then §2."
 msgstr ""
 
 #. §0: `induction x with | case args`
@@ -6746,6 +10282,20 @@ msgid "You just proved antisymmetry from extensionality! Compare the two proofs:
 "\n"
 "Choose based on *convenience*: §12 when you have subset proofs\n"
 "in hand, §13 when you want to work element-by-element."
+msgstr ""
+
+#. §0: `show Even 0`
+#. §1: `exact ⟨0, rfl⟩`
+#. §2: `Even n`
+#. §3: `∃ k, n = k + k`
+#. §4: `n = 0`
+#. §5: `k = 0`
+#. §6: `0 = 0 + 0`
+#: Game.Levels.IndexedOpsWorld.L12_Nonempty
+msgid "§0 then §1.\n"
+"\n"
+"Recall: §2 means §3. For §4, the\n"
+"witness is §5, since §6."
 msgstr ""
 
 #. §0: `s ∪ t`
@@ -6906,6 +10456,38 @@ msgid "§0 says §1 is in the complement of the union: §2,\n"
 "§4."
 msgstr ""
 
+#. §0: `⋃ i : Empty, s i = ∅`
+#. §1: `Empty`
+#. §2: `⋂ i : Empty, s i = Set.univ`
+#. §3: `∀`
+#. §4: `⋃ i : Empty, s i = ∅`
+#. §5: `∃`
+#. §6: `∀`
+#. §7: `∃`
+#. §8: $\\bigcup_{i \\in \\emptyset} s_i = \\emptyset$
+#. §9: $i \\in \\emptyset$
+#. §10: $x \\in s_i$
+#: Game.Levels.IndexedOpsWorld.L10_VacuousUnion
+msgid "You proved that §0 — unioning over nothing gives\n"
+"nothing.\n"
+"\n"
+"Together with Level 9, you now have the complete duality:\n"
+"\n"
+"| Indexed operation | Over §1 | Logic |\n"
+"|---|---|---|\n"
+"| §2 | vacuously true §3 | no conditions to check |\n"
+"| §4 | impossible §5 | no witnesses to exhibit |\n"
+"\n"
+"This pair is the most dramatic illustration of the §6/§7 duality\n"
+"that runs through the entire world. Every time you see a vacuously\n"
+"true universal or an impossible existential, the same principle is\n"
+"at work.\n"
+"\n"
+"In ordinary math: \"§8\n"
+"because the defining condition — there exists §9 with\n"
+"§10 — can never be satisfied.\""
+msgstr ""
+
 #. §0: `hx`
 #. §1: `obtain ⟨hs, htu⟩ := hx`
 #. §2: `hs : x ∈ s`
@@ -6913,6 +10495,30 @@ msgstr ""
 #: Game.Levels.SetOpsWorld.L16_Boss
 msgid "Destructure §0 with §1 to get\n"
 "§2 and §3."
+msgstr ""
+
+#. §0: ```
+#. obtain ⟨x, hx⟩ := h       -- extract witness from s j
+#. use x                       -- provide element for ⋃
+#. rw [Set.mem_iUnion]         -- convert ⋃ to ∃
+#. use j                       -- provide index for s j
+#. ```
+#. §1: `⋃ i, s i`
+#. §2: `s j`
+#: Game.Levels.IndexedOpsWorld.L13_NonemptyPropagation
+msgid "You proved that nonemptiness propagates from a member to the union.\n"
+"The proof chained two existentials:\n"
+"\n"
+"§0\n"
+"\n"
+"**The pattern**: When you need to show a large set is nonempty, find\n"
+"a specific member that is nonempty, extract its witness, and transfer\n"
+"it to the larger set. This is a common argument in mathematics:\n"
+"\"the union is nonempty because at least one of its pieces is.\"\n"
+"\n"
+"**Does the converse hold?** If §1 is nonempty, must some\n"
+"§2 be nonempty? Think about what tools you would need — you will\n"
+"prove this in the next level."
 msgstr ""
 
 #. §0: `hx : x ∈ sᶜ ∪ tᶜ`
@@ -7023,8 +10629,34 @@ msgid "You proved your first set equality using §0! The structure was:\n"
 "You will use it frequently throughout this course."
 msgstr ""
 
+#: Game.Levels.IndexedOpsWorld.L03_IInterSubset
+msgid "Indexed Intersection Implies Membership"
+msgstr ""
+
+#. §0: `j : ι`
+#. §1: `hj : x ∈ s j`
+#. §2: `∃ j, Set.Nonempty (s j)`
+#. §3: `j`
+#. §4: `use j`
+#. §5: `x`
+#. §6: `use x`
+#: Game.Levels.IndexedOpsWorld.L14_NonemptyConverse
+msgid "You have §0 and §1. The goal is\n"
+"§2. Provide §3 as the witness with §4,\n"
+"then provide §5 as the nonemptiness witness with §6."
+msgstr ""
+
 #: Game.Levels.SetOpsWorld.L04_SetDifference
 msgid "3 is less than 10 and not even."
+msgstr ""
+
+#: Game.Levels.IndexedOpsWorld.L21_BoundedIntegration
+msgid "Bounded Intersection Inside Bounded Union"
+msgstr ""
+
+#. §0: `use i`
+#: Game.Levels.IndexedOpsWorld.L05_MonotonIUnion
+msgid "Use §0 to provide the witness index."
 msgstr ""
 
 #: Game.Levels.SetWorld.L04_InfiniteSet
@@ -7043,11 +10675,66 @@ msgstr ""
 msgid "Unwrap the set membership and use arithmetic."
 msgstr ""
 
+#. §0: $s \\cap (t \\cup u) = (s \\cap t) \\cup (s \\cap u)$
+#. §1: $$(\\bigcup_i s_i) \\cap t = \\bigcup_i (s_i \\cap t)$$
+#. §2: `s i`
+#. §3: `t`
+#. §4: `s i ∩ t`
+#. §5: `ext`
+#. §6: `constructor`
+#. §7: `↔`
+#. §8: `obtain`
+#. §9: `∩`
+#. §10: `rw [Set.mem_iUnion]`
+#. §11: `obtain`
+#. §12: `∃`
+#. §13: `use`
+#. §14: `∃`
+#. §15: `∧`
+#: Game.Levels.IndexedOpsWorld.L23_Boss
+msgid "# Boss: Distributivity for Indexed Unions\n"
+"\n"
+"In Set Operations World, you proved the **distributive law** for binary\n"
+"operations: §0. Now prove\n"
+"the indexed generalization:\n"
+"\n"
+"§1\n"
+"\n"
+"This says: being in some §2 AND in §3 is the same as being in\n"
+"some §4.\n"
+"\n"
+"**Skills required** (all taught in this world and earlier):\n"
+"- §5 to start a set equality proof (Subset World)\n"
+"- §6 to split the §7 (NNG4-baseline)\n"
+"- §8 to destructure §9 hypotheses (Subset World)\n"
+"- §10 to handle indexed unions (this world)\n"
+"- §11 to destructure §12 (Set World)\n"
+"- §13 to provide witness indices (this world)\n"
+"\n"
+"**Proof plan**: The proof has two directions. In each direction, you\n"
+"will need to unpack an indexed union (getting an §14), destructure\n"
+"an intersection (getting an §15), and rebuild the other side."
+msgstr ""
+
 #. §0: `hr : 3 = r + r`
 #. §1: `omega`
 #: Game.Levels.SetOpsWorld.L03_ComplementMembership
 msgid "§0 has no natural number solution. §1\n"
 "derives the contradiction."
+msgstr ""
+
+#. §0: `x ∈ t i`
+#. §1: `hx : ∀ i, x ∈ s i`
+#. §2: `hx i`
+#. §3: `x ∈ s i`
+#. §4: `h : ∀ i, s i ⊆ t i`
+#. §5: `h i`
+#. §6: `s i ⊆ t i`
+#. §7: `exact h i (hx i)`
+#: Game.Levels.IndexedOpsWorld.L06_MonotonIInter
+msgid "You need §0. You have §1 (so §2\n"
+"gives §3) and §4 (so §5 gives\n"
+"§6). Apply the subset: §7."
 msgstr ""
 
 #. §0: `apply Set.Subset.antisymm`
@@ -7063,6 +10750,14 @@ msgstr ""
 #: Game.Levels.SetOpsWorld.L11_PushNeg
 #: Game.Levels.SetOpsWorld.L12_DeMorgan
 msgid "§0 is the lattice version of De Morgan: §1."
+msgstr ""
+
+#. §0: `x ∈ ⋃ k, ...`
+#. §1: `rw [Set.mem_iUnion]`
+#: Game.Levels.IndexedOpsWorld.L17_IUnionEqualsUniv
+msgid "The backward direction is the interesting one. You need to\n"
+"show §0. Start by introducing the (trivial) hypothesis,\n"
+"then use §1 to convert to an existential."
 msgstr ""
 
 #. §0: `s`
@@ -7185,6 +10880,15 @@ msgid "# Intersection: ∩ means ∧\n"
 "3. Second goal: prove §13 using §14"
 msgstr ""
 
+#. §0: `hinter : x ∈ ⋂ i, s i`
+#. §1: `rw [Set.mem_iInter] at hinter`
+#. §2: `left`
+#. §3: `exact hinter i`
+#: Game.Levels.IndexedOpsWorld.L22_IInterDistrib
+msgid "You have §0. Rewrite to a universal:\n"
+"§1. Then §2 and §3."
+msgstr ""
+
 #. §0: `¬ (7 < 5)`
 #. §1: `7 < 5 → False`
 #. §2: `intro h`
@@ -7195,12 +10899,66 @@ msgid "The goal is §0, which means §1. Use\n"
 "§2 to assume §3."
 msgstr ""
 
+#. §0: `hsi : x ∈ s i`
+#. §1: `ht : x ∈ t`
+#. §2: `x ∈ (⋃ i, s i) ∩ t`
+#. §3: `constructor`
+#: Game.Levels.IndexedOpsWorld.L23_Boss
+msgid "You have §0 and §1. The goal is\n"
+"§2. Use §3 to split into two parts."
+msgstr ""
+
 #: Game.Levels.SetWorld
 msgid "Set World"
 msgstr ""
 
+#. §0: ```
+#. rw [Set.mem_powerset_iff]   -- convert 𝒫 to ⊆
+#. intro x hx                  -- start the subset proof
+#. ...                          -- show membership transfers
+#. ```
+#. §1: `x ∈ s`
+#. §2: `Prop`
+#. §3: `s ⊆ t`
+#. §4: `Prop`
+#. §5: `t ∈ 𝒫 s`
+#. §6: `Prop`
+#. §7: `t ⊆ s`
+#: Game.Levels.IndexedOpsWorld.L15_Powerset
+msgid "You proved powerset membership. The pattern is:\n"
+"\n"
+"§0\n"
+"\n"
+"**The correspondence**: Powerset membership is subset. This is a\n"
+"\"meta-level\" operation — instead of asking whether an element is in\n"
+"a set, you ask whether a set is in a collection of sets.\n"
+"\n"
+"| Expression | Type | Meaning |\n"
+"|---|---|---|\n"
+"| §1 | §2 | element membership |\n"
+"| §3 | §4 | every element of s is in t |\n"
+"| §5 | §6 | same as §7 |\n"
+"\n"
+"**Looking ahead**: The powerset will reappear when we study images\n"
+"and preimages of set families. In Cantor World, you will prove that\n"
+"the powerset of a set is always strictly larger than the set itself —\n"
+"using a diagonal argument unlike anything in this course so far."
+msgstr ""
+
+#. §0: `hx : x ∈ ⋃ i, s i`
+#. §1: `rw [Set.mem_iUnion] at hx`
+#. §2: `∃ i, x ∈ s i`
+#: Game.Levels.IndexedOpsWorld.L05_MonotonIUnion
+msgid "You have §0. Use §1\n"
+"to convert to §2, then extract the witness."
+msgstr ""
+
 #: Game.Levels.SubsetWorld.L02_ChangeTactic
 msgid "The Change Tactic"
+msgstr ""
+
+#: Game.Levels.IndexedOpsWorld.L08_BoundedIInter
+msgid "Bounded Indexed Intersection"
 msgstr ""
 
 #. §0: `p 4`
@@ -7219,6 +10977,13 @@ msgstr ""
 #. §0: `Set.union_inter_distrib_right`
 #: Game.Levels.SetOpsWorld.L16_Boss
 msgid "§0 is the dual distributivity law."
+msgstr ""
+
+#. §0: `rw [Set.mem_iUnion₂]`
+#. §1: `∃ i, ∃ (_ : i ∈ u), x ∈ s i`
+#: Game.Levels.IndexedOpsWorld.L21_BoundedIntegration
+msgid "Now convert the goal: §0 to get\n"
+"§1."
 msgstr ""
 
 #. §0: `¬(s ⊆ t)`
@@ -7267,6 +11032,14 @@ msgstr ""
 #: Game.Levels.SubsetWorld.L12_SetNonEquality
 msgid "The set of numbers less than 3 is not equal to the set of\n"
 "numbers less than 5."
+msgstr ""
+
+#. §0: `hs : Set.Nonempty s`
+#. §1: `∃ a, a ∈ s`
+#. §2: `obtain ⟨a, ha⟩ := hs`
+#: Game.Levels.IndexedOpsWorld.L20_NonemptyProduct
+msgid "§0 means §1. Extract the witness\n"
+"with §2."
 msgstr ""
 
 #. §0: $$s \\cap s^c = \\emptyset$$
@@ -7386,6 +11159,11 @@ msgid "§0 closes a goal of the form §1 (reflexivity).\n"
 "When both sides of an equality are definitionally equal."
 msgstr ""
 
+#. §0: `rw [Set.mem_iInter]`
+#: Game.Levels.IndexedOpsWorld.L09_VacuousIntersection
+msgid "Use §0 to convert to a universal."
+msgstr ""
+
 #. §0: `le_of_lt`
 #. §1: `a ≤ b`
 #. §2: `a < b`
@@ -7405,6 +11183,12 @@ msgid "§0 proves §1 from §2 — strict inequality\n"
 "When you have §4 and need §5."
 msgstr ""
 
+#. §0: `iSup_inf_eq`
+#: Game.Levels.IndexedOpsWorld.L23_Boss
+msgid "§0 is the lattice version of indexed union/intersection\n"
+"distributivity."
+msgstr ""
+
 #. §0: `hs : x ∈ s`
 #. §1: `ht : x ∈ t`
 #. §2: `x ∈ t ∩ s`
@@ -7414,4 +11198,8 @@ msgstr ""
 msgid "Now you have §0 and §1. The goal is\n"
 "§2, which is §3. Use §4 to\n"
 "split, then provide each component."
+msgstr ""
+
+#: Game.Levels.IndexedOpsWorld.L01_IndexedUnion
+msgid "Indexed Union"
 msgstr ""

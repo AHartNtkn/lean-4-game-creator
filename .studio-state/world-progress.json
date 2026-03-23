@@ -2,6 +2,7 @@
   "completed": [
     "SetWorld",
     "SubsetWorld",
-    "SetOpsWorld"
+    "SetOpsWorld",
+    "IndexedOpsWorld"
   ]
 }

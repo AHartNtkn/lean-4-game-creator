@@ -362,3 +362,58 @@ The new goal must be definitionally equal to the old one, or
 Lean will reject the `show`.
 -/
 TacticDoc «show»
+
+/-- `fin_cases h` performs case analysis on a `Fin n` or other
+finite type hypothesis, creating one subgoal per value.
+
+## Syntax
+```
+fin_cases h
+```
+
+## When to use it
+When `h : Fin n` and you want to check each value `0, 1, ..., n-1`
+individually. This can one-shot many proofs about small finite types.
+
+Disabled in levels that require manual reasoning about finite indices.
+-/
+TacticDoc fin_cases
+
+/-- `by_contra h` assumes `¬ goal` and changes the goal to `False`.
+
+## Syntax
+```
+by_contra h
+```
+
+## When to use it
+When you cannot prove the goal directly but can derive a contradiction
+from its negation. This is classical reasoning.
+
+## Example
+```
+-- Goal: ∃ i, P i
+by_contra h
+-- h : ¬ ∃ i, P i
+-- Goal: False
+```
+-/
+TacticDoc by_contra
+
+/-- `push_neg` pushes negation inward through quantifiers and
+connectives: `¬∀` becomes `∃¬`, `¬∃` becomes `∀¬`, `¬(a < b)` becomes
+`b ≤ a`, etc.
+
+## Syntax
+```
+push_neg            -- on the goal
+push_neg at h       -- on a hypothesis
+```
+
+## When to use it
+When you have a negated statement and need to work with its
+positive form.
+
+Disabled in levels where you should see what push_neg does manually.
+-/
+TacticDoc push_neg
