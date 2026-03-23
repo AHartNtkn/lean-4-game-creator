@@ -1599,3 +1599,40 @@ evaluation, so you learn to compute values manually before using the
 algebraic shortcut.
 -/
 TheoremDoc Finsupp.single_add as "Finsupp.single_add" in "Finsupp"
+
+/-! ### Finale-specific disabled theorems -/
+
+/-- `Equiv.ofBijective f hf` constructs an `Equiv` (bijection) from
+a proof that `f` is bijective.
+
+Disabled to prevent shortcutting cardinality arguments.
+-/
+TheoremDoc Equiv.ofBijective as "Equiv.ofBijective" in "Fintype"
+
+/-- `Finset.image_univ_of_surjective` states that if `f` is surjective,
+then `Finset.univ.image f = Finset.univ`.
+
+Disabled in levels where the learner should derive this.
+-/
+TheoremDoc Finset.image_univ_of_surjective as "Finset.image_univ_of_surjective" in "Card"
+
+/-- `Finite.surjective_of_injective` states that for `f : α → α`
+on a finite type, injectivity implies surjectivity.
+
+Disabled in the boss level where the learner proves this from scratch.
+-/
+TheoremDoc Finite.surjective_of_injective as "Finite.surjective_of_injective" in "Fintype"
+
+/-- `Fintype.card_of_bijective` derives a cardinality equality from
+a bijection proof.
+
+Disabled to prevent shortcutting cardinality arguments.
+-/
+TheoremDoc Fintype.card_of_bijective as "Fintype.card_of_bijective" in "Fintype"
+
+/-- `Fintype.card_congr` derives a cardinality equality from an
+equivalence (Equiv).
+
+Disabled to prevent shortcutting cardinality arguments.
+-/
+TheoremDoc Fintype.card_congr as "Fintype.card_congr" in "Fintype"

@@ -61,5 +61,13 @@ you can use purely logical reasoning. Union gives `∨`, intersection
 gives `∧`, and the proof becomes a logic exercise.
 "
 
+/-- `Finset.inter_comm s t` proves `s ∩ t = t ∩ s`.
+
+Intersection is commutative — the order of the arguments doesn't matter.
+-/
+TheoremDoc Finset.inter_comm as "Finset.inter_comm" in "Finset"
+
+NewTheorem Finset.inter_comm
+
 DisabledTactic trivial «decide» native_decide simp aesop simp_all fin_cases interval_cases norm_num by_cases tauto
 DisabledTheorem Finset.mem_insert_self Finset.mem_insert_of_mem Finset.mem_union_left Finset.mem_union_right Finset.mem_inter_of_mem Finset.mem_of_mem_inter_left Finset.mem_of_mem_inter_right Finset.subset_union_left Finset.subset_union_right Finset.inter_subset_left Finset.inter_subset_right Finset.union_comm Finset.inter_comm sup_comm inf_comm inf_idem sup_idem inf_assoc sup_assoc le_antisymm inf_sup_right inf_sup_left sup_inf_right sup_inf_left Finset.inter_self Finset.union_self and_comm or_comm or_and_right or_and_left and_or_right and_or_left not_or inf_le_left inf_le_right le_sup_left le_sup_right Finset.inter_left_comm Finset.inter_right_comm

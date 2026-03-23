@@ -8,6 +8,16 @@ msgstr "Project-Id-Version: Game v4.29.0-rc6\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit"
 
+#. §0: `h2`
+#. §1: `t ∩ s`
+#. §2: `s ∩ t`
+#. §3: `h2`
+#. §4: `Finset.inter_comm`
+#: Game.Levels.Finale.L09_DoubleCounting
+msgid "§0 uses §1 but the goal uses §2. Rewrite\n"
+"§3 using §4 to align the intersection."
+msgstr ""
+
 #. §0: `Fin.val_last`
 #. §1: `Fin`
 #. §2: `omega`
@@ -825,6 +835,10 @@ msgid "You have a function §0 between two finite types, and\n"
 "Prove that §1 cannot be injective."
 msgstr ""
 
+#: Game.Levels.Finale.L09_DoubleCounting
+msgid "Now get the union-intersection identity."
+msgstr ""
+
 #. §0: `h : ∃ x ∈ Finset.range 4, 2 * x = 7`
 #. §1: `obtain ⟨x, hx, hfx⟩ := h`
 #: Game.Levels.FinsetImage.L03_NotInTheImage
@@ -1090,6 +1104,11 @@ msgid "# Combining a Filtered Sum with a Full Sum\n"
 "- Hypothesis substitution"
 msgstr ""
 
+#: Game.Levels.Finale.L12_MatrixIntegration
+msgid "Rewrite the sum using your helper, then compute the\n"
+"constant sum."
+msgstr ""
+
 #. §0: `Fin n`
 #. §1: `Fin n`
 #. §2: `n`
@@ -1154,10 +1173,6 @@ msgid "# Associativity: Grouping Doesn't Matter\n"
 "**Your task**: Prove that §8."
 msgstr ""
 
-#: Game.Levels.Cardinality.L06_InsertAddsOne
-msgid "Inserting a new element increases cardinality by 1."
-msgstr ""
-
 #. §0: `ext ⟨v, hv⟩`
 #. §1: `rw [hi]`
 #. §2: `v`
@@ -1165,6 +1180,10 @@ msgstr ""
 #: Game.Levels.PsetFin.L03_SnocReconstruction
 msgid "Use §0, then §1, then\n"
 "case-split on §2 with §3"
+msgstr ""
+
+#: Game.Levels.Cardinality.L06_InsertAddsOne
+msgid "Inserting a new element increases cardinality by 1."
 msgstr ""
 
 #: Game.Levels.AbstractionLadder.L07_PermChain
@@ -1417,6 +1436,13 @@ msgid "§0 means that §1 maps distinct inputs to\n"
 "When you need to show that a function preserves cardinality\n"
 "(via §5), or that distinct inputs\n"
 "give distinct outputs."
+msgstr ""
+
+#. §0: `|A ∪ B| + |A ∩ B| = |A| + |B|`
+#. §1: `|A ∪ B| <= |A| + |B|`
+#: Game.Levels.Finale.L10_FinsuppIntegration
+msgid "Bound the union size: §0,\n"
+"so §1."
 msgstr ""
 
 #: Game.Levels.FinTuples.L02_VecNotation
@@ -2191,6 +2217,11 @@ msgid "Prove the two elements are unequal.\n"
 "Recall the pattern from MeetFin: §0."
 msgstr ""
 
+#. §0: `f`
+#: Game.Levels.Finale.L06_NonInjectivity
+msgid "Assume for contradiction that §0 is injective."
+msgstr ""
+
 #. §0: `hb : b = a`
 #. §1: `hfb : f b = x`
 #. §2: `b`
@@ -2645,6 +2676,14 @@ msgid "# The Absorption Law\n"
 "manual asymmetric proof structure.\n"
 "\n"
 "**Your task**: Prove the absorption law."
+msgstr ""
+
+#. §0: `card_sdiff_add_card_inter`
+#. §1: `s t`
+#. §2: `t s`
+#: Game.Levels.Finale.L09_DoubleCounting
+msgid "Gather the cardinality identities you need. Start with\n"
+"§0 applied to both §1 and §2."
 msgstr ""
 
 #. §0: `Finset.card_pos`
@@ -3200,6 +3239,58 @@ msgid "# Induction with Products\n"
 "\n"
 "**Your task**: Prove that the product of §8 over any finset is §9.\n"
 "This is the product analogue of L01's 'sum of 0 = 0'."
+msgstr ""
+
+#. §0: `intro y`
+#. §1: `card_image_of_injective`
+#. §2: $|f(\\text{univ})| = n$
+#. §3: `subset_univ`
+#. §4: $f(\\text{univ}) \\subseteq \\text{univ}$
+#. §5: $f(\\text{univ}) = \\text{univ}$
+#. §6: `mem_univ`
+#. §7: $y \\in f(\\text{univ})$
+#. §8: `mem_image`
+#. §9: `obtain`
+#. §10: $x$
+#. §11: `mem_image`
+#. §12: `subset_univ`
+#. §13: `card_image_of_injective`
+#. §14: `eq_of_subset_of_card_le`
+#. §15: `card_univ`
+#. §16: `card_fin`
+#. §17: $f(n) = n + 1$
+#. §18: $\\mathbb{N}$
+#. §19: $0$
+#: Game.Levels.Finale.L14_Boss
+msgid "**The proof chain**:\n"
+"\n"
+"| Step | Tool | Result |\n"
+"|------|------|--------|\n"
+"| 1 | §0 | Fix an arbitrary target |\n"
+"| 2 | §1 | §2 |\n"
+"| 3 | §3 | §4 |\n"
+"| 4-5 | cardinality sandwich | §5 |\n"
+"| 6 | §6 | §7 |\n"
+"| 7 | §8 + §9 | extract preimage §10 |\n"
+"\n"
+"This proof integrates techniques from across the course:\n"
+"- **Phase 2** (Finset): §11, §12, image operations\n"
+"- **Phase 3** (Cardinality): §13,\n"
+"  §14, §15, §16\n"
+"- **Phase 7** (Counting): The injection/surjection relationship\n"
+"\n"
+"The key insight is the **cardinality sandwich** (Steps 4-5): a\n"
+"subset of a finite set with the same cardinality must be the\n"
+"entire set. This is the forward counterpart of the pigeonhole\n"
+"principle — instead of deriving a contradiction from 'too many\n"
+"items in too few bins,' you derive an equality from 'exactly the\n"
+"right number of items in the right number of bins.'\n"
+"\n"
+"**Why finiteness is essential**: This theorem is FALSE for\n"
+"infinite types. The function §17 on §18 is\n"
+"injective but not surjective (§19 has no preimage). In the next\n"
+"level, you will prove this formally — making the role of\n"
+"finiteness visceral, not just theoretical."
 msgstr ""
 
 #. §0: `card_empty`
@@ -3870,6 +3961,13 @@ msgid "§0 states that §1.\n"
 "\n"
 "## When to use it\n"
 "When you need to simplify §3 to the underlying value."
+msgstr ""
+
+#. §0: `n`
+#. §1: `Fin n`
+#: Game.Levels.Finale.L07_ConcretePigeonhole
+msgid "First prove that every remainder is strictly less than §0.\n"
+"This gives the bound needed to construct elements of §1."
 msgstr ""
 
 #. §0: `cases h with | inl hst | inr hu`
@@ -4792,6 +4890,14 @@ msgid "**Inductive step**: The goal is\n"
 "5. Close with §4"
 msgstr ""
 
+#. §0: `Finset.inter_comm s t`
+#. §1: `s ∩ t = t ∩ s`
+#: Game.Levels.FinsetOperations.L13_IntersectionCommutativity
+msgid "§0 proves §1.\n"
+"\n"
+"Intersection is commutative — the order of the arguments doesn't matter."
+msgstr ""
+
 #: Game.Levels.PsetFin.L10_ModularEquality
 msgid "Modular Equality"
 msgstr ""
@@ -4895,6 +5001,10 @@ msgstr ""
 
 #: Game.Levels.PsetFin.L13_SuccAboveUnification
 msgid "succAbove at last is castSucc, and succAbove at 0 is succ."
+msgstr ""
+
+#: Game.Levels.Finale.L06_NonInjectivity
+msgid "No function from Fin (n+1) to Fin n is injective."
 msgstr ""
 
 #. §0: `MulZeroClass.zero_mul`
@@ -5335,6 +5445,48 @@ msgstr ""
 msgid "Try §0.\n"
 "(Note: §1 replaces all occurrences of §2 at once, so\n"
 "two §3 calls handle all three §4 types.)"
+msgstr ""
+
+#. §0: $\\text{tr}(I_n) = n$
+#. §1: `diag_apply`
+#. §2: `diagonal_apply_eq`
+#. §3: `sum_congr rfl`
+#. §4: `sum_const`
+#. §5: `card_univ`
+#. §6: `card_fin`
+#. §7: $|\\text{Fin}\\,n| = n$
+#. §8: `tr(I) = n`
+#. §9: `tr(A + B) = tr(A) + tr(B)`
+#. §10: `tr(AB) = tr(BA)`
+#. §11: `tr(I) = n`
+#. §12: $n$
+#. §13: `M : Matrix (Fin m) (Fin n) alpha`
+#. §14: `Fin m -> Fin n -> alpha`
+#. §15: `diag M i = M i i`
+#. §16: $i$
+#. §17: $i$
+#: Game.Levels.Finale.L12_MatrixIntegration
+msgid "**Trace of the identity**: §0.\n"
+"\n"
+"The proof combined tools from three phases:\n"
+"- **Phase 6** (Matrices): §1 and §2\n"
+"  to evaluate each diagonal entry\n"
+"- **Phase 4** (Big operators): §3 to rewrite\n"
+"  the summands, §4 to evaluate the constant sum\n"
+"- **Phase 3** (Cardinality): §5 and §6 to\n"
+"  compute §7\n"
+"\n"
+"This result — §8 — is foundational in linear algebra.\n"
+"The trace is the only matrix invariant that is both linear\n"
+"(§9) and cyclic (§10).\n"
+"Computing §11 is its simplest instance: the identity\n"
+"matrix has §12 ones on the diagonal.\n"
+"\n"
+"**Tuple connection**: A matrix §13\n"
+"is a function §14 — literally a tuple of\n"
+"tuples. The diagonal extraction §15 selects the\n"
+"§16-th entry of the §17-th row, connecting the matrix back to\n"
+"the tuple indexing from Phase 1."
 msgstr ""
 
 #. §0: `x ∈ s`
@@ -5960,6 +6112,10 @@ msgstr ""
 msgid "ext for Functions"
 msgstr ""
 
+#: Game.Levels.Finale.L03_DiagonalDecomposition
+msgid "The off-diagonal count plus the diagonal count equals n²."
+msgstr ""
+
 #. §0: `h1 : (s \\ t).card + (s \\cap t).card = s.card`
 #. §1: `hs`
 #. §2: `hi`
@@ -6269,8 +6425,25 @@ msgid "Now §0 says §1.\n"
 "The goal is §2. Flip §3 and close."
 msgstr ""
 
+#. §0: `Finset.univ.card`
+#. §1: `n + 1`
+#. §2: `card_univ`
+#. §3: `card_fin`
+#: Game.Levels.Finale.L04_FiberTemplate
+msgid "Simplify §0 on the left to §1\n"
+"using §2 and §3."
+msgstr ""
+
 #: Game.Levels.Matrices.L17_DiagonalAddition
 msgid "The sum of two diagonal matrices is the diagonal of the sum."
+msgstr ""
+
+#. §0: `induction n with`
+#. §1: `| zero`
+#. §2: `| succ n ih`
+#: Game.Levels.Finale.L01_InductionIdentity
+msgid "Type §0 then §1 then\n"
+"§2."
 msgstr ""
 
 #. §0: `t ⊆ s`
@@ -6280,6 +6453,10 @@ msgstr ""
 
 #: Game.Levels.BigOpIntro.L10_CardAsSum
 msgid "Cardinality equals the sum of the constant function 1."
+msgstr ""
+
+#: Game.Levels.Finale.L16_EquivalenceBiconditional
+msgid "Bijective from Injective"
 msgstr ""
 
 #. §0: `have`
@@ -6326,6 +6503,10 @@ msgstr ""
 
 #: Game.Levels.CountingTypes.L08_CountingInjections
 msgid "There are 20 injections from Fin 2 to Fin 5."
+msgstr ""
+
+#: Game.Levels.Finale.L02_PowersetPartition
+msgid "Powerset Partition by Size"
 msgstr ""
 
 #: Game.Levels.Matrices.L08_DiagonalOnDiag
@@ -6396,7 +6577,18 @@ msgid "Extract witnesses from both sides. Start with\n"
 "§0 then §1."
 msgstr ""
 
+#. §0: `image f univ = univ`
+#. §1: `y`
+#. §2: `univ`
+#. §3: `y`
+#. §4: `image f univ`
+#: Game.Levels.Finale.L16_EquivalenceBiconditional
+msgid "Since §0 and §1 is in §2,\n"
+"§3 must be in §4. Establish this membership."
+msgstr ""
+
 #: Game.Levels.CountingTechniques.L17_GeneralizedPigeonhole
+#: Game.Levels.Finale.L04_FiberTemplate
 msgid "Apply fiber decomposition."
 msgstr ""
 
@@ -6525,6 +6717,14 @@ msgstr ""
 msgid "No natural number is a member of the empty finset."
 msgstr ""
 
+#. §0: `Fintype.card_of_bijective`
+#: Game.Metadata
+msgid "§0 derives a cardinality equality from\n"
+"a bijection proof.\n"
+"\n"
+"Disabled to prevent shortcutting cardinality arguments."
+msgstr ""
+
 #. §0: `Nat.descFactorial_self`
 #. §1: `n.descFactorial n = n.factorial`
 #. §2: `n`
@@ -6561,6 +6761,15 @@ msgstr ""
 
 #: Game.Levels.Matrices.L10_DiagOfDiagonal
 msgid "Extracting the Diagonal"
+msgstr ""
+
+#. §0: `hx`
+#. §1: `(fun n => n + 1) x = 0`
+#. §2: `x + 1 = 0`
+#: Game.Levels.Finale.L15_InfiniteCounterexample
+msgid "§0 says §1. Extract the\n"
+"arithmetic form §2, which is impossible for\n"
+"natural numbers."
 msgstr ""
 
 #: Game.Levels.CountingTypes.L10_TheGap
@@ -6779,6 +6988,19 @@ msgstr ""
 msgid "Binomial Coefficients"
 msgstr ""
 
+#. §0: `have hinj : Function.Injective g := by`
+#. §1: `  intro x y hxy`
+#. §2: `  by_contra hne`
+#. §3: `  exact hall x y hne (Fin.ext_iff.mp hxy)`
+#: Game.Levels.Finale.L07_ConcretePigeonhole
+#: Game.Levels.Finale.L13_SurjectiveImpliesInjective
+msgid "Try:\n"
+"§0\n"
+"§1\n"
+"§2\n"
+"§3"
+msgstr ""
+
 #. §0: `omega`
 #. §1: $1 + |s| = |s| + 1$
 #. §2: `sum_insert ha`
@@ -6845,6 +7067,23 @@ msgid "Now use the Level 6 pattern: introduce an element §0 of\n"
 "§1, convert both sides to subset claims, then chain."
 msgstr ""
 
+#. §0: `let x : T := e`
+#. §1: `x`
+#. §2: `e`
+#. §3: `T`
+#. §4: `have`
+#. §5: `x`
+#. §6: `e`
+#. §7: `let`
+#: Game.Levels.CountingTechniques.L14_ConcreteDoubleCounting
+msgid "§0 introduces a local definition §1 with value §2\n"
+"and type §3. Unlike §4, the definition is **transparent** — later\n"
+"tactics can unfold §5 to see §6.\n"
+"\n"
+"Use §7 when you need to name a computed value (like a function or\n"
+"a term with a proof obligation) and later reason about its internals."
+msgstr ""
+
 #: Game.Levels.Cardinality.L16_ComplementCounting
 msgid "Complement Counting"
 msgstr ""
@@ -6903,6 +7142,11 @@ msgstr ""
 #: Game.Levels.BinomialCoefficients.L14_GaussSum
 #: Game.Levels.PascalsTriangle.L15_SquaredBinomials
 #: Game.Levels.PsetCombinatorics.L13_SumCongrWarmup
+#: Game.Levels.Finale.L07_ConcretePigeonhole
+#: Game.Levels.Finale.L11_FinsetInductionIntegration
+#: Game.Levels.Finale.L12_MatrixIntegration
+#: Game.Levels.Finale.L14_Boss
+#: Game.Levels.Finale.L16_EquivalenceBiconditional
 msgid "Try:\n"
 "§0\n"
 "§1\n"
@@ -7943,6 +8187,15 @@ msgid "# Meet the Factorial\n"
 "The RHS shows the recursive structure explicitly."
 msgstr ""
 
+#. §0: `Finset.univ`
+#. §1: `Fin n`
+#. §2: `subset_univ`
+#. §3: `card_le_card`
+#: Game.Levels.Finale.L06_NonInjectivity
+msgid "The image lands inside §0 of §1. Use\n"
+"§2 and §3 to bound the image size."
+msgstr ""
+
 #. §0: `intro h`
 #. §1: `rw [Finset.mem_sdiff] at h`
 #: Game.Levels.PsetFinset.L02_DoubleComplementSubset
@@ -8086,6 +8339,14 @@ msgstr ""
 msgid "Beyond Concrete Types"
 msgstr ""
 
+#. §0: `eq_of_subset_of_card_le`
+#. §1: `univ.card <= (image f univ).card`
+#: Game.Levels.Finale.L08_SubsetEquality
+msgid "A subset with at least as many elements as the whole set\n"
+"must BE the whole set. Use §0.\n"
+"You need to show §1."
+msgstr ""
+
 #. §0: `Fintype.card_fin`
 #. §1: `Fin n`
 #. §2: `n`
@@ -8171,6 +8432,10 @@ msgid "You combined two tools:\n"
 "\n"
 "**When to use it**: Whenever the summand doesn't depend on the\n"
 "variable — every element contributes the same value."
+msgstr ""
+
+#: Game.Levels.Finale.L07_ConcretePigeonhole
+msgid "Assume for contradiction that no two values share a remainder."
 msgstr ""
 
 #. §0: `rw [Nat.mul_sub_one]`
@@ -8631,6 +8896,41 @@ msgid "This is the promise of §0 delivered: tuples are\n"
 "will give you the tools to answer: §6."
 msgstr ""
 
+#. §0: $$3 \\cdot \\sum_{i=0}^{n} i(i+1) = n(n+1)(n+2)$$
+#. §1: $i(i+1)$
+#. §2: $n = 2$
+#. §3: $3(0 \\cdot 1 + 1 \\cdot 2 + 2 \\cdot 3) = 3 \\cdot 8 = 24$
+#. §4: $2 \\cdot 3 \\cdot 4 = 24$
+#. §5: `range 1`
+#. §6: `sum_range_succ`
+#. §7: `range 0`
+#. §8: `sum_range_zero`
+#. §9: `ring`
+#. §10: `sum_range_succ`
+#. §11: `mul_add`
+#. §12: `ring`
+#: Game.Levels.Finale.L01_InductionIdentity
+msgid "# Sum of Products of Consecutive Integers\n"
+"\n"
+"Prove this identity by induction:\n"
+"\n"
+"§0\n"
+"\n"
+"Each term §1 is the product of two consecutive integers.\n"
+"The sum of these products has a clean closed form.\n"
+"\n"
+"**Verify**: For §2: §3\n"
+"and §4. Checks out.\n"
+"\n"
+"**The proof plan** follows the standard induction pattern from\n"
+"the SummationFormulas world:\n"
+"\n"
+"1. **Base case**: Peel §5 with §6, clear\n"
+"   §7 with §8, close with §9\n"
+"2. **Inductive step**: Peel with §10, distribute\n"
+"   with §11, substitute the IH, close with §12"
+msgstr ""
+
 #. §0: `Finset.univ.card <= (Finset.univ.image f).card`
 #. §1: `univ.card`
 #. §2: `card_univ`
@@ -8861,6 +9161,16 @@ msgstr ""
 msgid "You need to prove two matrices are equal. Start with §0."
 msgstr ""
 
+#. §0: `Finset.image_univ_of_surjective`
+#. §1: `f`
+#. §2: `Finset.univ.image f = Finset.univ`
+#: Game.Metadata
+msgid "§0 states that if §1 is surjective,\n"
+"then §2.\n"
+"\n"
+"Disabled in levels where the learner should derive this."
+msgstr ""
+
 #: Game.Levels.BinomialTheorem.L14_ConcreteAlternatingSum
 msgid "The alternating sum of row 4 of Pascal's triangle is zero."
 msgstr ""
@@ -9071,6 +9381,17 @@ msgstr ""
 #: Game.Levels.CountingTechniques.L19_Boss
 #: Game.Levels.CountingTechniques.L19_Boss
 #: Game.Levels.PsetCounting.L08_Boss
+#: Game.Levels.Finale.L04_FiberTemplate
+#: Game.Levels.Finale.L05_QuantitativePigeonhole
+#: Game.Levels.Finale.L07_ConcretePigeonhole
+#: Game.Levels.Finale.L07_ConcretePigeonhole
+#: Game.Levels.Finale.L09_DoubleCounting
+#: Game.Levels.Finale.L09_DoubleCounting
+#: Game.Levels.Finale.L12_MatrixIntegration
+#: Game.Levels.Finale.L13_SurjectiveImpliesInjective
+#: Game.Levels.Finale.L13_SurjectiveImpliesInjective
+#: Game.Levels.Finale.L14_Boss
+#: Game.Levels.Finale.L16_EquivalenceBiconditional
 msgid "Try:\n"
 "§0"
 msgstr ""
@@ -9408,6 +9729,10 @@ msgstr ""
 #: Game.Levels.AbstractionLadder.L03_ListMembership
 msgid "The list §0 is §1. Use §2\n"
 "to unfold the membership into a disjunction."
+msgstr ""
+
+#: Game.Levels.Finale.L04_FiberTemplate
+msgid "The sum of fiber sizes equals the domain cardinality."
 msgstr ""
 
 #. §0: `ext`
@@ -9827,6 +10152,26 @@ msgid "This is a harder variant of the snoc reconstruction: instead of the\n"
 "mathematics."
 msgstr ""
 
+#. §0: $$\\sum_{k=0}^{n} \\binom{n}{k} = 2^n$$
+#. §1: $2^n$
+#. §2: `card (Fin n -> Fin 2) = 2^n`
+#. §3: `s.powerset.card = 2^(s.card)`
+#. §4: `sum choose n k = 2^n`
+#. §5: $2^n$
+#. §6: $n$
+#: Game.Levels.Finale.L02_PowersetPartition
+msgid "§0\n"
+"\n"
+"This proof connects three different perspectives on §1:\n"
+"- **Type theory** (Phase 3): §2\n"
+"- **Powerset** (Phase 5): §3\n"
+"- **Binomial coefficients** (Phase 5): §4\n"
+"\n"
+"They are all the same fact: the §5 subsets of an §6-element\n"
+"set can be counted as functions to Bool, as the powerset, or as\n"
+"the sum over subset sizes."
+msgstr ""
+
 #. §0: `rw [Finset.sum_singleton]`
 #: Game.Levels.BigOpIntro.L02_SumSingleton
 msgid "Now the goal is a sum over a singleton. Use\n"
@@ -9838,6 +10183,37 @@ msgstr ""
 #: Game.Levels.FinsetInduction.L06_MixedInduction
 msgid "**Base case**: Rewrite the sums and cardinality for the empty set.\n"
 "You need §0 (twice) and §1, then close the arithmetic."
+msgstr ""
+
+#. §0: `Finset`
+#. §1: `s`
+#. §2: `f`
+#. §3: `g`
+#. §4: $$\\sum_{i \\in s} (f(i) + g(i)) = \\sum_{i \\in s} f(i) + \\sum_{i \\in s} g(i)$$
+#. §5: `s = emptyset`
+#. §6: `insert a s`
+#. §7: `a notin s`
+#. §8: `sum_insert`
+#. §9: `ring`
+#: Game.Levels.Finale.L11_FinsetInductionIntegration
+msgid "# Finset Induction: Distributing a Sum\n"
+"\n"
+"In the FinsetInduction world, you learned to prove identities about\n"
+"finite sums by induction on the underlying §0. Now apply that\n"
+"technique in a new setting.\n"
+"\n"
+"**Claim**: For any finset §1 and functions §2, §3:\n"
+"\n"
+"§4\n"
+"\n"
+"This is the **additivity of summation** — a fundamental algebraic\n"
+"identity that underlies linearity of expectation, linearity of the\n"
+"trace (from the Matrix world), and much of linear algebra.\n"
+"\n"
+"**The proof plan** uses finset induction:\n"
+"1. **Base case** (§5): all three sums are 0\n"
+"2. **Inductive step** (§6, §7):\n"
+"   peel each sum with §8, apply the IH, close with §9"
 msgstr ""
 
 #. §0: `him : (s.image f).card ≤ s.card`
@@ -10068,6 +10444,12 @@ msgstr ""
 #. §1: `card_empty`
 #: Game.Levels.FinsetInduction.L04_FullInduction
 msgid "**Base case**: rewrite both §0 and §1."
+msgstr ""
+
+#. §0: `s ×ˢ s`
+#: Game.Levels.Finale.L03_DiagonalDecomposition
+msgid "Start by establishing the decomposition of §0 into\n"
+"diagonal and off-diagonal parts."
 msgstr ""
 
 #. §0: `rw [Finset.sum_insert h1]`
@@ -10707,6 +11089,7 @@ msgstr ""
 #. §2: `diagonal_apply_eq`
 #. §3: `diagonal_apply_ne`
 #: Game.Levels.Matrices.Imports
+#: Game.Levels.Finale.L12_MatrixIntegration
 msgid "§0 gives the if-then-else form:\n"
 "§1.\n"
 "Disabled so you use the more explicit §2 and\n"
@@ -10738,6 +11121,16 @@ msgid "Try:\n"
 "then:\n"
 "§2\n"
 "then §3."
+msgstr ""
+
+#. §0: `card_image_of_injective`
+#. §1: `f`
+#. §2: `Finset.univ`
+#. §3: `f`
+#: Game.Levels.Finale.L06_NonInjectivity
+msgid "Use §0 to compute the image size.\n"
+"Since §1 is injective, the image of §2 under §3\n"
+"has the same cardinality as the source."
 msgstr ""
 
 #. §0: `castSucc`
@@ -11083,6 +11476,34 @@ msgstr ""
 msgid "The number of 2-element subsets of {1, 2, 3} is 3."
 msgstr ""
 
+#. §0: $n + 1$
+#. §1: $n$
+#. §2: $a(i) \\bmod n$
+#. §3: $n + 1 \\le n$
+#. §4: $n + 1$
+#. §5: $n$
+#: Game.Levels.Finale.L07_ConcretePigeonhole
+msgid "**Pigeonhole applied to modular arithmetic**: among any §0\n"
+"natural numbers, two share the same remainder mod §1.\n"
+"\n"
+"The proof pattern:\n"
+"1. Assume no two values collide (by contradiction)\n"
+"2. Define the 'binning' function (§2)\n"
+"3. Derive injectivity from the no-collision assumption\n"
+"4. Contradict via image cardinality (§3)\n"
+"\n"
+"**The key skill** this level exercises is **modeling**: turning\n"
+"a concrete mathematical claim into the abstract pigeonhole\n"
+"framework. You had to:\n"
+"- Identify what the 'pigeons' are (the §4 values)\n"
+"- Identify what the 'holes' are (the §5 remainders)\n"
+"- Define the function that assigns pigeons to holes\n"
+"- Apply the abstract machinery from Levels 5-6\n"
+"\n"
+"This modeling step — going from a real problem to the abstract\n"
+"template — is the essence of applying combinatorics in practice."
+msgstr ""
+
 #. §0: `rw [Finset.mem_range]`
 #: Game.Levels.FinsetBasics.L07_VariableRange
 msgid "Use §0 to convert the membership goal\n"
@@ -11425,6 +11846,10 @@ msgid "# Subset: Every Element of One is in the Other\n"
 "**Your task**: Prove that §14."
 msgstr ""
 
+#: Game.Levels.Finale.L14_Boss
+msgid "An injective endofunction on Fin n is surjective."
+msgstr ""
+
 #. §0: $$\\sum_{i=0}^{n} i \\cdot \\binom{n}{i} = n \\cdot 2^{n-1}$$
 #. §1: $n$
 #. §2: $n \\cdot 2^{n-1}$
@@ -11702,6 +12127,14 @@ msgid "# Pascal's Recurrence from Vandermonde\n"
 "1. Use Vandermonde (§14) to show the sum equals §15\n"
 "   (the reshape-flip-apply pattern from Level 12)\n"
 "2. Apply §16 to expand §17"
+msgstr ""
+
+#. §0: `Fintype.card_congr`
+#: Game.Metadata
+msgid "§0 derives a cardinality equality from an\n"
+"equivalence (Equiv).\n"
+"\n"
+"Disabled to prevent shortcutting cardinality arguments."
 msgstr ""
 
 #. §0: `Finset.card_image_of_injective`
@@ -11999,6 +12432,10 @@ msgid "§0 states that §1.\n"
 "§6"
 msgstr ""
 
+#: Game.Levels.Finale.L10_FinsuppIntegration
+msgid "Support Bounding via Calc"
+msgstr ""
+
 #: Game.Levels.Finsupp
 msgid "Finsupp"
 msgstr ""
@@ -12209,6 +12646,39 @@ msgstr ""
 msgid "§0 can rearrange algebra, but not big-operator\n"
 "expressions. First use §1 to\n"
 "eliminate the big operator, then §2 to close."
+msgstr ""
+
+#. §0: $s \\times^s s$
+#. §1: $s$
+#. §2: $s.\\text{diag}$
+#. §3: $(a, a)$
+#. §4: $s.\\text{offDiag}$
+#. §5: $(a, b)$
+#. §6: $a \\ne b$
+#. §7: `Finset.diag_union_offDiag s`
+#. §8: $s.\\text{diag} \\cup s.\\text{offDiag} = s \\times^s s$
+#. §9: `Finset.disjoint_diag_offDiag s`
+#. §10: `Finset.diag_card s`
+#. §11: $|s.\\text{diag}| = |s|$
+#. §12: `card_union_of_disjoint`
+#. §13: `card_product`
+#: Game.Levels.Finale.L03_DiagonalDecomposition
+msgid "# Counting Pairs by Decomposition\n"
+"\n"
+"The self-product §0 contains all ordered pairs from §1.\n"
+"These pairs split into two groups:\n"
+"\n"
+"- **Diagonal** §2: pairs §3 where both components\n"
+"  are the same element\n"
+"- **Off-diagonal** §4: pairs §5 where §6\n"
+"\n"
+"From the Products world, you know:\n"
+"- §7 : §8\n"
+"- §9 : the two groups are disjoint\n"
+"- §10 : §11\n"
+"\n"
+"Combine these with §12 and §13\n"
+"to prove the decomposition identity."
 msgstr ""
 
 #. §0: `Finset.range 5 = {0, 1, 2, 3, 4}`
@@ -12879,6 +13349,39 @@ msgstr ""
 msgid "Prove §0 by peeling inserts with §1."
 msgstr ""
 
+#. §0: $n$
+#. §1: $\\text{tr}(M) = \\sum_i M_{ii}$
+#. §2: `diagonal (fun _ => 1)`
+#. §3: $n$
+#. §4: `diag_apply`
+#. §5: `diagonal_apply_eq`
+#. §6: `sum_congr rfl`
+#. §7: `sum of 1s over Fin n`
+#. §8: $n$
+#. §9: `sum_const`
+#. §10: `card_univ`
+#. §11: `card_fin`
+#: Game.Levels.Finale.L12_MatrixIntegration
+msgid "# The Identity Matrix Has Trace §0\n"
+"\n"
+"The **trace** of a square matrix is the sum of its diagonal\n"
+"entries: §1.\n"
+"\n"
+"The identity matrix §2 has 1 on every\n"
+"diagonal entry and 0 elsewhere. Its trace should be §3 —\n"
+"the number of 1s along the diagonal.\n"
+"\n"
+"Prove this by combining matrix API (from the Matrices world)\n"
+"with cardinality and big operator tools.\n"
+"\n"
+"**The proof plan**:\n"
+"1. Show each summand equals 1 using §4 and\n"
+"   §5\n"
+"2. Use §6 to rewrite the sum\n"
+"3. Compute §7 = §8 using §9,\n"
+"   §10, §11"
+msgstr ""
+
 #. §0: `length`
 #. §1: `toFinset.card`
 #. §2: `insert_eq_of_mem`
@@ -13338,6 +13841,20 @@ msgstr ""
 #: Game.Levels.PsetCounting.L04_LeagueDivisions
 #: Game.Levels.PsetCounting.L07_ChainedBounds
 #: Game.Levels.PsetCounting.L08_Boss
+#: Game.Levels.Finale.L03_DiagonalDecomposition
+#: Game.Levels.Finale.L04_FiberTemplate
+#: Game.Levels.Finale.L04_FiberTemplate
+#: Game.Levels.Finale.L05_QuantitativePigeonhole
+#: Game.Levels.Finale.L05_QuantitativePigeonhole
+#: Game.Levels.Finale.L05_QuantitativePigeonhole
+#: Game.Levels.Finale.L05_QuantitativePigeonhole
+#: Game.Levels.Finale.L06_NonInjectivity
+#: Game.Levels.Finale.L06_NonInjectivity
+#: Game.Levels.Finale.L06_NonInjectivity
+#: Game.Levels.Finale.L06_NonInjectivity
+#: Game.Levels.Finale.L08_SubsetEquality
+#: Game.Levels.Finale.L08_SubsetEquality
+#: Game.Levels.Finale.L14_Boss
 msgid "Try\n"
 "§0."
 msgstr ""
@@ -14035,6 +14552,48 @@ msgid "§0 turns abstract range cardinalities into concrete\n"
 "the world."
 msgstr ""
 
+#. §0: $A \\subseteq B$
+#. §1: $|A| \\ge |B|$
+#. §2: $A = B$
+#. §3: `card_image_of_injective`
+#. §4: $|f(\\text{univ})| = n$
+#. §5: `subset_univ`
+#. §6: $f(\\text{univ}) \\subseteq \\text{univ}$
+#. §7: `eq_of_subset_of_card_le`
+#. §8: $f(\\text{univ}) = \\text{univ}$
+#. §9: $A \\subseteq B$
+#. §10: $|A| \\ge |B|$
+#. §11: $A = B$
+#. §12: `Fin n`
+#. §13: `image f univ = univ`
+#: Game.Levels.Finale.L08_SubsetEquality
+msgid "**Subset equality**: if §0 and §1,\n"
+"then §2.\n"
+"\n"
+"| Step | Tool | Result |\n"
+"|------|------|--------|\n"
+"| 1 | §3 | §4 |\n"
+"| 2 | §5 | §6 |\n"
+"| 3 | §7 | §8 |\n"
+"\n"
+"This is the **cardinality sandwich** — the equality direction of\n"
+"cardinality reasoning: if §9 and §10,\n"
+"then §11. The subset provides one inequality, the cardinality\n"
+"bound provides the other, and equality is 'sandwiched' between\n"
+"them.\n"
+"\n"
+"In Levels 5 and 6, you used cardinality to derive contradictions\n"
+"(the pigeonhole direction). Here you derived a positive result:\n"
+"because the image has exactly the right number of elements, it\n"
+"must be the entire codomain.\n"
+"\n"
+"**Why this matters for the boss**: The boss proves that an\n"
+"injective endofunction on §12 is surjective. The crucial\n"
+"step is exactly this — the cardinality sandwich showing\n"
+"§13. You just practiced that step in\n"
+"isolation."
+msgstr ""
+
 #. §0: `one_pow, one_pow, one_mul, one_mul`
 #. §1: `rw [one_pow, one_pow, one_mul, one_mul]`
 #. §2: `x = 1`
@@ -14066,6 +14625,10 @@ msgid "Four rewrites: §0.\n"
 "- §12 — removes a trailing §13\n"
 "\n"
 "You will use §14 in Level 9 when the trailing factor is §15."
+msgstr ""
+
+#: Game.Levels.Finale.L09_DoubleCounting
+msgid "Three-Part Decomposition"
 msgstr ""
 
 #. §0: `descFactorial_self`
@@ -14255,6 +14818,11 @@ msgid "The witness §0 is supposedly in §1.\n"
 "Use §2 to split."
 msgstr ""
 
+#: Game.Levels.Finale.L01_InductionIdentity
+msgid "**Inductive step**: Peel the last term from the sum,\n"
+"distribute the 3, and substitute the IH."
+msgstr ""
+
 #. §0: `ha : a ∈ s ∪ t`
 #. §1: `rw [Finset.mem_union] at ha`
 #. §2: `a ∈ s ∨ a ∈ t`
@@ -14394,6 +14962,10 @@ msgstr ""
 #: Game.Levels.CountingTechniques.L01_BijectiveCounting
 msgid "Now the goal is §0. You have this\n"
 "as hypothesis §1."
+msgstr ""
+
+#: Game.Levels.Finale.L11_FinsetInductionIntegration
+msgid "Sum Distributes Over Addition"
 msgstr ""
 
 #. §0: $n^2 = 25$
@@ -15565,6 +16137,15 @@ msgid "§0 says that creating a single with value zero\n"
 "is the zero *function* (in §10)."
 msgstr ""
 
+#. §0: `univ`
+#. §1: `image f univ`
+#. §2: `n`
+#. §3: `|univ| <= |image f univ|`
+#: Game.Levels.Finale.L14_Boss
+msgid "Both §0 and §1 have §2 elements. Prove\n"
+"the cardinality bound §3."
+msgstr ""
+
 #. §0: `Finset.card_powersetCard`
 #. §1: `s.card`
 #. §2: `n`
@@ -15764,6 +16345,18 @@ msgstr ""
 msgid "Use §0 to rewrite the summand.\n"
 "Here §1 says the finset doesn't change, and §2 says each\n"
 "§3 becomes §4."
+msgstr ""
+
+#. §0: `Nat.mod_lt a (h : 0 < n)`
+#. §1: `a % n < n`
+#. §2: `n`
+#. §3: `n`
+#. §4: `n > 0`
+#: Game.Levels.CountingTechniques.L14_ConcreteDoubleCounting
+msgid "§0 proves §1.\n"
+"\n"
+"Every natural number's remainder when divided by §2 is strictly\n"
+"less than §3 (provided §4)."
 msgstr ""
 
 #. §0: `rw [Finset.sum_const]`
@@ -16032,6 +16625,15 @@ msgid "§0 is the workhorse of concrete sum computation.\n"
 "made precise in a later level."
 msgstr ""
 
+#. §0: `Finite.surjective_of_injective`
+#. §1: `f : α → α`
+#: Game.Metadata
+msgid "§0 states that for §1\n"
+"on a finite type, injectivity implies surjectivity.\n"
+"\n"
+"Disabled in the boss level where the learner proves this from scratch."
+msgstr ""
+
 #. §0: $$\\binom{n+1}{k+1} = \\binom{n}{k} + \\binom{n}{k+1}$$
 #. §1: $$\\binom{n}{k} + \\binom{n}{k+1} + \\binom{n+1}{k+2} = \\binom{n+2}{k+2}$$
 #. §2: `← Nat.choose_succ_succ`
@@ -16067,6 +16669,11 @@ msgid "Introduce the first sum:\n"
 "§0\n"
 "then §1\n"
 "then §2."
+msgstr ""
+
+#: Game.Levels.Finale.L05_QuantitativePigeonhole
+msgid "Set up the fiber template from Level 4. Start with the\n"
+"membership proof."
 msgstr ""
 
 #. §0: `∑ p ∈ antidiagonal n, choose n p.1 ^ 2 =
@@ -16352,6 +16959,15 @@ msgid "Expand §0 into its Vandermonde sum using\n"
 "§2."
 msgstr ""
 
+#. §0: `f a = f b`
+#. §1: `a = b`
+#. §2: `a`
+#. §3: `b`
+#: Game.Levels.Finale.L15_InfiniteCounterexample
+msgid "Prove injectivity: if §0, then §1.\n"
+"Introduce §2, §3, and the equality hypothesis."
+msgstr ""
+
 #. §0: `v = 0`
 #. §1: `i = 0`
 #. §2: `h`
@@ -16625,6 +17241,10 @@ msgstr ""
 msgid "Try §0\n"
 "to add the equation to your context. Then use §1 to combine\n"
 "it with §2."
+msgstr ""
+
+#: Game.Levels.Finale.L12_MatrixIntegration
+msgid "Trace of the Identity"
 msgstr ""
 
 #. §0: `Finset.prod s f`
@@ -17290,6 +17910,10 @@ msgstr ""
 msgid "Permutations Give Equal Finsets"
 msgstr ""
 
+#: Game.Levels.Finale.L08_SubsetEquality
+msgid "Subset Equality"
+msgstr ""
+
 #. §0: `constructor`
 #: Game.Levels.MeetFin.L23_Boss
 msgid "The goal is a conjunction. Use §0 to split it\n"
@@ -17365,6 +17989,13 @@ msgid "# The Ladder in Action: Descending to Prove a Finset Fact\n"
 "The insight: finset cardinality is hard to compute directly, but list\n"
 "length is easy. The §5 bridge lets you work\n"
 "where the tools are strongest."
+msgstr ""
+
+#. §0: `calc`
+#. §1: `|support(f+g)| <= |support(f) ∪ support(g)| <= |support(f)| + |support(g)|`
+#: Game.Levels.Finale.L10_FinsuppIntegration
+msgid "Use a §0 chain to express this as two inequalities:\n"
+"§1."
 msgstr ""
 
 #. §0: `hs : x ∈ s`
@@ -17579,6 +18210,10 @@ msgstr ""
 msgid "First, simplify the single-term sum.\n"
 "Use §0 to peel, §1 to clear,\n"
 "and §2 to simplify."
+msgstr ""
+
+#: Game.Levels.Finale.L13_SurjectiveImpliesInjective
+msgid "Surjective Implies Injective"
 msgstr ""
 
 #. §0: `intro h`
@@ -18007,12 +18642,26 @@ msgstr ""
 msgid "Symmetric Does Not Mean Diagonal"
 msgstr ""
 
+#. §0: `Matrix.diag_diagonal`
+#. §1: `diag (diagonal d) = d`
+#. §2: `diag_apply`
+#. §3: `diagonal_apply_eq`
+#: Game.Levels.Finale.L12_MatrixIntegration
+msgid "§0 proves §1 directly.\n"
+"Disabled so you work through §2 and §3\n"
+"step by step."
+msgstr ""
+
 #. §0: `≠`
 #. §1: `= → False`
 #. §2: `intro h`
 #: Game.Levels.MeetFin.L21_ProvingInequality
 msgid "Remember, §0 means §1. Start with §2\n"
 "to assume they are equal."
+msgstr ""
+
+#: Game.Levels.Finale.L15_InfiniteCounterexample
+msgid "Split the conjunction into two goals."
 msgstr ""
 
 #. §0: `constructor`
@@ -18263,6 +18912,12 @@ msgstr ""
 #: Game.Levels.PsetCardinality.L02_SubsetBound
 msgid "Good. Now bound |u| using monotonicity: since §0,\n"
 "we have §1."
+msgstr ""
+
+#. §0: `Finset.univ`
+#: Game.Levels.Finale.L08_SubsetEquality
+#: Game.Levels.Finale.L14_Boss
+msgid "The image sits inside §0."
 msgstr ""
 
 #: Game.Levels.PsetCardinality.L10_InjectionCounting
@@ -18532,6 +19187,13 @@ msgstr ""
 msgid "Two permuted lists give the same multiset."
 msgstr ""
 
+#. §0: `hfib`
+#. §1: `n + 1 = sum of fiber sizes`
+#: Game.Levels.Finale.L04_FiberTemplate
+msgid "Now §0 says §1. The goal\n"
+"is the reverse equation."
+msgstr ""
+
 #. §0: $$2 \\cdot \\binom{n+2}{2} = (n+1)(n+2)$$
 #. §1: `induction n with`
 #. §2: `Nat.choose_self`
@@ -18607,6 +19269,10 @@ msgstr ""
 msgid "The goal is §0. Use\n"
 "§1 to convert to a conjunction, then\n"
 "§2 to split."
+msgstr ""
+
+#: Game.Levels.Finale.L16_EquivalenceBiconditional
+msgid "An injective endofunction with full image is bijective."
 msgstr ""
 
 #: Game.Levels.MeetFin.L18_CaseAnalysisPractice
@@ -18775,6 +19441,13 @@ msgid "# Boundary Cases: What Happens at the Extremes?\n"
 "(the only element), then derive §10."
 msgstr ""
 
+#. §0: `diag (diagonal (fun _ => 1)) i`
+#. §1: `sum_congr rfl`
+#: Game.Levels.Finale.L12_MatrixIntegration
+msgid "Each summand is §0. Use\n"
+"§1 with a helper to show each summand equals 1."
+msgstr ""
+
 #. §0: `Finset.mem_product`
 #. §1: `p ∈ s ×ˢ t`
 #. §2: `p.1 ∈ s`
@@ -18849,6 +19522,12 @@ msgid "§0 solves linear arithmetic goals over natural numbers\n"
 "## When to use it\n"
 "When the goal is a linear arithmetic statement like\n"
 "§1 or §2."
+msgstr ""
+
+#. §0: `g x = g y`
+#. §1: `x = y`
+#: Game.Levels.Finale.L07_ConcretePigeonhole
+msgid "To prove injectivity, assume §0 and show §1."
 msgstr ""
 
 #: Game.Levels.Powerset.L10_ComplementCard
@@ -19736,6 +20415,10 @@ msgstr ""
 msgid "Boss: Algebraic Manipulation"
 msgstr ""
 
+#: Game.Levels.Finale.L06_NonInjectivity
+msgid "Non-Injectivity via Image"
+msgstr ""
+
 #: Game.Levels.FinsetImage.L16_ProvingInjectivity
 msgid "Proving Injectivity"
 msgstr ""
@@ -19924,6 +20607,10 @@ msgstr ""
 #: Game.Levels.CountingTechniques.L19_Boss
 msgid "Combine the two bounds with §0 to get\n"
 "§1."
+msgstr ""
+
+#: Game.Levels.Finale.L01_InductionIdentity
+msgid "The sum of i*(i+1) for i = 0 to n has a closed form."
 msgstr ""
 
 #. §0: `members.card`
@@ -20198,6 +20885,13 @@ msgid "Prove 20 is not in the singleton containing 30:\n"
 "Then §1."
 msgstr ""
 
+#. §0: `univ.card <= (image f univ).card`
+#. §1: `n`
+#: Game.Levels.Finale.L08_SubsetEquality
+msgid "Show §0. Both sides\n"
+"equal §1 — simplify and close."
+msgstr ""
+
 #. §0: `rw [h]`
 #. §1: `h`
 #. §2: ```
@@ -20319,6 +21013,18 @@ msgstr ""
 msgid "§0 gives §1, so §2.\n"
 "§3 gives §4.\n"
 "§5 combines them."
+msgstr ""
+
+#. §0: `hxy : g x = g y`
+#. §1: `g`
+#. §2: `Fin n`
+#. §3: `x ≠ y`
+#. §4: `False`
+#. §5: `hall`
+#: Game.Levels.Finale.L07_ConcretePigeonhole
+msgid "You have §0. Since §1 wraps values in §2,\n"
+"this means the underlying remainders are equal. Use contradiction:\n"
+"assume §3 and derive §4 from §5."
 msgstr ""
 
 #: Game.Levels.PsetFin.L04_AntisymmetricEquality
@@ -20873,6 +21579,13 @@ msgstr ""
 #: Game.Levels.Products.L04_ProductSubset
 msgid "To prove §0, introduce an element\n"
 "and its membership hypothesis."
+msgstr ""
+
+#. §0: `Finite.injective_of_surjective`
+#: Game.Levels.Finale.L13_SurjectiveImpliesInjective
+msgid "§0 proves that a surjective function\n"
+"from a finite type to itself is injective. Disabled so you prove it\n"
+"yourself using image cardinality reasoning."
 msgstr ""
 
 #. §0: `Fin`
@@ -22025,6 +22738,15 @@ msgid "You have §0. Then\n"
 "Use §4."
 msgstr ""
 
+#. §0: `Finset.offDiag_card`
+#. §1: `s.offDiag.card = s.card * (s.card - 1)`
+#: Game.Levels.Finale.L03_DiagonalDecomposition
+msgid "§0 computes the number of off-diagonal pairs:\n"
+"§1.\n"
+"\n"
+"Disabled here so you derive the relationship from the decomposition."
+msgstr ""
+
 #. §0: `Finset.filter p s`
 #. §1: `s`
 #. §2: `p`
@@ -22194,6 +22916,10 @@ msgstr ""
 
 #: Game.Levels.BigOpAlgebra.L05_SumCongrRetrieval
 msgid "Recognizing Constant Functions"
+msgstr ""
+
+#: Game.Levels.Finale.L13_SurjectiveImpliesInjective
+msgid "A surjective endofunction on Fin n is injective."
 msgstr ""
 
 #. §0: `h`
@@ -22968,6 +23694,12 @@ msgid "**Base case**: The sum over §0 is empty.\n"
 "Use §1 to rewrite."
 msgstr ""
 
+#. §0: `Finset.card_image_iff`
+#: Game.Levels.Finale.L13_SurjectiveImpliesInjective
+msgid "Use §0 to convert the cardinality\n"
+"equality into injectivity on the source set."
+msgstr ""
+
 #. §0: `Finset.card_union_of_disjoint h`
 #. §1: `omega`
 #: Game.Levels.Cardinality.L15_DisjointUnion
@@ -23075,6 +23807,20 @@ msgstr ""
 #: Game.Levels.SummationFormulas.L09_ProductBasics
 msgid "**Base case**: The product over §0 is §1.\n"
 "Use §2 and close with §3."
+msgstr ""
+
+#. §0: `sum_range_succ`
+#. §1: `mul_add`
+#. §2: `ih`
+#. §3: `3 * (sum) = n*(n+1)*(n+2)`
+#. §4: `ring`
+#: Game.Levels.Finale.L01_InductionIdentity
+msgid "After peeling and substituting:\n"
+"- §0 extracted the last term\n"
+"- §1 distributed the 3 across the sum\n"
+"- §2 substituted §3\n"
+"\n"
+"The remaining goal is polynomial arithmetic. Close with §4."
 msgstr ""
 
 #. §0: $$f \\text{ injective} \\implies |f(S)| = |S|$$
@@ -23493,6 +24239,10 @@ msgstr ""
 msgid "Boss: Functions vs. Injections"
 msgstr ""
 
+#: Game.Levels.BinomialTheorem.L06_FlippingEquations
+msgid "Flipping an Equation"
+msgstr ""
+
 #. §0: `insert`
 #. §1: `Finset.mem_insert`
 #. §2: `rw [Finset.mem_insert]`
@@ -23515,10 +24265,6 @@ msgid "You just proved set membership by **peeling off** the outermost\n"
 "Since §8 was the *first* element inserted, one peel was enough.\n"
 "What if the element you're looking for is deeper in the set?\n"
 "That's the next level."
-msgstr ""
-
-#: Game.Levels.BinomialTheorem.L06_FlippingEquations
-msgid "Flipping an Equation"
 msgstr ""
 
 #. §0: `obtain ⟨x, hx, hfx⟩ := h`
@@ -23635,6 +24381,7 @@ msgstr ""
 
 #. §0: `n`
 #: Game.Levels.SummationFormulas.L02_GaussSum
+#: Game.Levels.Finale.L01_InductionIdentity
 msgid "Induct on §0 using natural number induction."
 msgstr ""
 
@@ -23649,6 +24396,23 @@ msgstr ""
 
 #: Game.Levels.BigOpIntro.L07_ProdTwoElement
 msgid "Unfolding a two-element product with an abstract function."
+msgstr ""
+
+#. §0: `h_card`
+#. §1: `(diag ∪ offDiag).card = diag.card + offDiag.card`
+#. §2: `diag_union_offDiag`
+#. §3: `(s ×ˢ s).card`
+#: Game.Levels.Finale.L03_DiagonalDecomposition
+msgid "Now §0 says §1.\n"
+"Rewrite the left side using §2 to get §3."
+msgstr ""
+
+#. §0: `|univ| <= |image f univ|`
+#. §1: `f`
+#. §2: `card_le_card`
+#: Game.Levels.Finale.L13_SurjectiveImpliesInjective
+msgid "Show §0. Since §1 is surjective,\n"
+"every element has a preimage in the image. Use §2."
 msgstr ""
 
 #. §0: `l.toFinset.card + 1 = 5`
@@ -23677,6 +24441,15 @@ msgstr ""
 #: Game.Levels.Fintype.L08_SubtypeCounting
 msgid "Use §0 to apply the complement\n"
 "counting formula. This rewrites §1 into §2."
+msgstr ""
+
+#. §0: `Finset.sum_add_distrib`
+#. §1: `∑ i in s, (f i + g i) = ∑ i in s, f i + ∑ i in s, g i`
+#: Game.Levels.Finale.L11_FinsetInductionIntegration
+msgid "§0 proves that summation distributes over\n"
+"addition: §1.\n"
+"\n"
+"Disabled so you prove it by finset induction."
 msgstr ""
 
 #. §0: `hfib : n = sum ...`
@@ -23760,6 +24533,18 @@ msgid "§0 is the additive decomposition for list length.\n"
 "**Why this matters for the ladder**: When we quotient lists to get\n"
 "multisets, this length fact becomes §5. The\n"
 "arithmetic is preserved even though the ordering is forgotten."
+msgstr ""
+
+#. §0: `y`
+#. §1: `univ`
+#. §2: `y`
+#. §3: `image f univ`
+#. §4: `y`
+#. §5: `mem_image`
+#: Game.Levels.Finale.L13_SurjectiveImpliesInjective
+msgid "For each §0 in §1, show §2 is in §3.\n"
+"Introduce §4, rewrite with §5, then use surjectivity\n"
+"to find a preimage."
 msgstr ""
 
 #. §0: `have h := i.isLt`
@@ -24760,6 +25545,14 @@ msgstr ""
 msgid "A function §0 that maps 0 to 10, 1 to 20, and 2 to 30."
 msgstr ""
 
+#. §0: `f`
+#. §1: `ℕ`
+#: Game.Levels.Finale.L15_InfiniteCounterexample
+msgid "Prove non-surjectivity: assume §0 is surjective and\n"
+"derive a contradiction. Which element of §1 has no preimage\n"
+"under the successor function?"
+msgstr ""
+
 #. §0: `rw [Matrix.transpose_apply]`
 #. §1: `rw [Matrix.add_apply]`
 #. §2: `rw [Matrix.add_apply]`
@@ -25253,6 +26046,11 @@ msgstr ""
 msgid "Splitting by Disjoint Union"
 msgstr ""
 
+#. §0: `hf`
+#: Game.Levels.Finale.L16_EquivalenceBiconditional
+msgid "The injective half is immediate from §0."
+msgstr ""
+
 #: Game.Levels.Cardinality.L05_CardEqZero
 msgid "Zero Cardinality Means Empty"
 msgstr ""
@@ -25594,6 +26392,11 @@ msgstr ""
 
 #: Game.Levels.MeetFin.L08_TransferringBounds
 msgid "Transfer a bound through a Fin equality by direct rewriting."
+msgstr ""
+
+#. §0: `y`
+#: Game.Levels.Finale.L16_EquivalenceBiconditional
+msgid "For surjectivity: introduce the target element §0."
 msgstr ""
 
 #. §0: `intro h`
@@ -26046,10 +26849,27 @@ msgstr ""
 msgid "Any function from Fin 3 to Fin 2 has a collision."
 msgstr ""
 
+#. §0: `hall`
+#. §1: `n * 1 = n`
+#: Game.Levels.Finale.L05_QuantitativePigeonhole
+msgid "Bound the sum using §0: each fiber has size at most 1,\n"
+"so the sum is at most §1."
+msgstr ""
+
+#. §0: `Finset.mem_image`
+#: Game.Levels.Finale.L14_Boss
+msgid "Rewrite using §0 to expose the existential,\n"
+"then extract the witness."
+msgstr ""
+
 #. §0: `ext x`
 #: Game.Levels.FinsetOperations.L23_Distributivity
 msgid "Start with §0 to convert the set equality into an\n"
 "element-wise biconditional."
+msgstr ""
+
+#: Game.Levels.Finale.L12_MatrixIntegration
+msgid "The trace of the identity matrix is n."
 msgstr ""
 
 #. §0: `Finset.card_empty`
@@ -26584,6 +27404,38 @@ msgid "One step: §0.\n"
 "out the simplification steps manually using §7."
 msgstr ""
 
+#. §0: `card_eq_sum_card_fiberwise`
+#. §1: `sum_le_sum`
+#. §2: `card_image_of_injective`
+#. §3: `card_le_card`
+#. §4: `n`
+#: Game.Levels.Finale.L06_NonInjectivity
+msgid "**Two roads to pigeonhole**:\n"
+"\n"
+"| Approach | Key tools | Phase |\n"
+"|----------|-----------|-------|\n"
+"| Fiber decomposition (L5) | §0, §1 | Phase 7 + 4 |\n"
+"| Image cardinality (L6) | §2, §3 | Phase 2 + 3 |\n"
+"\n"
+"Both prove the same underlying fact — that a function from a\n"
+"larger finite type to a smaller one cannot be injective — but\n"
+"they use completely different tools.\n"
+"\n"
+"The **fiber approach** works by decomposing the domain into\n"
+"fibers and bounding their sizes. The **image approach** works\n"
+"by comparing the image size to the codomain size.\n"
+"\n"
+"**Connection to the Cardinality world**: You first saw the\n"
+"image-based approach in the Cardinality world for specific\n"
+"small types. Here you proved it for all §4, confirming\n"
+"that the technique generalizes.\n"
+"\n"
+"**When to use which**: The fiber approach gives quantitative\n"
+"information (which bin is large). The image approach is more\n"
+"direct when you only need non-injectivity. Both are\n"
+"fundamental tools in combinatorics."
+msgstr ""
+
 #. §0: `have h3 : Fintype.card α = 4 := by`
 #. §1: `rw`
 #: Game.Levels.PsetCardinality.L11_Boss
@@ -26998,6 +27850,12 @@ msgid "# Transposing a Matrix\n"
 "**Your task**: Given that §13, read the entry §14."
 msgstr ""
 
+#. §0: `omega`
+#: Game.Levels.Finale.L09_DoubleCounting
+msgid "All the pieces are in place. §0 can close the\n"
+"goal from the three arithmetic identities."
+msgstr ""
+
 #. §0: `Finset.sum_insert ha`
 #. §1: `Finset.card_insert_of_notMem ha`
 #. §2: `ih`
@@ -27024,6 +27882,44 @@ msgid "§0 closes the goal if §1 has exactly the type of the goal.\n"
 "## When to use it\n"
 "When you have a term (variable, function application, constructor)\n"
 "whose type matches the goal exactly."
+msgstr ""
+
+#. §0: `eq_of_subset_of_card_le`
+#. §1: $A \\subseteq B$
+#. §2: $|A| \\ge |B|$
+#. §3: $A = B$
+#. §4: `Finset.eq_of_subset_of_card_le`
+#. §5: `Fin 5`
+#. §6: `n`
+#. §7: $|\\text{image}\\,f\\,\\text{univ}| = n$
+#. §8: $\\text{image}\\,f\\,\\text{univ} \\subseteq \\text{univ}$
+#. §9: `eq_of_subset_of_card_le`
+#: Game.Levels.Finale.L08_SubsetEquality
+msgid "# When a Subset Is the Whole Set\n"
+"\n"
+"Levels 5 and 6 used cardinality reasoning to derive\n"
+"**contradictions** — the image is too large, or the sum of\n"
+"fibers is too large.\n"
+"\n"
+"Now you will use the same cardinality tools in the opposite\n"
+"direction: to derive **equality**. This is the **cardinality\n"
+"sandwich** — a proof pattern you will use twice more (in the\n"
+"boss and in the surjective-implies-injective level). Watch for\n"
+"the three-step shape: compute image size, note subset, apply\n"
+"§0.\n"
+"\n"
+"**The principle**: if §1 and §2, then\n"
+"§3. A subset that is at least as large as the whole set\n"
+"must BE the whole set.\n"
+"\n"
+"This is §4 from the Cardinality\n"
+"world. In Cardinality Level 24, you used it for §5. Now\n"
+"prove it works for all §6.\n"
+"\n"
+"**The proof plan** (same pattern as Cardinality L24):\n"
+"1. Compute §7 using injectivity\n"
+"2. Note §8\n"
+"3. Apply §9: subset + same size = equality"
 msgstr ""
 
 #. §0: `rw [Fintype.card_congr e]`
@@ -27999,6 +28895,68 @@ msgstr ""
 #: Game.Levels.Cardinality.L25_SurjectiveImpliesInjective
 msgid "Now prove §0: for every §1,\n"
 "show §2. Surjectivity gives a witness."
+msgstr ""
+
+#. §0: `by_contra`
+#. §1: `push_neg`
+#. §2: `card_eq_sum_card_fiberwise`
+#. §3: $n + 1 = \\sum |\\text{fiber}_j|$
+#. §4: `sum_le_sum`
+#. §5: `sum_const`
+#. §6: $\\sum |\\text{fiber}_j| \\le n$
+#. §7: `omega`
+#. §8: $n + 1 \\le n$
+#. §9: $n + 1$
+#. §10: $n$
+#. §11: `by_contra`
+#. §12: `push_neg`
+#. §13: $\\sum x_j = N$
+#. §14: $x_j \\le k$
+#. §15: $\\sum x_j \\le k \\cdot (\\text{number of terms})$
+#. §16: $N > k \\cdot (\\text{number of terms})$
+#: Game.Levels.Finale.L05_QuantitativePigeonhole
+msgid "**The contrapositive of the fiber template**:\n"
+"\n"
+"| Step | Tool | Result |\n"
+"|------|------|--------|\n"
+"| 1 | §0 + §1 | Assume all fibers have size at most 1 |\n"
+"| 2 | §2 | §3 |\n"
+"| 3 | §4 + §5 | §6 |\n"
+"| 4 | §7 | §8 is absurd |\n"
+"\n"
+"This is the **quantitative pigeonhole principle**: §9 items\n"
+"in §10 bins forces at least one bin to have more than 1 item.\n"
+"\n"
+"**The contrapositive setup** (§11 + §12): this\n"
+"two-tactic opening converts 'there exists X' into 'for all,\n"
+"not-X.' It is a reusable proof pattern whenever you want to\n"
+"derive a contradiction from an existence goal. You will see\n"
+"it again in Levels 7 and 8.\n"
+"\n"
+"**Connection to Level 4**: Level 4 proved the fiber template\n"
+"(sum of fiber sizes = total). This level takes the\n"
+"contrapositive: if the total exceeds what's possible with small\n"
+"fibers, some fiber must be large. The two levels are logically\n"
+"equivalent — they are the same fact viewed from opposite\n"
+"directions.\n"
+"\n"
+"**In plain mathematics**: if you have more pigeons than holes,\n"
+"at least one hole contains two or more pigeons. The formal\n"
+"proof replaces the hand-waving with: decompose into fibers,\n"
+"bound each fiber, sum the bounds, observe the contradiction.\n"
+"\n"
+"**The reusable pattern**: This proof uses the **sum identity +\n"
+"per-term bound** template:\n"
+"1. Establish a sum identity: §13\n"
+"2. Assume a per-term bound: each §14\n"
+"3. Sum the bounds: §15\n"
+"4. Contradiction: §16\n"
+"\n"
+"This same template appears beyond pigeonhole — it's the\n"
+"structure behind **averaging arguments** (if the average\n"
+"exceeds a threshold, some term must exceed it) and\n"
+"**probabilistic existence proofs** (if the expected value\n"
+"of a count is positive, some instance must have a positive count)."
 msgstr ""
 
 #. §0: `by_cases h : a = 3`
@@ -29026,6 +29984,12 @@ msgstr ""
 msgid "Interchanging Double Sums"
 msgstr ""
 
+#: Game.Levels.Finale.L02_PowersetPartition
+msgid "The goal is now a well-known identity. Which lemma from\n"
+"the BinomialCoefficients world gives the row sum of Pascal's\n"
+"triangle?"
+msgstr ""
+
 #: Game.Levels.Powerset.L04_SubsetImpliesMember
 msgid "Subsets Live in the Powerset"
 msgstr ""
@@ -29891,6 +30855,8 @@ msgstr ""
 #: Game.Levels.FinsetInduction.L09_Boss
 #: Game.Levels.SummationFormulas.L11_Factorial
 #: Game.Levels.PsetCounting.L05_CategorySizes
+#: Game.Levels.Finale.L01_InductionIdentity
+#: Game.Levels.Finale.L01_InductionIdentity
 msgid "Try\n"
 "§0\n"
 "then §1."
@@ -29930,6 +30896,16 @@ msgstr ""
 
 #: Game.Levels.PsetFinset.L04_UnionSubset
 msgid "Union and Intersection Subset"
+msgstr ""
+
+#. §0: `h_card`
+#. §1: `(s ×ˢ s).card = s.card + s.offDiag.card`
+#. §2: `h_prod`
+#. §3: `(s ×ˢ s).card = s.card * s.card`
+#. §4: `omega`
+#: Game.Levels.Finale.L03_DiagonalDecomposition
+msgid "Now §0 says §1 and\n"
+"§2 says §3. Combine with §4."
 msgstr ""
 
 #. §0: `(diagonal d)ᵀ 1 2 = 0`
@@ -30084,6 +31060,10 @@ msgid "Use §0. Then §1 and\n"
 "the whole goal is false, then show both must hold — contradiction."
 msgstr ""
 
+#: Game.Levels.Finale.L10_FinsuppIntegration
+msgid "The support of a sum is bounded by the sum of supports."
+msgstr ""
+
 #: Game.Levels.CountingTechniques.L09_PigeonholeApplication
 msgid "Pigeonhole: Finding a Collision"
 msgstr ""
@@ -30167,23 +31147,10 @@ msgid "# Chaining Permutations with Trans\n"
 "with §11."
 msgstr ""
 
-#. §0: `subset_univ`
-#. §1: `card_le_card`
-#. §2: `card_univ`
-#. §3: `card_fin`
-#. §4: `n`
-#. §5: `Fin n`
-#. §6: `n`
-#: Game.Levels.Cardinality.L20_SubsetUniv
-msgid "You composed three tools:\n"
-"1. §0 — every finset is a subset of the universe\n"
-"2. §1 — subsets have smaller cardinality\n"
-"3. §2 + §3 — the universe has §4 elements\n"
-"\n"
-"This gives the fundamental upper bound: no finset of §5 elements\n"
-"can have more than §6 elements. This may seem obvious, but it's the\n"
-"key ingredient for the next level: proving the pigeonhole principle\n"
-"via cardinality."
+#. §0: `hfib`
+#. §1: `n + 1 = sum of fiber sizes`
+#: Game.Levels.Finale.L05_QuantitativePigeonhole
+msgid "Simplify §0 to get §1."
 msgstr ""
 
 #. §0: `exact h.symm`
@@ -30204,6 +31171,25 @@ msgid "One step: §0.\n"
 "specialize-simplify-rewrite method produces an equation §5,\n"
 "but the goal often has §6. The final step is always\n"
 "§7."
+msgstr ""
+
+#. §0: `subset_univ`
+#. §1: `card_le_card`
+#. §2: `card_univ`
+#. §3: `card_fin`
+#. §4: `n`
+#. §5: `Fin n`
+#. §6: `n`
+#: Game.Levels.Cardinality.L20_SubsetUniv
+msgid "You composed three tools:\n"
+"1. §0 — every finset is a subset of the universe\n"
+"2. §1 — subsets have smaller cardinality\n"
+"3. §2 + §3 — the universe has §4 elements\n"
+"\n"
+"This gives the fundamental upper bound: no finset of §5 elements\n"
+"can have more than §6 elements. This may seem obvious, but it's the\n"
+"key ingredient for the next level: proving the pigeonhole principle\n"
+"via cardinality."
 msgstr ""
 
 #. §0: `Finset.card_lt_card h`
@@ -30264,6 +31250,16 @@ msgid "The membership proof pattern for lists is identical to finsets:\n"
 "peels), even though membership itself doesn't care about position.\n"
 "\n"
 "**Reusable recipe**: §3 then §4/§5."
+msgstr ""
+
+#. §0: `g`
+#. §1: `Finset.univ`
+#. §2: $n + 1$
+#. §3: $n$
+#: Game.Levels.Finale.L07_ConcretePigeonhole
+msgid "Now derive a contradiction: the image of §0 on §1\n"
+"has cardinality §2 (by injectivity) but sits inside a set\n"
+"of size §3."
 msgstr ""
 
 #. §0: `Nat.choose s.card s.card = 1`
@@ -30394,6 +31390,12 @@ msgstr ""
 #. §1: `ring`
 #: Game.Levels.PsetCombinatorics.L10_TwoIdentityChain
 msgid "Now apply §0 and close with §1."
+msgstr ""
+
+#. §0: `univ`
+#: Game.Levels.Finale.L13_SurjectiveImpliesInjective
+msgid "Apply the cardinality sandwich: show the image is a subset of\n"
+"§0 with at least as many elements."
 msgstr ""
 
 #. §0: `m < n`
@@ -30582,6 +31584,56 @@ msgid "The uniform fiber multiplication principle:\n"
 "So §14."
 msgstr ""
 
+#. §0: ```
+#. calc |support(f+g)|
+#.     <= |support(f) ∪ support(g)|  -- subset bound
+#.   _ <= |support(f)| + |support(g)| -- union bound
+#. ```
+#. §1: `support_add`
+#. §2: `card_le_card`
+#. §3: `|support(f+g)| <= |union|`
+#. §4: `card_union_add_card_inter`
+#. §5: `omega`
+#. §6: `|union| <= |A| + |B|`
+#. §7: `calc`
+#. §8: `have`
+#. §9: `omega`
+#. §10: `calc`
+#. §11: `<=`
+#. §12: `=`
+#. §13: `support_add`
+#. §14: `card_le_card`
+#. §15: `card_union_add_card_inter`
+#: Game.Levels.Finale.L10_FinsuppIntegration
+msgid "**Support bounding via calc**:\n"
+"\n"
+"§0\n"
+"\n"
+"| Step | Tool | Result |\n"
+"|------|------|--------|\n"
+"| 1 | §1 + §2 | §3 |\n"
+"| 2 | §4 + §5 | §6 |\n"
+"\n"
+"**Why calc**: The §7 block makes the inequality chain explicit.\n"
+"Instead of accumulating §8 hypotheses and closing with §9,\n"
+"each step states its own intermediate result. This is the same\n"
+"§10 technique you learned in the SummationFormulas world, now\n"
+"applied to §11 (not just §12).\n"
+"\n"
+"This level integrates three phases:\n"
+"- **Phase 6** (Finsupp): §13 tells you WHERE the sum\n"
+"  can be nonzero\n"
+"- **Phase 2** (Finset): the union operation combines supports\n"
+"- **Phase 3** (Cardinality): §14 and\n"
+"  §15 give the size bound\n"
+"\n"
+"The support-bounding pattern appears throughout algebra:\n"
+"- **Polynomial degree bounds**: deg(p + q) <= max(deg p, deg q)\n"
+"  follows from the same support containment\n"
+"- **Sparse linear algebra**: the number of nonzero entries in\n"
+"  a vector sum is at most the total from both vectors"
+msgstr ""
+
 #: Game.Levels.PsetBigOp.L01_ConcreteSum
 msgid "Compute the sum of f over the finset {2, 5, 8} given f's values."
 msgstr ""
@@ -30654,6 +31706,8 @@ msgstr ""
 #: Game.Levels.SummationFormulas.L14_Boss
 #: Game.Levels.PsetBigOp.L08_Boss
 #: Game.Levels.CountingTechniques.L05_SurjectionApplication
+#: Game.Levels.Finale.L10_FinsuppIntegration
+#: Game.Levels.Finale.L11_FinsetInductionIntegration
 msgid "Try:\n"
 "§0\n"
 "then §1."
@@ -31502,6 +32556,10 @@ msgid "Now §0 says §1.\n"
 "First establish §6 and rewrite."
 msgstr ""
 
+#: Game.Levels.Finale
+msgid "Finale"
+msgstr ""
+
 #. §0: $$\\sum_{x \\in \\{a\\}} f(x) = f(a)$$
 #. §1: ```
 #. Finset.sum_singleton : ∑ x ∈ {a}, f x = f a
@@ -32057,6 +33115,7 @@ msgstr ""
 #: Game.Levels.SummationFormulas.L09_ProductBasics
 #: Game.Levels.BinomialCoefficients.L12_CoachingBossPattern
 #: Game.Levels.Finsupp.L16_SupportCoaching
+#: Game.Levels.Finale.L11_FinsetInductionIntegration
 msgid "Try §0\n"
 "then §1."
 msgstr ""
@@ -32899,6 +33958,17 @@ msgstr ""
 msgid "Peel the next element."
 msgstr ""
 
+#. §0: `hne : x ≠ y`
+#. §1: `hxy : g x = g y`
+#. §2: `hall x y hne`
+#. §3: `hxy`
+#. §4: `Fin.ext_iff.mp`
+#: Game.Levels.Finale.L07_ConcretePigeonhole
+msgid "You have §0 and §1. Apply\n"
+"§2 — it says distinct indices have distinct remainders.\n"
+"Extract the remainder equality from §3 using §4."
+msgstr ""
+
 #. §0: `Multiset.toFinset m`
 #. §1: `Multiset.mem_toFinset : a ∈ m.toFinset ↔ a ∈ m`
 #: Game.Levels.AbstractionLadder.L15_MultisetToFinset
@@ -33021,6 +34091,30 @@ msgstr ""
 
 #: Game.Levels.FinsetImage.L02_ChoosingTheWitness
 msgid "25 is in the image of (n ↦ n ^ 2) applied to {2, 5, 8}."
+msgstr ""
+
+#. §0: $f : \\text{Fin}(n+1) \\to \\text{Fin}\\,n$
+#. §1: $n+1$
+#. §2: $n$
+#. §3: $j$
+#. §4: $j$
+#. §5: $$\\text{fiber}_j = \\{i \\in \\text{Fin}(n+1) \\mid f(i) = j\\}$$
+#. §6: `Finset.card_eq_sum_card_fiberwise`
+#: Game.Levels.Finale.L04_FiberTemplate
+msgid "# Fiber Decomposition on Fin Types\n"
+"\n"
+"A function §0 sorts §1\n"
+"items into §2 bins. The **fiber** of bin §3 is the set of items\n"
+"mapped to §4:\n"
+"\n"
+"§5\n"
+"\n"
+"Fiber decomposition says: **the sum of all fiber sizes equals\n"
+"the total number of items**. Prove this for the Fin-type setting.\n"
+"\n"
+"You'll need §6, which requires\n"
+"a membership proof: every element of the domain maps into the\n"
+"codomain universe."
 msgstr ""
 
 #. §0: `Fin.cons`
@@ -34207,6 +35301,15 @@ msgid "# Boss: Integrating Across All Four Worlds\n"
 "yourself."
 msgstr ""
 
+#. §0: `Finset.mem_image`
+#. §1: `x`
+#. §2: `univ`
+#. §3: `f x = y`
+#: Game.Levels.Finale.L16_EquivalenceBiconditional
+msgid "Rewrite using §0 to expose the existential:\n"
+"there exists §1 in §2 with §3. Extract the witness."
+msgstr ""
+
 #. §0: `ext y`
 #: Game.Levels.FinsetImage.L07_ImageComposition
 msgid "Use §0 to reduce the equality to element-wise membership."
@@ -34486,6 +35589,14 @@ msgid "Now rearrange so the IH's pattern §0 appears.\n"
 "You need §2 (the IH's left side) to be visible.\n"
 "Commute the addition with §3 to get\n"
 "§4, then §5 fires."
+msgstr ""
+
+#. §0: `sum_insert ha`
+#. §1: `ih`
+#. §2: `ring`
+#: Game.Levels.Finale.L11_FinsetInductionIntegration
+msgid "**Inductive step**: peel each sum using §0,\n"
+"then substitute the induction hypothesis §1 and close with §2."
 msgstr ""
 
 #. §0: `Fin.last`
@@ -34812,6 +35923,10 @@ msgstr ""
 #: Game.Levels.PsetCounting.L02_OvercrowdedMapping
 msgid "Assume injectivity with §0,\n"
 "then derive a contradiction: §1."
+msgstr ""
+
+#: Game.Levels.Finale.L02_PowersetPartition
+msgid "The sum of the sizes of k-element-subset families equals 2^n."
 msgstr ""
 
 #. §0: `cases n with | zero | succ m`
@@ -35237,6 +36352,12 @@ msgid "# Rewriting Inside a Sum\n"
 "Prove that summing subset counts over the antidiagonal gives §5:\n"
 "\n"
 "§6"
+msgstr ""
+
+#. §0: `ring`
+#: Game.Levels.Finale.L11_FinsetInductionIntegration
+msgid "The goal is now an arithmetic identity involving addition.\n"
+"Close with §0."
 msgstr ""
 
 #. §0: `f x + f x`
@@ -35898,6 +37019,18 @@ msgid "§0\n"
 "theorems on a **variable** statement."
 msgstr ""
 
+#: Game.Levels.Finale.L01_InductionIdentity
+msgid "A New Summation Formula"
+msgstr ""
+
+#. §0: `Fin (n+1)`
+#. §1: `Finset.univ`
+#. §2: `Fin n`
+#: Game.Levels.Finale.L04_FiberTemplate
+msgid "Every element of §0 maps into §1 of\n"
+"§2. Establish this membership fact."
+msgstr ""
+
 #. §0: `f`
 #. §1: `f 0 = 1`
 #. §2: `f 1 = 4`
@@ -36026,6 +37159,11 @@ msgstr ""
 
 #: Game.Levels.Products.L08_ConcreteSigmaFormula
 msgid "Sigma with Formula-Defined Fibers"
+msgstr ""
+
+#: Game.Levels.Finale.L05_QuantitativePigeonhole
+msgid "Assume for contradiction that no fiber has more than 1\n"
+"element."
 msgstr ""
 
 #. §0: `Finset.sum_nsmul`
@@ -36424,6 +37562,51 @@ msgid "# Check the Numbers\n"
 "before Lean confirms it."
 msgstr ""
 
+#. §0: `eq_of_subset_of_card_le`
+#. §1: `image f univ = univ`
+#. §2: `congr_arg card`
+#. §3: `|image| = |univ|`
+#. §4: `card_image_iff`
+#. §5: `f`
+#. §6: `univ`
+#. §7: `mem_univ`
+#. §8: `f : Fin n -> Fin n`
+#. §9: `card_image_of_injective`
+#. §10: `eq_of_subset_of_card_le`
+#. §11: `eq_of_subset_of_card_le`
+#. §12: `card_image_iff`
+#. §13: `eq_of_subset_of_card_le`
+#: Game.Levels.Finale.L13_SurjectiveImpliesInjective
+msgid "**Surjective implies injective** for finite endofunctions.\n"
+"\n"
+"| Step | Tool | Result |\n"
+"|------|------|--------|\n"
+"| 1 | §0 + surjectivity | §1 |\n"
+"| 2 | §2 | §3 |\n"
+"| 3 | §4 | §5 is injective on §6 |\n"
+"| 4 | §7 | full injectivity |\n"
+"\n"
+"**The full equivalence**: For §8:\n"
+"- **Injective -> surjective** (the boss, Level 14)\n"
+"- **Surjective -> injective** (this level, Level 13)\n"
+"\n"
+"So injective, surjective, and bijective are all equivalent\n"
+"for endofunctions on finite types. This is one of the most\n"
+"important consequences of finiteness.\n"
+"\n"
+"**Contrast with the boss**: The boss (injective -> surjective)\n"
+"uses §9 to compute |image| = n, then\n"
+"§10 to get image = univ, then extracts\n"
+"a preimage. This level uses surjectivity to show univ is\n"
+"contained in the image, then §11 to\n"
+"get image = univ, then §12 to extract\n"
+"injectivity.\n"
+"\n"
+"Both converge on the **cardinality sandwich**\n"
+"(§13) — the same lemma, applied with\n"
+"cardinality information flowing in opposite directions."
+msgstr ""
+
 #: Game.Levels.PascalsTriangle.L12_PascalFromVandermonde
 msgid "Pascal's Identity from Vandermonde"
 msgstr ""
@@ -36558,6 +37741,12 @@ msgstr ""
 #. §1: `rfl`
 #: Game.Levels.FinsetImage.L02_ChoosingTheWitness
 msgid "The equation §0 is verified by §1."
+msgstr ""
+
+#. §0: `eq_of_subset_of_card_le`
+#: Game.Levels.Finale.L14_Boss
+msgid "The **cardinality sandwich**: subset + same cardinality =\n"
+"equality. Apply §0."
 msgstr ""
 
 #: Game.Levels.FinNavigation.L06_CastSuccNeSucc
@@ -36710,6 +37899,48 @@ msgstr ""
 msgid "Now prove §0. Peel again with §1."
 msgstr ""
 
+#. §0: `f`
+#. §1: `f`
+#. §2: `Fin n`
+#. §3: `Finset.univ.image f`
+#. §4: `eq_of_subset_of_card_le`
+#: Game.Levels.Finale.L13_SurjectiveImpliesInjective
+msgid "First show that the image of §0 covers everything.\n"
+"Since §1 is surjective, every element of §2 is in\n"
+"§3. Use the **cardinality sandwich**\n"
+"(§4) to derive set equality."
+msgstr ""
+
+#. §0: `fun _ _ => Finset.mem_univ _`
+#. §1: `card_eq_sum_card_fiberwise`
+#. §2: `|domain| = sum of |fiber_j|`
+#. §3: `j`
+#. §4: `card_univ`
+#. §5: `card_fin`
+#. §6: `Finset.univ.card`
+#. §7: `card_sigma`
+#: Game.Levels.Finale.L04_FiberTemplate
+msgid "**The fiber template** — a three-step pattern you can apply\n"
+"whenever you need to relate a cardinality to a sum of subgroup\n"
+"sizes:\n"
+"\n"
+"1. **Membership proof**: Show every domain element maps into\n"
+"   the codomain universe (§0)\n"
+"2. **Fiber decomposition**: §1 expresses\n"
+"   §2 over all bins §3\n"
+"3. **Simplify**: §4 + §5 convert §6\n"
+"   to the concrete size\n"
+"\n"
+"This template is the foundation of the pigeonhole principle:\n"
+"if the sum of fiber sizes exceeds what's possible when each\n"
+"fiber is small, some fiber must be large.\n"
+"\n"
+"The fiber template also connects to the Products world:\n"
+"fiber decomposition is a special case of the sigma cardinality\n"
+"formula §7, where each fiber is one slice of a\n"
+"dependent product."
+msgstr ""
+
 #. §0: $\\sum_{i=0}^{n-1} 1 = n$
 #. §1: `induction n with`
 #. §2: `Finset.sum_range_zero`
@@ -36767,6 +37998,10 @@ msgid "§0 states that when §1,\n"
 "not in §9."
 msgstr ""
 
+#: Game.Levels.Finale.L07_ConcretePigeonhole
+msgid "Pigeonhole in the Wild"
+msgstr ""
+
 #. §0: `Nonempty`
 #. §1: `∃ x, x ∈ s`
 #. §2: `use 1`
@@ -36792,6 +38027,37 @@ msgid "Use §0 to reduce function equality to pointwise\n"
 "equality."
 msgstr ""
 
+#. §0: `f`
+#. §1: `Finset.univ`
+#. §2: `f`
+#. §3: `Function.Bijective f`
+#. §4: `Function.Injective f ∧ Function.Surjective f`
+#. §5: `constructor`
+#. §6: `hf`
+#. §7: `image f univ = univ`
+#. §8: `y`
+#: Game.Levels.Finale.L16_EquivalenceBiconditional
+msgid "# The Course Capstone: Constructing Bijectivity\n"
+"\n"
+"In Level 13, you proved surjective endofunctions are injective.\n"
+"In the boss (Level 14), you proved injective endofunctions are\n"
+"surjective — and along the way, you showed that the image of an\n"
+"injective endofunction equals the entire universe.\n"
+"\n"
+"Now put it all together. Given that §0 is injective and that\n"
+"its image covers §1, construct a proof that §2 is\n"
+"**bijective**: both injective AND surjective.\n"
+"\n"
+"§3 is defined as\n"
+"§4.\n"
+"\n"
+"**The proof plan**:\n"
+"1. Split the conjunction with §5\n"
+"2. The injective half is immediate from §6\n"
+"3. For the surjective half: since §7, every\n"
+"   element §8 is in the image — extract its preimage"
+msgstr ""
+
 #: Game.Levels.PsetBigOp.L03_SumInduction
 msgid "The sum of (f x + 1) over s equals the sum of f plus the cardinality."
 msgstr ""
@@ -36807,6 +38073,26 @@ msgstr ""
 
 #: Game.Levels.Finsupp.L14_SupportOfSum
 msgid "The support of a sum is contained in the union of supports."
+msgstr ""
+
+#. §0: `have heq : Finset.univ.image f = (Finset.univ : Finset (Fin n)) := by`
+#. §1: `  apply Finset.eq_of_subset_of_card_le`
+#. §2: `  · exact Finset.subset_univ _`
+#. §3: `  · apply Finset.card_le_card`
+#. §4: `    intro y _`
+#. §5: `    rw [Finset.mem_image]`
+#. §6: `    obtain ⟨x, hx⟩ := hf y`
+#. §7: `    exact ⟨x, Finset.mem_univ x, hx⟩`
+#: Game.Levels.Finale.L13_SurjectiveImpliesInjective
+msgid "Try:\n"
+"§0\n"
+"§1\n"
+"§2\n"
+"§3\n"
+"§4\n"
+"§5\n"
+"§6\n"
+"§7"
 msgstr ""
 
 #. §0: $f(a) \\in f(s)$
@@ -37133,6 +38419,10 @@ msgid "# Fin Equality Implies Value Equality\n"
 "**Your task**: Prove that §15 equality implies value equality."
 msgstr ""
 
+#: Game.Levels.Finale.L05_QuantitativePigeonhole
+msgid "Every function from Fin (n+1) to Fin n has a fiber with more than 1 element."
+msgstr ""
+
 #. §0: `Fin.last 4`
 #: Game.Levels.FinNavigation.L01_TheLastElement
 msgid "§0 has value 4."
@@ -37140,6 +38430,12 @@ msgstr ""
 
 #: Game.Levels.Fintype.L09_SubtypePractice
 msgid "Combining Subtype and Product"
+msgstr ""
+
+#. §0: `univ`
+#. §1: `univ`
+#: Game.Levels.Finale.L13_SurjectiveImpliesInjective
+msgid "The image of any function on §0 is a subset of §1."
 msgstr ""
 
 #. §0: `∨`
@@ -37369,6 +38665,53 @@ msgid "Use the decompose-evaluate workflow. Start with\n"
 "§0."
 msgstr ""
 
+#. §0: `disjoint_diag_offDiag`
+#. §1: `card_union_of_disjoint`
+#. §2: $|\\text{diag} \\cup \\text{offDiag}| = |\\text{diag}| + |\\text{offDiag}|$
+#. §3: `diag_union_offDiag`
+#. §4: $|s \\times^s s|$
+#. §5: `diag_card`
+#. §6: $|\\text{diag}| = |s|$
+#. §7: `card_product`
+#. §8: $|s \\times^s s| = n^2$
+#. §9: `omega`
+#. §10: $|\\text{offDiag}| + n = n^2$
+#. §11: $|\\text{offDiag}| = n^2 - n = n(n-1)$
+#. §12: $n(n-1)$
+#. §13: $n(n-1) = 2 \\cdot \\binom{n}{2}$
+#. §14: $s.\\text{offDiag}$
+#. §15: $(a,b)$
+#. §16: $(b,a)$
+#. §17: $\\binom{n}{2}$
+#: Game.Levels.Finale.L03_DiagonalDecomposition
+msgid "**The decomposition chain**:\n"
+"\n"
+"| Step | Tool | Result |\n"
+"|------|------|--------|\n"
+"| 1 | §0 + §1 | §2 |\n"
+"| 2 | §3 | LHS becomes §4 |\n"
+"| 3 | §5 | §6 |\n"
+"| 4 | §7 | §8 |\n"
+"| 5 | §9 | close the arithmetic |\n"
+"\n"
+"This is the **partition-then-count** strategy: decompose a set\n"
+"into disjoint parts, count each part separately, then combine.\n"
+"It's the same strategy behind inclusion-exclusion and fiber\n"
+"decomposition — different decompositions, same pattern.\n"
+"\n"
+"**The closed form you derived**: §10,\n"
+"so §11.\n"
+"The §12 ordered pairs with distinct components are the\n"
+"building blocks for counting permutations.\n"
+"\n"
+"**Connection to binomial coefficients**: Since\n"
+"§13, the off-diagonal count is\n"
+"exactly twice the number of 2-element subsets. The factor of 2\n"
+"reflects the difference between **ordered** and **unordered**\n"
+"pairs: §14 counts both §15 and §16,\n"
+"while §17 counts each unordered pair once."
+msgstr ""
+
 #: Game.Levels.Products.L02_MkMemProduct
 msgid "Combine two membership proofs into product membership."
 msgstr ""
@@ -37412,6 +38755,17 @@ msgid "§0 selects the right disjunct of a goal §1.\n"
 "\n"
 "## When to use it\n"
 "When the goal is §3 and you want to prove §4."
+msgstr ""
+
+#. §0: `hinj_on`
+#. §1: `f`
+#. §2: `Finset.univ`
+#. §3: `Fin n`
+#. §4: `Finset.univ`
+#: Game.Levels.Finale.L13_SurjectiveImpliesInjective
+msgid "§0 says §1 is injective on §2 (as a set).\n"
+"Since every element of §3 is in §4, this gives\n"
+"full injectivity."
 msgstr ""
 
 #. §0: `ext a`
@@ -37471,6 +38825,10 @@ msgid "Now substitute the known head and tail into §0:\n"
 "§1.\n"
 "This transforms §2 into §3\n"
 "(which is §4)."
+msgstr ""
+
+#: Game.Levels.Finale.L15_InfiniteCounterexample
+msgid "The Infinite Counterexample"
 msgstr ""
 
 #. §0: `sum_range_succ`
@@ -37709,6 +39067,7 @@ msgid "# Boss: Putting It All Together\n"
 msgstr ""
 
 #: Game.Levels.Products.L17_DecompositionReverse
+#: Game.Levels.Finale.L03_DiagonalDecomposition
 msgid "Diagonal Decomposition"
 msgstr ""
 
@@ -38123,6 +39482,16 @@ msgstr ""
 
 #: Game.Levels.FinsetOperations.L03_SetDifference
 msgid "Set Difference"
+msgstr ""
+
+#. §0: `Equiv.ofBijective f hf`
+#. §1: `Equiv`
+#. §2: `f`
+#: Game.Metadata
+msgid "§0 constructs an §1 (bijection) from\n"
+"a proof that §2 is bijective.\n"
+"\n"
+"Disabled to prevent shortcutting cardinality arguments."
 msgstr ""
 
 #. §0: `Fin.succAbove p`
@@ -39042,6 +40411,14 @@ msgid "§0 proves §1 from\n"
 "When two lists have the same head and their tails are permutations."
 msgstr ""
 
+#. §0: `f + g`
+#. §1: `f.support ∪ g.support`
+#. §2: `Finsupp.support_add`
+#: Game.Levels.Finale.L10_FinsuppIntegration
+msgid "The support of §0 is a subset of §1\n"
+"(by §2). Convert subset to cardinality inequality."
+msgstr ""
+
 #: Game.Levels.Cardinality.L15_DisjointUnion
 msgid "The union of disjoint sets has cardinality equal to the sum."
 msgstr ""
@@ -39794,6 +41171,14 @@ msgid "First, prove a helper: every element of §0 is §1 or §2.\n"
 "Use §3"
 msgstr ""
 
+#. §0: `Finset.univ.card`
+#. §1: `Fin (n+1)`
+#. §2: `n + 1`
+#: Game.Levels.Finale.L06_NonInjectivity
+#: Game.Levels.Finale.L06_NonInjectivity
+msgid "Simplify: §0 for §1 is §2."
+msgstr ""
+
 #: Game.Levels.FinsetOperations.L21_PartitionIdentity
 msgid "The Partition Identity"
 msgstr ""
@@ -40288,6 +41673,44 @@ msgid "§0 states that §1.\n"
 "\n"
 "## Syntax\n"
 "§2"
+msgstr ""
+
+#: Game.Levels.Finale.L14_Boss
+msgid "Boss: Finite Injective Functions Are Surjective"
+msgstr ""
+
+#. §0: `Finite.surjective_of_injective`
+#. §1: `f`
+#. §2: `Finset.univ`
+#. §3: $n$
+#. §4: `card_image_of_injective`
+#. §5: `Finset.univ`
+#. §6: `subset_univ`
+#. §7: `eq_of_subset_of_card_le`
+#: Game.Levels.Finale.L14_Boss
+msgid "# Boss: The Crown Jewel of Finite Combinatorics\n"
+"\n"
+"An injective function from a finite type to **itself** must\n"
+"be surjective. This is one of the most important results in\n"
+"finite mathematics — it says that for finite sets, 'no\n"
+"collisions' automatically implies 'everything is hit.'\n"
+"\n"
+"In CountingTechniques Level 7, you received\n"
+"§0 as a free theorem. Now prove\n"
+"it yourself using the tools from earlier worlds.\n"
+"\n"
+"**The proof plan**:\n"
+"1. Show the image of §1 on §2 has cardinality §3\n"
+"   (by injectivity: §4)\n"
+"2. The image is a subset of §5 (by §6)\n"
+"3. A subset with the same cardinality as the whole set IS the\n"
+"   whole set (§7 — from Cardinality L24)\n"
+"4. So every element is in the image\n"
+"5. Extract the preimage witness"
+msgstr ""
+
+#: Game.Levels.Finale.L08_SubsetEquality
+msgid "An injective endofunction maps univ to univ."
 msgstr ""
 
 #. §0: `i < n`
@@ -41414,6 +42837,36 @@ msgid "This is an important edge case: §0. The\n"
 "§17 held by definition (§18)."
 msgstr ""
 
+#. §0: $n + 1$
+#. §1: $n$
+#. §2: $n$
+#. §3: $0, 1, \\ldots, n-1$
+#. §4: $n + 1$
+#. §5: $g(i) = a(i) \\bmod n$
+#. §6: $\\text{Fin}\\,n$
+#. §7: $g$
+#: Game.Levels.Finale.L07_ConcretePigeonhole
+msgid "# Applying Pigeonhole to Modular Arithmetic\n"
+"\n"
+"Every level so far has worked with abstract functions between\n"
+"Fin types. But the pigeonhole principle is most powerful when\n"
+"applied to **concrete mathematical situations**.\n"
+"\n"
+"**Claim**: Given any §0 natural numbers, two of them share\n"
+"the same remainder when divided by §1.\n"
+"\n"
+"The 'bins' are the §2 possible remainders (§3),\n"
+"and the 'pigeons' are the §4 numbers. Since there are more\n"
+"numbers than bins, two must land in the same bin.\n"
+"\n"
+"**The proof plan**:\n"
+"1. Assume for contradiction that no two values share a remainder\n"
+"2. Define the remainder function §5, which\n"
+"   maps into §6\n"
+"3. From the assumption, §7 is injective\n"
+"4. Derive a contradiction via image cardinality (same as Level 6)"
+msgstr ""
+
 #. §0: `Fin`
 #. §1: `Fin`
 #. §2: `omega`
@@ -41615,6 +43068,15 @@ msgid "This proof integrated 6 moves from two worlds:\n"
 "\n"
 "The §6 case used §7 to expose the contradiction:\n"
 "if §8, then §9, contradicting §10."
+msgstr ""
+
+#. §0: `apply Finset.eq_of_subset_of_card_le hsub`
+#. §1: `rw [Finset.card_univ, Fintype.card_fin, himg]`
+#: Game.Levels.Finale.L08_SubsetEquality
+msgid "Try:\n"
+"§0\n"
+"then close the cardinality bound with\n"
+"§1."
 msgstr ""
 
 #. §0: `f 0`
@@ -41853,6 +43315,12 @@ msgstr ""
 #: Game.Levels.BinomialCoefficients.L15_HockeyStick
 #: Game.Levels.BinomialTheorem.L15_Boss
 #: Game.Levels.PsetCombinatorics.L03_WeightedRowSum
+#: Game.Levels.Finale.L07_ConcretePigeonhole
+#: Game.Levels.Finale.L08_SubsetEquality
+#: Game.Levels.Finale.L09_DoubleCounting
+#: Game.Levels.Finale.L13_SurjectiveImpliesInjective
+#: Game.Levels.Finale.L14_Boss
+#: Game.Levels.Finale.L14_Boss
 msgid "Try:\n"
 "§0\n"
 "§1"
@@ -42102,10 +43570,20 @@ msgstr ""
 msgid "Simplify both sides: §0."
 msgstr ""
 
+#: Game.Levels.Finale.L07_ConcretePigeonhole
+msgid "Among any n+1 natural numbers, two share the same remainder mod n."
+msgstr ""
+
 #. §0: `Finset.sum_add_distrib`
 #: Game.Levels.PascalsTriangle.L16_Boss
 msgid "The summand is a sum of three terms. Split it into three\n"
 "separate sums using §0 twice."
+msgstr ""
+
+#. §0: `cases h with`
+#: Game.Levels.FinsetImage.L06_ImageUnionEquality
+msgid "Try §0 then extract the\n"
+"witness and embed into the union."
 msgstr ""
 
 #. §0: `Finset.card_eq_zero`
@@ -42126,12 +43604,6 @@ msgid "§0 states that §1.\n"
 "\n"
 "## When to use it\n"
 "When you know §3 and need §4, or vice versa."
-msgstr ""
-
-#. §0: `cases h with`
-#: Game.Levels.FinsetImage.L06_ImageUnionEquality
-msgid "Try §0 then extract the\n"
-"witness and embed into the union."
 msgstr ""
 
 #. §0: `rfl`
@@ -42743,6 +44215,31 @@ msgstr ""
 
 #: Game.Levels.Products.L14_DiagCard
 msgid "The diagonal has the same cardinality as the original set."
+msgstr ""
+
+#. §0: $2^n$
+#. §1: $n$
+#. §2: $2^n$
+#. §3: $\\sum_{k=0}^{n} \\binom{n}{k} = 2^n$
+#. §4: $n$
+#. §5: $k$
+#. §6: $\\binom{n}{k}$
+#. §7: $2^n$
+#. §8: $$\\sum_{k=0}^{n} |\\{\\text{size-}k \\text{ subsets of range } n\\}| = 2^n$$
+#: Game.Levels.Finale.L02_PowersetPartition
+msgid "# Three Roads to §0\n"
+"\n"
+"The powerset of an §1-element set has §2 elements. We also\n"
+"know that §3 (the row sum\n"
+"of Pascal's triangle).\n"
+"\n"
+"These are the *same fact*. The powerset partitions into subsets\n"
+"of size 0, size 1, ..., size §4. The number of size-§5 subsets\n"
+"is §6. Summing over all sizes recovers §7.\n"
+"\n"
+"Prove this directly:\n"
+"\n"
+"§8"
 msgstr ""
 
 #. §0: `Multiset.mem_toFinset`
@@ -43362,11 +44859,6 @@ msgid "The goal is §0. This is exactly\n"
 "§1 from Level 8."
 msgstr ""
 
-#. §0: `constructor`
-#: Game.Levels.MeetFin.L19_ModularArithmetic
-msgid "Now prove both parts of the conjunction with §0."
-msgstr ""
-
 #. §0: `apply Finset.sum_congr rfl`
 #. §1: `intro m _`
 #. §2: `sum_congr`
@@ -43395,6 +44887,11 @@ msgid "The pattern you just learned is the **sum simplification pattern**:\n"
 "§6\n"
 "The §7 approach is useful when you need to rewrite a hypothesis\n"
 "rather than the goal — as you will see in Level 7."
+msgstr ""
+
+#. §0: `constructor`
+#: Game.Levels.MeetFin.L19_ModularArithmetic
+msgid "Now prove both parts of the conjunction with §0."
 msgstr ""
 
 #. §0: `hall`
@@ -43530,6 +45027,12 @@ msgstr ""
 
 #: Game.Levels.BigOpIntro.L02_SumSingleton
 msgid "The sum of f over a singleton equals the function value."
+msgstr ""
+
+#. §0: `range 1`
+#. §1: `range 0`
+#: Game.Levels.Finale.L01_InductionIdentity
+msgid "**Base case**: Peel §0 and clear §1."
 msgstr ""
 
 #. §0: `change P at h`
@@ -44048,6 +45551,14 @@ msgid "The outputs differ (§0, §1), so no collision\n"
 "yet. Check §2 — it must match one of them."
 msgstr ""
 
+#. §0: `let`
+#. §1: `n`
+#. §2: `Fin n`
+#: Game.Levels.Finale.L07_ConcretePigeonhole
+msgid "Now define the remainder function using §0. Each input maps\n"
+"to its remainder mod §1, packaged as an element of §2."
+msgstr ""
+
 #: Game.Levels.AbstractionLadder.L23_Boss
 msgid "Boss: Across the Ladder"
 msgstr ""
@@ -44076,6 +45587,10 @@ msgstr ""
 msgid "Then use §0 and §1\n"
 "to simplify: §2.\n"
 "This gives §3."
+msgstr ""
+
+#: Game.Levels.Finale.L09_DoubleCounting
+msgid "The three-part decomposition of a union."
 msgstr ""
 
 #. §0: `rw [Finset.prod_singleton]`
@@ -44388,6 +45903,10 @@ msgstr ""
 #: Game.Levels.Cardinality.L10_EraseRemovesOne
 msgid "Now you have §0 and\n"
 "§1. The arithmetic §2 is handled by §3."
+msgstr ""
+
+#: Game.Levels.Finale.L05_QuantitativePigeonhole
+msgid "Quantitative Pigeonhole"
 msgstr ""
 
 #. §0: `Finset.mem_sigma`
@@ -44900,12 +46419,41 @@ msgid "§0 states that every element §1 of a finite type\n"
 "belongs to §2. This is always true — §3 contains everything."
 msgstr ""
 
-#. §0: `h : a ∉ s`
-#. §1: `(insert a s).card = s.card + 1`
-#. §2: `Finset.card_insert_of_notMem h`
-#: Game.Levels.Cardinality.L06_InsertAddsOne
-msgid "You have §0 and need to show §1.\n"
-"This is exactly §2."
+#. §0: $A \\cup B$
+#. §1: $A \\setminus B$
+#. §2: $A$
+#. §3: $B \\setminus A$
+#. §4: $B$
+#. §5: $A \\cap B$
+#. §6: $|A \\cup B|$
+#. §7: `Finset.card_sdiff_add_card_inter s t`
+#. §8: $|s \\setminus t| + |s \\cap t| = |s|$
+#. §9: `Finset.card_union_add_card_inter s t`
+#. §10: $|s \\cup t| + |s \\cap t| = |s| + |t|$
+#. §11: `Finset.inter_comm s t`
+#. §12: $s \\cap t = t \\cap s$
+#. §13: `omega`
+#: Game.Levels.Finale.L09_DoubleCounting
+msgid "# Double Counting via Set Decomposition\n"
+"\n"
+"Any union §0 decomposes into three disjoint parts:\n"
+"\n"
+"- §1 — elements in §2 only\n"
+"- §3 — elements in §4 only\n"
+"- §5 — elements in both\n"
+"\n"
+"Counting each part and summing should give §6.\n"
+"Prove this identity by combining three cardinality lemmas\n"
+"from the Cardinality world.\n"
+"\n"
+"**The tools you need**:\n"
+"- §7 :\n"
+"  §8\n"
+"- §9 :\n"
+"  §10\n"
+"- §11 : §12\n"
+"\n"
+"Apply these with both argument orders and combine with §13."
 msgstr ""
 
 #. §0: `Finset.mem_inter`
@@ -44943,6 +46491,14 @@ msgstr ""
 #: Game.Metadata
 msgid "Disabled: §0 proves §1\n"
 "from an equation §2. Bypasses manual symmetry reasoning."
+msgstr ""
+
+#. §0: `h : a ∉ s`
+#. §1: `(insert a s).card = s.card + 1`
+#. §2: `Finset.card_insert_of_notMem h`
+#: Game.Levels.Cardinality.L06_InsertAddsOne
+msgid "You have §0 and need to show §1.\n"
+"This is exactly §2."
 msgstr ""
 
 #. §0: `Finset.subset_univ s`
@@ -45032,6 +46588,12 @@ msgstr ""
 #: Game.Levels.SummationFormulas.L11_Factorial
 msgid "Induct on §0. You'll combine product-range tools with\n"
 "the factorial recursive definition."
+msgstr ""
+
+#. §0: `ring`
+#: Game.Levels.Finale.L01_InductionIdentity
+msgid "The goal is now a concrete arithmetic identity. Close\n"
+"with §0."
 msgstr ""
 
 #. §0: `Nat.factorial_zero`
@@ -45422,6 +46984,14 @@ msgid "# The Ladder in Mathematics: Prime Factorization\n"
 "and §9 give the same multiset. This captures the fact that\n"
 "the prime factorization doesn't depend on the order you write the\n"
 "factors."
+msgstr ""
+
+#. §0: `Function.Surjective f`
+#. §1: `forall y, exists x, f x = y`
+#. §2: `y`
+#: Game.Levels.Finale.L14_Boss
+msgid "The goal §0 means §1.\n"
+"Start by introducing §2."
 msgstr ""
 
 #: Game.Levels.BigOpAlgebra.L10_ReorderingForSimplification
@@ -46233,6 +47803,15 @@ msgid "# The §0 Modifier for §1\n"
 "cardinality equation using §31, then close with the hypothesis."
 msgstr ""
 
+#. §0: `hab`
+#. §1: `(fun n => n + 1) a = (fun n => n + 1) b`
+#. §2: `a + 1 = b + 1`
+#. §3: `omega`
+#: Game.Levels.Finale.L15_InfiniteCounterexample
+msgid "The hypothesis §0 says §1.\n"
+"Extract the arithmetic form §2 so §3 can use it."
+msgstr ""
+
 #. §0: `(n + n).choose n = ∑ p ∈ antidiagonal n, ...`
 #. §1: `Nat.add_choose_eq`
 #: Game.Levels.PascalsTriangle.L11_Convolution
@@ -46794,6 +48373,7 @@ msgstr ""
 #. §1: `Finset.diag_card`
 #: Game.Levels.Products.L21_Boss
 #: Game.Levels.Products.L21_Boss
+#: Game.Levels.Finale.L03_DiagonalDecomposition
 msgid "Compute §0 using §1."
 msgstr ""
 
@@ -47103,6 +48683,16 @@ msgid "You proved the geometric sum formula:\n"
 "The formula generalizes: for any base §17,\n"
 "§18\n"
 "We proved the §19 case, where the denominator is just §20."
+msgstr ""
+
+#. §0: `hfib`
+#. §1: `n + 1 = sum`
+#. §2: `hbound`
+#. §3: `sum <= n`
+#. §4: `n + 1 <= n`
+#: Game.Levels.Finale.L05_QuantitativePigeonhole
+msgid "Now §0 says §1 and §2 says\n"
+"§3. So §4 — contradiction."
 msgstr ""
 
 #. §0: `Finset.card_insert_le a s`
@@ -47523,6 +49113,16 @@ msgid "§0 is the induction principle for finsets.\n"
 "## When to use it\n"
 "When you need to prove a property of an arbitrary §11 and\n"
 "can handle the empty and insert cases separately."
+msgstr ""
+
+#. §0: `have h : forall k in Finset.range (n + 1), ((Finset.range n).powersetCard k).card = Nat.choose n k := by`
+#. §1: `  intro k _`
+#. §2: `  rw [Finset.card_powersetCard, Finset.card_range]`
+#: Game.Levels.Finale.L02_PowersetPartition
+msgid "Prove a helper:\n"
+"§0\n"
+"§1\n"
+"§2"
 msgstr ""
 
 #: Game.Levels.BigOpIntro.L07_ProdTwoElement
@@ -48288,6 +49888,38 @@ msgstr ""
 #: Game.Levels.PsetCounting.L08_Boss
 #: Game.Levels.PsetCounting.L08_Boss
 #: Game.Levels.PsetCounting.L08_Boss
+#: Game.Levels.Finale.L01_InductionIdentity
+#: Game.Levels.Finale.L01_InductionIdentity
+#: Game.Levels.Finale.L02_PowersetPartition
+#: Game.Levels.Finale.L02_PowersetPartition
+#: Game.Levels.Finale.L03_DiagonalDecomposition
+#: Game.Levels.Finale.L03_DiagonalDecomposition
+#: Game.Levels.Finale.L03_DiagonalDecomposition
+#: Game.Levels.Finale.L03_DiagonalDecomposition
+#: Game.Levels.Finale.L04_FiberTemplate
+#: Game.Levels.Finale.L05_QuantitativePigeonhole
+#: Game.Levels.Finale.L05_QuantitativePigeonhole
+#: Game.Levels.Finale.L05_QuantitativePigeonhole
+#: Game.Levels.Finale.L06_NonInjectivity
+#: Game.Levels.Finale.L06_NonInjectivity
+#: Game.Levels.Finale.L07_ConcretePigeonhole
+#: Game.Levels.Finale.L07_ConcretePigeonhole
+#: Game.Levels.Finale.L07_ConcretePigeonhole
+#: Game.Levels.Finale.L09_DoubleCounting
+#: Game.Levels.Finale.L10_FinsuppIntegration
+#: Game.Levels.Finale.L11_FinsetInductionIntegration
+#: Game.Levels.Finale.L13_SurjectiveImpliesInjective
+#: Game.Levels.Finale.L13_SurjectiveImpliesInjective
+#: Game.Levels.Finale.L13_SurjectiveImpliesInjective
+#: Game.Levels.Finale.L14_Boss
+#: Game.Levels.Finale.L14_Boss
+#: Game.Levels.Finale.L15_InfiniteCounterexample
+#: Game.Levels.Finale.L15_InfiniteCounterexample
+#: Game.Levels.Finale.L15_InfiniteCounterexample
+#: Game.Levels.Finale.L15_InfiniteCounterexample
+#: Game.Levels.Finale.L16_EquivalenceBiconditional
+#: Game.Levels.Finale.L16_EquivalenceBiconditional
+#: Game.Levels.Finale.L16_EquivalenceBiconditional
 msgid "Try §0."
 msgstr ""
 
@@ -49028,6 +50660,40 @@ msgstr ""
 msgid "Split the conjunction with §0."
 msgstr ""
 
+#. §0: $n + 1$
+#. §1: $n$
+#. §2: $\\sum |\\text{fiber}_j| = n + 1$
+#. §3: $n$
+#. §4: $n$
+#. §5: $n + 1 \\le n$
+#. §6: $n + 1 = \\sum |\\text{fiber}_j|$
+#. §7: $\\sum |\\text{fiber}_j| \\le \\sum 1 = n$
+#. §8: $n + 1 \\le n$
+#: Game.Levels.Finale.L05_QuantitativePigeonhole
+msgid "# Some Fiber Must Be Large\n"
+"\n"
+"If §0 pigeons sit in §1 holes, some hole has at least 2\n"
+"pigeons.\n"
+"\n"
+"Level 4 introduced the **fiber template** — a three-step pattern\n"
+"(membership proof, fiber decomposition, simplification) that\n"
+"converts a cardinality into a sum of fiber sizes. This level\n"
+"takes the conceptual leap: a sum identity can force an\n"
+"**existence** result. If the total\n"
+"§2 but there are only §3 summands,\n"
+"then at least one summand must exceed 1.\n"
+"\n"
+"The proof uses the **contrapositive**: assume every fiber has\n"
+"size at most 1, bound the sum by §4, and obtain §5\n"
+"— contradiction.\n"
+"\n"
+"**The proof plan**:\n"
+"1. Assume for contradiction that all fibers have size at most 1\n"
+"2. Apply the fiber template: §6\n"
+"3. Bound the sum: §7\n"
+"4. Contradiction: §8"
+msgstr ""
+
 #. §0: `v < n`
 #. §1: `castSucc`
 #. §2: `right`
@@ -49080,6 +50746,13 @@ msgstr ""
 #: Game.Levels.Powerset.L16_PowersetCardExtract
 msgid "First, unwrap §0 using §1 to see the two\n"
 "conditions: §2 and §3."
+msgstr ""
+
+#. §0: `Function.Bijective f`
+#. §1: `Injective f ∧ Surjective f`
+#: Game.Levels.Finale.L16_EquivalenceBiconditional
+msgid "§0 is §1.\n"
+"Split the conjunction."
 msgstr ""
 
 #: Game.Levels.PsetFinset.L11_DeMorganSubset
@@ -49599,6 +51272,18 @@ msgstr ""
 msgid "Substitute the known sum value with §0."
 msgstr ""
 
+#. §0: `Fintype.exists_ne_map_eq_of_card_lt`
+#. §1: `Fintype.card α < Fintype.card β`
+#. §2: `f : α → β`
+#: Game.Levels.Finale.L05_QuantitativePigeonhole
+msgid "§0 is the library version of the\n"
+"pigeonhole principle: if §1 is false\n"
+"(i.e., the domain is at least as large as the codomain), then any\n"
+"function §2 maps two distinct elements to the same output.\n"
+"\n"
+"Disabled here so you prove pigeonhole from first principles."
+msgstr ""
+
 #. §0: $s \\setminus (t \\cap u) = (s \\setminus t) \\cup (s \\setminus u)$
 #. §1: `by_contra`
 #. §2: `x \\in t`
@@ -49713,6 +51398,12 @@ msgid "Congratulations — you've completed **Finset Operations**!\n"
 "injectivity and cardinality of images."
 msgstr ""
 
+#. §0: `g`
+#: Game.Levels.Finale.L07_ConcretePigeonhole
+msgid "From the assumption that no two values share a remainder,\n"
+"prove that §0 is injective."
+msgstr ""
+
 #. §0: `insert`
 #. §1: `singleton`
 #. §2: `range`
@@ -49771,6 +51462,32 @@ msgid "§0 states that\n"
 "\n"
 "This is the Mathlib version of the alternating row sum identity.\n"
 "For §2, the sum equals §3."
+msgstr ""
+
+#. §0: `Fin n`
+#. §1: `image f univ = univ`
+#. §2: `|image f univ| = |univ|`
+#. §3: `card_image_iff`
+#. §4: `|image| = |source|`
+#. §5: `f`
+#: Game.Levels.Finale.L13_SurjectiveImpliesInjective
+msgid "# The Other Direction\n"
+"\n"
+"The boss will prove: injective endofunctions on §0 are\n"
+"surjective. But the converse is equally true and equally\n"
+"important: **surjective** endofunctions are **injective**.\n"
+"\n"
+"Together they give the full equivalence: for finite types,\n"
+"injective iff surjective iff bijective.\n"
+"\n"
+"**The proof plan**:\n"
+"1. Show §1 (from surjectivity — every\n"
+"   element has a preimage, so every element is in the image)\n"
+"2. Derive §2 (from step 1)\n"
+"3. Use §3: §4 implies\n"
+"   §5 is injective on the source\n"
+"4. Convert the set-level injectivity to function-level\n"
+"   injectivity"
 msgstr ""
 
 #. §0: `5 = 2 ∨ ...`
@@ -50752,6 +52469,48 @@ msgid "You proved the **repair**: when §0 is injective,\n"
 "trick."
 msgstr ""
 
+#. §0: $f(n) = n + 1$
+#. §1: $\\mathbb{N}$
+#. §2: `omega`
+#. §3: $a + 1 = b + 1 \\implies a = b$
+#. §4: `obtain`
+#. §5: `omega`
+#. §6: $x + 1 = 0$
+#. §7: $x : \\mathbb{N}$
+#. §8: $n$
+#. §9: $n$
+#. §10: $\\mathbb{N}$
+#. §11: `Fin.castSucc : Fin n -> Fin (n + 1)`
+#. §12: `f : Fin n -> Fin n`
+#: Game.Levels.Finale.L15_InfiniteCounterexample
+msgid "**The infinite counterexample**: §0 on §1\n"
+"is injective but not surjective.\n"
+"\n"
+"| Half | Key step | Why it works |\n"
+"|------|----------|-------------|\n"
+"| Injective | §2 | §3 |\n"
+"| Not surjective | §4 + §5 | §6 is impossible for §7 |\n"
+"\n"
+"**Why this matters**: The boss proof relied on the\n"
+"**cardinality sandwich** — §8 distinct elements in an\n"
+"§9-element set must cover everything. For §10,\n"
+"infinitely many distinct elements still leave room for gaps.\n"
+"The cardinality sandwich has no analogue when 'same size' loses\n"
+"its meaning.\n"
+"\n"
+"This contrast is one of the deepest lessons of the course:\n"
+"finiteness is not a technicality but a structural property that\n"
+"enables counting arguments.\n"
+"\n"
+"**The endofunction hypothesis matters too**: Finiteness alone\n"
+"is not enough — the function must also be an **endofunction**\n"
+"(same domain and codomain). §11\n"
+"is injective but not surjective, even though both types are\n"
+"finite. The boss theorem requires §12 — the\n"
+"cardinality sandwich only works when the domain and codomain\n"
+"have the same size."
+msgstr ""
+
 #. §0: $$|s \\times^s s| = |s| + (|s|^2 - |s|)$$
 #. §1: $n^2 = n + n(n-1)$
 #. §2: $s$
@@ -51412,6 +53171,10 @@ msgid "§0 is the partition principle for sums: if you can split\n"
 "| §19 | §20 |"
 msgstr ""
 
+#: Game.Levels.Finale.L11_FinsetInductionIntegration
+msgid "Summation distributes over addition."
+msgstr ""
+
 #. §0: `inf_assoc`
 #. §1: `(a ⊓ b) ⊓ c = a ⊓ (b ⊓ c)`
 #: Game.Metadata
@@ -51423,6 +53186,15 @@ msgstr ""
 
 #: Game.Levels.Powerset.L20_PowersetCardZero
 msgid "The only 0-element subset of any finset is the empty set."
+msgstr ""
+
+#: Game.Levels.Finale.L15_InfiniteCounterexample
+msgid "The successor function on ℕ is injective but not surjective."
+msgstr ""
+
+#. §0: `card_image_of_injective`
+#: Game.Levels.Finale.L08_SubsetEquality
+msgid "Compute the image size using §0."
 msgstr ""
 
 #. §0: `omega`
@@ -51577,6 +53349,13 @@ msgid "Start by proving the first swap: §0.\n"
 "**Tip**: If the term-mode expression feels hard to type in one go,\n"
 "you can use §4\n"
 "to get intermediate feedback from the proof state."
+msgstr ""
+
+#. §0: `image f univ = univ`
+#. §1: `y in univ`
+#. §2: `y in image f`
+#: Game.Levels.Finale.L14_Boss
+msgid "Since §0 and §1, we get §2."
 msgstr ""
 
 #. §0: `∑ x ∈ s, 1`
@@ -52295,6 +54074,41 @@ msgid "Unfold §0 with §1 then\n"
 "§2 the parts."
 msgstr ""
 
+#. §0: `f : alpha ->0 M`
+#. §1: `f.support`
+#. §2: `f + g`
+#. §3: `f.support ∪ g.support`
+#. §4: `|support(f + g)| <= |support(f)| + |support(g)|`
+#. §5: `calc`
+#. §6: $$|\\text{support}(f + g)| \\le |\\text{support}(f) \\cup \\text{support}(g)| \\le |\\text{support}(f)| + |\\text{support}(g)|$$
+#. §7: `Finsupp.support_add`
+#. §8: `card_le_card`
+#. §9: `<=`
+#. §10: `card_union_add_card_inter`
+#. §11: `<=`
+#: Game.Levels.Finale.L10_FinsuppIntegration
+msgid "# Bounding the Support of a Sum\n"
+"\n"
+"A finitely supported function §0 is nonzero at\n"
+"only finitely many points. The support §1 is the\n"
+"Finset of those points.\n"
+"\n"
+"When you add two finitely supported functions, the sum can\n"
+"only be nonzero where at least one summand was nonzero. So\n"
+"the support of §2 sits inside §3.\n"
+"\n"
+"**Claim**: §4.\n"
+"\n"
+"**The proof plan** uses a §5 chain to express the inequality\n"
+"as two steps:\n"
+"\n"
+"§6\n"
+"\n"
+"Each step uses one inequality:\n"
+"1. §7 + §8 : subset gives first §9\n"
+"2. §10 : union bound gives second §11"
+msgstr ""
+
 #. §0: `constructor`
 #: Game.Levels.BinomialCoefficients.L11_RetrievalPractice
 msgid "Split the remaining conjunction with §0."
@@ -52611,6 +54425,11 @@ msgstr ""
 msgid "Now expand the addition on the left with §0."
 msgstr ""
 
+#. §0: `(s ×ˢ s).card = s.card * s.card`
+#: Game.Levels.Finale.L03_DiagonalDecomposition
+msgid "Now bring in the product cardinality: §0."
+msgstr ""
+
 #: Game.Levels.FinsetImage.L17_WhyInjectivityMatters
 msgid "Why Injectivity Matters"
 msgstr ""
@@ -52852,6 +54671,36 @@ msgid "You now have two ways to build tuples:\n"
 "\n"
 "This is the payoff from learning both decompositions in\n"
 "FinNavigation — they power the two dual tuple constructors."
+msgstr ""
+
+#. §0: $f : \\text{Fin}(n+1) \\to \\text{Fin}\\,n$
+#. §1: $f$
+#. §2: $|\\text{image}(f)| = n + 1$
+#. §3: `card_image_of_injective`
+#. §4: $\\text{image}(f) \\subseteq \\text{Fin}\\,n$
+#. §5: $|\\text{image}(f)| \\le n$
+#. §6: `subset_univ`
+#. §7: `card_le_card`
+#. §8: $n + 1 \\le n$
+#. §9: $f$
+#: Game.Levels.Finale.L06_NonInjectivity
+msgid "# A Second Road to Pigeonhole\n"
+"\n"
+"Level 5 proved pigeonhole by **fiber decomposition**: decompose\n"
+"into fibers, bound each fiber, sum the bounds, contradiction.\n"
+"\n"
+"There's a completely different proof using **image cardinality**.\n"
+"The key insight: an injective function preserves cardinality,\n"
+"but the image can't be larger than the codomain.\n"
+"\n"
+"For §0:\n"
+"- If §1 were injective, then §2\n"
+"  (by §3)\n"
+"- But §4, so\n"
+"  §5 (by §6 + §7)\n"
+"- Contradiction: §8\n"
+"\n"
+"Prove that §9 cannot be injective."
 msgstr ""
 
 #. §0: `Nat.choose_symm_add`
@@ -53193,6 +55042,9 @@ msgstr ""
 #: Game.Levels.PsetCombinatorics.L12_AntidiagonalDoubleSum
 #: Game.Levels.PsetCombinatorics.L14_Boss
 #: Game.Levels.Matrices.L16_TraceLinearity
+#: Game.Levels.Finale.L07_ConcretePigeonhole
+#: Game.Levels.Finale.L15_InfiniteCounterexample
+#: Game.Levels.Finale.L15_InfiniteCounterexample
 msgid "Try §0 then §1."
 msgstr ""
 
@@ -53793,6 +55645,17 @@ msgid "§0 states that §1.\n"
 "maximum element's value, §6 simplifies the minimum."
 msgstr ""
 
+#. §0: `Function.Bijective f`
+#. §1: `f`
+#. §2: `Function.Injective f ∧ Function.Surjective f`
+#: Game.Levels.Finale.L16_EquivalenceBiconditional
+msgid "§0 means §1 is both injective and surjective:\n"
+"§2.\n"
+"\n"
+"A bijective function is a one-to-one correspondence: every output\n"
+"has exactly one preimage."
+msgstr ""
+
 #. §0: `inf_eq_left`
 #. §1: `a ⊓ b = a ↔ a ≤ b`
 #. §2: `s ∩ t = s ↔ s ⊆ t`
@@ -54330,6 +56193,50 @@ msgid "For the non-membership part, use proof by contradiction:\n"
 "must derive a contradiction."
 msgstr ""
 
+#. §0: $$3 \\sum_{i=0}^{n} i(i+1) = n(n+1)(n+2)$$
+#. §1: $$3\\sum_{i=0}^{n+1} i(i+1) = 3\\sum_{i=0}^{n} i(i+1) + 3(n+1)(n+2)$$
+#. §2: $$= n(n+1)(n+2) + 3(n+1)(n+2)$$
+#. §3: $$= (n+1)(n+2)(n+3)$$
+#. §4: $(n+1)(n+2)$
+#. §5: `ring`
+#. §6: `sum_range_succ`
+#. §7: `mul_add`
+#. §8: `ih`
+#. §9: `ring`
+#. §10: $n(n+1)(n+2) = 6\\binom{n+2}{3}$
+#. §11: $\\sum_{i=0}^{n} i(i+1) = 2\\binom{n+2}{3}$
+#. §12: $i(i+1) = 2\\binom{i+1}{2}$
+#. §13: $\\{0, \\ldots, i\\}$
+#: Game.Levels.Finale.L01_InductionIdentity
+msgid "§0\n"
+"\n"
+"**The inductive step in detail**:\n"
+"\n"
+"§1\n"
+"§2\n"
+"§3\n"
+"\n"
+"The factoring step — pulling out §4 — is exactly\n"
+"what §5 handles automatically.\n"
+"\n"
+"**The induction pattern** you used:\n"
+"1. §6 — peel the last term\n"
+"2. §7 — distribute the multiplier\n"
+"3. §8 — substitute the induction hypothesis\n"
+"4. §9 — close the polynomial arithmetic\n"
+"\n"
+"This is the same pattern from the SummationFormulas world,\n"
+"applied to a new identity. The technique transfers because\n"
+"the *structure* of the proof is the same — only the formula\n"
+"changes.\n"
+"\n"
+"**Combinatorial interpretation**: Since §10,\n"
+"this identity says §11.\n"
+"Each term §12 counts twice the number of\n"
+"2-element subsets of §13, connecting this summation\n"
+"formula back to the binomial coefficients from Phase 5."
+msgstr ""
+
 #. §0: `ext`
 #. §1: `Fin n`
 #. §2: ```
@@ -54390,6 +56297,12 @@ msgid "# When the Identity Involves card\n"
 "3. The cardinality (§7)\n"
 "\n"
 "Then apply the IH and close with §8."
+msgstr ""
+
+#. §0: `0`
+#: Game.Levels.Finale.L15_InfiniteCounterexample
+msgid "Apply the surjectivity hypothesis to §0 — the element\n"
+"with no preimage — to get a supposed preimage."
 msgstr ""
 
 #. §0: `Fin.cons_self_tail f`
@@ -55193,6 +57106,12 @@ msgid "§0 proves\n"
 "the two lists give the same finset."
 msgstr ""
 
+#. §0: `ring`
+#: Game.Levels.Finale.L11_FinsetInductionIntegration
+msgid "**Base case**: all three sums over the empty set are 0.\n"
+"Rewrite all three sums and close with §0."
+msgstr ""
+
 #: Game.Levels.FinNavigation.L15_SuccSurjectivity
 msgid "succ Surjectivity"
 msgstr ""
@@ -55490,6 +57409,20 @@ msgid "The empty sum is §0 and the empty product is §1, giving §2.\n"
 "**Memory aid**: the base case is always the *identity element*\n"
 "for the operation. Adding §7 doesn't change a sum; multiplying\n"
 "by §8 doesn't change a product."
+msgstr ""
+
+#. §0: `calc (f + g).support.card`
+#. §1: `    <= (f.support ∪ g.support).card := Finset.card_le_card Finsupp.support_add`
+#. §2: `  _ <= f.support.card + g.support.card := by`
+#. §3: `        have h := Finset.card_union_add_card_inter f.support g.support`
+#. §4: `        omega`
+#: Game.Levels.Finale.L10_FinsuppIntegration
+msgid "Try:\n"
+"§0\n"
+"§1\n"
+"§2\n"
+"§3\n"
+"§4"
 msgstr ""
 
 #. §0: `Fin n`
@@ -57204,6 +59137,11 @@ msgid "Try §0 to peel off\n"
 "the §1 term."
 msgstr ""
 
+#. §0: `s`
+#: Game.Levels.Finale.L11_FinsetInductionIntegration
+msgid "Use finset induction on §0."
+msgstr ""
+
 #: Game.Levels.FinsetBasics.L04_RangeOfNaturals
 msgid "3 is in the range {0, 1, 2, 3, 4}."
 msgstr ""
@@ -57343,10 +59281,6 @@ msgid "After §0, unfold §1 with\n"
 "then §3."
 msgstr ""
 
-#: Game.Levels.Cardinality.L06_InsertAddsOne
-msgid "Insert Adds One"
-msgstr ""
-
 #. §0: `native_decide`
 #. §1: `decide`
 #. §2: `decide`
@@ -57355,6 +59289,10 @@ msgid "§0 is like §1 but uses native code evaluation\n"
 "for faster computation.\n"
 "\n"
 "Disabled for the same reason as §2."
+msgstr ""
+
+#: Game.Levels.Cardinality.L06_InsertAddsOne
+msgid "Insert Adds One"
 msgstr ""
 
 #: Game.Levels.MeetFin.L23_Boss
@@ -57625,6 +59563,10 @@ msgstr ""
 msgid "Step 1: The disjoint union §0 has cardinality\n"
 "§1. Use:\n"
 "§2"
+msgstr ""
+
+#: Game.Levels.Finale.L04_FiberTemplate
+msgid "The Fiber Template"
 msgstr ""
 
 #: Game.Levels.BinomialTheorem.L09_PowersetMeetsRowSum
@@ -58636,6 +60578,45 @@ msgid "§0 closes goals that are equalities in commutative (semi)rings\n"
 "rather than letting ring close arithmetic goals directly."
 msgstr ""
 
+#. §0: $A \\cup B$
+#. §1: `card_sdiff_add_card_inter`
+#. §2: $s,t$
+#. §3: $t,s$
+#. §4: `inter_comm`
+#. §5: $t \\cap s$
+#. §6: $s \\cap t$
+#. §7: `card_union_add_card_inter`
+#. §8: `omega`
+#. §9: $\\cup$
+#. §10: $\\cap$
+#. §11: $\\setminus$
+#. §12: $|A \\cup B|$
+#. §13: $|A \\setminus B| + |B \\setminus A| + |A \\cap B|$
+#: Game.Levels.Finale.L09_DoubleCounting
+msgid "**Double counting by decomposition**: you counted the union\n"
+"§0 by splitting it into three disjoint parts and\n"
+"summing their sizes.\n"
+"\n"
+"The tools came from Phases 2 and 3:\n"
+"- §1 twice (for §2 and §3)\n"
+"- §4 to align §5 with §6\n"
+"- §7 once\n"
+"- §8 to close the arithmetic\n"
+"\n"
+"**Connection to Phases 2 and 3**: This level integrates\n"
+"Finset operations (§9, §10, §11) from Phase 2\n"
+"with the cardinality identities from Phase 3. The\n"
+"decomposition pattern — split a set into disjoint parts,\n"
+"count each part, sum — is the same strategy behind fiber\n"
+"decomposition and inclusion-exclusion.\n"
+"\n"
+"**The double-counting principle**: whenever you can count the\n"
+"same set two different ways, the counts must agree. Here the\n"
+"'two ways' are: directly (§12) and by decomposition\n"
+"(§13). The\n"
+"identity holds because the decomposition is a partition."
+msgstr ""
+
 #: Game.Levels.Matrices.L07_TransposeAddition
 msgid "Now simplify each side using the entry-level lemmas. The left\n"
 "side has a transpose of a sum — peel the transpose first, then\n"
@@ -58748,6 +60729,15 @@ msgstr ""
 msgid "**Step 3 — Close**: The goal is now pure arithmetic:\n"
 "§0.\n"
 "Use §1 to close it."
+msgstr ""
+
+#. §0: `himg`
+#. §1: `image.card = n + 1`
+#. §2: `hsub`
+#. §3: `image.card <= n`
+#: Game.Levels.Finale.L06_NonInjectivity
+msgid "Now §0 says §1 and §2 says\n"
+"§3. Contradiction."
 msgstr ""
 
 #: Game.Levels.FinsetInduction.L05_AlgebraInStep
@@ -59973,6 +61963,16 @@ msgstr ""
 msgid "Product Cardinality Integration"
 msgstr ""
 
+#. §0: `(range n).powersetCard k`
+#. §1: `k`
+#. §2: `range n`
+#. §3: `Nat.choose`
+#: Game.Levels.Finale.L02_PowersetPartition
+msgid "Each §0 is the family of size-§1\n"
+"subsets of §2. What does its cardinality equal in terms of\n"
+"§3?"
+msgstr ""
+
 #: Game.Levels.Finsupp.L13_Extensionality
 msgid "Prove function equality from pointwise agreement."
 msgstr ""
@@ -60119,6 +62119,44 @@ msgstr ""
 
 #: Game.Levels.PsetCombinatorics.L03_WeightedRowSum
 msgid "Weighted Alternating Sum Over Z"
+msgstr ""
+
+#. §0: $$\\sum_{i \\in s} (f(i) + g(i)) = \\sum_{i \\in s} f(i) + \\sum_{i \\in s} g(i)$$
+#. §1: `sum_empty`
+#. §2: `sum_insert ha`
+#. §3: `ih`
+#. §4: `ring`
+#. §5: `Finset.sum_add_distrib`
+#. §6: `sum_empty`
+#. §7: `sum_range_zero`
+#. §8: `sum_insert`
+#. §9: `sum_range_succ`
+#. §10: `fun f => sum f`
+#. §11: `sum_const_mul`
+#. §12: $\\int (f + g) = \\int f + \\int g$
+#: Game.Levels.Finale.L11_FinsetInductionIntegration
+msgid "**Summation distributes over addition**:\n"
+"\n"
+"§0\n"
+"\n"
+"| Case | Key rewrites | Closer |\n"
+"|------|-------------|--------|\n"
+"| Base | §1 (three times) | trivial |\n"
+"| Step | §2 (three times) + §3 | §4 |\n"
+"\n"
+"This identity is §5 in Mathlib — here you\n"
+"proved it by induction from scratch.\n"
+"\n"
+"**The induction pattern**: Finset induction follows the same rhythm\n"
+"as natural number induction from the SummationFormulas world:\n"
+"- **Base**: clear with §6 (analogous to §7)\n"
+"- **Step**: peel with §8 (analogous to §9),\n"
+"  substitute the IH, close with algebra\n"
+"\n"
+"**Connection to linearity**: This identity says that §10\n"
+"is an **additive** map. Combined with §11 (scaling), it\n"
+"says summation is linear. This is the discrete analogue of the\n"
+"integral's linearity: §12."
 msgstr ""
 
 #. §0: `f + g`
@@ -60618,6 +62656,34 @@ msgid "The goal is §0.\n"
 "(you cannot choose §3 items from §4)."
 msgstr ""
 
+#. §0: `Fin n`
+#. §1: $f(n) = n + 1$
+#. §2: $\\mathbb{N}$
+#. §3: $a + 1 = b + 1 \\implies a = b$
+#. §4: $0$
+#. §5: $a + 1 = b + 1$
+#. §6: $a = b$
+#. §7: $0$
+#. §8: $x + 1 \\ge 1 > 0$
+#. §9: $x$
+#: Game.Levels.Finale.L15_InfiniteCounterexample
+msgid "# When Finiteness Fails\n"
+"\n"
+"You just proved that every injective endofunction on §0\n"
+"is surjective. But this is deeply tied to **finiteness** — the\n"
+"cardinality sandwich that powers the proof has no meaning for\n"
+"infinite types.\n"
+"\n"
+"**Counterexample**: The successor function §1 on\n"
+"§2 is injective (§3)\n"
+"but NOT surjective (§4 has no preimage).\n"
+"\n"
+"Prove both halves of this conjunction:\n"
+"1. **Injective**: if §5, then §6 (arithmetic)\n"
+"2. **Not surjective**: show that §7 has no preimage, since\n"
+"   §8 for every natural number §9"
+msgstr ""
+
 #. §0: `Finset.sum_eq_zero`
 #. §1: `∀ x ∈ s, f x = 0`
 #. §2: `∑ x ∈ s, f x = 0`
@@ -61061,6 +63127,48 @@ msgid "The inner sums §0 have no known value. But\n"
 "with §2."
 msgstr ""
 
+#. §0: `Fin n`
+#. §1: `Finset`
+#. §2: `Fintype.card`
+#. §3: `∑`
+#. §4: `∏`
+#: Game.Levels.Finale
+msgid "# Finale\n"
+"\n"
+"You've built the complete finite mathematics toolkit across\n"
+"seven phases:\n"
+"\n"
+"1. **Finite types** — §0, navigation, tuples\n"
+"2. **Finite sets** — §1, membership, operations, image\n"
+"3. **Cardinality** — §2, type decomposition, counting types\n"
+"4. **Big operators** — §3, §4, induction, summation formulas\n"
+"5. **Combinatorics** — binomial coefficients, powerset, Pascal's triangle\n"
+"6. **Advanced structures** — products, finitely supported functions, matrices\n"
+"7. **Counting techniques** — bijection, injection, pigeonhole, double counting\n"
+"\n"
+"This final world integrates techniques from multiple phases into\n"
+"thirteen coaching levels, one boss, and two epilogue levels. Each\n"
+"coaching level exercises a different combination of tools:\n"
+"\n"
+"**Levels**:\n"
+"1. A new summation formula by induction (Phase 4)\n"
+"2. Powerset partition by size (Phases 4+5)\n"
+"3. Diagonal decomposition of self-products (Phases 2+6)\n"
+"4. The fiber template on Fin types (Phases 1+3+7)\n"
+"5. Quantitative pigeonhole via fiber bounding (Phases 1+3+4+7)\n"
+"6. Non-injectivity via image cardinality (Phases 2+3)\n"
+"7. Pigeonhole applied to modular arithmetic (concrete application)\n"
+"8. Subset equality via cardinality (Phases 2+3 — seeds the boss)\n"
+"9. Three-part set decomposition (Phases 2+3 — double counting)\n"
+"10. Support bounding via calc chain (Phases 2+3+6)\n"
+"11. Sum distributes over addition by finset induction (Phase 4)\n"
+"12. Trace of the identity matrix (Phases 3+4+6)\n"
+"13. Surjective implies injective for finite types (Phases 2+3+7)\n"
+"14. **Boss**: prove injective endofunctions are surjective (Phases 2+3+7)\n"
+"15. The infinite counterexample: why finiteness is essential\n"
+"16. Bijective from injective: the course capstone"
+msgstr ""
+
 #. §0: `s.card = ∑ x ∈ s, 1`
 #. §1: $\\sum_{{x \\in \\{1,2,3\\}}} f(x)$
 #. §2: $f(x) = x$
@@ -61336,6 +63444,10 @@ msgstr ""
 
 #: Game.Levels.FinTuples.L16_SnocInjectivity
 msgid "Snoc Injectivity"
+msgstr ""
+
+#: Game.Levels.Finale.L13_SurjectiveImpliesInjective
+msgid "Derive the cardinality equality from the set equality."
 msgstr ""
 
 #. §0: `rw [Finset.mem_union]`
@@ -61626,6 +63738,15 @@ msgid "Now convert the filtered sum §0 into\n"
 "a conditional sum over §1 using §2."
 msgstr ""
 
+#. §0: `f`
+#. §1: `Finset.univ`
+#. §2: `f`
+#. §3: `Finset.univ`
+#: Game.Levels.Finale.L14_Boss
+msgid "Since §0 is injective, the image of §1 under §2\n"
+"has the same cardinality as §3."
+msgstr ""
+
 #. §0: `f x * 2`
 #. §1: `rw [Finset.prod_mul_distrib]`
 #: Game.Levels.BigOpAlgebra.L04_ProdConst
@@ -61797,6 +63918,76 @@ msgid "# Chaining Identities\n"
 "Only a starting hint is provided. Find the path yourself."
 msgstr ""
 
+#. §0: `Fin n`
+#. §1: `Function.Bijective`
+#. §2: `Equiv.ofBijective`
+#. §3: `constructor`
+#. §4: `Bijective`
+#. §5: `hf`
+#. §6: `mem_image`
+#. §7: `obtain`
+#. §8: `heq`
+#. §9: $f : \\text{Fin}\\,n \\to
+#. \\text{Fin}\\,n$
+#. §10: $$\\text{injective} \\iff \\text{surjective} \\iff \\text{bijective}$$
+#. §11: `Fin n`
+#. §12: `Finset`
+#: Game.Levels.Finale.L16_EquivalenceBiconditional
+msgid "# Congratulations!\n"
+"\n"
+"You have completed **Finite Mathematics**.\n"
+"\n"
+"You just proved that an injective endofunction on §0 is\n"
+"**bijective** — injective AND surjective. §1\n"
+"packages both properties into a single conjunction, which is the\n"
+"form you would use in further proofs (e.g., constructing inverse\n"
+"functions, proving equalities of types via §2).\n"
+"\n"
+"**The proof combined**:\n"
+"- §3 to split §4 into its two halves\n"
+"- §5 for injectivity (given)\n"
+"- The witness extraction pattern (§6 + §7) from\n"
+"  the boss, applied to §8 for surjectivity\n"
+"\n"
+"**The full equivalence**: For any §9:\n"
+"§10\n"
+"\n"
+"Knowing any one of these properties gives you all three.\n"
+"\n"
+"**The course in retrospect**: You built this result from the\n"
+"ground up:\n"
+"- **Phase 1**: Learned to navigate §11 and build tuples\n"
+"- **Phase 2**: Mastered §12 membership, operations, and images\n"
+"- **Phase 3**: Developed cardinality reasoning and the\n"
+"  cardinality sandwich\n"
+"- **Phase 4**: Wielded big operators and summation formulas\n"
+"- **Phase 5**: Explored binomial coefficients and powerset\n"
+"  decompositions\n"
+"- **Phase 6**: Extended to products, finitely supported\n"
+"  functions, and matrices\n"
+"- **Phase 7**: Applied counting techniques — bijection,\n"
+"  injection, pigeonhole, double counting\n"
+"\n"
+"**What comes next**: The tools you've learned are the foundation\n"
+"for:\n"
+"\n"
+"- **Group theory**: Lagrange's theorem is a fiber-decomposition\n"
+"  argument applied to cosets\n"
+"- **Graph theory**: Counting edges, paths, and colorings in\n"
+"  finite graphs uses exactly these tools\n"
+"- **Ramsey theory**: The pigeonhole principle generalizes to\n"
+"  Ramsey numbers, where any 2-coloring of a large enough\n"
+"  complete graph contains a monochromatic clique\n"
+"- **Generating functions**: Big operators over formal power series\n"
+"  extend the summation techniques to infinite settings\n"
+"- **Linear algebra**: Matrices over finite fields connect the\n"
+"  matrix world to modular arithmetic and coding theory\n"
+"\n"
+"These are all active areas of formalization in Mathlib. The\n"
+"proof patterns you've practiced — induction, decomposition,\n"
+"bounding, and contradiction — transfer directly."
+msgstr ""
+
 #. §0: `rw [Finset.mem_image] at hy`
 #. §1: `obtain ⟨x, hxs, hfx⟩ := hy`
 #. §2: `rw [Finset.subset_iff] at h`
@@ -61849,6 +64040,13 @@ msgid "# When Sigma Reduces to Product\n"
 "— for natural numbers, scalar multiplication §13 is the same\n"
 "as ordinary multiplication §14. The goal will close with §15\n"
 "because Lean recognizes this definitional equality."
+msgstr ""
+
+#. §0: `Finset.sum_congr rfl h`
+#. §1: `Nat.choose n k`
+#: Game.Levels.Finale.L02_PowersetPartition
+msgid "Now rewrite the sum using §0 to\n"
+"replace each summand with §1."
 msgstr ""
 
 #. §0: `f`

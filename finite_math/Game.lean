@@ -28,6 +28,7 @@ import Game.Levels.Finsupp
 import Game.Levels.Matrices
 import Game.Levels.CountingTechniques
 import Game.Levels.PsetCounting
+import Game.Levels.Finale
 
 Title "Finite Mathematics"
 Introduction
@@ -95,5 +96,12 @@ Dependency BinomialCoefficients → PsetCombinatorics
 Dependency Powerset → PsetCombinatorics
 Dependency BinomialTheorem → PsetCombinatorics
 Dependency PascalsTriangle → PsetCombinatorics
+
+-- Finale (W29): depends on capstone worlds, Products (L03), Finsupp (L10), Matrices (L11)
+Dependency CountingTechniques → Finale
+Dependency PsetCounting → Finale
+Dependency Products → Finale
+Dependency Finsupp → Finale
+Dependency Matrices → Finale
 
 MakeGame

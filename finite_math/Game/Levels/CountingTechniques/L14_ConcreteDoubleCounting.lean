@@ -100,6 +100,25 @@ Whenever you see 'how many X satisfy Y?', ask: can I count
 the X-Y pairs two different ways?
 "
 
+/-- `let x : T := e` introduces a local definition `x` with value `e`
+and type `T`. Unlike `have`, the definition is **transparent** — later
+tactics can unfold `x` to see `e`.
+
+Use `let` when you need to name a computed value (like a function or
+a term with a proof obligation) and later reason about its internals.
+-/
+TacticDoc «let»
+
+/-- `Nat.mod_lt a (h : 0 < n)` proves `a % n < n`.
+
+Every natural number's remainder when divided by `n` is strictly
+less than `n` (provided `n > 0`).
+-/
+TheoremDoc Nat.mod_lt as "Nat.mod_lt" in "Nat"
+
+NewTactic «let»
+NewTheorem Nat.mod_lt
+
 TheoremTab "Card"
 
 DisabledTactic trivial «decide» native_decide simp aesop simp_all fin_cases interval_cases norm_num by_cases tauto linarith
