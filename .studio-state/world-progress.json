@@ -1,33 +1,5 @@
 {
   "completed": [
-    "MeetFin",
-    "FinNavigation",
-    "FinTuples",
-    "PsetFin",
-    "FinsetBasics",
-    "FinsetOperations",
-    "FinsetImage",
-    "PsetFinset",
-    "Cardinality",
-    "AbstractionLadder",
-    "Fintype",
-    "CountingTypes",
-    "PsetCardinality",
-    "BigOpIntro",
-    "BigOpAlgebra",
-    "FinsetInduction",
-    "SummationFormulas",
-    "PsetBigOp",
-    "BinomialCoefficients",
-    "Powerset",
-    "BinomialTheorem",
-    "PascalsTriangle",
-    "PsetCombinatorics",
-    "Products",
-    "Finsupp",
-    "Matrices",
-    "CountingTechniques",
-    "PsetCounting",
-    "Finale"
+    "SetWorld"
   ]
 }

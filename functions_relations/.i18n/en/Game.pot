@@ -1,15 +1,360 @@
 msgid ""
 msgstr "Project-Id-Version: Game v4.29.0-rc6\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-20\n"
+"POT-Creation-Date: 2026-03-23\n"
 "Last-Translator: \n"
 "Language-Team: none\n"
 "Language: en\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit"
 
+#. §0: `show P`
+#. §1: `P`
+#. §2: `P`
+#. §3: ```
+#. show P
+#. ```
+#. §4: `x ∈ {n | n < 5}`
+#. §5: `x < 5`
+#. §6: `omega`
+#. §7: `show x < 5`
+#. §8: ```
+#. -- Goal: 3 ∈ {n | n < 5}
+#. show 3 < 5
+#. -- Goal: 3 < 5
+#. omega
+#. ```
+#. §9: `show`
+#. §10: `show`
+#: Game.Metadata
+msgid "§0 converts the goal to §1, as long as §2 is\n"
+"definitionally equal to the current goal.\n"
+"\n"
+"## Syntax\n"
+"§3\n"
+"\n"
+"## When to use it\n"
+"When the goal is correct but in a form that other tactics cannot\n"
+"parse. For example, §4 is definitionally §5,\n"
+"but §6 needs the arithmetic form. Use §7 to convert.\n"
+"\n"
+"## Example\n"
+"§8\n"
+"\n"
+"## Warning\n"
+"§9 does NOT prove anything — it only changes the display.\n"
+"The new goal must be definitionally equal to the old one, or\n"
+"Lean will reject the §10."
+msgstr ""
+
+#. §0: `intro x`
+#. §1: ```
+#. intro x       -- introduce one variable
+#. intro x y z   -- introduce multiple variables
+#. intro h       -- introduce an implication hypothesis
+#. ```
+#. §2: `∀ x, P x`
+#. §3: `P → Q`
+#: Game.Metadata
+msgid "§0 introduces a universally quantified variable or an\n"
+"antecedent of an implication into the context.\n"
+"\n"
+"## Syntax\n"
+"§1\n"
+"\n"
+"## When to use it\n"
+"When the goal is §2 or §3."
+msgstr ""
+
+#: GameServer.RpcHandlers
+msgid "intermediate goal solved! 🎉"
+msgstr ""
+
+#: Game.Levels.SetWorld.L02_SetBuilder
+msgid "Prove that 3 belongs to the set of naturals less than 5."
+msgstr ""
+
+#. §0: `cases x with | constructor₁ args | constructor₂ args`
+#. §1: `x`
+#. §2: ```
+#. -- single constructor (e.g., ∃):
+#. cases h with | intro x hx
+#. 
+#. -- multiple constructors (e.g., ∨):
+#. cases h with | inl h₁ | inr h₂
+#. 
+#. -- natural numbers:
+#. cases n with | zero | succ m
+#. ```
+#. §3: `∨`
+#. §4: `inl`
+#. §5: `inr`
+#. §6: `∃`
+#. §7: `intro`
+#: Game.Metadata
+msgid "§0 performs\n"
+"case analysis on §1, creating one subgoal per constructor.\n"
+"\n"
+"## Syntax\n"
+"§2\n"
+"\n"
+"Each constructor names create a new subgoal that you handle\n"
+"one at a time.\n"
+"\n"
+"## When to use it\n"
+"When you want to consider all possible forms of a value (e.g.,\n"
+"§3 has §4 and §5, §6 has §7)."
+msgstr ""
+
+#. §0: `3 ∉ {n | Even n}`
+#. §1: `n < 5`
+#. §2: `Even n`
+#. §3: `show`
+#. §4: `intro`
+#. §5: `omega`
+#. §6: `obtain`
+#. §7: `omega`
+#. §8: `obtain`
+#. §9: `h : ∃ x, P x`
+#. §10: `obtain ⟨x, hx⟩ := h`
+#. §11: `x`
+#. §12: `hx : P x`
+#: Game.Levels.SetWorld.L05_NonMembershipExistential
+msgid "You proved §0 by assuming membership, destructuring\n"
+"the existential witness, and deriving an arithmetic contradiction.\n"
+"\n"
+"This is a different proof shape from Level 3:\n"
+"\n"
+"| Level 3 | This level |\n"
+"|---|---|\n"
+"| Predicate: §1 (arithmetic) | Predicate: §2 (existential) |\n"
+"| §3 unfolds to arithmetic | §4 gets the existential |\n"
+"| §5 on the arithmetic | §6 extracts witness, THEN §7 |\n"
+"\n"
+"Notice the recurring pattern across Levels 2, 3, and this level: **unfold\n"
+"the set notation, assume or provide, then close with arithmetic**. This is\n"
+"the *membership reduction* pattern — every set membership question reduces\n"
+"to a question about the underlying predicate, and the proof works directly\n"
+"with that predicate. This pattern transfers to every set concept in this\n"
+"course.\n"
+"\n"
+"The §8 tactic is your tool for destructuring existentials. Whenever\n"
+"you have §9, use §10 to get the witness\n"
+"§11 and the proof §12. You will use this pattern throughout the\n"
+"course — it appears whenever set membership involves existential\n"
+"conditions."
+msgstr ""
+
+#. §0: `tauto`
+#. §1: `∨`
+#. §2: `∧`
+#. §3: `→`
+#. §4: `¬`
+#. §5: `↔`
+#. §6: `True`
+#. §7: `False`
+#: Game.Metadata
+msgid "§0 closes goals that are propositional tautologies. It handles\n"
+"§1, §2, §3, §4, §5, §6, §7.\n"
+"\n"
+"Disabled in levels where the learner should construct proofs manually."
+msgstr ""
+
+#: Game.Levels.SetWorld.L04_InfiniteSet
+msgid "An Infinite Set"
+msgstr ""
+
+#. §0: `right`
+#. §1: `P ∨ Q`
+#. §2: ```
+#. right
+#. ```
+#. §3: `P ∨ Q`
+#. §4: `Q`
+#: Game.Metadata
+msgid "§0 selects the right disjunct of a goal §1.\n"
+"\n"
+"## Syntax\n"
+"§2\n"
+"\n"
+"## When to use it\n"
+"When the goal is §3 and you want to prove §4."
+msgstr ""
+
+#. §0: `p`
+#. §1: `hp : ∀ n, Even n → p n`
+#. §2: `p`
+#. §3: `hq : ∀ n, p n → Even n`
+#. §4: `p`
+#. §5: `p`
+#. §6: `4 ∈ {n | p n}`
+#. §7: `3 ∉ {n | p n}`
+#. §8: `apply hp`
+#. §9: `Even 4`
+#. §10: `p 3`
+#. §11: `Even 3`
+#. §12: `hq`
+#. §13: `obtain`
+#. §14: `constructor`
+#: Game.Levels.SetWorld.L09_Boss
+msgid "# Boss: Putting It All Together\n"
+"\n"
+"Time to combine everything. You are given an abstract predicate §0\n"
+"on natural numbers, with two hypotheses:\n"
+"\n"
+"- §1 — every even number satisfies §2\n"
+"- §3 — every number satisfying §4 is even\n"
+"\n"
+"Together these say: §5 holds for exactly the even numbers.\n"
+"\n"
+"You must prove two things:\n"
+"1. §6 — 4 is in the p-set (because 4 is even)\n"
+"2. §7 — 3 is NOT in the p-set (because 3 is odd)\n"
+"\n"
+"This combines:\n"
+"- Membership via hypothesis (Levels 1–2, 4): use §8 then\n"
+"  provide a witness for §9\n"
+"- Non-membership via contradiction (Levels 3, 5): assume §10,\n"
+"  derive §11 from §12, destructure the existential with\n"
+"  §13, then reach an arithmetic contradiction\n"
+"\n"
+"Start with §14 to split the conjunction."
+msgstr ""
+
+#: Game.Levels.SetWorld.L06_EmptySet
+msgid "The Empty Set"
+msgstr ""
+
+#. §0: `Set.univ`
+#: Game.Levels.SetWorld.L01_WelcomeToSets
+msgid "Every element belongs to §0."
+msgstr ""
+
+#: Game.Levels.SetWorld.L03_NonMembership
+msgid "7 does not belong to the set of naturals less than 5."
+msgstr ""
+
+#. §0: `Set.mem_univ x`
+#. §1: `x ∈ Set.univ`
+#. §2: `x`
+#: Game.Levels.SetWorld.L01_WelcomeToSets
+#: Game.Levels.SetWorld.L06_EmptySet
+#: Game.Levels.SetWorld.L07_UniversalSet
+msgid "§0 proves §1 for any §2."
+msgstr ""
+
 #: GameServer.RpcHandlers
 msgid "level completed with warnings… 🎭"
+msgstr ""
+
+#. §0: `6 < 10`
+#. §1: `omega`
+#: Game.Levels.SetWorld.L08_CompoundPredicate
+msgid "The goal is §0. Use §1."
+msgstr ""
+
+#. §0: `∅ : Set α`
+#. §1: `fun _ => False`
+#. §2: `False`
+#. §3: `n ∈ (∅ : Set ℕ)`
+#. §4: `False`
+#. §5: `False`
+#. §6: `∅`
+#. §7: `∅`
+#. §8: `∀ n : ℕ, n ∉ ∅`
+#. §9: `intro n`
+#. §10: `n`
+#. §11: `intro h`
+#. §12: `n ∉ ∅`
+#. §13: `¬ (n ∈ ∅)`
+#. §14: `n ∈ ∅ → False`
+#. §15: `h : n ∈ ∅`
+#. §16: `h`
+#. §17: `False`
+#. §18: `n ∈ ∅`
+#. §19: `False`
+#. §20: `False`
+#. §21: `exact h`
+#: Game.Levels.SetWorld.L06_EmptySet
+msgid "# The Empty Set\n"
+"\n"
+"The **empty set** §0 is the set with no elements.\n"
+"Its predicate is §1 — it returns §2 for every input.\n"
+"\n"
+"So §3 reduces to §4. Since §5 has no proof,\n"
+"nothing can ever be a member of §6.\n"
+"\n"
+"Your task is to prove that NO natural number belongs to §7. The\n"
+"statement is §8.\n"
+"\n"
+"The proof has two layers:\n"
+"1. §9 — introduce the universally quantified §10\n"
+"2. §11 — since §12 is §13 which is §14,\n"
+"   introduce the hypothesis §15\n"
+"3. Now §16 has type §17 (since §18 reduces to §19),\n"
+"   and the goal is §20, so §21 finishes.\n"
+"\n"
+"**Your task**: Prove the statement step by step."
+msgstr ""
+
+#. §0: `simp_all`
+#. §1: `simp`
+#. §2: `simp`
+#: Game.Metadata
+msgid "§0 applies §1 to all hypotheses and the goal\n"
+"simultaneously.\n"
+"\n"
+"Disabled for the same reason as §2."
+msgstr ""
+
+#. §0: `omega`
+#. §1: `3 < 5`
+#: Game.Levels.SetWorld.L02_SetBuilder
+msgid "§0 can now see the goal §1 and close it."
+msgstr ""
+
+#. §0: `Set.univ`
+#: Game.Levels.SetWorld.L07_UniversalSet
+msgid "Every natural number belongs to §0."
+msgstr ""
+
+#. §0: `∉`
+#. §1: `¬ ∈`
+#. §2: `x ∈ s`
+#. §3: `s`
+#. §4: `x`
+#. §5: `x ∉ s`
+#. §6: $$x \\notin s \\;\\;\\Longleftrightarrow\\;\\; \\neg\\, (x \\in s) \\;\\;\\Longleftrightarrow\\;\\; (x \\in s) \\to \\text{False}$$
+#. §7: `7 ∉ {n | n < 5}`
+#. §8: `¬ (7 < 5)`
+#. §9: `7 < 5 → False`
+#. §10: `¬ P`
+#. §11: `P`
+#. §12: `intro h`
+#. §13: `¬ P`
+#. §14: `False`
+#. §15: `h : P`
+#. §16: `show ¬ (7 < 5)`
+#. §17: `intro h`
+#. §18: `7 < 5`
+#. §19: `omega`
+#: Game.Levels.SetWorld.L03_NonMembership
+msgid "# Non-Membership: §0 means §1\n"
+"\n"
+"Just as §2 means the predicate §3 holds at §4, non-membership\n"
+"§5 means the predicate does NOT hold. Formally:\n"
+"\n"
+"§6\n"
+"\n"
+"So §7 unfolds to §8, which is §9.\n"
+"\n"
+"To prove a negation §10, you assume §11 and derive a contradiction.\n"
+"The tactic §12 turns a goal §13 into a goal §14 with\n"
+"hypothesis §15.\n"
+"\n"
+"**Your task**: First use §16 to make the goal explicit.\n"
+"Then use §17 to assume §18, and §19 to derive the\n"
+"contradiction."
 msgstr ""
 
 #: Game
@@ -20,30 +365,1454 @@ msgid "# Functions & Relations\n"
 "This course is under construction."
 msgstr ""
 
-#: Game.Levels.Welcome.L01_Welcome
-msgid "Welcome to Functions & Relations!\n"
-"\n"
-"This course is under construction. Check back soon for new content.\n"
-"\n"
-"For now, try closing this trivial goal to make sure everything works."
+#. §0: `use 3`
+#. §1: `r = 3`
+#. §2: `6 = 3 + 3`
+#: Game.Levels.SetWorld.L08_CompoundPredicate
+msgid "§0 substitutes §1 and the\n"
+"remaining goal §2 is closed automatically."
 msgstr ""
 
-#: Game.Levels.Welcome.L01_Welcome
-msgid "Welcome"
+#: Game.Levels.SetWorld.L02_SetBuilder
+msgid "Set Builder Notation"
 msgstr ""
 
-#: GameServer.RpcHandlers
-msgid "level completed! 🎉"
+#. §0: `Set.univ : Set α`
+#. §1: `α`
+#. §2: `fun _ => True`
+#. §3: `x ∈ Set.univ`
+#. §4: `True`
+#. §5: `x ∈ (Set.univ : Set ℕ)`
+#. §6: `True`
+#. §7: `Set.mem_univ x`
+#. §8: `x ∈ Set.univ`
+#: Game.Levels.SetWorld.L01_WelcomeToSets
+msgid "§0 is the universal set — the set containing every\n"
+"element of type §1.\n"
+"\n"
+"It is defined as §2, so §3 is always §4.\n"
+"\n"
+"## Example\n"
+"§5 reduces to §6.\n"
+"\n"
+"## Related\n"
+"§7 is the proof that §8."
+msgstr ""
+
+#. §0: `intro n`
+#: Game.Levels.SetWorld.L06_EmptySet
+#: Game.Levels.SetWorld.L07_UniversalSet
+msgid "Start with §0 to introduce the universally quantified\n"
+"variable."
+msgstr ""
+
+#. §0: `contradiction`
+#. §1: `h₁ : P`
+#. §2: `h₂ : ¬ P`
+#. §3: `h : False`
+#. §4: `h : n < n`
+#. §5: ```
+#. contradiction
+#. ```
+#. §6: `contradiction`
+#. §7: `exact h`
+#. §8: `h : 7 ∈ {n | n < 5}`
+#. §9: `omega`
+#: Game.Metadata
+msgid "§0 closes the goal by finding a contradiction among the\n"
+"hypotheses. It can detect:\n"
+"\n"
+"- §1 and §2\n"
+"- §3\n"
+"- §4 or other impossible arithmetic\n"
+"- Definitionally impossible hypotheses (e.g., set membership that\n"
+"  reduces to a false statement)\n"
+"\n"
+"## Syntax\n"
+"§5\n"
+"\n"
+"## When to use it\n"
+"When your hypotheses contain a contradiction. §6 is\n"
+"more powerful than §7 because it can see through definitional\n"
+"wrappers — for example, it can detect that §8\n"
+"is impossible, even though §9 cannot."
+msgstr ""
+
+#. §0: $$\\texttt{Set } \\alpha = \\alpha \\to \\texttt{Prop}$$
+#. §1: `x ∈ s`
+#. §2: `s`
+#. §3: `x`
+#. §4: `x ∈ s`
+#. §5: `s x`
+#. §6: `Set.univ`
+#. §7: `fun _ => True`
+#. §8: `True`
+#. §9: `x ∈ Set.univ`
+#. §10: `True`
+#. §11: `x ∈ Set.univ`
+#. §12: `True`
+#. §13: `True`
+#. §14: `constructor`
+#. §15: `True`
+#. §16: `True.intro`
+#. §17: `constructor`
+#: Game.Levels.SetWorld.L01_WelcomeToSets
+msgid "# Welcome to Sets\n"
+"\n"
+"In Lean 4, a **set** is not a primitive concept — it is built from\n"
+"something you already know: **predicates**.\n"
+"\n"
+"The definition is:\n"
+"§0\n"
+"\n"
+"A set of natural numbers is just a function that takes a natural number\n"
+"and returns a proposition. If the proposition is true, the number is\n"
+"*in* the set; if false, it is *not* in the set.\n"
+"\n"
+"**Membership** §1 means: apply the predicate §2 to §3 and check\n"
+"whether the result holds. So §4 is just §5 — function application!\n"
+"\n"
+"The simplest set is §6, the **universal set**. Its predicate is\n"
+"§7 — it returns §8 for every input. So §9\n"
+"reduces to just §10.\n"
+"\n"
+"Look at your goal. The problem asks you to prove §11, but\n"
+"the goal state shows §12 — because Lean has already evaluated the\n"
+"membership predicate for you. All you need to do is prove §13.\n"
+"\n"
+"**Your task**: Use §14 to close the goal. (Recall that §15\n"
+"is a type with exactly one constructor, §16, and §17\n"
+"applies it.)"
+msgstr ""
+
+#. §0: `p 3 → False`
+#. §1: `intro h`
+#. §2: `p 3`
+#: Game.Levels.SetWorld.L09_Boss
+msgid "The goal asks that 3 is not in the p-set, which means\n"
+"§0. Use §1 to assume §2."
+msgstr ""
+
+#: Game.Levels.SetWorld.L09_Boss
+msgid "Given hypotheses about a predicate p, prove membership and\n"
+"non-membership in the set defined by p."
+msgstr ""
+
+#. §0: `hr : 3 = r + r`
+#. §1: `omega`
+#: Game.Levels.SetWorld.L09_Boss
+msgid "The equation §0 has no solution — 3 is odd.\n"
+"§1 derives the contradiction."
+msgstr ""
+
+#. §0: $$\\texttt{Set } \\alpha = \\alpha \\to \\texttt{Prop}$$
+#. §1: `False`
+#. §2: `True`
+#. §3: `obtain`
+#. §4: `Set.univ`
+#. §5: `∅`
+#. §6: `intro`
+#. §7: `exact`
+#. §8: `constructor`
+#. §9: `use`
+#. §10: `omega`
+#: Game.Levels.SetWorld
+msgid "# Set World\n"
+"\n"
+"Welcome to the first world of **Functions & Relations**!\n"
+"\n"
+"In Lean 4, a set is not a primitive concept — it is built from\n"
+"predicates. The definition is strikingly simple:\n"
+"\n"
+"§0\n"
+"\n"
+"A set of natural numbers is just a function from natural numbers to\n"
+"propositions. An element is *in* the set when the proposition it maps\n"
+"to is true.\n"
+"\n"
+"This means all set-theoretic reasoning reduces to propositional logic.\n"
+"Membership is function application. The empty set uses §1. The\n"
+"universal set uses §2. In this world, you will internalize this\n"
+"reduction by working through concrete examples.\n"
+"\n"
+"By the end of this world, you will be able to:\n"
+"- Prove membership in sets defined by predicates\n"
+"- Prove non-membership using negation\n"
+"- Destructure existential witnesses with §3\n"
+"- Work with §4 and §5\n"
+"- Handle compound predicates with logical connectives\n"
+"- Recognize that set membership IS predicate evaluation\n"
+"\n"
+"**Prerequisites**: You should be comfortable with §6, §7,\n"
+"§8, §9, and §10 from the Natural Number Game.\n"
+"\n"
+"The boss at the end will ask you to combine all these moves on an\n"
+"abstract predicate. Let's begin!"
+msgstr ""
+
+#. §0: `assumption`
+#. §1: ```
+#. assumption
+#. ```
+#: Game.Metadata
+msgid "§0 closes the goal if a hypothesis in the context has\n"
+"exactly the right type.\n"
+"\n"
+"## Syntax\n"
+"§1\n"
+"\n"
+"## When to use it\n"
+"When a hypothesis matches the goal."
+msgstr ""
+
+#. §0: `Even 4`
+#. §1: `∃ r, 4 = r + r`
+#. §2: `use 2`
+#: Game.Levels.SetWorld.L09_Boss
+msgid "The goal is §0, meaning §1. Provide\n"
+"the witness: §2."
+msgstr ""
+
+#. §0: `obtain ⟨x, hx⟩ := h`
+#. §1: `h`
+#. §2: `∃ x, P x`
+#. §3: `⟨a, b⟩`
+#. §4: ```
+#. obtain ⟨x, hx⟩ := h     -- destructure an existential
+#. obtain ⟨a, b⟩ := h       -- destructure a conjunction or pair
+#. obtain ⟨x, hx, hy⟩ := h  -- nested destructuring
+#. ```
+#. §5: `\\<`
+#. §6: `\\>`
+#. §7: `∃ x, P x`
+#. §8: `P ∧ Q`
+#. §9: `obtain`
+#. §10: `h : ∃ r, n = r + r`
+#. §11: `obtain ⟨r, hr⟩ := h`
+#. §12: `r : ℕ`
+#. §13: `hr : n = r + r`
+#: Game.Levels.SetWorld.L05_NonMembershipExistential
+msgid "§0 destructures a hypothesis §1 with structure\n"
+"(such as §2 or §3) into its components.\n"
+"\n"
+"## Syntax\n"
+"§4\n"
+"\n"
+"## Angle bracket input\n"
+"Type ⟨ as §5 and ⟩ as §6 in the editor.\n"
+"\n"
+"## When to use it\n"
+"When you have a hypothesis whose type is an existential §7,\n"
+"a conjunction §8, or any structure with a single constructor.\n"
+"After §9, the components are available as separate hypotheses.\n"
+"\n"
+"## Example\n"
+"If §10, then §11 gives\n"
+"§12 and §13."
+msgstr ""
+
+#. §0: `h : p 3`
+#. §1: `hq : ∀ n, p n → Even n`
+#. §2: `hq`
+#. §3: `3`
+#. §4: `h`
+#. §5: `have h3 := hq 3 h`
+#: Game.Levels.SetWorld.L09_Boss
+msgid "You have §0 and §1. Apply §2\n"
+"to §3 and §4 to derive that 3 must be even:\n"
+"§5."
+msgstr ""
+
+#. §0: `constructor`
+#: Game.Levels.SetWorld.L09_Boss
+msgid "The goal is a conjunction. Use §0 to split it\n"
+"into two parts."
+msgstr ""
+
+#. §0: `True`
+#. §1: `x ∈ Set.univ`
+#. §2: `True`
+#. §3: `constructor`
+#: Game.Levels.SetWorld.L01_WelcomeToSets
+msgid "The goal is §0 because §1 unfolds to §2.\n"
+"Use §3 to prove it."
+msgstr ""
+
+#. §0: `setOf p`
+#. §1: `{x | p x}`
+#. §2: `p : α → Prop`
+#. §3: `{x | p x}`
+#. §4: `{x : α | p x}`
+#. §5: `setOf (fun x => p x)`
+#. §6: `Set α = α → Prop`
+#. §7: `setOf p = p`
+#. §8: ```
+#. {x : α | P x}     -- set of elements satisfying P
+#. {x | P x}         -- type inferred from context
+#. ```
+#. §9: `{n : ℕ | n < 5}`
+#. §10: `3 ∈ {n : ℕ | n < 5}`
+#. §11: `3 < 5`
+#. §12: `{`
+#. §13: `|`
+#. §14: `{n | n < 5}`
+#. §15: `n`
+#. §16: `n`
+#: Game.Levels.SetWorld.L02_SetBuilder
+msgid "§0 creates the set §1 from a predicate §2.\n"
+"\n"
+"The notation §3 or §4 is syntactic sugar for\n"
+"§5.\n"
+"\n"
+"Since §6 and §7, the set builder notation\n"
+"is really just wrapping a predicate.\n"
+"\n"
+"## Syntax\n"
+"§8\n"
+"\n"
+"## Example\n"
+"§9 is the set of natural numbers less than 5.\n"
+"§10 reduces to §11.\n"
+"\n"
+"## Warning\n"
+"The variable after §12 is a *binder* — it is local to the expression\n"
+"after §13. Writing §14 defines a predicate; §15 does not\n"
+"refer to any §16 in the surrounding context."
+msgstr ""
+
+#. §0: `Set.mem_setOf`
+#. §1: `x ∈ {a | p a} ↔ p x`
+#. §2: `Set.mem_setOf_eq`
+#: Game.Metadata
+msgid "§0 states §1 — the iff version\n"
+"of set-builder membership unfolding.\n"
+"\n"
+"Disabled for the same reason as §2."
+msgstr ""
+
+#: Game.Levels.SetWorld.L01_WelcomeToSets
+msgid "Welcome to Sets"
+msgstr ""
+
+#. §0: `norm_num`
+#: Game.Metadata
+msgid "§0 evaluates numerical expressions and closes arithmetic\n"
+"goals that can be decided by computation.\n"
+"\n"
+"Disabled in levels where manual arithmetic reasoning is the lesson."
+msgstr ""
+
+#. §0: `simp`
+#: Game.Metadata
+msgid "§0 applies a set of simplification lemmas to the goal\n"
+"and hypotheses.\n"
+"\n"
+"Disabled in early levels to force manual rewriting and to ensure\n"
+"the player understands each proof step."
+msgstr ""
+
+#. §0: `h3 : Even 3`
+#. §1: `r`
+#. §2: `3 = r + r`
+#. §3: `obtain ⟨r, hr⟩ := h3`
+#: Game.Levels.SetWorld.L09_Boss
+msgid "§0 means there exists §1 with §2.\n"
+"Destructure it: §3."
+msgstr ""
+
+#. §0: `h`
+#. §1: `False`
+#. §2: `n ∈ ∅`
+#. §3: `False`
+#. §4: `False`
+#. §5: `exact h`
+#: Game.Levels.SetWorld.L06_EmptySet
+msgid "Now §0 has type §1 (because §2 reduces to §3).\n"
+"The goal is also §4. Use §5."
+msgstr ""
+
+#: Game.Levels.SetWorld.L09_Boss
+msgid "Boss: Sets are Predicates"
+msgstr ""
+
+#. §0: `use 2`
+#. §1: $r = 2$
+#. §2: $4 = 2 + 2$
+#. §3: `Even`
+#. §4: `{n | Even n}`
+#. §5: `∃`
+#. §6: `use`
+#: Game.Levels.SetWorld.L04_InfiniteSet
+msgid "§0 provided the witness §1 and Lean verified\n"
+"§2 by computation.\n"
+"\n"
+"This level illustrates two things:\n"
+"\n"
+"1. **Sets can be infinite.** The predicate §3 has no upper bound —\n"
+"   the set §4 has infinitely many elements. Lean sets\n"
+"   are just predicates, so finite vs. infinite is not a structural\n"
+"   distinction.\n"
+"\n"
+"2. **Existential membership proofs need witnesses.** When the\n"
+"   membership predicate involves §5, you must exhibit a concrete\n"
+"   value. The §6 tactic is your tool for this.\n"
+"\n"
+"In ordinary mathematics: *4 is even because 4 = 2 + 2.* That is\n"
+"exactly what you just proved — no more, no less."
+msgstr ""
+
+#. §0: `exact h`
+#. §1: `h`
+#. §2: `False`
+#: Game.Levels.SetWorld.L06_EmptySet
+msgid "§0 closes the goal since §1 has\n"
+"exactly the type §2."
+msgstr ""
+
+#. §0: `rw [h]`
+#. §1: `h`
+#. §2: ```
+#. rw [h]           -- rewrite the goal
+#. rw [h] at hyp    -- rewrite a hypothesis
+#. rw [← h]         -- rewrite right-to-left
+#. rw [h1, h2, h3]  -- chain multiple rewrites
+#. ```
+#. §3: `h : a = b`
+#. §4: `h : P ↔ Q`
+#. §5: `a`
+#. §6: `b`
+#. §7: `P`
+#. §8: `Q`
+#. §9: `rw`
+#: Game.Metadata
+msgid "§0 rewrites the goal using an equation or iff §1.\n"
+"\n"
+"## Syntax\n"
+"§2\n"
+"\n"
+"## When to use it\n"
+"When you have an equation §3 or iff §4 and want\n"
+"to replace §5 with §6 (or §7 with §8) in the goal or a hypothesis.\n"
+"\n"
+"## Warning\n"
+"§9 replaces ALL occurrences of the pattern, not just the first."
+msgstr ""
+
+#. §0: `have h := expr`
+#. §1: `h`
+#. §2: `expr`
+#. §3: ```
+#. have h := expr           -- Lean infers the type
+#. have h : type := expr    -- explicit type annotation
+#. have h : type := by ...  -- prove the hypothesis with tactics
+#. ```
+#: Game.Metadata
+msgid "§0 introduces a new hypothesis §1 with value §2.\n"
+"\n"
+"## Syntax\n"
+"§3\n"
+"\n"
+"## When to use it\n"
+"When you need an intermediate fact that isn't directly in your context."
+msgstr ""
+
+#. §0: `show 3 < 5`
+#. §1: `omega`
+#. §2: `show`
+#. §3: `3 ∈ {n | n < 5}`
+#. §4: `3 ∈ setOf (fun n => n < 5)`
+#. §5: `(fun n => n < 5) 3`
+#. §6: `3 < 5`
+#. §7: `show`
+#. §8: `show`
+#. §9: `show`
+#. §10: `x ∈ {y | P y}`
+#. §11: `P x`
+#: Game.Levels.SetWorld.L02_SetBuilder
+msgid "You used §0 to convert the goal, then §1 to close it.\n"
+"\n"
+"The chain of definitional reductions that §2 verified:\n"
+"1. §3 — the original statement\n"
+"2. §4 — notation expansion\n"
+"3. §5 — membership is function application\n"
+"4. §6 — beta reduction\n"
+"\n"
+"**§7 is a general tool**, not just an arithmetic trick. It works\n"
+"whenever two expressions are *definitionally equal* — meaning Lean can\n"
+"verify they are the same by unfolding definitions, without needing a\n"
+"proof. You will use §8 throughout this course to unfold set\n"
+"membership, complement membership, preimage membership, and more.\n"
+"The pattern is always the same: §9 reveals the predicate content\n"
+"hidden inside set-theoretic notation.\n"
+"\n"
+"This is the core pattern you will use throughout this course:\n"
+"**set membership questions reduce to predicate questions**.\n"
+"\n"
+"When you see §10, you can always think of it as §11."
+msgstr ""
+
+#. §0: `apply hp`
+#. §1: `p n`
+#. §2: `p 4`
+#. §3: `n = 4`
+#. §4: `Even 4`
+#: Game.Levels.SetWorld.L09_Boss
+msgid "§0 matches the conclusion §1\n"
+"against the goal §2, setting §3 and leaving goal §4."
+msgstr ""
+
+#. §0: `hr : 3 = r + r`
+#. §1: `r`
+#. §2: `omega`
+#: Game.Levels.SetWorld.L05_NonMembershipExistential
+msgid "Now §0 but 3 is odd — no natural number §1\n"
+"satisfies this. §2 sees this contradiction and closes the goal."
+msgstr ""
+
+#: Game.Levels.SetWorld.L06_EmptySet
+msgid "No natural number belongs to the empty set."
+msgstr ""
+
+#. §0: `True`
+#. §1: `n ∈ Set.univ`
+#. §2: `constructor`
+#: Game.Levels.SetWorld.L07_UniversalSet
+msgid "The goal is §0 (from §1). Use §2."
+msgstr ""
+
+#: Game.Levels.SetWorld.L05_NonMembershipExistential
+msgid "Disproving Membership in an Existential Set"
+msgstr ""
+
+#. §0: `show 3 < 5`
+#. §1: `omega`
+#: Game.Levels.SetWorld.L02_SetBuilder
+msgid "After §0, use §1 to close\n"
+"the arithmetic goal."
+msgstr ""
+
+#: Game.Levels.SetWorld.L08_CompoundPredicate
+msgid "Compound Predicates"
+msgstr ""
+
+#. §0: `native_decide`
+#. §1: `decide`
+#. §2: `decide`
+#: Game.Metadata
+msgid "§0 is like §1 but uses native code evaluation\n"
+"for faster computation.\n"
+"\n"
+"Disabled for the same reason as §2."
+msgstr ""
+
+#. §0: `constructor`
+#. §1: `True.intro`
+#: Game.Levels.SetWorld.L01_WelcomeToSets
+msgid "§0 applies §1 and closes\n"
+"the goal."
+msgstr ""
+
+#. §0: `constructor`
+#. §1: `∧`
+#. §2: `↔`
+#. §3: ```
+#. constructor
+#. ```
+#. §4: `P ∧ Q`
+#. §5: `P`
+#. §6: `Q`
+#. §7: `P ↔ Q`
+#. §8: `P → Q`
+#. §9: `Q → P`
+#. §10: `True`
+#: Game.Metadata
+msgid "§0 splits a goal with a single constructor (like §1 or §2)\n"
+"into its components.\n"
+"\n"
+"## Syntax\n"
+"§3\n"
+"\n"
+"## When to use it\n"
+"When the goal is §4 (splits into §5 and §6), §7\n"
+"(splits into §8 and §9), or §10 (closes immediately)."
+msgstr ""
+
+#. §0: `show ¬ (P x)`
+#. §1: `x ∉ {y | P y}`
+#. §2: `intro h`
+#. §3: `P x`
+#. §4: `False`
+#. §5: `omega`
+#. §6: `h : 7 < 5`
+#. §7: `show ... ; intro h; omega`
+#. §8: `False`
+#: Game.Levels.SetWorld.L03_NonMembership
+msgid "The proof pattern for non-membership:\n"
+"\n"
+"1. §0 — unfold §1 to its arithmetic content\n"
+"2. §2 — assume §3, changing the goal to §4\n"
+"3. Derive the contradiction (here, §5 saw that §6 is\n"
+"   impossible)\n"
+"\n"
+"The §7 pattern works whenever the predicate\n"
+"is a false arithmetic statement. For non-arithmetic predicates, you\n"
+"will use other tools to derive §8 from the hypothesis.\n"
+"\n"
+"In ordinary mathematics, this is a *proof by contradiction*: assume\n"
+"7 is in the set, observe this means 7 < 5, which is absurd."
+msgstr ""
+
+#. §0: `Set.mem_setOf_eq`
+#. §1: `x ∈ {a | p a} = p x`
+#. §2: `show`
+#: Game.Metadata
+msgid "§0 states §1 — membership in a\n"
+"set-builder set equals the predicate applied to the element.\n"
+"\n"
+"This theorem is disabled in early levels because the course teaches §2\n"
+"as the primary method for unfolding set membership."
+msgstr ""
+
+#. §0: `apply e`
+#. §1: `e`
+#. §2: ```
+#. apply e
+#. ```
+#. §3: `e`
+#. §4: `apply e`
+#. §5: `e`
+#: Game.Metadata
+msgid "§0 reduces the goal by applying §1, leaving any\n"
+"remaining arguments as new goals.\n"
+"\n"
+"## Syntax\n"
+"§2\n"
+"\n"
+"## When to use it\n"
+"When the goal matches the conclusion of some known fact §3.\n"
+"After §4, the remaining goals are the premises of §5."
+msgstr ""
+
+#. §0: `∅ : Set α`
+#. §1: `fun _ => False`
+#. §2: `x ∈ (∅ : Set α)`
+#. §3: `False`
+#. §4: ```
+#. (∅ : Set α)     -- empty set (typed \\emptyset)
+#. ```
+#. §5: `n ∈ (∅ : Set ℕ)`
+#. §6: `False`
+#. §7: `n ∉ (∅ : Set ℕ)`
+#. §8: `¬ False`
+#. §9: `False → False`
+#. §10: `Set.notMem_empty x`
+#. §11: `x ∉ (∅ : Set α)`
+#. §12: `Set.univ`
+#: Game.Levels.SetWorld.L06_EmptySet
+msgid "§0 is the empty set — the set containing no elements.\n"
+"\n"
+"It is defined as §1, so §2 reduces to\n"
+"§3.\n"
+"\n"
+"## Syntax\n"
+"§4\n"
+"\n"
+"## Example\n"
+"§5 reduces to §6.\n"
+"§7 reduces to §8, which is §9.\n"
+"\n"
+"## Related\n"
+"- §10 is the proof that §11\n"
+"- §12 is the opposite extreme: everything is a member"
+msgstr ""
+
+#. §0: `3 ∉ setOf fun n => Even n`
+#. §1: `Even 3 → False`
+#. §2: `intro h`
+#. §3: `Even 3`
+#: Game.Levels.SetWorld.L05_NonMembershipExistential
+msgid "The goal is §0, which means\n"
+"§1. Use §2 to assume §3."
+msgstr ""
+
+#. §0: `left`
+#. §1: `P ∨ Q`
+#. §2: ```
+#. left
+#. ```
+#. §3: `P ∨ Q`
+#. §4: `P`
+#: Game.Metadata
+msgid "§0 selects the left disjunct of a goal §1.\n"
+"\n"
+"## Syntax\n"
+"§2\n"
+"\n"
+"## When to use it\n"
+"When the goal is §3 and you want to prove §4."
+msgstr ""
+
+#. §0: `x ∈ Set.univ`
+#. §1: `True`
+#. §2: `Set.univ`
+#. §3: `fun _ => True`
+#. §4: `x ∈ Set.univ`
+#. §5: `Set.univ x`
+#. §6: `(fun _ => True) x`
+#. §7: `True`
+#. §8: `constructor`
+#. §9: `True`
+#. §10: `True.intro`
+#. §11: `Set.mem_univ`
+#. §12: `x`
+#. §13: `x ∈ Set.univ`
+#: Game.Levels.SetWorld.L01_WelcomeToSets
+msgid "You proved §0 by proving §1. This worked because:\n"
+"\n"
+"1. §2 is defined as §3\n"
+"2. §4 means §5 = §6 = §7\n"
+"3. §8 proves §9 via §10\n"
+"\n"
+"The key insight: **set membership is predicate evaluation**. There is\n"
+"no special set-theoretic machinery — just function application and\n"
+"propositions. This is how all sets work in Lean.\n"
+"\n"
+"The library name for this fact is §11: for any §12, §13\n"
+"holds."
+msgstr ""
+
+#. §0: `7 ∉ {n | n < 5}`
+#. §1: `omega`
+#. §2: `show`
+#. §3: `{n : ℕ | Even n}`
+#. §4: `Even n`
+#. §5: `∃ r, n = r + r`
+#. §6: `3 ∉ {n | Even n}`
+#. §7: `r`
+#. §8: `3 = r + r`
+#. §9: `intro h`
+#. §10: `3 ∈ {n | Even n}`
+#. §11: `h : Even 3`
+#. §12: `h : ∃ r, 3 = r + r`
+#. §13: `obtain ⟨r, hr⟩ := h`
+#. §14: `r : ℕ`
+#. §15: `hr : 3 = r + r`
+#. §16: `omega`
+#. §17: `3 = r + r`
+#. §18: `omega`
+#. §19: `False`
+#. §20: `obtain`
+#. §21: `obtain ⟨name1, name2⟩ := hypothesis`
+#. §22: `\\<`
+#. §23: `\\>`
+#: Game.Levels.SetWorld.L05_NonMembershipExistential
+msgid "# Non-Membership with Existential Predicates\n"
+"\n"
+"In Level 3, you proved §0 — the predicate was a simple\n"
+"arithmetic comparison, and §1 dispatched it directly after §2.\n"
+"\n"
+"But what happens when the predicate involves an **existential**?\n"
+"\n"
+"The set §3 has predicate §4, which means\n"
+"§5. To prove §6, you must show that\n"
+"NO witness §7 can satisfy §8.\n"
+"\n"
+"The proof pattern:\n"
+"1. §9 — assume §10, giving §11\n"
+"   (i.e., §12)\n"
+"2. §13 — destructure the existential: extract the\n"
+"   witness §14 and the equation §15\n"
+"3. §16 — the equation §17 has no natural number solution\n"
+"   (3 is odd), so §18 derives §19\n"
+"\n"
+"The new tactic here is §20. It takes an existential hypothesis\n"
+"and breaks it apart into its components. The syntax uses angle brackets:\n"
+"§21 (type ⟨ as §22 and ⟩ as §23).\n"
+"\n"
+"**Your task**: Prove that 3 is not even."
+msgstr ""
+
+#: Game.Levels.SetWorld.L03_NonMembership
+msgid "Non-Membership"
+msgstr ""
+
+#. §0: $\\{n \\in \\mathbb{N} \\mid n < 5\\}$
+#. §1: `{n : ℕ | n < 5}`
+#. §2: `setOf (fun n => n < 5)`
+#. §3: `fun n => n < 5`
+#. §4: `setOf`
+#. §5: `Set`
+#. §6: $$3 \\in \\{n \\mid n < 5\\} = (\\text{fun } n \\Rightarrow n < 5) \\; 3 = 3 < 5$$
+#. §7: `3 ∈ {n | n < 5}`
+#. §8: `3 < 5`
+#. §9: `omega`
+#. §10: `show`
+#. §11: `show 3 < 5`
+#. §12: `3 < 5`
+#. §13: `omega`
+#. §14: `show 3 < 5`
+#. §15: `omega`
+#: Game.Levels.SetWorld.L02_SetBuilder
+msgid "# Set Builder Notation\n"
+"\n"
+"In mathematics, you write sets like §0.\n"
+"In Lean, this becomes §1.\n"
+"\n"
+"This notation is syntactic sugar for §2, which is\n"
+"defined as... just §3 itself! The function §4 is\n"
+"literally the identity: it takes a predicate and returns it as a §5.\n"
+"\n"
+"So what happens when you check membership?\n"
+"\n"
+"§6\n"
+"\n"
+"The set builder notation just wraps a predicate. Membership evaluates\n"
+"the predicate at the given point.\n"
+"\n"
+"**Look at your goal**: it says §7. We know this is\n"
+"*definitionally* equal to §8, but some tactics (like §9)\n"
+"need the goal in explicit arithmetic form to work.\n"
+"\n"
+"The §10 tactic converts the goal to a definitionally equal form.\n"
+"Try §11 — this tells Lean to display the goal as §12\n"
+"(which it can verify is the same thing). Then §13 closes it.\n"
+"\n"
+"**Your task**: Use §14 then §15."
+msgstr ""
+
+#. §0: `α → Prop`
+#. §1: `x ∈ s`
+#. §2: `s x`
+#. §3: `{x \\| P x}`
+#. §4: `setOf (fun x => P x) = fun x => P x`
+#. §5: `P x`
+#. §6: `Set.univ`
+#. §7: `fun _ => True`
+#. §8: `constructor`
+#. §9: `∅`
+#. §10: `fun _ => False`
+#. §11: `intro h; exact h`
+#. §12: `Even n`
+#. §13: `∃ r, n = r + r`
+#. §14: `use`
+#. §15: `x ∉ s`
+#. §16: `¬ (s x) = s x → False`
+#. §17: `intro h`
+#. §18: `P x ∧ Q x`
+#. §19: `constructor`
+#. §20: `∨`
+#. §21: `∧`
+#. §22: `¬`
+#. §23: `∀ x, ... →  ...`
+#. §24: `∀ x, x ∈ s ↔ x ∈ t`
+#: Game.Levels.SetWorld.L09_Boss
+msgid "Congratulations — you have completed **SetWorld**!\n"
+"\n"
+"Here is what you now know:\n"
+"\n"
+"| Concept | Lean definition | Proof move |\n"
+"|---|---|---|\n"
+"| Set | §0 | — |\n"
+"| Membership §1 | §2 (predicate evaluation) | unfolds automatically |\n"
+"| Set builder §3 | §4 | unfolds to §5 |\n"
+"| §6 | §7 | §8 |\n"
+"| §9 | §10 | impossible (§11) |\n"
+"| §12 | §13 | §14 with witness |\n"
+"| Non-membership §15 | §16 | §17 then contradiction |\n"
+"| Compound predicate | §18 | §19 then prove each part |\n"
+"\n"
+"The central insight: **sets in Lean are predicates, and set operations\n"
+"reduce to logical operations.** This principle extends throughout the\n"
+"course: union will correspond to §20, intersection to §21, complement\n"
+"to §22, subset to §23.\n"
+"\n"
+"In the next world, you will learn about **subsets** and **set equality**.\n"
+"The key idea will be *extensionality*: two sets are equal when they have\n"
+"the same elements, which means proving §24. The\n"
+"membership skills you just mastered are exactly what those proofs require."
+msgstr ""
+
+#. §0: `use expr`
+#. §1: `∃ x, P x`
+#. §2: ```
+#. use expr
+#. ```
+#. §3: `∃ x, P x`
+#. §4: `x`
+#. §5: `use expr`
+#. §6: `P expr`
+#: Game.Metadata
+msgid "§0 provides a witness for an existential goal §1.\n"
+"\n"
+"## Syntax\n"
+"§2\n"
+"\n"
+"## When to use it\n"
+"When the goal is §3 and you know which §4 works.\n"
+"After §5, the goal becomes §6."
+msgstr ""
+
+#. §0: `show ¬ (7 < 5)`
+#: Game.Levels.SetWorld.L03_NonMembership
+msgid "Use §0 to unfold the set membership and\n"
+"non-membership. This reveals the arithmetic content."
+msgstr ""
+
+#. §0: `omega`
+#. §1: `r + r`
+#: Game.Levels.SetWorld.L05_NonMembershipExistential
+msgid "§0 handles the linear arithmetic:\n"
+"§1 is always even, so it can never equal 3."
+msgstr ""
+
+#. §0: `induction x with | case args`
+#. §1: `x`
+#. §2: ```
+#. -- natural number induction:
+#. induction n with | zero | succ m ih
+#. 
+#. -- list induction:
+#. induction xs with | nil | cons x xs ih
+#. ```
+#. §3: `ih`
+#: Game.Metadata
+msgid "§0 performs structural induction on §1.\n"
+"\n"
+"## Syntax\n"
+"§2\n"
+"\n"
+"Each case creates a separate subgoal that you handle one at a time.\n"
+"The §3 variable is the induction hypothesis.\n"
+"\n"
+"## When to use it\n"
+"When you need to prove a statement for all natural numbers\n"
+"(or elements of another inductive type) by induction."
+msgstr ""
+
+#. §0: `Even 4`
+#. §1: `∃ r, 4 = r + r`
+#. §2: `use 2`
+#: Game.Levels.SetWorld.L04_InfiniteSet
+#: Game.Levels.SetWorld.L08_CompoundPredicate
+msgid "The goal is §0, which means §1.\n"
+"Provide the witness: §2."
+msgstr ""
+
+#: Game.Levels.SetWorld.L07_UniversalSet
+msgid "Everything is in Set.univ"
+msgstr ""
+
+#. §0: `omega`
+#. §1: `h : 7 < 5`
+#. §2: `False`
+#: Game.Levels.SetWorld.L03_NonMembership
+msgid "§0 examines all arithmetic hypotheses.\n"
+"Since §1 contradicts basic arithmetic, it derives §2."
+msgstr ""
+
+#. §0: `n < 5`
+#. §1: `{n : ℕ | Even n}`
+#. §2: $\\{0, 2, 4, 6, 8, \\ldots\\}$
+#. §3: `Even n`
+#. §4: $$\\texttt{Even } n \\;\\;\\Longleftrightarrow\\;\\; \\exists\\, r,\\; n = r + r$$
+#. §5: `4 ∈ {n | Even n}`
+#. §6: `Even 4`
+#. §7: `∃ r, 4 = r + r`
+#. §8: `∃ r, P r`
+#. §9: `r`
+#. §10: `use`
+#. §11: `use 2`
+#. §12: `4 = 2 + 2`
+#. §13: `2`
+#. §14: `use 2`
+#: Game.Levels.SetWorld.L04_InfiniteSet
+msgid "# Sets Need Not Be Finite\n"
+"\n"
+"So far you have seen sets defined by arithmetic bounds like §0.\n"
+"But predicates can describe infinite collections too.\n"
+"\n"
+"The set §1 contains all even natural numbers:\n"
+"§2 — infinitely many elements.\n"
+"\n"
+"What does §3 mean? It is defined as:\n"
+"§4\n"
+"\n"
+"So §5 unfolds to §6, which is §7.\n"
+"\n"
+"To prove an existential §8, you provide a **witness** — a\n"
+"specific value of §9 — using the §10 tactic. Here, §11 turns\n"
+"the goal into §12, which is true by computation.\n"
+"\n"
+"**Your task**: Prove that 4 is even by providing the witness §13.\n"
+"Use §14."
 msgstr ""
 
 #: Game
 msgid "Functions & Relations"
 msgstr ""
 
-#: GameServer.RpcHandlers
-msgid "intermediate goal solved! 🎉"
+#. §0: `constructor`
+#. §1: `P ∧ Q`
+#. §2: `P`
+#. §3: `Q`
+#. §4: `P x`
+#. §5: `P x`
+#. §6: `P x ∧ Q x`
+#. §7: `constructor`
+#. §8: `P x ∨ Q x`
+#. §9: `left`
+#. §10: `right`
+#. §11: `¬ P x`
+#. §12: `P x → False`
+#. §13: `intro`
+#. §14: `∧`
+#. §15: `∨`
+#: Game.Levels.SetWorld.L08_CompoundPredicate
+msgid "You proved that 6 is both less than 10 AND even. The proof split\n"
+"the conjunction with §0 and handled each part separately.\n"
+"\n"
+"This illustrates a key principle: **compound set predicates reduce to\n"
+"compound logical statements**. When a set is defined by §1,\n"
+"membership requires proving both §2 and §3.\n"
+"\n"
+"| Set predicate | Membership requires |\n"
+"|---|---|\n"
+"| §4 (simple) | Prove §5 |\n"
+"| §6 (conjunction) | Prove both — use §7 |\n"
+"| §8 (disjunction) | Prove either — use §9 or §10 |\n"
+"| §11 (negation) | Prove §12 — use §13 |\n"
+"\n"
+"You will see these patterns again when you learn about set **intersection**\n"
+"(which corresponds to §14) and **union** (which corresponds to §15)."
 msgstr ""
 
-#: Game.Levels.Welcome.L01_Welcome
-msgid "The course infrastructure is working. Content coming soon!"
+#. §0: `Even n`
+#. §1: `r`
+#. §2: `n = r + r`
+#. §3: ```
+#. Even n ↔ ∃ r, n = r + r
+#. ```
+#. §4: `Even n`
+#. §5: `use r`
+#. §6: `n = r + r`
+#. §7: `h : Even n`
+#. §8: `obtain ⟨r, hr⟩ := h`
+#. §9: `r`
+#. §10: `hr : n = r + r`
+#. §11: `Even 4`
+#. §12: `4 = 2 + 2`
+#. §13: `r = 2`
+#. §14: `Even 0`
+#. §15: `0 = 0 + 0`
+#. §16: `r = 0`
+#. §17: `¬ Even 3`
+#. §18: `r`
+#. §19: `3 = r + r`
+#: Game.Levels.SetWorld.L04_InfiniteSet
+msgid "§0 means there exists §1 such that §2.\n"
+"\n"
+"## Definition\n"
+"§3\n"
+"\n"
+"## Proof strategy\n"
+"- To prove §4: provide a witness with §5, then show §6\n"
+"- To use §7: destructure with §8 to get the\n"
+"  witness §9 and equation §10\n"
+"\n"
+"## Examples\n"
+"- §11 because §12 (witness: §13)\n"
+"- §14 because §15 (witness: §16)\n"
+"- §17 because no natural number §18 satisfies §19"
+msgstr ""
+
+#: GameServer.RpcHandlers
+msgid "level completed! 🎉"
+msgstr ""
+
+#: Game.Levels.SetWorld.L04_InfiniteSet
+msgid "4 belongs to the set of even natural numbers."
+msgstr ""
+
+#. §0: `linarith`
+#: Game.Metadata
+msgid "§0 closes goals that are linear arithmetic consequences\n"
+"of hypotheses. It handles inequalities and equalities over ordered\n"
+"fields and rings.\n"
+"\n"
+"Disabled in levels where manual reasoning is the lesson."
+msgstr ""
+
+#. §0: `x`
+#. §1: `Set.univ`
+#. §2: `Set.univ`
+#. §3: `∀ n : ℕ, n ∈ Set.univ`
+#. §4: `intro`
+#. §5: `intro n`
+#. §6: `n ∈ Set.univ`
+#. §7: `True`
+#. §8: `constructor`
+#: Game.Levels.SetWorld.L07_UniversalSet
+msgid "# Universal Membership\n"
+"\n"
+"In Level 1, you proved that a specific §0 belongs to §1.\n"
+"Now prove the stronger statement: **every** natural number belongs\n"
+"to §2.\n"
+"\n"
+"The statement is §3. The proof is the same\n"
+"pattern as Level 1, but with an §4 step first.\n"
+"\n"
+"After §5, the goal becomes §6, which reduces to\n"
+"§7. Then §8 closes it — exactly as in Level 1.\n"
+"\n"
+"**Your task**: Prove the statement."
+msgstr ""
+
+#. §0: `x ∈ s`
+#. §1: `s : Set α`
+#. §2: `s`
+#. §3: `x`
+#. §4: `Set α = α → Prop`
+#. §5: `x ∈ s`
+#. §6: `s x`
+#. §7: ```
+#. x ∈ s      -- x is a member of s
+#. x ∉ s      -- x is not a member of s (notation for ¬ (x ∈ s))
+#. ```
+#. §8: `s = fun n => n < 5`
+#. §9: `3 ∈ s`
+#. §10: `3 < 5`
+#: Game.Levels.SetWorld.L01_WelcomeToSets
+msgid "§0 (for §1) means that the predicate §2 holds at §3.\n"
+"\n"
+"Since §4, membership §5 is just §6 — applying\n"
+"the predicate to the element.\n"
+"\n"
+"## Syntax\n"
+"§7\n"
+"\n"
+"## Example\n"
+"If §8, then §9 is §10."
+msgstr ""
+
+#. §0: `obtain ⟨r, hr⟩ := h`
+#. §1: `r : ℕ`
+#. §2: `hr : 3 = r + r`
+#: Game.Levels.SetWorld.L05_NonMembershipExistential
+msgid "§0 destructures the\n"
+"existential. After this, you will have §1 and §2."
+msgstr ""
+
+#. §0: `have h3 := hq 3 h`
+#. §1: `h3 : Even 3`
+#. §2: `∃ r, 3 = r + r`
+#: Game.Levels.SetWorld.L09_Boss
+msgid "§0 gives\n"
+"§1 (meaning §2)."
+msgstr ""
+
+#. §0: `show 3 < 5`
+#. §1: `3 < 5`
+#: Game.Levels.SetWorld.L02_SetBuilder
+msgid "Use §0 to convert the goal to arithmetic form.\n"
+"This works because membership in the set-builder set\n"
+"is definitionally equal to §1."
+msgstr ""
+
+#. §0: `decide`
+#: Game.Metadata
+msgid "§0 closes goals that are decidable propositions by\n"
+"evaluating them computationally.\n"
+"\n"
+"Disabled because it bypasses manual reasoning."
+msgstr ""
+
+#. §0: `¬ (7 < 5)`
+#. §1: `7 < 5 → False`
+#. §2: `intro h`
+#. §3: `7 < 5`
+#: Game.Levels.SetWorld.L03_NonMembership
+#: Game.Levels.SetWorld.L06_EmptySet
+msgid "The goal is §0, which means §1. Use\n"
+"§2 to assume §3."
+msgstr ""
+
+#: Game.Levels.SetWorld.L08_CompoundPredicate
+msgid "6 belongs to the set of even naturals less than 10."
+msgstr ""
+
+#. §0: `Set α`
+#. §1: `α`
+#. §2: `Set α`
+#. §3: `α → Prop`
+#. §4: `x : α`
+#. §5: `s : Set α`
+#. §6: `s x`
+#. §7: `x ∈ s`
+#. §8: `s x`
+#. §9: `Set.ext`
+#. §10: `Set α`
+#. §11: `α`
+#. §12: `Set.univ : Set α`
+#. §13: `α`
+#. §14: `Set α`
+#. §15: `α`
+#: Game.Levels.SetWorld.L01_WelcomeToSets
+msgid "§0 is the type of sets with elements of type §1.\n"
+"\n"
+"In Lean, §2 is defined as §3 — a set IS its membership\n"
+"predicate. An element §4 belongs to §5 when §6 is true.\n"
+"\n"
+"## Key facts\n"
+"- Sets are predicates, not collections\n"
+"- §7 means §8 (function application)\n"
+"- Two sets are equal when they have the same elements (§9)\n"
+"\n"
+"## Warning\n"
+"§10 is not the same as a type §11. A set is a *predicate on* a type.\n"
+"§12 contains all elements of §13, but it is still a term\n"
+"of type §14, not the type §15 itself."
+msgstr ""
+
+#. §0: `Set.univ`
+#. §1: `fun _ => True`
+#. §2: `True`
+#. §3: `constructor`
+#. §4: `∅`
+#. §5: `fun _ => False`
+#. §6: `False`
+#. §7: `∅ ⊆ s ⊆ Set.univ`
+#. §8: `s : Set α`
+#: Game.Levels.SetWorld.L07_UniversalSet
+msgid "This is the universal counterpart of Level 1: instead of proving\n"
+"membership for one element, you proved it for all elements.\n"
+"\n"
+"Compare the two *boundary sets*:\n"
+"\n"
+"| Set | Predicate | Membership | Proof |\n"
+"|---|---|---|---|\n"
+"| §0 | §1 | always §2 | §3 |\n"
+"| §4 | §5 | always §6 | impossible |\n"
+"\n"
+"These two sets are the extreme cases. Every other set lies between\n"
+"them: §7 for any §8. You will prove these\n"
+"containments in the next world."
+msgstr ""
+
+#. §0: `{n : ℕ | n < 10 ∧ Even n}`
+#. §1: $\\{0, 2, 4, 6, 8\\}$
+#. §2: `6 ∈ {n | n < 10 ∧ Even n}`
+#. §3: `6 < 10 ∧ Even 6`
+#. §4: `constructor`
+#. §5: `constructor`
+#. §6: `6 < 10 ∧ Even 6`
+#. §7: `6 < 10`
+#. §8: `omega`
+#. §9: `Even 6`
+#. §10: `3`
+#. §11: `6 = 3 + 3`
+#: Game.Levels.SetWorld.L08_CompoundPredicate
+msgid "# Compound Predicates\n"
+"\n"
+"So far, each set predicate has tested a single condition. But predicates\n"
+"can combine conditions using logical connectives.\n"
+"\n"
+"The set §0 contains even numbers less than 10:\n"
+"the set §1.\n"
+"\n"
+"Membership unfolds to the conjunction: §2\n"
+"becomes §3. To prove a conjunction, you split it with\n"
+"§4 and prove each part separately.\n"
+"\n"
+"The proof strategy:\n"
+"1. §5 — split §6 into two goals\n"
+"2. Prove §7 with §8\n"
+"3. Prove §9 by providing the witness §10 (since §11)\n"
+"\n"
+"**Your task**: Prove that 6 belongs to the set of even numbers less than 10."
+msgstr ""
+
+#. §0: `trivial`
+#. §1: `rfl`
+#. §2: `exact True.intro`
+#. §3: `assumption`
+#: Game.Metadata
+msgid "§0 attempts to close the goal using a combination of\n"
+"basic tactics (§1, §2, §3).\n"
+"\n"
+"Disabled because it bypasses the learning of specific proof steps."
+msgstr ""
+
+#: Game.Levels.SetWorld
+msgid "Set World"
+msgstr ""
+
+#. §0: `exact e`
+#. §1: `e`
+#. §2: ```
+#. exact expression
+#. ```
+#: Game.Metadata
+msgid "§0 closes the goal if §1 has exactly the type of the goal.\n"
+"\n"
+"## Syntax\n"
+"§2\n"
+"\n"
+"## When to use it\n"
+"When you have a term (variable, function application, constructor)\n"
+"whose type matches the goal exactly."
+msgstr ""
+
+#. §0: `h`
+#. §1: `7 < 5`
+#. §2: `omega`
+#: Game.Levels.SetWorld.L03_NonMembership
+msgid "Now §0 says §1, which is impossible. §2 sees the\n"
+"contradiction and closes the goal."
+msgstr ""
+
+#: Game.Levels.SetWorld.L05_NonMembershipExistential
+msgid "3 does not belong to the set of even natural numbers."
+msgstr ""
+
+#. §0: `h : Even 3`
+#. §1: `∃ r, 3 = r + r`
+#. §2: `obtain ⟨r, hr⟩ := h`
+#. §3: `r`
+#. §4: `hr : 3 = r + r`
+#. §5: `\\<`
+#. §6: `\\>`
+#: Game.Levels.SetWorld.L05_NonMembershipExistential
+msgid "§0 means §1. Use\n"
+"§2 to extract the witness §3 and equation\n"
+"§4. (Type ⟨ as §5 and ⟩ as §6.)"
+msgstr ""
+
+#. §0: `p 4`
+#. §1: `hp : ∀ n, Even n → p n`
+#. §2: `apply hp`
+#. §3: `Even 4`
+#: Game.Levels.SetWorld.L09_Boss
+msgid "The goal is §0. You have §1.\n"
+"Use §2 to reduce the goal to §3."
+msgstr ""
+
+#. §0: `aesop`
+#: Game.Metadata
+msgid "§0 is a general-purpose automation tactic that combines\n"
+"multiple strategies to close goals.\n"
+"\n"
+"Disabled to force manual proof construction."
+msgstr ""
+
+#. §0: `omega`
+#. §1: `ℕ`
+#. §2: `ℤ`
+#. §3: ```
+#. omega
+#. ```
+#. §4: `3 < 5`
+#. §5: `n + 1 ≤ m`
+#. §6: `omega`
+#: Game.Metadata
+msgid "§0 solves linear arithmetic goals over §1 and §2.\n"
+"It handles equalities, inequalities, and disequalities involving\n"
+"addition, subtraction, and multiplication by literals.\n"
+"\n"
+"## Syntax\n"
+"§3\n"
+"\n"
+"## When to use it\n"
+"When the goal is a concrete numeric fact like §4 or §5,\n"
+"or when hypotheses combine to yield the goal by linear arithmetic.\n"
+"\n"
+"## Warning\n"
+"§6 only handles *linear* arithmetic. It cannot solve goals\n"
+"involving multiplication of variables."
+msgstr ""
+
+#. §0: `∅`
+#. §1: `fun _ => False`
+#. §2: `False`
+#. §3: `∀ n, n ∉ ∅`
+#. §4: `∀ n, n ∈ ∅ → False`
+#. §5: `intro n`
+#. §6: `intro h`
+#. §7: `h`
+#. §8: `False`
+#. §9: `n ∈ ∅`
+#. §10: `False`
+#. §11: `exact h`
+#. §12: `intro`
+#. §13: `∀ n`
+#. §14: `→ False`
+#. §15: `∀ x, P x`
+#. §16: `P → Q`
+#. §17: `intro`
+#. §18: `h : False`
+#. §19: `exact h`
+#. §20: `False`
+#. §21: `False`
+#. §22: `0 = 1`
+#. §23: `exact h`
+#. §24: `False`
+#. §25: `Set.univ`
+#. §26: `fun _ => True`
+#. §27: `∅`
+#. §28: `fun _ => False`
+#: Game.Levels.SetWorld.L06_EmptySet
+msgid "The empty set §0 is defined by the predicate §1, so\n"
+"membership always reduces to §2.\n"
+"\n"
+"The proof pattern:\n"
+"- §3 means §4\n"
+"- After §5 and §6, the hypothesis §7 has type §8\n"
+"  (because §9 IS §10)\n"
+"- §11 closes the goal\n"
+"\n"
+"Notice that §12 handled TWO different things here: first a universal\n"
+"quantifier (§13), then an implication (§14). Both work because\n"
+"under the Curry-Howard correspondence, §15 and §16 are\n"
+"both function types — §17 is the same operation in both cases.\n"
+"\n"
+"Also note the *ex falso* principle at work: if you have §18,\n"
+"then §19 closes ANY goal, not just §20. Here the goal\n"
+"happened to be §21, but if it were §22 or anything else,\n"
+"§23 would still work. §24 implies everything — this is\n"
+"*ex falso quodlibet* (from falsehood, anything follows).\n"
+"\n"
+"Compare with Level 1: there, §25 had predicate §26,\n"
+"so membership was trivially provable. Here, §27 has predicate\n"
+"§28, so membership is impossible. The two sets are\n"
+"mirror images."
+msgstr ""
+
+#. §0: `6 < 10 ∧ Even 6`
+#. §1: `constructor`
+#: Game.Levels.SetWorld.L08_CompoundPredicate
+msgid "The membership unfolds to §0 — a conjunction.\n"
+"Use §1 to split it into two goals."
+msgstr ""
+
+#. §0: `use 2`
+#. §1: `r = 2`
+#. §2: `4 = 2 + 2`
+#. §3: `rfl`
+#: Game.Levels.SetWorld.L04_InfiniteSet
+msgid "§0 substitutes §1 and the remaining\n"
+"goal §2 is closed automatically by §3."
+msgstr ""
+
+#. §0: `rfl`
+#. §1: `a = a`
+#. §2: ```
+#. rfl
+#. ```
+#: Game.Metadata
+msgid "§0 closes a goal of the form §1 (reflexivity).\n"
+"\n"
+"## Syntax\n"
+"§2\n"
+"\n"
+"## When to use it\n"
+"When both sides of an equality are definitionally equal."
 msgstr ""
