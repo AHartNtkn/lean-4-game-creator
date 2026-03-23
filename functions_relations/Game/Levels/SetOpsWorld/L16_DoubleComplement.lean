@@ -1,7 +1,7 @@
 import Game.Metadata
 
 World "SetOpsWorld"
-Level 15
+Level 16
 
 Title "Double Complement"
 

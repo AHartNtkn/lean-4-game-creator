@@ -3,6 +3,7 @@
     "SetWorld",
     "SubsetWorld",
     "SetOpsWorld",
-    "IndexedOpsWorld"
+    "IndexedOpsWorld",
+    "PsetSets"
   ]
 }

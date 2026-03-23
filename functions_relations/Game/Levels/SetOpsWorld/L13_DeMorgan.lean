@@ -1,7 +1,7 @@
 import Game.Metadata
 
 World "SetOpsWorld"
-Level 12
+Level 13
 
 Title "De Morgan's Law"
 

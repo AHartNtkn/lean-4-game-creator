@@ -8,12 +8,13 @@ import Game.Levels.SetOpsWorld.L07_IntersectionCommutativity
 import Game.Levels.SetOpsWorld.L08_UnionSubset
 import Game.Levels.SetOpsWorld.L09_ComplementLaw
 import Game.Levels.SetOpsWorld.L10_UnionCaseAnalysis
-import Game.Levels.SetOpsWorld.L11_PushNeg
-import Game.Levels.SetOpsWorld.L12_DeMorgan
-import Game.Levels.SetOpsWorld.L13_DualDeMorgan
-import Game.Levels.SetOpsWorld.L14_ComplementUnion
-import Game.Levels.SetOpsWorld.L15_DoubleComplement
-import Game.Levels.SetOpsWorld.L16_Boss
+import Game.Levels.SetOpsWorld.L11_UnionCommutativity
+import Game.Levels.SetOpsWorld.L12_PushNeg
+import Game.Levels.SetOpsWorld.L13_DeMorgan
+import Game.Levels.SetOpsWorld.L14_DualDeMorgan
+import Game.Levels.SetOpsWorld.L15_ComplementUnion
+import Game.Levels.SetOpsWorld.L16_DoubleComplement
+import Game.Levels.SetOpsWorld.L17_Boss
 
 World "SetOpsWorld"
 Title "Set Operations World"
@@ -41,6 +42,7 @@ By the end of this world, you will be able to:
 - Prove membership in unions, intersections, complements, and differences
 - Prove subset relations involving these operations
 - Perform case analysis on union hypotheses
+- Prove full set equalities like `s ∪ t = t ∪ s` using `ext`
 - Use `push_neg` to simplify negated compound propositions
 - Prove De Morgan's laws for sets (both directions)
 - Use `by_contra` for proof by contradiction

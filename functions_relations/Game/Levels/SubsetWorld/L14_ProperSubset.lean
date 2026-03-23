@@ -93,6 +93,12 @@ containment fails.
 | `s ⊂ t` | `s` is strictly contained in `t` | `s ⊆ t ∧ ¬ (t ⊆ s)` |
 | `s = t` | `s` and `t` have the same elements | `∀ x, x ∈ s ↔ x ∈ t` |
 | `s ≠ t` | `s` and `t` differ on some element | `(s = t) → False` |
+
+**Alternative characterization**: You may know proper subset as
+`s ⊆ t ∧ s ≠ t` rather than Lean's `s ⊆ t ∧ ¬(t ⊆ s)`. These are
+equivalent — by antisymmetry (Level 13), `s ⊆ t ∧ t ⊆ s → s = t`,
+so `s ≠ t → ¬(t ⊆ s)` when `s ⊆ t` is known, and conversely. Both
+definitions capture the same idea: strict containment with no equality.
 "
 
 DisabledTactic trivial decide native_decide simp aesop simp_all tauto norm_num linarith

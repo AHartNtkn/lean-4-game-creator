@@ -30,8 +30,22 @@ will need to unpack an indexed union (getting an `∃`), destructure
 an intersection (getting an `∧`), and rebuild the other side.
 "
 
-NewTheorem Set.mem_iUnion Set.mem_iInter Set.mem_iUnion₂ Set.mem_iInter₂ Set.mem_prod Set.mem_powerset_iff
-NewDefinition Set.iUnion Set.iInter Set.prod Set.Nonempty Set.powerset
+/-- `Set.mem_range` states `x ∈ Set.range f ↔ ∃ a, f a = x`.
+
+## Syntax
+```
+rw [Set.mem_range]        -- on the goal
+rw [Set.mem_range] at h   -- on a hypothesis
+```
+
+## When to use it
+When you see `x ∈ Set.range f` and want to work with the underlying
+existential `∃ a, f a = x`, or vice versa.
+-/
+TheoremDoc Set.mem_range as "Set.mem_range" in "Set"
+
+NewTheorem Set.mem_iUnion Set.mem_iInter Set.mem_iUnion₂ Set.mem_iInter₂ Set.mem_prod Set.mem_powerset_iff Set.mem_range
+NewDefinition Set.iUnion Set.iInter Set.prod Set.Nonempty Set.powerset Set.range
 TheoremTab "Set"
 
 /-- Indexed union distributes over intersection. -/

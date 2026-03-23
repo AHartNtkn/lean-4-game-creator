@@ -1,7 +1,7 @@
 import Game.Metadata
 
 World "SetOpsWorld"
-Level 14
+Level 15
 
 Title "Complement Union Law"
 

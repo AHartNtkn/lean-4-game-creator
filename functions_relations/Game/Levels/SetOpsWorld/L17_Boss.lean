@@ -1,7 +1,7 @@
 import Game.Metadata
 
 World "SetOpsWorld"
-Level 16
+Level 17
 
 Title "Boss: Distributivity"
 
@@ -182,7 +182,14 @@ Later, you will explore how these operations interact with functions.
 Preimages preserve all operations — `f⁻¹(s ∪ t) = f⁻¹(s) ∪ f⁻¹(t)`
 and similarly for `∩` and `ᶜ`. But images only preserve union:
 `f(s ∩ t) ⊆ f(s) ∩ f(t)` is merely a subset, not an equality in
-general. This asymmetry between images and preimages will be a central
+general.
+
+**Why the asymmetry?** Preimage is defined by `x ∈ f⁻¹(t) ↔ f(x) ∈ t`,
+which directly translates logical connectives: `f(x) ∈ s ∪ t` becomes
+`f(x) ∈ s ∨ f(x) ∈ t`, so preimage commutes with every set operation.
+Image involves an existential (`y ∈ f(s) ↔ ∃ x ∈ s, f(x) = y`), and
+`∃` does not commute with `∧` or `∀` in general — which is why images
+fail on intersection and complement. This asymmetry will be a central
 theme of later worlds.
 "
 

@@ -1,7 +1,7 @@
 import Game.Metadata
 
 World "SetOpsWorld"
-Level 13
+Level 14
 
 Title "Dual De Morgan"
 

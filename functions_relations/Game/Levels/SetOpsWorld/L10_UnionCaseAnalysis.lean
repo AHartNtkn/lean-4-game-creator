@@ -77,9 +77,8 @@ It is the set-operation counterpart of the `cases` pattern you used
 for natural numbers and existentials.
 
 **Note**: You proved the element-level version `x ∈ s ∪ t → x ∈ t ∪ s`.
-Combining this with `ext` would give the set equality `s ∪ t = t ∪ s`
-(`Set.union_comm`). You will see this `ext` + element-level-fact pattern
-in later levels.
+Combining this with `ext` gives the set equality `s ∪ t = t ∪ s`
+(`Set.union_comm`). You will do exactly this in the next level.
 "
 
 /-- `Set.union_comm` states `s ∪ t = t ∪ s`. -/

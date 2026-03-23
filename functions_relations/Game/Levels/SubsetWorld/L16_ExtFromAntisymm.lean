@@ -64,6 +64,11 @@ the two directions. If `hiff : P ↔ Q`, then:
 - `hiff.1 : P → Q` (forward, also called `Iff.mp`)
 - `hiff.2 : Q → P` (backward, also called `Iff.mpr`)
 
+**Mnemonic**: `mp` stands for *modus ponens* (the logical rule \"if P→Q
+and P, then Q\"). `mpr` is *modus ponens reverse* — it applies the
+backward direction. You will see `Iff.mp` and `Iff.mpr` throughout Lean
+proofs; this naming convention makes them easy to remember.
+
 This equivalence confirms that `ext` and `antisymm` are two faces of
 the same principle. Stated as a single theorem:
 

@@ -62,7 +62,12 @@ Statement (α : Type) (s : Set α) : s ∩ sᶜ = ∅ := by
     exact hx.elim
 
 Conclusion "
-You proved `s ∩ sᶜ = ∅` — a set and its complement are disjoint.
+You proved `s ∩ sᶜ = ∅` — a set and its complement are **disjoint**.
+
+**Vocabulary**: Two sets are called **disjoint** when their intersection
+is empty: `s ∩ t = ∅`. The result you just proved is a special case:
+every set is disjoint from its own complement. You will see disjointness
+again in later worlds (partitions, equivalence relations).
 
 This level introduced two new proof shapes:
 

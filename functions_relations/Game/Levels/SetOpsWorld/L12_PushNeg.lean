@@ -1,7 +1,7 @@
 import Game.Metadata
 
 World "SetOpsWorld"
-Level 11
+Level 12
 
 Title "Pushing Negation"
 
