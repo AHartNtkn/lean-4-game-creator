@@ -1,7 +1,7 @@
 import Game.Metadata
 
 World "SubsetWorld"
-Level 15
+Level 16
 
 Title "Deriving Antisymmetry from Extensionality"
 

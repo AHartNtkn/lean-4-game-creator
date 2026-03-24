@@ -1,7 +1,7 @@
 import Game.Metadata
 
 World "SubsetWorld"
-Level 14
+Level 15
 
 Title "Proper Subsets"
 

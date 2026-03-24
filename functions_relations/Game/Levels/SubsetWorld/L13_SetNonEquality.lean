@@ -1,14 +1,14 @@
 import Game.Metadata
 
 World "SubsetWorld"
-Level 12
+Level 13
 
 Title "Disproving Set Equality"
 
 Introduction "
 # When Two Sets Are Not Equal
 
-In Levels 10–11, you proved set equalities using `ext`. But what if
+In Levels 10–12, you proved set equalities using `ext`. But what if
 two sets are NOT equal? How do you prove `s ≠ t`?
 
 In Lean, `s ≠ t` is defined as `(s = t) → False`. So to prove

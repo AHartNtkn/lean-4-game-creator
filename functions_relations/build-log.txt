@@ -1,8 +1,8 @@
-⚠ [38/581] Replayed GameServer.RpcHandlers
+⚠ [38/599] Replayed GameServer.RpcHandlers
 warning: GameServer/RpcHandlers.lean:165:25: No translation (en) found for: level completed! 🎉
 warning: GameServer/RpcHandlers.lean:173:25: No translation (en) found for: level completed with warnings… 🎭
 warning: GameServer/RpcHandlers.lean:186:25: No translation (en) found for: intermediate goal solved! 🎉
-⚠ [489/581] Replayed Game.Metadata
+⚠ [489/599] Replayed Game.Metadata
 warning: Game/Metadata.lean:16:0: No translation (en) found for: §0 closes the goal if §1 has exactly the type of the goal.
 
 ## Syntax
@@ -193,7 +193,12 @@ of hypotheses. It handles inequalities and equalities over ordered
 fields and rings.
 
 Disabled in levels where manual reasoning is the lesson.
-warning: Game/Metadata.lean:338:0: No translation (en) found for: §0 converts the goal to §1, as long as §2 is
+warning: Game/Metadata.lean:338:0: No translation (en) found for: §0 is the reflexivity proof for biconditionals: §1.
+
+It can close any goal of the form §2 where both sides are
+definitionally equal. Disabled in levels where the learner should
+prove each direction explicitly.
+warning: Game/Metadata.lean:346:0: No translation (en) found for: §0 converts the goal to §1, as long as §2 is
 definitionally equal to the current goal.
 
 ## Syntax
@@ -211,7 +216,7 @@ but §6 needs the arithmetic form. Use §7 to convert.
 §9 does NOT prove anything — it only changes the display.
 The new goal must be definitionally equal to the old one, or
 Lean will reject the §10.
-warning: Game/Metadata.lean:366:0: No translation (en) found for: §0 performs case analysis on a §1 or other
+warning: Game/Metadata.lean:374:0: No translation (en) found for: §0 performs case analysis on a §1 or other
 finite type hypothesis, creating one subgoal per value.
 
 ## Syntax
@@ -222,7 +227,7 @@ When §3 and you want to check each value §4
 individually. This can one-shot many proofs about small finite types.
 
 Disabled in levels that require manual reasoning about finite indices.
-warning: Game/Metadata.lean:382:0: No translation (en) found for: §0 assumes §1 and changes the goal to §2.
+warning: Game/Metadata.lean:390:0: No translation (en) found for: §0 assumes §1 and changes the goal to §2.
 
 ## Syntax
 §3
@@ -233,7 +238,7 @@ from its negation. This is classical reasoning.
 
 ## Example
 §4
-warning: Game/Metadata.lean:403:0: No translation (en) found for: §0 pushes negation inward through quantifiers and
+warning: Game/Metadata.lean:411:0: No translation (en) found for: §0 pushes negation inward through quantifiers and
 connectives: §1 becomes §2, §3 becomes §4, §5 becomes
 §6, etc.
 
@@ -245,7 +250,7 @@ When you have a negated statement and need to work with its
 positive form.
 
 Disabled in levels where you should see what push_neg does manually.
-⚠ [490/581] Replayed Game.Levels.SetWorld.L01_WelcomeToSets
+⚠ [490/599] Replayed Game.Levels.SetWorld.L01_WelcomeToSets
 warning: Game/Levels/SetWorld/L01_WelcomeToSets.lean:6:0: No translation (en) found for: Welcome to Sets
 warning: Game/Levels/SetWorld/L01_WelcomeToSets.lean:10:0: No translation (en) found for: # Welcome to Sets
 
@@ -321,7 +326,7 @@ It is defined as §2, so §3 is always §4.
 ## Related
 §7 is the proof that §8.
 warning: Game/Levels/SetWorld/L01_WelcomeToSets.lean:111:0: No translation (en) found for: §0 proves §1 for any §2.
-⚠ [491/581] Replayed Game.Levels.SetWorld.L02_SetBuilder
+⚠ [491/599] Replayed Game.Levels.SetWorld.L02_SetBuilder
 warning: Game/Levels/SetWorld/L02_SetBuilder.lean:6:0: No translation (en) found for: Set Builder Notation
 warning: Game/Levels/SetWorld/L02_SetBuilder.lean:8:0: No translation (en) found for: # Set Builder Notation
 
@@ -388,7 +393,7 @@ is really just wrapping a predicate.
 The variable after §12 is a *binder* — it is local to the expression
 after §13. Writing §14 defines a predicate; §15 does not
 refer to any §16 in the surrounding context.
-⚠ [492/581] Replayed Game.Levels.SetWorld.L03_NonMembership
+⚠ [492/599] Replayed Game.Levels.SetWorld.L03_NonMembership
 warning: Game/Levels/SetWorld/L03_NonMembership.lean:6:0: No translation (en) found for: Non-Membership
 warning: Game/Levels/SetWorld/L03_NonMembership.lean:8:0: No translation (en) found for: # Non-Membership: §0 means §1
 
@@ -420,7 +425,7 @@ will use other tools to derive §8 from the hypothesis.
 
 In ordinary mathematics, this is a *proof by contradiction*: assume
 7 is in the set, observe this means 7 < 5, which is absurd.
-⚠ [493/581] Replayed Game.Levels.SetWorld.L04_InfiniteSet
+⚠ [493/599] Replayed Game.Levels.SetWorld.L04_InfiniteSet
 warning: Game/Levels/SetWorld/L04_InfiniteSet.lean:6:0: No translation (en) found for: An Infinite Set
 warning: Game/Levels/SetWorld/L04_InfiniteSet.lean:8:0: No translation (en) found for: # Sets Need Not Be Finite
 
@@ -472,7 +477,7 @@ warning: Game/Levels/SetWorld/L04_InfiniteSet.lean:57:0: No translation (en) fou
 - §11 because §12 (witness: §13)
 - §14 because §15 (witness: §16)
 - §17 because no natural number §18 satisfies §19
-⚠ [494/581] Replayed Game.Levels.SetWorld.L05_NonMembershipExistential
+⚠ [494/599] Replayed Game.Levels.SetWorld.L05_NonMembershipExistential
 warning: Game/Levels/SetWorld/L05_NonMembershipExistential.lean:6:0: No translation (en) found for: Disproving Membership in an Existential Set
 warning: Game/Levels/SetWorld/L05_NonMembershipExistential.lean:8:0: No translation (en) found for: # Non-Membership with Existential Predicates
 
@@ -539,7 +544,7 @@ After §9, the components are available as separate hypotheses.
 ## Example
 If §10, then §11 gives
 §12 and §13.
-⚠ [495/581] Replayed Game.Levels.SetWorld.L06_EmptySet
+⚠ [495/599] Replayed Game.Levels.SetWorld.L06_EmptySet
 warning: Game/Levels/SetWorld/L06_EmptySet.lean:6:0: No translation (en) found for: The Empty Set
 warning: Game/Levels/SetWorld/L06_EmptySet.lean:8:0: No translation (en) found for: # The Empty Set
 
@@ -601,7 +606,7 @@ It is defined as §1, so §2 reduces to
 - §10 is the proof that §11
 - §12 is the opposite extreme: everything is a member
 warning: Game/Levels/SetWorld/L06_EmptySet.lean:93:0: No translation (en) found for: §0 proves §1 for any §2.
-⚠ [496/581] Replayed Game.Levels.SetWorld.L07_UniversalSet
+⚠ [496/599] Replayed Game.Levels.SetWorld.L07_UniversalSet
 warning: Game/Levels/SetWorld/L07_UniversalSet.lean:6:0: No translation (en) found for: Everything is in Set.univ
 warning: Game/Levels/SetWorld/L07_UniversalSet.lean:8:0: No translation (en) found for: # Universal Membership
 
@@ -632,7 +637,7 @@ them: §7 for any §8. You will prove these
 containments in the next world.
 warning: Game/Levels/SetWorld/L07_UniversalSet.lean:48:11: Missing Theorem Documentation: Set.mem_univ
 Add `TheoremDoc Set.mem_univ` somewhere above this statement.
-⚠ [497/581] Replayed Game.Levels.SetWorld.L08_CompoundPredicate
+⚠ [497/599] Replayed Game.Levels.SetWorld.L08_CompoundPredicate
 warning: Game/Levels/SetWorld/L08_CompoundPredicate.lean:6:0: No translation (en) found for: Compound Predicates
 warning: Game/Levels/SetWorld/L08_CompoundPredicate.lean:8:0: No translation (en) found for: # Compound Predicates
 
@@ -669,7 +674,7 @@ membership requires proving both §2 and §3.
 
 You will see these patterns again when you learn about set **intersection**
 (which corresponds to §14) and **union** (which corresponds to §15).
-⚠ [498/581] Replayed Game.Levels.SetWorld.L09_Boss
+⚠ [498/599] Replayed Game.Levels.SetWorld.L09_Boss
 warning: Game/Levels/SetWorld/L09_Boss.lean:6:0: No translation (en) found for: Boss: Sets are Predicates
 warning: Game/Levels/SetWorld/L09_Boss.lean:8:0: No translation (en) found for: # Boss: Putting It All Together
 
@@ -719,7 +724,7 @@ In the next world, you will learn about **subsets** and **set equality**.
 The key idea will be *extensionality*: two sets are equal when they have
 the same elements, which means proving §24. The
 membership skills you just mastered are exactly what those proofs require.
-⚠ [499/581] Replayed Game.Levels.SetWorld
+⚠ [499/599] Replayed Game.Levels.SetWorld
 warning: Game/Levels/SetWorld.lean:12:0: No translation (en) found for: Set World
 warning: Game/Levels/SetWorld.lean:14:0: No translation (en) found for: # Set World
 
@@ -752,7 +757,7 @@ By the end of this world, you will be able to:
 
 The boss at the end will ask you to combine all these moves on an
 abstract predicate. Let's begin!
-⚠ [500/581] Replayed Game.Levels.SubsetWorld.L01_FirstSubset
+⚠ [500/599] Replayed Game.Levels.SubsetWorld.L01_FirstSubset
 warning: Game/Levels/SubsetWorld/L01_FirstSubset.lean:6:0: No translation (en) found for: First Subset Proof
 warning: Game/Levels/SubsetWorld/L01_FirstSubset.lean:10:0: No translation (en) found for: # Subsets: The ⊆ Relation
 
@@ -829,7 +834,7 @@ unwrap the goal with §15 and close with §16.
 ## Warning
 §17 is a *proposition* (a statement that may or may not be true),
 not an operation that produces a new set.
-⚠ [501/581] Replayed Game.Levels.SubsetWorld.L02_ChangeTactic
+⚠ [501/599] Replayed Game.Levels.SubsetWorld.L02_ChangeTactic
 warning: Game/Levels/SubsetWorld/L02_ChangeTactic.lean:6:0: No translation (en) found for: The Change Tactic
 warning: Game/Levels/SubsetWorld/L02_ChangeTactic.lean:8:0: No translation (en) found for: # Unwrapping Hypotheses with §0
 
@@ -899,7 +904,7 @@ implies weak inequality.
 
 ## When to use it
 When you have §4 and need §5.
-⚠ [502/581] Replayed Game.Levels.SubsetWorld.L03_SubsetRefl
+⚠ [502/599] Replayed Game.Levels.SubsetWorld.L03_SubsetRefl
 warning: Game/Levels/SubsetWorld/L03_SubsetRefl.lean:6:0: No translation (en) found for: Subset Reflexivity
 warning: Game/Levels/SubsetWorld/L03_SubsetRefl.lean:8:0: No translation (en) found for: # Every Set Is a Subset of Itself
 
@@ -941,7 +946,7 @@ info: Game/Levels/SubsetWorld/L03_SubsetRefl.lean:53:88: Missing Theorem Documen
 Add `TheoremDoc Eq.le` somewhere above this statement.
 info: Game/Levels/SubsetWorld/L03_SubsetRefl.lean:53:94: Missing Theorem Documentation. Using existing docstring. Add Eq.subset
 Add `TheoremDoc Eq.subset` somewhere above this statement.
-⚠ [503/581] Replayed Game.Levels.SubsetWorld.L04_EmptySubset
+⚠ [503/599] Replayed Game.Levels.SubsetWorld.L04_EmptySubset
 warning: Game/Levels/SubsetWorld/L04_EmptySubset.lean:6:0: No translation (en) found for: The Empty Subset
 warning: Game/Levels/SubsetWorld/L04_EmptySubset.lean:8:0: No translation (en) found for: # Vacuous Truth: ∅ ⊆ s
 
@@ -979,7 +984,7 @@ warning: Game/Levels/SubsetWorld/L04_EmptySubset.lean:64:81: Missing Theorem Doc
 Add `TheoremDoc bot_le` somewhere above this statement.
 info: Game/Levels/SubsetWorld/L04_EmptySubset.lean:64:88: Missing Theorem Documentation. Using existing docstring. Add OrderBot.bot_le
 Add `TheoremDoc OrderBot.bot_le` somewhere above this statement.
-⚠ [504/581] Replayed Game.Levels.SubsetWorld.L05_SubsetUniv
+⚠ [504/599] Replayed Game.Levels.SubsetWorld.L05_SubsetUniv
 warning: Game/Levels/SubsetWorld/L05_SubsetUniv.lean:6:0: No translation (en) found for: Every Set is in Set.univ
 warning: Game/Levels/SubsetWorld/L05_SubsetUniv.lean:8:0: No translation (en) found for: # The Universal Superset: s ⊆ Set.univ
 
@@ -1016,7 +1021,7 @@ warning: Game/Levels/SubsetWorld/L05_SubsetUniv.lean:58:63: Missing Theorem Docu
 Add `TheoremDoc le_top` somewhere above this statement.
 info: Game/Levels/SubsetWorld/L05_SubsetUniv.lean:58:70: Missing Theorem Documentation. Using existing docstring. Add OrderTop.le_top
 Add `TheoremDoc OrderTop.le_top` somewhere above this statement.
-⚠ [505/581] Replayed Game.Levels.SubsetWorld.L06_SubsetHypAsFunction
+⚠ [505/599] Replayed Game.Levels.SubsetWorld.L06_SubsetHypAsFunction
 warning: Game/Levels/SubsetWorld/L06_SubsetHypAsFunction.lean:6:0: No translation (en) found for: Subset Hypotheses as Functions
 warning: Game/Levels/SubsetWorld/L06_SubsetHypAsFunction.lean:8:0: No translation (en) found for: # Using a Subset Hypothesis
 
@@ -1055,7 +1060,7 @@ the expression §2 is a proof of §3.
 This pattern — applying a subset hypothesis to a membership proof —
 is the fundamental way to *use* subset facts. You will chain multiple
 such applications in the next levels.
-⚠ [506/581] Replayed Game.Levels.SubsetWorld.L07_NonSubset
+⚠ [506/599] Replayed Game.Levels.SubsetWorld.L07_NonSubset
 warning: Game/Levels/SubsetWorld/L07_NonSubset.lean:6:0: No translation (en) found for: Disproving a Subset
 warning: Game/Levels/SubsetWorld/L07_NonSubset.lean:8:0: No translation (en) found for: # When ⊆ Fails: Proving ¬(s ⊆ t)
 
@@ -1111,7 +1116,7 @@ In ordinary math: "Suppose §11. Then in
 particular §12, which is false. Contradiction."
 warning: Game/Levels/SubsetWorld/L07_NonSubset.lean:96:47: Missing Theorem Documentation: Set.not_subset
 Add `TheoremDoc Set.not_subset` somewhere above this statement.
-⚠ [507/581] Replayed Game.Levels.SubsetWorld.L08_SubsetTrans
+⚠ [507/599] Replayed Game.Levels.SubsetWorld.L08_SubsetTrans
 warning: Game/Levels/SubsetWorld/L08_SubsetTrans.lean:6:0: No translation (en) found for: Subset Transitivity
 warning: Game/Levels/SubsetWorld/L08_SubsetTrans.lean:8:0: No translation (en) found for: # Chaining Subsets
 
@@ -1169,7 +1174,7 @@ info: Game/Levels/SubsetWorld/L08_SubsetTrans.lean:106:77: Missing Theorem Docum
 Add `TheoremDoc Trans.trans` somewhere above this statement.
 warning: Game/Levels/SubsetWorld/L08_SubsetTrans.lean:106:89: Missing Theorem Documentation: Preorder.le_trans
 Add `TheoremDoc Preorder.le_trans` somewhere above this statement.
-⚠ [508/581] Replayed Game.Levels.SubsetWorld.L09_NonArithSubset
+⚠ [508/599] Replayed Game.Levels.SubsetWorld.L09_NonArithSubset
 warning: Game/Levels/SubsetWorld/L09_NonArithSubset.lean:6:0: No translation (en) found for: Beyond Arithmetic
 warning: Game/Levels/SubsetWorld/L09_NonArithSubset.lean:8:0: No translation (en) found for: # Subsets Are About Predicates, Not Just Arithmetic
 
@@ -1212,7 +1217,7 @@ The proof pattern is always the same:
 
 This table will keep growing as you encounter more types of predicates
 throughout the course.
-⚠ [509/581] Replayed Game.Levels.SubsetWorld.L10_ExtIntro
+⚠ [509/599] Replayed Game.Levels.SubsetWorld.L10_ExtIntro
 warning: Game/Levels/SubsetWorld/L10_ExtIntro.lean:6:0: No translation (en) found for: Set Equality with ext
 warning: Game/Levels/SubsetWorld/L10_ExtIntro.lean:8:0: No translation (en) found for: # Extensionality: When Two Sets Are Equal
 
@@ -1284,9 +1289,16 @@ instead of §26 followed by §27. This
 shorthand will be especially useful in the next world when working
 with intersections (§28), which are defined as conjunctions.
 
-The §29 tactic is the primary tool for set equality proofs in Lean.
+**Why §29 works on §30**: The §31 type has exactly one
+constructor, §32, which takes two implications as arguments.
+When you write §33 on a §34 goal, Lean applies §35
+and asks you for the two implications — just as §36 on §37
+applies §38. This is why the same tactic works for both
+conjunctions and biconditionals.
+
+The §39 tactic is the primary tool for set equality proofs in Lean.
 You will use it frequently throughout this course.
-warning: Game/Levels/SubsetWorld/L10_ExtIntro.lean:143:0: No translation (en) found for: §0 applies the extensionality principle to convert a set
+warning: Game/Levels/SubsetWorld/L10_ExtIntro.lean:150:0: No translation (en) found for: §0 applies the extensionality principle to convert a set
 equality §1 into a membership biconditional for each element.
 
 ## Syntax
@@ -1304,21 +1316,21 @@ two directions.
 §8 works for sets, functions, and other extensional types. For
 sets, it always produces a membership §9. Do not confuse with
 §10 (which closes a goal with a proof term).
-warning: Game/Levels/SubsetWorld/L10_ExtIntro.lean:176:47: Missing Theorem Documentation: Set.Subset.antisymm
+warning: Game/Levels/SubsetWorld/L10_ExtIntro.lean:183:47: Missing Theorem Documentation: Set.Subset.antisymm
 Add `TheoremDoc Set.Subset.antisymm` somewhere above this statement.
-warning: Game/Levels/SubsetWorld/L10_ExtIntro.lean:176:67: Missing Theorem Documentation: le_antisymm
+warning: Game/Levels/SubsetWorld/L10_ExtIntro.lean:183:67: Missing Theorem Documentation: le_antisymm
 Add `TheoremDoc le_antisymm` somewhere above this statement.
-info: Game/Levels/SubsetWorld/L10_ExtIntro.lean:176:79: Missing Theorem Documentation. Using existing docstring. Add HasSubset.Subset.antisymm
+info: Game/Levels/SubsetWorld/L10_ExtIntro.lean:183:79: Missing Theorem Documentation. Using existing docstring. Add HasSubset.Subset.antisymm
 Add `TheoremDoc HasSubset.Subset.antisymm` somewhere above this statement.
-warning: Game/Levels/SubsetWorld/L10_ExtIntro.lean:176:105: Missing Theorem Documentation: subset_antisymm
+warning: Game/Levels/SubsetWorld/L10_ExtIntro.lean:183:105: Missing Theorem Documentation: subset_antisymm
 Add `TheoremDoc subset_antisymm` somewhere above this statement.
-warning: Game/Levels/SubsetWorld/L10_ExtIntro.lean:176:121: Missing Theorem Documentation: Set.eq_of_subset_of_subset
+warning: Game/Levels/SubsetWorld/L10_ExtIntro.lean:183:121: Missing Theorem Documentation: Set.eq_of_subset_of_subset
 Add `TheoremDoc Set.eq_of_subset_of_subset` somewhere above this statement.
-info: Game/Levels/SubsetWorld/L10_ExtIntro.lean:176:148: Missing Theorem Documentation. Using existing docstring. Add LE.le.antisymm
+info: Game/Levels/SubsetWorld/L10_ExtIntro.lean:183:148: Missing Theorem Documentation. Using existing docstring. Add LE.le.antisymm
 Add `TheoremDoc LE.le.antisymm` somewhere above this statement.
-warning: Game/Levels/SubsetWorld/L10_ExtIntro.lean:176:163: Missing Theorem Documentation: Set.ext_iff
+warning: Game/Levels/SubsetWorld/L10_ExtIntro.lean:183:163: Missing Theorem Documentation: Set.ext_iff
 Add `TheoremDoc Set.ext_iff` somewhere above this statement.
-⚠ [510/581] Replayed Game.Levels.SubsetWorld.L11_ExtPractice
+⚠ [510/599] Replayed Game.Levels.SubsetWorld.L11_ExtPractice
 warning: Game/Levels/SubsetWorld/L11_ExtPractice.lean:6:0: No translation (en) found for: Ext Practice
 warning: Game/Levels/SubsetWorld/L11_ExtPractice.lean:8:0: No translation (en) found for: # Practice: Another Set Equality
 
@@ -1362,11 +1374,69 @@ info: Game/Levels/SubsetWorld/L11_ExtPractice.lean:72:148: Missing Theorem Docum
 Add `TheoremDoc LE.le.antisymm` somewhere above this statement.
 warning: Game/Levels/SubsetWorld/L11_ExtPractice.lean:72:163: Missing Theorem Documentation: Set.ext_iff
 Add `TheoremDoc Set.ext_iff` somewhere above this statement.
-⚠ [511/581] Replayed Game.Levels.SubsetWorld.L12_SetNonEquality
-warning: Game/Levels/SubsetWorld/L12_SetNonEquality.lean:6:0: No translation (en) found for: Disproving Set Equality
-warning: Game/Levels/SubsetWorld/L12_SetNonEquality.lean:8:0: No translation (en) found for: # When Two Sets Are Not Equal
+⚠ [511/599] Replayed Game.Levels.SubsetWorld.L12_AbstractExt
+warning: Game/Levels/SubsetWorld/L12_AbstractExt.lean:6:0: No translation (en) found for: Abstract Set Equality
+warning: Game/Levels/SubsetWorld/L12_AbstractExt.lean:8:0: No translation (en) found for: # Ext Without Arithmetic
 
-In Levels 10–11, you proved set equalities using §0. But what if
+In Levels 10 and 11, both set equalities used arithmetic predicates,
+and §0 closed each direction. But §1 is not about arithmetic —
+it is about **logic**. The closing move depends on the predicates
+involved, not on §2.
+
+**Your task**: Given a hypothesis §3, prove that
+§4.
+
+No arithmetic. No §5. The proof uses only the hypothesis §6
+and the logical structure of §7 + §8.
+
+**Proof plan**:
+1. §9 — reduce to membership biconditional
+2. §10 — split the §11
+3. **Forward**: the hypothesis §12 gives §13 (its §14)
+4. **Backward**: §15 also gives §16 (its §17)
+
+Or: after §18, notice that the goal IS §19, which is
+exactly §20. So §21 closes the goal in one step!
+warning: Game/Levels/SubsetWorld/L12_AbstractExt.lean:32:0: No translation (en) found for: If two predicates are pointwise equivalent, the corresponding
+sets are equal.
+warning: Game/Levels/SubsetWorld/L12_AbstractExt.lean:56:0: No translation (en) found for: You proved a set equality without any arithmetic. The key insight:
+after §0, the goal was §1, and the hypothesis §2
+provided exactly that.
+
+**The closing move depends on the predicates**: In Level 10, the
+closing move was §3 (bridging §4 and §5). In Level 11,
+it was also §6 (bridging §7 and §8). Here, the closing
+move was §9 — pure hypothesis application.
+
+This illustrates a general principle: §10 gives you
+the STRUCTURE of a set equality proof, but the CLOSING MOVE depends
+on what the set-builder predicates actually say. For arithmetic
+predicates, you close with §11. For abstract predicates, you
+close with hypothesis application, §12, or other logical moves.
+
+**The one-step proof**: §13 is even shorter. After
+§14, the goal IS §15. This works whenever you have a hypothesis
+that exactly matches the biconditional you need. This shortcut will
+appear frequently in later worlds.
+warning: Game/Levels/SubsetWorld/L12_AbstractExt.lean:79:47: Missing Theorem Documentation: Set.Subset.antisymm
+Add `TheoremDoc Set.Subset.antisymm` somewhere above this statement.
+warning: Game/Levels/SubsetWorld/L12_AbstractExt.lean:79:67: Missing Theorem Documentation: le_antisymm
+Add `TheoremDoc le_antisymm` somewhere above this statement.
+info: Game/Levels/SubsetWorld/L12_AbstractExt.lean:79:79: Missing Theorem Documentation. Using existing docstring. Add HasSubset.Subset.antisymm
+Add `TheoremDoc HasSubset.Subset.antisymm` somewhere above this statement.
+warning: Game/Levels/SubsetWorld/L12_AbstractExt.lean:79:105: Missing Theorem Documentation: subset_antisymm
+Add `TheoremDoc subset_antisymm` somewhere above this statement.
+warning: Game/Levels/SubsetWorld/L12_AbstractExt.lean:79:121: Missing Theorem Documentation: Set.eq_of_subset_of_subset
+Add `TheoremDoc Set.eq_of_subset_of_subset` somewhere above this statement.
+info: Game/Levels/SubsetWorld/L12_AbstractExt.lean:79:148: Missing Theorem Documentation. Using existing docstring. Add LE.le.antisymm
+Add `TheoremDoc LE.le.antisymm` somewhere above this statement.
+warning: Game/Levels/SubsetWorld/L12_AbstractExt.lean:79:163: Missing Theorem Documentation: Set.ext_iff
+Add `TheoremDoc Set.ext_iff` somewhere above this statement.
+⚠ [512/599] Replayed Game.Levels.SubsetWorld.L13_SetNonEquality
+warning: Game/Levels/SubsetWorld/L13_SetNonEquality.lean:6:0: No translation (en) found for: Disproving Set Equality
+warning: Game/Levels/SubsetWorld/L13_SetNonEquality.lean:8:0: No translation (en) found for: # When Two Sets Are Not Equal
+
+In Levels 10–12, you proved set equalities using §0. But what if
 two sets are NOT equal? How do you prove §1?
 
 In Lean, §2 is defined as §3. So to prove
@@ -1388,9 +1458,9 @@ not §17 (so §18 is not in the left set). If the sets were equal,
 2. Prove §21 — show the witness is in the right set
 3. Use §22 to transport: if equal, §23
 4. Unwrap and derive contradiction — §24 is false
-warning: Game/Levels/SubsetWorld/L12_SetNonEquality.lean:35:0: No translation (en) found for: The set of numbers less than 3 is not equal to the set of
+warning: Game/Levels/SubsetWorld/L13_SetNonEquality.lean:35:0: No translation (en) found for: The set of numbers less than 3 is not equal to the set of
 numbers less than 5.
-warning: Game/Levels/SubsetWorld/L12_SetNonEquality.lean:68:0: No translation (en) found for: You proved your first set **non-equality**! The proof structure was:
+warning: Game/Levels/SubsetWorld/L13_SetNonEquality.lean:68:0: No translation (en) found for: You proved your first set **non-equality**! The proof structure was:
 
 1. **Assume** the sets are equal (§0)
 2. **Exhibit** a witness element (3)
@@ -1411,11 +1481,11 @@ differs. For §12, you apply the subset hypothesis as a function. For
 In ordinary math: "Suppose §14. Then
 §15 (since §16 and the sets are equal).
 But §17 is false. Contradiction."
-warning: Game/Levels/SubsetWorld/L12_SetNonEquality.lean:93:47: Missing Theorem Documentation: Set.ext_iff
+warning: Game/Levels/SubsetWorld/L13_SetNonEquality.lean:93:47: Missing Theorem Documentation: Set.ext_iff
 Add `TheoremDoc Set.ext_iff` somewhere above this statement.
-⚠ [512/581] Replayed Game.Levels.SubsetWorld.L13_Antisymm
-warning: Game/Levels/SubsetWorld/L13_Antisymm.lean:6:0: No translation (en) found for: Double Containment
-warning: Game/Levels/SubsetWorld/L13_Antisymm.lean:8:0: No translation (en) found for: # An Alternative Route to Set Equality
+⚠ [513/599] Replayed Game.Levels.SubsetWorld.L14_Antisymm
+warning: Game/Levels/SubsetWorld/L14_Antisymm.lean:6:0: No translation (en) found for: Double Containment
+warning: Game/Levels/SubsetWorld/L14_Antisymm.lean:8:0: No translation (en) found for: # An Alternative Route to Set Equality
 
 In Levels 10–11, you proved set equalities using §0 — reducing to
 a membership biconditional and proving both directions.
@@ -1432,8 +1502,8 @@ If you already have two subset proofs, you can combine them with
 §7 needed.
 
 **Your task**: Given §8 and §9, prove §10.
-warning: Game/Levels/SubsetWorld/L13_Antisymm.lean:28:0: No translation (en) found for: Two sets that contain each other are equal.
-warning: Game/Levels/SubsetWorld/L13_Antisymm.lean:61:0: No translation (en) found for: §0 gives you a one-step path from two ⊆ proofs to
+warning: Game/Levels/SubsetWorld/L14_Antisymm.lean:28:0: No translation (en) found for: Two sets that contain each other are equal.
+warning: Game/Levels/SubsetWorld/L14_Antisymm.lean:61:0: No translation (en) found for: §0 gives you a one-step path from two ⊆ proofs to
 set equality. Compare the two routes:
 
 | Route | When to use |
@@ -1467,8 +1537,8 @@ in the Orders \\& Lattices course.
 
 These two routes — §19 and §20 — are logically *equivalent*.
 You can derive §21 from §22 and §23 from §24. You
-will prove this equivalence yourself in Levels 15 and 16.
-warning: Game/Levels/SubsetWorld/L13_Antisymm.lean:99:0: No translation (en) found for: §0 proves that two sets are equal if each is
+will prove this equivalence yourself in Levels 16 and 17.
+warning: Game/Levels/SubsetWorld/L14_Antisymm.lean:99:0: No translation (en) found for: §0 proves that two sets are equal if each is
 a subset of the other.
 
 ## Statement
@@ -1483,20 +1553,20 @@ conclude §5. This is the \\"double containment\\" proof strategy.
 
 ## Example
 §6
-warning: Game/Levels/SubsetWorld/L13_Antisymm.lean:128:0: No translation (en) found for: §0 proves §1 for any partial order.
+warning: Game/Levels/SubsetWorld/L14_Antisymm.lean:128:0: No translation (en) found for: §0 proves §1 for any partial order.
 For sets, §2 is §3, so this is another way to prove set equality
 from mutual subsets. §4 is the set-specific version.
-info: Game/Levels/SubsetWorld/L13_Antisymm.lean:134:28: Missing Theorem Documentation. Using existing docstring. Add HasSubset.Subset.antisymm
+info: Game/Levels/SubsetWorld/L14_Antisymm.lean:134:28: Missing Theorem Documentation. Using existing docstring. Add HasSubset.Subset.antisymm
 Add `TheoremDoc HasSubset.Subset.antisymm` somewhere above this statement.
-warning: Game/Levels/SubsetWorld/L13_Antisymm.lean:134:54: Missing Theorem Documentation: subset_antisymm
+warning: Game/Levels/SubsetWorld/L14_Antisymm.lean:134:54: Missing Theorem Documentation: subset_antisymm
 Add `TheoremDoc subset_antisymm` somewhere above this statement.
-warning: Game/Levels/SubsetWorld/L13_Antisymm.lean:134:70: Missing Theorem Documentation: Set.eq_of_subset_of_subset
+warning: Game/Levels/SubsetWorld/L14_Antisymm.lean:134:70: Missing Theorem Documentation: Set.eq_of_subset_of_subset
 Add `TheoremDoc Set.eq_of_subset_of_subset` somewhere above this statement.
-info: Game/Levels/SubsetWorld/L13_Antisymm.lean:134:97: Missing Theorem Documentation. Using existing docstring. Add LE.le.antisymm
+info: Game/Levels/SubsetWorld/L14_Antisymm.lean:134:97: Missing Theorem Documentation. Using existing docstring. Add LE.le.antisymm
 Add `TheoremDoc LE.le.antisymm` somewhere above this statement.
-⚠ [513/581] Replayed Game.Levels.SubsetWorld.L14_ProperSubset
-warning: Game/Levels/SubsetWorld/L14_ProperSubset.lean:6:0: No translation (en) found for: Proper Subsets
-warning: Game/Levels/SubsetWorld/L14_ProperSubset.lean:8:0: No translation (en) found for: # Strict Containment: The Proper Subset ⊂
+⚠ [514/599] Replayed Game.Levels.SubsetWorld.L15_ProperSubset
+warning: Game/Levels/SubsetWorld/L15_ProperSubset.lean:6:0: No translation (en) found for: Proper Subsets
+warning: Game/Levels/SubsetWorld/L15_ProperSubset.lean:8:0: No translation (en) found for: # Strict Containment: The Proper Subset ⊂
 
 You have proved all three partial order axioms for §0 (reflexivity,
 transitivity, antisymmetry). Antisymmetry says: if §1 and
@@ -1521,9 +1591,9 @@ This level integrates two skills you have already mastered!
 1. §15 — split §16 into §17 and §18
 2. **First goal** (§19): prove the subset as in Level 1
 3. **Second goal** (§20): disprove the reverse as in Level 7
-warning: Game/Levels/SubsetWorld/L14_ProperSubset.lean:36:0: No translation (en) found for: The set of numbers less than 3 is a proper subset of the set
+warning: Game/Levels/SubsetWorld/L15_ProperSubset.lean:36:0: No translation (en) found for: The set of numbers less than 3 is a proper subset of the set
 of numbers less than 5.
-warning: Game/Levels/SubsetWorld/L14_ProperSubset.lean:77:0: No translation (en) found for: You proved your first **proper subset**! The structure was:
+warning: Game/Levels/SubsetWorld/L15_ProperSubset.lean:77:0: No translation (en) found for: You proved your first **proper subset**! The structure was:
 
 1. §0 — split §1 into §2 and §3
 2. Prove the subset (Level 1 technique)
@@ -1547,11 +1617,11 @@ containment fails.
 equivalent — by antisymmetry (Level 13), §24,
 so §25 when §26 is known, and conversely. Both
 definitions capture the same idea: strict containment with no equality.
-warning: Game/Levels/SubsetWorld/L14_ProperSubset.lean:105:47: Missing Theorem Documentation: Set.not_subset
+warning: Game/Levels/SubsetWorld/L15_ProperSubset.lean:105:47: Missing Theorem Documentation: Set.not_subset
 Add `TheoremDoc Set.not_subset` somewhere above this statement.
-⚠ [514/581] Replayed Game.Levels.SubsetWorld.L15_AntisymmFromExt
-warning: Game/Levels/SubsetWorld/L15_AntisymmFromExt.lean:6:0: No translation (en) found for: Deriving Antisymmetry from Extensionality
-warning: Game/Levels/SubsetWorld/L15_AntisymmFromExt.lean:8:0: No translation (en) found for: # Proving Antisymmetry Without §0
+⚠ [515/599] Replayed Game.Levels.SubsetWorld.L16_AntisymmFromExt
+warning: Game/Levels/SubsetWorld/L16_AntisymmFromExt.lean:6:0: No translation (en) found for: Deriving Antisymmetry from Extensionality
+warning: Game/Levels/SubsetWorld/L16_AntisymmFromExt.lean:8:0: No translation (en) found for: # Proving Antisymmetry Without §0
 
 In Level 13, you used §1 to combine two subset
 proofs into an equality. But you can also derive the same result
@@ -1566,8 +1636,8 @@ disabled for this level.
 2. §10 — split the §11
 3. **Forward**: §12 — use §13 as a function
 4. **Backward**: §14 — use §15 as a function
-warning: Game/Levels/SubsetWorld/L15_AntisymmFromExt.lean:26:0: No translation (en) found for: Deriving set equality from mutual subsets using §0.
-warning: Game/Levels/SubsetWorld/L15_AntisymmFromExt.lean:48:0: No translation (en) found for: You just proved antisymmetry from extensionality! Compare the two proofs:
+warning: Game/Levels/SubsetWorld/L16_AntisymmFromExt.lean:26:0: No translation (en) found for: Deriving set equality from mutual subsets using §0.
+warning: Game/Levels/SubsetWorld/L16_AntisymmFromExt.lean:48:0: No translation (en) found for: You just proved antisymmetry from extensionality! Compare the two proofs:
 
 **Using §0** (Level 13):
 §1
@@ -1587,21 +1657,21 @@ proof that the two approaches are interchangeable.
 
 Choose based on *convenience*: §12 when you have subset proofs
 in hand, §13 when you want to work element-by-element.
-warning: Game/Levels/SubsetWorld/L15_AntisymmFromExt.lean:78:16: Missing Theorem Documentation: Set.Subset.antisymm
+warning: Game/Levels/SubsetWorld/L16_AntisymmFromExt.lean:78:16: Missing Theorem Documentation: Set.Subset.antisymm
 Add `TheoremDoc Set.Subset.antisymm` somewhere above this statement.
-warning: Game/Levels/SubsetWorld/L15_AntisymmFromExt.lean:78:36: Missing Theorem Documentation: le_antisymm
+warning: Game/Levels/SubsetWorld/L16_AntisymmFromExt.lean:78:36: Missing Theorem Documentation: le_antisymm
 Add `TheoremDoc le_antisymm` somewhere above this statement.
-info: Game/Levels/SubsetWorld/L15_AntisymmFromExt.lean:78:48: Missing Theorem Documentation. Using existing docstring. Add HasSubset.Subset.antisymm
+info: Game/Levels/SubsetWorld/L16_AntisymmFromExt.lean:78:48: Missing Theorem Documentation. Using existing docstring. Add HasSubset.Subset.antisymm
 Add `TheoremDoc HasSubset.Subset.antisymm` somewhere above this statement.
-warning: Game/Levels/SubsetWorld/L15_AntisymmFromExt.lean:78:74: Missing Theorem Documentation: subset_antisymm
+warning: Game/Levels/SubsetWorld/L16_AntisymmFromExt.lean:78:74: Missing Theorem Documentation: subset_antisymm
 Add `TheoremDoc subset_antisymm` somewhere above this statement.
-warning: Game/Levels/SubsetWorld/L15_AntisymmFromExt.lean:78:90: Missing Theorem Documentation: Set.eq_of_subset_of_subset
+warning: Game/Levels/SubsetWorld/L16_AntisymmFromExt.lean:78:90: Missing Theorem Documentation: Set.eq_of_subset_of_subset
 Add `TheoremDoc Set.eq_of_subset_of_subset` somewhere above this statement.
-info: Game/Levels/SubsetWorld/L15_AntisymmFromExt.lean:78:117: Missing Theorem Documentation. Using existing docstring. Add LE.le.antisymm
+info: Game/Levels/SubsetWorld/L16_AntisymmFromExt.lean:78:117: Missing Theorem Documentation. Using existing docstring. Add LE.le.antisymm
 Add `TheoremDoc LE.le.antisymm` somewhere above this statement.
-⚠ [515/581] Replayed Game.Levels.SubsetWorld.L16_ExtFromAntisymm
-warning: Game/Levels/SubsetWorld/L16_ExtFromAntisymm.lean:6:0: No translation (en) found for: Deriving Extensionality from Antisymmetry
-warning: Game/Levels/SubsetWorld/L16_ExtFromAntisymm.lean:8:0: No translation (en) found for: # The Other Direction
+⚠ [516/599] Replayed Game.Levels.SubsetWorld.L17_ExtFromAntisymm
+warning: Game/Levels/SubsetWorld/L17_ExtFromAntisymm.lean:6:0: No translation (en) found for: Deriving Extensionality from Antisymmetry
+warning: Game/Levels/SubsetWorld/L17_ExtFromAntisymm.lean:8:0: No translation (en) found for: # The Other Direction
 
 In Level 15, you derived antisymmetry from extensionality: given two
 subset proofs, you used §0 to prove equality without
@@ -1621,8 +1691,8 @@ you need for two subset proofs.
 1. §16 — reduce to two subset goals
 2. **First subset** (§17): §18
 3. **Second subset** (§19): §20
-warning: Game/Levels/SubsetWorld/L16_ExtFromAntisymm.lean:31:0: No translation (en) found for: Set equality from pointwise membership equivalence, without ext.
-warning: Game/Levels/SubsetWorld/L16_ExtFromAntisymm.lean:54:0: No translation (en) found for: You have now proved both directions of the equivalence:
+warning: Game/Levels/SubsetWorld/L17_ExtFromAntisymm.lean:31:0: No translation (en) found for: Set equality from pointwise membership equivalence, without ext.
+warning: Game/Levels/SubsetWorld/L17_ExtFromAntisymm.lean:54:0: No translation (en) found for: You have now proved both directions of the equivalence:
 
 | Level | Proved | Strategy |
 |---|---|---|
@@ -1647,13 +1717,13 @@ the same principle. Stated as a single theorem:
 The axiom of extensionality and the antisymmetry of §23 are logically
 interchangeable — use whichever is more convenient for the problem
 at hand.
-info: Game/Levels/SubsetWorld/L16_ExtFromAntisymm.lean:82:88: Missing Tactic Documentation. Using existing docstring. Add ext
+info: Game/Levels/SubsetWorld/L17_ExtFromAntisymm.lean:82:88: Missing Tactic Documentation. Using existing docstring. Add ext
 Add `TacticDoc ext` somewhere above this statement.
-warning: Game/Levels/SubsetWorld/L16_ExtFromAntisymm.lean:83:16: Missing Theorem Documentation: Set.ext_iff
+warning: Game/Levels/SubsetWorld/L17_ExtFromAntisymm.lean:83:16: Missing Theorem Documentation: Set.ext_iff
 Add `TheoremDoc Set.ext_iff` somewhere above this statement.
-⚠ [516/581] Replayed Game.Levels.SubsetWorld.L17_Boss
-warning: Game/Levels/SubsetWorld/L17_Boss.lean:6:0: No translation (en) found for: Boss: Subset Chain
-warning: Game/Levels/SubsetWorld/L17_Boss.lean:8:0: No translation (en) found for: # Boss: Chaining Subsets to Prove Equality
+⚠ [517/599] Replayed Game.Levels.SubsetWorld.L18_Boss
+warning: Game/Levels/SubsetWorld/L18_Boss.lean:6:0: No translation (en) found for: Boss: Subset Chain
+warning: Game/Levels/SubsetWorld/L18_Boss.lean:8:0: No translation (en) found for: # Boss: Chaining Subsets to Prove Equality
 
 You have two sets §0 and §1 of natural numbers, with three
 hypotheses:
@@ -1677,8 +1747,8 @@ This problem integrates the core skills of this world:
 - **§24** to bridge arithmetic facts
 
 There are multiple valid strategies. Choose your own path!
-warning: Game/Levels/SubsetWorld/L17_Boss.lean:35:0: No translation (en) found for: If s ⊆ t ⊆ {n | n ≤ 4} and every n < 5 is in s, then s = {n | n < 5}.
-warning: Game/Levels/SubsetWorld/L17_Boss.lean:127:0: No translation (en) found for: Congratulations — you have completed **Subset World**!
+warning: Game/Levels/SubsetWorld/L18_Boss.lean:35:0: No translation (en) found for: If s ⊆ t ⊆ {n | n ≤ 4} and every n < 5 is in s, then s = {n | n < 5}.
+warning: Game/Levels/SubsetWorld/L18_Boss.lean:127:0: No translation (en) found for: Congratulations — you have completed **Subset World**!
 
 Here is your toolkit:
 
@@ -1697,16 +1767,16 @@ Here is your toolkit:
 | Dot projection | §22, §23 | extract components of §24 or §25 |
 
 The §26 relation is a **partial order** on sets: it is reflexive
-(Level 3), transitive (Level 8), and antisymmetric (Level 13). The
-strict variant §27 (proper subset, Level 14) excludes equality.
+(Level 3), transitive (Level 8), and antisymmetric (Level 14). The
+strict variant §27 (proper subset, Level 15) excludes equality.
 
 In the next world, you will learn about **set operations**: union (§28),
 intersection (§29), complement (§30), and difference (§31intro x hx` proof
 pattern you mastered here will be the foundation for every one of
 those proofs.
-⚠ [517/581] Replayed Game.Levels.SubsetWorld
-warning: Game/Levels/SubsetWorld.lean:20:0: No translation (en) found for: Subset World
-warning: Game/Levels/SubsetWorld.lean:22:0: No translation (en) found for: # Subset World
+⚠ [518/599] Replayed Game.Levels.SubsetWorld
+warning: Game/Levels/SubsetWorld.lean:21:0: No translation (en) found for: Subset World
+warning: Game/Levels/SubsetWorld.lean:23:0: No translation (en) found for: # Subset World
 
 In Set World, you learned that sets are predicates and membership is
 predicate evaluation. Now you will learn the two fundamental
@@ -1743,7 +1813,7 @@ course.
 - §22 — unwrap a hypothesis to a definitionally equal form
 - §23 — reduce set equality to element-wise membership
 - §24 — derive equality from mutual subsets
-⚠ [518/581] Replayed Game.Levels.SetOpsWorld.L01_UnionMembership
+⚠ [519/599] Replayed Game.Levels.SetOpsWorld.L01_UnionMembership
 warning: Game/Levels/SetOpsWorld/L01_UnionMembership.lean:6:0: No translation (en) found for: Union Membership
 warning: Game/Levels/SetOpsWorld/L01_UnionMembership.lean:10:0: No translation (en) found for: # Set Operations: Union
 
@@ -1807,7 +1877,7 @@ An element belongs to §5 if it belongs to §6 **or** §7:
 ## Warning
 You must **choose** a side: §16 or §17. You cannot prove both
 and let Lean pick — you must commit to one.
-⚠ [519/581] Replayed Game.Levels.SetOpsWorld.L02_IntersectionMembership
+⚠ [520/599] Replayed Game.Levels.SetOpsWorld.L02_IntersectionMembership
 warning: Game/Levels/SetOpsWorld/L02_IntersectionMembership.lean:6:0: No translation (en) found for: Intersection Membership
 warning: Game/Levels/SetOpsWorld/L02_IntersectionMembership.lean:8:0: No translation (en) found for: # Intersection: ∩ means ∧
 
@@ -1863,7 +1933,7 @@ An element belongs to §5 if it belongs to **both** §6 and §7:
 ## Warning
 Unlike union, you must prove **both** components — you cannot
 choose just one.
-⚠ [520/581] Replayed Game.Levels.SetOpsWorld.L03_ComplementMembership
+⚠ [521/599] Replayed Game.Levels.SetOpsWorld.L03_ComplementMembership
 warning: Game/Levels/SetOpsWorld/L03_ComplementMembership.lean:6:0: No translation (en) found for: Complement Membership
 warning: Game/Levels/SetOpsWorld/L03_ComplementMembership.lean:8:0: No translation (en) found for: # Complement: ᶜ means ¬
 
@@ -1925,7 +1995,7 @@ An element belongs to §4 if it does NOT belong to §5:
 ## Warning
 §18 is the complement relative to the entire type §19, not relative
 to some ambient set. §20.
-⚠ [521/581] Replayed Game.Levels.SetOpsWorld.L04_SetDifference
+⚠ [522/599] Replayed Game.Levels.SetOpsWorld.L04_SetDifference
 warning: Game/Levels/SetOpsWorld/L04_SetDifference.lean:6:0: No translation (en) found for: Set Difference
 warning: Game/Levels/SetOpsWorld/L04_SetDifference.lean:8:0: No translation (en) found for: # Set Difference: \\ means ∧ ¬
 
@@ -1985,7 +2055,7 @@ elements in §3 that are NOT in §4.
 
 ## Related
 §16 — difference is intersection with complement.
-⚠ [522/581] Replayed Game.Levels.SetOpsWorld.L05_DiffAsIntersect
+⚠ [523/599] Replayed Game.Levels.SetOpsWorld.L05_DiffAsIntersect
 warning: Game/Levels/SetOpsWorld/L05_DiffAsIntersect.lean:6:0: No translation (en) found for: Difference as Intersection with Complement
 warning: Game/Levels/SetOpsWorld/L05_DiffAsIntersect.lean:8:0: No translation (en) found for: # s \\ t = s ∩ tᶜ
 
@@ -2026,7 +2096,7 @@ takes it apart, §10 puts it together.
 warning: Game/Levels/SetOpsWorld/L05_DiffAsIntersect.lean:80:0: No translation (en) found for: §0 states §1.
 warning: Game/Levels/SetOpsWorld/L05_DiffAsIntersect.lean:86:59: Missing Theorem Documentation: sdiff_eq
 Add `TheoremDoc sdiff_eq` somewhere above this statement.
-⚠ [523/581] Replayed Game.Levels.SetOpsWorld.L06_IntersectionSubset
+⚠ [524/599] Replayed Game.Levels.SetOpsWorld.L06_IntersectionSubset
 warning: Game/Levels/SetOpsWorld/L06_IntersectionSubset.lean:6:0: No translation (en) found for: Intersection and Subsets
 warning: Game/Levels/SetOpsWorld/L06_IntersectionSubset.lean:8:0: No translation (en) found for: # s ∩ t ⊆ s
 
@@ -2065,7 +2135,7 @@ If §3 then §4, so in particular §5.
 warning: Game/Levels/SetOpsWorld/L06_IntersectionSubset.lean:72:0: No translation (en) found for: §0 proves §1.
 warning: Game/Levels/SetOpsWorld/L06_IntersectionSubset.lean:75:0: No translation (en) found for: §0 is the lattice version of §1.
 warning: Game/Levels/SetOpsWorld/L06_IntersectionSubset.lean:78:0: No translation (en) found for: §0 is the lattice version of §1.
-⚠ [524/581] Replayed Game.Levels.SetOpsWorld.L07_IntersectionCommutativity
+⚠ [525/599] Replayed Game.Levels.SetOpsWorld.L07_IntersectionCommutativity
 warning: Game/Levels/SetOpsWorld/L07_IntersectionCommutativity.lean:6:0: No translation (en) found for: Intersection Commutativity
 warning: Game/Levels/SetOpsWorld/L07_IntersectionCommutativity.lean:8:0: No translation (en) found for: # s ∩ t ⊆ t ∩ s
 
@@ -2110,7 +2180,7 @@ applying §13 and using this element-level argument in both directions.
 warning: Game/Levels/SetOpsWorld/L07_IntersectionCommutativity.lean:78:0: No translation (en) found for: §0 states §1.
 warning: Game/Levels/SetOpsWorld/L07_IntersectionCommutativity.lean:81:0: No translation (en) found for: §0 is the lattice version of §1.
 warning: Game/Levels/SetOpsWorld/L07_IntersectionCommutativity.lean:84:0: No translation (en) found for: §0 states §1 (propositional commutativity of ∧).
-⚠ [525/581] Replayed Game.Levels.SetOpsWorld.L08_UnionSubset
+⚠ [526/599] Replayed Game.Levels.SetOpsWorld.L08_UnionSubset
 warning: Game/Levels/SetOpsWorld/L08_UnionSubset.lean:6:0: No translation (en) found for: Union and Subsets
 warning: Game/Levels/SetOpsWorld/L08_UnionSubset.lean:8:0: No translation (en) found for: # s ⊆ s ∪ t
 
@@ -2149,7 +2219,7 @@ If §3, then §4 by choosing left.
 warning: Game/Levels/SetOpsWorld/L08_UnionSubset.lean:67:0: No translation (en) found for: §0 proves §1.
 warning: Game/Levels/SetOpsWorld/L08_UnionSubset.lean:70:0: No translation (en) found for: §0 is the lattice version of §1.
 warning: Game/Levels/SetOpsWorld/L08_UnionSubset.lean:73:0: No translation (en) found for: §0 is the lattice version of §1.
-⚠ [526/581] Replayed Game.Levels.SetOpsWorld.L09_ComplementLaw
+⚠ [527/599] Replayed Game.Levels.SetOpsWorld.L09_ComplementLaw
 warning: Game/Levels/SetOpsWorld/L09_ComplementLaw.lean:6:0: No translation (en) found for: Complement Law
 warning: Game/Levels/SetOpsWorld/L09_ComplementLaw.lean:8:0: No translation (en) found for: # s ∩ sᶜ = ∅
 
@@ -2203,7 +2273,7 @@ The library name is §19.
 warning: Game/Levels/SetOpsWorld/L09_ComplementLaw.lean:94:0: No translation (en) found for: §0 states §1.
 warning: Game/Levels/SetOpsWorld/L09_ComplementLaw.lean:97:0: No translation (en) found for: §0 states §1.
 warning: Game/Levels/SetOpsWorld/L09_ComplementLaw.lean:100:0: No translation (en) found for: §0 is the lattice version: §1.
-⚠ [527/581] Replayed Game.Levels.SetOpsWorld.L10_UnionCaseAnalysis
+⚠ [528/599] Replayed Game.Levels.SetOpsWorld.L10_UnionCaseAnalysis
 warning: Game/Levels/SetOpsWorld/L10_UnionCaseAnalysis.lean:6:0: No translation (en) found for: Case Analysis on Unions
 warning: Game/Levels/SetOpsWorld/L10_UnionCaseAnalysis.lean:8:0: No translation (en) found for: # Case Analysis: Splitting a Union Hypothesis
 
@@ -2253,7 +2323,7 @@ Combining this with §11 gives the set equality §12
 warning: Game/Levels/SetOpsWorld/L10_UnionCaseAnalysis.lean:84:0: No translation (en) found for: §0 states §1.
 warning: Game/Levels/SetOpsWorld/L10_UnionCaseAnalysis.lean:87:0: No translation (en) found for: §0 is the lattice version of §1.
 warning: Game/Levels/SetOpsWorld/L10_UnionCaseAnalysis.lean:90:0: No translation (en) found for: §0 states §1 (propositional commutativity of ∨).
-⚠ [528/581] Replayed Game.Levels.SetOpsWorld.L11_UnionCommutativity
+⚠ [529/599] Replayed Game.Levels.SetOpsWorld.L11_UnionCommutativity
 warning: Game/Levels/SetOpsWorld/L11_UnionCommutativity.lean:6:0: No translation (en) found for: Union Commutativity (Full Equality)
 warning: Game/Levels/SetOpsWorld/L11_UnionCommutativity.lean:10:0: No translation (en) found for: # s ∪ t = t ∪ s
 
@@ -2293,7 +2363,7 @@ warning: Game/Levels/SetOpsWorld/L11_UnionCommutativity.lean:82:62: Missing Theo
 Add `TheoremDoc sup_comm` somewhere above this statement.
 warning: Game/Levels/SetOpsWorld/L11_UnionCommutativity.lean:82:71: Missing Theorem Documentation: Or.comm
 Add `TheoremDoc Or.comm` somewhere above this statement.
-⚠ [529/581] Replayed Game.Levels.SetOpsWorld.L12_PushNeg
+⚠ [530/599] Replayed Game.Levels.SetOpsWorld.L12_PushNeg
 warning: Game/Levels/SetOpsWorld/L12_PushNeg.lean:6:0: No translation (en) found for: Pushing Negation
 warning: Game/Levels/SetOpsWorld/L12_PushNeg.lean:8:0: No translation (en) found for: # The push_neg Tactic
 
@@ -2371,7 +2441,7 @@ membership (§12 = §13).
 warning: Game/Levels/SetOpsWorld/L12_PushNeg.lean:124:0: No translation (en) found for: §0 states §1 (De Morgan).
 warning: Game/Levels/SetOpsWorld/L12_PushNeg.lean:127:0: No translation (en) found for: §0 is the lattice version of De Morgan: §1.
 warning: Game/Levels/SetOpsWorld/L12_PushNeg.lean:130:0: No translation (en) found for: §0 states §1 (propositional De Morgan).
-⚠ [530/581] Replayed Game.Levels.SetOpsWorld.L13_DeMorgan
+⚠ [531/599] Replayed Game.Levels.SetOpsWorld.L13_DeMorgan
 warning: Game/Levels/SetOpsWorld/L13_DeMorgan.lean:6:0: No translation (en) found for: De Morgan's Law
 warning: Game/Levels/SetOpsWorld/L13_DeMorgan.lean:8:0: No translation (en) found for: # De Morgan's Law for Sets
 
@@ -2428,7 +2498,7 @@ warning: Game/Levels/SetOpsWorld/L13_DeMorgan.lean:124:0: No translation (en) fo
 warning: Game/Levels/SetOpsWorld/L13_DeMorgan.lean:127:0: No translation (en) found for: §0 is the lattice version: §1.
 warning: Game/Levels/SetOpsWorld/L13_DeMorgan.lean:130:0: No translation (en) found for: §0 is the lattice version of De Morgan: §1.
 warning: Game/Levels/SetOpsWorld/L13_DeMorgan.lean:133:0: No translation (en) found for: §0 states §1 (propositional De Morgan).
-⚠ [531/581] Replayed Game.Levels.SetOpsWorld.L14_DualDeMorgan
+⚠ [532/599] Replayed Game.Levels.SetOpsWorld.L14_DualDeMorgan
 warning: Game/Levels/SetOpsWorld/L14_DualDeMorgan.lean:6:0: No translation (en) found for: Dual De Morgan
 warning: Game/Levels/SetOpsWorld/L14_DualDeMorgan.lean:8:0: No translation (en) found for: # Dual De Morgan: (s ∩ t)ᶜ = sᶜ ∪ tᶜ
 
@@ -2517,7 +2587,7 @@ Every Lean proof may use it — there is no constructivity restriction.
 warning: Game/Levels/SetOpsWorld/L14_DualDeMorgan.lean:170:0: No translation (en) found for: §0 states §1 (dual De Morgan).
 warning: Game/Levels/SetOpsWorld/L14_DualDeMorgan.lean:173:0: No translation (en) found for: §0 is the lattice version: §1.
 warning: Game/Levels/SetOpsWorld/L14_DualDeMorgan.lean:176:0: No translation (en) found for: §0 states §1 (propositional dual De Morgan).
-⚠ [532/581] Replayed Game.Levels.SetOpsWorld.L15_ComplementUnion
+⚠ [533/599] Replayed Game.Levels.SetOpsWorld.L15_ComplementUnion
 warning: Game/Levels/SetOpsWorld/L15_ComplementUnion.lean:6:0: No translation (en) found for: Complement Union Law
 warning: Game/Levels/SetOpsWorld/L15_ComplementUnion.lean:8:0: No translation (en) found for: # s ∪ sᶜ = Set.univ
 
@@ -2567,7 +2637,7 @@ warning: Game/Levels/SetOpsWorld/L15_ComplementUnion.lean:99:85: Missing Theorem
 Add `TheoremDoc Set.compl_union_self` somewhere above this statement.
 warning: Game/Levels/SetOpsWorld/L15_ComplementUnion.lean:99:106: Missing Theorem Documentation: compl_sup_eq_top
 Add `TheoremDoc compl_sup_eq_top` somewhere above this statement.
-⚠ [533/581] Replayed Game.Levels.SetOpsWorld.L16_DoubleComplement
+⚠ [534/599] Replayed Game.Levels.SetOpsWorld.L16_DoubleComplement
 warning: Game/Levels/SetOpsWorld/L16_DoubleComplement.lean:6:0: No translation (en) found for: Double Complement
 warning: Game/Levels/SetOpsWorld/L16_DoubleComplement.lean:8:0: No translation (en) found for: # sᶜᶜ = s
 
@@ -2603,7 +2673,7 @@ analogue of the logical fact §9.
 
 The library name is §10.
 warning: Game/Levels/SetOpsWorld/L16_DoubleComplement.lean:77:0: No translation (en) found for: §0 states §1 — double complement is the identity.
-⚠ [534/581] Replayed Game.Levels.SetOpsWorld.L17_Boss
+⚠ [535/599] Replayed Game.Levels.SetOpsWorld.L17_Boss
 warning: Game/Levels/SetOpsWorld/L17_Boss.lean:6:0: No translation (en) found for: Boss: Distributivity
 warning: Game/Levels/SetOpsWorld/L17_Boss.lean:8:0: No translation (en) found for: # Boss: Intersection Distributes over Union
 
@@ -2649,7 +2719,7 @@ warning: Game/Levels/SetOpsWorld/L17_Boss.lean:211:0: No translation (en) found 
 warning: Game/Levels/SetOpsWorld/L17_Boss.lean:214:0: No translation (en) found for: §0 states §1.
 warning: Game/Levels/SetOpsWorld/L17_Boss.lean:217:0: No translation (en) found for: §0 states §1.
 warning: Game/Levels/SetOpsWorld/L17_Boss.lean:220:0: No translation (en) found for: §0 states §1.
-⚠ [535/581] Replayed Game.Levels.SetOpsWorld
+⚠ [536/599] Replayed Game.Levels.SetOpsWorld
 warning: Game/Levels/SetOpsWorld.lean:20:0: No translation (en) found for: Set Operations World
 warning: Game/Levels/SetOpsWorld.lean:22:0: No translation (en) found for: # Set Operations World
 
@@ -2689,7 +2759,7 @@ By the end of this world, you will be able to:
 
 **Prerequisites**: Set World (membership, show/change) and Subset World
 (intro x hx, ext, constructor, obtain).
-⚠ [536/581] Replayed Game.Levels.IndexedOpsWorld.Imports
+⚠ [537/599] Replayed Game.Levels.IndexedOpsWorld.Imports
 warning: Game/Levels/IndexedOpsWorld/Imports.lean:12:0: No translation (en) found for: §0 states §1 —
 membership in an indexed union is equivalent to existence of a
 witness index.
@@ -2813,7 +2883,7 @@ If you have §2, then §3 (equivalently, §4)
 can prove any goal — because such an §5 cannot exist. This is the
 principle of explosion for types, just as §6 is the
 principle of explosion for propositions.
-⚠ [537/581] Replayed Game.Levels.IndexedOpsWorld.L01_IndexedUnion
+⚠ [538/599] Replayed Game.Levels.IndexedOpsWorld.L01_IndexedUnion
 warning: Game/Levels/IndexedOpsWorld/L01_IndexedUnion.lean:6:0: No translation (en) found for: Indexed Union
 warning: Game/Levels/IndexedOpsWorld/L01_IndexedUnion.lean:8:0: No translation (en) found for: # Indexed Unions
 
@@ -2855,7 +2925,7 @@ a witness index.
 
 In ordinary math: "§7
 because §8, so §9 is in the §10 set."
-⚠ [538/581] Replayed Game.Levels.IndexedOpsWorld.L02_IndexedIntersection
+⚠ [539/599] Replayed Game.Levels.IndexedOpsWorld.L02_IndexedIntersection
 warning: Game/Levels/IndexedOpsWorld/L02_IndexedIntersection.lean:6:0: No translation (en) found for: Indexed Intersection
 warning: Game/Levels/IndexedOpsWorld/L02_IndexedIntersection.lean:8:0: No translation (en) found for: # Indexed Intersections
 
@@ -2911,7 +2981,7 @@ with §19/§20 replaced by §21/§22.
 
 In ordinary math: "§23
 because for every §24, we have §25."
-⚠ [539/581] Replayed Game.Levels.IndexedOpsWorld.L03_IInterSubset
+⚠ [540/599] Replayed Game.Levels.IndexedOpsWorld.L03_IInterSubset
 warning: Game/Levels/IndexedOpsWorld/L03_IInterSubset.lean:6:0: No translation (en) found for: Indexed Intersection Implies Membership
 warning: Game/Levels/IndexedOpsWorld/L03_IInterSubset.lean:8:0: No translation (en) found for: # Using §0 in a Hypothesis
 
@@ -2947,7 +3017,7 @@ warning: Game/Levels/IndexedOpsWorld/L03_IInterSubset.lean:65:0: No translation 
 intersection is contained in each member of the family.
 warning: Game/Levels/IndexedOpsWorld/L03_IInterSubset.lean:70:65: Missing Theorem Documentation: iInf_le
 Add `TheoremDoc iInf_le` somewhere above this statement.
-⚠ [540/581] Replayed Game.Levels.IndexedOpsWorld.L04_IUnionFromSubset
+⚠ [541/599] Replayed Game.Levels.IndexedOpsWorld.L04_IUnionFromSubset
 warning: Game/Levels/IndexedOpsWorld/L04_IUnionFromSubset.lean:6:0: No translation (en) found for: Subset of Indexed Union
 warning: Game/Levels/IndexedOpsWorld/L04_IUnionFromSubset.lean:8:0: No translation (en) found for: # Building the Other Direction
 
@@ -2978,7 +3048,7 @@ warning: Game/Levels/IndexedOpsWorld/L04_IUnionFromSubset.lean:56:0: No translat
 the family is contained in the indexed union.
 warning: Game/Levels/IndexedOpsWorld/L04_IUnionFromSubset.lean:61:65: Missing Theorem Documentation: le_iSup
 Add `TheoremDoc le_iSup` somewhere above this statement.
-⚠ [541/581] Replayed Game.Levels.IndexedOpsWorld.L05_MonotonIUnion
+⚠ [542/599] Replayed Game.Levels.IndexedOpsWorld.L05_MonotonIUnion
 warning: Game/Levels/IndexedOpsWorld/L05_MonotonIUnion.lean:6:0: No translation (en) found for: Monotonicity of Indexed Union
 warning: Game/Levels/IndexedOpsWorld/L05_MonotonIUnion.lean:8:0: No translation (en) found for: # Monotonicity of Indexed Union
 
@@ -3025,7 +3095,7 @@ warning: Game/Levels/IndexedOpsWorld/L05_MonotonIUnion.lean:88:0: No translation
 if §1 then §2.
 warning: Game/Levels/IndexedOpsWorld/L05_MonotonIUnion.lean:93:63: Missing Theorem Documentation: iSup_mono
 Add `TheoremDoc iSup_mono` somewhere above this statement.
-⚠ [542/581] Replayed Game.Levels.IndexedOpsWorld.L06_MonotonIInter
+⚠ [543/599] Replayed Game.Levels.IndexedOpsWorld.L06_MonotonIInter
 warning: Game/Levels/IndexedOpsWorld/L06_MonotonIInter.lean:6:0: No translation (en) found for: Monotonicity of Indexed Intersection
 warning: Game/Levels/IndexedOpsWorld/L06_MonotonIInter.lean:8:0: No translation (en) found for: # Monotonicity of Indexed Intersection
 
@@ -3067,7 +3137,7 @@ warning: Game/Levels/IndexedOpsWorld/L06_MonotonIInter.lean:80:0: No translation
 if §1 then §2.
 warning: Game/Levels/IndexedOpsWorld/L06_MonotonIInter.lean:85:63: Missing Theorem Documentation: iInf_mono
 Add `TheoremDoc iInf_mono` somewhere above this statement.
-⚠ [543/581] Replayed Game.Levels.IndexedOpsWorld.L07_BoundedIUnion
+⚠ [544/599] Replayed Game.Levels.IndexedOpsWorld.L07_BoundedIUnion
 warning: Game/Levels/IndexedOpsWorld/L07_BoundedIUnion.lean:6:0: No translation (en) found for: Bounded Indexed Union
 warning: Game/Levels/IndexedOpsWorld/L07_BoundedIUnion.lean:8:0: No translation (en) found for: # Bounded Indexed Unions
 
@@ -3122,7 +3192,7 @@ info: Game/Levels/IndexedOpsWorld/L07_BoundedIUnion.lean:81:65: Missing Theorem 
 Add `TheoremDoc Set.subset_biUnion_of_mem` somewhere above this statement.
 warning: Game/Levels/IndexedOpsWorld/L07_BoundedIUnion.lean:81:91: Missing Theorem Documentation: le_biSup
 Add `TheoremDoc le_biSup` somewhere above this statement.
-⚠ [544/581] Replayed Game.Levels.IndexedOpsWorld.L08_BoundedIInter
+⚠ [545/599] Replayed Game.Levels.IndexedOpsWorld.L08_BoundedIInter
 warning: Game/Levels/IndexedOpsWorld/L08_BoundedIInter.lean:6:0: No translation (en) found for: Bounded Indexed Intersection
 warning: Game/Levels/IndexedOpsWorld/L08_BoundedIInter.lean:8:0: No translation (en) found for: # Bounded Indexed Intersections
 
@@ -3180,7 +3250,7 @@ warning: Game/Levels/IndexedOpsWorld/L08_BoundedIInter.lean:86:73: Missing Theor
 Add `TheoremDoc Set.iInter₂_subset` somewhere above this statement.
 warning: Game/Levels/IndexedOpsWorld/L08_BoundedIInter.lean:86:92: Missing Theorem Documentation: biInf_le
 Add `TheoremDoc biInf_le` somewhere above this statement.
-⚠ [545/581] Replayed Game.Levels.IndexedOpsWorld.L09_VacuousIntersection
+⚠ [546/599] Replayed Game.Levels.IndexedOpsWorld.L09_VacuousIntersection
 warning: Game/Levels/IndexedOpsWorld/L09_VacuousIntersection.lean:6:0: No translation (en) found for: Vacuous Intersection
 warning: Game/Levels/IndexedOpsWorld/L09_VacuousIntersection.lean:8:0: No translation (en) found for: # When the Index Type Is Empty
 
@@ -3218,23 +3288,38 @@ is the type-level version of §11 for §12. Both say
 explosion. You will see §13 in propositional logic and
 §14 when working with uninhabited types (like §15).
 
+**Why this is the right convention**: The intersection of a collection of
+sets is the **largest set contained in all of them**. When the collection
+is empty, every set is vacuously contained in all (zero) members of the
+collection — so the largest such set is §16. This is the same
+pattern as:
+- An empty product equals 1 (the multiplicative identity)
+- An empty sum equals 0 (the additive identity)
+- An empty conjunction (∀ over nothing) is §17
+
+In each case, the empty operation returns the **identity element** for
+that operation. For intersection, the identity is §18 (since
+§19 for all §20). For union, the identity is §21
+(since §22 for all §23). This is why the dual result —
+§24 — is also true.
+
 **Why this matters**: This explains why **bounded** indexed intersections
-(§16) are needed. If §17 might be empty, the bounded
-intersection degenerates to §18, which is often not what you
+(§25) are needed. If §26 might be empty, the bounded
+intersection degenerates to §27, which is often not what you
 want. When you see a bounded intersection in a proof, always consider:
 what happens if the bounding set is empty?
 
-**Up next**: You will prove the dual — §19 —
+**Up next**: You will prove the dual — §28 —
 completing the most dramatic duality pair in this world.
 
-In ordinary math: "The intersection §20
-contains every element, because the defining condition — §21
-for all §22 — is vacuously satisfied."
-warning: Game/Levels/IndexedOpsWorld/L09_VacuousIntersection.lean:97:47: Missing Theorem Documentation: Set.iInter_of_empty
+In ordinary math: "The intersection §29
+contains every element, because the defining condition — §30
+for all §31 — is vacuously satisfied."
+warning: Game/Levels/IndexedOpsWorld/L09_VacuousIntersection.lean:112:47: Missing Theorem Documentation: Set.iInter_of_empty
 Add `TheoremDoc Set.iInter_of_empty` somewhere above this statement.
-warning: Game/Levels/IndexedOpsWorld/L09_VacuousIntersection.lean:97:67: Missing Theorem Documentation: iInter_of_empty
+warning: Game/Levels/IndexedOpsWorld/L09_VacuousIntersection.lean:112:67: Missing Theorem Documentation: iInter_of_empty
 Add `TheoremDoc iInter_of_empty` somewhere above this statement.
-⚠ [546/581] Replayed Game.Levels.IndexedOpsWorld.L10_VacuousUnion
+⚠ [547/599] Replayed Game.Levels.IndexedOpsWorld.L10_VacuousUnion
 warning: Game/Levels/IndexedOpsWorld/L10_VacuousUnion.lean:6:0: No translation (en) found for: Vacuous Union
 warning: Game/Levels/IndexedOpsWorld/L10_VacuousUnion.lean:8:0: No translation (en) found for: # The Dual: Union over Nothing
 
@@ -3283,7 +3368,7 @@ warning: Game/Levels/IndexedOpsWorld/L10_VacuousUnion.lean:90:47: Missing Theore
 Add `TheoremDoc Set.iUnion_of_empty` somewhere above this statement.
 warning: Game/Levels/IndexedOpsWorld/L10_VacuousUnion.lean:90:67: Missing Theorem Documentation: iUnion_of_empty
 Add `TheoremDoc iUnion_of_empty` somewhere above this statement.
-⚠ [547/581] Replayed Game.Levels.IndexedOpsWorld.L11_CartesianProduct
+⚠ [548/599] Replayed Game.Levels.IndexedOpsWorld.L11_CartesianProduct
 warning: Game/Levels/IndexedOpsWorld/L11_CartesianProduct.lean:6:0: No translation (en) found for: Cartesian Product
 warning: Game/Levels/IndexedOpsWorld/L11_CartesianProduct.lean:8:0: No translation (en) found for: # Cartesian Products of Sets
 
@@ -3319,7 +3404,7 @@ sets of (potentially) different types.
 
 In ordinary math: "§6
 because §7 is even and §8."
-⚠ [548/581] Replayed Game.Levels.IndexedOpsWorld.L12_Nonempty
+⚠ [549/599] Replayed Game.Levels.IndexedOpsWorld.L12_Nonempty
 warning: Game/Levels/IndexedOpsWorld/L12_Nonempty.lean:6:0: No translation (en) found for: Nonemptiness
 warning: Game/Levels/IndexedOpsWorld/L12_Nonempty.lean:8:0: No translation (en) found for: # Set.Nonempty
 
@@ -3352,7 +3437,7 @@ is always the same: provide the witness, then verify.
 **Alternative witnesses**: We used §9, but §10, §11, or any even
 number would work. The choice of witness does not matter — only
 its existence.
-⚠ [549/581] Replayed Game.Levels.IndexedOpsWorld.L13_NonemptyPropagation
+⚠ [550/599] Replayed Game.Levels.IndexedOpsWorld.L13_NonemptyPropagation
 warning: Game/Levels/IndexedOpsWorld/L13_NonemptyPropagation.lean:6:0: No translation (en) found for: Nonemptiness Propagates to Unions
 warning: Game/Levels/IndexedOpsWorld/L13_NonemptyPropagation.lean:8:0: No translation (en) found for: # Nonemptiness Propagation
 
@@ -3384,7 +3469,7 @@ it to the larger set. This is a common argument in mathematics:
 prove this in the next level.
 warning: Game/Levels/IndexedOpsWorld/L13_NonemptyPropagation.lean:68:47: Missing Theorem Documentation: Set.Nonempty.iUnion
 Add `TheoremDoc Set.Nonempty.iUnion` somewhere above this statement.
-⚠ [550/581] Replayed Game.Levels.IndexedOpsWorld.L14_NonemptyConverse
+⚠ [551/599] Replayed Game.Levels.IndexedOpsWorld.L14_NonemptyConverse
 warning: Game/Levels/IndexedOpsWorld/L14_NonemptyConverse.lean:6:0: No translation (en) found for: Nonemptiness Converse
 warning: Game/Levels/IndexedOpsWorld/L14_NonemptyConverse.lean:8:0: No translation (en) found for: # The Converse: Union Nonempty Implies Some Member Nonempty
 
@@ -3419,7 +3504,7 @@ data hiding inside your hypotheses. Here, the element §2 and the index
 extracted and rearranged them.
 
 In ordinary math: "If §4 is nonempty, pick §5. Then §6 for some §7, so §8 is nonempty."
-⚠ [551/581] Replayed Game.Levels.IndexedOpsWorld.L15_Powerset
+⚠ [552/599] Replayed Game.Levels.IndexedOpsWorld.L15_Powerset
 warning: Game/Levels/IndexedOpsWorld/L15_Powerset.lean:6:0: No translation (en) found for: Powerset
 warning: Game/Levels/IndexedOpsWorld/L15_Powerset.lean:8:0: No translation (en) found for: # The Powerset
 
@@ -3459,7 +3544,7 @@ a set, you ask whether a set is in a collection of sets.
 and preimages of set families. In Cantor World, you will prove that
 the powerset of a set is always strictly larger than the set itself —
 using a diagonal argument unlike anything in this course so far.
-⚠ [552/581] Replayed Game.Levels.IndexedOpsWorld.L16_PowersetMonotonicity
+⚠ [553/599] Replayed Game.Levels.IndexedOpsWorld.L16_PowersetMonotonicity
 warning: Game/Levels/IndexedOpsWorld/L16_PowersetMonotonicity.lean:6:0: No translation (en) found for: Powerset Monotonicity
 warning: Game/Levels/IndexedOpsWorld/L16_PowersetMonotonicity.lean:8:0: No translation (en) found for: # Powerset Is Monotone
 
@@ -3490,7 +3575,7 @@ In ordinary math: "If §4 and §5, then
 §6. Therefore every member of §7 is a
 member of §8."
 warning: Game/Levels/IndexedOpsWorld/L16_PowersetMonotonicity.lean:68:0: No translation (en) found for: §0 states §1.
-⚠ [553/581] Replayed Game.Levels.IndexedOpsWorld.L17_IUnionEqualsUniv
+⚠ [554/599] Replayed Game.Levels.IndexedOpsWorld.L17_IUnionEqualsUniv
 warning: Game/Levels/IndexedOpsWorld/L17_IUnionEqualsUniv.lean:6:0: No translation (en) found for: Indexed Union Equals Univ
 warning: Game/Levels/IndexedOpsWorld/L17_IUnionEqualsUniv.lean:8:0: No translation (en) found for: # Indexed Union Covers Everything
 
@@ -3540,7 +3625,7 @@ later when we study partitions and equivalence relations.
 warning: Game/Levels/IndexedOpsWorld/L17_IUnionEqualsUniv.lean:106:0: No translation (en) found for: §0 states §1.
 warning: Game/Levels/IndexedOpsWorld/L17_IUnionEqualsUniv.lean:109:0: No translation (en) found for: §0 states
 §1.
-⚠ [554/581] Replayed Game.Levels.IndexedOpsWorld.L18_DeMorganUnion
+⚠ [555/599] Replayed Game.Levels.IndexedOpsWorld.L18_DeMorganUnion
 warning: Game/Levels/IndexedOpsWorld/L18_DeMorganUnion.lean:6:0: No translation (en) found for: De Morgan for Indexed Unions
 warning: Game/Levels/IndexedOpsWorld/L18_DeMorganUnion.lean:8:0: No translation (en) found for: # De Morgan's Law for Indexed Unions
 
@@ -3588,7 +3673,7 @@ warning: Game/Levels/IndexedOpsWorld/L18_DeMorganUnion.lean:124:0: No translatio
 warning: Game/Levels/IndexedOpsWorld/L18_DeMorganUnion.lean:127:0: No translation (en) found for: §0 states §1.
 warning: Game/Levels/IndexedOpsWorld/L18_DeMorganUnion.lean:130:0: No translation (en) found for: §0 is the lattice version of §1.
 warning: Game/Levels/IndexedOpsWorld/L18_DeMorganUnion.lean:133:0: No translation (en) found for: §0 is the lattice version of §1.
-⚠ [555/581] Replayed Game.Levels.IndexedOpsWorld.L19_DeMorganInter
+⚠ [556/599] Replayed Game.Levels.IndexedOpsWorld.L19_DeMorganInter
 warning: Game/Levels/IndexedOpsWorld/L19_DeMorganInter.lean:6:0: No translation (en) found for: De Morgan for Indexed Intersections
 warning: Game/Levels/IndexedOpsWorld/L19_DeMorganInter.lean:8:0: No translation (en) found for: # De Morgan's Law for Indexed Intersections
 
@@ -3651,7 +3736,7 @@ warning: Game/Levels/IndexedOpsWorld/L19_DeMorganInter.lean:146:81: Missing Theo
 Add `TheoremDoc compl_iSup` somewhere above this statement.
 warning: Game/Levels/IndexedOpsWorld/L19_DeMorganInter.lean:146:92: Missing Theorem Documentation: compl_iInf
 Add `TheoremDoc compl_iInf` somewhere above this statement.
-⚠ [556/581] Replayed Game.Levels.IndexedOpsWorld.L20_NonemptyProduct
+⚠ [557/599] Replayed Game.Levels.IndexedOpsWorld.L20_NonemptyProduct
 warning: Game/Levels/IndexedOpsWorld/L20_NonemptyProduct.lean:6:0: No translation (en) found for: Nonempty Product
 warning: Game/Levels/IndexedOpsWorld/L20_NonemptyProduct.lean:8:0: No translation (en) found for: # Integrating Nonemptiness and Cartesian Products
 
@@ -3686,7 +3771,7 @@ These are all tools from earlier in this world, now working together.
 In ordinary math: "If §5 and §6, then §7, so §8."
 warning: Game/Levels/IndexedOpsWorld/L20_NonemptyProduct.lean:78:0: No translation (en) found for: §0 states that the product of two nonempty sets
 is nonempty.
-⚠ [557/581] Replayed Game.Levels.IndexedOpsWorld.L21_BoundedIntegration
+⚠ [558/599] Replayed Game.Levels.IndexedOpsWorld.L21_BoundedIntegration
 warning: Game/Levels/IndexedOpsWorld/L21_BoundedIntegration.lean:6:0: No translation (en) found for: Bounded Intersection Inside Bounded Union
 warning: Game/Levels/IndexedOpsWorld/L21_BoundedIntegration.lean:8:0: No translation (en) found for: # Integrating Bounded Variants
 
@@ -3728,7 +3813,7 @@ indexed unions in the problem set — §10.
 In ordinary math: "If §11 and §12,
 then §13 (specializing the intersection), hence
 §14 (witnessing the union with §15)."
-⚠ [558/581] Replayed Game.Levels.IndexedOpsWorld.L22_IInterDistrib
+⚠ [559/599] Replayed Game.Levels.IndexedOpsWorld.L22_IInterDistrib
 warning: Game/Levels/IndexedOpsWorld/L22_IInterDistrib.lean:6:0: No translation (en) found for: Indexed Intersection Distributes over Union
 warning: Game/Levels/IndexedOpsWorld/L22_IInterDistrib.lean:8:0: No translation (en) found for: # The Dual Distributive Law
 
@@ -3791,7 +3876,7 @@ warning: Game/Levels/IndexedOpsWorld/L22_IInterDistrib.lean:166:0: No translatio
 warning: Game/Levels/IndexedOpsWorld/L22_IInterDistrib.lean:169:0: No translation (en) found for: §0 is the lattice version of indexed intersection/union
 distributivity.
 warning: Game/Levels/IndexedOpsWorld/L22_IInterDistrib.lean:173:0: No translation (en) found for: §0 is the lattice version (commuted order).
-⚠ [559/581] Replayed Game.Levels.IndexedOpsWorld.L23_Boss
+⚠ [560/599] Replayed Game.Levels.IndexedOpsWorld.L23_Boss
 warning: Game/Levels/IndexedOpsWorld/L23_Boss.lean:6:0: No translation (en) found for: Boss: Indexed Union Distributes over Intersection
 warning: Game/Levels/IndexedOpsWorld/L23_Boss.lean:8:0: No translation (en) found for: # Boss: Distributivity for Indexed Unions
 
@@ -3890,7 +3975,7 @@ warning: Game/Levels/IndexedOpsWorld/L23_Boss.lean:179:0: No translation (en) fo
 warning: Game/Levels/IndexedOpsWorld/L23_Boss.lean:182:0: No translation (en) found for: §0 is the lattice version of indexed union/intersection
 distributivity.
 warning: Game/Levels/IndexedOpsWorld/L23_Boss.lean:186:0: No translation (en) found for: §0 is the lattice version (commuted order).
-⚠ [560/581] Replayed Game.Levels.IndexedOpsWorld
+⚠ [561/599] Replayed Game.Levels.IndexedOpsWorld
 warning: Game/Levels/IndexedOpsWorld.lean:26:0: No translation (en) found for: Indexed Operations World
 warning: Game/Levels/IndexedOpsWorld.lean:28:0: No translation (en) found for: # Indexed Operations World
 
@@ -3898,7 +3983,7 @@ In Set Operations World, you learned the binary operations — §0, §1,
 §2, §3⋃ i, s i§4∃ i, x ∈ s i§5⋂ i, s i§6∀ i, x ∈ s i§7⋃ i ∈ t, s i§8∃ i ∈ t, x ∈ s i§9⋂ i ∈ t, s i§10∀ i ∈ t, x ∈ s i§11s ×ˢ t§12p.1 ∈ s ∧ p.2 ∈ t§13Set.Nonempty s§14∃ x, x ∈ s§15𝒫 s§16t ⊆ s§17⋃ i, s i§18∨§19∃§20⋂ i, s i§21∧§22∀§23rw [Set.mem_iUnion]§24⋃§25∃§26rw [Set.mem_iInter]§27⋂§28∀§29rw [Set.mem_iUnion₂]§30⋃ i ∈ t§31∃§32rw [Set.mem_iInter₂]§33⋂ i ∈ t§34∀§35rw [Set.mem_prod]§36×ˢ§37∧§38rw [Set.mem_powerset_iff]§39𝒫§40⊆`
 
 **Prerequisites**: Set World, Subset World, and Set Operations World.
-⚠ [561/581] Replayed Game.Levels.PsetSets.L01_UnivComplement
+⚠ [562/599] Replayed Game.Levels.PsetSets.L01_UnivComplement
 warning: Game/Levels/PsetSets/L01_UnivComplement.lean:6:0: No translation (en) found for: Universal Set and Complement
 warning: Game/Levels/PsetSets/L01_UnivComplement.lean:10:0: No translation (en) found for: # Problem Set: Level 1
 
@@ -3933,7 +4018,7 @@ warning: Game/Levels/PsetSets/L01_UnivComplement.lean:70:0: No translation (en) 
 warning: Game/Levels/PsetSets/L01_UnivComplement.lean:73:0: No translation (en) found for: §0 states §1 (lattice join inclusion).
 warning: Game/Levels/PsetSets/L01_UnivComplement.lean:76:0: No translation (en) found for: §0 states §1 (lattice join inclusion).
 warning: Game/Levels/PsetSets/L01_UnivComplement.lean:79:0: No translation (en) found for: §0 states §1 (lattice meet projection).
-⚠ [562/581] Replayed Game.Levels.PsetSets.L02_ConcreteType
+⚠ [563/599] Replayed Game.Levels.PsetSets.L02_ConcreteType
 warning: Game/Levels/PsetSets/L02_ConcreteType.lean:6:0: No translation (en) found for: Concrete Type Exercise
 warning: Game/Levels/PsetSets/L02_ConcreteType.lean:10:0: No translation (en) found for: # Problem Set: Level 2
 
@@ -3965,7 +4050,82 @@ reasoning about negative numbers — something that does not arise with
 §14. This is why concrete-type exercises matter: they reveal whether
 you have internalized the proof pattern or just memorized a particular
 surface form.
-⚠ [563/581] Replayed Game.Levels.PsetSets.L05_ComplementDifference
+⚠ [564/599] Replayed Game.Levels.PsetSets.L03_DistributivitySubset
+warning: Game/Levels/PsetSets/L03_DistributivitySubset.lean:6:0: No translation (en) found for: Distributivity (⊆)
+warning: Game/Levels/PsetSets/L03_DistributivitySubset.lean:10:0: No translation (en) found for: # Problem Set: Level 3
+
+Prove a **distributivity** inclusion for abstract sets. In Set Operations
+World, you proved §0. Here is a
+different arrangement — and only the §1 direction:
+
+§2
+
+**Proof strategy**: §3, destructure the intersection,
+case-split on the union, then build the appropriate side.
+warning: Game/Levels/PsetSets/L03_DistributivitySubset.lean:23:0: No translation (en) found for: Right distributivity of ∩ over ∪ (subset direction).
+warning: Game/Levels/PsetSets/L03_DistributivitySubset.lean:45:0: No translation (en) found for: The proof followed the standard pattern for distributivity:
+1. Destructure the intersection (§0)
+2. Case-split on the union (§1)
+3. Build the correct side (§2/§3 + anonymous constructor)
+
+Compare to the Set Operations World boss: same logical structure,
+different arrangement of §4, §5, §6.
+warning: Game/Levels/PsetSets/L03_DistributivitySubset.lean:55:0: No translation (en) found for: §0 states §1.
+warning: Game/Levels/PsetSets/L03_DistributivitySubset.lean:58:0: No translation (en) found for: §0 is the lattice version: §1.
+warning: Game/Levels/PsetSets/L03_DistributivitySubset.lean:61:0: No translation (en) found for: §0 is the dual distributivity law.
+warning: Game/Levels/PsetSets/L03_DistributivitySubset.lean:64:0: No translation (en) found for: §0 is the lattice version of the dual distributivity.
+warning: Game/Levels/PsetSets/L03_DistributivitySubset.lean:67:0: No translation (en) found for: §0 is an alias for §1.
+warning: Game/Levels/PsetSets/L03_DistributivitySubset.lean:70:0: No translation (en) found for: §0 states §1.
+warning: Game/Levels/PsetSets/L03_DistributivitySubset.lean:73:0: No translation (en) found for: §0 states §1.
+warning: Game/Levels/PsetSets/L03_DistributivitySubset.lean:76:0: No translation (en) found for: §0 states §1.
+warning: Game/Levels/PsetSets/L03_DistributivitySubset.lean:79:0: No translation (en) found for: §0 states §1.
+warning: Game/Levels/PsetSets/L03_DistributivitySubset.lean:82:0: No translation (en) found for: §0 is the lattice version: §1.
+warning: Game/Levels/PsetSets/L03_DistributivitySubset.lean:85:0: No translation (en) found for: §0 is the lattice dual: §1.
+warning: Game/Levels/PsetSets/L03_DistributivitySubset.lean:88:0: No translation (en) found for: §0 states §1 (lattice antisymmetry).
+warning: Game/Levels/PsetSets/L03_DistributivitySubset.lean:90:0: No translation (en) found for: §0 states §1.
+warning: Game/Levels/PsetSets/L03_DistributivitySubset.lean:92:0: No translation (en) found for: §0 states §1.
+warning: Game/Levels/PsetSets/L03_DistributivitySubset.lean:94:0: No translation (en) found for: §0 states §1.
+warning: Game/Levels/PsetSets/L03_DistributivitySubset.lean:96:0: No translation (en) found for: §0 states §1.
+warning: Game/Levels/PsetSets/L03_DistributivitySubset.lean:98:0: No translation (en) found for: §0 states §1.
+⚠ [565/599] Replayed Game.Levels.PsetSets.L04_PartitionEquality
+warning: Game/Levels/PsetSets/L04_PartitionEquality.lean:6:0: No translation (en) found for: Partition Identity
+warning: Game/Levels/PsetSets/L04_PartitionEquality.lean:10:0: No translation (en) found for: # Problem Set: Level 4
+
+Prove the **partition identity**: every set equals the union of its
+part inside §0 and its part outside §1:
+
+§2
+
+Think about what tools you have for proving set equality, and why
+one approach might be more natural than the other here. For the
+forward direction, consider what information you need to choose a side
+of the union.
+warning: Game/Levels/PsetSets/L04_PartitionEquality.lean:24:0: No translation (en) found for: A set equals the union of its intersection and difference with t.
+warning: Game/Levels/PsetSets/L04_PartitionEquality.lean:58:0: No translation (en) found for: You proved the partition identity §0. This says
+every set splits into two disjoint pieces relative to any other set:
+the elements in §1 and the elements not in §2.
+
+**Key techniques**:
+- §3 to split equality into two subset proofs —
+  an alternative to §4 when the structure is clearer as two inclusions
+- §5 for classical case analysis — necessary when
+  you need to choose a side of a disjunction but do not know which
+
+Compare this to §6 + §7: both prove set equality, but
+§8 lets you think in terms of subsets ("everything in §9 is
+in the union" and "everything in the union is in §10"), which is
+sometimes more natural.
+warning: Game/Levels/PsetSets/L04_PartitionEquality.lean:75:0: No translation (en) found for: §0 states §1.
+warning: Game/Levels/PsetSets/L04_PartitionEquality.lean:78:0: No translation (en) found for: §0 is the lattice version: §1.
+warning: Game/Levels/PsetSets/L04_PartitionEquality.lean:81:0: No translation (en) found for: §0 states §1.
+warning: Game/Levels/PsetSets/L04_PartitionEquality.lean:84:0: No translation (en) found for: §0 is the lattice version: §1.
+warning: Game/Levels/PsetSets/L04_PartitionEquality.lean:87:0: No translation (en) found for: §0 states §1 (lattice antisymmetry).
+warning: Game/Levels/PsetSets/L04_PartitionEquality.lean:89:0: No translation (en) found for: §0 states §1.
+warning: Game/Levels/PsetSets/L04_PartitionEquality.lean:91:0: No translation (en) found for: §0 states §1.
+warning: Game/Levels/PsetSets/L04_PartitionEquality.lean:93:0: No translation (en) found for: §0 states §1.
+warning: Game/Levels/PsetSets/L04_PartitionEquality.lean:95:0: No translation (en) found for: §0 states §1.
+warning: Game/Levels/PsetSets/L04_PartitionEquality.lean:97:0: No translation (en) found for: §0 states §1.
+⚠ [566/599] Replayed Game.Levels.PsetSets.L05_ComplementDifference
 warning: Game/Levels/PsetSets/L05_ComplementDifference.lean:6:0: No translation (en) found for: Complement-Difference
 warning: Game/Levels/PsetSets/L05_ComplementDifference.lean:10:0: No translation (en) found for: # Problem Set: Level 5
 
@@ -3994,7 +4154,43 @@ The surprise: the converse does NOT need §7.
 warning: Game/Levels/PsetSets/L05_ComplementDifference.lean:60:0: No translation (en) found for: §0 states §1.
 warning: Game/Levels/PsetSets/L05_ComplementDifference.lean:63:0: No translation (en) found for: §0 states §1 (double negation elimination).
 warning: Game/Levels/PsetSets/L05_ComplementDifference.lean:66:0: No translation (en) found for: §0 is the decidable version of double negation elimination.
-⚠ [564/581] Replayed Game.Levels.PsetSets.L07_NestedDifference
+⚠ [567/599] Replayed Game.Levels.PsetSets.L06_ConverseComplementDiff
+warning: Game/Levels/PsetSets/L06_ConverseComplementDiff.lean:6:0: No translation (en) found for: Converse Complement-Difference
+warning: Game/Levels/PsetSets/L06_ConverseComplementDiff.lean:10:0: No translation (en) found for: # Problem Set: Level 6
+
+In Level 5, you proved §0 using §1 to
+extract membership from double negation. Now prove the **converse**:
+
+§2
+
+The surprise: this direction does NOT need §3. It goes
+through directly! If §4 and §5, then §6
+(because §7) and §8 (because §9).
+
+Together with Level 5, this gives the full equality
+§10 — but the two directions have genuinely different
+proof structures. One needs classical reasoning; the other does not.
+warning: Game/Levels/PsetSets/L06_ConverseComplementDiff.lean:27:0: No translation (en) found for: The converse: s \\ t ⊆ tᶜ \\ sᶜ.
+warning: Game/Levels/PsetSets/L06_ConverseComplementDiff.lean:47:0: No translation (en) found for: You proved the converse §0 — and it was entirely
+direct. No §1 needed!
+
+**Proof asymmetry**: Compare the two directions:
+- Level 5 (§2): needed §3 to extract
+  §4 from §5 — double negation elimination
+- This level (§6): direct — §7 gives
+  §8 by simply introducing the assumption and applying
+
+This asymmetry is fundamental: going from §9 to §10 is
+constructive (always valid), but going from §11 to §12 requires
+classical logic (§13). Both directions are true, but they
+have different logical character.
+
+Together: §14. You could prove this full equality in
+one line using §15 from Level 5 and this level — the
+same technique as Level 4 of Subset World. Complement-difference is its
+own inverse in a precise sense.
+warning: Game/Levels/PsetSets/L06_ConverseComplementDiff.lean:68:0: No translation (en) found for: §0 states §1.
+⚠ [568/599] Replayed Game.Levels.PsetSets.L07_NestedDifference
 warning: Game/Levels/PsetSets/L07_NestedDifference.lean:6:0: No translation (en) found for: Nested Difference
 warning: Game/Levels/PsetSets/L07_NestedDifference.lean:10:0: No translation (en) found for: # Problem Set: Level 7
 
@@ -4021,7 +4217,7 @@ The backward direction was simpler: §8 extracts §9 from
 §10, and §11 provides the contradiction.
 warning: Game/Levels/PsetSets/L07_NestedDifference.lean:79:0: No translation (en) found for: §0 states §1.
 warning: Game/Levels/PsetSets/L07_NestedDifference.lean:82:0: No translation (en) found for: §0 states §1 when §2.
-⚠ [565/581] Replayed Game.Levels.PsetSets.L08_NonemptyProduct
+⚠ [569/599] Replayed Game.Levels.PsetSets.L08_NonemptyProduct
 warning: Game/Levels/PsetSets/L08_NonemptyProduct.lean:6:0: No translation (en) found for: Nonempty Product Converse
 warning: Game/Levels/PsetSets/L08_NonemptyProduct.lean:10:0: No translation (en) found for: # Problem Set: Level 8
 
@@ -4050,7 +4246,7 @@ full equivalence: §9 is nonempty if and only if both §10 and
 warning: Game/Levels/PsetSets/L08_NonemptyProduct.lean:58:0: No translation (en) found for: §0 characterizes §1.
 warning: Game/Levels/PsetSets/L08_NonemptyProduct.lean:61:0: No translation (en) found for: §0 extracts nonemptiness of the first factor.
 warning: Game/Levels/PsetSets/L08_NonemptyProduct.lean:64:0: No translation (en) found for: §0 extracts nonemptiness of the second factor.
-⚠ [566/581] Replayed Game.Levels.PsetSets.L09_IndexedSubset
+⚠ [570/599] Replayed Game.Levels.PsetSets.L09_IndexedSubset
 warning: Game/Levels/PsetSets/L09_IndexedSubset.lean:6:0: No translation (en) found for: Indexed Intersection
 warning: Game/Levels/PsetSets/L09_IndexedSubset.lean:10:0: No translation (en) found for: # Problem Set: Level 9
 
@@ -4088,7 +4284,7 @@ warning: Game/Levels/PsetSets/L09_IndexedSubset.lean:78:0: No translation (en) f
 warning: Game/Levels/PsetSets/L09_IndexedSubset.lean:81:0: No translation (en) found for: §0 states §1.
 warning: Game/Levels/PsetSets/L09_IndexedSubset.lean:84:0: No translation (en) found for: §0 is the lattice version: §1.
 warning: Game/Levels/PsetSets/L09_IndexedSubset.lean:87:0: No translation (en) found for: §0 is the lattice version: §1.
-⚠ [567/581] Replayed Game.Levels.PsetSets.L10_RangeForeshadow
+⚠ [571/599] Replayed Game.Levels.PsetSets.L10_RangeForeshadow
 warning: Game/Levels/PsetSets/L10_RangeForeshadow.lean:6:0: No translation (en) found for: Indexed Union and Range
 warning: Game/Levels/PsetSets/L10_RangeForeshadow.lean:10:0: No translation (en) found for: # Problem Set: Level 10
 
@@ -4135,7 +4331,13 @@ The image §14 collects all outputs from inputs in §15. What do you
 think the relationship between §16 and §17 is?
 Why might that be true?
 warning: Game/Levels/PsetSets/L10_RangeForeshadow.lean:92:0: No translation (en) found for: §0 states §1.
-⚠ [568/581] Replayed Game.Levels.PsetSets.L11_PowersetIntersection
+warning: Game/Levels/PsetSets/L10_RangeForeshadow.lean:95:0: No translation (en) found for: For a function §0, §1 is the set of all output values:
+§2.
+
+Use §3 to convert between §4 and §5.
+
+§6 equals §7 — the image of everything.
+⚠ [572/599] Replayed Game.Levels.PsetSets.L11_PowersetIntersection
 warning: Game/Levels/PsetSets/L11_PowersetIntersection.lean:6:0: No translation (en) found for: Powerset of Intersection
 warning: Game/Levels/PsetSets/L11_PowersetIntersection.lean:10:0: No translation (en) found for: # Problem Set: Level 11
 
@@ -4172,7 +4374,7 @@ in general! A subset of §26 need not be a subset of §27 alone or
 of §28 alone. (Example: §29 itself is a subset of §30 but is
 generally not a subset of either §31 or §32.)
 warning: Game/Levels/PsetSets/L11_PowersetIntersection.lean:93:0: No translation (en) found for: §0 states §1.
-⚠ [569/581] Replayed Game.Levels.PsetSets.L12_CounterexamplePowerset
+⚠ [573/599] Replayed Game.Levels.PsetSets.L12_CounterexamplePowerset
 warning: Game/Levels/PsetSets/L12_CounterexamplePowerset.lean:6:0: No translation (en) found for: Counterexample: Powerset of Union
 warning: Game/Levels/PsetSets/L12_CounterexamplePowerset.lean:10:0: No translation (en) found for: # Problem Set: Level 12
 
@@ -4209,7 +4411,43 @@ elements from BOTH §10 and §11, without being contained in either one.
 
 This is the same disprove-by-counterexample pattern from Subset
 World, now applied to a richer mathematical statement.
-⚠ [570/581] Replayed Game.Levels.PsetSets.L14_ComplementOfDifference
+⚠ [574/599] Replayed Game.Levels.PsetSets.L13_PowersetUnionSubset
+warning: Game/Levels/PsetSets/L13_PowersetUnionSubset.lean:6:0: No translation (en) found for: Powerset Union Subset
+warning: Game/Levels/PsetSets/L13_PowersetUnionSubset.lean:10:0: No translation (en) found for: # Problem Set: Level 13
+
+In Level 12, you disproved §0 — the powerset
+does NOT distribute over union as an equality. But one direction DOES
+hold:
+
+§1
+
+In words: if a set is a subset of §2 or a subset of §3, then it is
+a subset of §4. The converse fails because a subset of §5
+can draw elements from BOTH §6 and §7, without being contained in
+either one alone — which is exactly what your counterexample showed.
+
+**Proof strategy**: Case-split on which powerset §8 came from,
+convert powerset membership to subset relations, then show that each
+case gives a subset of the union.
+warning: Game/Levels/PsetSets/L13_PowersetUnionSubset.lean:29:0: No translation (en) found for: The powerset union is contained in the powerset of the union.
+warning: Game/Levels/PsetSets/L13_PowersetUnionSubset.lean:57:0: No translation (en) found for: You proved §0 — the direction that DOES hold.
+
+**The pattern: equality fails, but one direction holds.** This is a
+fundamental phenomenon in set theory:
+- §1 — full equality (Level 11)
+- §2 — equality fails (Level 12)
+- §3 — but one direction holds (this level)
+
+This pattern recurs throughout mathematics, especially when studying
+**images of functions**: §4 but equality
+can fail. Knowing which direction holds (and why the other fails) is a
+key skill you will use in the Image and Preimage worlds.
+warning: Game/Levels/PsetSets/L13_PowersetUnionSubset.lean:72:0: No translation (en) found for: §0 states §1.
+warning: Game/Levels/PsetSets/L13_PowersetUnionSubset.lean:75:0: No translation (en) found for: §0 states §1.
+warning: Game/Levels/PsetSets/L13_PowersetUnionSubset.lean:78:0: No translation (en) found for: §0 states §1.
+warning: Game/Levels/PsetSets/L13_PowersetUnionSubset.lean:81:0: No translation (en) found for: §0 states §1.
+warning: Game/Levels/PsetSets/L13_PowersetUnionSubset.lean:83:0: No translation (en) found for: §0 states §1.
+⚠ [575/599] Replayed Game.Levels.PsetSets.L14_ComplementOfDifference
 warning: Game/Levels/PsetSets/L14_ComplementOfDifference.lean:6:0: No translation (en) found for: Complement of Difference
 warning: Game/Levels/PsetSets/L14_ComplementOfDifference.lean:10:0: No translation (en) found for: # Problem Set: Level 14
 
@@ -4242,7 +4480,7 @@ This identity says: the elements NOT removed by §8 are exactly
 those that were never in §9 (in §10) or were in §11 (so not removed).
 warning: Game/Levels/PsetSets/L14_ComplementOfDifference.lean:90:0: No translation (en) found for: §0 states §1 (Heyting implication).
 warning: Game/Levels/PsetSets/L14_ComplementOfDifference.lean:93:0: No translation (en) found for: §0 states §1 in a Boolean algebra.
-⚠ [571/581] Replayed Game.Levels.PsetSets.L15_SubsetViaDifference
+⚠ [576/599] Replayed Game.Levels.PsetSets.L15_SubsetViaDifference
 warning: Game/Levels/PsetSets/L15_SubsetViaDifference.lean:6:0: No translation (en) found for: Subset via Difference
 warning: Game/Levels/PsetSets/L15_SubsetViaDifference.lean:10:0: No translation (en) found for: # Problem Set: Level 15
 
@@ -4274,7 +4512,53 @@ pattern you will see again.
 warning: Game/Levels/PsetSets/L15_SubsetViaDifference.lean:77:0: No translation (en) found for: §0 states §1.
 warning: Game/Levels/PsetSets/L15_SubsetViaDifference.lean:80:0: No translation (en) found for: §0 states §1.
 warning: Game/Levels/PsetSets/L15_SubsetViaDifference.lean:83:0: No translation (en) found for: §0 is the lattice version: §1.
-⚠ [572/581] Replayed Game.Levels.PsetSets.L17_IndexedDifference
+⚠ [577/599] Replayed Game.Levels.PsetSets.L16_AbsorptionLaw
+warning: Game/Levels/PsetSets/L16_AbsorptionLaw.lean:6:0: No translation (en) found for: Absorption Law
+warning: Game/Levels/PsetSets/L16_AbsorptionLaw.lean:10:0: No translation (en) found for: # Problem Set: Level 16
+
+Prove the **absorption law** for sets:
+
+§0
+
+In words: taking the union of §1 with elements that are in BOTH §2
+and §3 gives back exactly §4 — because every element of §5 is
+already in §6.
+
+This is one of the fundamental Boolean algebra identities, alongside
+De Morgan, distributivity, and the complement laws. It connects union
+and intersection in a way that nothing else in Phase 1 does.
+warning: Game/Levels/PsetSets/L16_AbsorptionLaw.lean:26:0: No translation (en) found for: The absorption law: s ∪ (s ∩ t) = s.
+warning: Game/Levels/PsetSets/L16_AbsorptionLaw.lean:51:0: No translation (en) found for: You proved the absorption law §0.
+
+The proof was simple but illustrates an important point: the forward
+direction required only that §1 (which is always true), and
+the backward direction required only that §2 (also
+always true). Absorption holds because intersection makes things
+*smaller* (so §3 adds nothing to §4).
+
+**The dual absorption law** §5 also holds: intersecting
+§6 with §7 keeps exactly the elements of §8, because every
+element of §9 is automatically in §10. The proof uses the same
+structure with swapped roles of §11 and §12.
+
+**Boolean algebra scorecard** — Phase 1 has now covered:
+- Commutativity: §13, §14
+- Distributivity: §15
+- De Morgan: §16, §17
+- Complement laws: §18, §19
+- Double complement: §20
+- Absorption: §21
+warning: Game/Levels/PsetSets/L16_AbsorptionLaw.lean:74:0: No translation (en) found for: §0 states §1.
+warning: Game/Levels/PsetSets/L16_AbsorptionLaw.lean:77:0: No translation (en) found for: §0 is the lattice version: §1.
+warning: Game/Levels/PsetSets/L16_AbsorptionLaw.lean:80:0: No translation (en) found for: §0 states §1 (dual absorption).
+warning: Game/Levels/PsetSets/L16_AbsorptionLaw.lean:83:0: No translation (en) found for: §0 is the lattice version: §1.
+warning: Game/Levels/PsetSets/L16_AbsorptionLaw.lean:86:0: No translation (en) found for: §0 states §1 (lattice antisymmetry).
+warning: Game/Levels/PsetSets/L16_AbsorptionLaw.lean:88:0: No translation (en) found for: §0 states §1.
+warning: Game/Levels/PsetSets/L16_AbsorptionLaw.lean:90:0: No translation (en) found for: §0 states §1.
+warning: Game/Levels/PsetSets/L16_AbsorptionLaw.lean:92:0: No translation (en) found for: §0 states §1.
+warning: Game/Levels/PsetSets/L16_AbsorptionLaw.lean:94:0: No translation (en) found for: §0 states §1.
+warning: Game/Levels/PsetSets/L16_AbsorptionLaw.lean:96:0: No translation (en) found for: §0 states §1.
+⚠ [578/599] Replayed Game.Levels.PsetSets.L17_IndexedDifference
 warning: Game/Levels/PsetSets/L17_IndexedDifference.lean:6:0: No translation (en) found for: Indexed Difference
 warning: Game/Levels/PsetSets/L17_IndexedDifference.lean:10:0: No translation (en) found for: # Problem Set: Level 17
 
@@ -4315,7 +4599,7 @@ unions that integrates §7, §8, and complement
 reasoning.
 warning: Game/Levels/PsetSets/L17_IndexedDifference.lean:92:0: No translation (en) found for: §0 states §1.
 warning: Game/Levels/PsetSets/L17_IndexedDifference.lean:95:0: No translation (en) found for: §0 is the lattice version: §1.
-⚠ [573/581] Replayed Game.Levels.PsetSets.L18_Boss
+⚠ [579/599] Replayed Game.Levels.PsetSets.L18_Boss
 warning: Game/Levels/PsetSets/L18_Boss.lean:6:0: No translation (en) found for: Boss: De Morgan for Indexed Unions
 warning: Game/Levels/PsetSets/L18_Boss.lean:10:0: No translation (en) found for: # Boss: De Morgan's Law for Indexed Unions
 
@@ -4400,200 +4684,7 @@ warning: Game/Levels/PsetSets/L18_Boss.lean:151:0: No translation (en) found for
 warning: Game/Levels/PsetSets/L18_Boss.lean:154:0: No translation (en) found for: §0 is the lattice version of §1.
 warning: Game/Levels/PsetSets/L18_Boss.lean:157:0: No translation (en) found for: §0 states §1.
 warning: Game/Levels/PsetSets/L18_Boss.lean:160:0: No translation (en) found for: §0 is the lattice version of §1.
-⚠ [574/581] Built Game.Levels.PsetSets.L03_DistributivitySubset (838ms)
-warning: Game/Levels/PsetSets/L03_DistributivitySubset.lean:6:0: No translation (en) found for: Distributivity (⊆)
-warning: Game/Levels/PsetSets/L03_DistributivitySubset.lean:10:0: No translation (en) found for: # Problem Set: Level 3
-
-Prove a **distributivity** inclusion for abstract sets. In Set Operations
-World, you proved §0. Here is a
-different arrangement — and only the §1 direction:
-
-§2
-
-**Proof strategy**: §3, destructure the intersection,
-case-split on the union, then build the appropriate side.
-warning: Game/Levels/PsetSets/L03_DistributivitySubset.lean:23:0: No translation (en) found for: Right distributivity of ∩ over ∪ (subset direction).
-warning: Game/Levels/PsetSets/L03_DistributivitySubset.lean:45:0: No translation (en) found for: The proof followed the standard pattern for distributivity:
-1. Destructure the intersection (§0)
-2. Case-split on the union (§1)
-3. Build the correct side (§2/§3 + anonymous constructor)
-
-Compare to the Set Operations World boss: same logical structure,
-different arrangement of §4, §5, §6.
-warning: Game/Levels/PsetSets/L03_DistributivitySubset.lean:55:0: No translation (en) found for: §0 states §1.
-warning: Game/Levels/PsetSets/L03_DistributivitySubset.lean:58:0: No translation (en) found for: §0 is the lattice version: §1.
-warning: Game/Levels/PsetSets/L03_DistributivitySubset.lean:61:0: No translation (en) found for: §0 is the dual distributivity law.
-warning: Game/Levels/PsetSets/L03_DistributivitySubset.lean:64:0: No translation (en) found for: §0 is the lattice version of the dual distributivity.
-warning: Game/Levels/PsetSets/L03_DistributivitySubset.lean:67:0: No translation (en) found for: §0 is an alias for §1.
-warning: Game/Levels/PsetSets/L03_DistributivitySubset.lean:70:0: No translation (en) found for: §0 states §1.
-warning: Game/Levels/PsetSets/L03_DistributivitySubset.lean:73:0: No translation (en) found for: §0 states §1.
-warning: Game/Levels/PsetSets/L03_DistributivitySubset.lean:76:0: No translation (en) found for: §0 states §1.
-warning: Game/Levels/PsetSets/L03_DistributivitySubset.lean:79:0: No translation (en) found for: §0 states §1.
-warning: Game/Levels/PsetSets/L03_DistributivitySubset.lean:82:0: No translation (en) found for: §0 is the lattice version: §1.
-warning: Game/Levels/PsetSets/L03_DistributivitySubset.lean:85:0: No translation (en) found for: §0 is the lattice dual: §1.
-warning: Game/Levels/PsetSets/L03_DistributivitySubset.lean:88:0: No translation (en) found for: §0 states §1 (lattice antisymmetry).
-warning: Game/Levels/PsetSets/L03_DistributivitySubset.lean:90:0: No translation (en) found for: §0 states §1.
-warning: Game/Levels/PsetSets/L03_DistributivitySubset.lean:92:0: No translation (en) found for: §0 states §1.
-warning: Game/Levels/PsetSets/L03_DistributivitySubset.lean:94:0: No translation (en) found for: §0 states §1.
-warning: Game/Levels/PsetSets/L03_DistributivitySubset.lean:96:0: No translation (en) found for: §0 states §1.
-warning: Game/Levels/PsetSets/L03_DistributivitySubset.lean:98:0: No translation (en) found for: §0 states §1.
-⚠ [575/581] Built Game.Levels.PsetSets.L06_ConverseComplementDiff (808ms)
-warning: Game/Levels/PsetSets/L06_ConverseComplementDiff.lean:6:0: No translation (en) found for: Converse Complement-Difference
-warning: Game/Levels/PsetSets/L06_ConverseComplementDiff.lean:10:0: No translation (en) found for: # Problem Set: Level 6
-
-In Level 5, you proved §0 using §1 to
-extract membership from double negation. Now prove the **converse**:
-
-§2
-
-The surprise: this direction does NOT need §3. It goes
-through directly! If §4 and §5, then §6
-(because §7) and §8 (because §9).
-
-Together with Level 5, this gives the full equality
-§10 — but the two directions have genuinely different
-proof structures. One needs classical reasoning; the other does not.
-warning: Game/Levels/PsetSets/L06_ConverseComplementDiff.lean:27:0: No translation (en) found for: The converse: s \\ t ⊆ tᶜ \\ sᶜ.
-warning: Game/Levels/PsetSets/L06_ConverseComplementDiff.lean:47:0: No translation (en) found for: You proved the converse §0 — and it was entirely
-direct. No §1 needed!
-
-**Proof asymmetry**: Compare the two directions:
-- Level 5 (§2): needed §3 to extract
-  §4 from §5 — double negation elimination
-- This level (§6): direct — §7 gives
-  §8 by simply introducing the assumption and applying
-
-This asymmetry is fundamental: going from §9 to §10 is
-constructive (always valid), but going from §11 to §12 requires
-classical logic (§13). Both directions are true, but they
-have different logical character.
-
-Together: §14. You could prove this full equality in
-one line using §15 from Level 5 and this level — the
-same technique as Level 4 of Subset World. Complement-difference is its
-own inverse in a precise sense.
-warning: Game/Levels/PsetSets/L06_ConverseComplementDiff.lean:68:0: No translation (en) found for: §0 states §1.
-⚠ [576/581] Built Game.Levels.PsetSets.L13_PowersetUnionSubset (831ms)
-warning: Game/Levels/PsetSets/L13_PowersetUnionSubset.lean:6:0: No translation (en) found for: Powerset Union Subset
-warning: Game/Levels/PsetSets/L13_PowersetUnionSubset.lean:10:0: No translation (en) found for: # Problem Set: Level 13
-
-In Level 12, you disproved §0 — the powerset
-does NOT distribute over union as an equality. But one direction DOES
-hold:
-
-§1
-
-In words: if a set is a subset of §2 or a subset of §3, then it is
-a subset of §4. The converse fails because a subset of §5
-can draw elements from BOTH §6 and §7, without being contained in
-either one alone — which is exactly what your counterexample showed.
-
-**Proof strategy**: Case-split on which powerset §8 came from,
-convert powerset membership to subset relations, then show that each
-case gives a subset of the union.
-warning: Game/Levels/PsetSets/L13_PowersetUnionSubset.lean:29:0: No translation (en) found for: The powerset union is contained in the powerset of the union.
-warning: Game/Levels/PsetSets/L13_PowersetUnionSubset.lean:57:0: No translation (en) found for: You proved §0 — the direction that DOES hold.
-
-**The pattern: equality fails, but one direction holds.** This is a
-fundamental phenomenon in set theory:
-- §1 — full equality (Level 11)
-- §2 — equality fails (Level 12)
-- §3 — but one direction holds (this level)
-
-This pattern recurs throughout mathematics, especially when studying
-**images of functions**: §4 but equality
-can fail. Knowing which direction holds (and why the other fails) is a
-key skill you will use in the Image and Preimage worlds.
-warning: Game/Levels/PsetSets/L13_PowersetUnionSubset.lean:72:0: No translation (en) found for: §0 states §1.
-warning: Game/Levels/PsetSets/L13_PowersetUnionSubset.lean:75:0: No translation (en) found for: §0 states §1.
-warning: Game/Levels/PsetSets/L13_PowersetUnionSubset.lean:78:0: No translation (en) found for: §0 states §1.
-warning: Game/Levels/PsetSets/L13_PowersetUnionSubset.lean:81:0: No translation (en) found for: §0 states §1.
-warning: Game/Levels/PsetSets/L13_PowersetUnionSubset.lean:83:0: No translation (en) found for: §0 states §1.
-⚠ [577/581] Built Game.Levels.PsetSets.L16_AbsorptionLaw (809ms)
-warning: Game/Levels/PsetSets/L16_AbsorptionLaw.lean:6:0: No translation (en) found for: Absorption Law
-warning: Game/Levels/PsetSets/L16_AbsorptionLaw.lean:10:0: No translation (en) found for: # Problem Set: Level 16
-
-Prove the **absorption law** for sets:
-
-§0
-
-In words: taking the union of §1 with elements that are in BOTH §2
-and §3 gives back exactly §4 — because every element of §5 is
-already in §6.
-
-This is one of the fundamental Boolean algebra identities, alongside
-De Morgan, distributivity, and the complement laws. It connects union
-and intersection in a way that nothing else in Phase 1 does.
-warning: Game/Levels/PsetSets/L16_AbsorptionLaw.lean:26:0: No translation (en) found for: The absorption law: s ∪ (s ∩ t) = s.
-warning: Game/Levels/PsetSets/L16_AbsorptionLaw.lean:51:0: No translation (en) found for: You proved the absorption law §0.
-
-The proof was simple but illustrates an important point: the forward
-direction required only that §1 (which is always true), and
-the backward direction required only that §2 (also
-always true). Absorption holds because intersection makes things
-*smaller* (so §3 adds nothing to §4).
-
-**The dual absorption law** §5 also holds: intersecting
-§6 with §7 keeps exactly the elements of §8, because every
-element of §9 is automatically in §10. The proof uses the same
-structure with swapped roles of §11 and §12.
-
-**Boolean algebra scorecard** — Phase 1 has now covered:
-- Commutativity: §13, §14
-- Distributivity: §15
-- De Morgan: §16, §17
-- Complement laws: §18, §19
-- Double complement: §20
-- Absorption: §21
-warning: Game/Levels/PsetSets/L16_AbsorptionLaw.lean:74:0: No translation (en) found for: §0 states §1.
-warning: Game/Levels/PsetSets/L16_AbsorptionLaw.lean:77:0: No translation (en) found for: §0 is the lattice version: §1.
-warning: Game/Levels/PsetSets/L16_AbsorptionLaw.lean:80:0: No translation (en) found for: §0 states §1 (dual absorption).
-warning: Game/Levels/PsetSets/L16_AbsorptionLaw.lean:83:0: No translation (en) found for: §0 is the lattice version: §1.
-warning: Game/Levels/PsetSets/L16_AbsorptionLaw.lean:86:0: No translation (en) found for: §0 states §1 (lattice antisymmetry).
-warning: Game/Levels/PsetSets/L16_AbsorptionLaw.lean:88:0: No translation (en) found for: §0 states §1.
-warning: Game/Levels/PsetSets/L16_AbsorptionLaw.lean:90:0: No translation (en) found for: §0 states §1.
-warning: Game/Levels/PsetSets/L16_AbsorptionLaw.lean:92:0: No translation (en) found for: §0 states §1.
-warning: Game/Levels/PsetSets/L16_AbsorptionLaw.lean:94:0: No translation (en) found for: §0 states §1.
-warning: Game/Levels/PsetSets/L16_AbsorptionLaw.lean:96:0: No translation (en) found for: §0 states §1.
-⚠ [578/581] Built Game.Levels.PsetSets.L04_PartitionEquality (846ms)
-warning: Game/Levels/PsetSets/L04_PartitionEquality.lean:6:0: No translation (en) found for: Partition Identity
-warning: Game/Levels/PsetSets/L04_PartitionEquality.lean:10:0: No translation (en) found for: # Problem Set: Level 4
-
-Prove the **partition identity**: every set equals the union of its
-part inside §0 and its part outside §1:
-
-§2
-
-Think about what tools you have for proving set equality, and why
-one approach might be more natural than the other here. For the
-forward direction, consider what information you need to choose a side
-of the union.
-warning: Game/Levels/PsetSets/L04_PartitionEquality.lean:24:0: No translation (en) found for: A set equals the union of its intersection and difference with t.
-warning: Game/Levels/PsetSets/L04_PartitionEquality.lean:58:0: No translation (en) found for: You proved the partition identity §0. This says
-every set splits into two disjoint pieces relative to any other set:
-the elements in §1 and the elements not in §2.
-
-**Key techniques**:
-- §3 to split equality into two subset proofs —
-  an alternative to §4 when the structure is clearer as two inclusions
-- §5 for classical case analysis — necessary when
-  you need to choose a side of a disjunction but do not know which
-
-Compare this to §6 + §7: both prove set equality, but
-§8 lets you think in terms of subsets ("everything in §9 is
-in the union" and "everything in the union is in §10"), which is
-sometimes more natural.
-warning: Game/Levels/PsetSets/L04_PartitionEquality.lean:75:0: No translation (en) found for: §0 states §1.
-warning: Game/Levels/PsetSets/L04_PartitionEquality.lean:78:0: No translation (en) found for: §0 is the lattice version: §1.
-warning: Game/Levels/PsetSets/L04_PartitionEquality.lean:81:0: No translation (en) found for: §0 states §1.
-warning: Game/Levels/PsetSets/L04_PartitionEquality.lean:84:0: No translation (en) found for: §0 is the lattice version: §1.
-warning: Game/Levels/PsetSets/L04_PartitionEquality.lean:87:0: No translation (en) found for: §0 states §1 (lattice antisymmetry).
-warning: Game/Levels/PsetSets/L04_PartitionEquality.lean:89:0: No translation (en) found for: §0 states §1.
-warning: Game/Levels/PsetSets/L04_PartitionEquality.lean:91:0: No translation (en) found for: §0 states §1.
-warning: Game/Levels/PsetSets/L04_PartitionEquality.lean:93:0: No translation (en) found for: §0 states §1.
-warning: Game/Levels/PsetSets/L04_PartitionEquality.lean:95:0: No translation (en) found for: §0 states §1.
-warning: Game/Levels/PsetSets/L04_PartitionEquality.lean:97:0: No translation (en) found for: §0 states §1.
-⚠ [579/581] Built Game.Levels.PsetSets (630ms)
+⚠ [580/599] Replayed Game.Levels.PsetSets
 warning: Game/Levels/PsetSets.lean:21:0: No translation (en) found for: Problem Set: Sets
 warning: Game/Levels/PsetSets.lean:23:0: No translation (en) found for: # Problem Set: Sets
 
@@ -4627,12 +4718,862 @@ This problem set tests all these skills on **fresh problems** with
 - A boss integrating push_neg, indexed ops, and complement (Level 18)
 
 You know everything you need. Trust your skills.
-⚠ [580/581] Built Game (1.3s)
-warning: Game.lean:9:0: No translation (en) found for: Functions & Relations
-warning: Game.lean:10:0: No translation (en) found for: # Functions & Relations
+⚠ [581/599] Replayed Game.Levels.PreimageWorld.L01_PreimageMembership
+warning: Game/Levels/PreimageWorld/L01_PreimageMembership.lean:6:0: No translation (en) found for: What is a Preimage?
+warning: Game/Levels/PreimageWorld/L01_PreimageMembership.lean:10:0: No translation (en) found for: # Preimages: Pulling Sets Back Through Functions
+
+You have mastered sets, subsets, and set operations. Now you will see
+how **functions** interact with sets.
+
+Given a function §0 and a set §1 (a set of
+**outputs**), the **preimage** of §2 under §3 is the set of all
+**inputs** whose output lands in §4:
+
+§5
+
+In Lean, the preimage is written §6 (type §7). Its
+definition is:
+
+§8
+
+This is §9. Notice: the definition is just
+**"apply §10, then check membership."** There is no existential,
+no witness — just function application.
+
+**Your task**: Prove that 3 is in the preimage of §11
+under the function §12. This means showing that
+§13, i.e., §14.
+
+**Proof plan**:
+1. §15 — unfold the preimage membership to arithmetic
+2. §16 — close the arithmetic goal
+warning: Game/Levels/PreimageWorld/L01_PreimageMembership.lean:40:0: No translation (en) found for: 3 is in the preimage because applying the function gives a value in the target set.
+warning: Game/Levels/PreimageWorld/L01_PreimageMembership.lean:49:0: No translation (en) found for: You proved your first preimage membership! The proof was:
+
+1. **Unfold**: §0 means §1, which is §2
+2. **Compute**: §3 ✓
+
+The key insight: **preimage membership is just function application
+followed by a membership check.** There is no construction, no witness,
+no existential — just "apply §4 and see if the result is in §5."
+
+Compare with set-builder membership from Set World: §6
+means §7. Preimage membership §8 means
+§9 — one extra function application, same idea.
+
+The notation §10 is typed §11 (with the apostrophe).
+The apostrophe distinguishes the **set-valued** preimage from the
+function inverse §12. Lean uses §13 for sets and §14 for
+function inverses.
+warning: Game/Levels/PreimageWorld/L01_PreimageMembership.lean:69:0: No translation (en) found for: §0, written §1, is the **preimage** of §2
+under §3 — the set of all inputs whose output is in §4:
+
+§5
+
+## Membership rule
+§6 (this is §7)
+
+## Syntax
+§8
+
+## When to use it
+When you want to talk about which inputs of §9 produce outputs in §10.
+
+## Example
+If §11, then §12.
+
+## Warning
+§13 is a set of INPUTS (type §14), not outputs. Do not
+confuse with §15 (image), which is a set of OUTPUTS.
+warning: Game/Levels/PreimageWorld/L01_PreimageMembership.lean:94:0: No translation (en) found for: §0 states §1 — membership
+in a preimage means the function value is in the target set.
+
+## Syntax
+§2
+
+## When to use it
+When you need to convert between §3 and §4.
+Often Lean unfolds this automatically (since preimage is defined
+as §5), but §6 is useful when
+the definitional unfolding does not fire or when you want to make
+the conversion explicit.
+
+## Example
+§7
+⚠ [582/599] Replayed Game.Levels.PreimageWorld.L02_PreimageNonMembership
+warning: Game/Levels/PreimageWorld/L02_PreimageNonMembership.lean:6:0: No translation (en) found for: Preimage Non-Membership
+warning: Game/Levels/PreimageWorld/L02_PreimageNonMembership.lean:10:0: No translation (en) found for: # When an Element is NOT in a Preimage
+
+In the last level, you proved that 3 is in a preimage by showing
+§0. What about elements that are **not** in a preimage?
+
+§1 means §2.
+
+Since §3 is §4, the proof shape is: assume §5
+(i.e., §6), then derive a contradiction.
+
+**Your task**: Prove that 10 is NOT in the preimage of §7
+under §8. This means §9 is false (since §10).
+
+**Proof plan**:
+1. §11 — unfold the preimage membership to
+   arithmetic (just like using §12 in Set World)
+2. §13 — close the arithmetic goal
+warning: Game/Levels/PreimageWorld/L02_PreimageNonMembership.lean:30:0: No translation (en) found for: 10 is not in the preimage because 10 + 1 = 11, which is not less than 5.
+warning: Game/Levels/PreimageWorld/L02_PreimageNonMembership.lean:42:0: No translation (en) found for: You proved preimage non-membership by unfolding and arithmetic:
+
+1. **Unfold**: §0 means §1
+2. **Compute**: §2 is true
+
+This is the same pattern as non-membership in Set World
+(§3 became §4 via §5), with one extra
+step: the function is applied first.
+
+**Pattern**: To prove §6:
+1. §7 — assume §8 (i.e., §9)
+2. Derive a contradiction from §10
+
+**In plain math**: "§11 because
+§12 and §13."
+⚠ [583/599] Replayed Game.Levels.PreimageWorld.L03_PreimageNonInjective
+warning: Game/Levels/PreimageWorld/L03_PreimageNonInjective.lean:6:0: No translation (en) found for: Preimage with a Non-Injective Function
+warning: Game/Levels/PreimageWorld/L03_PreimageNonInjective.lean:10:0: No translation (en) found for: # When Multiple Inputs Map to the Same Output
+
+In the last two levels, you used §0, which maps each
+input to a unique output (it is **injective**). But preimage is
+most interesting with **non-injective** functions — functions where
+multiple inputs can map to the same output.
+
+Consider the constant function §1 — it maps EVERY
+natural number to 7, regardless of the input. What is the preimage
+of §2 under this function?
+
+Since every input maps to 7, and §3, EVERY natural number
+is in the preimage. Both 0 and 1000 qualify — for the same reason.
+
+**Your task**: Prove that both 0 and 1000 are in the preimage of
+§4 under the constant function §5.
+
+**Proof plan**:
+1. §6 — split the §7
+2. Each part: §8 then §9
+
+Notice that the two proofs will be **identical** — the input
+doesn't matter at all.
+warning: Game/Levels/PreimageWorld/L03_PreimageNonInjective.lean:36:0: No translation (en) found for: Both 0 and 1000 are in the preimage because the function always outputs 7, and 7 < 10.
+warning: Game/Levels/PreimageWorld/L03_PreimageNonInjective.lean:53:0: No translation (en) found for: Both proofs were identical: §0 then §1. The input
+(0 or 1000) never appeared in the proof because the constant
+function ignores its input entirely.
+
+**The preimage "expands" inputs**: For the injective function
+§2, each output comes from exactly one input, so the
+preimage of a set "looks like" the original set. But for a
+non-injective function like §3, a single output value can
+come from infinitely many inputs. The preimage of any set
+containing 7 is ALL of §4.
+
+This is why preimage is fundamentally different from function
+inversion. An inverse function (when it exists) maps each output
+to one input. Preimage maps each output to the set of ALL inputs
+that produce it — which can be empty, finite, or infinite.
+
+**Foreshadowing**: In Injective World, you will prove that
+§5 for all §6 implies §7 is injective.
+The constant function shows why this can fail: §8,
+so §9.
+
+**Looking ahead in this world**: In Level 14, you will discover
+the deeper reason preimage is so well-behaved: it is just function
+composition on predicates. The non-injectivity you saw here — many
+inputs mapping to one output — is exactly what makes image harder
+than preimage. Preimage does not care about multiple preimages;
+it simply composes and checks. Injectivity matters for image, not
+for preimage.
+⚠ [584/599] Replayed Game.Levels.PreimageWorld.L04_PreimageSingleton
+warning: Game/Levels/PreimageWorld/L04_PreimageSingleton.lean:6:0: No translation (en) found for: Preimage of a Singleton: Fibers
+warning: Game/Levels/PreimageWorld/L04_PreimageSingleton.lean:10:0: No translation (en) found for: # Fibers: Preimage of a Single Point
+
+The preimage of a **singleton** set §0 under §1 is called
+the **fiber** of §2 over §3:
+
+§4
+
+The fiber over §5 is the set of ALL inputs that map to §6.
+This concept is fundamental:
+- §7 is **injective** iff every fiber has at most one element
+- §8 is **surjective** iff every fiber is nonempty
+
+For the function §9:
+- The fiber over 3 is §10 (only 2 maps to 3)
+- The fiber over 3 does NOT contain 5 (since §11)
+
+**Your task**: Prove that 2 is in the fiber over 3, and 5 is not.
+
+**Proof plan**:
+1. §12 — split the conjunction
+2. First part: §13 then §14
+3. Second part: §15 then §16
+warning: Game/Levels/PreimageWorld/L04_PreimageSingleton.lean:35:0: No translation (en) found for: 2 is in the fiber over 3 (since 2+1=3), but 5 is not (since 5+1=6).
+warning: Game/Levels/PreimageWorld/L04_PreimageSingleton.lean:53:0: No translation (en) found for: You proved that 2 is in the fiber of §0 over 3, but
+5 is not. The fiber is just a preimage of a singleton — nothing new
+mathematically, but the vocabulary is important.
+
+**Fiber vocabulary**:
+- §1 is the **fiber** of §2 over §3
+- An element §4 is in the fiber iff §5
+- For injective functions, each fiber has at most one element
+- For surjective functions, every fiber is nonempty
+
+The function §6 is injective (each fiber is a
+singleton), so knowing which fiber an element belongs to tells you
+exactly which element it is. For the constant function from
+Level 3, every fiber is either all of §7 or empty — very
+different behavior!
+
+**Foreshadowing**: In Injective World and Surjective World, fibers
+will be the key concept. Injectivity means §8 has at most
+one element for all §9. Surjectivity means §10 is
+nonempty for all §11.
+⚠ [585/599] Replayed Game.Levels.PreimageWorld.L05_PreimageMonotonicity
+warning: Game/Levels/PreimageWorld/L05_PreimageMonotonicity.lean:6:0: No translation (en) found for: Preimage Preserves Subsets
+warning: Game/Levels/PreimageWorld/L05_PreimageMonotonicity.lean:10:0: No translation (en) found for: # Preimage Is Monotone
+
+If §0, then §1. In words: if a target set
+grows, the preimage grows too.
+
+Why? If §2 maps into §3 (a subset of §4), then §5 certainly maps
+into §6.
+
+This is your first abstract preimage proof — the function §7 is
+no longer a specific function like §8, but an arbitrary
+function.
+
+**Proof plan**:
+1. §9 — start the subset proof
+2. Now §10, which is definitionally §11
+3. The subset hypothesis §12 is a function: given §13,
+   it produces §14
+4. Apply §15 to §16 to get §17, which is §18
+warning: Game/Levels/PreimageWorld/L05_PreimageMonotonicity.lean:31:0: No translation (en) found for: If s ⊆ t then f ⁻¹' s ⊆ f ⁻¹' t.
+warning: Game/Levels/PreimageWorld/L05_PreimageMonotonicity.lean:52:0: No translation (en) found for: You proved preimage monotonicity: bigger target set → bigger preimage.
+
+The proof was just two steps: §0, then §1.
+This works because:
+
+1. §2 is definitionally §3
+2. §4 accepts any element of §5, including §6
+3. §7 is definitionally §8
+
+Notice how Lean's definitional transparency makes preimage proofs
+short — the function application is invisible. The proof reads exactly
+like the mathematical argument: "If §9 and §10, then
+§11."
+
+The library name for this fact is §12.
+warning: Game/Levels/PreimageWorld/L05_PreimageMonotonicity.lean:70:0: No translation (en) found for: §0 states §1.
+warning: Game/Levels/PreimageWorld/L05_PreimageMonotonicity.lean:75:0: Could not find a docstring for tactic mono, consider adding one using `TacticDoc mono "some doc"`
+warning: Game/Levels/PreimageWorld/L05_PreimageMonotonicity.lean:75:88: Missing Tactic Documentation: mono
+Add `TacticDoc mono` somewhere above this statement.
+info: Game/Levels/PreimageWorld/L05_PreimageMonotonicity.lean:75:93: Missing Tactic Documentation. Using existing docstring. Add gcongr
+Add `TacticDoc gcongr` somewhere above this statement.
+⚠ [586/599] Replayed Game.Levels.PreimageWorld.L06_PreimageEmpty
+warning: Game/Levels/PreimageWorld/L06_PreimageEmpty.lean:6:0: No translation (en) found for: Preimage of the Empty Set
+warning: Game/Levels/PreimageWorld/L06_PreimageEmpty.lean:10:0: No translation (en) found for: # Nothing Maps Into Nothing
+
+What is the preimage of the empty set? If §0, then §1
+is the set of all §2 such that §3. But nothing is in §4,
+so no §5 qualifies. Therefore §6.
+
+This is a set equality, so the natural approach is §7 + §8.
+
+**Proof plan**:
+1. §9 — reduce to membership biconditional
+2. §10 — split the §11
+3. **Forward**: §12 means §13, which is §14. So
+   §15 (an assumption of §16 closes any goal).
+4. **Backward**: §17 is also §18. Same idea.
+warning: Game/Levels/PreimageWorld/L06_PreimageEmpty.lean:27:0: No translation (en) found for: The preimage of the empty set is empty.
+warning: Game/Levels/PreimageWorld/L06_PreimageEmpty.lean:45:0: No translation (en) found for: You proved §0. Both directions reduced to §1,
+which is trivially true.
+
+**Why this is definitional**: §2 means §3, and
+§4 is §5, so §6 IS §7. Similarly, §8
+IS §9. The two sides are literally the same proposition. The
+§10 + §11 proof makes this definitional equality explicit
+step by step.
+
+**A note on §12**: In real Lean code, §13 would close
+this goal in one line, since both sides are definitionally equal.
+We disable §14 in these set equality levels so you can see the
+definitional unfolding step by step — understanding WHY the two sides are equal
+is more valuable than closing the goal quickly.
+
+The library name is §15.
+warning: Game/Levels/PreimageWorld/L06_PreimageEmpty.lean:64:0: No translation (en) found for: §0 states §1.
+⚠ [587/599] Replayed Game.Levels.PreimageWorld.L07_PreimageUniv
+warning: Game/Levels/PreimageWorld/L07_PreimageUniv.lean:6:0: No translation (en) found for: Preimage of the Universal Set
+warning: Game/Levels/PreimageWorld/L07_PreimageUniv.lean:10:0: No translation (en) found for: # Everything Maps Into Everything
+
+What is §0? For any §1, §2 is §3
+(since everything is in §4). So every §5 qualifies, and
+§6.
+
+This is the companion to the empty set case. Together they say:
+- §7 — nothing maps into nothing
+- §8 — everything maps into everything
+
+**Proof plan**:
+1. §9 then §10
+2. Both directions: §11 (since §12 is the goal
+   and §13 closes §14)
+warning: Game/Levels/PreimageWorld/L07_PreimageUniv.lean:27:0: No translation (en) found for: The preimage of the universal set is universal.
+warning: Game/Levels/PreimageWorld/L07_PreimageUniv.lean:45:0: No translation (en) found for: You proved §0. Both sides reduce to §1.
+
+**Boundary cases summarized**:
+| Target set | Preimage | Reason |
+|---|---|---|
+| §2 | §3 | §4 is §5 for all §6 |
+| §7 | §8 | §9 is §10 for all §11 |
+
+As with the empty set, the two sides are definitionally equal —
+both reduce to §12. The §13 + §14 proof makes
+this definitional equality explicit.
+
+The library name is §15.
+
+**Looking ahead**: The next levels show that preimage preserves
+intersection, union, and complement. This is the central fact about
+preimages: they commute with ALL set operations.
+warning: Game/Levels/PreimageWorld/L07_PreimageUniv.lean:65:0: No translation (en) found for: §0 states §1.
+warning: Game/Levels/PreimageWorld/L07_PreimageUniv.lean:70:0: No translation (en) found for: §0 states §1.
+Disabled to prevent one-shotting the preimage-univ proof.
+warning: Game/Levels/PreimageWorld/L07_PreimageUniv.lean:74:0: No translation (en) found for: §0 states that if §1 then §2.
+Disabled to prevent one-shotting the preimage-univ proof.
+⚠ [588/599] Replayed Game.Levels.PreimageWorld.L08_PreimageIntersection
+warning: Game/Levels/PreimageWorld/L08_PreimageIntersection.lean:6:0: No translation (en) found for: Preimage Preserves Intersection
+warning: Game/Levels/PreimageWorld/L08_PreimageIntersection.lean:10:0: No translation (en) found for: # Conjunction Passes Through
+
+Here is the first major structural result: preimage distributes over
+intersection.
+
+§0
+
+Why? An element §1 is in the left side when §2, which
+means §3. The right side says §4 and
+§5, which means §6 and §7. These are the
+same condition!
+
+The conjunction §8 passes through function application unchanged.
+This is the reason preimage "preserves" intersection.
+
+**Proof plan**:
+1. §9 — reduce to membership
+2. §10 — split the §11
+3. **Forward**: §12, destructure with §13, reassemble
+4. **Backward**: same in reverse
+warning: Game/Levels/PreimageWorld/L08_PreimageIntersection.lean:33:0: No translation (en) found for: Preimage distributes over intersection.
+warning: Game/Levels/PreimageWorld/L08_PreimageIntersection.lean:60:0: No translation (en) found for: You proved §0. Both directions
+were identical: destructure, reassemble.
+
+**Why both directions are the same**: The conjunction §1
+IS both sides. There is no rearrangement, no extra condition, no
+information loss. The §2 passes through §3 unchanged.
+
+**The definitional tautology pattern**: When both sides of a §4 are
+definitionally equal, each direction reduces to §5 —
+you introduce the hypothesis and hand it right back. Call this a
+**definitional tautology**: the proof is trivial because the two sides
+ARE the same proposition, just written differently. You saw this in the
+§6 and §7 cases, and you will see it again in the complement,
+composition, and identity cases. When you notice both directions are
+the same proof, it means the two sides are the same proposition under
+definitional unfolding. We will use the term "definitional tautology"
+to refer to this pattern going forward.
+
+Contrast this with what happens for **images** (which you will see
+later): §8 is only a
+subset, NOT an equality. Image involves an existential §9, and §10 does NOT distribute over §11 in general. This
+asymmetry between image and preimage is a central theme of this
+course.
+
+**Concrete counterexample**: Let §12 (constant function),
+§13, §14. Then §15 and §16,
+so §17. But §18, so
+§19. The image of the intersection is strictly
+smaller than the intersection of the images. No such failure
+happens for preimage — you just proved it.
+
+The library name is §20.
+warning: Game/Levels/PreimageWorld/L08_PreimageIntersection.lean:96:0: No translation (en) found for: §0 states §1.
+⚠ [589/599] Replayed Game.Levels.PreimageWorld.L09_PreimageUnion
+warning: Game/Levels/PreimageWorld/L09_PreimageUnion.lean:6:0: No translation (en) found for: Preimage Preserves Union
+warning: Game/Levels/PreimageWorld/L09_PreimageUnion.lean:10:0: No translation (en) found for: # Disjunction Passes Through
+
+Preimage also distributes over union:
+
+§0
+
+The reasoning is the same: §1 means §2,
+which is exactly §3, i.e., §4.
+
+The disjunction §5 passes through just like conjunction did.
+
+**Proof plan**:
+1. §6 then §7
+2. **Forward**: §8, then case-split on §9 with
+   §10, using §11/§12
+3. **Backward**: symmetric
+warning: Game/Levels/PreimageWorld/L09_PreimageUnion.lean:29:0: No translation (en) found for: Preimage distributes over union.
+warning: Game/Levels/PreimageWorld/L09_PreimageUnion.lean:68:0: No translation (en) found for: You proved §0. The proof used
+case analysis with §1 and §2/§3 — the same moves
+you used for union in Set Operations World.
+
+**Scoreboard so far**:
+
+| Set operation | Preimage distributes? | Why? |
+|---|---|---|
+| §4 (intersection) | Yes: §5 | §6 passes through |
+| §7 (union) | Yes: §8 | §9 passes through |
+
+Next: complement. Does §10 also pass through?
+
+The library name is §11.
+warning: Game/Levels/PreimageWorld/L09_PreimageUnion.lean:85:0: No translation (en) found for: §0 states §1.
+⚠ [590/599] Replayed Game.Levels.PreimageWorld.L10_PreimageComplement
+warning: Game/Levels/PreimageWorld/L10_PreimageComplement.lean:6:0: No translation (en) found for: Preimage Preserves Complement
+warning: Game/Levels/PreimageWorld/L10_PreimageComplement.lean:10:0: No translation (en) found for: # Negation Passes Through
+
+§0
+
+An element §1 is in §2 when §3, i.e., §4,
+i.e., §5. And §6 means §7,
+i.e., §8. Same proposition again!
+
+**Proof plan**:
+1. §9 then §10
+2. Both directions: the hypothesis IS the goal (definitionally)
+
+This proof is especially short because negation, like conjunction
+and disjunction, passes through function application unchanged.
+warning: Game/Levels/PreimageWorld/L10_PreimageComplement.lean:27:0: No translation (en) found for: Preimage distributes over complement.
+warning: Game/Levels/PreimageWorld/L10_PreimageComplement.lean:44:0: No translation (en) found for: You proved §0. The proof was §1
+in both directions — the hypothesis is literally the goal each time.
+
+**The pattern is now clear**: Preimage preserves every set operation
+because it simply applies the function before checking membership.
+The logical connective (§2, §3, §4) is untouched:
+
+| Operation | Left side | Unfolds to | Right side | Unfolds to |
+|---|---|---|---|---|
+| §5 | §6 | §7 | §8 | §9 |
+| §10 | §11 | §12 | §13 | §14 |
+| §15 | §16 | §17 | §18 | §19 |
+
+In each case, both sides reduce to the same proposition. Preimage is
+just "apply §20 first" — it does not change the logical structure.
+
+**Mathematically**: Preimage is a **homomorphism** from the Boolean
+algebra of subsets of §21 to the Boolean algebra of subsets of §22.
+It preserves meets (§23), joins (§24), and complements (§25).
+
+The library name is §26.
+warning: Game/Levels/PreimageWorld/L10_PreimageComplement.lean:68:0: No translation (en) found for: §0 states §1.
+⚠ [591/599] Replayed Game.Levels.PreimageWorld.L11_PreimageIndexedUnion
+warning: Game/Levels/PreimageWorld/L11_PreimageIndexedUnion.lean:6:0: No translation (en) found for: Preimage Preserves Indexed Union
+warning: Game/Levels/PreimageWorld/L11_PreimageIndexedUnion.lean:10:0: No translation (en) found for: # Existentials Pass Through Too
+
+You proved that preimage preserves binary union:
+§0. The logical reason was that
+§1 passes through function application.
+
+Indexed union generalizes binary union from §2 to §3:
+§4 means §5. Does preimage preserve
+this too?
+
+§6
+
+Yes — for the same reason. The left side says §7,
+and the right side says §8, which is also
+§9. The existential quantifier passes through
+function application unchanged.
+
+**A change in proof technique**: Unlike binary intersection and
+union (which unfold definitionally), indexed union membership
+§10 requires an explicit rewrite with
+§11. This is because indexed union (§12) is defined
+differently from binary union (§13) in Lean — the indexed version
+uses a more general construction that does not reduce by
+definitional unfolding.
+
+**Proof plan**:
+1. §14 then §15
+2. **Forward**: The hypothesis is a preimage membership. Use
+   §16 to unwrap it, then §17
+   to expose the §18. Destructure and reassemble.
+3. **Backward**: The hypothesis is an indexed union. Use
+   §19 directly, destructure, then reassemble
+   with §20 and §21.
+warning: Game/Levels/PreimageWorld/L11_PreimageIndexedUnion.lean:46:0: No translation (en) found for: §0 states §1.
+
+## When to use it
+When you need to distribute a preimage over an indexed union.
+The existential quantifier passes through function application.
+
+## Example
+If §2 and §3, then
+§4.
+warning: Game/Levels/PreimageWorld/L11_PreimageIndexedUnion.lean:58:0: No translation (en) found for: §0 is the Mathlib version of §1.
+warning: Game/Levels/PreimageWorld/L11_PreimageIndexedUnion.lean:61:0: No translation (en) found for: Preimage distributes over indexed union.
+warning: Game/Levels/PreimageWorld/L11_PreimageIndexedUnion.lean:102:0: No translation (en) found for: You proved §0. The proof
+was the same destructure-reassemble pattern as the binary case,
+with §1 replacing the automatic unfolding and
+§2 unwrapping the preimage layer.
+
+The existential §3 passes through function application
+just as §4 did. Both directions used the same witness §5 — no
+information was lost.
+
+Compare with the binary case:
+
+| | Binary | Indexed |
+|---|---|---|
+| Operation | §6 | §7 |
+| Logic | §8 | §9 |
+| Proof move | §10/§11/§12 | §13/§14 |
+| Preimage preserves? | Yes | Yes |
+
+The theorem name in this game is §15. (Mathlib does
+not have a standalone theorem by this name — the result follows
+from §16 with indexed union lemmas. We name it explicitly so
+you can reference it.)
+⚠ [592/599] Replayed Game.Levels.PreimageWorld.L12_PreimageIndexedIntersection
+warning: Game/Levels/PreimageWorld/L12_PreimageIndexedIntersection.lean:6:0: No translation (en) found for: Preimage Preserves Indexed Intersection
+warning: Game/Levels/PreimageWorld/L12_PreimageIndexedIntersection.lean:10:0: No translation (en) found for: # Universals Pass Through Too
+
+Indexed intersection generalizes binary intersection from §0 to §1:
+§2 means §3. Does preimage preserve this?
+
+§4
+
+Yes. The left side says §5, and the right side says
+§6, which is also §7. Same
+proposition.
+
+**Proof plan**:
+1. §8 then §9
+2. Each direction: §10 to unwrap preimage,
+   §11 to expose the §12, then hand back
+warning: Game/Levels/PreimageWorld/L12_PreimageIndexedIntersection.lean:28:0: No translation (en) found for: §0 states §1.
+
+## When to use it
+When you need to distribute a preimage over an indexed intersection.
+The universal quantifier passes through function application.
+
+## Example
+If §2 and §3, then
+§4.
+warning: Game/Levels/PreimageWorld/L12_PreimageIndexedIntersection.lean:40:0: No translation (en) found for: §0 is the Mathlib version of §1.
+warning: Game/Levels/PreimageWorld/L12_PreimageIndexedIntersection.lean:43:0: No translation (en) found for: Preimage distributes over indexed intersection.
+warning: Game/Levels/PreimageWorld/L12_PreimageIndexedIntersection.lean:76:0: No translation (en) found for: You proved §0. The proof
+was even simpler than the union case — the universal quantifier
+§1 passes through unchanged, and §2 closes each direction
+immediately after rewriting.
+
+**Full scoreboard**:
+
+| Operation | Logic | Preimage preserves? |
+|---|---|---|
+| §3 | §4 | Yes |
+| §5 | §6 | Yes |
+| §7 | §8 | Yes |
+| §9 | §10 | Yes |
+| §11 | §12 | Yes |
+
+Every logical connective — conjunction, disjunction, negation,
+universal, existential — passes through function application.
+This is why preimage preserves ALL set operations.
+
+The theorem name in this game is §13. (Like
+§14, Mathlib handles this via §15 rather than a
+standalone theorem.)
+⚠ [593/599] Replayed Game.Levels.PreimageWorld.L13_PreimageIdentity
+warning: Game/Levels/PreimageWorld/L13_PreimageIdentity.lean:6:0: No translation (en) found for: Preimage Under the Identity
+warning: Game/Levels/PreimageWorld/L13_PreimageIdentity.lean:10:0: No translation (en) found for: # The Identity Law
+
+What happens when you take the preimage under the identity function?
+
+§0
+
+Since §1, membership §2 is just
+§3, which is §4. The preimage is the set itself.
+
+This is a **definitional tautology** (Level 8): both sides reduce to
+the same proposition, so each direction of the proof is
+§5.
+
+Combined with the composition result in the next level
+(§6), this establishes that
+preimage satisfies the two **functor laws**:
+1. **Identity**: §7
+2. **Composition**: §8
+
+These are exactly the axioms that make preimage a
+**contravariant functor** from sets of outputs to sets of inputs.
+
+**Proof plan**:
+1. §9 then §10
+2. Both directions: §11
+warning: Game/Levels/PreimageWorld/L13_PreimageIdentity.lean:38:0: No translation (en) found for: §0 states §1 — preimage under the
+identity function returns the set unchanged.
+
+## When to use it
+When simplifying a preimage under §2. Combined with §3,
+this establishes that preimage is a contravariant functor.
+
+## Example
+§4
+warning: Game/Levels/PreimageWorld/L13_PreimageIdentity.lean:50:0: No translation (en) found for: Preimage under the identity function is the set itself.
+warning: Game/Levels/PreimageWorld/L13_PreimageIdentity.lean:66:0: No translation (en) found for: Another definitional tautology: §0. Both sides reduce
+to §1, so the proof is §2 in both directions.
+
+**The functor laws**: Preimage satisfies:
+1. §3 (this level)
+2. §4 (next level)
+
+These are the defining properties of a **functor** — a structure-
+preserving map between categories. Preimage is **contravariant**
+because it reverses the direction of composition: §5 on
+functions becomes §6 on preimages (apply §7 first,
+then §8).
+
+The library name is §9.
+⚠ [594/599] Replayed Game.Levels.PreimageWorld.L14_PreimageComposition
+warning: Game/Levels/PreimageWorld/L14_PreimageComposition.lean:6:0: No translation (en) found for: Preimage Reverses Composition
+warning: Game/Levels/PreimageWorld/L14_PreimageComposition.lean:10:0: No translation (en) found for: # The Deepest Fact About Preimages
+
+You have proved that preimage preserves intersection, union,
+complement, indexed unions, indexed intersections, and more. But
+WHY does preimage preserve everything?
+
+The answer is one equation:
+
+§0
+
+Preimage **reverses** function composition. If you compose §1 after
+§2, then the preimage of §3 is obtained by first taking the
+preimage under §4, then taking the preimage under §5.
+
+This means preimage is just **composition on the predicate level**.
+Since composition preserves all logical structure, preimage preserves
+all set operations. That single fact explains every result in this
+world.
+
+Notice the order reversal: §6 applies §7 first, then §8. But
+the preimage pulls back through §9 first, then §10. This is
+called **contravariance** — preimage reverses the direction of
+composition.
+
+**Proof plan**:
+1. §11 then §12
+2. Both directions: §13 — the two sides are
+   definitionally equal (both reduce to §14)
+warning: Game/Levels/PreimageWorld/L14_PreimageComposition.lean:41:0: No translation (en) found for: §0 states that preimage reverses composition:
+§1.
+
+## When to use it
+When you need to simplify a preimage under a composed function
+into nested preimages.
+
+## Example
+If §2 and §3 and §4, then
+§5.
+warning: Game/Levels/PreimageWorld/L14_PreimageComposition.lean:54:0: No translation (en) found for: Preimage reverses function composition.
+warning: Game/Levels/PreimageWorld/L14_PreimageComposition.lean:73:0: No translation (en) found for: You proved that preimage reverses composition — both directions were
+§0 because the two sides are definitionally equal:
+both say §1.
+
+This trivial proof carries a deep message: **preimage is a
+contravariant functor**. It maps sets of outputs to sets of inputs,
+and it reverses the order of function composition. Every preservation
+result you proved in this world — for §2, §3, §4, §5, §6,
+§7Set.preimage_comp§8g . f§9f§10g . f§11f ⁻¹' (f '' s) = s§12s ⊆ f ⁻¹' (f '' s)§13x ∈ s§14f x ∈ f '' s§15x ∈ f ⁻¹' (f '' s)§16f§17f ⁻¹' (f '' s)§18s§19f ⁻¹' (f '' s) = s§20s§21f` being
+**injective** — that is exactly what Injective World will explore.
+⚠ [595/599] Replayed Game.Levels.PreimageWorld.L15_RewriteComposition
+warning: Game/Levels/PreimageWorld/L15_RewriteComposition.lean:6:0: No translation (en) found for: Composing Library Results
+warning: Game/Levels/PreimageWorld/L15_RewriteComposition.lean:10:0: No translation (en) found for: # A New Proof Strategy: Rewriting with Library Theorems
+
+In Levels 6-12, you proved set equalities by §0 —
+reducing to element-wise membership and proving both directions.
+There is another approach: **compose library results via §1**.
+
+Instead of starting from scratch, you can chain the identities you
+already proved as rewrite rules. Each §2 step transforms the
+expression using a known theorem, and after enough rewrites the
+two sides match automatically.
+
+**Your task**: Prove §3.
+
+You already know:
+- §4: §5
+- §6: §7
+
+Apply them in sequence:
+1. §8 — distribute over §9
+2. §10 — distribute over §11
+
+Two rewrites, no §12, no §13. The library does the work.
+
+This technique scales: the boss level will use the same approach
+with four rewrites to prove that preimage preserves set difference.
+warning: Game/Levels/PreimageWorld/L15_RewriteComposition.lean:38:0: No translation (en) found for: Preimage distributes over intersection with complement.
+warning: Game/Levels/PreimageWorld/L15_RewriteComposition.lean:53:0: No translation (en) found for: Two rewrites — done! Compare this with the §0
+approach, which would have required introducing §1, splitting the
+biconditional, destructuring conjunctions, and handling negation
+in both directions.
+
+**When to use each approach**:
+
+| Strategy | When to use |
+|---|---|
+| §2 | Proving a NEW identity from scratch |
+| §3 | Composing KNOWN identities |
+
+The rewrite approach is more concise and reads more like a
+mathematical proof: "by preimage-inter and preimage-compl."
+It is also closer to how mathematicians actually reason — citing
+known results rather than reproving everything from definitions.
+
+The boss level will ask you to prove preimage preserves set
+difference using this same strategy with four rewrites. You now
+have the technique; the boss tests whether you can identify which
+theorems to compose.
+info: Game/Levels/PreimageWorld/L15_RewriteComposition.lean:77:92: Missing Tactic Documentation. Using existing docstring. Add ext
+Add `TacticDoc ext` somewhere above this statement.
+info: Game/Levels/PreimageWorld/L15_RewriteComposition.lean:77:96: Missing Tactic Documentation. Using existing docstring. Add funext
+Add `TacticDoc funext` somewhere above this statement.
+⚠ [596/599] Replayed Game.Levels.PreimageWorld.L16_Boss
+warning: Game/Levels/PreimageWorld/L16_Boss.lean:6:0: No translation (en) found for: Boss: Composing Library Results
+warning: Game/Levels/PreimageWorld/L16_Boss.lean:10:0: No translation (en) found for: # Boss: Preimage Preserves Difference — By Composition
+
+You have built a library of preimage identities. Now USE them.
+
+§0
+
+The key insight: set difference IS intersection with complement.
+The theorem §1 states §2.
+
+So the proof strategy is pure rewriting — no §3, no §4,
+no case analysis. Just compose the results you already proved:
+
+1. §5 — rewrite §6 as §7
+2. §8 — distribute preimage over §9
+3. §10 — distribute preimage over §11
+4. §12 — rewrite §13 back to ``
+
+Each step uses a result you proved earlier in this world. Instead
+of reproving from scratch, you are **composing** your library.
+This is how mathematics really works.
+warning: Game/Levels/PreimageWorld/L16_Boss.lean:33:0: No translation (en) found for: Preimage distributes over set difference.
+warning: Game/Levels/PreimageWorld/L16_Boss.lean:63:0: No translation (en) found for: Congratulations — you completed **Preimage World** by composing
+your library of results!
+
+The proof was just four rewrites:
+1. §0 — difference is intersection with complement
+2. §1 — preimage distributes over §2
+3. §3 — preimage distributes over §4
+4. §5 — repackage as difference
+
+No §6, no §7, no case analysis. You used previously
+proved theorems as building blocks. This is the payoff of having
+a library: each new result becomes easier because you can stand on
+your earlier work.
+
+## The Complete Preimage Library
+
+You have built a complete theory. Here is everything you proved,
+in one place:
+
+| Level | Identity | Logic | Library name |
+|---|---|---|---|
+| L05 | §8 | monotonicity | §9 |
+| L06 | §10 | §11 | §12 |
+| L07 | §13 | §14 | §15 |
+| L08 | §16 | §17 | §18 |
+| L09 | §19 | §20 | §21 |
+| L10 | §22 | §23 | §24 |
+| L11 | §25 | §26 | §27 |
+| L12 | §28 | §29 | §30 |
+| L13 | §31 | identity | §32 |
+| L14 | §33 | composition | §34 |
+| L16 | §35 | §36 + §37 | §38 |
+
+Every row says the same thing: **preimage is a Boolean algebra
+homomorphism**. It maps the Boolean algebra of subsets of §39
+(with §40, §41, §42, §43, §44) into the Boolean algebra
+of subsets of §45, preserving all operations. It is also
+**contravariant** — it reverses the direction of function
+composition (L14).
+
+The single structural reason: preimage is just composition on the
+predicate level. §46 is §47. Composing with
+§48 does not change the logical connectives inside §49.
+
+**The topology connection**: In topology, a function §50 is defined
+to be **continuous** if and only if the preimage of every open set
+is open. The preservation results you proved here are exactly why
+this definition works — continuous functions automatically preserve
+all the set-theoretic structure that topology needs.
+
+**Looking ahead**: In Image World, you will study §51 —
+the image of a set under a function. Image involves an existential
+(§52), and existentials do NOT
+commute with conjunction or negation. Image only preserves union,
+not intersection or complement. The contrast between the
+well-behaved preimage and the less-well-behaved image is one of
+the central themes of this course.
+warning: Game/Levels/PreimageWorld/L16_Boss.lean:123:0: No translation (en) found for: §0 states §1.
+info: Game/Levels/PreimageWorld/L16_Boss.lean:128:92: Missing Tactic Documentation. Using existing docstring. Add ext
+Add `TacticDoc ext` somewhere above this statement.
+info: Game/Levels/PreimageWorld/L16_Boss.lean:128:96: Missing Tactic Documentation. Using existing docstring. Add funext
+Add `TacticDoc funext` somewhere above this statement.
+⚠ [597/599] Replayed Game.Levels.PreimageWorld
+warning: Game/Levels/PreimageWorld.lean:19:0: No translation (en) found for: Preimage World
+warning: Game/Levels/PreimageWorld.lean:21:0: No translation (en) found for: # Preimage World
+
+Given a function §0 and a set §1 (a set of outputs),
+the **preimage** of §2 under §3 is the set of all inputs whose output
+lands in §4:
+
+§5
+
+In Lean, this is written §6 (type §7).
+
+Preimage is defined by a single, beautiful principle:
+**membership in a preimage is function application followed by a
+membership check.** Nothing more. There is no existential, no witness,
+no construction — just "apply §8, then check if the result is in §9."
+
+This simplicity has a remarkable consequence: **preimage preserves
+every set operation**. Intersection, union, complement, difference,
+indexed unions, indexed intersections — they all distribute over
+preimage. The logical connectives (§10, §11, §12, §13, §14) pass
+through function application unchanged.
+
+By the end of this world, you will:
+- Prove concrete preimage membership by computing §15
+- See why non-injective functions make preimage interesting
+- Learn the **fiber** vocabulary (preimage of a singleton)
+- Prove preimage is monotone (bigger target → bigger preimage)
+- Prove preimage preserves §16, §17, §18, §19, §20, §21, §22, and §23rw§24f ⁻¹' t§25\\-1'§26t§27f`.
+
+**Prerequisites**: Set World, Subset World, Set Operations World,
+Indexed Operations World.
+⚠ [598/599] Replayed Game
+warning: Game.lean:10:0: No translation (en) found for: Functions & Relations
+warning: Game.lean:11:0: No translation (en) found for: # Functions & Relations
 
 Functions, Relations, Equivalences, and Encodability
 
 This course is under construction.
-info: Game.lean:36:0: i18n: file created at /home/ahart/Documents/autogame/lean-4-game-creator/functions_relations/.i18n/en/Game.pot
-Build completed successfully (581 jobs).
+info: Game.lean:44:0: i18n: file created at /home/ahart/Documents/autogame/lean-4-game-creator/functions_relations/.i18n/en/Game.pot
+Build completed successfully (599 jobs).

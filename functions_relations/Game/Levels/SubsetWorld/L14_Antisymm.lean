@@ -1,7 +1,7 @@
 import Game.Metadata
 
 World "SubsetWorld"
-Level 13
+Level 14
 
 Title "Double Containment"
 
@@ -93,7 +93,7 @@ in the Orders \\& Lattices course.
 
 These two routes — `ext` and `antisymm` — are logically *equivalent*.
 You can derive `ext` from `antisymm` and `antisymm` from `ext`. You
-will prove this equivalence yourself in Levels 15 and 16.
+will prove this equivalence yourself in Levels 16 and 17.
 "
 
 /-- `Set.Subset.antisymm` proves that two sets are equal if each is

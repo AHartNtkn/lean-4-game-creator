@@ -335,6 +335,14 @@ Disabled in levels where manual reasoning is the lesson.
 -/
 TacticDoc linarith
 
+/-- `Iff.rfl` is the reflexivity proof for biconditionals: `P ↔ P`.
+
+It can close any goal of the form `P ↔ P` where both sides are
+definitionally equal. Disabled in levels where the learner should
+prove each direction explicitly.
+-/
+TheoremDoc Iff.rfl as "Iff.rfl" in "Logic"
+
 /-- `show P` converts the goal to `P`, as long as `P` is
 definitionally equal to the current goal.
 

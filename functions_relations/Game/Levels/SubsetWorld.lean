@@ -9,12 +9,13 @@ import Game.Levels.SubsetWorld.L08_SubsetTrans
 import Game.Levels.SubsetWorld.L09_NonArithSubset
 import Game.Levels.SubsetWorld.L10_ExtIntro
 import Game.Levels.SubsetWorld.L11_ExtPractice
-import Game.Levels.SubsetWorld.L12_SetNonEquality
-import Game.Levels.SubsetWorld.L13_Antisymm
-import Game.Levels.SubsetWorld.L14_ProperSubset
-import Game.Levels.SubsetWorld.L15_AntisymmFromExt
-import Game.Levels.SubsetWorld.L16_ExtFromAntisymm
-import Game.Levels.SubsetWorld.L17_Boss
+import Game.Levels.SubsetWorld.L12_AbstractExt
+import Game.Levels.SubsetWorld.L13_SetNonEquality
+import Game.Levels.SubsetWorld.L14_Antisymm
+import Game.Levels.SubsetWorld.L15_ProperSubset
+import Game.Levels.SubsetWorld.L16_AntisymmFromExt
+import Game.Levels.SubsetWorld.L17_ExtFromAntisymm
+import Game.Levels.SubsetWorld.L18_Boss
 
 World "SubsetWorld"
 Title "Subset World"

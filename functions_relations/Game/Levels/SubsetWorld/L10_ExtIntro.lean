@@ -136,6 +136,13 @@ instead of `intro h` followed by `obtain ⟨h1, h2⟩ := h`. This
 shorthand will be especially useful in the next world when working
 with intersections (`∩`), which are defined as conjunctions.
 
+**Why `constructor` works on `↔`**: The `↔` type has exactly one
+constructor, `Iff.intro`, which takes two implications as arguments.
+When you write `constructor` on a `↔` goal, Lean applies `Iff.intro`
+and asks you for the two implications — just as `constructor` on `∧`
+applies `And.intro`. This is why the same tactic works for both
+conjunctions and biconditionals.
+
 The `ext` tactic is the primary tool for set equality proofs in Lean.
 You will use it frequently throughout this course.
 "

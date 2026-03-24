@@ -92,5 +92,16 @@ Why might that be true?
 /-- `Set.iUnion_singleton_eq_range` states `⋃ x, {f x} = Set.range f`. -/
 TheoremDoc Set.iUnion_singleton_eq_range as "Set.iUnion_singleton_eq_range" in "Set"
 
+/-- For a function `f : α → β`, `Set.range f` is the set of all output values:
+`Set.range f = {y | ∃ x, f x = y}`.
+
+Use `Set.mem_range` to convert between `y ∈ Set.range f` and `∃ x, f x = y`.
+
+`Set.range f` equals `f '' Set.univ` — the image of everything.
+-/
+DefinitionDoc Set.range as "Set.range"
+
+NewDefinition Set.range
+
 DisabledTactic trivial decide native_decide simp aesop simp_all tauto norm_num linarith
 DisabledTheorem Set.mem_setOf_eq Set.mem_setOf Set.iUnion_singleton_eq_range

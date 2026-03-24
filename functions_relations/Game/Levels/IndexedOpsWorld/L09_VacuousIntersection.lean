@@ -79,6 +79,21 @@ is the type-level version of `False.elim` for `h : False`. Both say
 explosion. You will see `False.elim` in propositional logic and
 `Empty.elim` when working with uninhabited types (like `Fin 0`).
 
+**Why this is the right convention**: The intersection of a collection of
+sets is the **largest set contained in all of them**. When the collection
+is empty, every set is vacuously contained in all (zero) members of the
+collection — so the largest such set is `Set.univ`. This is the same
+pattern as:
+- An empty product equals 1 (the multiplicative identity)
+- An empty sum equals 0 (the additive identity)
+- An empty conjunction (∀ over nothing) is `True`
+
+In each case, the empty operation returns the **identity element** for
+that operation. For intersection, the identity is `Set.univ` (since
+`s ∩ Set.univ = s` for all `s`). For union, the identity is `∅`
+(since `s ∪ ∅ = s` for all `s`). This is why the dual result —
+`⋃ i : Empty, s i = ∅` — is also true.
+
 **Why this matters**: This explains why **bounded** indexed intersections
 (`⋂ i ∈ t, s i`) are needed. If `t` might be empty, the bounded
 intersection degenerates to `Set.univ`, which is often not what you

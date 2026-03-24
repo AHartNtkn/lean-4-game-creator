@@ -5,6 +5,7 @@ import Game.Levels.SubsetWorld
 import Game.Levels.SetOpsWorld
 import Game.Levels.IndexedOpsWorld
 import Game.Levels.PsetSets
+import Game.Levels.PreimageWorld
 
 Title "Functions & Relations"
 Introduction
@@ -32,5 +33,12 @@ Dependency SetWorld → PsetSets
 Dependency SubsetWorld → PsetSets
 Dependency SetOpsWorld → PsetSets
 Dependency IndexedOpsWorld → PsetSets
+
+-- Phase 2: Images and Preimages
+-- PreimageWorld depends on SetWorld, SubsetWorld, SetOpsWorld, and IndexedOpsWorld (W01, W02, W03, W04 → W06)
+Dependency SetWorld → PreimageWorld
+Dependency SubsetWorld → PreimageWorld
+Dependency SetOpsWorld → PreimageWorld
+Dependency IndexedOpsWorld → PreimageWorld
 
 MakeGame

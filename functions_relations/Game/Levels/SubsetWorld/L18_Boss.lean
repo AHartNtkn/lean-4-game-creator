@@ -1,7 +1,7 @@
 import Game.Metadata
 
 World "SubsetWorld"
-Level 17
+Level 18
 
 Title "Boss: Subset Chain"
 
@@ -144,8 +144,8 @@ Here is your toolkit:
 | Dot projection | `h.1`, `h.2` | extract components of `∧` or `↔` |
 
 The `⊆` relation is a **partial order** on sets: it is reflexive
-(Level 3), transitive (Level 8), and antisymmetric (Level 13). The
-strict variant `⊂` (proper subset, Level 14) excludes equality.
+(Level 3), transitive (Level 8), and antisymmetric (Level 14). The
+strict variant `⊂` (proper subset, Level 15) excludes equality.
 
 In the next world, you will learn about **set operations**: union (`∪`),
 intersection (`∩`), complement (`ᶜ`), and difference (`\\`). Each

@@ -4,6 +4,7 @@
     "SubsetWorld",
     "SetOpsWorld",
     "IndexedOpsWorld",
-    "PsetSets"
+    "PsetSets",
+    "PreimageWorld"
   ]
 }

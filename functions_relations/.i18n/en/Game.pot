@@ -8,6 +8,25 @@ msgstr "Project-Id-Version: Game v4.29.0-rc6\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit"
 
+#. §0: `Set.preimage_comp`
+#. §1: `(g . f) ⁻¹' s = f ⁻¹' (g ⁻¹' s)`
+#. §2: `f : α → β`
+#. §3: `g : β → γ`
+#. §4: `t : Set γ`
+#. §5: `(g . f) ⁻¹' t = f ⁻¹' (g ⁻¹' t)`
+#: Game.Levels.PreimageWorld.L14_PreimageComposition
+msgid "§0 states that preimage reverses composition:\n"
+"§1.\n"
+"\n"
+"## When to use it\n"
+"When you need to simplify a preimage under a composed function\n"
+"into nested preimages.\n"
+"\n"
+"## Example\n"
+"If §2 and §3 and §4, then\n"
+"§5."
+msgstr ""
+
 #. §0: `hp : p.1 ∈ s ∧ p.2 ∈ t`
 #: Game.Levels.PsetSets.L08_NonemptyProduct
 msgid "You have §0. Destructure and build\n"
@@ -32,6 +51,46 @@ msgstr ""
 
 #: Game.Levels.SetWorld.L02_SetBuilder
 msgid "Prove that 3 belongs to the set of naturals less than 5."
+msgstr ""
+
+#: Game.Levels.PreimageWorld.L16_Boss
+msgid "Preimage distributes over set difference."
+msgstr ""
+
+#. §0: `f ⁻¹' Set.univ`
+#. §1: `x`
+#. §2: `f x ∈ Set.univ`
+#. §3: `True`
+#. §4: `Set.univ`
+#. §5: `x`
+#. §6: `f ⁻¹' Set.univ = Set.univ`
+#. §7: `f ⁻¹' ∅ = ∅`
+#. §8: `f ⁻¹' Set.univ = Set.univ`
+#. §9: `ext x`
+#. §10: `constructor`
+#. §11: `intro _; constructor`
+#. §12: `True`
+#. §13: `constructor`
+#. §14: `True`
+#: Game.Levels.PreimageWorld.L07_PreimageUniv
+msgid "# Everything Maps Into Everything\n"
+"\n"
+"What is §0? For any §1, §2 is §3\n"
+"(since everything is in §4). So every §5 qualifies, and\n"
+"§6.\n"
+"\n"
+"This is the companion to the empty set case. Together they say:\n"
+"- §7 — nothing maps into nothing\n"
+"- §8 — everything maps into everything\n"
+"\n"
+"**Proof plan**:\n"
+"1. §9 then §10\n"
+"2. Both directions: §11 (since §12 is the goal\n"
+"   and §13 closes §14)"
+msgstr ""
+
+#: Game.Levels.SubsetWorld.L12_AbstractExt
+msgid "Abstract Set Equality"
 msgstr ""
 
 #. §0: `exact hx.1`
@@ -77,13 +136,65 @@ msgstr ""
 #. §0: `s ⊂ t`
 #. §1: `s ⊆ t ∧ ¬ (t ⊆ s)`
 #. §2: `constructor`
-#: Game.Levels.SubsetWorld.L14_ProperSubset
+#: Game.Levels.SubsetWorld.L15_ProperSubset
 msgid "The goal is §0, which means §1.\n"
 "Use §2 to split it into the two components."
 msgstr ""
 
 #: Game.Levels.SetWorld.L03_NonMembership
 msgid "7 does not belong to the set of naturals less than 5."
+msgstr ""
+
+#. §0: `ext`
+#. §1: `s ≠ t`
+#. §2: `s ≠ t`
+#. §3: `(s = t) → False`
+#. §4: `s ≠ t`
+#. §5: `intro h`
+#. §6: `h : s = t`
+#. §7: `False`
+#. §8: `⊆`
+#. §9: `s = t`
+#. §10: `s`
+#. §11: `t`
+#. §12: `s = t`
+#. §13: `{n | n < 3} ≠ {n | n < 5}`
+#. §14: `3`
+#. §15: `3 < 5`
+#. §16: `3`
+#. §17: `3 < 3`
+#. §18: `3`
+#. §19: `3`
+#. §20: `intro h`
+#. §21: `3 ∈ {n | n < 5}`
+#. §22: `rw [← h]`
+#. §23: `3 ∈ {n | n < 3}`
+#. §24: `3 < 3`
+#: Game.Levels.SubsetWorld.L13_SetNonEquality
+msgid "# When Two Sets Are Not Equal\n"
+"\n"
+"In Levels 10–12, you proved set equalities using §0. But what if\n"
+"two sets are NOT equal? How do you prove §1?\n"
+"\n"
+"In Lean, §2 is defined as §3. So to prove\n"
+"§4, you use §5 to **assume** the sets are equal, getting\n"
+"§6, and then derive a contradiction (§7).\n"
+"\n"
+"The strategy mirrors Level 7 (disproving §8): **find a witness** that\n"
+"leads to contradiction. If §9, then every element of §10 is in §11\n"
+"and vice versa. Find an element that is in one set but not the other —\n"
+"then the assumption §12 forces a false arithmetic conclusion.\n"
+"\n"
+"In this level, you will prove §13. The\n"
+"witness is §14: it satisfies §15 (so §16 is in the right set) but\n"
+"not §17 (so §18 is not in the left set). If the sets were equal,\n"
+"§19 would have to be in both — contradiction.\n"
+"\n"
+"**Proof plan**:\n"
+"1. §20 — assume the sets are equal\n"
+"2. Prove §21 — show the witness is in the right set\n"
+"3. Use §22 to transport: if equal, §23\n"
+"4. Unwrap and derive contradiction — §24 is false"
 msgstr ""
 
 #. §0: `h : x = 3`
@@ -152,6 +263,38 @@ msgid "Use §0. The first part is §1 (from §2).\n"
 "find a contradiction."
 msgstr ""
 
+#. §0: `10 ∉ f ⁻¹' t`
+#. §1: `¬(10 + 1 < 5)`
+#. §2: `¬(11 < 5)`
+#. §3: `7 ∉ {n | n < 5}`
+#. §4: `¬(7 < 5)`
+#. §5: `show`
+#. §6: `x ∉ f ⁻¹' t`
+#. §7: `intro h`
+#. §8: `x ∈ f ⁻¹' t`
+#. §9: `f x ∈ t`
+#. §10: `h`
+#. §11: $10 \\notin f^{-1}(\\{n \\mid n < 5\\})$
+#. §12: $f(10) = 11$
+#. §13: $11 \\not< 5$
+#: Game.Levels.PreimageWorld.L02_PreimageNonMembership
+msgid "You proved preimage non-membership by unfolding and arithmetic:\n"
+"\n"
+"1. **Unfold**: §0 means §1\n"
+"2. **Compute**: §2 is true\n"
+"\n"
+"This is the same pattern as non-membership in Set World\n"
+"(§3 became §4 via §5), with one extra\n"
+"step: the function is applied first.\n"
+"\n"
+"**Pattern**: To prove §6:\n"
+"1. §7 — assume §8 (i.e., §9)\n"
+"2. Derive a contradiction from §10\n"
+"\n"
+"**In plain math**: \"§11 because\n"
+"§12 and §13.\""
+msgstr ""
+
 #: Game.Levels.PsetSets.L08_NonemptyProduct
 msgid "Nonempty Product Converse"
 msgstr ""
@@ -217,6 +360,10 @@ msgstr ""
 msgid "Unpack the union: §0."
 msgstr ""
 
+#: Game.Levels.PreimageWorld.L11_PreimageIndexedUnion
+msgid "Preimage distributes over indexed union."
+msgstr ""
+
 #. §0: `x ∈ ⋃ i, (s i ∩ t)`
 #. §1: `x ∈ (⋃ i, s i) ∩ t`
 #. §2: `intro hx`
@@ -227,6 +374,18 @@ msgid "**Backward direction**: Assume §0 and prove\n"
 "\n"
 "Start with §2, then unpack the indexed union:\n"
 "§3."
+msgstr ""
+
+#. §0: `10 ∉ f ⁻¹' t`
+#. §1: `∉`
+#. §2: `¬ ∈`
+#. §3: `10 + 1 < 5`
+#. §4: `¬ (10 + 1 < 5)`
+#. §5: `show ¬ (10 + 1 < 5)`
+#: Game.Levels.PreimageWorld.L02_PreimageNonMembership
+msgid "The goal is §0. Recall that §1 means §2.\n"
+"Preimage membership unfolds to §3, so the goal is\n"
+"§4. Use §5 to make this explicit."
 msgstr ""
 
 #. §0: `Even 4`
@@ -439,6 +598,19 @@ msgid "§0 is a type with no elements — no constructors at all.\n"
 "principle of explosion for propositions."
 msgstr ""
 
+#. §0: `intro hx`
+#. §1: `rw [Set.mem_preimage] at hx`
+#. §2: `rw [Set.mem_iUnion] at hx`
+#. §3: `obtain ⟨i, hi⟩ := hx`
+#. §4: `rw [Set.mem_iUnion]`
+#. §5: `exact ⟨i, hi⟩`
+#: Game.Levels.PreimageWorld.L11_PreimageIndexedUnion
+#: Game.Levels.PreimageWorld.L11_PreimageIndexedUnion
+msgid "§0 then §1\n"
+"then §2 then §3\n"
+"then §4 then §5."
+msgstr ""
+
 #. §0: `x ∈ s i ∩ t`
 #. §1: `constructor`
 #. §2: `x ∈ s i`
@@ -523,7 +695,7 @@ msgid "§0 assumes §1 and changes the goal to §2.\n"
 msgstr ""
 
 #. §0: `intro x hx`
-#: Game.Levels.SubsetWorld.L14_ProperSubset
+#: Game.Levels.SubsetWorld.L15_ProperSubset
 msgid "First goal: prove the subset inclusion. This is the same\n"
 "as Level 1! Use §0, unwrap, and close."
 msgstr ""
@@ -542,6 +714,12 @@ msgstr ""
 
 #: Game.Levels.IndexedOpsWorld.L17_IUnionEqualsUniv
 msgid "Indexed Union Equals Univ"
+msgstr ""
+
+#. §0: `constructor`
+#: Game.Levels.PreimageWorld.L03_PreimageNonInjective
+#: Game.Levels.PreimageWorld.L04_PreimageSingleton
+msgid "Use §0 to split the conjunction into two goals."
 msgstr ""
 
 #. §0: `s ∪ t`
@@ -626,7 +804,7 @@ msgstr ""
 #. §4: `(3 : ℕ) < 5`
 #. §5: `show`
 #. §6: `omega`
-#: Game.Levels.SubsetWorld.L12_SetNonEquality
+#: Game.Levels.SubsetWorld.L13_SetNonEquality
 msgid "Now §0 says the two sets are equal. Find a witness that breaks\n"
 "this — an element in one set but not the other. The number §1 works:\n"
 "§2 is true but §3 is false.\n"
@@ -668,6 +846,18 @@ msgstr ""
 
 #: Game.Levels.SetOpsWorld.L13_DeMorgan
 msgid "De Morgan's Law"
+msgstr ""
+
+#: Game.Levels.PreimageWorld.L03_PreimageNonInjective
+msgid "Preimage with a Non-Injective Function"
+msgstr ""
+
+#. §0: `f ⁻¹' tᶜ`
+#. §1: `rw [Set.preimage_compl]`
+#: Game.Levels.PreimageWorld.L16_Boss
+msgid "Now the left side has §0. You proved that preimage\n"
+"distributes over complement (Level 10).\n"
+"Use §1 to distribute."
 msgstr ""
 
 #. §0: `hx : ∀ i, x ∈ (s i)ᶜ`
@@ -755,10 +945,18 @@ msgid "§0 — §1 specializes the\n"
 "So §4 is a proof of §5, which matches the goal."
 msgstr ""
 
+#: Game.Levels.PreimageWorld
+msgid "Preimage World"
+msgstr ""
+
 #. §0: `ht`
 #: Game.Levels.IndexedOpsWorld.L23_Boss
 #: Game.Levels.PsetSets.L05_ComplementDifference
 msgid "§0 is exactly what you need."
+msgstr ""
+
+#: Game.Levels.PreimageWorld.L07_PreimageUniv
+msgid "The preimage of the universal set is universal."
 msgstr ""
 
 #. §0: `Set.compl_inter`
@@ -768,9 +966,37 @@ msgstr ""
 msgid "§0 states §1 (dual De Morgan)."
 msgstr ""
 
+#. §0: $$f^{-1}(s^c) = (f^{-1}(s))^c$$
+#. §1: `x`
+#. §2: `f ⁻¹' sᶜ`
+#. §3: `f x ∈ sᶜ`
+#. §4: `f x ∉ s`
+#. §5: `¬(f x ∈ s)`
+#. §6: `x ∈ (f ⁻¹' s)ᶜ`
+#. §7: `x ∉ f ⁻¹' s`
+#. §8: `¬(f x ∈ s)`
+#. §9: `ext x`
+#. §10: `constructor`
+#: Game.Levels.PreimageWorld.L10_PreimageComplement
+msgid "# Negation Passes Through\n"
+"\n"
+"§0\n"
+"\n"
+"An element §1 is in §2 when §3, i.e., §4,\n"
+"i.e., §5. And §6 means §7,\n"
+"i.e., §8. Same proposition again!\n"
+"\n"
+"**Proof plan**:\n"
+"1. §9 then §10\n"
+"2. Both directions: the hypothesis IS the goal (definitionally)\n"
+"\n"
+"This proof is especially short because negation, like conjunction\n"
+"and disjunction, passes through function application unchanged."
+msgstr ""
+
 #. §0: `s ⊆ t`
 #. §1: `intro x hx`
-#: Game.Levels.SubsetWorld.L16_ExtFromAntisymm
+#: Game.Levels.SubsetWorld.L17_ExtFromAntisymm
 msgid "Goal: §0. Use §1 as always for a subset proof."
 msgstr ""
 
@@ -792,7 +1018,49 @@ msgid "§0 introduces a new hypothesis §1 with value §2.\n"
 "When you need an intermediate fact that isn't directly in your context."
 msgstr ""
 
-#: Game.Levels.SubsetWorld.L16_ExtFromAntisymm
+#. §0: `f ⁻¹' (⋃ i, s i) = ⋃ i, f ⁻¹' (s i)`
+#. §1: `rw [Set.mem_iUnion]`
+#. §2: `rw [Set.mem_preimage]`
+#. §3: `∃ i, f x ∈ s i`
+#. §4: `∨`
+#. §5: `i`
+#. §6: `s ∪ t`
+#. §7: `⋃ i, s i`
+#. §8: `∨`
+#. §9: `∃`
+#. §10: `cases`
+#. §11: `left`
+#. §12: `right`
+#. §13: `obtain`
+#. §14: `use`
+#. §15: `preimage_iUnion`
+#. §16: `simp`
+#: Game.Levels.PreimageWorld.L11_PreimageIndexedUnion
+msgid "You proved §0. The proof\n"
+"was the same destructure-reassemble pattern as the binary case,\n"
+"with §1 replacing the automatic unfolding and\n"
+"§2 unwrapping the preimage layer.\n"
+"\n"
+"The existential §3 passes through function application\n"
+"just as §4 did. Both directions used the same witness §5 — no\n"
+"information was lost.\n"
+"\n"
+"Compare with the binary case:\n"
+"\n"
+"| | Binary | Indexed |\n"
+"|---|---|---|\n"
+"| Operation | §6 | §7 |\n"
+"| Logic | §8 | §9 |\n"
+"| Proof move | §10/§11/§12 | §13/§14 |\n"
+"| Preimage preserves? | Yes | Yes |\n"
+"\n"
+"The theorem name in this game is §15. (Mathlib does\n"
+"not have a standalone theorem by this name — the result follows\n"
+"from §16 with indexed union lemmas. We name it explicitly so\n"
+"you can reference it.)"
+msgstr ""
+
+#: Game.Levels.SubsetWorld.L17_ExtFromAntisymm
 msgid "Set equality from pointwise membership equivalence, without ext."
 msgstr ""
 
@@ -819,6 +1087,14 @@ msgid "Key move: §0 converts the\n"
 "indexed intersection goal to a universal statement."
 msgstr ""
 
+#. §0: `rw [Set.preimage_inter]`
+#. §1: `rw [Set.preimage_compl]`
+#: Game.Levels.PreimageWorld.L15_RewriteComposition
+msgid "The full proof is:\n"
+"§0\n"
+"§1"
+msgstr ""
+
 #. §0: `intro hx`
 #. §1: `change`
 #. §2: `push_neg`
@@ -826,6 +1102,16 @@ msgstr ""
 msgid "**Forward direction**: you have a complement-of-union\n"
 "membership to prove intersection-of-complements. This is the\n"
 "same as Level 10: §0, then §1 and §2."
+msgstr ""
+
+#. §0: `5 \\notin (fun n => n + 1) ⁻¹' ..3..`
+#. §1: `\\neg (5 + 1 = 3)`
+#. §2: `6 \\neq 3`
+#. §3: `show \\neg (5 + 1 = 3)`
+#: Game.Levels.PreimageWorld.L04_PreimageSingleton
+msgid "The goal says §0.\n"
+"This means §1, i.e., §2.\n"
+"Use §3 to make this explicit."
 msgstr ""
 
 #. §0: `h : Set.Nonempty (s j)`
@@ -875,6 +1161,12 @@ msgid "# The Universal Superset: s ⊆ Set.univ\n"
 "2. §13 — prove §14 (which is what §15 reduces to)"
 msgstr ""
 
+#. §0: `rw [Set.mem_iUnion]`
+#. §1: `exact ⟨i, hi⟩`
+#: Game.Levels.PreimageWorld.L11_PreimageIndexedUnion
+msgid "Build the goal: §0 then §1."
+msgstr ""
+
 #. §0: `Set.univ`
 #. §1: `intro _`
 #. §2: `exact Set.mem_univ x`
@@ -888,6 +1180,10 @@ msgstr ""
 #: Game.Levels.SetWorld.L01_WelcomeToSets
 msgid "§0 applies §1 and closes\n"
 "the goal."
+msgstr ""
+
+#: Game.Levels.PreimageWorld.L10_PreimageComplement
+msgid "Preimage distributes over complement."
 msgstr ""
 
 #. §0: `cases hu with | inl hps | inr hpt`
@@ -1074,6 +1370,13 @@ msgid "You proved that the indexed union of singleton fibers equals the range:\n
 "Why might that be true?"
 msgstr ""
 
+#. §0: `(fun _ => 7) 1000 = 7`
+#. §1: `7 < 10`
+#: Game.Levels.PreimageWorld.L03_PreimageNonInjective
+msgid "Same thing for 1000: §0, so the\n"
+"goal is again §1."
+msgstr ""
+
 #. §0: `x ∈ ⋃ i, s i`
 #. §1: `rw [Set.mem_iUnion]`
 #. §2: `∃ i, x ∈ s i`
@@ -1169,9 +1472,19 @@ msgstr ""
 #. §0: `s = t`
 #. §1: `ext`
 #. §2: `apply Set.Subset.antisymm`
-#: Game.Levels.SubsetWorld.L16_ExtFromAntisymm
+#: Game.Levels.SubsetWorld.L17_ExtFromAntisymm
 msgid "You need to prove §0 without §1 (which is disabled).\n"
 "Use §2 to split into two subset goals."
+msgstr ""
+
+#. §0: `2 ∈ (fun n => n + 1) ⁻¹' ..3..`
+#. §1: `(fun n => n + 1) 2 ∈ ..3..`
+#. §2: `2 + 1 = 3`
+#. §3: `show 2 + 1 = 3`
+#: Game.Levels.PreimageWorld.L04_PreimageSingleton
+msgid "The goal says §0. By\n"
+"preimage membership, this means §1,\n"
+"which is §2. Use §3 to make this explicit."
 msgstr ""
 
 #: Game.Levels.IndexedOpsWorld.L09_VacuousIntersection
@@ -1190,6 +1503,33 @@ msgstr ""
 
 #: Game.Levels.IndexedOpsWorld.L07_BoundedIUnion
 msgid "Each member of a bounded family is a subset of the bounded union."
+msgstr ""
+
+#. §0: `id ⁻¹' s = s`
+#. §1: `x ∈ s`
+#. §2: `intro hx; exact hx`
+#. §3: `id ⁻¹' s = s`
+#. §4: `(g . f) ⁻¹' s = f ⁻¹' (g ⁻¹' s)`
+#. §5: `g . f`
+#. §6: `f⁻¹ . g⁻¹`
+#. §7: `g⁻¹`
+#. §8: `f⁻¹`
+#. §9: `Set.preimage_id`
+#: Game.Levels.PreimageWorld.L13_PreimageIdentity
+msgid "Another definitional tautology: §0. Both sides reduce\n"
+"to §1, so the proof is §2 in both directions.\n"
+"\n"
+"**The functor laws**: Preimage satisfies:\n"
+"1. §3 (this level)\n"
+"2. §4 (next level)\n"
+"\n"
+"These are the defining properties of a **functor** — a structure-\n"
+"preserving map between categories. Preimage is **contravariant**\n"
+"because it reverses the direction of composition: §5 on\n"
+"functions becomes §6 on preimages (apply §7 first,\n"
+"then §8).\n"
+"\n"
+"The library name is §9."
 msgstr ""
 
 #. §0: `x ∈ s ∩ tᶜ`
@@ -1215,6 +1555,11 @@ msgstr ""
 #: Game.Levels.IndexedOpsWorld.L16_PowersetMonotonicity
 msgid "§0 — subset transitivity chains\n"
 "§1 with §2 to get §3."
+msgstr ""
+
+#: Game.Levels.PreimageWorld.L11_PreimageIndexedUnion
+msgid "**Backward**: Same structure — unpack, find the witness,\n"
+"reassemble."
 msgstr ""
 
 #. §0: `x ∈ s`
@@ -1254,8 +1599,108 @@ msgid "The goal is §0, which is §1, which is\n"
 "§2. Use §3 to assume §4."
 msgstr ""
 
+#. §0: `intro hx`
+#. §1: `rw [Set.mem_preimage] at hx`
+#. §2: `rw [Set.mem_iInter] at hx`
+#. §3: `rw [Set.mem_iInter]`
+#. §4: `exact hx`
+#: Game.Levels.PreimageWorld.L12_PreimageIndexedIntersection
+#: Game.Levels.PreimageWorld.L12_PreimageIndexedIntersection
+msgid "§0 then §1\n"
+"then §2 then §3\n"
+"then §4."
+msgstr ""
+
+#. §0: `x ∈ ..x | p x.. ↔ x ∈ ..x | q x..`
+#. §1: `p x ↔ q x`
+#. §2: `h`
+#. §3: `x`
+#. §4: `exact h x`
+#. §5: `constructor`
+#. §6: `(h x).1`
+#. §7: `(h x).2`
+#: Game.Levels.SubsetWorld.L12_AbstractExt
+msgid "The goal is §0, which\n"
+"unfolds to §1. The hypothesis §2 gives exactly this\n"
+"for any §3. Use §4 to close the goal directly.\n"
+"\n"
+"Alternatively, use §5 and prove each direction using\n"
+"§6 and §7."
+msgstr ""
+
 #: Game.Levels.PsetSets.L07_NestedDifference
 msgid "Subtracting a difference recovers the intersection."
+msgstr ""
+
+#. §0: `f : α → β`
+#. §1: `t : Set β`
+#. §2: `t`
+#. §3: `f`
+#. §4: `t`
+#. §5: $$f^{-1}(t) = \\{x \\mid f(x) \\in t\\}$$
+#. §6: `f ⁻¹' t`
+#. §7: `\\-1'`
+#. §8: `f`
+#. §9: `t`
+#. §10: `∧`
+#. §11: `∨`
+#. §12: `¬`
+#. §13: `∃`
+#. §14: `∀`
+#. §15: `f x`
+#. §16: `∅`
+#. §17: `Set.univ`
+#. §18: `∩`
+#. §19: `∪`
+#. §20: `ᶜ`
+#. §21: `⋃`
+#. §22: `⋂`
+#. §23: ``
+#. - Prove the functor laws: identity and composition reversal
+#. - Learn to **compose library results** via sequential `
+#. §24: `
+#. - Understand WHY preimage is so well-behaved (it is just composition)
+#. 
+#. The boss asks you to prove that preimage preserves set difference —
+#. by **composing** the intersection and complement results you proved
+#. earlier.
+#. 
+#. **New notation**: `
+#. §25: ` (typed `
+#. §26: `) — the preimage of `
+#. §27: `
+#. under `
+#: Game.Levels.PreimageWorld
+msgid "# Preimage World\n"
+"\n"
+"Given a function §0 and a set §1 (a set of outputs),\n"
+"the **preimage** of §2 under §3 is the set of all inputs whose output\n"
+"lands in §4:\n"
+"\n"
+"§5\n"
+"\n"
+"In Lean, this is written §6 (type §7).\n"
+"\n"
+"Preimage is defined by a single, beautiful principle:\n"
+"**membership in a preimage is function application followed by a\n"
+"membership check.** Nothing more. There is no existential, no witness,\n"
+"no construction — just \"apply §8, then check if the result is in §9.\"\n"
+"\n"
+"This simplicity has a remarkable consequence: **preimage preserves\n"
+"every set operation**. Intersection, union, complement, difference,\n"
+"indexed unions, indexed intersections — they all distribute over\n"
+"preimage. The logical connectives (§10, §11, §12, §13, §14) pass\n"
+"through function application unchanged.\n"
+"\n"
+"By the end of this world, you will:\n"
+"- Prove concrete preimage membership by computing §15\n"
+"- See why non-injective functions make preimage interesting\n"
+"- Learn the **fiber** vocabulary (preimage of a singleton)\n"
+"- Prove preimage is monotone (bigger target → bigger preimage)\n"
+"- Prove preimage preserves §16, §17, §18, §19, §20, §21, §22, and §23rw§24f ⁻¹' t§25\\\\-1'§26t§27f`.\n"
+"\n"
+"**Prerequisites**: Set World, Subset World, Set Operations World,\n"
+"Indexed Operations World."
 msgstr ""
 
 #. §0: `inf_compl_eq_bot`
@@ -1324,6 +1769,10 @@ msgid "**Backward direction**: given §0, prove\n"
 "intersection hypothesis."
 msgstr ""
 
+#: Game.Levels.PreimageWorld.L09_PreimageUnion
+msgid "**Backward**: case-split on the union hypothesis."
+msgstr ""
+
 #: Game.Levels.IndexedOpsWorld.L19_DeMorganInter
 msgid "De Morgan for Indexed Intersections"
 msgstr ""
@@ -1368,6 +1817,15 @@ msgid "You proved §0 — one of the most useful\n"
 "hypothesis §13 becomes §14 (which is §15),\n"
 "immediately closing the goal. This §16 on membership is a powerful\n"
 "pattern you will see again."
+msgstr ""
+
+#. §0: `x ∈ f ⁻¹' sᶜ`
+#. §1: `¬(f x ∈ s)`
+#. §2: `x ∈ (f ⁻¹' s)ᶜ`
+#. §3: `¬(f x ∈ s)`
+#: Game.Levels.PreimageWorld.L10_PreimageComplement
+msgid "**Forward**: §0 is definitionally §1,\n"
+"and §2 is also §3. They are the same."
 msgstr ""
 
 #. §0: `ext x`
@@ -1543,7 +2001,7 @@ msgstr ""
 #. §24: `s ⊆ t ∧ t ⊆ s → s = t`
 #. §25: `s ≠ t → ¬(t ⊆ s)`
 #. §26: `s ⊆ t`
-#: Game.Levels.SubsetWorld.L14_ProperSubset
+#: Game.Levels.SubsetWorld.L15_ProperSubset
 msgid "You proved your first **proper subset**! The structure was:\n"
 "\n"
 "1. §0 — split §1 into §2 and §3\n"
@@ -1663,7 +2121,7 @@ msgstr ""
 #. §6: `← h`
 #. §7: `B`
 #. §8: `A`
-#: Game.Levels.SubsetWorld.L12_SetNonEquality
+#: Game.Levels.SubsetWorld.L13_SetNonEquality
 msgid "Good — §0 proves 3 is in the right set. Now use the equality\n"
 "§1 to transport this membership to the other set. Rewriting with\n"
 "§2 replaces the right set with the left set in §3.\n"
@@ -1768,6 +2226,14 @@ msgid "**Forward**: §0 means §1. You\n"
 "directly — use §4 then §5."
 msgstr ""
 
+#. §0: `Set.eq_univ_of_forall`
+#. §1: `∀ x, x ∈ s`
+#. §2: `s = Set.univ`
+#: Game.Levels.PreimageWorld.L07_PreimageUniv
+msgid "§0 states that if §1 then §2.\n"
+"Disabled to prevent one-shotting the preimage-univ proof."
+msgstr ""
+
 #: Game.Levels.IndexedOpsWorld.L05_MonotonIUnion
 msgid "Monotonicity of Indexed Union"
 msgstr ""
@@ -1775,7 +2241,7 @@ msgstr ""
 #. §0: `hxt : x ∈ t`
 #. §1: `ht`
 #. §2: `have hle := ht hxt`
-#: Game.Levels.SubsetWorld.L17_Boss
+#: Game.Levels.SubsetWorld.L18_Boss
 msgid "§0. Now apply §1: §2."
 msgstr ""
 
@@ -2044,6 +2510,63 @@ msgstr ""
 msgid "Show 1 is in the union: §0. Then §1, use §2 to expose the equality as §3, and close with §4."
 msgstr ""
 
+#. §0: `f ⁻¹' (s ∩ t) = f ⁻¹' s ∩ f ⁻¹' t`
+#. §1: `f x ∈ s ∧ f x ∈ t`
+#. §2: `∧`
+#. §3: `f`
+#. §4: `↔`
+#. §5: `intro hx; exact hx`
+#. §6: `∅`
+#. §7: `univ`
+#. §8: `f '' (s ∩ t) ⊆ f '' s ∩ f '' t`
+#. §9: `∃ x ∈ s,
+#. f x = y`
+#. §10: `∃`
+#. §11: `∧`
+#. §12: `f n = 0`
+#. §13: `s = {0}`
+#. §14: `t = {1}`
+#. §15: `f '' s = {0}`
+#. §16: `f '' t = {0}`
+#. §17: `f '' s ∩ f '' t = {0}`
+#. §18: `s ∩ t = ∅`
+#. §19: `f '' (s ∩ t) = ∅`
+#. §20: `Set.preimage_inter`
+#: Game.Levels.PreimageWorld.L08_PreimageIntersection
+msgid "You proved §0. Both directions\n"
+"were identical: destructure, reassemble.\n"
+"\n"
+"**Why both directions are the same**: The conjunction §1\n"
+"IS both sides. There is no rearrangement, no extra condition, no\n"
+"information loss. The §2 passes through §3 unchanged.\n"
+"\n"
+"**The definitional tautology pattern**: When both sides of a §4 are\n"
+"definitionally equal, each direction reduces to §5 —\n"
+"you introduce the hypothesis and hand it right back. Call this a\n"
+"**definitional tautology**: the proof is trivial because the two sides\n"
+"ARE the same proposition, just written differently. You saw this in the\n"
+"§6 and §7 cases, and you will see it again in the complement,\n"
+"composition, and identity cases. When you notice both directions are\n"
+"the same proof, it means the two sides are the same proposition under\n"
+"definitional unfolding. We will use the term \"definitional tautology\"\n"
+"to refer to this pattern going forward.\n"
+"\n"
+"Contrast this with what happens for **images** (which you will see\n"
+"later): §8 is only a\n"
+"subset, NOT an equality. Image involves an existential §9, and §10 does NOT distribute over §11 in general. This\n"
+"asymmetry between image and preimage is a central theme of this\n"
+"course.\n"
+"\n"
+"**Concrete counterexample**: Let §12 (constant function),\n"
+"§13, §14. Then §15 and §16,\n"
+"so §17. But §18, so\n"
+"§19. The image of the intersection is strictly\n"
+"smaller than the intersection of the images. No such failure\n"
+"happens for preimage — you just proved it.\n"
+"\n"
+"The library name is §20."
+msgstr ""
+
 #. §0: `x ∈ s ∩ sᶜ`
 #. §1: `False`
 #. §2: `intro hx`
@@ -2235,7 +2758,7 @@ msgstr ""
 #. §18: `intro x hx; exact (h x).1 hx`
 #. §19: `t ⊆ s`
 #. §20: `intro x hx; exact (h x).2 hx`
-#: Game.Levels.SubsetWorld.L16_ExtFromAntisymm
+#: Game.Levels.SubsetWorld.L17_ExtFromAntisymm
 msgid "# The Other Direction\n"
 "\n"
 "In Level 15, you derived antisymmetry from extensionality: given two\n"
@@ -2258,6 +2781,30 @@ msgid "# The Other Direction\n"
 "3. **Second subset** (§19): §20"
 msgstr ""
 
+#. §0: `hx`
+#. §1: `x ∈ f ⁻¹' (⋃ i, s i)`
+#. §2: `rw [Set.mem_preimage] at hx`
+#. §3: `f x ∈ ⋃ i, s i`
+#. §4: `rw [Set.mem_iUnion] at hx`
+#. §5: `∃ i, f x ∈ s i`
+#: Game.Levels.PreimageWorld.L11_PreimageIndexedUnion
+msgid "**Forward**: The hypothesis §0 is §1.\n"
+"First unwrap the preimage with §2\n"
+"to get §3. Then §4\n"
+"to expose §5."
+msgstr ""
+
+#. §0: `Iff.rfl`
+#. §1: `P ↔ P`
+#. §2: `P ↔ P`
+#: Game.Metadata
+msgid "§0 is the reflexivity proof for biconditionals: §1.\n"
+"\n"
+"It can close any goal of the form §2 where both sides are\n"
+"definitionally equal. Disabled in levels where the learner should\n"
+"prove each direction explicitly."
+msgstr ""
+
 #. §0: `change ¬(x ∈ ⋃ i, s i) at hx`
 #. §1: `rw [Set.mem_iUnion] at hx`
 #. §2: `¬(∃ i, x ∈ s i)`
@@ -2267,8 +2814,63 @@ msgid "Use §0 to expose the negation\n"
 "converts to §2."
 msgstr ""
 
+#. §0: `f : α → β`
+#. §1: `t : Set β`
+#. §2: `t`
+#. §3: `f`
+#. §4: `t`
+#. §5: $$f^{-1}(t) = \\{x \\mid f(x) \\in t\\}$$
+#. §6: `f ⁻¹' t`
+#. §7: `\\-1'`
+#. §8: $$x \\in f\\;⁻¹' t \\;\\;\\Longleftrightarrow\\;\\; f(x) \\in t$$
+#. §9: `Set.mem_preimage`
+#. §10: `f`
+#. §11: `{n | n < 5}`
+#. §12: `n ↦ n + 1`
+#. §13: `3 + 1 < 5`
+#. §14: `4 < 5`
+#. §15: `show 3 + 1 < 5`
+#. §16: `omega`
+#: Game.Levels.PreimageWorld.L01_PreimageMembership
+msgid "# Preimages: Pulling Sets Back Through Functions\n"
+"\n"
+"You have mastered sets, subsets, and set operations. Now you will see\n"
+"how **functions** interact with sets.\n"
+"\n"
+"Given a function §0 and a set §1 (a set of\n"
+"**outputs**), the **preimage** of §2 under §3 is the set of all\n"
+"**inputs** whose output lands in §4:\n"
+"\n"
+"§5\n"
+"\n"
+"In Lean, the preimage is written §6 (type §7). Its\n"
+"definition is:\n"
+"\n"
+"§8\n"
+"\n"
+"This is §9. Notice: the definition is just\n"
+"**\"apply §10, then check membership.\"** There is no existential,\n"
+"no witness — just function application.\n"
+"\n"
+"**Your task**: Prove that 3 is in the preimage of §11\n"
+"under the function §12. This means showing that\n"
+"§13, i.e., §14.\n"
+"\n"
+"**Proof plan**:\n"
+"1. §15 — unfold the preimage membership to arithmetic\n"
+"2. §16 — close the arithmetic goal"
+msgstr ""
+
 #: Game.Levels.IndexedOpsWorld.L15_Powerset
 msgid "The set of numbers less than 3 is in the powerset of numbers less than 5."
+msgstr ""
+
+#. §0: `rw [Set.preimage_compl]`
+#: Game.Levels.PreimageWorld.L15_RewriteComposition
+#: Game.Levels.PreimageWorld.L16_Boss
+#: Game.Levels.PreimageWorld.L16_Boss
+#: Game.Levels.PreimageWorld.L16_Boss
+msgid "§0"
 msgstr ""
 
 #: Game.Levels.SetOpsWorld.L02_IntersectionMembership
@@ -2363,6 +2965,23 @@ msgid "# Subsets Are About Predicates, Not Just Arithmetic\n"
 "2. §18 — apply the implication to get §19"
 msgstr ""
 
+#. §0: `Set.preimage_id`
+#. §1: `id ⁻¹' s = s`
+#. §2: `id`
+#. §3: `Set.preimage_comp`
+#. §4: `id ⁻¹' {n | n < 5} = {n | n < 5}`
+#: Game.Levels.PreimageWorld.L13_PreimageIdentity
+msgid "§0 states §1 — preimage under the\n"
+"identity function returns the set unchanged.\n"
+"\n"
+"## When to use it\n"
+"When simplifying a preimage under §2. Combined with §3,\n"
+"this establishes that preimage is a contravariant functor.\n"
+"\n"
+"## Example\n"
+"§4"
+msgstr ""
+
 #: Game.Levels.PsetSets.L16_AbsorptionLaw
 msgid "Absorption Law"
 msgstr ""
@@ -2377,7 +2996,7 @@ msgid "§0 (= §1) and §2. Contradiction:\n"
 "§3."
 msgstr ""
 
-#: Game.Levels.SubsetWorld.L12_SetNonEquality
+#: Game.Levels.SubsetWorld.L13_SetNonEquality
 msgid "Disproving Set Equality"
 msgstr ""
 
@@ -2401,6 +3020,10 @@ msgid "# s ⊆ s ∪ t\n"
 "**Your task**: Prove this formally. After §3, the goal\n"
 "is §4. Since this is a disjunction, use §5 to select\n"
 "the left side, then close with §6."
+msgstr ""
+
+#: Game.Levels.PreimageWorld.L09_PreimageUnion
+msgid "Preimage Preserves Union"
 msgstr ""
 
 #. §0: `u ⊆ t`
@@ -2427,6 +3050,12 @@ msgstr ""
 #: Game.Levels.SetOpsWorld.L13_DeMorgan
 msgid "The goal is a set equality. Use §0 to reduce it to a\n"
 "membership biconditional."
+msgstr ""
+
+#. §0: `cases hx`
+#. §1: `.1`
+#: Game.Levels.PsetSets.L04_PartitionEquality
+msgid "Key move: §0 and extract §1 in both."
 msgstr ""
 
 #. §0: $$s \\cap (t \\cup u) = (s \\cap t) \\cup (s \\cap u)$$
@@ -2469,12 +3098,6 @@ msgid "# Boss: Intersection Distributes over Union\n"
 "The proof has two directions. Each direction requires destructuring\n"
 "one side and building the other. There are no new tricks — just the\n"
 "moves you have practiced. Take it one step at a time."
-msgstr ""
-
-#. §0: `cases hx`
-#. §1: `.1`
-#: Game.Levels.PsetSets.L04_PartitionEquality
-msgid "Key move: §0 and extract §1 in both."
 msgstr ""
 
 #: Game.Levels.IndexedOpsWorld.L19_DeMorganInter
@@ -2696,6 +3319,18 @@ msgstr ""
 msgid "Boss: Indexed Union Distributes over Intersection"
 msgstr ""
 
+#. §0: `rw [Set.diff_eq]`
+#. §1: `Set.diff_eq : s \\ t = s ∩ tᶜ`
+#. §2: `` on the left side into `
+#. §3: ` and `
+#: Game.Levels.PreimageWorld.L16_Boss
+msgid "Start by rewriting set difference as intersection with\n"
+"complement: §0.\n"
+"\n"
+"This uses the theorem §1 to convert\n"
+"the §2∩§3ᶜ`."
+msgstr ""
+
 #. §0: `rw [Set.mem_powerset_iff]`
 #. §1: `u ⊆ t`
 #: Game.Levels.IndexedOpsWorld.L16_PowersetMonotonicity
@@ -2740,6 +3375,109 @@ msgid "§0 (typed §1 or §2) is the **set difference**:\n"
 "\n"
 "## Related\n"
 "§16 — difference is intersection with complement."
+msgstr ""
+
+#. §0: `cases hx with | inl hs | inr ht`
+#: Game.Levels.PreimageWorld.L09_PreimageUnion
+msgid "Now case-split on the disjunction:\n"
+"§0."
+msgstr ""
+
+#: Game.Levels.PreimageWorld.L07_PreimageUniv
+msgid "Preimage of the Universal Set"
+msgstr ""
+
+#. §0: `n \\mapsto n + 1`
+#. §1: `f ⁻¹' ..y..`
+#. §2: `f`
+#. §3: `y`
+#. §4: `x`
+#. §5: `f x = y`
+#. §6: `n \\mapsto n + 1`
+#. §7: `\\mathbb{N}`
+#. §8: `f ⁻¹' ..y..`
+#. §9: `y`
+#. §10: `f ⁻¹' ..y..`
+#. §11: `y`
+#: Game.Levels.PreimageWorld.L04_PreimageSingleton
+msgid "You proved that 2 is in the fiber of §0 over 3, but\n"
+"5 is not. The fiber is just a preimage of a singleton — nothing new\n"
+"mathematically, but the vocabulary is important.\n"
+"\n"
+"**Fiber vocabulary**:\n"
+"- §1 is the **fiber** of §2 over §3\n"
+"- An element §4 is in the fiber iff §5\n"
+"- For injective functions, each fiber has at most one element\n"
+"- For surjective functions, every fiber is nonempty\n"
+"\n"
+"The function §6 is injective (each fiber is a\n"
+"singleton), so knowing which fiber an element belongs to tells you\n"
+"exactly which element it is. For the constant function from\n"
+"Level 3, every fiber is either all of §7 or empty — very\n"
+"different behavior!\n"
+"\n"
+"**Foreshadowing**: In Injective World and Surjective World, fibers\n"
+"will be the key concept. Injectivity means §8 has at most\n"
+"one element for all §9. Surjectivity means §10 is\n"
+"nonempty for all §11."
+msgstr ""
+
+#. §0: `f ⁻¹' (s ∪ t) = f ⁻¹' s ∪ f ⁻¹' t`
+#. §1: `∨`
+#. §2: `∨`
+#. §3: `∃`
+#. §4: `x ∈ ⋃ i, s i`
+#. §5: `∃ i, x ∈ s i`
+#. §6: $$f^{-1}\\!\\left(\\bigcup_i s_i\\right) = \\bigcup_i f^{-1}(s_i)$$
+#. §7: `∃ i, f x ∈ s i`
+#. §8: `∃ i, x ∈ f ⁻¹' (s i)`
+#. §9: `∃ i, f x ∈ s i`
+#. §10: `x ∈ ⋃ i, s i ↔ ∃ i, x ∈ s i`
+#. §11: `Set.mem_iUnion`
+#. §12: `⋃`
+#. §13: `∪`
+#. §14: `ext x`
+#. §15: `constructor`
+#. §16: `rw [Set.mem_preimage]`
+#. §17: `rw [Set.mem_iUnion]`
+#. §18: `∃`
+#. §19: `rw [Set.mem_iUnion]`
+#. §20: `rw [Set.mem_preimage]`
+#. §21: `rw [Set.mem_iUnion]`
+#: Game.Levels.PreimageWorld.L11_PreimageIndexedUnion
+msgid "# Existentials Pass Through Too\n"
+"\n"
+"You proved that preimage preserves binary union:\n"
+"§0. The logical reason was that\n"
+"§1 passes through function application.\n"
+"\n"
+"Indexed union generalizes binary union from §2 to §3:\n"
+"§4 means §5. Does preimage preserve\n"
+"this too?\n"
+"\n"
+"§6\n"
+"\n"
+"Yes — for the same reason. The left side says §7,\n"
+"and the right side says §8, which is also\n"
+"§9. The existential quantifier passes through\n"
+"function application unchanged.\n"
+"\n"
+"**A change in proof technique**: Unlike binary intersection and\n"
+"union (which unfold definitionally), indexed union membership\n"
+"§10 requires an explicit rewrite with\n"
+"§11. This is because indexed union (§12) is defined\n"
+"differently from binary union (§13) in Lean — the indexed version\n"
+"uses a more general construction that does not reduce by\n"
+"definitional unfolding.\n"
+"\n"
+"**Proof plan**:\n"
+"1. §14 then §15\n"
+"2. **Forward**: The hypothesis is a preimage membership. Use\n"
+"   §16 to unwrap it, then §17\n"
+"   to expose the §18. Destructure and reassemble.\n"
+"3. **Backward**: The hypothesis is an indexed union. Use\n"
+"   §19 directly, destructure, then reassemble\n"
+"   with §20 and §21."
 msgstr ""
 
 #. §0: `apply hp`
@@ -2806,6 +3544,13 @@ msgid "A one-line extraction: §0 pulls out the left component of an\n"
 "The proof shape is worth remembering: when you have a hypothesis\n"
 "with more information than you need (like §6 when you only\n"
 "need §7), just project out the relevant component."
+msgstr ""
+
+#. §0: `Set.eq_univ_iff_forall`
+#. §1: `s = Set.univ ↔ ∀ x, x ∈ s`
+#: Game.Levels.PreimageWorld.L07_PreimageUniv
+msgid "§0 states §1.\n"
+"Disabled to prevent one-shotting the preimage-univ proof."
 msgstr ""
 
 #: Game.Levels.SubsetWorld.L05_SubsetUniv
@@ -2932,6 +3677,13 @@ msgstr ""
 #: Game.Levels.PsetSets.L17_IndexedDifference
 #: Game.Levels.PsetSets.L18_Boss
 #: Game.Levels.PsetSets.L18_Boss
+#: Game.Levels.PreimageWorld.L05_PreimageMonotonicity
+#: Game.Levels.PreimageWorld.L06_PreimageEmpty
+#: Game.Levels.PreimageWorld.L07_PreimageUniv
+#: Game.Levels.PreimageWorld.L08_PreimageIntersection
+#: Game.Levels.PreimageWorld.L09_PreimageUnion
+#: Game.Levels.PreimageWorld.L10_PreimageComplement
+#: Game.Levels.PreimageWorld.L16_Boss
 msgid "§0 states §1."
 msgstr ""
 
@@ -3054,6 +3806,57 @@ msgid "The goal is §0. Use §1 (on the goal —\n"
 "no §2 needed!) to convert §3 to §4."
 msgstr ""
 
+#. §0: `intro hx; exact hx`
+#. §1: `g (f x) ∈ t`
+#. §2: `∩`
+#. §3: `∪`
+#. §4: `ᶜ`
+#. §5: `⋃`
+#. §6: `⋂`
+#. §7: `` — follows from this single structural fact.
+#. 
+#. The library name is `
+#. §8: `.
+#. 
+#. **Foreshadowing**: In the Injective and Surjective Worlds, you will
+#. prove facts like 'if `
+#. §9: ` is injective then `
+#. §10: ` is injective.'
+#. The composition-reversal pattern you see here will appear again
+#. in those proofs — reasoning about `
+#. §11: ` requires peeling apart
+#. the composition, just as preimage does.
+#. 
+#. **Preimage and injectivity**: You proved that preimage preserves
+#. every set operation. But there is one thing preimage does NOT
+#. guarantee: `
+#. §12: `. The inclusion `
+#. §13: `
+#. always holds (if `
+#. §14: ` then `
+#. §15: ` so `
+#. §16: `),
+#. but the reverse can fail. If `
+#. §17: ` maps two different inputs to the
+#. same output, then `
+#. §18: ` can be strictly larger than `
+#. §19: `.
+#. Equality `
+#. §20: ` for all `
+#. §21: ` is equivalent to `
+#: Game.Levels.PreimageWorld.L14_PreimageComposition
+msgid "You proved that preimage reverses composition — both directions were\n"
+"§0 because the two sides are definitionally equal:\n"
+"both say §1.\n"
+"\n"
+"This trivial proof carries a deep message: **preimage is a\n"
+"contravariant functor**. It maps sets of outputs to sets of inputs,\n"
+"and it reverses the order of function composition. Every preservation\n"
+"result you proved in this world — for §2, §3, §4, §5, §6,\n"
+"§7Set.preimage_comp§8g . f§9f§10g . f§11f ⁻¹' (f '' s) = s§12s ⊆ f ⁻¹' (f '' s)§13x ∈ s§14f x ∈ f '' s§15x ∈ f ⁻¹' (f '' s)§16f§17f ⁻¹' (f '' s)§18s§19f ⁻¹' (f '' s) = s§20s§21f` being\n"
+"**injective** — that is exactly what Injective World will explore."
+msgstr ""
+
 #: Game.Levels.PsetSets.L05_ComplementDifference
 msgid "Complement-Difference"
 msgstr ""
@@ -3095,6 +3898,53 @@ msgid "Now §0. Extract the witness:\n"
 "§1."
 msgstr ""
 
+#. §0: `f ⁻¹' Set.univ = Set.univ`
+#. §1: `True`
+#. §2: `∅`
+#. §3: `∅`
+#. §4: `f x ∈ ∅`
+#. §5: `False`
+#. §6: `x`
+#. §7: `Set.univ`
+#. §8: `Set.univ`
+#. §9: `f x ∈ Set.univ`
+#. §10: `True`
+#. §11: `x`
+#. §12: `{_ | True}`
+#. §13: `ext`
+#. §14: `constructor`
+#. §15: `Set.preimage_univ`
+#: Game.Levels.PreimageWorld.L07_PreimageUniv
+msgid "You proved §0. Both sides reduce to §1.\n"
+"\n"
+"**Boundary cases summarized**:\n"
+"| Target set | Preimage | Reason |\n"
+"|---|---|---|\n"
+"| §2 | §3 | §4 is §5 for all §6 |\n"
+"| §7 | §8 | §9 is §10 for all §11 |\n"
+"\n"
+"As with the empty set, the two sides are definitionally equal —\n"
+"both reduce to §12. The §13 + §14 proof makes\n"
+"this definitional equality explicit.\n"
+"\n"
+"The library name is §15.\n"
+"\n"
+"**Looking ahead**: The next levels show that preimage preserves\n"
+"intersection, union, and complement. This is the central fact about\n"
+"preimages: they commute with ALL set operations."
+msgstr ""
+
+#. §0: `exact h x`
+#. §1: `constructor`
+#. §2: `· intro hpx; exact (h x).1 hpx`
+#. §3: `· intro hqx; exact (h x).2 hqx`
+#: Game.Levels.SubsetWorld.L12_AbstractExt
+msgid "§0 closes the goal in one step.\n"
+"\n"
+"Or: §1 then §2\n"
+"then §3."
+msgstr ""
+
 #. §0: `inf_le_left`
 #. §1: `a ⊓ b ≤ a`
 #: Game.Levels.PsetSets.L01_UnivComplement
@@ -3128,7 +3978,7 @@ msgstr ""
 
 #. §0: `(h x).2`
 #. §1: `exact (h x).2 hx`
-#: Game.Levels.SubsetWorld.L16_ExtFromAntisymm
+#: Game.Levels.SubsetWorld.L17_ExtFromAntisymm
 msgid "Use §0 for the backward direction: §1."
 msgstr ""
 
@@ -3169,8 +4019,89 @@ msgid "Now §0. You need §1, and you\n"
 "know §2 from §3. Specialize: §4."
 msgstr ""
 
+#. §0: `show 7 < 10`
+#. §1: `omega`
+#. §2: `n ↦ n + 1`
+#. §3: `_ ↦ 7`
+#. §4: `ℕ`
+#. §5: `f ⁻¹' (f '' s) = s`
+#. §6: `s`
+#. §7: `f`
+#. §8: `f '' {0} = {7}`
+#. §9: `f ⁻¹' (f '' {0}) = f ⁻¹' {7} = ℕ ≠ {0}`
+#: Game.Levels.PreimageWorld.L03_PreimageNonInjective
+msgid "Both proofs were identical: §0 then §1. The input\n"
+"(0 or 1000) never appeared in the proof because the constant\n"
+"function ignores its input entirely.\n"
+"\n"
+"**The preimage \"expands\" inputs**: For the injective function\n"
+"§2, each output comes from exactly one input, so the\n"
+"preimage of a set \"looks like\" the original set. But for a\n"
+"non-injective function like §3, a single output value can\n"
+"come from infinitely many inputs. The preimage of any set\n"
+"containing 7 is ALL of §4.\n"
+"\n"
+"This is why preimage is fundamentally different from function\n"
+"inversion. An inverse function (when it exists) maps each output\n"
+"to one input. Preimage maps each output to the set of ALL inputs\n"
+"that produce it — which can be empty, finite, or infinite.\n"
+"\n"
+"**Foreshadowing**: In Injective World, you will prove that\n"
+"§5 for all §6 implies §7 is injective.\n"
+"The constant function shows why this can fail: §8,\n"
+"so §9.\n"
+"\n"
+"**Looking ahead in this world**: In Level 14, you will discover\n"
+"the deeper reason preimage is so well-behaved: it is just function\n"
+"composition on predicates. The non-injectivity you saw here — many\n"
+"inputs mapping to one output — is exactly what makes image harder\n"
+"than preimage. Preimage does not care about multiple preimages;\n"
+"it simply composes and checks. Injectivity matters for image, not\n"
+"for preimage."
+msgstr ""
+
 #: Game.Levels.SubsetWorld.L09_NonArithSubset
 msgid "Beyond Arithmetic"
+msgstr ""
+
+#. §0: `s ⊆ t`
+#. §1: `f ⁻¹' s ⊆ f ⁻¹' t`
+#. §2: `x`
+#. §3: `s`
+#. §4: `t`
+#. §5: `x`
+#. §6: `t`
+#. §7: `f`
+#. §8: `n ↦ n + 1`
+#. §9: `intro x hx`
+#. §10: `hx : x ∈ f ⁻¹' s`
+#. §11: `f x ∈ s`
+#. §12: `h : s ⊆ t`
+#. §13: `f x ∈ s`
+#. §14: `f x ∈ t`
+#. §15: `h`
+#. §16: `hx`
+#. §17: `f x ∈ t`
+#. §18: `x ∈ f ⁻¹' t`
+#: Game.Levels.PreimageWorld.L05_PreimageMonotonicity
+msgid "# Preimage Is Monotone\n"
+"\n"
+"If §0, then §1. In words: if a target set\n"
+"grows, the preimage grows too.\n"
+"\n"
+"Why? If §2 maps into §3 (a subset of §4), then §5 certainly maps\n"
+"into §6.\n"
+"\n"
+"This is your first abstract preimage proof — the function §7 is\n"
+"no longer a specific function like §8, but an arbitrary\n"
+"function.\n"
+"\n"
+"**Proof plan**:\n"
+"1. §9 — start the subset proof\n"
+"2. Now §10, which is definitionally §11\n"
+"3. The subset hypothesis §12 is a function: given §13,\n"
+"   it produces §14\n"
+"4. Apply §15 to §16 to get §17, which is §18"
 msgstr ""
 
 #. §0: `hx`
@@ -3239,7 +4170,7 @@ msgstr ""
 
 #. §0: `exact (h x).2 hx`
 #. §1: `(h x).2`
-#: Game.Levels.SubsetWorld.L16_ExtFromAntisymm
+#: Game.Levels.SubsetWorld.L17_ExtFromAntisymm
 msgid "§0 — §1 is the\n"
 "backward implication of the biconditional."
 msgstr ""
@@ -3248,7 +4179,7 @@ msgstr ""
 msgid "Indexed union is monotone: if each s i ⊆ t i, then ⋃ i, s i ⊆ ⋃ i, t i."
 msgstr ""
 
-#: Game.Levels.SubsetWorld.L14_ProperSubset
+#: Game.Levels.SubsetWorld.L15_ProperSubset
 msgid "Proper Subsets"
 msgstr ""
 
@@ -3295,6 +4226,56 @@ msgstr ""
 #: Game.Levels.SetOpsWorld.L01_UnionMembership
 msgid "§0 converts the goal to arithmetic\n"
 "form. Then §1 closes it."
+msgstr ""
+
+#. §0: `x ∈ f ⁻¹' ∅ ↔ x ∈ ∅`
+#. §1: `False`
+#. §2: `∅`
+#. §3: `constructor`
+#: Game.Levels.PreimageWorld.L06_PreimageEmpty
+msgid "The goal is §0. Both sides unfold to\n"
+"§1 (since nothing is in §2). Use §3 to split."
+msgstr ""
+
+#. §0: `Set.preimage f t`
+#. §1: `f ⁻¹' t`
+#. §2: `t`
+#. §3: `f`
+#. §4: `t`
+#. §5: $$f^{-1}(t) = \\{x \\mid f(x) \\in t\\}$$
+#. §6: `x ∈ f ⁻¹' t ↔ f x ∈ t`
+#. §7: `Set.mem_preimage`
+#. §8: ```
+#. f ⁻¹' t      -- preimage of t under f (type \\-1')
+#. ```
+#. §9: `f`
+#. §10: `t`
+#. §11: `f n = n + 1`
+#. §12: `f ⁻¹' {n | n < 5} = {n | n + 1 < 5} = {0, 1, 2, 3}`
+#. §13: `f ⁻¹' t`
+#. §14: `Set α`
+#. §15: `f '' s`
+#: Game.Levels.PreimageWorld.L01_PreimageMembership
+msgid "§0, written §1, is the **preimage** of §2\n"
+"under §3 — the set of all inputs whose output is in §4:\n"
+"\n"
+"§5\n"
+"\n"
+"## Membership rule\n"
+"§6 (this is §7)\n"
+"\n"
+"## Syntax\n"
+"§8\n"
+"\n"
+"## When to use it\n"
+"When you want to talk about which inputs of §9 produce outputs in §10.\n"
+"\n"
+"## Example\n"
+"If §11, then §12.\n"
+"\n"
+"## Warning\n"
+"§13 is a set of INPUTS (type §14), not outputs. Do not\n"
+"confuse with §15 (image), which is a set of OUTPUTS."
 msgstr ""
 
 #. §0: `Set α`
@@ -3723,6 +4704,14 @@ msgid "§0 states\n"
 "- §10: §11 — two steps (index + guard)"
 msgstr ""
 
+#. §0: `f ⁻¹' (s ∩ tᶜ)`
+#. §1: `rw [Set.preimage_inter]`
+#: Game.Levels.PreimageWorld.L16_Boss
+msgid "Good! The left side now has §0. You proved\n"
+"that preimage distributes over intersection (Level 8).\n"
+"Use §1 to distribute."
+msgstr ""
+
 #. §0: `intro h`
 #. §1: `h h4`
 #. §2: `4 < 3`
@@ -3864,6 +4853,43 @@ msgid "Use §0 — this gives §1 (= §2)\n"
 "and changes the goal to §3."
 msgstr ""
 
+#. §0: $$f^{-1}(s \\cap t) = f^{-1}(s) \\cap f^{-1}(t)$$
+#. §1: `x`
+#. §2: `f x ∈ s ∩ t`
+#. §3: `f x ∈ s ∧ f x ∈ t`
+#. §4: `x ∈ f ⁻¹' s`
+#. §5: `x ∈ f ⁻¹' t`
+#. §6: `f x ∈ s`
+#. §7: `f x ∈ t`
+#. §8: `∧`
+#. §9: `ext x`
+#. §10: `constructor`
+#. §11: `↔`
+#. §12: `intro hx`
+#. §13: `obtain`
+#: Game.Levels.PreimageWorld.L08_PreimageIntersection
+msgid "# Conjunction Passes Through\n"
+"\n"
+"Here is the first major structural result: preimage distributes over\n"
+"intersection.\n"
+"\n"
+"§0\n"
+"\n"
+"Why? An element §1 is in the left side when §2, which\n"
+"means §3. The right side says §4 and\n"
+"§5, which means §6 and §7. These are the\n"
+"same condition!\n"
+"\n"
+"The conjunction §8 passes through function application unchanged.\n"
+"This is the reason preimage \"preserves\" intersection.\n"
+"\n"
+"**Proof plan**:\n"
+"1. §9 — reduce to membership\n"
+"2. §10 — split the §11\n"
+"3. **Forward**: §12, destructure with §13, reassemble\n"
+"4. **Backward**: same in reverse"
+msgstr ""
+
 #. §0: `Set.Nonempty.fst`
 #: Game.Levels.PsetSets.L08_NonemptyProduct
 msgid "§0 extracts nonemptiness of the first factor."
@@ -3975,7 +5001,7 @@ msgstr ""
 #. §0: `s ≠ t`
 #. §1: `(s = t) → False`
 #. §2: `intro h`
-#: Game.Levels.SubsetWorld.L12_SetNonEquality
+#: Game.Levels.SubsetWorld.L13_SetNonEquality
 msgid "The goal is §0, which means §1.\n"
 "Use §2 to assume the sets are equal and aim for a contradiction."
 msgstr ""
@@ -4039,67 +5065,15 @@ msgid "The goal is definitionally §0. Use §1\n"
 "to split into two goals: §2 and §3."
 msgstr ""
 
-#. §0: `s ⊆ t`
-#. §1: `∀ x, x ∈ s → x ∈ t`
-#. §2: `intro x hx`
-#. §3: `x ∈ t`
-#. §4: `s ⊆ s`
-#. §5: `intro x hx; exact hx`
-#. §6: `∅ ⊆ s`
-#. §7: `intro x hx; contradiction`
-#. §8: `s ⊆ Set.univ`
-#. §9: `intro x _; constructor`
-#. §10: `s ⊆ t → t ⊆ u → s ⊆ u`
-#. §11: `Set.Subset.trans`
-#. §12: `s = t ↔ ∀ x, x ∈ s ↔ x ∈ t`
-#. §13: `ext x; constructor; ...`
-#. §14: `s ⊆ t → t ⊆ s → s = t`
-#. §15: `exact Set.Subset.antisymm h1 h2`
-#. §16: `s ≠ t`
-#. §17: `(s = t) → False`
-#. §18: `s ⊂ t`
-#. §19: `s ⊆ t ∧ ¬ (t ⊆ s)`
-#. §20: `constructor`
-#. §21: `change P at h`
-#. §22: `h.1`
-#. §23: `h.2`
-#. §24: `∧`
-#. §25: `↔`
-#. §26: `⊆`
-#. §27: `⊂`
-#. §28: `∪`
-#. §29: `∩`
-#. §30: `ᶜ`
-#. §31: ``). Each
-#. operation corresponds to a logical connective, extending the
-#. sets-as-predicates theme from Set World. The `
-#: Game.Levels.SubsetWorld.L17_Boss
-msgid "Congratulations — you have completed **Subset World**!\n"
-"\n"
-"Here is your toolkit:\n"
-"\n"
-"| Concept | Lean | Proof move |\n"
-"|---|---|---|\n"
-"| Subset §0 | §1 | §2 then show §3 |\n"
-"| Reflexivity §4 | identity | §5 |\n"
-"| §6 | vacuously true | §7 |\n"
-"| §8 | trivially true | §9 |\n"
-"| Transitivity | §10 | chain with §11 or function application |\n"
-"| Set equality via ext | §12 | §13 |\n"
-"| Set equality via antisymm | §14 | §15 |\n"
-"| Set non-equality §16 | §17 | assume equality, find contradictory witness |\n"
-"| Proper subset §18 | §19 | §20, then prove ⊆ and ¬⊆ |\n"
-"| Unwrap hypothesis | §21 | converts display to def-equal form |\n"
-"| Dot projection | §22, §23 | extract components of §24 or §25 |\n"
-"\n"
-"The §26 relation is a **partial order** on sets: it is reflexive\n"
-"(Level 3), transitive (Level 8), and antisymmetric (Level 13). The\n"
-"strict variant §27 (proper subset, Level 14) excludes equality.\n"
-"\n"
-"In the next world, you will learn about **set operations**: union (§28),\n"
-"intersection (§29), complement (§30), and difference (§31intro x hx` proof\n"
-"pattern you mastered here will be the foundation for every one of\n"
-"those proofs."
+#. §0: `Set.preimage_iUnion`
+#. §1: `preimage_iUnion`
+#: Game.Levels.PreimageWorld.L11_PreimageIndexedUnion
+#: Game.Levels.PreimageWorld.L12_PreimageIndexedIntersection
+msgid "§0 is the Mathlib version of §1."
+msgstr ""
+
+#: Game.Levels.PreimageWorld.L16_Boss
+msgid "Boss: Composing Library Results"
 msgstr ""
 
 #: Game.Levels.SetOpsWorld.L15_ComplementUnion
@@ -4123,12 +5097,22 @@ msgstr ""
 msgid "§0 is the lattice dual: §1."
 msgstr ""
 
+#. §0: `0 ∈ (fun _ => 7) ⁻¹' ...`
+#. §1: `(fun _ => 7) 0 ∈ ...`
+#. §2: `7 < 10`
+#. §3: `show 7 < 10`
+#: Game.Levels.PreimageWorld.L03_PreimageNonInjective
+msgid "The goal says §0. By preimage\n"
+"membership, this means §1, which is §2.\n"
+"Use §3 to make this explicit."
+msgstr ""
+
 #. §0: `hst`
 #. §1: `x ∈ t`
 #. §2: `ht`
 #. §3: `have hxt := hst hx`
 #. §4: `have hle := ht hxt`
-#: Game.Levels.SubsetWorld.L17_Boss
+#: Game.Levels.SubsetWorld.L18_Boss
 msgid "Now chain the subset hypotheses. Use §0 to get §1,\n"
 "then §2 to get the arithmetic membership.\n"
 "\n"
@@ -4256,6 +5240,10 @@ msgid "The proof pattern for distributing §0 into §1:\n"
 "simpler — try it on paper."
 msgstr ""
 
+#: Game.Levels.PreimageWorld.L14_PreimageComposition
+msgid "Preimage reverses function composition."
+msgstr ""
+
 #. §0: `change x < 3 at h`
 #. §1: `omega`
 #. §2: `x < 5`
@@ -4284,8 +5272,17 @@ msgstr ""
 msgid "The converse: s \\\\ t ⊆ tᶜ \\\\ sᶜ."
 msgstr ""
 
+#: Game.Levels.PreimageWorld.L05_PreimageMonotonicity
+msgid "If s ⊆ t then f ⁻¹' s ⊆ f ⁻¹' t."
+msgstr ""
+
 #: Game.Levels.SetOpsWorld.L07_IntersectionCommutativity
 msgid "Intersection Commutativity"
+msgstr ""
+
+#. §0: `rw [Set.mem_preimage] at hx`
+#: Game.Levels.PreimageWorld.L11_PreimageIndexedUnion
+msgid "Unwrap the preimage: §0."
 msgstr ""
 
 #: Game.Levels.PsetSets.L15_SubsetViaDifference
@@ -4304,10 +5301,14 @@ msgstr ""
 #. §1: `s ⊆ t`
 #. §2: `t ⊆ the arithmetic set`
 #. §3: `intro x hx`
-#: Game.Levels.SubsetWorld.L17_Boss
+#: Game.Levels.SubsetWorld.L18_Boss
 msgid "First goal: §0. You know §1 and\n"
 "§2. Chain these subsets, then bridge the\n"
 "arithmetic. Start with §3."
+msgstr ""
+
+#: Game.Levels.PreimageWorld.L11_PreimageIndexedUnion
+msgid "Preimage Preserves Indexed Union"
 msgstr ""
 
 #. §0: `ext`
@@ -4334,7 +5335,7 @@ msgstr ""
 #. §21: `s = t`
 #. §22: `s ⊆ t ∧ t ⊆ s`
 #. §23: `⊆`
-#: Game.Levels.SubsetWorld.L16_ExtFromAntisymm
+#: Game.Levels.SubsetWorld.L17_ExtFromAntisymm
 msgid "You have now proved both directions of the equivalence:\n"
 "\n"
 "| Level | Proved | Strategy |\n"
@@ -4572,6 +5573,62 @@ msgstr ""
 msgid "Extract the witness: §0."
 msgstr ""
 
+#. §0: `ext x`
+#: Game.Levels.SubsetWorld.L12_AbstractExt
+msgid "Use §0 to reduce to a membership biconditional."
+msgstr ""
+
+#. §0: `f ⁻¹' sᶜ = (f ⁻¹' s)ᶜ`
+#. §1: `intro hx; exact hx`
+#. §2: `∧`
+#. §3: `∨`
+#. §4: `¬`
+#. §5: `∩`
+#. §6: `f x ∈ s ∩ t`
+#. §7: `f x ∈ s ∧ f x ∈ t`
+#. §8: `x ∈ f⁻¹s ∩ f⁻¹t`
+#. §9: `f x ∈ s ∧ f x ∈ t`
+#. §10: `∪`
+#. §11: `f x ∈ s ∪ t`
+#. §12: `f x ∈ s ∨ f x ∈ t`
+#. §13: `x ∈ f⁻¹s ∪ f⁻¹t`
+#. §14: `f x ∈ s ∨ f x ∈ t`
+#. §15: `ᶜ`
+#. §16: `f x ∈ sᶜ`
+#. §17: `¬(f x ∈ s)`
+#. §18: `x ∈ (f⁻¹s)ᶜ`
+#. §19: `¬(f x ∈ s)`
+#. §20: `f`
+#. §21: `β`
+#. §22: `α`
+#. §23: `∩`
+#. §24: `∪`
+#. §25: `ᶜ`
+#. §26: `Set.preimage_compl`
+#: Game.Levels.PreimageWorld.L10_PreimageComplement
+msgid "You proved §0. The proof was §1\n"
+"in both directions — the hypothesis is literally the goal each time.\n"
+"\n"
+"**The pattern is now clear**: Preimage preserves every set operation\n"
+"because it simply applies the function before checking membership.\n"
+"The logical connective (§2, §3, §4) is untouched:\n"
+"\n"
+"| Operation | Left side | Unfolds to | Right side | Unfolds to |\n"
+"|---|---|---|---|---|\n"
+"| §5 | §6 | §7 | §8 | §9 |\n"
+"| §10 | §11 | §12 | §13 | §14 |\n"
+"| §15 | §16 | §17 | §18 | §19 |\n"
+"\n"
+"In each case, both sides reduce to the same proposition. Preimage is\n"
+"just \"apply §20 first\" — it does not change the logical structure.\n"
+"\n"
+"**Mathematically**: Preimage is a **homomorphism** from the Boolean\n"
+"algebra of subsets of §21 to the Boolean algebra of subsets of §22.\n"
+"It preserves meets (§23), joins (§24), and complements (§25).\n"
+"\n"
+"The library name is §26."
+msgstr ""
+
 #. §0: `intro x hx`
 #. §1: `h : s ⊆ t`
 #. §2: `h`
@@ -4617,6 +5674,35 @@ msgid "# Using a Subset Hypothesis\n"
 "**Proof plan**:\n"
 "- §18 — apply §19 to §20 directly\n"
 "- OR: §21 then §22 — reduce goal, then close"
+msgstr ""
+
+#. §0: `f ⁻¹' (s ∪ t) = f ⁻¹' s ∪ f ⁻¹' t`
+#. §1: `cases`
+#. §2: `left`
+#. §3: `right`
+#. §4: `∩`
+#. §5: `f ⁻¹' (s ∩ t) = f ⁻¹' s ∩ f ⁻¹' t`
+#. §6: `∧`
+#. §7: `∪`
+#. §8: `f ⁻¹' (s ∪ t) = f ⁻¹' s ∪ f ⁻¹' t`
+#. §9: `∨`
+#. §10: `¬`
+#. §11: `Set.preimage_union`
+#: Game.Levels.PreimageWorld.L09_PreimageUnion
+msgid "You proved §0. The proof used\n"
+"case analysis with §1 and §2/§3 — the same moves\n"
+"you used for union in Set Operations World.\n"
+"\n"
+"**Scoreboard so far**:\n"
+"\n"
+"| Set operation | Preimage distributes? | Why? |\n"
+"|---|---|---|\n"
+"| §4 (intersection) | Yes: §5 | §6 passes through |\n"
+"| §7 (union) | Yes: §8 | §9 passes through |\n"
+"\n"
+"Next: complement. Does §10 also pass through?\n"
+"\n"
+"The library name is §11."
 msgstr ""
 
 #. §0: `obtain ⟨hu, ht⟩ := hx`
@@ -4672,6 +5758,42 @@ msgid "# Nonemptiness Propagation\n"
 "**Your task**: Given that §4 is nonempty, prove §5 is nonempty."
 msgstr ""
 
+#. §0: `n ↦ n + 1`
+#. §1: `fun _ : ℕ => 7`
+#. §2: `{m | m < 10}`
+#. §3: `7 < 10`
+#. §4: `{m | m < 10}`
+#. §5: `fun _ => 7`
+#. §6: `constructor`
+#. §7: `∧`
+#. §8: `show 7 < 10`
+#. §9: `omega`
+#: Game.Levels.PreimageWorld.L03_PreimageNonInjective
+msgid "# When Multiple Inputs Map to the Same Output\n"
+"\n"
+"In the last two levels, you used §0, which maps each\n"
+"input to a unique output (it is **injective**). But preimage is\n"
+"most interesting with **non-injective** functions — functions where\n"
+"multiple inputs can map to the same output.\n"
+"\n"
+"Consider the constant function §1 — it maps EVERY\n"
+"natural number to 7, regardless of the input. What is the preimage\n"
+"of §2 under this function?\n"
+"\n"
+"Since every input maps to 7, and §3, EVERY natural number\n"
+"is in the preimage. Both 0 and 1000 qualify — for the same reason.\n"
+"\n"
+"**Your task**: Prove that both 0 and 1000 are in the preimage of\n"
+"§4 under the constant function §5.\n"
+"\n"
+"**Proof plan**:\n"
+"1. §6 — split the §7\n"
+"2. Each part: §8 then §9\n"
+"\n"
+"Notice that the two proofs will be **identical** — the input\n"
+"doesn't matter at all."
+msgstr ""
+
 #: Game.Levels.PsetSets.L10_RangeForeshadow
 msgid "Indexed Union and Range"
 msgstr ""
@@ -4679,7 +5801,7 @@ msgstr ""
 #. §0: `h4'`
 #. §1: `4`
 #. §2: `4 < 3`
-#: Game.Levels.SubsetWorld.L14_ProperSubset
+#: Game.Levels.SubsetWorld.L15_ProperSubset
 msgid "§0 says §1 is in the left set, i.e., §2. Unwrap\n"
 "and derive contradiction."
 msgstr ""
@@ -4755,6 +5877,20 @@ msgid "You used §0 to convert the goal, then §1 to close it.\n"
 "When you see §10, you can always think of it as §11."
 msgstr ""
 
+#. §0: `g (f x) ∈ t`
+#. §1: `x ∈ (g . f) ⁻¹' t`
+#. §2: `(g . f) x ∈ t`
+#. §3: `g (f x) ∈ t`
+#. §4: `x ∈ f ⁻¹' (g ⁻¹' t)`
+#. §5: `f x ∈ g ⁻¹' t`
+#. §6: `g (f x) ∈ t`
+#: Game.Levels.PreimageWorld.L14_PreimageComposition
+msgid "**Forward**: Both sides reduce to §0.\n"
+"The left side §1 means §2,\n"
+"which is §3. The right side §4\n"
+"means §5, which is §6. Same thing."
+msgstr ""
+
 #. §0: `inf_le_left`
 #. §1: `s ∩ t ⊆ s`
 #: Game.Levels.SetOpsWorld.L06_IntersectionSubset
@@ -4804,7 +5940,7 @@ msgid "# Building the Other Direction\n"
 "and provide the witness §8."
 msgstr ""
 
-#: Game.Levels.SubsetWorld.L14_ProperSubset
+#: Game.Levels.SubsetWorld.L15_ProperSubset
 msgid "The set of numbers less than 3 is a proper subset of the set\n"
 "of numbers less than 5."
 msgstr ""
@@ -5013,12 +6149,19 @@ msgid "The goal is a set membership that unfolds to §0.\n"
 "(since §3 and §4)."
 msgstr ""
 
-#: Game.Levels.SubsetWorld.L17_Boss
+#: Game.Levels.SubsetWorld.L18_Boss
 msgid "Boss: Subset Chain"
 msgstr ""
 
 #: Game.Levels.IndexedOpsWorld.L12_Nonempty
 msgid "Nonemptiness"
+msgstr ""
+
+#. §0: `hx`
+#. §1: `obtain ⟨hs, ht⟩ := hx`
+#: Game.Levels.PreimageWorld.L08_PreimageIntersection
+msgid "Destructure §0 into its two components with\n"
+"§1."
 msgstr ""
 
 #: Game.Levels.IndexedOpsWorld.L20_NonemptyProduct
@@ -5040,67 +6183,8 @@ msgid "§0 — §1 converts\n"
 "§2 into a proof of §3."
 msgstr ""
 
-#. §0: `Set.Subset.antisymm`
-#. §1: `ext x; constructor; ...`
-#. §2: `Set.Subset.antisymm h1 h2`
-#. §3: `ext`
-#. §4: `antisymm`
-#. §5: $a \\leq a$
-#. §6: $a$
-#. §7: $a \\leq b$
-#. §8: $b \\leq c$
-#. §9: $a \\leq c$
-#. §10: $a \\leq b$
-#. §11: $b \\leq a$
-#. §12: $a = b$
-#. §13: `⊆`
-#. §14: `Set α`
-#. §15: `Set.Subset.refl`
-#. §16: `Set.Subset.trans`
-#. §17: `Set.Subset.antisymm`
-#. §18: `⊆`
-#. §19: `ext`
-#. §20: `antisymm`
-#. §21: `ext`
-#. §22: `antisymm`
-#. §23: `antisymm`
-#. §24: `ext`
-#: Game.Levels.SubsetWorld.L13_Antisymm
-msgid "§0 gives you a one-step path from two ⊆ proofs to\n"
-"set equality. Compare the two routes:\n"
-"\n"
-"| Route | When to use |\n"
-"|---|---|\n"
-"| §1 | When you need to prove both directions from scratch |\n"
-"| §2 | When you already have both ⊆ proofs in hand |\n"
-"\n"
-"In practice, many set equality proofs start with §3 because you\n"
-"rarely have the subset proofs pre-packaged. But §4 is\n"
-"valuable when subset facts are available from other lemmas or\n"
-"hypotheses.\n"
-"\n"
-"In ordinary math, this is the well-known principle: \"two sets are\n"
-"equal iff each is a subset of the other.\" Every proof of set equality\n"
-"by \"double inclusion\" (showing ⊆ in both directions) is implicitly\n"
-"using antisymmetry.\n"
-"\n"
-"A **partial order** is a relation that satisfies three properties:\n"
-"1. **Reflexive**: §5 for all §6\n"
-"2. **Transitive**: §7 and §8 imply §9\n"
-"3. **Antisymmetric**: §10 and §11 imply §12\n"
-"\n"
-"You have now proved all three for §13 on §14:\n"
-"- **Reflexive**: §15 (Level 3)\n"
-"- **Transitive**: §16 (Level 8)\n"
-"- **Antisymmetric**: §17 (this level)\n"
-"\n"
-"Together, these make §18 a **partial order** on sets. The partial\n"
-"order concept is central to mathematics — you will study it in depth\n"
-"in the Orders \\\\& Lattices course.\n"
-"\n"
-"These two routes — §19 and §20 — are logically *equivalent*.\n"
-"You can derive §21 from §22 and §23 from §24. You\n"
-"will prove this equivalence yourself in Levels 15 and 16."
+#: Game.Levels.PreimageWorld.L06_PreimageEmpty
+msgid "Preimage of the Empty Set"
 msgstr ""
 
 #. §0: `show`
@@ -5161,7 +6245,7 @@ msgstr ""
 #. §2: `h2`
 #. §3: `intro hx`
 #. §4: `exact h2 hx`
-#: Game.Levels.SubsetWorld.L15_AntisymmFromExt
+#: Game.Levels.SubsetWorld.L16_AntisymmFromExt
 msgid "The backward direction: assume §0 and show §1.\n"
 "Use §2 the same way: §3 then §4."
 msgstr ""
@@ -5366,6 +6450,10 @@ msgid "Prove that 4 is less than 10. Use §0 to unfold\n"
 "the set-builder notation, then §1."
 msgstr ""
 
+#: Game.Levels.PreimageWorld.L01_PreimageMembership
+msgid "What is a Preimage?"
+msgstr ""
+
 #: Game.Levels.IndexedOpsWorld.L14_NonemptyConverse
 msgid "If the indexed union is nonempty, some member is nonempty."
 msgstr ""
@@ -5383,6 +6471,13 @@ msgstr ""
 #: Game.Levels.SetOpsWorld.L05_DiffAsIntersect
 #: Game.Levels.SetOpsWorld.L05_DiffAsIntersect
 msgid "Destructure §0 with §1."
+msgstr ""
+
+#. §0: `x ∈ s`
+#. §1: `x ∈ id ⁻¹' s`
+#: Game.Levels.PreimageWorld.L13_PreimageIdentity
+msgid "**Backward**: §0 implies §1 — same\n"
+"proposition."
 msgstr ""
 
 #. §0: `Set.iInter_mono`
@@ -5497,12 +6592,30 @@ msgid "You performed case analysis on a union hypothesis for the first time!\n"
 "(§13). You will do exactly this in the next level."
 msgstr ""
 
+#. §0: `f ⁻¹' s ∩ (f ⁻¹' t)ᶜ`
+#. §1: `f ⁻¹' s \\ f ⁻¹' t`
+#. §2: `s \\ t = s ∩ tᶜ`
+#. §3: `rw [Set.diff_eq]`
+#: Game.Levels.PreimageWorld.L16_Boss
+msgid "Almost done! The left side is §0 and\n"
+"the right side is §1. Since §2,\n"
+"one more §3 converts the right side to match."
+msgstr ""
+
 #: Game.Levels.IndexedOpsWorld
 msgid "Indexed Operations World"
 msgstr ""
 
 #: Game.Levels.SubsetWorld.L07_NonSubset
 msgid "Disproving a Subset"
+msgstr ""
+
+#. §0: `hs : f x ∈ s`
+#. §1: `ht : f x ∈ t`
+#. §2: `exact ⟨hs, ht⟩`
+#: Game.Levels.PreimageWorld.L08_PreimageIntersection
+msgid "Now §0 and §1. Build the\n"
+"conjunction with §2."
 msgstr ""
 
 #: Game.Levels.SubsetWorld.L01_FirstSubset
@@ -5600,12 +6713,6 @@ msgid "# Boss: Putting It All Together\n"
 "Start with §14 to split the conjunction."
 msgstr ""
 
-#. §0: `intro x hx`
-#: Game.Levels.SubsetWorld.L03_SubsetRefl
-msgid "Use §0 to introduce the element and the membership\n"
-"assumption, just as in Level 1."
-msgstr ""
-
 #. §0: `↔`
 #. §1: `constructor`
 #. §2: `→`
@@ -5613,6 +6720,12 @@ msgstr ""
 #: Game.Levels.SubsetWorld.L10_ExtIntro
 msgid "The goal is now an §0 (biconditional). Use §1 to\n"
 "split it into two implications: forward (§2) and backward (§3)."
+msgstr ""
+
+#. §0: `intro x hx`
+#: Game.Levels.SubsetWorld.L03_SubsetRefl
+msgid "Use §0 to introduce the element and the membership\n"
+"assumption, just as in Level 1."
 msgstr ""
 
 #. §0: `ht`
@@ -5628,6 +6741,17 @@ msgstr ""
 #: Game.Levels.IndexedOpsWorld.L03_IInterSubset
 msgid "The goal is a subset relation §0. Start with\n"
 "§1 to assume §2 and aim to prove §3."
+msgstr ""
+
+#. §0: `apply h`
+#. §1: `f x ∈ s`
+#. §2: `exact hx`
+#. §3: `exact h hx`
+#: Game.Levels.PreimageWorld.L05_PreimageMonotonicity
+msgid "§0 reduces the goal to §1.\n"
+"Then §2 closes it.\n"
+"\n"
+"Alternatively, §3 does both steps at once."
 msgstr ""
 
 #. §0: `Set.mem_univ x`
@@ -5687,58 +6811,6 @@ msgstr ""
 msgid "Now §0 says §1 is in the left set, but the arithmetic fact\n"
 "§2 is hidden inside the set notation. Use\n"
 "§3 to extract it into a clean hypothesis."
-msgstr ""
-
-#. §0: `⋂ i : Empty, s i = Set.univ`
-#. §1: `∀ i : Empty, P i`
-#. §2: `i`
-#. §3: `Empty`
-#. §4: `i.elim`
-#. §5: `Empty.elim i`
-#. §6: `Empty`
-#. §7: `Empty.elim`
-#. §8: `False.elim`
-#. §9: `i.elim`
-#. §10: `i : Empty`
-#. §11: `False.elim`
-#. §12: `h : False`
-#. §13: `False.elim`
-#. §14: `Empty.elim`
-#. §15: `Fin 0`
-#. §16: `⋂ i ∈ t, s i`
-#. §17: `t`
-#. §18: `Set.univ`
-#. §19: `⋃ i : Empty, s i = ∅`
-#. §20: $\\bigcap_{i \\in \\emptyset} s_i$
-#. §21: $x \\in s_i$
-#. §22: $i \\in \\emptyset$
-#: Game.Levels.IndexedOpsWorld.L09_VacuousIntersection
-msgid "You proved that §0 — intersecting over\n"
-"an empty index gives everything.\n"
-"\n"
-"The key insight is **vacuous truth**: the statement §1\n"
-"is true because there are no §2 to check. In Lean, §3 is a type\n"
-"with no constructors, so §4 (equivalently, §5)\n"
-"discharges any goal about an element of §6.\n"
-"\n"
-"**§7 and §8**: The pattern §9 for §10\n"
-"is the type-level version of §11 for §12. Both say\n"
-"\"from an impossible premise, anything follows\" — the principle of\n"
-"explosion. You will see §13 in propositional logic and\n"
-"§14 when working with uninhabited types (like §15).\n"
-"\n"
-"**Why this matters**: This explains why **bounded** indexed intersections\n"
-"(§16) are needed. If §17 might be empty, the bounded\n"
-"intersection degenerates to §18, which is often not what you\n"
-"want. When you see a bounded intersection in a proof, always consider:\n"
-"what happens if the bounding set is empty?\n"
-"\n"
-"**Up next**: You will prove the dual — §19 —\n"
-"completing the most dramatic duality pair in this world.\n"
-"\n"
-"In ordinary math: \"The intersection §20\n"
-"contains every element, because the defining condition — §21\n"
-"for all §22 — is vacuously satisfied.\""
 msgstr ""
 
 #: Game.Levels.IndexedOpsWorld.L13_NonemptyPropagation
@@ -5822,12 +6894,21 @@ msgid "**Backward**: §0 means §1. You need\n"
 "§4 then §5."
 msgstr ""
 
+#: Game.Levels.SubsetWorld.L12_AbstractExt
+msgid "If two predicates are pointwise equivalent, the corresponding\n"
+"sets are equal."
+msgstr ""
+
 #: Game.Levels.SubsetWorld.L08_SubsetTrans
 msgid "Subset Transitivity"
 msgstr ""
 
 #: Game.Levels.PsetSets.L01_UnivComplement
 msgid "Removing s from univ gives the complement."
+msgstr ""
+
+#: Game.Levels.PreimageWorld.L02_PreimageNonMembership
+msgid "10 is not in the preimage because 10 + 1 = 11, which is not less than 5."
 msgstr ""
 
 #: Game.Levels.IndexedOpsWorld.L10_VacuousUnion
@@ -5960,6 +7041,12 @@ msgid "§0 then §1.\n"
 "§2."
 msgstr ""
 
+#. §0: `x ∈ ∅`
+#. §1: `False`
+#: Game.Levels.PreimageWorld.L06_PreimageEmpty
+msgid "**Backward**: §0 is also §1. Same argument."
+msgstr ""
+
 #. §0: `Set.subset_union_left`
 #. §1: `s ⊆ s ∪ t`
 #. §2: ```
@@ -6015,6 +7102,10 @@ msgstr ""
 
 #: Game.Levels.IndexedOpsWorld.L20_NonemptyProduct
 msgid "The product of two nonempty sets is nonempty."
+msgstr ""
+
+#: Game.Levels.PreimageWorld.L13_PreimageIdentity
+msgid "Preimage under the identity function is the set itself."
 msgstr ""
 
 #: Game.Levels.PsetSets.L17_IndexedDifference
@@ -6131,6 +7222,18 @@ msgid "# Unwrapping Hypotheses with §0\n"
 "4. §18 — derive §19 from §20"
 msgstr ""
 
+#. §0: `x ∈ Set.univ`
+#. §1: `x ∈ f ⁻¹' Set.univ`
+#. §2: `True`
+#. §3: `True`
+#. §4: `intro _`
+#. §5: `constructor`
+#: Game.Levels.PreimageWorld.L07_PreimageUniv
+msgid "**Backward**: §0 implies §1.\n"
+"The hypothesis unfolds to §2 and the goal unfolds to §3.\n"
+"Use §4 then §5."
+msgstr ""
+
 #. §0: `hnt : x ∈ tᶜ`
 #. §1: `x ∉ t`
 #. §2: `hnns : x ∉ sᶜ`
@@ -6140,6 +7243,37 @@ msgstr ""
 #: Game.Levels.PsetSets.L05_ComplementDifference
 msgid "You have §0 (= §1) and §2\n"
 "(= §3). Build §4 with §5."
+msgstr ""
+
+#. §0: `∧`
+#. §1: `∀`
+#. §2: `x ∈ ⋂ i, s i`
+#. §3: `∀ i, x ∈ s i`
+#. §4: $$f^{-1}\\!\\left(\\bigcap_i s_i\\right) = \\bigcap_i f^{-1}(s_i)$$
+#. §5: `∀ i, f x ∈ s i`
+#. §6: `∀ i, x ∈ f ⁻¹' (s i)`
+#. §7: `∀ i, f x ∈ s i`
+#. §8: `ext x`
+#. §9: `constructor`
+#. §10: `rw [Set.mem_preimage]`
+#. §11: `rw [Set.mem_iInter]`
+#. §12: `∀`
+#: Game.Levels.PreimageWorld.L12_PreimageIndexedIntersection
+msgid "# Universals Pass Through Too\n"
+"\n"
+"Indexed intersection generalizes binary intersection from §0 to §1:\n"
+"§2 means §3. Does preimage preserve this?\n"
+"\n"
+"§4\n"
+"\n"
+"Yes. The left side says §5, and the right side says\n"
+"§6, which is also §7. Same\n"
+"proposition.\n"
+"\n"
+"**Proof plan**:\n"
+"1. §8 then §9\n"
+"2. Each direction: §10 to unwrap preimage,\n"
+"   §11 to expose the §12, then hand back"
 msgstr ""
 
 #. §0: `s \\ t = s ∩ tᶜ`
@@ -6238,13 +7372,50 @@ msgstr ""
 #. §8: `omega`
 #. §9: `x ≤ 4`
 #. §10: `x < 5`
-#: Game.Levels.SubsetWorld.L17_Boss
+#: Game.Levels.SubsetWorld.L18_Boss
 msgid "Step by step:\n"
 "1. §0 — from §1 to §2\n"
 "2. §3 — from §4 to §5\n"
 "3. §6 — unwrap\n"
 "4. §7 — unwrap the goal\n"
 "5. §8 — §9 implies §10"
+msgstr ""
+
+#. §0: $$f^{-1}(s \\setminus t) = f^{-1}(s) \\setminus f^{-1}(t)$$
+#. §1: `Set.diff_eq`
+#. §2: `s \\ t = s ∩ tᶜ`
+#. §3: `ext`
+#. §4: `constructor`
+#. §5: `rw [Set.diff_eq]`
+#. §6: `s \\ t`
+#. §7: `s ∩ tᶜ`
+#. §8: `rw [Set.preimage_inter]`
+#. §9: `∩`
+#. §10: `rw [Set.preimage_compl]`
+#. §11: `ᶜ`
+#. §12: `rw [Set.diff_eq]`
+#. §13: `∩ ... ᶜ`
+#: Game.Levels.PreimageWorld.L16_Boss
+msgid "# Boss: Preimage Preserves Difference — By Composition\n"
+"\n"
+"You have built a library of preimage identities. Now USE them.\n"
+"\n"
+"§0\n"
+"\n"
+"The key insight: set difference IS intersection with complement.\n"
+"The theorem §1 states §2.\n"
+"\n"
+"So the proof strategy is pure rewriting — no §3, no §4,\n"
+"no case analysis. Just compose the results you already proved:\n"
+"\n"
+"1. §5 — rewrite §6 as §7\n"
+"2. §8 — distribute preimage over §9\n"
+"3. §10 — distribute preimage over §11\n"
+"4. §12 — rewrite §13 back to ``\n"
+"\n"
+"Each step uses a result you proved earlier in this world. Instead\n"
+"of reproving from scratch, you are **composing** your library.\n"
+"This is how mathematics really works."
 msgstr ""
 
 #. §0: `hs : x ∈ s`
@@ -6513,11 +7684,122 @@ msgid "# Dual De Morgan: (s ∩ t)ᶜ = sᶜ ∪ tᶜ\n"
 "3. **Backward**: §22, §23, destructure and case-split"
 msgstr ""
 
+#. §0: `⋂ i : Empty, s i = Set.univ`
+#. §1: `∀ i : Empty, P i`
+#. §2: `i`
+#. §3: `Empty`
+#. §4: `i.elim`
+#. §5: `Empty.elim i`
+#. §6: `Empty`
+#. §7: `Empty.elim`
+#. §8: `False.elim`
+#. §9: `i.elim`
+#. §10: `i : Empty`
+#. §11: `False.elim`
+#. §12: `h : False`
+#. §13: `False.elim`
+#. §14: `Empty.elim`
+#. §15: `Fin 0`
+#. §16: `Set.univ`
+#. §17: `True`
+#. §18: `Set.univ`
+#. §19: `s ∩ Set.univ = s`
+#. §20: `s`
+#. §21: `∅`
+#. §22: `s ∪ ∅ = s`
+#. §23: `s`
+#. §24: `⋃ i : Empty, s i = ∅`
+#. §25: `⋂ i ∈ t, s i`
+#. §26: `t`
+#. §27: `Set.univ`
+#. §28: `⋃ i : Empty, s i = ∅`
+#. §29: $\\bigcap_{i \\in \\emptyset} s_i$
+#. §30: $x \\in s_i$
+#. §31: $i \\in \\emptyset$
+#: Game.Levels.IndexedOpsWorld.L09_VacuousIntersection
+msgid "You proved that §0 — intersecting over\n"
+"an empty index gives everything.\n"
+"\n"
+"The key insight is **vacuous truth**: the statement §1\n"
+"is true because there are no §2 to check. In Lean, §3 is a type\n"
+"with no constructors, so §4 (equivalently, §5)\n"
+"discharges any goal about an element of §6.\n"
+"\n"
+"**§7 and §8**: The pattern §9 for §10\n"
+"is the type-level version of §11 for §12. Both say\n"
+"\"from an impossible premise, anything follows\" — the principle of\n"
+"explosion. You will see §13 in propositional logic and\n"
+"§14 when working with uninhabited types (like §15).\n"
+"\n"
+"**Why this is the right convention**: The intersection of a collection of\n"
+"sets is the **largest set contained in all of them**. When the collection\n"
+"is empty, every set is vacuously contained in all (zero) members of the\n"
+"collection — so the largest such set is §16. This is the same\n"
+"pattern as:\n"
+"- An empty product equals 1 (the multiplicative identity)\n"
+"- An empty sum equals 0 (the additive identity)\n"
+"- An empty conjunction (∀ over nothing) is §17\n"
+"\n"
+"In each case, the empty operation returns the **identity element** for\n"
+"that operation. For intersection, the identity is §18 (since\n"
+"§19 for all §20). For union, the identity is §21\n"
+"(since §22 for all §23). This is why the dual result —\n"
+"§24 — is also true.\n"
+"\n"
+"**Why this matters**: This explains why **bounded** indexed intersections\n"
+"(§25) are needed. If §26 might be empty, the bounded\n"
+"intersection degenerates to §27, which is often not what you\n"
+"want. When you see a bounded intersection in a proof, always consider:\n"
+"what happens if the bounding set is empty?\n"
+"\n"
+"**Up next**: You will prove the dual — §28 —\n"
+"completing the most dramatic duality pair in this world.\n"
+"\n"
+"In ordinary math: \"The intersection §29\n"
+"contains every element, because the defining condition — §30\n"
+"for all §31 — is vacuously satisfied.\""
+msgstr ""
+
 #. §0: `intro u hu`
 #. §1: `u ∈ 𝒫 s`
 #: Game.Levels.IndexedOpsWorld.L16_PowersetMonotonicity
 msgid "The goal is a subset relation between powersets. Start with\n"
 "§0 to assume §1."
+msgstr ""
+
+#. §0: `ext x; constructor`
+#. §1: `x`
+#. §2: `ext x; constructor; ...`
+#. §3: `rw [theorem1]; rw [theorem2]; ...`
+#: Game.Levels.PreimageWorld.L15_RewriteComposition
+msgid "Two rewrites — done! Compare this with the §0\n"
+"approach, which would have required introducing §1, splitting the\n"
+"biconditional, destructuring conjunctions, and handling negation\n"
+"in both directions.\n"
+"\n"
+"**When to use each approach**:\n"
+"\n"
+"| Strategy | When to use |\n"
+"|---|---|\n"
+"| §2 | Proving a NEW identity from scratch |\n"
+"| §3 | Composing KNOWN identities |\n"
+"\n"
+"The rewrite approach is more concise and reads more like a\n"
+"mathematical proof: \"by preimage-inter and preimage-compl.\"\n"
+"It is also closer to how mathematicians actually reason — citing\n"
+"known results rather than reproving everything from definitions.\n"
+"\n"
+"The boss level will ask you to prove preimage preserves set\n"
+"difference using this same strategy with four rewrites. You now\n"
+"have the technique; the boss tests whether you can identify which\n"
+"theorems to compose."
+msgstr ""
+
+#. §0: `hs : x ∈ f ⁻¹' s`
+#. §1: `f x ∈ s`
+#. §2: `left`
+#: Game.Levels.PreimageWorld.L09_PreimageUnion
+msgid "§0, i.e., §1. Use §2 to target the left disjunct."
 msgstr ""
 
 #: Game.Levels.IndexedOpsWorld.L15_Powerset
@@ -6560,7 +7842,7 @@ msgstr ""
 #. §1: `(h x).1`
 #. §2: `hx`
 #. §3: `x ∈ s`
-#: Game.Levels.SubsetWorld.L16_ExtFromAntisymm
+#: Game.Levels.SubsetWorld.L17_ExtFromAntisymm
 msgid "§0 — §1 is the\n"
 "forward implication of the biconditional, and §2 provides §3."
 msgstr ""
@@ -6597,7 +7879,7 @@ msgid "§0 states §1 in a Boolean algebra."
 msgstr ""
 
 #. §0: `exact Set.Subset.antisymm h1 h2`
-#: Game.Levels.SubsetWorld.L13_Antisymm
+#: Game.Levels.SubsetWorld.L14_Antisymm
 msgid "§0 combines the\n"
 "two subset proofs into a set equality proof."
 msgstr ""
@@ -6618,7 +7900,7 @@ msgid "The intersection is commutative (subset direction)."
 msgstr ""
 
 #. §0: `intro h`
-#: Game.Levels.SubsetWorld.L14_ProperSubset
+#: Game.Levels.SubsetWorld.L15_ProperSubset
 msgid "Second goal: prove the reverse inclusion is false. This is\n"
 "the same technique as Level 7 — assume the reverse subset holds,\n"
 "exhibit a counterexample, and derive contradiction.\n"
@@ -6654,7 +7936,7 @@ msgid "You proved §0 — every element is in §1 or its\n"
 "The library name is §7."
 msgstr ""
 
-#: Game.Levels.SubsetWorld.L13_Antisymm
+#: Game.Levels.SubsetWorld.L14_Antisymm
 msgid "Double Containment"
 msgstr ""
 
@@ -6746,7 +8028,7 @@ msgstr ""
 #. §11: `antisymm`
 #. §12: `antisymm`
 #. §13: `ext`
-#: Game.Levels.SubsetWorld.L15_AntisymmFromExt
+#: Game.Levels.SubsetWorld.L16_AntisymmFromExt
 msgid "You just proved antisymmetry from extensionality! Compare the two proofs:\n"
 "\n"
 "**Using §0** (Level 13):\n"
@@ -6794,6 +8076,40 @@ msgid "§0 is now §1, which matches the goal\n"
 "Use §7."
 msgstr ""
 
+#. §0: `f 3 ∈ t`
+#. §1: $x \\notin f^{-1}(t)$
+#. §2: $f(x) \\notin t$
+#. §3: `∉`
+#. §4: `¬ ∈`
+#. §5: `x ∈ f ⁻¹' t`
+#. §6: `f x ∈ t`
+#. §7: `{n | n < 5}`
+#. §8: `n ↦ n + 1`
+#. §9: `10 + 1 < 5`
+#. §10: `11 ≥ 5`
+#. §11: `show ¬ (10 + 1 < 5)`
+#. §12: `show`
+#. §13: `omega`
+#: Game.Levels.PreimageWorld.L02_PreimageNonMembership
+msgid "# When an Element is NOT in a Preimage\n"
+"\n"
+"In the last level, you proved that 3 is in a preimage by showing\n"
+"§0. What about elements that are **not** in a preimage?\n"
+"\n"
+"§1 means §2.\n"
+"\n"
+"Since §3 is §4, the proof shape is: assume §5\n"
+"(i.e., §6), then derive a contradiction.\n"
+"\n"
+"**Your task**: Prove that 10 is NOT in the preimage of §7\n"
+"under §8. This means §9 is false (since §10).\n"
+"\n"
+"**Proof plan**:\n"
+"1. §11 — unfold the preimage membership to\n"
+"   arithmetic (just like using §12 in Set World)\n"
+"2. §13 — close the arithmetic goal"
+msgstr ""
+
 #. §0: `hx`
 #. §1: `x`
 #. §2: `x ∉ s ∪ t`
@@ -6805,12 +8121,29 @@ msgid "§0 says §1 is in the complement of the union: §2,\n"
 "§4."
 msgstr ""
 
+#. §0: `x ∈ f ⁻¹' Set.univ`
+#. §1: `x ∈ Set.univ`
+#. §2: `True`
+#. §3: `x ∈ Set.univ`
+#. §4: `True`
+#. §5: `intro _`
+#. §6: `constructor`
+#: Game.Levels.PreimageWorld.L07_PreimageUniv
+msgid "**Forward**: §0 implies §1.\n"
+"The goal is §2 (since §3 unfolds to §4).\n"
+"Use §5 to discard the hypothesis, then §6."
+msgstr ""
+
 #. §0: `x ∈ s`
 #. §1: `x ∈ s ∩ t`
 #. §2: `x ∈ s`
 #: Game.Levels.PsetSets.L16_AbsorptionLaw
 msgid "Case-split on the union. In both cases (§0 or\n"
 "§1), §2 follows."
+msgstr ""
+
+#: Game.Levels.PreimageWorld.L13_PreimageIdentity
+msgid "Preimage Under the Identity"
 msgstr ""
 
 #. §0: ```
@@ -6938,7 +8271,7 @@ msgstr ""
 
 #. §0: `apply Set.Subset.antisymm`
 #. §1: `ext x`
-#: Game.Levels.SubsetWorld.L17_Boss
+#: Game.Levels.SubsetWorld.L18_Boss
 msgid "The goal is a set equality. Use §0\n"
 "to split into two subset proofs, or §1 to reduce to a\n"
 "membership biconditional."
@@ -6977,7 +8310,7 @@ msgstr ""
 #. §4: `omega`
 #. §5: `False`
 #. §6: `3 < 3`
-#: Game.Levels.SubsetWorld.L12_SetNonEquality
+#: Game.Levels.SubsetWorld.L13_SetNonEquality
 msgid "§0 now says §1 is in the left set, which is definitionally\n"
 "§2. Unwrap with §3, then §4\n"
 "derives §5 from §6."
@@ -7053,6 +8386,20 @@ msgstr ""
 
 #: Game.Levels.SubsetWorld.L11_ExtPractice
 msgid "The backward direction is similar: unwrap and use arithmetic."
+msgstr ""
+
+#. §0: `hx`
+#. §1: `x ∈ f ⁻¹' s`
+#. §2: `f x ∈ s`
+#. §3: `h : s ⊆ t`
+#. §4: `∀ y, y ∈ s → y ∈ t`
+#. §5: `h`
+#. §6: `hx`
+#. §7: `hx : f x ∈ s`
+#: Game.Levels.PreimageWorld.L05_PreimageMonotonicity
+msgid "§0 says §1, which is definitionally §2.\n"
+"The hypothesis §3 says §4. Apply §5\n"
+"to §6 — Lean can see that §7."
 msgstr ""
 
 #. §0: `s \\ (s \\ t) = s ∩ t`
@@ -7280,10 +8627,41 @@ msgstr ""
 #. §3: `change x ≤ 4 at hle`
 #. §4: `show x < 5`
 #. §5: `omega`
-#: Game.Levels.SubsetWorld.L17_Boss
+#: Game.Levels.SubsetWorld.L18_Boss
 msgid "§0 says §1 is in the arithmetic set, which is\n"
 "definitionally §2. Unwrap with §3,\n"
 "then §4 and §5."
+msgstr ""
+
+#. §0: `intro x hx`
+#. §1: `exact h hx`
+#. §2: `hx : x ∈ f ⁻¹' s`
+#. §3: `f x ∈ s`
+#. §4: `h : s ⊆ t`
+#. §5: `s`
+#. §6: `f x`
+#. §7: `h hx : f x ∈ t`
+#. §8: `x ∈ f ⁻¹' t`
+#. §9: `f x ∈ s`
+#. §10: `s ⊆ t`
+#. §11: `f x ∈ t`
+#. §12: `Set.preimage_mono`
+#: Game.Levels.PreimageWorld.L05_PreimageMonotonicity
+msgid "You proved preimage monotonicity: bigger target set → bigger preimage.\n"
+"\n"
+"The proof was just two steps: §0, then §1.\n"
+"This works because:\n"
+"\n"
+"1. §2 is definitionally §3\n"
+"2. §4 accepts any element of §5, including §6\n"
+"3. §7 is definitionally §8\n"
+"\n"
+"Notice how Lean's definitional transparency makes preimage proofs\n"
+"short — the function application is invisible. The proof reads exactly\n"
+"like the mathematical argument: \"If §9 and §10, then\n"
+"§11.\"\n"
+"\n"
+"The library name for this fact is §12."
 msgstr ""
 
 #. §0: $$(\\bigcup_i s_i)^c = \\bigcap_i (s_i)^c$$
@@ -7419,7 +8797,7 @@ msgstr ""
 #. §1: `show x < 5`
 #. §2: `change x < 3 at hx`
 #. §3: `omega`
-#: Game.Levels.SubsetWorld.L14_ProperSubset
+#: Game.Levels.SubsetWorld.L15_ProperSubset
 #: Game.Levels.IndexedOpsWorld.L18_DeMorganUnion
 msgid "§0 then §1 then\n"
 "§2 then §3."
@@ -7817,7 +9195,7 @@ msgstr ""
 #. §22: `change`
 #. §23: `show`
 #. §24: `omega`
-#: Game.Levels.SubsetWorld.L17_Boss
+#: Game.Levels.SubsetWorld.L18_Boss
 msgid "# Boss: Chaining Subsets to Prove Equality\n"
 "\n"
 "You have two sets §0 and §1 of natural numbers, with three\n"
@@ -7944,9 +9322,18 @@ msgstr ""
 
 #. §0: `Set.Subset.antisymm`
 #. §1: `ext x`
-#: Game.Levels.SubsetWorld.L15_AntisymmFromExt
+#: Game.Levels.SubsetWorld.L16_AntisymmFromExt
 msgid "Without §0, use §1 to reduce\n"
 "the equality to membership equivalences."
+msgstr ""
+
+#. §0: `x ∈ f ⁻¹' (s ∩ t)`
+#. §1: `f x ∈ s ∩ t`
+#. §2: `f x ∈ s ∧ f x ∈ t`
+#. §3: `obtain`
+#: Game.Levels.PreimageWorld.L08_PreimageIntersection
+msgid "**Forward**: §0 means §1,\n"
+"which is §2. Destructure with §3."
 msgstr ""
 
 #: Game.Levels.SetOpsWorld.L01_UnionMembership
@@ -8000,12 +9387,16 @@ msgid "§0 means §1, and §2\n"
 "means §3. Apply §4 to §5: §6."
 msgstr ""
 
+#: Game.Levels.PreimageWorld.L09_PreimageUnion
+msgid "Preimage distributes over union."
+msgstr ""
+
 #. §0: `h`
 #. §1: `4`
 #. §2: `4 < 5`
 #. §3: `h`
 #. §4: `have h4 : (4 : ℕ) < 5 := by omega`
-#: Game.Levels.SubsetWorld.L14_ProperSubset
+#: Game.Levels.SubsetWorld.L15_ProperSubset
 msgid "Now §0 says every number less than 5 is less than 3. Use\n"
 "the counterexample §1: prove §2 then apply §3.\n"
 "\n"
@@ -8069,7 +9460,7 @@ msgid "§0 states §1 (double negation elimination)."
 msgstr ""
 
 #. §0: `ext`
-#: Game.Levels.SubsetWorld.L15_AntisymmFromExt
+#: Game.Levels.SubsetWorld.L16_AntisymmFromExt
 msgid "Deriving set equality from mutual subsets using §0."
 msgstr ""
 
@@ -8082,7 +9473,7 @@ msgstr ""
 #. §2: `Set.Subset.antisymm`
 #. §3: `s = t`
 #. §4: `exact Set.Subset.antisymm h1 h2`
-#: Game.Levels.SubsetWorld.L13_Antisymm
+#: Game.Levels.SubsetWorld.L14_Antisymm
 msgid "You have §0 and §1. The theorem\n"
 "§2 says exactly that these two facts imply §3.\n"
 "\n"
@@ -8136,6 +9527,10 @@ msgid "Apply §0 to the two singleton sets to get\n"
 "derive a contradiction in each case."
 msgstr ""
 
+#: Game.Levels.PreimageWorld.L15_RewriteComposition
+msgid "Preimage distributes over intersection with complement."
+msgstr ""
+
 #. §0: `hx : x ∈ ∅`
 #. §1: `False`
 #. §2: `False`
@@ -8144,6 +9539,119 @@ msgstr ""
 msgid "§0 is definitionally §1 — nothing belongs\n"
 "to the empty set. Since you have a §2 hypothesis, any goal\n"
 "follows. Use §3."
+msgstr ""
+
+#. §0: `rw [Set.diff_eq]`
+#. §1: `rw [Set.preimage_inter]`
+#. §2: `∩`
+#. §3: `rw [Set.preimage_compl]`
+#. §4: `ᶜ`
+#. §5: `rw [Set.diff_eq]`
+#. §6: `ext`
+#. §7: `constructor`
+#. §8: `s ⊆ t → f ⁻¹' s ⊆ f ⁻¹' t`
+#. §9: `Set.preimage_mono`
+#. §10: `f ⁻¹' ∅ = ∅`
+#. §11: `False`
+#. §12: `Set.preimage_empty`
+#. §13: `f ⁻¹' Set.univ = Set.univ`
+#. §14: `True`
+#. §15: `Set.preimage_univ`
+#. §16: `f ⁻¹' (s ∩ t) = f ⁻¹' s ∩ f ⁻¹' t`
+#. §17: `∧`
+#. §18: `Set.preimage_inter`
+#. §19: `f ⁻¹' (s ∪ t) = f ⁻¹' s ∪ f ⁻¹' t`
+#. §20: `∨`
+#. §21: `Set.preimage_union`
+#. §22: `f ⁻¹' sᶜ = (f ⁻¹' s)ᶜ`
+#. §23: `¬`
+#. §24: `Set.preimage_compl`
+#. §25: `f ⁻¹' (⋃ i, s i) = ⋃ i, f ⁻¹' (s i)`
+#. §26: `∃`
+#. §27: `preimage_iUnion`
+#. §28: `f ⁻¹' (⋂ i, s i) = ⋂ i, f ⁻¹' (s i)`
+#. §29: `∀`
+#. §30: `preimage_iInter`
+#. §31: `id ⁻¹' s = s`
+#. §32: `Set.preimage_id`
+#. §33: `(g . f) ⁻¹' t = f ⁻¹' (g ⁻¹' t)`
+#. §34: `Set.preimage_comp`
+#. §35: `f ⁻¹' (s \\ t) = f ⁻¹' s \\ f ⁻¹' t`
+#. §36: `∧`
+#. §37: `¬`
+#. §38: `Set.preimage_diff`
+#. §39: `β`
+#. §40: `∩`
+#. §41: `∪`
+#. §42: `ᶜ`
+#. §43: `∅`
+#. §44: `Set.univ`
+#. §45: `α`
+#. §46: `x ∈ f ⁻¹' t`
+#. §47: `(t . f) x`
+#. §48: `f`
+#. §49: `t`
+#. §50: `f`
+#. §51: `f '' s`
+#. §52: `y ∈ f '' s ↔ ∃ x ∈ s, f x = y`
+#: Game.Levels.PreimageWorld.L16_Boss
+msgid "Congratulations — you completed **Preimage World** by composing\n"
+"your library of results!\n"
+"\n"
+"The proof was just four rewrites:\n"
+"1. §0 — difference is intersection with complement\n"
+"2. §1 — preimage distributes over §2\n"
+"3. §3 — preimage distributes over §4\n"
+"4. §5 — repackage as difference\n"
+"\n"
+"No §6, no §7, no case analysis. You used previously\n"
+"proved theorems as building blocks. This is the payoff of having\n"
+"a library: each new result becomes easier because you can stand on\n"
+"your earlier work.\n"
+"\n"
+"## The Complete Preimage Library\n"
+"\n"
+"You have built a complete theory. Here is everything you proved,\n"
+"in one place:\n"
+"\n"
+"| Level | Identity | Logic | Library name |\n"
+"|---|---|---|---|\n"
+"| L05 | §8 | monotonicity | §9 |\n"
+"| L06 | §10 | §11 | §12 |\n"
+"| L07 | §13 | §14 | §15 |\n"
+"| L08 | §16 | §17 | §18 |\n"
+"| L09 | §19 | §20 | §21 |\n"
+"| L10 | §22 | §23 | §24 |\n"
+"| L11 | §25 | §26 | §27 |\n"
+"| L12 | §28 | §29 | §30 |\n"
+"| L13 | §31 | identity | §32 |\n"
+"| L14 | §33 | composition | §34 |\n"
+"| L16 | §35 | §36 + §37 | §38 |\n"
+"\n"
+"Every row says the same thing: **preimage is a Boolean algebra\n"
+"homomorphism**. It maps the Boolean algebra of subsets of §39\n"
+"(with §40, §41, §42, §43, §44) into the Boolean algebra\n"
+"of subsets of §45, preserving all operations. It is also\n"
+"**contravariant** — it reverses the direction of function\n"
+"composition (L14).\n"
+"\n"
+"The single structural reason: preimage is just composition on the\n"
+"predicate level. §46 is §47. Composing with\n"
+"§48 does not change the logical connectives inside §49.\n"
+"\n"
+"**The topology connection**: In topology, a function §50 is defined\n"
+"to be **continuous** if and only if the preimage of every open set\n"
+"is open. The preservation results you proved here are exactly why\n"
+"this definition works — continuous functions automatically preserve\n"
+"all the set-theoretic structure that topology needs.\n"
+"\n"
+"**Looking ahead**: In Image World, you will study §51 —\n"
+"the image of a set under a function. Image involves an existential\n"
+"(§52), and existentials do NOT\n"
+"commute with conjunction or negation. Image only preserves union,\n"
+"not intersection or complement. The contrast between the\n"
+"well-behaved preimage and the less-well-behaved image is one of\n"
+"the central themes of this course."
 msgstr ""
 
 #. §0: `x ∉ sᶜ`
@@ -8221,13 +9729,54 @@ msgid "# Problem Set: Level 4\n"
 "of the union."
 msgstr ""
 
+#. §0: `f ⁻¹' ∅ = ∅`
+#. §1: `False → False`
+#. §2: `x ∈ f ⁻¹' ∅`
+#. §3: `f x ∈ ∅`
+#. §4: `∅`
+#. §5: `{_ | False}`
+#. §6: `f x ∈ ∅`
+#. §7: `False`
+#. §8: `x ∈ ∅`
+#. §9: `False`
+#. §10: `ext`
+#. §11: `constructor`
+#. §12: `rfl`
+#. §13: `ext x; rfl`
+#. §14: `rfl`
+#. §15: `Set.preimage_empty`
+#: Game.Levels.PreimageWorld.L06_PreimageEmpty
+msgid "You proved §0. Both directions reduced to §1,\n"
+"which is trivially true.\n"
+"\n"
+"**Why this is definitional**: §2 means §3, and\n"
+"§4 is §5, so §6 IS §7. Similarly, §8\n"
+"IS §9. The two sides are literally the same proposition. The\n"
+"§10 + §11 proof makes this definitional equality explicit\n"
+"step by step.\n"
+"\n"
+"**A note on §12**: In real Lean code, §13 would close\n"
+"this goal in one line, since both sides are definitionally equal.\n"
+"We disable §14 in these set equality levels so you can see the\n"
+"definitional unfolding step by step — understanding WHY the two sides are equal\n"
+"is more valuable than closing the goal quickly.\n"
+"\n"
+"The library name is §15."
+msgstr ""
+
 #. §0: `change x < 3 at hx`
 #. §1: `show x ≤ 2`
 #. §2: `omega`
 #: Game.Levels.SubsetWorld.L11_ExtPractice
 #: Game.Levels.IndexedOpsWorld.L22_IInterDistrib
+#: Game.Levels.PreimageWorld.L08_PreimageIntersection
+#: Game.Levels.PreimageWorld.L08_PreimageIntersection
 msgid "§0 then §1\n"
 "then §2."
+msgstr ""
+
+#: Game.Levels.PreimageWorld.L12_PreimageIndexedIntersection
+msgid "**Backward**: Same structure — unpack, hand back."
 msgstr ""
 
 #. §0: `intro x hx`
@@ -8323,6 +9872,10 @@ msgstr ""
 msgid "(2, 3) belongs to the product of even numbers with numbers less than 5."
 msgstr ""
 
+#: Game.Levels.PreimageWorld.L01_PreimageMembership
+msgid "3 is in the preimage because applying the function gives a value in the target set."
+msgstr ""
+
 #. §0: `intro x hx`
 #. §1: `obtain ⟨hnt, hnns⟩ := hx`
 #: Game.Levels.PsetSets.L05_ComplementDifference
@@ -8391,7 +9944,13 @@ msgstr ""
 
 #. §0: `ext x`
 #: Game.Levels.SetOpsWorld.L11_UnionCommutativity
+#: Game.Levels.PreimageWorld.L06_PreimageEmpty
 msgid "Start with §0 to reduce to element-wise membership."
+msgstr ""
+
+#: Game.Levels.PreimageWorld.L10_PreimageComplement
+msgid "**Backward**: same reasoning — the two sides are\n"
+"definitionally equal."
 msgstr ""
 
 #. §0: `show 3 < 5`
@@ -8405,6 +9964,11 @@ msgstr ""
 #: Game.Levels.SetOpsWorld.L11_UnionCommutativity
 #: Game.Levels.PsetSets.L15_SubsetViaDifference
 msgid "Use §0 to split the biconditional into two directions."
+msgstr ""
+
+#. §0: `rw [Set.mem_preimage] at hx`
+#: Game.Levels.PreimageWorld.L12_PreimageIndexedIntersection
+msgid "Unwrap: §0."
 msgstr ""
 
 #. §0: `⊆`
@@ -8536,6 +10100,16 @@ msgstr ""
 msgid "Indexed intersection is monotone: if each s i ⊆ t i, then ⋂ i, s i ⊆ ⋂ i, t i."
 msgstr ""
 
+#. §0: `x ∈ f ⁻¹' ∅`
+#. §1: `f x ∈ ∅`
+#. §2: `False`
+#. §3: `False`
+#: Game.Levels.PreimageWorld.L06_PreimageEmpty
+msgid "**Forward**: §0 is definitionally §1,\n"
+"which is §2. Introducing this gives a proof of §3,\n"
+"which closes any goal."
+msgstr ""
+
 #. §0: `Set.univ`
 #. §1: `fun _ => True`
 #. §2: `True`
@@ -8633,7 +10207,7 @@ msgstr ""
 #. §0: `h5 : 3 < 3`
 #. §1: `omega`
 #. §2: `False`
-#: Game.Levels.SubsetWorld.L12_SetNonEquality
+#: Game.Levels.SubsetWorld.L13_SetNonEquality
 msgid "§0 is clearly false. §1 can derive §2\n"
 "from contradictory arithmetic."
 msgstr ""
@@ -8718,6 +10292,16 @@ msgstr ""
 msgid "**Forward**: §0 means §1 and\n"
 "§2 (= §3). You need §4.\n"
 "Start with §5 then §6."
+msgstr ""
+
+#. §0: `3 ∈ (fun n => n + 1) ⁻¹' ...`
+#. §1: `(fun n => n + 1) 3 ∈ ...`
+#. §2: `3 + 1 < 5`
+#. §3: `show 3 + 1 < 5`
+#: Game.Levels.PreimageWorld.L01_PreimageMembership
+msgid "The goal says §0. By the definition\n"
+"of preimage, this means §1, which is\n"
+"§2. Use §3 to make this explicit."
 msgstr ""
 
 #. §0: `h : x ∉ s`
@@ -8832,12 +10416,18 @@ msgid "§0 states §1 — membership\n"
 "§4"
 msgstr ""
 
+#. §0: `rw [Set.mem_iInter]`
+#. §1: `exact hx`
+#: Game.Levels.PreimageWorld.L12_PreimageIndexedIntersection
+msgid "Now §0 on the goal, then §1."
+msgstr ""
+
 #: Game.Levels.PsetSets.L04_PartitionEquality
 msgid "A set equals the union of its intersection and difference with t."
 msgstr ""
 
 #. §0: `have h4' := h h4`
-#: Game.Levels.SubsetWorld.L14_ProperSubset
+#: Game.Levels.SubsetWorld.L15_ProperSubset
 msgid "Apply the assumed reverse inclusion to the witness:\n"
 "§0."
 msgstr ""
@@ -8853,7 +10443,7 @@ msgstr ""
 #. §8: `h1 : s ⊆ t`
 #. §9: `h2 : t ⊆ s`
 #. §10: `s = t`
-#: Game.Levels.SubsetWorld.L13_Antisymm
+#: Game.Levels.SubsetWorld.L14_Antisymm
 msgid "# An Alternative Route to Set Equality\n"
 "\n"
 "In Levels 10–11, you proved set equalities using §0 — reducing to\n"
@@ -8999,6 +10589,11 @@ msgid "Now §0. Extract the witness and\n"
 "§1."
 msgstr ""
 
+#: Game.Levels.PreimageWorld.L08_PreimageIntersection
+msgid "**Backward**: destructure the intersection hypothesis\n"
+"and reassemble."
+msgstr ""
+
 #: Game.Levels.SetOpsWorld.L11_UnionCommutativity
 msgid "Union is commutative."
 msgstr ""
@@ -9070,13 +10665,55 @@ msgstr ""
 msgid "10 belongs to the indexed intersection of lower-bound sets."
 msgstr ""
 
+#. §0: `ext x; constructor`
+#. §1: `rw`
+#. §2: `rw`
+#. §3: `f ⁻¹' (s ∩ tᶜ) = f ⁻¹' s ∩ (f ⁻¹' t)ᶜ`
+#. §4: `Set.preimage_inter`
+#. §5: `f ⁻¹' (s ∩ t) = f ⁻¹' s ∩ f ⁻¹' t`
+#. §6: `Set.preimage_compl`
+#. §7: `f ⁻¹' sᶜ = (f ⁻¹' s)ᶜ`
+#. §8: `rw [Set.preimage_inter]`
+#. §9: `∩`
+#. §10: `rw [Set.preimage_compl]`
+#. §11: `ᶜ`
+#. §12: `ext`
+#. §13: `constructor`
+#: Game.Levels.PreimageWorld.L15_RewriteComposition
+msgid "# A New Proof Strategy: Rewriting with Library Theorems\n"
+"\n"
+"In Levels 6-12, you proved set equalities by §0 —\n"
+"reducing to element-wise membership and proving both directions.\n"
+"There is another approach: **compose library results via §1**.\n"
+"\n"
+"Instead of starting from scratch, you can chain the identities you\n"
+"already proved as rewrite rules. Each §2 step transforms the\n"
+"expression using a known theorem, and after enough rewrites the\n"
+"two sides match automatically.\n"
+"\n"
+"**Your task**: Prove §3.\n"
+"\n"
+"You already know:\n"
+"- §4: §5\n"
+"- §6: §7\n"
+"\n"
+"Apply them in sequence:\n"
+"1. §8 — distribute over §9\n"
+"2. §10 — distribute over §11\n"
+"\n"
+"Two rewrites, no §12, no §13. The library does the work.\n"
+"\n"
+"This technique scales: the boss level will use the same approach\n"
+"with four rewrites to prove that preimage preserves set difference."
+msgstr ""
+
 #. §0: `have h4 : (4 : ℕ) < 5 := by omega`
 #. §1: `have h4' := h h4`
 #. §2: `change (4 : ℕ) < 3 at h4'`
 #. §3: `omega`
 #: Game.Levels.SubsetWorld.L07_NonSubset
-#: Game.Levels.SubsetWorld.L12_SetNonEquality
-#: Game.Levels.SubsetWorld.L14_ProperSubset
+#: Game.Levels.SubsetWorld.L13_SetNonEquality
+#: Game.Levels.SubsetWorld.L15_ProperSubset
 msgid "Step by step:\n"
 "1. §0\n"
 "2. §1\n"
@@ -9113,6 +10750,14 @@ msgstr ""
 #: Game.Levels.PsetSets.L16_AbsorptionLaw
 #: Game.Levels.PsetSets.L17_IndexedDifference
 #: Game.Levels.PsetSets.L18_Boss
+#: Game.Levels.PreimageWorld.L07_PreimageUniv
+#: Game.Levels.PreimageWorld.L08_PreimageIntersection
+#: Game.Levels.PreimageWorld.L09_PreimageUnion
+#: Game.Levels.PreimageWorld.L10_PreimageComplement
+#: Game.Levels.PreimageWorld.L11_PreimageIndexedUnion
+#: Game.Levels.PreimageWorld.L12_PreimageIndexedIntersection
+#: Game.Levels.PreimageWorld.L13_PreimageIdentity
+#: Game.Levels.PreimageWorld.L14_PreimageComposition
 msgid "Start with §0 then §1."
 msgstr ""
 
@@ -9217,6 +10862,10 @@ msgstr ""
 msgid "§0 states §1 (lattice version of iInter_subset)."
 msgstr ""
 
+#: Game.Levels.PreimageWorld.L10_PreimageComplement
+msgid "Preimage Preserves Complement"
+msgstr ""
+
 #. §0: `Even 2`
 #. §1: `show Even 2`
 #: Game.Levels.IndexedOpsWorld.L11_CartesianProduct
@@ -9245,6 +10894,69 @@ msgid "**Forward direction (the classical one)**: You will assume\n"
 "Start with §5."
 msgstr ""
 
+#. §0: `s ⊆ t`
+#. §1: `∀ x, x ∈ s → x ∈ t`
+#. §2: `intro x hx`
+#. §3: `x ∈ t`
+#. §4: `s ⊆ s`
+#. §5: `intro x hx; exact hx`
+#. §6: `∅ ⊆ s`
+#. §7: `intro x hx; contradiction`
+#. §8: `s ⊆ Set.univ`
+#. §9: `intro x _; constructor`
+#. §10: `s ⊆ t → t ⊆ u → s ⊆ u`
+#. §11: `Set.Subset.trans`
+#. §12: `s = t ↔ ∀ x, x ∈ s ↔ x ∈ t`
+#. §13: `ext x; constructor; ...`
+#. §14: `s ⊆ t → t ⊆ s → s = t`
+#. §15: `exact Set.Subset.antisymm h1 h2`
+#. §16: `s ≠ t`
+#. §17: `(s = t) → False`
+#. §18: `s ⊂ t`
+#. §19: `s ⊆ t ∧ ¬ (t ⊆ s)`
+#. §20: `constructor`
+#. §21: `change P at h`
+#. §22: `h.1`
+#. §23: `h.2`
+#. §24: `∧`
+#. §25: `↔`
+#. §26: `⊆`
+#. §27: `⊂`
+#. §28: `∪`
+#. §29: `∩`
+#. §30: `ᶜ`
+#. §31: ``). Each
+#. operation corresponds to a logical connective, extending the
+#. sets-as-predicates theme from Set World. The `
+#: Game.Levels.SubsetWorld.L18_Boss
+msgid "Congratulations — you have completed **Subset World**!\n"
+"\n"
+"Here is your toolkit:\n"
+"\n"
+"| Concept | Lean | Proof move |\n"
+"|---|---|---|\n"
+"| Subset §0 | §1 | §2 then show §3 |\n"
+"| Reflexivity §4 | identity | §5 |\n"
+"| §6 | vacuously true | §7 |\n"
+"| §8 | trivially true | §9 |\n"
+"| Transitivity | §10 | chain with §11 or function application |\n"
+"| Set equality via ext | §12 | §13 |\n"
+"| Set equality via antisymm | §14 | §15 |\n"
+"| Set non-equality §16 | §17 | assume equality, find contradictory witness |\n"
+"| Proper subset §18 | §19 | §20, then prove ⊆ and ¬⊆ |\n"
+"| Unwrap hypothesis | §21 | converts display to def-equal form |\n"
+"| Dot projection | §22, §23 | extract components of §24 or §25 |\n"
+"\n"
+"The §26 relation is a **partial order** on sets: it is reflexive\n"
+"(Level 3), transitive (Level 8), and antisymmetric (Level 14). The\n"
+"strict variant §27 (proper subset, Level 15) excludes equality.\n"
+"\n"
+"In the next world, you will learn about **set operations**: union (§28),\n"
+"intersection (§29), complement (§30), and difference (§31intro x hx` proof\n"
+"pattern you mastered here will be the foundation for every one of\n"
+"those proofs."
+msgstr ""
+
 #. §0: `intro h`
 #. §1: `rw [← h]`
 #. §2: `3 < 3`
@@ -9263,7 +10975,7 @@ msgstr ""
 #. §15: `3 ∈ {n | n < 3}`
 #. §16: `3 ∈ {n | n < 5}`
 #. §17: `3 < 3`
-#: Game.Levels.SubsetWorld.L12_SetNonEquality
+#: Game.Levels.SubsetWorld.L13_SetNonEquality
 msgid "You proved your first set **non-equality**! The proof structure was:\n"
 "\n"
 "1. **Assume** the sets are equal (§0)\n"
@@ -9326,9 +11038,63 @@ msgid "The goal is §0. Rewrite to a universal:\n"
 "§1."
 msgstr ""
 
+#. §0: `rw [Set.mem_preimage]`
+#. §1: `rw [Set.mem_iUnion]`
+#. §2: `exact ⟨i, hi⟩`
+#: Game.Levels.PreimageWorld.L11_PreimageIndexedUnion
+msgid "Now build the preimage membership. Use §0\n"
+"then §1 then §2."
+msgstr ""
+
+#. §0: `omega`
+#. §1: `ext`
+#. §2: `omega`
+#. §3: `h : ∀ x, p x ↔ q x`
+#. §4: `{x | p x} = {x | q x}`
+#. §5: `omega`
+#. §6: `h`
+#. §7: `ext`
+#. §8: `constructor`
+#. §9: `ext x`
+#. §10: `constructor`
+#. §11: `↔`
+#. §12: `h x`
+#. §13: `p x → q x`
+#. §14: `.1`
+#. §15: `h x`
+#. §16: `q x → p x`
+#. §17: `.2`
+#. §18: `ext x`
+#. §19: `p x ↔ q x`
+#. §20: `h x`
+#. §21: `exact h x`
+#: Game.Levels.SubsetWorld.L12_AbstractExt
+msgid "# Ext Without Arithmetic\n"
+"\n"
+"In Levels 10 and 11, both set equalities used arithmetic predicates,\n"
+"and §0 closed each direction. But §1 is not about arithmetic —\n"
+"it is about **logic**. The closing move depends on the predicates\n"
+"involved, not on §2.\n"
+"\n"
+"**Your task**: Given a hypothesis §3, prove that\n"
+"§4.\n"
+"\n"
+"No arithmetic. No §5. The proof uses only the hypothesis §6\n"
+"and the logical structure of §7 + §8.\n"
+"\n"
+"**Proof plan**:\n"
+"1. §9 — reduce to membership biconditional\n"
+"2. §10 — split the §11\n"
+"3. **Forward**: the hypothesis §12 gives §13 (its §14)\n"
+"4. **Backward**: §15 also gives §16 (its §17)\n"
+"\n"
+"Or: after §18, notice that the goal IS §19, which is\n"
+"exactly §20. So §21 closes the goal in one step!"
+msgstr ""
+
 #. §0: `t ⊆ s`
 #. §1: `.2`
-#: Game.Levels.SubsetWorld.L16_ExtFromAntisymm
+#: Game.Levels.SubsetWorld.L17_ExtFromAntisymm
 msgid "Goal: §0. Same pattern, but use §1 for the backward\n"
 "direction."
 msgstr ""
@@ -9447,6 +11213,16 @@ msgid "§0. Convert both hypothesis and goal to subset\n"
 "relations with §1."
 msgstr ""
 
+#. §0: `intro hx`
+#. §1: `cases hx with | inl hs | inr ht`
+#. §2: `left`
+#. §3: `right`
+#. §4: `exact`
+#: Game.Levels.PreimageWorld.L09_PreimageUnion
+msgid "§0 then §1.\n"
+"In each case, use §2/§3 then §4."
+msgstr ""
+
 #. §0: `hst : x ∈ s ∩ t`
 #. §1: `obtain ⟨hs, ht⟩ := hst`
 #: Game.Levels.SetOpsWorld.L17_Boss
@@ -9533,6 +11309,11 @@ msgstr ""
 #: Game.Levels.PsetSets.L11_PowersetIntersection
 msgid "Use §0 to split the conjunction, then convert each\n"
 "powerset membership to a subset relation."
+msgstr ""
+
+#. §0: `intro x hx`
+#: Game.Levels.PreimageWorld.L05_PreimageMonotonicity
+msgid "Start with §0 as in every subset proof."
 msgstr ""
 
 #. §0: `x ∈ s ∩ (t ∪ u)`
@@ -9764,7 +11545,7 @@ msgstr ""
 #. exact Set.Subset.antisymm h1 h2
 #. -- closes the goal s = t
 #. ```
-#: Game.Levels.SubsetWorld.L13_Antisymm
+#: Game.Levels.SubsetWorld.L14_Antisymm
 msgid "§0 proves that two sets are equal if each is\n"
 "a subset of the other.\n"
 "\n"
@@ -9952,6 +11733,10 @@ msgid "The second component goal unfolds to §0.\n"
 "Use §1 then §2."
 msgstr ""
 
+#: Game.Levels.PreimageWorld.L15_RewriteComposition
+msgid "Composing Library Results"
+msgstr ""
+
 #. §0: `compl_sdiff`
 #. §1: `(x \\ y)ᶜ = x ⇨ y`
 #: Game.Levels.PsetSets.L14_ComplementOfDifference
@@ -10065,9 +11850,55 @@ msgid "# Powerset Is Monotone\n"
 "goal — a pattern you have not yet seen with the powerset."
 msgstr ""
 
+#. §0: `obtain ⟨i, hi⟩ := hx`
+#. §1: `i`
+#. §2: `hi : f x ∈ s i`
+#: Game.Levels.PreimageWorld.L11_PreimageIndexedUnion
+msgid "Destructure: §0 to get the witness §1\n"
+"and §2."
+msgstr ""
+
 #. §0: `cases h with | inl h₁ | inr h₂`
 #: Game.Levels.SetOpsWorld.L13_DeMorgan
 msgid "Now split the union hypothesis: §0."
+msgstr ""
+
+#. §0: `ext x`
+#. §1: `p x ↔ q x`
+#. §2: `h x`
+#. §3: `omega`
+#. §4: `n < 3`
+#. §5: `n < 5`
+#. §6: `omega`
+#. §7: `n ≤ 2`
+#. §8: `n < 3`
+#. §9: `exact h x`
+#. §10: `ext x; constructor`
+#. §11: `omega`
+#. §12: `exact`
+#. §13: `ext x; exact h x`
+#. §14: `ext x`
+#. §15: `h x`
+#: Game.Levels.SubsetWorld.L12_AbstractExt
+msgid "You proved a set equality without any arithmetic. The key insight:\n"
+"after §0, the goal was §1, and the hypothesis §2\n"
+"provided exactly that.\n"
+"\n"
+"**The closing move depends on the predicates**: In Level 10, the\n"
+"closing move was §3 (bridging §4 and §5). In Level 11,\n"
+"it was also §6 (bridging §7 and §8). Here, the closing\n"
+"move was §9 — pure hypothesis application.\n"
+"\n"
+"This illustrates a general principle: §10 gives you\n"
+"the STRUCTURE of a set equality proof, but the CLOSING MOVE depends\n"
+"on what the set-builder predicates actually say. For arithmetic\n"
+"predicates, you close with §11. For abstract predicates, you\n"
+"close with hypothesis application, §12, or other logical moves.\n"
+"\n"
+"**The one-step proof**: §13 is even shorter. After\n"
+"§14, the goal IS §15. This works whenever you have a hypothesis\n"
+"that exactly matches the biconditional you need. This shortcut will\n"
+"appear frequently in later worlds."
 msgstr ""
 
 #. §0: `intro x hx`
@@ -10103,12 +11934,16 @@ msgid "The goal is §0. Use §1 to get\n"
 "§2, then split into cases."
 msgstr ""
 
+#: Game.Levels.PreimageWorld.L02_PreimageNonMembership
+msgid "Preimage Non-Membership"
+msgstr ""
+
 #. §0: `le_antisymm`
 #. §1: `a ≤ b → b ≤ a → a = b`
 #. §2: `≤`
 #. §3: `⊆`
 #. §4: `Set.Subset.antisymm`
-#: Game.Levels.SubsetWorld.L13_Antisymm
+#: Game.Levels.SubsetWorld.L14_Antisymm
 msgid "§0 proves §1 for any partial order.\n"
 "For sets, §2 is §3, so this is another way to prove set equality\n"
 "from mutual subsets. §4 is the set-specific version."
@@ -10154,6 +11989,41 @@ msgstr ""
 
 #: Game.Levels.PsetSets.L12_CounterexamplePowerset
 msgid "The powerset does NOT distribute over union."
+msgstr ""
+
+#. §0: `3 ∈ f ⁻¹' t`
+#. §1: `f 3 ∈ t`
+#. §2: `3 + 1 < 5`
+#. §3: `4 < 5`
+#. §4: `f`
+#. §5: `t`
+#. §6: `3 ∈ {n | n < 5}`
+#. §7: `3 < 5`
+#. §8: `3 ∈ f ⁻¹' {n | n < 5}`
+#. §9: `f 3 < 5`
+#. §10: `f ⁻¹' t`
+#. §11: `\\-1'`
+#. §12: `f⁻¹`
+#. §13: `⁻¹'`
+#. §14: `⁻¹`
+#: Game.Levels.PreimageWorld.L01_PreimageMembership
+msgid "You proved your first preimage membership! The proof was:\n"
+"\n"
+"1. **Unfold**: §0 means §1, which is §2\n"
+"2. **Compute**: §3 ✓\n"
+"\n"
+"The key insight: **preimage membership is just function application\n"
+"followed by a membership check.** There is no construction, no witness,\n"
+"no existential — just \"apply §4 and see if the result is in §5.\"\n"
+"\n"
+"Compare with set-builder membership from Set World: §6\n"
+"means §7. Preimage membership §8 means\n"
+"§9 — one extra function application, same idea.\n"
+"\n"
+"The notation §10 is typed §11 (with the apostrophe).\n"
+"The apostrophe distinguishes the **set-valued** preimage from the\n"
+"function inverse §12. Lean uses §13 for sets and §14 for\n"
+"function inverses."
 msgstr ""
 
 #. §0: `∅ ⊆ s`
@@ -10294,7 +12164,7 @@ msgstr ""
 #. §18: `¬ ⊆`
 #. §19: `⊆`
 #. §20: `¬ ⊆`
-#: Game.Levels.SubsetWorld.L14_ProperSubset
+#: Game.Levels.SubsetWorld.L15_ProperSubset
 msgid "# Strict Containment: The Proper Subset ⊂\n"
 "\n"
 "You have proved all three partial order axioms for §0 (reflexivity,\n"
@@ -10331,13 +12201,50 @@ msgid "You have §0 and §1 (= §2).\n"
 "Use §3."
 msgstr ""
 
+#. §0: `Set.mem_preimage`
+#. §1: `x ∈ f ⁻¹' s ↔ f x ∈ s`
+#. §2: ```
+#. rw [Set.mem_preimage]         -- on the goal
+#. rw [Set.mem_preimage] at h    -- on a hypothesis
+#. ```
+#. §3: `x ∈ f ⁻¹' s`
+#. §4: `f x ∈ s`
+#. §5: `{x | f x ∈ s}`
+#. §6: `rw [Set.mem_preimage]`
+#. §7: ```
+#. -- h : x ∈ f ⁻¹' s
+#. rw [Set.mem_preimage] at h
+#. -- h : f x ∈ s
+#. ```
+#: Game.Levels.PreimageWorld.L01_PreimageMembership
+msgid "§0 states §1 — membership\n"
+"in a preimage means the function value is in the target set.\n"
+"\n"
+"## Syntax\n"
+"§2\n"
+"\n"
+"## When to use it\n"
+"When you need to convert between §3 and §4.\n"
+"Often Lean unfolds this automatically (since preimage is defined\n"
+"as §5), but §6 is useful when\n"
+"the definitional unfolding does not fire or when you want to make\n"
+"the conversion explicit.\n"
+"\n"
+"## Example\n"
+"§7"
+msgstr ""
+
 #. §0: `constructor`
 #: Game.Levels.IndexedOpsWorld.L11_CartesianProduct
 msgid "The goal is a conjunction. Use §0 to split it into\n"
 "two parts."
 msgstr ""
 
-#: Game.Levels.SubsetWorld.L13_Antisymm
+#: Game.Levels.PreimageWorld.L08_PreimageIntersection
+msgid "Preimage distributes over intersection."
+msgstr ""
+
+#: Game.Levels.SubsetWorld.L14_Antisymm
 msgid "Two sets that contain each other are equal."
 msgstr ""
 
@@ -10364,7 +12271,7 @@ msgstr ""
 #. §2: `x < 5`
 #. §3: `change x < 5 at hx`
 #. §4: `exact h5 x hx`
-#: Game.Levels.SubsetWorld.L17_Boss
+#: Game.Levels.SubsetWorld.L18_Boss
 msgid "§0 is §1, i.e., §2.\n"
 "Unwrap with §3, then §4."
 msgstr ""
@@ -10646,7 +12553,7 @@ msgstr ""
 
 #. §0: `change x < 5 at hx`
 #. §1: `exact h5 x hx`
-#: Game.Levels.SubsetWorld.L17_Boss
+#: Game.Levels.SubsetWorld.L18_Boss
 #: Game.Levels.SetOpsWorld.L02_IntersectionMembership
 #: Game.Levels.SetOpsWorld.L04_SetDifference
 #: Game.Levels.SetOpsWorld.L08_UnionSubset
@@ -10671,6 +12578,22 @@ msgstr ""
 #: Game.Levels.PsetSets.L03_DistributivitySubset
 #: Game.Levels.PsetSets.L03_DistributivitySubset
 #: Game.Levels.PsetSets.L06_ConverseComplementDiff
+#: Game.Levels.PreimageWorld.L01_PreimageMembership
+#: Game.Levels.PreimageWorld.L02_PreimageNonMembership
+#: Game.Levels.PreimageWorld.L03_PreimageNonInjective
+#: Game.Levels.PreimageWorld.L03_PreimageNonInjective
+#: Game.Levels.PreimageWorld.L04_PreimageSingleton
+#: Game.Levels.PreimageWorld.L04_PreimageSingleton
+#: Game.Levels.PreimageWorld.L06_PreimageEmpty
+#: Game.Levels.PreimageWorld.L06_PreimageEmpty
+#: Game.Levels.PreimageWorld.L07_PreimageUniv
+#: Game.Levels.PreimageWorld.L07_PreimageUniv
+#: Game.Levels.PreimageWorld.L10_PreimageComplement
+#: Game.Levels.PreimageWorld.L10_PreimageComplement
+#: Game.Levels.PreimageWorld.L13_PreimageIdentity
+#: Game.Levels.PreimageWorld.L13_PreimageIdentity
+#: Game.Levels.PreimageWorld.L14_PreimageComposition
+#: Game.Levels.PreimageWorld.L14_PreimageComposition
 msgid "§0 then §1."
 msgstr ""
 
@@ -10976,7 +12899,7 @@ msgstr ""
 #. §0: `s`
 #. §1: `h5 : ∀ x, x < 5 → x ∈ s`
 #. §2: `intro x hx`
-#: Game.Levels.SubsetWorld.L17_Boss
+#: Game.Levels.SubsetWorld.L18_Boss
 msgid "Second goal: the arithmetic set ⊆ §0. The hypothesis\n"
 "§1 gives this. Start with §2."
 msgstr ""
@@ -10995,6 +12918,12 @@ msgid "§0 then §1.\n"
 "§4 is §5, since §6."
 msgstr ""
 
+#. §0: `g (f x) ∈ t`
+#: Game.Levels.PreimageWorld.L14_PreimageComposition
+msgid "**Backward**: same reasoning — both sides reduce to\n"
+"§0."
+msgstr ""
+
 #: Game.Levels.PsetSets.L17_IndexedDifference
 msgid "Set difference distributes over indexed union."
 msgstr ""
@@ -11010,6 +12939,15 @@ msgstr ""
 #: Game.Levels.PsetSets.L17_IndexedDifference
 msgid "**Backward direction**: §0 means there exists\n"
 "an §1 where §2 and §3. Reconstruct the difference."
+msgstr ""
+
+#. §0: `rw [Set.mem_preimage] at hx`
+#. §1: `rw [Set.mem_iInter]`
+#. §2: `∀ i, f x ∈ s i`
+#: Game.Levels.PreimageWorld.L12_PreimageIndexedIntersection
+msgid "**Forward**: Unwrap the preimage with\n"
+"§0, then use §1\n"
+"to expose §2."
 msgstr ""
 
 #. §0: `𝒫 s ∪ 𝒫 t ⊆ 𝒫 (s ∪ t)`
@@ -11032,7 +12970,7 @@ msgid "You proved §0 — the direction that DOES hold.\n"
 "key skill you will use in the Image and Preimage worlds."
 msgstr ""
 
-#: Game.Levels.SubsetWorld.L15_AntisymmFromExt
+#: Game.Levels.SubsetWorld.L16_AntisymmFromExt
 msgid "Deriving Antisymmetry from Extensionality"
 msgstr ""
 
@@ -11072,6 +13010,48 @@ msgid "§0 means §1 — the set has at least one\n"
 "§3"
 msgstr ""
 
+#. §0: `{y}`
+#. §1: `f`
+#. §2: `f`
+#. §3: `y`
+#. §4: $$f^{-1}(\\{y\\}) = \\{x \\mid f(x) = y\\}$$
+#. §5: `y`
+#. §6: `y`
+#. §7: `f`
+#. §8: `f`
+#. §9: `n \\mapsto n + 1`
+#. §10: `{2}`
+#. §11: `5 + 1 = 6 \\neq 3`
+#. §12: `constructor`
+#. §13: `show 2 + 1 = 3`
+#. §14: `omega`
+#. §15: `show \\neg (5 + 1 = 3)`
+#. §16: `omega`
+#: Game.Levels.PreimageWorld.L04_PreimageSingleton
+msgid "# Fibers: Preimage of a Single Point\n"
+"\n"
+"The preimage of a **singleton** set §0 under §1 is called\n"
+"the **fiber** of §2 over §3:\n"
+"\n"
+"§4\n"
+"\n"
+"The fiber over §5 is the set of ALL inputs that map to §6.\n"
+"This concept is fundamental:\n"
+"- §7 is **injective** iff every fiber has at most one element\n"
+"- §8 is **surjective** iff every fiber is nonempty\n"
+"\n"
+"For the function §9:\n"
+"- The fiber over 3 is §10 (only 2 maps to 3)\n"
+"- The fiber over 3 does NOT contain 5 (since §11)\n"
+"\n"
+"**Your task**: Prove that 2 is in the fiber over 3, and 5 is not.\n"
+"\n"
+"**Proof plan**:\n"
+"1. §12 — split the conjunction\n"
+"2. First part: §13 then §14\n"
+"3. Second part: §15 then §16"
+msgstr ""
+
 #. §0: `assumption`
 #. §1: ```
 #. assumption
@@ -11087,58 +13067,6 @@ msgid "§0 closes the goal if a hypothesis in the context has\n"
 "When a hypothesis matches the goal."
 msgstr ""
 
-#. §0: `ext`
-#. §1: `s ≠ t`
-#. §2: `s ≠ t`
-#. §3: `(s = t) → False`
-#. §4: `s ≠ t`
-#. §5: `intro h`
-#. §6: `h : s = t`
-#. §7: `False`
-#. §8: `⊆`
-#. §9: `s = t`
-#. §10: `s`
-#. §11: `t`
-#. §12: `s = t`
-#. §13: `{n | n < 3} ≠ {n | n < 5}`
-#. §14: `3`
-#. §15: `3 < 5`
-#. §16: `3`
-#. §17: `3 < 3`
-#. §18: `3`
-#. §19: `3`
-#. §20: `intro h`
-#. §21: `3 ∈ {n | n < 5}`
-#. §22: `rw [← h]`
-#. §23: `3 ∈ {n | n < 3}`
-#. §24: `3 < 3`
-#: Game.Levels.SubsetWorld.L12_SetNonEquality
-msgid "# When Two Sets Are Not Equal\n"
-"\n"
-"In Levels 10–11, you proved set equalities using §0. But what if\n"
-"two sets are NOT equal? How do you prove §1?\n"
-"\n"
-"In Lean, §2 is defined as §3. So to prove\n"
-"§4, you use §5 to **assume** the sets are equal, getting\n"
-"§6, and then derive a contradiction (§7).\n"
-"\n"
-"The strategy mirrors Level 7 (disproving §8): **find a witness** that\n"
-"leads to contradiction. If §9, then every element of §10 is in §11\n"
-"and vice versa. Find an element that is in one set but not the other —\n"
-"then the assumption §12 forces a false arithmetic conclusion.\n"
-"\n"
-"In this level, you will prove §13. The\n"
-"witness is §14: it satisfies §15 (so §16 is in the right set) but\n"
-"not §17 (so §18 is not in the left set). If the sets were equal,\n"
-"§19 would have to be in both — contradiction.\n"
-"\n"
-"**Proof plan**:\n"
-"1. §20 — assume the sets are equal\n"
-"2. Prove §21 — show the witness is in the right set\n"
-"3. Use §22 to transport: if equal, §23\n"
-"4. Unwrap and derive contradiction — §24 is false"
-msgstr ""
-
 #. §0: `x ∈ t`
 #. §1: `h : s ⊆ t`
 #. §2: `x ∈ s`
@@ -11151,11 +13079,6 @@ msgstr ""
 msgid "The goal is §0. You have §1 (a function from\n"
 "§2 to §3) and §4. Apply §5 to §6:\n"
 "use §7."
-msgstr ""
-
-#: Game.Levels.SetOpsWorld.L11_UnionCommutativity
-msgid "This is the same argument as Level 10. Case-split on the union\n"
-"and swap sides."
 msgstr ""
 
 #. §0: `push_neg`
@@ -11182,6 +13105,11 @@ msgid "§0 pushes negation inward through quantifiers and\n"
 "positive form.\n"
 "\n"
 "Disabled in levels where you should see what push_neg does manually."
+msgstr ""
+
+#: Game.Levels.SetOpsWorld.L11_UnionCommutativity
+msgid "This is the same argument as Level 10. Case-split on the union\n"
+"and swap sides."
 msgstr ""
 
 #. §0: `(s \\ t)ᶜ = sᶜ ∪ t`
@@ -11302,6 +13230,10 @@ msgid "Key sequence: §0 then\n"
 "§3 then §4 then §5."
 msgstr ""
 
+#: Game.Levels.PreimageWorld.L05_PreimageMonotonicity
+msgid "Preimage Preserves Subsets"
+msgstr ""
+
 #. §0: `hx : x ∈ s`
 #. §1: `h x`
 #. §2: `↔`
@@ -11312,7 +13244,7 @@ msgstr ""
 #. §7: `x ∈ s → x ∈ t`
 #. §8: `hx`
 #. §9: `exact (h x).1 hx`
-#: Game.Levels.SubsetWorld.L16_ExtFromAntisymm
+#: Game.Levels.SubsetWorld.L17_ExtFromAntisymm
 msgid "§0. The hypothesis §1 gives an §2 between\n"
 "§3 and §4. Use §5 to extract the forward direction:\n"
 "§6 is the implication §7. Apply it to §8\n"
@@ -11447,6 +13379,38 @@ msgstr ""
 #: Game.Levels.SetOpsWorld.L12_PushNeg
 #: Game.Levels.SetOpsWorld.L13_DeMorgan
 msgid "§0 states §1 (propositional De Morgan)."
+msgstr ""
+
+#. §0: $$f^{-1}(s \\cup t) = f^{-1}(s) \\cup f^{-1}(t)$$
+#. §1: `f x ∈ s ∪ t`
+#. §2: `f x ∈ s ∨ f x ∈ t`
+#. §3: `x ∈ f ⁻¹' s ∨ x ∈ f ⁻¹' t`
+#. §4: `x ∈ f ⁻¹' s ∪ f ⁻¹' t`
+#. §5: `∨`
+#. §6: `ext x`
+#. §7: `constructor`
+#. §8: `intro hx`
+#. §9: `hx`
+#. §10: `cases hx with | inl hs | inr ht`
+#. §11: `left`
+#. §12: `right`
+#: Game.Levels.PreimageWorld.L09_PreimageUnion
+msgid "# Disjunction Passes Through\n"
+"\n"
+"Preimage also distributes over union:\n"
+"\n"
+"§0\n"
+"\n"
+"The reasoning is the same: §1 means §2,\n"
+"which is exactly §3, i.e., §4.\n"
+"\n"
+"The disjunction §5 passes through just like conjunction did.\n"
+"\n"
+"**Proof plan**:\n"
+"1. §6 then §7\n"
+"2. **Forward**: §8, then case-split on §9 with\n"
+"   §10, using §11/§12\n"
+"3. **Backward**: symmetric"
 msgstr ""
 
 #. §0: `Set.inter_subset_right`
@@ -11675,6 +13639,10 @@ msgid "**Backward direction (classical)**: You have\n"
 "Start with §8 and then §9."
 msgstr ""
 
+#: Game.Levels.PreimageWorld.L06_PreimageEmpty
+msgid "The preimage of the empty set is empty."
+msgstr ""
+
 #. §0: `7 ∉ {n | n < 5}`
 #. §1: `omega`
 #. §2: `show`
@@ -11782,6 +13750,95 @@ msgid "Congratulations — you have completed **SetWorld**!\n"
 "membership skills you just mastered are exactly what those proofs require."
 msgstr ""
 
+#. §0: `ext`
+#. §1: ```
+#. ext x          -- reduce to: ∀ x, x ∈ LHS ↔ x ∈ RHS
+#. constructor    -- split the ↔ into → and ←
+#. · ...          -- prove the forward direction
+#. · ...          -- prove the backward direction
+#. ```
+#. §2: `ext`
+#. §3: `ext`
+#. §4: $n < 3$
+#. §5: $n < 5$
+#. §6: $n < 3$
+#. §7: $n < 3$
+#. §8: $n < 5$
+#. §9: $3 < 5$
+#. §10: $n < 3 \\wedge n < 5$
+#. §11: `·`
+#. §12: `constructor`
+#. §13: `·`
+#. §14: `·`
+#. §15: `constructor`
+#. §16: `∧`
+#. §17: `hx : P ∧ Q`
+#. §18: `hx.1 : P`
+#. §19: `hx.2 : Q`
+#. §20: `.1`
+#. §21: `.2`
+#. §22: `↔`
+#. §23: `intro`
+#. §24: `P ∧ Q`
+#. §25: `intro ⟨h1, h2⟩`
+#. §26: `intro h`
+#. §27: `obtain ⟨h1, h2⟩ := h`
+#. §28: `∩`
+#. §29: `constructor`
+#. §30: `↔`
+#. §31: `↔`
+#. §32: `Iff.intro`
+#. §33: `constructor`
+#. §34: `↔`
+#. §35: `Iff.intro`
+#. §36: `constructor`
+#. §37: `∧`
+#. §38: `And.intro`
+#. §39: `ext`
+#: Game.Levels.SubsetWorld.L10_ExtIntro
+msgid "You proved your first set equality using §0! The structure was:\n"
+"\n"
+"§1\n"
+"\n"
+"**Why §2 works**: §3 applies the **extensionality** axiom for\n"
+"sets: two sets are equal if and only if they have the same elements.\n"
+"This converts a single equation into universally quantified membership\n"
+"equivalences — exactly the type of claim you can prove element by\n"
+"element.\n"
+"\n"
+"In ordinary math, this proof would read: \"We show the sets are equal\n"
+"by double inclusion. If §4 and §5, then certainly §6.\n"
+"Conversely, if §7, then also §8 (since §9), so\n"
+"§10.\"\n"
+"\n"
+"**The §11 (focus dot)**: After §12 splits a goal into two\n"
+"subgoals, §13 focuses on one at a time. This keeps your proof\n"
+"organized — you handle one case completely before moving to the next.\n"
+"You will use §14 in nearly every proof that involves §15.\n"
+"\n"
+"**Dot projections on §16**: If §17, then §18 and\n"
+"§19. This is the quickest way to extract one component of a\n"
+"conjunction. The same §20/§21 pattern works on §22 (biconditionals)\n"
+"too — you will use it later to extract the forward and backward\n"
+"implications.\n"
+"\n"
+"**Destructuring §23**: When a hypothesis is a conjunction §24,\n"
+"you can write §25 to introduce and split it in one step,\n"
+"instead of §26 followed by §27. This\n"
+"shorthand will be especially useful in the next world when working\n"
+"with intersections (§28), which are defined as conjunctions.\n"
+"\n"
+"**Why §29 works on §30**: The §31 type has exactly one\n"
+"constructor, §32, which takes two implications as arguments.\n"
+"When you write §33 on a §34 goal, Lean applies §35\n"
+"and asks you for the two implications — just as §36 on §37\n"
+"applies §38. This is why the same tactic works for both\n"
+"conjunctions and biconditionals.\n"
+"\n"
+"The §39 tactic is the primary tool for set equality proofs in Lean.\n"
+"You will use it frequently throughout this course."
+msgstr ""
+
 #: Game.Levels.IndexedOpsWorld.L22_IInterDistrib
 msgid "Indexed Intersection Distributes over Union"
 msgstr ""
@@ -11843,6 +13900,47 @@ msgstr ""
 #: Game.Levels.PsetSets.L07_NestedDifference
 msgid "You need §0, i.e., §1.\n"
 "Use §2 to assume §3."
+msgstr ""
+
+#. §0: `f ⁻¹' (⋂ i, s i) = ⋂ i, f ⁻¹' (s i)`
+#. §1: `∀`
+#. §2: `exact hx`
+#. §3: `∩`
+#. §4: `∧`
+#. §5: `∪`
+#. §6: `∨`
+#. §7: `ᶜ`
+#. §8: `¬`
+#. §9: `⋂ i`
+#. §10: `∀ i`
+#. §11: `⋃ i`
+#. §12: `∃ i`
+#. §13: `preimage_iInter`
+#. §14: `preimage_iUnion`
+#. §15: `simp`
+#: Game.Levels.PreimageWorld.L12_PreimageIndexedIntersection
+msgid "You proved §0. The proof\n"
+"was even simpler than the union case — the universal quantifier\n"
+"§1 passes through unchanged, and §2 closes each direction\n"
+"immediately after rewriting.\n"
+"\n"
+"**Full scoreboard**:\n"
+"\n"
+"| Operation | Logic | Preimage preserves? |\n"
+"|---|---|---|\n"
+"| §3 | §4 | Yes |\n"
+"| §5 | §6 | Yes |\n"
+"| §7 | §8 | Yes |\n"
+"| §9 | §10 | Yes |\n"
+"| §11 | §12 | Yes |\n"
+"\n"
+"Every logical connective — conjunction, disjunction, negation,\n"
+"universal, existential — passes through function application.\n"
+"This is why preimage preserves ALL set operations.\n"
+"\n"
+"The theorem name in this game is §13. (Like\n"
+"§14, Mathlib handles this via §15 rather than a\n"
+"standalone theorem.)"
 msgstr ""
 
 #. §0: `constructor`
@@ -11907,6 +14005,10 @@ msgstr ""
 msgid "If some member of the family is nonempty, so is the indexed union."
 msgstr ""
 
+#: Game.Levels.PreimageWorld.L08_PreimageIntersection
+msgid "Preimage Preserves Intersection"
+msgstr ""
+
 #. §0: `rw [Set.mem_iUnion] at hx`
 #. §1: `obtain`
 #: Game.Levels.PsetSets.L17_IndexedDifference
@@ -11916,6 +14018,76 @@ msgstr ""
 
 #: Game.Levels.IndexedOpsWorld.L06_MonotonIInter
 msgid "Monotonicity of Indexed Intersection"
+msgstr ""
+
+#. §0: `Set.Subset.antisymm`
+#. §1: `ext x; constructor; ...`
+#. §2: `Set.Subset.antisymm h1 h2`
+#. §3: `ext`
+#. §4: `antisymm`
+#. §5: $a \\leq a$
+#. §6: $a$
+#. §7: $a \\leq b$
+#. §8: $b \\leq c$
+#. §9: $a \\leq c$
+#. §10: $a \\leq b$
+#. §11: $b \\leq a$
+#. §12: $a = b$
+#. §13: `⊆`
+#. §14: `Set α`
+#. §15: `Set.Subset.refl`
+#. §16: `Set.Subset.trans`
+#. §17: `Set.Subset.antisymm`
+#. §18: `⊆`
+#. §19: `ext`
+#. §20: `antisymm`
+#. §21: `ext`
+#. §22: `antisymm`
+#. §23: `antisymm`
+#. §24: `ext`
+#: Game.Levels.SubsetWorld.L14_Antisymm
+msgid "§0 gives you a one-step path from two ⊆ proofs to\n"
+"set equality. Compare the two routes:\n"
+"\n"
+"| Route | When to use |\n"
+"|---|---|\n"
+"| §1 | When you need to prove both directions from scratch |\n"
+"| §2 | When you already have both ⊆ proofs in hand |\n"
+"\n"
+"In practice, many set equality proofs start with §3 because you\n"
+"rarely have the subset proofs pre-packaged. But §4 is\n"
+"valuable when subset facts are available from other lemmas or\n"
+"hypotheses.\n"
+"\n"
+"In ordinary math, this is the well-known principle: \"two sets are\n"
+"equal iff each is a subset of the other.\" Every proof of set equality\n"
+"by \"double inclusion\" (showing ⊆ in both directions) is implicitly\n"
+"using antisymmetry.\n"
+"\n"
+"A **partial order** is a relation that satisfies three properties:\n"
+"1. **Reflexive**: §5 for all §6\n"
+"2. **Transitive**: §7 and §8 imply §9\n"
+"3. **Antisymmetric**: §10 and §11 imply §12\n"
+"\n"
+"You have now proved all three for §13 on §14:\n"
+"- **Reflexive**: §15 (Level 3)\n"
+"- **Transitive**: §16 (Level 8)\n"
+"- **Antisymmetric**: §17 (this level)\n"
+"\n"
+"Together, these make §18 a **partial order** on sets. The partial\n"
+"order concept is central to mathematics — you will study it in depth\n"
+"in the Orders \\\\& Lattices course.\n"
+"\n"
+"These two routes — §19 and §20 — are logically *equivalent*.\n"
+"You can derive §21 from §22 and §23 from §24. You\n"
+"will prove this equivalence yourself in Levels 16 and 17."
+msgstr ""
+
+#. §0: `ht : x ∈ f ⁻¹' t`
+#. §1: `f x ∈ t`
+#. §2: `right`
+#: Game.Levels.PreimageWorld.L09_PreimageUnion
+msgid "§0, i.e., §1. Use §2 to target the right disjunct."
 msgstr ""
 
 #. §0: `exact hs h₁`
@@ -11931,12 +14103,41 @@ msgid "§0 — applying §1 (which is\n"
 "Alternatively: §5."
 msgstr ""
 
+#. §0: `f : α → β`
+#. §1: `Set.range f`
+#. §2: `Set.range f = {y | ∃ x, f x = y}`
+#. §3: `Set.mem_range`
+#. §4: `y ∈ Set.range f`
+#. §5: `∃ x, f x = y`
+#. §6: `Set.range f`
+#. §7: `f '' Set.univ`
+#: Game.Levels.PsetSets.L10_RangeForeshadow
+msgid "For a function §0, §1 is the set of all output values:\n"
+"§2.\n"
+"\n"
+"Use §3 to convert between §4 and §5.\n"
+"\n"
+"§6 equals §7 — the image of everything."
+msgstr ""
+
 #. §0: `change ¬(x ∈ s ∨ x ∈ t) at hx`
 #. §1: `push_neg at hx`
 #. §2: `exact hx`
 #: Game.Levels.SetOpsWorld.L13_DeMorgan
 msgid "§0 then\n"
 "§1 then §2."
+msgstr ""
+
+#. §0: `intro hx`
+#. §1: `cases`
+#. §2: `inl`
+#. §3: `left; exact hs`
+#. §4: `inr`
+#. §5: `right; exact ht`
+#: Game.Levels.PreimageWorld.L09_PreimageUnion
+msgid "After §0 and §1:\n"
+"- §2 case: §3\n"
+"- §4 case: §5"
 msgstr ""
 
 #. §0: `hi : f i = x`
@@ -11999,6 +14200,10 @@ msgstr ""
 msgid "§0 (since §1 is definitionally §2).\n"
 "Use §3 — §4 proves any proposition from\n"
 "§5. Alternatively, §6 also works here."
+msgstr ""
+
+#: Game.Levels.PreimageWorld.L14_PreimageComposition
+msgid "Preimage Reverses Composition"
 msgstr ""
 
 #. §0: `h`
@@ -12092,6 +14297,23 @@ msgid "# Indexed Union Covers Everything\n"
 "2. §15 — split the §16\n"
 "3. **Forward** (§17): anything in a union is in §18 (trivially)\n"
 "4. **Backward** (§19): given §20, find its remainder class"
+msgstr ""
+
+#. §0: `preimage_iInter`
+#. §1: `f ⁻¹' (⋂ i, s i) = ⋂ i, f ⁻¹' (s i)`
+#. §2: `f : α → β`
+#. §3: `s : ι → Set β`
+#. §4: `f ⁻¹' (⋂ i, s i) = ⋂ i, f ⁻¹' (s i)`
+#: Game.Levels.PreimageWorld.L12_PreimageIndexedIntersection
+msgid "§0 states §1.\n"
+"\n"
+"## When to use it\n"
+"When you need to distribute a preimage over an indexed intersection.\n"
+"The universal quantifier passes through function application.\n"
+"\n"
+"## Example\n"
+"If §2 and §3, then\n"
+"§4."
 msgstr ""
 
 #. §0: `intro x hx`
@@ -12191,8 +14413,8 @@ msgstr ""
 #. §1: `hx`
 #. §2: `x ∈ t`
 #. §3: `exact h1 hx`
-#: Game.Levels.SubsetWorld.L15_AntisymmFromExt
-#: Game.Levels.SubsetWorld.L15_AntisymmFromExt
+#: Game.Levels.SubsetWorld.L16_AntisymmFromExt
+#: Game.Levels.SubsetWorld.L16_AntisymmFromExt
 msgid "§0 applied to §1 gives §2. Use §3."
 msgstr ""
 
@@ -12433,6 +14655,18 @@ msgid "§0 (typed §1 or §2) is the **intersection** of\n"
 "choose just one."
 msgstr ""
 
+#: Game.Levels.PreimageWorld.L12_PreimageIndexedIntersection
+msgid "Preimage Preserves Indexed Intersection"
+msgstr ""
+
+#. §0: `f ⁻¹' tᶜ`
+#. §1: `rw [Set.preimage_compl]`
+#: Game.Levels.PreimageWorld.L15_RewriteComposition
+msgid "Good! Now the left side has §0. Use\n"
+"§1 to distribute preimage over the\n"
+"complement. This uses the theorem from Level 10."
+msgstr ""
+
 #. §0: `hx : ∀ i, x ∈ s i ∪ t`
 #. §1: `by_cases ht : x ∈ t`
 #: Game.Levels.IndexedOpsWorld.L22_IInterDistrib
@@ -12484,6 +14718,18 @@ msgstr ""
 #: Game.Levels.SubsetWorld.L04_EmptySubset
 msgid "Start with §0 to introduce an element and assume\n"
 "it belongs to §1."
+msgstr ""
+
+#. §0: `rw [Set.diff_eq]`
+#. §1: `rw [Set.preimage_inter]`
+#. §2: `rw [Set.preimage_compl]`
+#. §3: `rw [Set.diff_eq]`
+#: Game.Levels.PreimageWorld.L16_Boss
+msgid "The full proof is:\n"
+"§0\n"
+"§1\n"
+"§2\n"
+"§3"
 msgstr ""
 
 #. §0: `push_neg at hx`
@@ -12698,7 +14944,7 @@ msgstr ""
 #. §13: `h1`
 #. §14: `intro hx; exact h2 hx`
 #. §15: `h2`
-#: Game.Levels.SubsetWorld.L15_AntisymmFromExt
+#: Game.Levels.SubsetWorld.L16_AntisymmFromExt
 msgid "# Proving Antisymmetry Without §0\n"
 "\n"
 "In Level 13, you used §1 to combine two subset\n"
@@ -12843,7 +15089,7 @@ msgstr ""
 
 #. §0: `constructor`
 #. §1: `↔`
-#: Game.Levels.SubsetWorld.L15_AntisymmFromExt
+#: Game.Levels.SubsetWorld.L16_AntisymmFromExt
 msgid "Now §0 to split the §1 into two directions."
 msgstr ""
 
@@ -12875,7 +15121,7 @@ msgstr ""
 #. §4: `x ∈ t`
 #. §5: `intro hx`
 #. §6: `exact h1 hx`
-#: Game.Levels.SubsetWorld.L15_AntisymmFromExt
+#: Game.Levels.SubsetWorld.L16_AntisymmFromExt
 msgid "The forward direction: assume §0 and show §1.\n"
 "The hypothesis §2 is a function from §3 to §4.\n"
 "Use §5 then §6."
@@ -12885,6 +15131,14 @@ msgstr ""
 #. §1: `hu : x ∈ u`
 #: Game.Levels.PsetSets.L03_DistributivitySubset
 msgid "§0 and §1. Build the right side."
+msgstr ""
+
+#. §0: `x ∈ id ⁻¹' s`
+#. §1: `id x ∈ s`
+#. §2: `x ∈ s`
+#: Game.Levels.PreimageWorld.L13_PreimageIdentity
+msgid "**Forward**: §0 is definitionally §1,\n"
+"which is §2. The hypothesis IS the goal."
 msgstr ""
 
 #. §0: `x ∈ (⋂ i, s i) ∪ t`
@@ -13065,6 +15319,42 @@ msgid "Start with §0 for the subset proof. Then destructure\n"
 "the intersection and case-split on the union."
 msgstr ""
 
+#. §0: `t = ∅`
+#. §1: `f ⁻¹' ∅`
+#. §2: `x`
+#. §3: `f x ∈ ∅`
+#. §4: `∅`
+#. §5: `x`
+#. §6: `f ⁻¹' ∅ = ∅`
+#. §7: `ext`
+#. §8: `constructor`
+#. §9: `ext x`
+#. §10: `constructor`
+#. §11: `↔`
+#. §12: `x ∈ f ⁻¹' ∅`
+#. §13: `f x ∈ ∅`
+#. §14: `False`
+#. §15: `intro hx; exact hx`
+#. §16: `False`
+#. §17: `x ∈ ∅`
+#. §18: `False`
+#: Game.Levels.PreimageWorld.L06_PreimageEmpty
+msgid "# Nothing Maps Into Nothing\n"
+"\n"
+"What is the preimage of the empty set? If §0, then §1\n"
+"is the set of all §2 such that §3. But nothing is in §4,\n"
+"so no §5 qualifies. Therefore §6.\n"
+"\n"
+"This is a set equality, so the natural approach is §7 + §8.\n"
+"\n"
+"**Proof plan**:\n"
+"1. §9 — reduce to membership biconditional\n"
+"2. §10 — split the §11\n"
+"3. **Forward**: §12 means §13, which is §14. So\n"
+"   §15 (an assumption of §16 closes any goal).\n"
+"4. **Backward**: §17 is also §18. Same idea."
+msgstr ""
+
 #: Game.Levels.SetWorld.L05_NonMembershipExistential
 msgid "Disproving Membership in an Existential Set"
 msgstr ""
@@ -13084,6 +15374,23 @@ msgstr ""
 msgid "§0 creates\n"
 "two subgoals: one where §1, and one where\n"
 "§2."
+msgstr ""
+
+#. §0: `preimage_iUnion`
+#. §1: `f ⁻¹' (⋃ i, s i) = ⋃ i, f ⁻¹' (s i)`
+#. §2: `f : α → β`
+#. §3: `s : ι → Set β`
+#. §4: `f ⁻¹' (⋃ i, s i) = ⋃ i, f ⁻¹' (s i)`
+#: Game.Levels.PreimageWorld.L11_PreimageIndexedUnion
+msgid "§0 states §1.\n"
+"\n"
+"## When to use it\n"
+"When you need to distribute a preimage over an indexed union.\n"
+"The existential quantifier passes through function application.\n"
+"\n"
+"## Example\n"
+"If §2 and §3, then\n"
+"§4."
 msgstr ""
 
 #. §0: `show ¬ (P x)`
@@ -13119,6 +15426,52 @@ msgstr ""
 #: Game.Levels.IndexedOpsWorld.L22_IInterDistrib
 msgid "§0 — if §1, go right;\n"
 "if §2, show §3 using §4."
+msgstr ""
+
+#. §0: $$(g \\circ f)^{-1}(t) = f^{-1}(g^{-1}(t))$$
+#. §1: `g`
+#. §2: `f`
+#. §3: `t`
+#. §4: `g`
+#. §5: `f`
+#. §6: `g . f`
+#. §7: `f`
+#. §8: `g`
+#. §9: `g`
+#. §10: `f`
+#. §11: `ext x`
+#. §12: `constructor`
+#. §13: `intro hx; exact hx`
+#. §14: `g (f x) ∈ t`
+#: Game.Levels.PreimageWorld.L14_PreimageComposition
+msgid "# The Deepest Fact About Preimages\n"
+"\n"
+"You have proved that preimage preserves intersection, union,\n"
+"complement, indexed unions, indexed intersections, and more. But\n"
+"WHY does preimage preserve everything?\n"
+"\n"
+"The answer is one equation:\n"
+"\n"
+"§0\n"
+"\n"
+"Preimage **reverses** function composition. If you compose §1 after\n"
+"§2, then the preimage of §3 is obtained by first taking the\n"
+"preimage under §4, then taking the preimage under §5.\n"
+"\n"
+"This means preimage is just **composition on the predicate level**.\n"
+"Since composition preserves all logical structure, preimage preserves\n"
+"all set operations. That single fact explains every result in this\n"
+"world.\n"
+"\n"
+"Notice the order reversal: §6 applies §7 first, then §8. But\n"
+"the preimage pulls back through §9 first, then §10. This is\n"
+"called **contravariance** — preimage reverses the direction of\n"
+"composition.\n"
+"\n"
+"**Proof plan**:\n"
+"1. §11 then §12\n"
+"2. Both directions: §13 — the two sides are\n"
+"   definitionally equal (both reduce to §14)"
 msgstr ""
 
 #. §0: `𝒫 s`
@@ -13257,6 +15610,46 @@ msgstr ""
 
 #: Game.Levels.IndexedOpsWorld.L04_IUnionFromSubset
 msgid "Subset of Indexed Union"
+msgstr ""
+
+#. §0: $$\\text{id}^{-1}(s) = s$$
+#. §1: `id x = x`
+#. §2: `x \\in \\text{id}^{-1}(s)`
+#. §3: `id x \\in s`
+#. §4: `x \\in s`
+#. §5: `intro hx; exact hx`
+#. §6: `(g . f) ⁻¹' t = f ⁻¹' (g ⁻¹' t)`
+#. §7: `id ⁻¹' s = s`
+#. §8: `(g . f) ⁻¹' s = f ⁻¹' (g ⁻¹' s)`
+#. §9: `ext x`
+#. §10: `constructor`
+#. §11: `intro hx; exact hx`
+#: Game.Levels.PreimageWorld.L13_PreimageIdentity
+msgid "# The Identity Law\n"
+"\n"
+"What happens when you take the preimage under the identity function?\n"
+"\n"
+"§0\n"
+"\n"
+"Since §1, membership §2 is just\n"
+"§3, which is §4. The preimage is the set itself.\n"
+"\n"
+"This is a **definitional tautology** (Level 8): both sides reduce to\n"
+"the same proposition, so each direction of the proof is\n"
+"§5.\n"
+"\n"
+"Combined with the composition result in the next level\n"
+"(§6), this establishes that\n"
+"preimage satisfies the two **functor laws**:\n"
+"1. **Identity**: §7\n"
+"2. **Composition**: §8\n"
+"\n"
+"These are exactly the axioms that make preimage a\n"
+"**contravariant functor** from sets of outputs to sets of inputs.\n"
+"\n"
+"**Proof plan**:\n"
+"1. §9 then §10\n"
+"2. Both directions: §11"
 msgstr ""
 
 #. §0: `hns : x ∉ s`
@@ -13415,6 +15808,14 @@ msgid "# s ∪ sᶜ = Set.univ\n"
 "   §23 — a direct contradiction."
 msgstr ""
 
+#. §0: `hs : f x ∈ s`
+#. §1: `x ∈ f ⁻¹' s`
+#. §2: `left`
+#: Game.Levels.PreimageWorld.L09_PreimageUnion
+#: Game.Levels.PreimageWorld.L09_PreimageUnion
+msgid "§0, so §1. Use §2."
+msgstr ""
+
 #. §0: `hx`
 #. §1: `obtain ⟨hs, htu⟩ := hx`
 #. §2: `hs : x ∈ s`
@@ -13456,82 +15857,14 @@ msgid "You proved that §0 — unioning over nothing gives\n"
 "§10 — can never be satisfied.\""
 msgstr ""
 
+#: Game.Levels.PreimageWorld.L04_PreimageSingleton
+msgid "Preimage of a Singleton: Fibers"
+msgstr ""
+
 #: Game.Levels.PsetSets.L12_CounterexamplePowerset
 msgid "This case says the union of singletons is a subset of the\n"
 "singleton containing just 1. But 0 is in the union, so 0 would\n"
 "have to equal 1 — contradiction."
-msgstr ""
-
-#. §0: `ext`
-#. §1: ```
-#. ext x          -- reduce to: ∀ x, x ∈ LHS ↔ x ∈ RHS
-#. constructor    -- split the ↔ into → and ←
-#. · ...          -- prove the forward direction
-#. · ...          -- prove the backward direction
-#. ```
-#. §2: `ext`
-#. §3: `ext`
-#. §4: $n < 3$
-#. §5: $n < 5$
-#. §6: $n < 3$
-#. §7: $n < 3$
-#. §8: $n < 5$
-#. §9: $3 < 5$
-#. §10: $n < 3 \\wedge n < 5$
-#. §11: `·`
-#. §12: `constructor`
-#. §13: `·`
-#. §14: `·`
-#. §15: `constructor`
-#. §16: `∧`
-#. §17: `hx : P ∧ Q`
-#. §18: `hx.1 : P`
-#. §19: `hx.2 : Q`
-#. §20: `.1`
-#. §21: `.2`
-#. §22: `↔`
-#. §23: `intro`
-#. §24: `P ∧ Q`
-#. §25: `intro ⟨h1, h2⟩`
-#. §26: `intro h`
-#. §27: `obtain ⟨h1, h2⟩ := h`
-#. §28: `∩`
-#. §29: `ext`
-#: Game.Levels.SubsetWorld.L10_ExtIntro
-msgid "You proved your first set equality using §0! The structure was:\n"
-"\n"
-"§1\n"
-"\n"
-"**Why §2 works**: §3 applies the **extensionality** axiom for\n"
-"sets: two sets are equal if and only if they have the same elements.\n"
-"This converts a single equation into universally quantified membership\n"
-"equivalences — exactly the type of claim you can prove element by\n"
-"element.\n"
-"\n"
-"In ordinary math, this proof would read: \"We show the sets are equal\n"
-"by double inclusion. If §4 and §5, then certainly §6.\n"
-"Conversely, if §7, then also §8 (since §9), so\n"
-"§10.\"\n"
-"\n"
-"**The §11 (focus dot)**: After §12 splits a goal into two\n"
-"subgoals, §13 focuses on one at a time. This keeps your proof\n"
-"organized — you handle one case completely before moving to the next.\n"
-"You will use §14 in nearly every proof that involves §15.\n"
-"\n"
-"**Dot projections on §16**: If §17, then §18 and\n"
-"§19. This is the quickest way to extract one component of a\n"
-"conjunction. The same §20/§21 pattern works on §22 (biconditionals)\n"
-"too — you will use it later to extract the forward and backward\n"
-"implications.\n"
-"\n"
-"**Destructuring §23**: When a hypothesis is a conjunction §24,\n"
-"you can write §25 to introduce and split it in one step,\n"
-"instead of §26 followed by §27. This\n"
-"shorthand will be especially useful in the next world when working\n"
-"with intersections (§28), which are defined as conjunctions.\n"
-"\n"
-"The §29 tactic is the primary tool for set equality proofs in Lean.\n"
-"You will use it frequently throughout this course."
 msgstr ""
 
 #. §0: `x ∈ sᶜ`
@@ -13558,6 +15891,10 @@ msgstr ""
 msgid "Bounded Intersection Inside Bounded Union"
 msgstr ""
 
+#: Game.Levels.SetWorld.L04_InfiniteSet
+msgid "4 belongs to the set of even natural numbers."
+msgstr ""
+
 #. §0: `intro hx`
 #. §1: `cases hx with | inl hs | inr ht`
 #. §2: `right`
@@ -13567,15 +15904,11 @@ msgid "§0 then §1,\n"
 "and in each case use §2/§3 with the hypothesis."
 msgstr ""
 
-#: Game.Levels.SetWorld.L04_InfiniteSet
-msgid "4 belongs to the set of even natural numbers."
-msgstr ""
-
-#: Game.Levels.SubsetWorld.L17_Boss
+#: Game.Levels.SubsetWorld.L18_Boss
 msgid "If s ⊆ t ⊆ {n | n ≤ 4} and every n < 5 is in s, then s = {n | n < 5}."
 msgstr ""
 
-#: Game.Levels.SubsetWorld.L16_ExtFromAntisymm
+#: Game.Levels.SubsetWorld.L17_ExtFromAntisymm
 msgid "Deriving Extensionality from Antisymmetry"
 msgstr ""
 
@@ -13588,7 +15921,7 @@ msgstr ""
 msgid "§0 — this is exactly the goal."
 msgstr ""
 
-#: Game.Levels.SubsetWorld.L14_ProperSubset
+#: Game.Levels.SubsetWorld.L15_ProperSubset
 msgid "Unwrap the set membership and use arithmetic."
 msgstr ""
 
@@ -13610,6 +15943,10 @@ msgstr ""
 #. §1: `cases hu`
 #: Game.Levels.PsetSets.L13_PowersetUnionSubset
 msgid "Case-split on §0 with §1."
+msgstr ""
+
+#: Game.Levels.PreimageWorld.L12_PreimageIndexedIntersection
+msgid "Preimage distributes over indexed intersection."
 msgstr ""
 
 #. §0: `s`
@@ -13647,6 +15984,10 @@ msgid "# Complement: ᶜ means ¬\n"
 "in Set World. The only difference is the notation."
 msgstr ""
 
+#: Game.Levels.PreimageWorld.L04_PreimageSingleton
+msgid "2 is in the fiber over 3 (since 2+1=3), but 5 is not (since 5+1=6)."
+msgstr ""
+
 #. §0: `¬ (7 < 5)`
 #. §1: `7 < 5 → False`
 #. §2: `intro h`
@@ -13664,6 +16005,13 @@ msgstr ""
 #: Game.Levels.IndexedOpsWorld.L22_IInterDistrib
 msgid "You have §0. Rewrite to a universal:\n"
 "§1. Then §2 and §3."
+msgstr ""
+
+#. §0: `rw [Set.mem_iInter] at hx`
+#. §1: `hx : ∀ i, f x ∈ s i`
+#: Game.Levels.PreimageWorld.L12_PreimageIndexedIntersection
+msgid "Expose the universal: §0 to get\n"
+"§1."
 msgstr ""
 
 #. §0: `push_neg`
@@ -13741,6 +16089,17 @@ msgstr ""
 msgid "Bounded Indexed Intersection"
 msgstr ""
 
+#. §0: `hx : f x ∈ ⋃ i, s i`
+#. §1: `rw [Set.mem_iUnion] at hx`
+#: Game.Levels.PreimageWorld.L11_PreimageIndexedUnion
+msgid "Now §0. Expose the existential:\n"
+"§1."
+msgstr ""
+
+#: Game.Levels.PreimageWorld.L03_PreimageNonInjective
+msgid "Both 0 and 1000 are in the preimage because the function always outputs 7, and 7 < 10."
+msgstr ""
+
 #. §0: `¬(s ⊆ t)`
 #. §1: `¬ P`
 #. §2: `P → False`
@@ -13784,9 +16143,24 @@ msgid "# When ⊆ Fails: Proving ¬(s ⊆ t)\n"
 "4. Unwrap and derive contradiction — §16 is false"
 msgstr ""
 
-#: Game.Levels.SubsetWorld.L12_SetNonEquality
+#: Game.Levels.SubsetWorld.L13_SetNonEquality
 msgid "The set of numbers less than 3 is not equal to the set of\n"
 "numbers less than 5."
+msgstr ""
+
+#. §0: `rw [Set.preimage_inter]`
+#: Game.Levels.PreimageWorld.L15_RewriteComposition
+msgid "Use §0 to distribute preimage over\n"
+"the intersection. This uses the theorem you proved in Level 8."
+msgstr ""
+
+#. §0: `x ∈ f ⁻¹' (s ∪ t)`
+#. §1: `f x ∈ s ∨ f x ∈ t`
+#. §2: `intro hx`
+#. §3: `cases hx with | inl hs | inr ht`
+#: Game.Levels.PreimageWorld.L09_PreimageUnion
+msgid "**Forward**: §0 means §1.\n"
+"Use §2 then §3 to split."
 msgstr ""
 
 #. §0: `rfl`
