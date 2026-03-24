@@ -75,30 +75,6 @@ course — it appears whenever set membership involves existential
 conditions.
 "
 
-/-- `obtain ⟨x, hx⟩ := h` destructures a hypothesis `h` with structure
-(such as `∃ x, P x` or `⟨a, b⟩`) into its components.
-
-## Syntax
-```
-obtain ⟨x, hx⟩ := h     -- destructure an existential
-obtain ⟨a, b⟩ := h       -- destructure a conjunction or pair
-obtain ⟨x, hx, hy⟩ := h  -- nested destructuring
-```
-
-## Angle bracket input
-Type ⟨ as `\<` and ⟩ as `\>` in the editor.
-
-## When to use it
-When you have a hypothesis whose type is an existential `∃ x, P x`,
-a conjunction `P ∧ Q`, or any structure with a single constructor.
-After `obtain`, the components are available as separate hypotheses.
-
-## Example
-If `h : ∃ r, n = r + r`, then `obtain ⟨r, hr⟩ := h` gives
-`r : ℕ` and `hr : n = r + r`.
--/
-TacticDoc obtain
-
 NewTactic obtain
 
 DisabledTactic trivial decide native_decide simp aesop simp_all tauto norm_num linarith

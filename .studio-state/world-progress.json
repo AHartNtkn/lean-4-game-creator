@@ -8,6 +8,7 @@
     "PreimageWorld",
     "ImageWorld",
     "PsetImgPreimg",
-    "InjectiveWorld"
+    "InjectiveWorld",
+    "SurjectiveWorld"
   ]
 }

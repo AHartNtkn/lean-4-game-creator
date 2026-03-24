@@ -718,3 +718,100 @@ exact congrArg g hab    -- produces g (f a) = g (f b)
 ```
 -/
 TheoremDoc congrArg as "congrArg" in "Logic"
+
+/-! ## Surjection-related documentation -/
+
+/-- `Function.Surjective.comp` states that the composition of two surjective
+functions is surjective: `Surjective g → Surjective f → Surjective (g ∘ f)`.
+
+Disabled to force the learner to prove composition preserves surjectivity
+from scratch.
+-/
+TheoremDoc Function.Surjective.comp as "Function.Surjective.comp" in "Function"
+
+/-- `Function.Surjective.of_comp` states that if `g ∘ f` is surjective,
+then `g` is surjective: `Surjective (g ∘ f) → Surjective g`.
+
+Disabled to force the learner to prove extraction from composition
+from scratch.
+-/
+TheoremDoc Function.Surjective.of_comp as "Function.Surjective.of_comp" in "Function"
+
+/-- `Function.Surjective.of_comp_left` states that if `g ∘ f` is surjective
+and `g` is injective, then `f` is surjective.
+
+Disabled to force the learner to prove this integration theorem in the boss.
+-/
+TheoremDoc Function.Surjective.of_comp_left as "Function.Surjective.of_comp_left" in "Function"
+
+/-- `Function.RightInverse.surjective` states that if `f` has a right inverse,
+then `f` is surjective.
+
+Disabled to force the learner to prove right-inverse implies surjectivity
+from scratch.
+-/
+TheoremDoc Function.RightInverse.surjective as "Function.RightInverse.surjective" in "Function"
+
+/-- `Function.HasRightInverse.surjective` states that if `f` has a right
+inverse (existential form), then `f` is surjective.
+
+Disabled to force the learner to prove right-inverse implies surjectivity
+from scratch.
+-/
+TheoremDoc Function.HasRightInverse.surjective as "Function.HasRightInverse.surjective" in "Function"
+
+/-- `Function.Surjective.hasRightInverse` states that every surjective
+function has a right inverse (using the Axiom of Choice):
+`Surjective f → HasRightInverse f`.
+
+Disabled to force the learner to construct the right inverse manually
+using `Exists.choose` and `Exists.choose_spec`.
+-/
+TheoremDoc Function.Surjective.hasRightInverse as "Function.Surjective.hasRightInverse" in "Function"
+
+/-- `Set.image_preimage_eq` states that if `f` is surjective, then
+`f '' (f ⁻¹' s) = s` — the image-preimage round trip recovers
+the original set exactly.
+
+Disabled in the surjectivity image-preimage level to force the learner
+to prove this equality from scratch.
+-/
+TheoremDoc Set.image_preimage_eq as "Set.image_preimage_eq" in "Set"
+
+/-! ## Range characterization documentation -/
+
+/-- `Set.range_eq_univ` states `Set.range f = Set.univ ↔ Surjective f`
+— surjectivity is equivalent to the range being the full codomain.
+
+Disabled in the range characterization level to force the learner to
+prove this equivalence from scratch.
+-/
+TheoremDoc Set.range_eq_univ as "Set.range_eq_univ" in "Set"
+
+/-- `Function.Surjective.range_eq` states that if `f` is surjective,
+then `Set.range f = Set.univ`.
+
+Disabled to force the learner to prove the forward direction of the
+range characterization manually.
+-/
+TheoremDoc Function.Surjective.range_eq as "Function.Surjective.range_eq" in "Function"
+
+/-! ## Right cancelation and projection documentation -/
+
+/-- `Function.Surjective.injective_comp_right` states that if `f` is
+surjective, then postcomposition with `f` is injective:
+`Surjective f → Injective (· ∘ f)`.
+
+This is equivalent to right cancelation: if `g₁ ∘ f = g₂ ∘ f` and `f`
+is surjective, then `g₁ = g₂`.
+
+Disabled to force the learner to prove right cancelation from scratch.
+-/
+TheoremDoc Function.Surjective.injective_comp_right as "Function.Surjective.injective_comp_right" in "Function"
+
+/-- `Prod.fst_surjective` states that `Prod.fst : α × β → α` is
+surjective (when `β` is nonempty).
+
+Disabled to force the learner to construct the witness manually.
+-/
+TheoremDoc Prod.fst_surjective as "Prod.fst_surjective" in "Function"
