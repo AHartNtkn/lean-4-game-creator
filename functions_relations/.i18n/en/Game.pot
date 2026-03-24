@@ -82,6 +82,11 @@ msgstr ""
 msgid "§0 means §1. You have §2."
 msgstr ""
 
+#. §0: `intro a b hab`
+#: Game.Levels.InjectiveWorld.L04_Composition
+msgid "Start with the canonical shape: §0."
+msgstr ""
+
 #. §0: `hx`
 #. §1: `x < 3`
 #. §2: `x ≤ 3`
@@ -89,6 +94,14 @@ msgstr ""
 #: Game.Levels.SubsetWorld.L02_ChangeTactic
 msgid "Good — §0 is now §1. The goal is definitionally §2.\n"
 "Use §3 to make it explicit."
+msgstr ""
+
+#. §0: `have key : (0 : ℕ) = 1 := by apply h; rfl`
+#. §1: `omega`
+#: Game.Levels.InjectiveWorld.L03_NonInjective
+msgid "Try:\n"
+"§0\n"
+"then §1."
 msgstr ""
 
 #. §0: `rintro ⟨x, hx, rfl⟩`
@@ -392,6 +405,28 @@ msgid "**Forward**: §0 means §1, which is\n"
 "use §4 to assume §5 and derive §6."
 msgstr ""
 
+#. §0: `ha : g (f a) = a`
+#. §1: `hb : g (f b) = b`
+#. §2: `hab : f a = f b`
+#. §3: `hab`
+#. §4: `ha`
+#. §5: `g (f b) = a`
+#. §6: `hb : g (f b) = b`
+#. §7: `a = b`
+#. §8: `rw [hab] at ha`
+#. §9: `ha`
+#: Game.Levels.InjectiveWorld.L07_LeftInverse
+msgid "Now you have:\n"
+"- §0\n"
+"- §1\n"
+"- §2\n"
+"\n"
+"From §3, rewriting in §4 gives §5. Combined with\n"
+"§6, you get §7.\n"
+"\n"
+"Use §8 to update §9."
+msgstr ""
+
 #. §0: `constructor`
 #. §1: `x ∈ s`
 #. §2: `hs`
@@ -583,12 +618,59 @@ msgstr ""
 msgid "Use §0 to split into the two parts."
 msgstr ""
 
+#. §0: `Nat.succ_injective`
+#: Game.Metadata
+msgid "§0 states that the successor function is injective.\n"
+"\n"
+"Disabled to prevent one-shot solutions in arithmetic injectivity levels."
+msgstr ""
+
 #. §0: `use 3`
 #. §1: `r = 3`
 #. §2: `6 = 3 + 3`
 #: Game.Levels.SetWorld.L08_CompoundPredicate
 msgid "§0 substitutes §1 and the\n"
 "remaining goal §2 is closed automatically."
+msgstr ""
+
+#. §0: `intro a b hab`
+#. §1: `have`
+#. §2: `have ha := hinv (f a)`
+#. §3: `rw [...] at`
+#. §4: `apply`
+#. §5: `rw [← ...]`
+#. §6: `f : α → β`
+#. §7: `g : β → γ`
+#. §8: `r`
+#. §9: `r (g x) = x`
+#. §10: `x`
+#. §11: `g ∘ f`
+#. §12: `g (f a) = g (f b)`
+#. §13: `r`
+#. §14: `f a`
+#. §15: `f b`
+#. §16: `f`
+#. §17: `a = b`
+#: Game.Levels.InjectiveWorld.L08_Boss
+msgid "# Boss: Integration Challenge\n"
+"\n"
+"This boss combines techniques from across Injective World into a single\n"
+"proof:\n"
+"\n"
+"- The canonical §0 shape (Levels 1–2)\n"
+"- Extracting an explicit equation with §1 (Levels 1–2)\n"
+"- Left-inverse instantiation: §2 (Level 7)\n"
+"- Rewriting at hypotheses: §3 (Levels 6–7)\n"
+"- Applying injectivity via §4 (Levels 4–5)\n"
+"- Backward rewriting: §5 (Levels 6–7)\n"
+"\n"
+"**Setup**: You have a function §6 that is injective, a function\n"
+"§7 that has a left inverse §8 (meaning §9 for all\n"
+"§10), and you must prove that the composition §11 is injective.\n"
+"\n"
+"**Strategy**: If §12, apply §13 to both sides using the\n"
+"left-inverse property to recover §14 and §15. Then use §16's\n"
+"injectivity to conclude §17."
 msgstr ""
 
 #: Game.Levels.IndexedOpsWorld.L04_IUnionFromSubset
@@ -961,6 +1043,7 @@ msgstr ""
 #: Game.Levels.PsetSets.L13_PowersetUnionSubset
 #: Game.Levels.PsetSets.L13_PowersetUnionSubset
 #: Game.Levels.PsetSets.L16_AbsorptionLaw
+#: Game.Levels.InjectiveWorld.L04_Composition
 msgid "§0 then §1 then §2."
 msgstr ""
 
@@ -1044,6 +1127,15 @@ msgstr ""
 #: Game.Levels.ImageWorld.L02_DestructuringImage
 msgid "Now §0. The goal is §1. Since\n"
 "§2, rewrite to replace §3 with §4 using §5."
+msgstr ""
+
+#. §0: `(fun n => n / 2) 0 = (fun n => n / 2) 1`
+#. §1: `0 / 2 = 1 / 2`
+#. §2: `0 = 0`
+#. §3: `rfl`
+#: Game.Levels.InjectiveWorld.L03_NonInjective
+msgid "The goal is now §0,\n"
+"which reduces to §1, i.e., §2. Use §3."
 msgstr ""
 
 #: Game.Levels.IndexedOpsWorld.L17_IUnionEqualsUniv
@@ -1206,6 +1298,52 @@ msgstr ""
 #: Game.Levels.IndexedOpsWorld.L07_BoundedIUnion
 msgid "The goal is §0. Use §1\n"
 "to convert to a double existential: §2."
+msgstr ""
+
+#. §0: `f`
+#. §1: `f a = f b`
+#. §2: `a = b`
+#. §3: `Function.Injective f`
+#. §4: $$\\text{Injective}(f) \\;\\;:\\equiv\\;\\; \\forall\\, a\\, b,\\;\\; f(a) = f(b) \\;\\Longrightarrow\\; a = b$$
+#. §5: `Injective f`
+#. §6: ```
+#. intro a b hab
+#. ```
+#. §7: `a b : α`
+#. §8: `hab : f a = f b`
+#. §9: `a = b`
+#. §10: `n ↦ n + 1`
+#. §11: `intro a b hab`
+#. §12: `hab`
+#. §13: `a + 1 = b + 1`
+#. §14: `omega`
+#. §15: `have h : a + 1 = b + 1 := hab`
+#. §16: `omega`
+#: Game.Levels.InjectiveWorld.L01_InjectiveIntro
+msgid "# Injective Functions\n"
+"\n"
+"A function §0 is **injective** (one-to-one) if distinct inputs always\n"
+"produce distinct outputs. Equivalently: if §1, then §2.\n"
+"\n"
+"In Lean, this is §3:\n"
+"\n"
+"§4\n"
+"\n"
+"**The canonical proof shape**: To prove §5, you always start the\n"
+"same way:\n"
+"\n"
+"§6\n"
+"\n"
+"This gives you §7 and §8. Your job is to derive\n"
+"§9.\n"
+"\n"
+"**Your task**: Prove that the successor function §10 on ℕ is\n"
+"injective.\n"
+"\n"
+"After §11, the hypothesis §12 says §13\n"
+"(definitionally — Lean sees through the lambda). But §14 cannot read\n"
+"the lambda form directly. Use §15 to create\n"
+"a version that §16 can work with."
 msgstr ""
 
 #. §0: `x ∈ s`
@@ -2090,6 +2228,25 @@ msgid "§0 closes goals that are linear arithmetic consequences\n"
 "Disabled in levels where manual reasoning is the lesson."
 msgstr ""
 
+#. §0: `n ↦ 2 * n`
+#. §1: `intro a b hab`
+#. §2: `a`
+#. §3: `b`
+#. §4: `hab : 2 * a = 2 * b`
+#. §5: `omega`
+#: Game.Levels.InjectiveWorld.L02_InjectiveDoubling
+msgid "# Same Shape, Different Algebra\n"
+"\n"
+"Now prove that the doubling function §0 is injective.\n"
+"\n"
+"The proof shape is identical to Level 1:\n"
+"1. §1 — get §2, §3, and §4\n"
+"2. Extract the arithmetic equation\n"
+"3. §5 to finish\n"
+"\n"
+"The only difference is the function — the proof *shape* is the same."
+msgstr ""
+
 #. §0: `exact hu.trans h`
 #. §1: `u ⊆ s`
 #. §2: `s ⊆ t`
@@ -2266,6 +2423,16 @@ msgid "§0 -- witness 0, membership\n"
 "§1, and equation §2."
 msgstr ""
 
+#. §0: `obtain ⟨hs, hns⟩ := hx`
+#. §1: `hs : x ∈ s`
+#. §2: `hns : x ∈ sᶜ`
+#. §3: `x ∉ s`
+#. §4: `x ∈ s → False`
+#: Game.Levels.SetOpsWorld.L09_ComplementLaw
+msgid "Use §0 to get §1 and\n"
+"§2 (which is §3, i.e., §4)."
+msgstr ""
+
 #. §0: `inf_compl_eq_bot`
 #. §1: `a ⊓ aᶜ = ⊥`
 #: Game.Levels.SetOpsWorld.L09_ComplementLaw
@@ -2287,16 +2454,6 @@ msgstr ""
 msgid "§0 is the lattice version: §1."
 msgstr ""
 
-#. §0: `obtain ⟨hs, hns⟩ := hx`
-#. §1: `hs : x ∈ s`
-#. §2: `hns : x ∈ sᶜ`
-#. §3: `x ∉ s`
-#. §4: `x ∈ s → False`
-#: Game.Levels.SetOpsWorld.L09_ComplementLaw
-msgid "Use §0 to get §1 and\n"
-"§2 (which is §3, i.e., §4)."
-msgstr ""
-
 #. §0: `h : Even 3`
 #. §1: `∃ r, 3 = r + r`
 #. §2: `obtain ⟨r, hr⟩ := h`
@@ -2308,6 +2465,14 @@ msgstr ""
 msgid "§0 means §1. Use\n"
 "§2 to extract the witness §3 and equation\n"
 "§4. (Type ⟨ as §5 and ⟩ as §6.)"
+msgstr ""
+
+#. §0: `hab`
+#. §1: `2 * a = 2 * b`
+#. §2: `have h : 2 * a = 2 * b := hab`
+#: Game.Levels.InjectiveWorld.L02_InjectiveDoubling
+msgid "Now extract the equation. The hypothesis §0 is definitionally\n"
+"§1. Use §2."
 msgstr ""
 
 #. §0: `∀ i, x ∈ s i`
@@ -2585,6 +2750,10 @@ msgid "§0 converts hypothesis §1 to display as §2,\n"
 "§12, the types are not definitionally equal."
 msgstr ""
 
+#: Game.Levels.InjectiveWorld.L07_LeftInverse
+msgid "Left Inverses Imply Injectivity"
+msgstr ""
+
 #. §0: `∃ k : ℕ, 5 ∈ ...`
 #. §1: `5 % 3 = 2`
 #. §2: `k = 2`
@@ -2622,6 +2791,12 @@ msgid "The forward direction: assume membership in the left set.\n"
 "\n"
 "Since you need §6 and the hypothesis is §7,\n"
 "you can use §8 to extract the first component."
+msgstr ""
+
+#. §0: `intro a b hab`
+#: Game.Levels.InjectiveWorld.L05_Extraction
+#: Game.Levels.InjectiveWorld.L07_LeftInverse
+msgid "Start with §0 as always."
 msgstr ""
 
 #. §0: `constructor`
@@ -2777,6 +2952,10 @@ msgid "You proved the dual distributive law:\n"
 "In ordinary math: \"If §14 for every §15, either §16\n"
 "(and we are done) or §17, in which case §18 for every\n"
 "§19, so §20.\""
+msgstr ""
+
+#: Game.Levels.InjectiveWorld.L03_NonInjective
+msgid "Integer division by 2 is not injective on ℕ."
 msgstr ""
 
 #. §0: `h5`
@@ -3101,6 +3280,52 @@ msgid "§0 states §1 — each member of\n"
 "the family is contained in the indexed union."
 msgstr ""
 
+#. §0: ```
+#. intro a b hab
+#. have ha := h a        -- g (f a) = a
+#. have hb := h b        -- g (f b) = b
+#. rw [hab] at ha        -- g (f b) = a
+#. rw [← ha, hb]        -- a = g (f b) = b
+#. ```
+#. §1: `a = g (f a) = g (f b) = b`
+#. §2: `=`
+#. §3: `ha`
+#. §4: `=`
+#. §5: `hab`
+#. §6: `f a = f b`
+#. §7: `=`
+#. §8: `hb`
+#. §9: `g`
+#. §10: `g (f x) = x`
+#. §11: `x`
+#. §12: `f`
+#. §13: `g`
+#. §14: `apply`
+#: Game.Levels.InjectiveWorld.L07_LeftInverse
+msgid "You proved that left inverses imply injectivity!\n"
+"\n"
+"§0\n"
+"\n"
+"**The chain of equalities**: The proof establishes\n"
+"§1, where:\n"
+"- The first §2 comes from §3 (left inverse property)\n"
+"- The middle §4 comes from §5 (the injectivity assumption §6)\n"
+"- The last §7 comes from §8 (left inverse property again)\n"
+"\n"
+"**Why left inverses force injectivity**: A left inverse §9 \"remembers\"\n"
+"the original input. Since §10 always recovers §11, no\n"
+"information can be lost by applying §12. If two inputs gave the\n"
+"same output, §13 could not recover both — contradiction.\n"
+"\n"
+"**Looking ahead**: The boss will ask you to combine left-inverse\n"
+"reasoning with injectivity and §14 — integrating techniques from\n"
+"across this world."
+msgstr ""
+
+#: Game.Levels.InjectiveWorld.L08_Boss
+msgid "If g has a left inverse and f is injective, then g ∘ f is injective."
+msgstr ""
+
 #. §0: `x ∈ (⋃ i, s i) ∩ t`
 #. §1: `x ∈ ⋃ i, (s i ∩ t)`
 #. §2: `intro hx`
@@ -3111,6 +3336,47 @@ msgid "**Forward direction**: Assume §0 and prove\n"
 "\n"
 "Start with §2, then destructure the intersection:\n"
 "§3."
+msgstr ""
+
+#. §0: $$\\text{Injective}(f) \\;\\;:\\equiv\\;\\; \\forall\\, a\\, b,\\;\\; f(a) = f(b) \\;\\Longrightarrow\\; a = b$$
+#. §1: `Function.Injective`
+#. §2: `intro a b hab`
+#. §3: `a = b`
+#. §4: `f`
+#. §5: `g ∘ f`
+#. §6: `Function.Injective`
+#. §7: `Function.LeftInverse`
+#. §8: `show`
+#. §9: `omega`
+#. §10: `have`
+#: Game.Levels.InjectiveWorld
+msgid "# Injective World\n"
+"\n"
+"A function is **injective** (one-to-one) if it never sends two different\n"
+"inputs to the same output. In Lean:\n"
+"\n"
+"§0\n"
+"\n"
+"This is one of the most fundamental properties of functions. Injective\n"
+"functions preserve distinctness — they never \"collapse\" information.\n"
+"\n"
+"In Pset: Images & Preimages, you already used §1 as\n"
+"a hypothesis to close gaps in image–set-operation identities. Now you will\n"
+"learn to **prove** injectivity from scratch, and to **compose** and\n"
+"**extract** injectivity across function compositions.\n"
+"\n"
+"By the end of this world, you will:\n"
+"- Prove injectivity using the canonical proof shape: §2 → derive §3\n"
+"- Disprove injectivity by exhibiting a counterexample\n"
+"- Prove that composition preserves injectivity\n"
+"- Extract injectivity of §4 from injectivity of §5\n"
+"- Learn to rewrite at hypotheses and use backward rewriting\n"
+"- Prove that a left inverse implies injectivity\n"
+"- Integrate these skills in the boss\n"
+"\n"
+"**New definitions**: §6, §7\n"
+"\n"
+"**Prerequisites**: Set World (for §8, §9, §10)."
 msgstr ""
 
 #. §0: `Even (2 * x)`
@@ -3212,15 +3478,15 @@ msgid "**Forward**: §0 means §1.\n"
 "§6 proof."
 msgstr ""
 
-#: Game.Levels.SubsetWorld.L02_ChangeTactic
-msgid "Every natural number less than 3 is at most 3."
-msgstr ""
-
 #. §0: `x ∈ s`
 #. §1: `hx : x ∈ s`
 #. §2: `exact hx`
 #: Game.Levels.SubsetWorld.L08_SubsetTrans
 msgid "The goal is §0 and you have §1. Use §2."
+msgstr ""
+
+#: Game.Levels.SubsetWorld.L02_ChangeTactic
+msgid "Every natural number less than 3 is at most 3."
 msgstr ""
 
 #: GameServer.RpcHandlers
@@ -3862,6 +4128,10 @@ msgstr ""
 #: Game.Levels.ImageWorld.L16_MonoFromGalois
 #: Game.Levels.ImageWorld.L19_NonemptinessConverse
 #: Game.Levels.ImageWorld.L20_Boss
+#: Game.Levels.InjectiveWorld.L06_RewritingCoaching
+#: Game.Levels.InjectiveWorld.L07_LeftInverse
+#: Game.Levels.InjectiveWorld.L08_Boss
+#: Game.Levels.InjectiveWorld.L08_Boss
 msgid "§0"
 msgstr ""
 
@@ -4467,6 +4737,47 @@ msgid "Congratulations — you have completed the **Sets Problem Set**!\n"
 "the fundamental asymmetry between them. Preimages preserve ALL set\n"
 "operations; images only preserve unions. The membership-to-logic\n"
 "reduction you have mastered is exactly what those proofs require."
+msgstr ""
+
+#. §0: `f`
+#. §1: `g`
+#. §2: `g ∘ f`
+#. §3: `f`
+#. §4: `g`
+#. §5: `f`
+#. §6: `g`
+#. §7: `(g ∘ f) a = (g ∘ f) b`
+#. §8: `g (f a) = g (f b)`
+#. §9: `g`
+#. §10: `f a = f b`
+#. §11: `f`
+#. §12: `a = b`
+#. §13: `apply hf`
+#. §14: `a = b`
+#. §15: `f a = f b`
+#. §16: `hf : Injective f`
+#. §17: `f a = f b → a = b`
+#. §18: `hg`
+#. §19: `apply`
+#: Game.Levels.InjectiveWorld.L04_Composition
+msgid "# Composing Injective Functions\n"
+"\n"
+"If §0 and §1 are both injective, then their composition §2 is\n"
+"also injective. Intuitively: if neither §3 nor §4 collapses distinct\n"
+"inputs, then doing §5 followed by §6 cannot collapse them either.\n"
+"\n"
+"The proof uses the canonical shape, then applies both injectivity\n"
+"hypotheses in sequence:\n"
+"\n"
+"1. Assume §7, i.e., §8\n"
+"2. Since §9 is injective: §10\n"
+"3. Since §11 is injective: §12\n"
+"\n"
+"In Lean, §13 reduces the goal from §14 to §15\n"
+"(because §16 says §17). Similarly\n"
+"for §18.\n"
+"\n"
+"**New proof move**: chain §19 through two injectivity hypotheses."
 msgstr ""
 
 #: Game.Levels.ImageWorld.L20_Boss
@@ -5281,6 +5592,18 @@ msgstr ""
 #: Game.Levels.IndexedOpsWorld.L06_MonotonIInter
 msgid "Now rewrite the goal: §0 to convert to\n"
 "§1."
+msgstr ""
+
+#. §0: `Function.Injective.of_comp`
+#. §1: `g ∘ f`
+#. §2: `f`
+#. §3: `Injective (g ∘ f) → Injective f`
+#: Game.Metadata
+msgid "§0 states that if §1 is injective, then\n"
+"§2 is injective: §3.\n"
+"\n"
+"Disabled to force the learner to prove extraction from composition\n"
+"from scratch."
 msgstr ""
 
 #: Game.Levels.IndexedOpsWorld.L21_BoundedIntegration
@@ -6725,6 +7048,33 @@ msgid "# The Empty Set\n"
 "**Your task**: Prove the statement step by step."
 msgstr ""
 
+#. §0: `ha : r (g (f b)) = f a`
+#. §1: `hb : r (g (f b)) = f b`
+#. §2: `r (g (f b))`
+#. §3: `f a = f b`
+#. §4: `f`
+#. §5: `f a = f b`
+#. §6: `a = b`
+#. §7: `apply hf`
+#. §8: `f a = f b`
+#: Game.Levels.InjectiveWorld.L08_Boss
+msgid "Now §0 and §1.\n"
+"Both hypotheses express §2 as something — so §3.\n"
+"\n"
+"Since §4 is injective, §5 implies §6. Use §7\n"
+"to reduce the goal to §8."
+msgstr ""
+
+#. §0: `hab`
+#. §1: `(g ∘ f) a = (g ∘ f) b`
+#. §2: `g (f a) = g (f b)`
+#. §3: `have hab' : g (f a) = g (f b) := hab`
+#: Game.Levels.InjectiveWorld.L08_Boss
+msgid "The hypothesis §0 has type §1, which is\n"
+"definitionally §2. Extract the explicit equation:\n"
+"§3"
+msgstr ""
+
 #: Game.Levels.ImageWorld.L10_ImageComposition
 msgid "Image distributes over function composition."
 msgstr ""
@@ -6890,6 +7240,15 @@ msgid "§0 says 4 is in the right set, which is definitionally §1.\n"
 "contradiction and closes the §4 goal."
 msgstr ""
 
+#. §0: `h : x = -5`
+#. §1: `k`
+#. §2: `-5 = 2k + 1`
+#. §3: `k = -3`
+#: Game.Levels.PsetSets.L02_ConcreteType
+msgid "§0. Same approach — find a §1 so that §2,\n"
+"i.e., §3."
+msgstr ""
+
 #. §0: $$\\forall\\, i,\\; s_i \\subseteq t_i \\;\\Longrightarrow\\;
 #. \\bigcup_i s_i \\subseteq \\bigcup_i t_i$$
 #. §1: `s₁ ⊆ s₂ → t₁ ⊆ t₂ → s₁ ∪ t₁ ⊆ s₂ ∪ t₂`
@@ -6930,15 +7289,6 @@ msgid "# Monotonicity of Indexed Union\n"
 "This level chains an indexed-union extraction (§14 on a\n"
 "hypothesis) with a subset application and an indexed-union introduction\n"
 "(§15 on the goal)."
-msgstr ""
-
-#. §0: `h : x = -5`
-#. §1: `k`
-#. §2: `-5 = 2k + 1`
-#. §3: `k = -3`
-#: Game.Levels.PsetSets.L02_ConcreteType
-msgid "§0. Same approach — find a §1 so that §2,\n"
-"i.e., §3."
 msgstr ""
 
 #. §0: `hus : u ⊆ s`
@@ -7065,6 +7415,10 @@ msgid "§0 constructs a proof of §1 from a proof §2.\n"
 "\n"
 "## Alternative\n"
 "The §7 tactic followed by §8 achieves the same result."
+msgstr ""
+
+#: Game.Levels.InjectiveWorld.L01_InjectiveIntro
+msgid "The Injectivity Proof Shape"
 msgstr ""
 
 #: Game.Levels.SetOpsWorld.L07_IntersectionCommutativity
@@ -7993,6 +8347,72 @@ msgstr ""
 msgid "§0 is the lattice version of §1."
 msgstr ""
 
+#. §0: ```
+#. intro a b hab     -- assume f a = f b, prove a = b
+#. ```
+#. §1: `have h : ... := hab`
+#. §2: `omega`
+#. §3: `apply hf`
+#. §4: `apply hg`
+#. §5: `apply hgf`
+#. §6: `show`
+#. §7: `rw`
+#. §8: `h a`
+#. §9: `h b`
+#. §10: `Injective g`
+#. §11: `Injective f`
+#. §12: `Injective (g ∘ f)`
+#. §13: `Injective (g ∘ f)`
+#. §14: `Injective f`
+#. §15: `LeftInverse g f`
+#. §16: `Injective f`
+#. §17: `Injective (g ∘ f)`
+#. §18: `Injective g`
+#. §19: `Injective (g ∘ f)`
+#. §20: `Injective f`
+#. §21: `Surjective (g ∘ f)`
+#. §22: `Surjective g`
+#: Game.Levels.InjectiveWorld.L08_Boss
+msgid "Congratulations — you completed **Injective World**!\n"
+"\n"
+"## What You Learned\n"
+"\n"
+"**The canonical injectivity proof**:\n"
+"§0\n"
+"Every injectivity proof starts this way. What follows depends on the\n"
+"setting:\n"
+"- **Arithmetic**: extract the equation (§1), then §2\n"
+"- **Composition**: chain §3 then §4\n"
+"- **Extraction**: §5, then §6 + §7\n"
+"- **Left inverse**: instantiate §8 and §9, then rewrite\n"
+"\n"
+"**Disproving injectivity**: Find two distinct inputs with the same\n"
+"output, apply injectivity to get a false equation, derive contradiction.\n"
+"\n"
+"**Composition rules**:\n"
+"| Hypothesis | Conclusion |\n"
+"|---|---|\n"
+"| §10, §11 | §12 |\n"
+"| §13 | §14 |\n"
+"| §15 | §16 |\n"
+"| §17 | §18 — **FALSE** |\n"
+"\n"
+"**Looking ahead**: In Surjective World, you will learn the dual\n"
+"story. The roles reverse in a surprising way: §19\n"
+"implies §20 (the INNER function), but §21\n"
+"implies §22 (the OUTER function!). This asymmetry — injection\n"
+"tests the inner factor, surjection tests the outer factor — is one of\n"
+"the deepest patterns in function theory."
+msgstr ""
+
+#. §0: `¬ P`
+#. §1: `P → False`
+#. §2: `intro h`
+#: Game.Levels.InjectiveWorld.L03_NonInjective
+msgid "Since §0 means §1, start with §2 to assume\n"
+"injectivity and aim for a contradiction."
+msgstr ""
+
 #. §0: `x ∈ ∅`
 #. §1: `False`
 #. §2: `False`
@@ -8306,6 +8726,19 @@ msgid "You proved the absorption law §0.\n"
 "- Absorption: §21"
 msgstr ""
 
+#. §0: `0 = 1`
+#. §1: `h`
+#. §2: `(fun n => n / 2) 0 = (fun n => n / 2) 1`
+#. §3: `0 / 2 = 1 / 2`
+#. §4: `h`
+#. §5: `0 = 1`
+#. §6: `apply h`
+#: Game.Levels.InjectiveWorld.L03_NonInjective
+msgid "The goal is §0. But we can get this from §1: if we show\n"
+"§2 (i.e., §3),\n"
+"then §4 gives us §5. Use §6."
+msgstr ""
+
 #. §0: `hx : x ∈ s`
 #. §1: `Set.Nonempty s`
 #. §2: `s`
@@ -8455,6 +8888,32 @@ msgstr ""
 
 #: Game.Levels.PreimageWorld.L06_PreimageEmpty
 msgid "Preimage of the Empty Set"
+msgstr ""
+
+#. §0: `injection`
+#. §1: `h : C a₁ a₂ = C b₁ b₂`
+#. §2: `C`
+#. §3: `injection h`
+#. §4: `a₁ = b₁`
+#. §5: `a₂ = b₂`
+#. §6: ```
+#. injection h
+#. injection h with h₁ h₂
+#. ```
+#: Game.Metadata
+msgid "§0 is a tactic that decomposes equalities between constructors.\n"
+"If §1 where §2 is a constructor, then §3\n"
+"produces §4 and §5.\n"
+"\n"
+"## Syntax\n"
+"§6\n"
+"\n"
+"## When to use it\n"
+"When you have an equality between constructor applications and want to\n"
+"extract the component equalities.\n"
+"\n"
+"Disabled in Injective World because it bypasses the intended proof\n"
+"technique for arithmetic injectivity proofs."
 msgstr ""
 
 #. §0: `f '' s \\cap t`
@@ -8834,6 +9293,35 @@ msgid "§0 is a general-purpose automation tactic that combines\n"
 "Disabled to force manual proof construction."
 msgstr ""
 
+#. §0: `rw [h] at hyp`
+#. §1: `hyp`
+#. §2: `h`
+#. §3: `rw [← h]`
+#. §4: `h`
+#. §5: `g b`
+#. §6: `h₁`
+#. §7: `h₂`
+#. §8: `← h₁`
+#. §9: `h₂`
+#. §10: `a = g b = b`
+#. §11: `rw at`
+#: Game.Levels.InjectiveWorld.L06_RewritingCoaching
+msgid "You learned two new rewriting moves:\n"
+"\n"
+"| Move | Effect |\n"
+"|---|---|\n"
+"| §0 | Rewrites hypothesis §1 using equation §2 |\n"
+"| §3 | Rewrites the goal using §4 right-to-left |\n"
+"\n"
+"**The pattern you just used**: When two hypotheses share a common\n"
+"expression (§5 appears in both §6 and §7), you can chain\n"
+"§8 and §9 to connect the other sides: §10.\n"
+"\n"
+"This rewriting pattern — update a hypothesis with §11, then\n"
+"chain backward and forward rewrites — is the key technique for the\n"
+"next level, where you will prove that left inverses imply injectivity."
+msgstr ""
+
 #: Game.Levels.ImageWorld.L07_ImageUnion
 msgid "Image distributes over union."
 msgstr ""
@@ -9071,6 +9559,67 @@ msgid "§0 proves §1 — the intersection\n"
 "\n"
 "## Proof idea\n"
 "If §3 then §4, so in particular §5."
+msgstr ""
+
+#. §0: `Function.LeftInverse g f`
+#. §1: `g`
+#. §2: `f`
+#. §3: `g (f x) = x`
+#. §4: `x`
+#. §5: `g ∘ f = id`
+#. §6: ```
+#. h : Function.LeftInverse g f
+#. h x : g (f x) = x           -- apply to a specific element
+#. ```
+#. §7: `f`
+#. §8: `g`
+#. §9: `h`
+#. §10: `LeftInverse g f`
+#. §11: `f a`
+#. §12: `h a`
+#. §13: `g (f a) = a`
+#. §14: ```
+#. -- h : Function.LeftInverse g f
+#. have ha := h a    -- ha : g (f a) = a
+#. ```
+#. §15: `f`
+#. §16: `f`
+#. §17: `f a = f b`
+#. §18: `g`
+#. §19: `a = g (f a) = g (f b) = b`
+#. §20: `LeftInverse g f`
+#. §21: `g`
+#. §22: `f`
+#. §23: `f`
+#. §24: `g`
+#. §25: `LeftInverse g f`
+#. §26: `g ∘ f = id`
+#. §27: `LeftInverse f g`
+#. §28: `f ∘ g = id`
+#: Game.Levels.InjectiveWorld.L07_LeftInverse
+msgid "§0 means that §1 undoes §2:\n"
+"§3 for every §4. Equivalently, §5.\n"
+"\n"
+"## Syntax\n"
+"§6\n"
+"\n"
+"## When to use it\n"
+"When you need to cancel §7 using a retraction §8. If §9 is a\n"
+"proof of §10 and you have §11 somewhere, applying\n"
+"§12 gives you §13.\n"
+"\n"
+"## Example\n"
+"§14\n"
+"\n"
+"## Connection to injectivity\n"
+"If §15 has a left inverse, then §16 is injective: from §17,\n"
+"apply §18 to get §19.\n"
+"\n"
+"## Warning\n"
+"§20 means §21 is the left inverse of §22, not that\n"
+"§23 is the left inverse of §24. The order matters:\n"
+"- §25 means §26 (g cancels f)\n"
+"- §27 means §28 (f cancels g)"
 msgstr ""
 
 #. §0: `intro i`
@@ -9530,6 +10079,18 @@ msgstr ""
 msgid "The union over an empty index type is the empty set."
 msgstr ""
 
+#. §0: `rw [hab] at h₁`
+#. §1: `g a`
+#. §2: `g b`
+#. §3: `h₁`
+#. §4: `h₁`
+#. §5: `g a = a`
+#. §6: `g b = a`
+#: Game.Levels.InjectiveWorld.L06_RewritingCoaching
+msgid "Use §0 to replace §1 with §2 in hypothesis\n"
+"§3. This changes §4 from §5 to §6."
+msgstr ""
+
 #. §0: $$f(\\emptyset) = \\emptyset$$
 #. §1: `f '' s`
 #. §2: `y`
@@ -9632,7 +10193,7 @@ msgstr ""
 #. have h := hinj hab    -- h : a = b
 #. ```
 #. §8: `Function.Injective f`
-#: Game.Levels.PsetImgPreimg.L07_InjectiveInterImage
+#: Game.Levels.InjectiveWorld.L01_InjectiveIntro
 msgid "§0, written §1, means\n"
 "that §2 maps distinct inputs to distinct outputs:\n"
 "\n"
@@ -9965,6 +10526,22 @@ msgstr ""
 msgid "Key move: §0 then\n"
 "§1 then §2 gives\n"
 "§3 (which is §4). Close with §5."
+msgstr ""
+
+#. §0: `f a`
+#. §1: `f b`
+#. §2: `hinv : LeftInverse r g`
+#. §3: `r (g x) = x`
+#. §4: `x`
+#. §5: `f a`
+#. §6: `f b`
+#. §7: `have ha := hinv (f a)`
+#. §8: `have hb := hinv (f b)`
+#: Game.Levels.InjectiveWorld.L08_Boss
+msgid "Now use the left inverse to recover §0 and §1. Since\n"
+"§2 means §3 for all §4, apply it\n"
+"to §5 and §6:\n"
+"§7 and §8."
 msgstr ""
 
 #: Game.Levels.ImageWorld.L01_ImageMembership
@@ -10336,6 +10913,15 @@ msgid "**Forward**: Destructure §0 with\n"
 "§1. This gives §2 and §3."
 msgstr ""
 
+#. §0: `hab : f a = f b`
+#. §1: `f a`
+#. §2: `f b`
+#. §3: `rw [hab]`
+#: Game.Levels.InjectiveWorld.L05_Extraction
+msgid "§0. Rewriting §1 to §2 in the goal makes\n"
+"both sides identical. Use §3."
+msgstr ""
+
 #. §0: `Set.image_subset`
 #. §1: `s ⊆ t → f '' s ⊆ f '' t`
 #. §2: `Set.image_mono`
@@ -10351,6 +10937,10 @@ msgstr ""
 #: Game.Levels.SetWorld.L06_EmptySet
 msgid "§0 closes the goal since §1 has\n"
 "exactly the type §2."
+msgstr ""
+
+#: Game.Levels.InjectiveWorld.L07_LeftInverse
+msgid "If f has a left inverse g, then f is injective."
 msgstr ""
 
 #. §0: `have hxt := hst hx`
@@ -10529,6 +11119,16 @@ msgid "§0 attempts to prove monotonicity goals by automatically applying\n"
 "Disabled to prevent one-shot solutions to subset and image problems."
 msgstr ""
 
+#. §0: `intro a b hab`
+#. §1: `a`
+#. §2: `b`
+#. §3: `hab`
+#: Game.Levels.InjectiveWorld.L01_InjectiveIntro
+msgid "Start with §0 to get the canonical injectivity\n"
+"setup: two inputs §1 and §2, and the hypothesis §3 that they\n"
+"produce the same output."
+msgstr ""
+
 #. §0: `h : Set.Nonempty (⋃ i, s i)`
 #. §1: `∃ x, x ∈ ⋃ i, s i`
 #. §2: `obtain ⟨x, hx⟩ := h`
@@ -10545,6 +11145,64 @@ msgstr ""
 #: Game.Levels.SetOpsWorld.L10_UnionCaseAnalysis
 msgid "You have §0 and need §1. Since\n"
 "§2 is the RIGHT operand of §3, use §4."
+msgstr ""
+
+#. §0: `rw [h] at hyp`
+#. §1: `rw [h]`
+#. §2: `at hyp`
+#. §3: `h : a = b`
+#. §4: `hyp : P a`
+#. §5: `rw [h] at hyp`
+#. §6: `hyp`
+#. §7: `P b`
+#. §8: `rw [← h]`
+#. §9: `rw [h]`
+#. §10: `←`
+#. §11: `rw [← h]`
+#. §12: `h : a = b`
+#. §13: `rw [← h]`
+#. §14: `b`
+#. §15: `a`
+#. §16: `g`
+#. §17: `a`
+#. §18: `b`
+#. §19: `g a = a`
+#. §20: `g b = b`
+#. §21: `g a = g b`
+#. §22: `a = b`
+#. §23: `rw [hab] at h₁`
+#. §24: `h₁`
+#. §25: `g a = a`
+#. §26: `g b = a`
+#. §27: `rw [← h₁, h₂]`
+#. §28: `a = b`
+#. §29: `b = b`
+#: Game.Levels.InjectiveWorld.L06_RewritingCoaching
+msgid "# Two New Proof Moves\n"
+"\n"
+"The next level introduces **left inverses** — functions that undo another\n"
+"function. Its proof requires two rewriting techniques you have not used yet.\n"
+"This level teaches them on a simple statement first.\n"
+"\n"
+"**Move 1 — Rewriting at a hypothesis**: §0\n"
+"\n"
+"You already know §1, which rewrites the **goal**. Adding §2\n"
+"rewrites a **hypothesis** instead. If §3 and §4, then\n"
+"§5 changes §6 to §7.\n"
+"\n"
+"**Move 2 — Backward rewriting**: §8\n"
+"\n"
+"Normally §9 replaces the left side with the right side.\n"
+"The arrow §10 reverses direction: §11 replaces the **right** side\n"
+"with the **left** side. If §12, then §13 replaces §14\n"
+"with §15 in the goal.\n"
+"\n"
+"**Your task**: Given that §16 fixes both §17 and §18 (meaning §19\n"
+"and §20), and that §21, prove §22.\n"
+"\n"
+"**Strategy**:\n"
+"1. Use §23 to update §24 from §25 to §26\n"
+"2. Use §27 to transform the goal §28 into §29"
 msgstr ""
 
 #. §0: `hr : 3 = r + r`
@@ -10707,6 +11365,16 @@ msgid "# Dual De Morgan: (s ∩ t)ᶜ = sᶜ ∪ tᶜ\n"
 "1. §15, §16\n"
 "2. **Forward**: §17, §18, §19 + §20, §21\n"
 "3. **Backward**: §22, §23, destructure and case-split"
+msgstr ""
+
+#. §0: `(g ∘ f) a = (g ∘ f) b`
+#. §1: `g (f a) = g (f b)`
+#. §2: `show g (f a) = g (f b)`
+#. §3: `rw [hab]`
+#: Game.Levels.InjectiveWorld.L05_Extraction
+msgid "The goal is §0, which is definitionally\n"
+"§1. Use §2 to make this\n"
+"explicit, then §3 to finish."
 msgstr ""
 
 #. §0: `⋂ i : Empty, s i = Set.univ`
@@ -11016,13 +11684,8 @@ msgid "The goal says §0, which means §1,\n"
 "which means §2. Use §3 to assume §4."
 msgstr ""
 
-#. §0: `Even 4`
-#. §1: `∃ r, 4 = r + r`
-#. §2: `use 2`
-#: Game.Levels.SetWorld.L04_InfiniteSet
-#: Game.Levels.SetWorld.L08_CompoundPredicate
-msgid "The goal is §0, which means §1.\n"
-"Provide the witness: §2."
+#: Game.Levels.InjectiveWorld.L08_Boss
+msgid "Boss: Left Inverse Meets Composition"
 msgstr ""
 
 #. §0: `s ∩ (t ∪ u) = (s ∩ t) ∪ (s ∩ u)`
@@ -11040,6 +11703,15 @@ msgid "# Problem Set: Level 3\n"
 "\n"
 "**Proof strategy**: §3, destructure the intersection,\n"
 "case-split on the union, then build the appropriate side."
+msgstr ""
+
+#. §0: `Even 4`
+#. §1: `∃ r, 4 = r + r`
+#. §2: `use 2`
+#: Game.Levels.SetWorld.L04_InfiniteSet
+#: Game.Levels.SetWorld.L08_CompoundPredicate
+msgid "The goal is §0, which means §1.\n"
+"Provide the witness: §2."
 msgstr ""
 
 #. §0: `Set.Subset.antisymm`
@@ -11083,6 +11755,61 @@ msgid "You just proved antisymmetry from extensionality! Compare the two proofs:
 "\n"
 "Choose based on *convenience*: §12 when you have subset proofs\n"
 "in hand, §13 when you want to work element-by-element."
+msgstr ""
+
+#. §0: ```
+#. intro a b hab   -- assume g (f a) = g (f b)
+#. apply hf        -- suffices to show f a = f b
+#. apply hg        -- suffices to show g (f a) = g (f b)
+#. exact hab       -- which is our assumption
+#. ```
+#. §1: `apply`
+#. §2: `apply`
+#. §3: `apply hf`
+#. §4: `a = b`
+#. §5: `f a = f b`
+#. §6: `apply hg`
+#. §7: `f a = f b`
+#. §8: `g (f a) = g (f b)`
+#. §9: `f`
+#. §10: `g`
+#. §11: `apply hf`
+#. §12: `apply hg`
+#. §13: `a = b`
+#. §14: `f a = f b`
+#. §15: `hf`
+#. §16: `g (f a) = g (f b)`
+#. §17: `hg`
+#. §18: `a = b`
+#. §19: `hab`
+#: Game.Levels.InjectiveWorld.L04_Composition
+msgid "You proved that composition preserves injectivity!\n"
+"\n"
+"The proof peels back the composition layer by layer:\n"
+"§0\n"
+"\n"
+"**The §1 chain**: Each §2 uses an injectivity hypothesis to\n"
+"reduce the goal by one function layer. §3 reduces §4 to\n"
+"§5. Then §6 reduces §7 to §8.\n"
+"The chain mirrors the function composition: we peel off §9 first\n"
+"(outermost goal), then §10.\n"
+"\n"
+"**Warning**: The order matters! §11 before §12. Think of\n"
+"it as: to show §13, we need §14 (via §15), and for that\n"
+"we need §16 (via §17). We work from the inside out:\n"
+"the goal §18 is the innermost, and §19 is the outermost."
+msgstr ""
+
+#. §0: `Nat.succ.inj`
+#. §1: `Nat.succ`
+#. §2: `n + 1 = m + 1`
+#. §3: `n = m`
+#: Game.Metadata
+msgid "§0 states that §1 is injective:\n"
+"if §2, then §3.\n"
+"\n"
+"Disabled in Injective World to prevent bypassing the canonical\n"
+"injectivity proof shape."
 msgstr ""
 
 #. §0: `x < 3`
@@ -11293,6 +12020,10 @@ msgstr ""
 msgid "Use §0 to provide the witness index."
 msgstr ""
 
+#: Game.Levels.InjectiveWorld.L05_Extraction
+msgid "Extracting Injectivity from Composition"
+msgstr ""
+
 #. §0: $s \\cap (t \\cup u) = (s \\cap t) \\cup (s \\cap u)$
 #. §1: $$(\\bigcup_i s_i) \\cap t = \\bigcup_i (s_i \\cap t)$$
 #. §2: `s i`
@@ -11430,6 +12161,10 @@ msgid "§0 closes goals that are decidable propositions by\n"
 "evaluating them computationally.\n"
 "\n"
 "Disabled because it bypasses manual reasoning."
+msgstr ""
+
+#: Game.Levels.InjectiveWorld.L03_NonInjective
+msgid "A Non-Injective Function"
 msgstr ""
 
 #. §0: `s ∩ t`
@@ -11855,6 +12590,10 @@ msgstr ""
 msgid "Indexed Union"
 msgstr ""
 
+#: Game.Levels.InjectiveWorld.L02_InjectiveDoubling
+msgid "The doubling function n ↦ 2 * n is injective on ℕ."
+msgstr ""
+
 #. §0: `hle`
 #. §1: `x`
 #. §2: `x ≤ 4`
@@ -12059,6 +12798,7 @@ msgstr ""
 #. §3: `omega`
 #: Game.Levels.SubsetWorld.L15_ProperSubset
 #: Game.Levels.IndexedOpsWorld.L18_DeMorganUnion
+#: Game.Levels.InjectiveWorld.L07_LeftInverse
 msgid "§0 then §1 then\n"
 "§2 then §3."
 msgstr ""
@@ -12160,6 +12900,16 @@ msgstr ""
 #. §1: `a ∧ b ↔ b ∧ a`
 #: Game.Levels.SetOpsWorld.L07_IntersectionCommutativity
 msgid "§0 states §1 (propositional commutativity of ∧)."
+msgstr ""
+
+#. §0: `show g (f a) = g (f b)`
+#. §1: `rw [hab]`
+#. §2: `exact congrArg g hab`
+#. §3: `g`
+#. §4: `hab`
+#: Game.Levels.InjectiveWorld.L05_Extraction
+msgid "§0 then §1.\n"
+"Alternative: §2 (applying §3 to both sides of §4)."
 msgstr ""
 
 #. §0: `intro h x hx`
@@ -12708,6 +13458,18 @@ msgstr ""
 msgid "§0 states §1 (lattice antisymmetry)."
 msgstr ""
 
+#. §0: `hab`
+#. §1: `(fun n => n + 1) a = (fun n => n + 1) b`
+#. §2: `a + 1 = b + 1`
+#. §3: `omega`
+#. §4: `have h : a + 1 = b + 1 := hab`
+#: Game.Levels.InjectiveWorld.L01_InjectiveIntro
+msgid "The hypothesis §0 says §1,\n"
+"which is definitionally §2. However, §3 cannot see\n"
+"through the lambda notation. Create a named version:\n"
+"§4"
+msgstr ""
+
 #: Game.Levels.PsetSets
 msgid "Problem Set: Sets"
 msgstr ""
@@ -12793,6 +13555,16 @@ msgstr ""
 msgid "Union Membership"
 msgstr ""
 
+#. §0: `Nat.mul_left_cancel`
+#. §1: `c * a = c * b → a = b`
+#. §2: `c ≠ 0`
+#: Game.Metadata
+#: Game.Metadata
+msgid "§0 states that §1 (when §2).\n"
+"\n"
+"Disabled to prevent bypassing arithmetic injectivity proofs."
+msgstr ""
+
 #. §0: `mem_iInter`
 #. §1: `rw [Set.mem_iInter]`
 #. §2: `x ∈ ⋂ i, s i`
@@ -12862,6 +13634,11 @@ msgstr ""
 msgid "The backward direction: assume §0 is in the right set and\n"
 "prove it is in the left set. The goal is a conjunction —\n"
 "use §1 to split it."
+msgstr ""
+
+#. §0: `intro a b hab`
+#: Game.Levels.InjectiveWorld.L08_Boss
+msgid "Start with the canonical injectivity shape: §0."
 msgstr ""
 
 #. §0: `setOf p`
@@ -12951,6 +13728,46 @@ msgid "# f '' s \\\\ f '' t ⊆ f '' (s \\\\ t)\n"
 "This level requires a small piece of **contradiction reasoning**:\n"
 "you must show §17 by showing that §18 would create\n"
 "a contradiction with §19."
+msgstr ""
+
+#. §0: ```
+#. intro a b hab       -- assume f a = f b
+#. have h : ... := hab -- extract the arithmetic equation
+#. omega               -- derive a = b
+#. ```
+#. §1: `intro a b hab`
+#. §2: `omega`
+#. §3: `have`
+#. §4: `change a + 1 = b + 1 at hab`
+#. §5: `change`
+#. §6: `omega`
+#. §7: `omega`
+#. §8: `hab`
+#. §9: `(fun n => n + 1) a = (fun n => n + 1) b`
+#. §10: `a + 1 = b + 1`
+#. §11: `omega`
+#. §12: `have`
+#. §13: `change`
+#: Game.Levels.InjectiveWorld.L01_InjectiveIntro
+msgid "You proved your first injectivity! The canonical proof shape is:\n"
+"\n"
+"§0\n"
+"\n"
+"**The key pattern**: Every injectivity proof starts with §1.\n"
+"What comes next depends on the function — for arithmetic functions,\n"
+"§2 finishes the job once you expose the equation.\n"
+"\n"
+"**Alternative**: Instead of §3, you can rewrite the hypothesis in\n"
+"place using §4 (the §5 tactic replaces\n"
+"a goal or hypothesis with a definitionally equal expression — you will\n"
+"encounter it in later worlds). Both approaches make the equation\n"
+"visible to §6.\n"
+"\n"
+"**Why does §7 need help?** The hypothesis §8 has type\n"
+"§9 — a lambda application.\n"
+"Lean knows this equals §10 by definition, but §11\n"
+"only processes explicit arithmetic. The §12 or §13 step\n"
+"bridges this gap."
 msgstr ""
 
 #. §0: `ext`
@@ -13090,6 +13907,10 @@ msgid "Apply §0 to the two singleton sets to get\n"
 "derive a contradiction in each case."
 msgstr ""
 
+#: Game.Levels.InjectiveWorld.L06_RewritingCoaching
+msgid "If g fixes a and b, and g a = g b, then a = b."
+msgstr ""
+
 #: Game.Levels.PreimageWorld.L15_RewriteComposition
 msgid "Preimage distributes over intersection with complement."
 msgstr ""
@@ -13102,6 +13923,10 @@ msgstr ""
 msgid "§0 is definitionally §1 — nothing belongs\n"
 "to the empty set. Since you have a §2 hypothesis, any goal\n"
 "follows. Use §3."
+msgstr ""
+
+#: Game.Levels.InjectiveWorld.L05_Extraction
+msgid "If the composition g ∘ f is injective, then f is injective."
 msgstr ""
 
 #. §0: `rw [Set.diff_eq]`
@@ -13587,6 +14412,15 @@ msgid "Subset transitivity chains: from §0 and §1, you derive\n"
 "useful as the API grows in later worlds."
 msgstr ""
 
+#. §0: `Nat.add_right_cancel`
+#. §1: `a + c = b + c → a = b`
+#: Game.Metadata
+#: Game.Metadata
+msgid "§0 states that §1.\n"
+"\n"
+"Disabled to prevent bypassing arithmetic injectivity proofs."
+msgstr ""
+
 #. §0: `hps : u ⊆ s`
 #. §1: `u ⊆ s ∪ t`
 #. §2: `x ∈ u`
@@ -13727,6 +14561,68 @@ msgstr ""
 #: Game.Levels.SetOpsWorld.L11_UnionCommutativity
 #: Game.Levels.PreimageWorld.L06_PreimageEmpty
 msgid "Start with §0 to reduce to element-wise membership."
+msgstr ""
+
+#. §0: `f`
+#. §1: `g ∘ f`
+#. §2: ```
+#. intro a b hab     -- assume f a = f b
+#. apply hgf         -- suffices: g (f a) = g (f b)
+#. show g (f a) = g (f b)
+#. rw [hab]          -- f a = f b makes both sides equal
+#. ```
+#. §3: `f a = f b`
+#. §4: `g (f a) = g (f b)`
+#. §5: `g ∘ f`
+#. §6: `g (f a) = g (f b)`
+#. §7: `a = b`
+#. §8: `show`
+#. §9: `apply hgf`
+#. §10: `(g ∘ f) a = (g ∘ f) b`
+#. §11: `show`
+#. §12: `g (f a) = g (f b)`
+#. §13: `rw [hab]`
+#. §14: `congrArg`
+#. §15: `congrArg g hab`
+#. §16: `g (f a) = g (f b)`
+#. §17: `hab : f a = f b`
+#. §18: `show`
+#. §19: `rw`
+#. §20: `exact congrArg g hab`
+#. §21: `congrArg`
+#. §22: `Injective (g ∘ f) → Injective f`
+#. §23: `Injective (g ∘ f) → Injective g`
+#. §24: `f`
+#. §25: `a`
+#. §26: `f`
+#. §27: `g`
+#. §28: `g`
+#. §29: `f`
+#: Game.Levels.InjectiveWorld.L05_Extraction
+msgid "You extracted injectivity of §0 from injectivity of §1!\n"
+"\n"
+"§2\n"
+"\n"
+"**The argument in words**: If §3, then §4\n"
+"(applying the same function to equal inputs gives equal outputs).\n"
+"Since §5 is injective, §6 forces §7.\n"
+"\n"
+"**§8 clarifies composition**: After §9, the goal displays\n"
+"as §10. The §11 step rewrites this as\n"
+"§12, making it visible that §13 applies.\n"
+"\n"
+"**Alternative — §14**: The theorem §15 directly\n"
+"produces §16 from §17 — it says\n"
+"\"applying the same function to equal inputs gives equal outputs.\"\n"
+"This one-step alternative replaces the §18 + §19 pair:\n"
+"§20. You will see §21 used throughout the\n"
+"course whenever you need to \"apply a function to both sides.\"\n"
+"\n"
+"**Asymmetry**: §22 is true, but\n"
+"§23 is false. The composition only\n"
+"*tests* every input of §24 (since every §25 gets sent through\n"
+"§26 then §27), but it may not test every input of §28 (only those\n"
+"in the range of §29 get tested)."
 msgstr ""
 
 #. §0: `h : y ∈ f '' s`
@@ -14178,6 +15074,10 @@ msgid "The goal says §0. By the definition\n"
 "§2. Use §3 to make this explicit."
 msgstr ""
 
+#: Game.Levels.InjectiveWorld.L04_Composition
+msgid "Composition Preserves Injectivity"
+msgstr ""
+
 #. §0: `rintro y ⟨x, hx, rfl⟩`
 #. §1: `y`
 #. §2: `y = 3 * x`
@@ -14242,6 +15142,27 @@ msgstr ""
 #: Game.Levels.SetOpsWorld.L16_DoubleComplement
 msgid "§0 (i.e., §1) and §2.\n"
 "Apply §3 to §4: §5."
+msgstr ""
+
+#. §0: `h : LeftInverse g f`
+#. §1: `g (f x) = x`
+#. §2: `x`
+#. §3: `hab : f a = f b`
+#. §4: `g (f a) = a`
+#. §5: `g (f b) = b`
+#. §6: `h`
+#. §7: `hab`
+#. §8: `have ha := h a`
+#. §9: `have hb := h b`
+#: Game.Levels.InjectiveWorld.L07_LeftInverse
+msgid "You have:\n"
+"- §0 — meaning §1 for all §2\n"
+"- §3\n"
+"\n"
+"Strategy: extract §4 and §5 from §6,\n"
+"then use §7 to connect them.\n"
+"\n"
+"Try §8 and §9."
 msgstr ""
 
 #: Game.Levels.IndexedOpsWorld.L17_IUnionEqualsUniv
@@ -14351,6 +15272,14 @@ msgstr ""
 msgid "Now §0 on the goal, then §1."
 msgstr ""
 
+#. §0: `key : 0 = 1`
+#. §1: `omega`
+#. §2: `False`
+#: Game.Levels.InjectiveWorld.L03_NonInjective
+msgid "You have §0 — a contradiction! Use §1 to\n"
+"close the goal §2."
+msgstr ""
+
 #. §0: `x ∈ f ⁻¹' t`
 #. §1: `f x ∈ t`
 #. §2: `h : f '' s ⊆ t`
@@ -14365,6 +15294,16 @@ msgid "The goal is §0, which is definitionally §1.\n"
 "then §4 will give you §5.\n"
 "\n"
 "Use §6 to reduce the goal to §7."
+msgstr ""
+
+#. §0: `Function.Injective.comp`
+#. §1: `Injective g → Injective f → Injective (g ∘ f)`
+#: Game.Metadata
+msgid "§0 states that the composition of two injective\n"
+"functions is injective: §1.\n"
+"\n"
+"Disabled to force the learner to prove composition preserves injectivity\n"
+"from scratch."
 msgstr ""
 
 #. §0: `hx : x ∈ f ⁻¹' t`
@@ -14902,6 +15841,29 @@ msgid "# Problem Set: Level 14\n"
 "not in §2 at all, or it is in §3."
 msgstr ""
 
+#. §0: `a = b`
+#. §1: `hf : Injective f`
+#. §2: `f a = f b`
+#. §3: `a = b`
+#. §4: `hg : Injective g`
+#. §5: `g x = g y`
+#. §6: `x = y`
+#. §7: `hab : g (f a) = g (f b)`
+#. §8: `apply hf`
+#. §9: `f a = f b`
+#. §10: `apply hg`
+#. §11: `g (f a) = g (f b)`
+#. §12: `hab`
+#: Game.Levels.InjectiveWorld.L04_Composition
+msgid "The goal is §0. You have:\n"
+"- §1 — if §2 then §3\n"
+"- §4 — if §5 then §6\n"
+"- §7 (definitionally)\n"
+"\n"
+"Strategy: use §8 to reduce the goal to §9,\n"
+"then §10 to reduce it to §11, which is §12."
+msgstr ""
+
 #. §0: `hs : x ∈ sᶜ`
 #. §1: `x ∉ s`
 #. §2: `ht : x ∈ tᶜ`
@@ -15242,6 +16204,28 @@ msgstr ""
 msgid "You have §0. Use\n"
 "§1 to convert to\n"
 "§2."
+msgstr ""
+
+#. §0: `h₁ : g b = a`
+#. §1: `h₂ : g b = b`
+#. §2: `g b`
+#. §3: `a`
+#. §4: `b`
+#. §5: `g b`
+#. §6: `rw [← h₁, h₂]`
+#. §7: `← h₁`
+#. §8: `a`
+#. §9: `g b`
+#. §10: `h₂`
+#. §11: `g b`
+#. §12: `b`
+#: Game.Levels.InjectiveWorld.L06_RewritingCoaching
+msgid "Now §0 and §1. Both express §2 as\n"
+"something, so §3 and §4 are both equal to §5.\n"
+"\n"
+"Use §6:\n"
+"- §7 replaces §8 with §9 (backward: right-to-left)\n"
+"- §10 replaces §11 with §12 (forward: left-to-right)"
 msgstr ""
 
 #. §0: ```
@@ -16188,6 +17172,10 @@ msgid "# Powerset Is Monotone\n"
 "goal — a pattern you have not yet seen with the powerset."
 msgstr ""
 
+#: Game.Levels.InjectiveWorld.L01_InjectiveIntro
+msgid "The successor function n ↦ n + 1 is injective."
+msgstr ""
+
 #. §0: `obtain ⟨i, hi⟩ := hx`
 #. §1: `i`
 #. §2: `hi : f x ∈ s i`
@@ -16312,6 +17300,14 @@ msgstr ""
 #: Game.Levels.ImageWorld.L07_ImageUnion
 msgid "Now provide the witness §0 in the image of §1.\n"
 "Since §2, the union membership is §3."
+msgstr ""
+
+#. §0: `g (f a) = g (f b)`
+#. §1: `hab`
+#. §2: `exact hab`
+#: Game.Levels.InjectiveWorld.L04_Composition
+msgid "The goal is now §0, which is exactly §1.\n"
+"Use §2."
 msgstr ""
 
 #. §0: `x ∈ s i`
@@ -16629,6 +17625,11 @@ msgid "§0 states §1 — membership\n"
 "§7"
 msgstr ""
 
+#. §0: `intro a b hab`
+#: Game.Levels.InjectiveWorld.L02_InjectiveDoubling
+msgid "Same shape as Level 1: §0."
+msgstr ""
+
 #. §0: `constructor`
 #: Game.Levels.IndexedOpsWorld.L11_CartesianProduct
 msgid "The goal is a conjunction. Use §0 to split it into\n"
@@ -16673,6 +17674,23 @@ msgstr ""
 #: Game.Levels.SubsetWorld.L18_Boss
 msgid "§0 is §1, i.e., §2.\n"
 "Unwrap with §3, then §4."
+msgstr ""
+
+#. §0: `a = b`
+#. §1: `hgf : Injective (g ∘ f)`
+#. §2: `g (f a) = g (f b)`
+#. §3: `a = b`
+#. §4: `hab : f a = f b`
+#. §5: `apply hgf`
+#. §6: `(g ∘ f) a = (g ∘ f) b`
+#. §7: `hab`
+#: Game.Levels.InjectiveWorld.L05_Extraction
+msgid "The goal is §0. You have:\n"
+"- §1 — if §2 then §3\n"
+"- §4\n"
+"\n"
+"Strategy: use §5 to reduce the goal to §6.\n"
+"Then build this from §7."
 msgstr ""
 
 #. §0: `Set.compl_union`
@@ -16808,6 +17826,13 @@ msgid "You proved §0 — a set and its complement are **disjoint**.\n"
 "The library name is §19."
 msgstr ""
 
+#. §0: `obtain`
+#. §1: `cases`
+#: Game.Levels.PsetSets.L03_DistributivitySubset
+msgid "Key move: §0 splits the intersection\n"
+"hypothesis, then §1 splits the union."
+msgstr ""
+
 #. §0: `use`
 #. §1: `use witness`
 #. §2: `∃ x, P x`
@@ -16836,13 +17861,6 @@ msgid "You proved nonemptiness by exhibiting a witness. This is the same\n"
 "**Alternative witnesses**: We used §9, but §10, §11, or any even\n"
 "number would work. The choice of witness does not matter — only\n"
 "its existence."
-msgstr ""
-
-#. §0: `obtain`
-#. §1: `cases`
-#: Game.Levels.PsetSets.L03_DistributivitySubset
-msgid "Key move: §0 splits the intersection\n"
-"hypothesis, then §1 splits the union."
 msgstr ""
 
 #: Game.Levels.ImageWorld.L04_ImageEmpty
@@ -17031,6 +18049,9 @@ msgstr ""
 #: Game.Levels.ImageWorld.L20_Boss
 #: Game.Levels.PsetImgPreimg.L01_ImageSubsetRange
 #: Game.Levels.PsetImgPreimg.L10_Boss
+#: Game.Levels.InjectiveWorld.L01_InjectiveIntro
+#: Game.Levels.InjectiveWorld.L02_InjectiveDoubling
+#: Game.Levels.InjectiveWorld.L08_Boss
 msgid "§0 then §1."
 msgstr ""
 
@@ -17603,6 +18624,17 @@ msgid "This is the same argument as Level 10. Case-split on the union\n"
 "and swap sides."
 msgstr ""
 
+#. §0: `Function.HasLeftInverse.injective`
+#. §1: `f`
+#. §2: `f`
+#: Game.Metadata
+msgid "§0 states that if §1 has a left\n"
+"inverse (existential form), then §2 is injective.\n"
+"\n"
+"Disabled to force the learner to prove left-inverse implies injectivity\n"
+"from scratch."
+msgstr ""
+
 #. §0: `f '' (s ∪ t) = f '' s ∪ f '' t`
 #. §1: `∈ s ∨ ∈ t`
 #. §2: `∈ f '' s ∨ ∈ f '' t`
@@ -17714,6 +18746,10 @@ msgid "You proved §0 using a three-step strategy that\n"
 "\n"
 "This identity says: the elements NOT removed by §8 are exactly\n"
 "those that were never in §9 (in §10) or were in §11 (so not removed)."
+msgstr ""
+
+#: Game.Levels.InjectiveWorld.L06_RewritingCoaching
+msgid "Rewriting at Hypotheses"
 msgstr ""
 
 #. §0: `f '' (\\bigcap_i s_i) \\subseteq \\bigcap_i f '' (s_i)`
@@ -17828,6 +18864,14 @@ msgid "§0 — Lean will automatically apply §1\n"
 "to close the remaining goal."
 msgstr ""
 
+#. §0: `f a = f b`
+#. §1: `apply hg`
+#. §2: `g (f a) = g (f b)`
+#: Game.Levels.InjectiveWorld.L04_Composition
+msgid "The goal is now §0. Use §1 to reduce it to\n"
+"§2."
+msgstr ""
+
 #: Game.Levels.SubsetWorld.L06_SubsetHypAsFunction
 msgid "If s ⊆ t and x ∈ s, then x ∈ t."
 msgstr ""
@@ -17837,6 +18881,10 @@ msgstr ""
 #: Game.Levels.PsetSets.L02_ConcreteType
 msgid "Start with §0 for the subset proof. Then case-split\n"
 "on the disjunction in §1."
+msgstr ""
+
+#: Game.Levels.InjectiveWorld
+msgid "Injective World"
 msgstr ""
 
 #. §0: `change ... at hx`
@@ -17988,6 +19036,22 @@ msgstr ""
 #: Game.Levels.IndexedOpsWorld.L12_Nonempty
 msgid "The goal is a set membership that unfolds to §0.\n"
 "Use §1 to make it explicit."
+msgstr ""
+
+#. §0: `ha : r (g (f a)) = f a`
+#. §1: `hb : r (g (f b)) = f b`
+#. §2: `hab' : g (f a) = g (f b)`
+#. §3: `rw [hab'] at ha`
+#. §4: `g (f a)`
+#. §5: `g (f b)`
+#. §6: `ha`
+#: Game.Levels.InjectiveWorld.L08_Boss
+msgid "You now have:\n"
+"- §0\n"
+"- §1\n"
+"- §2\n"
+"\n"
+"Use §3 to replace §4 with §5 in §6."
 msgstr ""
 
 #. §0: `use 2`
@@ -18383,6 +19447,61 @@ msgstr ""
 
 #: Game.Levels.IndexedOpsWorld.L22_IInterDistrib
 msgid "Indexed intersection distributes over union."
+msgstr ""
+
+#. §0: `intro h`
+#. §1: `have key : 0 = 1`
+#. §2: `omega`
+#. §3: `0 = 1`
+#. §4: `False`
+#. §5: `Injective f`
+#. §6: `¬ Injective f`
+#. §7: `intro a b hab`
+#. §8: `intro h`
+#. §9: `a = b`
+#. §10: `hab`
+#. §11: `a ≠ b`
+#. §12: `f a = f b`
+#. §13: `rfl`
+#. §14: `0 / 2 = 0`
+#. §15: `1 / 2 = 0`
+#. §16: `0 / 2 = 1 / 2`
+#. §17: `0 = 0`
+#. §18: `rfl`
+#. §19: `f`
+#. §20: `n / 2`
+#. §21: `g`
+#. §22: `g (n / 2) = n`
+#. §23: `n`
+#: Game.Levels.InjectiveWorld.L03_NonInjective
+msgid "You disproved injectivity by finding a counterexample!\n"
+"\n"
+"**The proof had three parts**:\n"
+"1. §0 — assume injectivity\n"
+"2. §1 — apply injectivity to a colliding pair\n"
+"3. §2 — §3 is absurd, so §4\n"
+"\n"
+"**Two proof shapes side by side**:\n"
+"\n"
+"| Proving §5 | Proving §6 |\n"
+"|---|---|\n"
+"| §7 | §8 |\n"
+"| Show §9 from §10 | Find §11 with §12 |\n"
+"| Constructive | By contradiction |\n"
+"\n"
+"**Why §13 works**: §14 and §15 in ℕ (integer division\n"
+"rounds down). So §16 is §17, which is §18.\n"
+"\n"
+"**Why non-injectivity matters**: A non-injective function **loses\n"
+"information** — distinct inputs become indistinguishable after applying\n"
+"§19. You cannot recover the original input from the output. In fact,\n"
+"§20 has no left inverse (no function §21 with §22 for\n"
+"all §23), precisely because the information is lost. You will prove\n"
+"the connection between left inverses and injectivity in Level 7.\n"
+"\n"
+"**Looking ahead**: You have now mastered both directions — proving AND\n"
+"disproving injectivity. Next, you will learn how injectivity behaves\n"
+"under function composition."
 msgstr ""
 
 #. §0: `rintro y ⟨x, hx, rfl⟩`
@@ -18794,6 +19913,16 @@ msgid "Now §0 where §1. Extract the\n"
 "witness with §2."
 msgstr ""
 
+#. §0: `Function.LeftInverse.injective`
+#. §1: `f`
+#. §2: `f`
+#: Game.Metadata
+msgid "§0 states that if §1 has a left inverse,\n"
+"then §2 is injective.\n"
+"\n"
+"Disabled to force the learner to prove this theorem from scratch."
+msgstr ""
+
 #: Game.Levels.IndexedOpsWorld.L13_NonemptyPropagation
 msgid "If some member of the family is nonempty, so is the indexed union."
 msgstr ""
@@ -18910,6 +20039,34 @@ msgid "§0 — applying §1 (which is\n"
 "§2) to §3 gives §4.\n"
 "\n"
 "Alternatively: §5."
+msgstr ""
+
+#: Game.Levels.InjectiveWorld.L02_InjectiveDoubling
+msgid "Doubling is Injective"
+msgstr ""
+
+#. §0: `intro`
+#. §1: `omega`
+#. §2: `2 * a = 2 * b`
+#. §3: `a = b`
+#. §4: ```
+#. intro a b hab
+#. have h : ... := hab
+#. omega
+#. ```
+#: Game.Levels.InjectiveWorld.L02_InjectiveDoubling
+msgid "Same shape, same result: §0, extract the equation, §1.\n"
+"\n"
+"The doubling function is injective because §2 implies\n"
+"§3 — multiplication by a positive constant preserves distinctness.\n"
+"\n"
+"**Pause and notice**: Levels 1 and 2 had the same proof skeleton:\n"
+"§4\n"
+"\n"
+"The function changed, but the proof shape did not. This is the\n"
+"**canonical injectivity proof** for arithmetic functions on ℕ.\n"
+"Next, you will see a function that is NOT injective — and learn\n"
+"a completely different proof shape."
 msgstr ""
 
 #. §0: `f : α → β`
@@ -19461,6 +20618,100 @@ msgid "# The Dual Distributive Law\n"
 "is the same classical reasoning applied to a specific proposition."
 msgstr ""
 
+#. §0: `g : β → α`
+#. §1: `f : α → β`
+#. §2: `g ∘ f = id`
+#. §3: `g (f x) = x`
+#. §4: `x`
+#. §5: `Function.LeftInverse g f`
+#. §6: $$\\text{LeftInverse}(g, f) \\;\\;:\\equiv\\;\\; \\forall\\, x,\\;\\; g(f(x)) = x$$
+#. §7: `f`
+#. §8: `f`
+#. §9: `f a = f b`
+#. §10: `g`
+#. §11: `g (f a) = g (f b)`
+#. §12: `g`
+#. §13: `g (f a) = a`
+#. §14: `g (f b) = b`
+#. §15: `a = g (f a) = g (f b) = b`
+#. §16: `intro a b hab`
+#. §17: `have ha := h a`
+#. §18: `g (f a) = a`
+#. §19: `have hb := h b`
+#. §20: `g (f b) = b`
+#. §21: `rw [hab] at ha`
+#. §22: `ha`
+#. §23: `g (f b) = a`
+#. §24: `rw [← ha, hb]`
+#. §25: `a = b`
+#: Game.Levels.InjectiveWorld.L07_LeftInverse
+msgid "# Left Inverses\n"
+"\n"
+"A function §0 is a **left inverse** of §1 if\n"
+"§2, meaning §3 for every §4.\n"
+"\n"
+"In Lean, this is §5:\n"
+"\n"
+"§6\n"
+"\n"
+"**Key theorem**: If §7 has a left inverse, then §8 is injective.\n"
+"\n"
+"The idea: If §9, apply §10 to both sides to get\n"
+"§11. Since §12 is a left inverse: §13 and\n"
+"§14. So §15.\n"
+"\n"
+"**Proof plan** (using the rewriting moves from Level 6):\n"
+"1. §16 — canonical injectivity start\n"
+"2. §17 — get §18\n"
+"3. §19 — get §20\n"
+"4. §21 — update §22 to §23\n"
+"5. §24 — chain equalities to conclude §25"
+msgstr ""
+
+#. §0: `g ∘ f`
+#. §1: `f`
+#. §2: `g`
+#. §3: `Injective (g ∘ f) → Injective f`
+#. §4: `f a = f b`
+#. §5: `g`
+#. §6: `g (f a) = g (f b)`
+#. §7: `(g ∘ f) a = (g ∘ f) b`
+#. §8: `g ∘ f`
+#. §9: `a = b`
+#. §10: `intro a b hab`
+#. §11: `apply hgf`
+#. §12: `(g ∘ f) a = (g ∘ f) b`
+#. §13: `show g (f a) = g (f b)`
+#. §14: `rw [hab]`
+#. §15: `g`
+#. §16: `Injective (g ∘ f)`
+#. §17: `Injective g`
+#. §18: `f : Fin 1 → Fin 2`
+#. §19: `g : Fin 2 → Fin 1`
+#. §20: `g`
+#. §21: `g ∘ f`
+#: Game.Levels.InjectiveWorld.L05_Extraction
+msgid "# If g ∘ f is Injective, then f is Injective\n"
+"\n"
+"In Level 4, you proved that composing two injective functions gives an\n"
+"injective composition. Now consider the partial converse: if §0 is\n"
+"injective, what can you say about §1 and §2 individually?\n"
+"\n"
+"**Claim**: §3.\n"
+"\n"
+"The idea: if §4, then applying §5 to both sides gives\n"
+"§6, which means §7. Since\n"
+"§8 is injective, this forces §9.\n"
+"\n"
+"**New proof move**: After §10 and §11, the goal\n"
+"becomes §12. Use §13 to\n"
+"make the composition explicit, then §14 to close it.\n"
+"\n"
+"**Note**: The converse for §15 is FALSE! §16 does NOT\n"
+"imply §17. (Example: §18 and §19\n"
+"with §20 non-injective but §21 trivially injective.)"
+msgstr ""
+
 #. §0: `s ∩ t`
 #. §1: `\\cap`
 #. §2: `\\inter`
@@ -19740,6 +20991,10 @@ msgid "Congratulations -- you completed **Image World**!\n"
 "the ⊆ for intersection becomes an equality."
 msgstr ""
 
+#: Game.Levels.InjectiveWorld.L04_Composition
+msgid "The composition of two injective functions is injective."
+msgstr ""
+
 #. §0: ```
 #. obtain ⟨a, ha⟩ := hs    -- extract witness from s
 #. obtain ⟨b, hb⟩ := ht    -- extract witness from t
@@ -19783,6 +21038,26 @@ msgstr ""
 #: Game.Levels.SetOpsWorld.L13_DeMorgan
 msgid "Use §0 to unwrap the\n"
 "complement-of-union, then §1."
+msgstr ""
+
+#. §0: `h : Function.Injective (fun n => n / 2)`
+#. §1: `a / 2 = b / 2`
+#. §2: `a = b`
+#. §3: `0 / 2 = 0 = 1 / 2`
+#. §4: `h`
+#. §5: `a = 0`
+#. §6: `b = 1`
+#. §7: `0 = 1`
+#. §8: `have key : (0 : ℕ) = 1 := by ...`
+#. §9: `apply h`
+#. §10: `0 / 2 = 1 / 2`
+#: Game.Levels.InjectiveWorld.L03_NonInjective
+msgid "Now §0 says that if\n"
+"§1, then §2. We know §3, so\n"
+"applying §4 with §5 and §6 gives §7.\n"
+"\n"
+"Create this false equation: §8\n"
+"where the proof uses §9 then shows §10."
 msgstr ""
 
 #. §0: `x ∈ s ∪ t`
@@ -20207,16 +21482,16 @@ msgid "§0. Use §1 to target §2, then\n"
 "construct the image membership."
 msgstr ""
 
+#: Game.Levels.SetWorld.L01_WelcomeToSets
+msgid "Welcome to Sets"
+msgstr ""
+
 #. §0: `norm_num`
 #: Game.Metadata
 msgid "§0 evaluates numerical expressions and closes arithmetic\n"
 "goals that can be decided by computation.\n"
 "\n"
 "Disabled in levels where manual arithmetic reasoning is the lesson."
-msgstr ""
-
-#: Game.Levels.SetWorld.L01_WelcomeToSets
-msgid "Welcome to Sets"
 msgstr ""
 
 #: Game.Levels.ImageWorld.L17_GapFromGalois
@@ -20489,6 +21764,25 @@ msgstr ""
 msgid "§0 creates\n"
 "two subgoals: one where §1, and one where\n"
 "§2."
+msgstr ""
+
+#. §0: `ha : g (f b) = a`
+#. §1: `hb : g (f b) = b`
+#. §2: `g (f b)`
+#. §3: `a = b`
+#. §4: `rw [← ha, hb]`
+#. §5: `← ha`
+#. §6: `a`
+#. §7: `g (f b)`
+#. §8: `hb`
+#. §9: `g (f b)`
+#. §10: `b`
+#: Game.Levels.InjectiveWorld.L07_LeftInverse
+msgid "Now §0 and §1. Since both\n"
+"equal §2, we have §3.\n"
+"\n"
+"Use §4: first §5 rewrites §6 to §7 in the\n"
+"goal, then §8 rewrites §9 to §10."
 msgstr ""
 
 #. §0: `preimage_iUnion`
@@ -21305,6 +22599,54 @@ msgid "# Working With Image Hypotheses\n"
 "numbers less than 5, prove that §16 is even."
 msgstr ""
 
+#. §0: `n ↦ n / 2`
+#. §1: $$0 / 2 = 0 \\quad\\text{and}\\quad 1 / 2 = 0$$
+#. §2: `f 0 = f 1`
+#. §3: `0 \\neq 1`
+#. §4: `¬ P`
+#. §5: `P`
+#. §6: `¬ P`
+#. §7: `P → False`
+#. §8: `intro h`
+#. §9: `P`
+#. §10: `False`
+#. §11: `¬ Injective f`
+#. §12: `intro h`
+#. §13: `h : Injective f`
+#. §14: `h`
+#. §15: `0 = 1`
+#. §16: `¬ Function.Injective (fun n : ℕ => n / 2)`
+#. §17: `a = 0`
+#. §18: `b = 1`
+#. §19: `a / 2 = 0 = b / 2`
+#. §20: `0 ≠ 1`
+#: Game.Levels.InjectiveWorld.L03_NonInjective
+msgid "# Disproving Injectivity\n"
+"\n"
+"Not every function is injective. The function §0 on ℕ\n"
+"(integer division) sends both 0 and 1 to 0:\n"
+"\n"
+"§1\n"
+"\n"
+"So §2 but §3 — this violates injectivity.\n"
+"\n"
+"**The proof shape for ¬ Injective f**:\n"
+"\n"
+"To prove §4 (for any proposition §5), recall that §6 means §7.\n"
+"So you §8 to assume §9, then derive §10.\n"
+"\n"
+"For §11:\n"
+"1. §12 — assume §13\n"
+"2. Use §14 with two specific inputs that map to the same output\n"
+"3. Get a false equation like §15\n"
+"4. Derive a contradiction\n"
+"\n"
+"**Your task**: Prove §16.\n"
+"\n"
+"The counterexample is §17, §18: both satisfy §19,\n"
+"but §20."
+msgstr ""
+
 #. §0: ```
 #. rw [Set.mem_powerset_iff]   -- convert 𝒫 to ⊆
 #. intro x hx                  -- start the subset proof
@@ -21483,6 +22825,15 @@ msgid "# When ⊆ Fails: Proving ¬(s ⊆ t)\n"
 "4. Unwrap and derive contradiction — §16 is false"
 msgstr ""
 
+#. §0: `f a = f b`
+#. §1: `ha : r (g (f b)) = f a`
+#. §2: `hb : r (g (f b)) = f b`
+#. §3: `rw [← ha, hb]`
+#: Game.Levels.InjectiveWorld.L08_Boss
+msgid "The goal is §0. You have §1 and\n"
+"§2. Chain them: §3."
+msgstr ""
+
 #. §0: `hy : f x ∈ t`
 #. §1: `y ∈ t`
 #. §2: `y = f x`
@@ -21506,6 +22857,35 @@ msgstr ""
 
 #: Game.Levels.ImageWorld.L06_ImageMonotonicity
 msgid "If s ⊆ t then f '' s ⊆ f '' t."
+msgstr ""
+
+#. §0: `congrArg f h`
+#. §1: `f a = f b`
+#. §2: `h : a = b`
+#. §3: ```
+#. exact congrArg f h    -- from h : a = b, get f a = f b
+#. ```
+#. §4: `h : a = b`
+#. §5: `f`
+#. §6: `f`
+#. §7: ```
+#. -- hab : f a = f b, g : β → γ
+#. exact congrArg g hab    -- produces g (f a) = g (f b)
+#. ```
+#: Game.Metadata
+msgid "§0 produces §1 from §2. It says\n"
+"\\\\\"applying the same function to equal inputs gives equal outputs.\\\\\"\n"
+"\n"
+"## Syntax\n"
+"§3\n"
+"\n"
+"## When to use it\n"
+"When you have an equation §4 and want to apply a function §5\n"
+"to both sides. This is the Lean formalization of the mathematical step\n"
+"\\\\\"apply §6 to both sides of the equation.\\\\\"\n"
+"\n"
+"## Example\n"
+"§7"
 msgstr ""
 
 #. §0: `intro x hx`

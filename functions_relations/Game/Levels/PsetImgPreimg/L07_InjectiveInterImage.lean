@@ -25,33 +25,6 @@ In Lean, if `hinj : Function.Injective f` and `hab : f a = f b`, then
 `hinj hab : a = b`.
 "
 
-/-- `Function.Injective f`, written `Function.Injective f`, means
-that `f` maps distinct inputs to distinct outputs:
-
-$$\\forall\\, a_1\\, a_2,\\;\\; f(a_1) = f(a_2) \\;\\Longrightarrow\\; a_1 = a_2$$
-
-## Syntax
-```
-hinj : Function.Injective f
-hinj hab : a = b      -- from hab : f a = f b
-```
-
-## When to use it
-When you have `f a = f b` and need `a = b`. Apply the injectivity
-hypothesis to the equation.
-
-## Example
-```
--- hinj : Function.Injective f, hab : f a = f b
-have h := hinj hab    -- h : a = b
-```
-
-## Warning
-Injectivity is about the FUNCTION, not a specific equation. You
-need a hypothesis `Function.Injective f` in scope.
--/
-DefinitionDoc Function.Injective as "Function.Injective"
-
 NewDefinition Function.Injective
 
 /-- Injectivity closes the intersection gap for images. -/

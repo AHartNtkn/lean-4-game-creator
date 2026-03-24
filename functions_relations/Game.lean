@@ -8,6 +8,7 @@ import Game.Levels.PsetSets
 import Game.Levels.PreimageWorld
 import Game.Levels.ImageWorld
 import Game.Levels.PsetImgPreimg
+import Game.Levels.InjectiveWorld
 
 Title "Functions & Relations"
 Introduction
@@ -52,5 +53,9 @@ Dependency PreimageWorld → ImageWorld
 -- PsetImgPreimg depends on PreimageWorld and ImageWorld (W06, W07 → W08)
 Dependency PreimageWorld → PsetImgPreimg
 Dependency ImageWorld → PsetImgPreimg
+
+-- Phase 3: Functions — Injectivity
+-- InjectiveWorld depends on SetWorld (W01 → W09)
+Dependency SetWorld → InjectiveWorld
 
 MakeGame

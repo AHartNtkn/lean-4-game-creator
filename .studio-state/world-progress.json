@@ -7,6 +7,7 @@
     "PsetSets",
     "PreimageWorld",
     "ImageWorld",
-    "PsetImgPreimg"
+    "PsetImgPreimg",
+    "InjectiveWorld"
   ]
 }

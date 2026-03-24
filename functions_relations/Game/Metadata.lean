@@ -607,3 +607,114 @@ When a result needs the index type to have at least one element
 extract a concrete witness).
 -/
 DefinitionDoc Nonempty as "Nonempty"
+
+/-! ## Injection-related documentation -/
+
+/-- `injection` is a tactic that decomposes equalities between constructors.
+If `h : C a₁ a₂ = C b₁ b₂` where `C` is a constructor, then `injection h`
+produces `a₁ = b₁` and `a₂ = b₂`.
+
+## Syntax
+```
+injection h
+injection h with h₁ h₂
+```
+
+## When to use it
+When you have an equality between constructor applications and want to
+extract the component equalities.
+
+Disabled in Injective World because it bypasses the intended proof
+technique for arithmetic injectivity proofs.
+-/
+TacticDoc injection
+
+/-- `Nat.succ.inj` states that `Nat.succ` is injective:
+if `n + 1 = m + 1`, then `n = m`.
+
+Disabled in Injective World to prevent bypassing the canonical
+injectivity proof shape.
+-/
+TheoremDoc Nat.succ.inj as "Nat.succ.inj" in "Nat"
+
+/-- `Nat.succ_injective` states that the successor function is injective.
+
+Disabled to prevent one-shot solutions in arithmetic injectivity levels.
+-/
+TheoremDoc Nat.succ_injective as "Nat.succ_injective" in "Nat"
+
+/-- `Nat.add_right_cancel` states that `a + c = b + c → a = b`.
+
+Disabled to prevent bypassing arithmetic injectivity proofs.
+-/
+TheoremDoc Nat.add_right_cancel as "Nat.add_right_cancel" in "Nat"
+
+/-- `Nat.add_left_cancel` states that `c + a = c + b → a = b`.
+
+Disabled to prevent bypassing arithmetic injectivity proofs.
+-/
+TheoremDoc Nat.add_left_cancel as "Nat.add_left_cancel" in "Nat"
+
+/-- `Nat.mul_left_cancel` states that `c * a = c * b → a = b` (when `c ≠ 0`).
+
+Disabled to prevent bypassing arithmetic injectivity proofs.
+-/
+TheoremDoc Nat.mul_left_cancel as "Nat.mul_left_cancel" in "Nat"
+
+/-- `Nat.mul_right_cancel` states that `a * c = b * c → a = b` (when `c ≠ 0`).
+
+Disabled to prevent bypassing arithmetic injectivity proofs.
+-/
+TheoremDoc Nat.mul_right_cancel as "Nat.mul_right_cancel" in "Nat"
+
+/-- `Function.Injective.comp` states that the composition of two injective
+functions is injective: `Injective g → Injective f → Injective (g ∘ f)`.
+
+Disabled to force the learner to prove composition preserves injectivity
+from scratch.
+-/
+TheoremDoc Function.Injective.comp as "Function.Injective.comp" in "Function"
+
+/-- `Function.Injective.of_comp` states that if `g ∘ f` is injective, then
+`f` is injective: `Injective (g ∘ f) → Injective f`.
+
+Disabled to force the learner to prove extraction from composition
+from scratch.
+-/
+TheoremDoc Function.Injective.of_comp as "Function.Injective.of_comp" in "Function"
+
+/-- `Function.LeftInverse.injective` states that if `f` has a left inverse,
+then `f` is injective.
+
+Disabled to force the learner to prove this theorem from scratch.
+-/
+TheoremDoc Function.LeftInverse.injective as "Function.LeftInverse.injective" in "Function"
+
+/-- `Function.HasLeftInverse.injective` states that if `f` has a left
+inverse (existential form), then `f` is injective.
+
+Disabled to force the learner to prove left-inverse implies injectivity
+from scratch.
+-/
+TheoremDoc Function.HasLeftInverse.injective as "Function.HasLeftInverse.injective" in "Function"
+
+/-- `congrArg f h` produces `f a = f b` from `h : a = b`. It says
+\"applying the same function to equal inputs gives equal outputs.\"
+
+## Syntax
+```
+exact congrArg f h    -- from h : a = b, get f a = f b
+```
+
+## When to use it
+When you have an equation `h : a = b` and want to apply a function `f`
+to both sides. This is the Lean formalization of the mathematical step
+\"apply `f` to both sides of the equation.\"
+
+## Example
+```
+-- hab : f a = f b, g : β → γ
+exact congrArg g hab    -- produces g (f a) = g (f b)
+```
+-/
+TheoremDoc congrArg as "congrArg" in "Logic"
