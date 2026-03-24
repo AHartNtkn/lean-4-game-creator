@@ -264,6 +264,51 @@ Disabled for the same reason as `Set.mem_setOf_eq`.
 -/
 TheoremDoc Set.mem_setOf as "Set.mem_setOf" in "Set"
 
+/-- `Set.mem_image_of_mem f h` states that if `h : a ∈ s`, then
+`f a ∈ f '' s`. It directly constructs image membership from source
+membership.
+
+Disabled in image levels to force the learner to construct the
+witness manually using `use` and `exact ⟨x, hx, rfl⟩`.
+-/
+TheoremDoc Set.mem_image_of_mem as "Set.mem_image_of_mem" in "Set"
+
+/-- `Or.inl h` constructs a proof of `P ∨ Q` from a proof `h : P`.
+It chooses the LEFT disjunct.
+
+## When to use it
+When building anonymous constructors for unions: if `hx : x ∈ s`,
+then `Or.inl hx : x ∈ s ∨ x ∈ t` (equivalently `x ∈ s ∪ t`).
+
+## Example
+```
+-- hx : x ∈ s, Goal: ∃ z ∈ s ∪ t, f z = f x
+exact ⟨x, Or.inl hx, rfl⟩
+```
+
+## Alternative
+The `left` tactic followed by `exact hx` achieves the same result.
+-/
+TheoremDoc Or.inl as "Or.inl" in "Logic"
+
+/-- `Or.inr h` constructs a proof of `P ∨ Q` from a proof `h : Q`.
+It chooses the RIGHT disjunct.
+
+## When to use it
+When building anonymous constructors for unions: if `hx : x ∈ t`,
+then `Or.inr hx : x ∈ s ∨ x ∈ t` (equivalently `x ∈ s ∪ t`).
+
+## Example
+```
+-- hx : x ∈ t, Goal: ∃ z ∈ s ∪ t, f z = f x
+exact ⟨x, Or.inr hx, rfl⟩
+```
+
+## Alternative
+The `right` tactic followed by `exact hx` achieves the same result.
+-/
+TheoremDoc Or.inr as "Or.inr" in "Logic"
+
 /-! ## Baseline disabled tactic documentation
 
 These tactics are disabled globally because they close goals that
@@ -425,3 +470,110 @@ positive form.
 Disabled in levels where you should see what push_neg does manually.
 -/
 TacticDoc push_neg
+
+/-- `mono` attempts to prove monotonicity goals by automatically applying
+relevant monotonicity lemmas.
+
+Disabled to prevent one-shot solutions to subset and image problems.
+-/
+TacticDoc mono
+
+/-- `gcongr` proves goals using generalized congruence — it applies
+congruence and monotonicity lemmas to reduce inequalities and subset goals.
+
+Disabled to prevent one-shot solutions to subset and image problems.
+-/
+TacticDoc gcongr
+
+/-! ## Image-related tactic documentation
+
+These tactics are taught in ImageWorld but their docs are kept here
+to avoid duplicate TacticDoc declarations across levels.
+-/
+
+/-- `obtain ⟨x, hx⟩ := h` destructures hypothesis `h` into components
+using the same pattern syntax as `rcases`.
+
+## Syntax
+```
+obtain ⟨x, hx⟩ := h              -- existential
+obtain ⟨h₁, h₂⟩ := h             -- conjunction
+obtain ⟨x, hx, rfl⟩ := h         -- with substitution
+```
+
+## When to use it
+When you have a hypothesis with structure (`∃`, `∧`) and want to
+extract its components. Like `rcases`, but does not support `|`
+for disjunctions.
+
+## Example
+```
+-- hy : y ∈ f '' s
+obtain ⟨x, hx, hfx⟩ := hy
+-- x : α, hx : x ∈ s, hfx : f x = y
+```
+
+## Tip
+Use `rfl` inside the pattern to substitute equations automatically:
+`obtain ⟨x, hx, rfl⟩ := hy` replaces `y` with `f x` everywhere.
+-/
+TacticDoc obtain
+
+/-- `rintro` combines `intro` with pattern matching in one step.
+The `rfl` pattern automatically substitutes equations.
+
+## Syntax
+```
+rintro ⟨x, hx, rfl⟩      -- existential + conjunction + substitution
+rintro (h | h)             -- disjunction (two cases)
+rintro ⟨h₁, h₂⟩           -- conjunction
+rintro x ⟨a, ha, rfl⟩     -- introduce variable then destructure
+```
+
+## Angle bracket input
+Type ⟨ as `\<` and ⟩ as `\>` in the editor.
+
+## When to use it
+When the goal starts with `∀` or `→` and you want to immediately
+destructure the introduced hypothesis. Especially useful for image
+membership: `rintro ⟨x, hx, rfl⟩` replaces `intro hy` +
+`obtain ⟨x, hx, hfx⟩ := hy` + `rw [← hfx]`.
+
+## Example
+```
+-- Goal: ∀ y, y ∈ f '' s → P y
+rintro y ⟨x, hx, rfl⟩
+-- x : α, hx : x ∈ s, Goal: P (f x)
+```
+
+## Warning
+The `rfl` pattern substitutes a variable everywhere. Make sure
+the variable you are eliminating is the one you intend.
+-/
+TacticDoc rintro
+
+/-- `rcases h with pattern` destructures hypothesis `h` using the
+same pattern syntax as `rintro`. It supports disjunctions via `|`.
+
+## Syntax
+```
+rcases h with ⟨x, hx⟩           -- existential
+rcases h with ⟨h₁, h₂⟩          -- conjunction
+rcases h with h₁ | h₂            -- disjunction (creates two goals)
+rcases h with ⟨x, hx, rfl⟩      -- with substitution
+rcases h with ⟨x, hx⟩ | ⟨y, hy⟩ -- nested disjunction
+```
+
+## When to use it
+When you have a hypothesis with structure (`∃`, `∧`, `∨`) and want
+to destructure it. For non-disjunctive patterns, `obtain` works
+the same way. The advantage of `rcases` is disjunction support.
+
+## Example
+```
+-- h : y ∈ f '' s ∪ f '' t
+rcases h with ⟨x, hx, rfl⟩ | ⟨x, hx, rfl⟩
+-- Two goals: one for f '' s, one for f '' t
+```
+-/
+TacticDoc rcases

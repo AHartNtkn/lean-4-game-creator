@@ -8,6 +8,22 @@ msgstr "Project-Id-Version: Game v4.29.0-rc6\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit"
 
+#. §0: `(g ∘ f) x ∈ (g ∘ f) '' s`
+#. §1: `x`
+#. §2: `exact ⟨x, hx, rfl⟩`
+#: Game.Levels.ImageWorld.L10_ImageComposition
+msgid "After nested destructuring, the goal is\n"
+"§0. The witness is §1:\n"
+"§2."
+msgstr ""
+
+#. §0: `Set.image_comp`
+#. §1: `(g ∘ f) '' s = g '' (f '' s)`
+#: Game.Levels.ImageWorld.L10_ImageComposition
+msgid "§0 states §1. Image\n"
+"distributes over function composition."
+msgstr ""
+
 #. §0: `Set.preimage_comp`
 #. §1: `(g . f) ⁻¹' s = f ⁻¹' (g ⁻¹' s)`
 #. §2: `f : α → β`
@@ -49,8 +65,26 @@ msgid "Good — §0 is now §1. The goal is definitionally §2.\n"
 "Use §3 to make it explicit."
 msgstr ""
 
+#. §0: `Set.image_image`
+#. §1: `f '' (g '' s) = (f ∘ g) '' s`
+#. §2: `Set.image_comp`
+#: Game.Levels.ImageWorld.L10_ImageComposition
+msgid "§0 states §1 — the\n"
+"reversed form of §2. Disabled to prevent one-shot\n"
+"bypass of the nested destructuring lesson."
+msgstr ""
+
 #: Game.Levels.SetWorld.L02_SetBuilder
 msgid "Prove that 3 belongs to the set of naturals less than 5."
+msgstr ""
+
+#. §0: `apply h`
+#. §1: `exact ⟨x, hx, rfl⟩`
+#. §2: `exact h ⟨x, hx, rfl⟩`
+#: Game.Levels.ImageWorld.L13_GaloisConnection
+msgid "§0 then §1.\n"
+"\n"
+"Or in one step: §2."
 msgstr ""
 
 #: Game.Levels.PreimageWorld.L16_Boss
@@ -102,6 +136,69 @@ msgid "§0 — the §1 projection extracts\n"
 "the first component of the conjunction.\n"
 "\n"
 "Alternatively: §2 then §3."
+msgstr ""
+
+#. §0: `intro hy`
+#. §1: `obtain ⟨x, hx, hfx⟩ := hy`
+#. §2: `rw [← hfx]`
+#. §3: `rintro`
+#. §4: `intro`
+#. §5: `rfl`
+#. §6: `rfl`
+#. §7: ```
+#. rintro ⟨x, hx, rfl⟩
+#. ```
+#. §8: `y ∈ f '' s`
+#. §9: `∃ x ∈ s, f x = y`
+#. §10: `x : α`
+#. §11: `hx : x ∈ s`
+#. §12: `f x = y`
+#. §13: `rfl`
+#. §14: `y`
+#. §15: `f x`
+#. §16: `intro hy`
+#. §17: `rintro ⟨x, hx, rfl⟩`
+#. §18: `obtain ⟨x, hx, hfx⟩ := hy`
+#. §19: `rw [← hfx]`
+#. §20: `rcases`
+#. §21: `rcases hy with ⟨x, hx, rfl⟩`
+#. §22: `y`
+#. §23: `y < 12`
+#. §24: `rintro`
+#: Game.Levels.ImageWorld.L03_RintroRcases
+msgid "# Pattern-Matching Introduction: rintro and rcases\n"
+"\n"
+"In Level 2, the proof of the image property took four steps:\n"
+"§0, §1, §2, then work.\n"
+"\n"
+"Lean offers a power tool that collapses this: **§3**. It combines\n"
+"§4 with deep pattern matching in a single step. The key feature\n"
+"is the **§5 pattern**: when you write §6 inside the pattern,\n"
+"it automatically substitutes the equation instead of naming it.\n"
+"\n"
+"§7\n"
+"\n"
+"For image membership §8 (which is §9),\n"
+"this gives you:\n"
+"- §10 -- the witness\n"
+"- §11 -- the membership proof\n"
+"- The equation §12 is consumed by §13, which replaces §14\n"
+"  with §15 everywhere\n"
+"\n"
+"Compare the two approaches:\n"
+"\n"
+"| Steps | Old way | With rintro |\n"
+"|---|---|---|\n"
+"| 1 | §16 | §17 |\n"
+"| 2 | §18 | (done!) |\n"
+"| 3 | §19 | |\n"
+"\n"
+"The **§20** tactic does the same pattern matching on an existing\n"
+"hypothesis: §21.\n"
+"\n"
+"**Your task**: Prove that if §22 is in the image of the \"triple\"\n"
+"function on numbers less than 4, then §23. Use §24 for\n"
+"a two-step proof."
 msgstr ""
 
 #. §0: `⋂ i, s i`
@@ -360,6 +457,47 @@ msgstr ""
 msgid "Unpack the union: §0."
 msgstr ""
 
+#. §0: `(g ∘ f) ⁻¹' u = f ⁻¹' (g ⁻¹' u)`
+#. §1: $$(g \\circ f)(s) = g(f(s))$$
+#. §2: `f`
+#. §3: `g`
+#. §4: `y ∈ g '' (f '' s)`
+#. §5: `z ∈ f '' s`
+#. §6: `g z = y`
+#. §7: `x ∈ s`
+#. §8: `f x = z`
+#. §9: `rintro ⟨z, ⟨x, hx, rfl⟩, rfl⟩`
+#. §10: `ext y`
+#. §11: `constructor`
+#. §12: `(g ∘ f) '' s`
+#. §13: `g '' (f '' s)`
+#. §14: `(g ∘ f) '' s`
+#: Game.Levels.ImageWorld.L10_ImageComposition
+msgid "# Image Distributes Over Composition\n"
+"\n"
+"In Preimage World, you proved that preimage respects composition:\n"
+"§0. Now you will prove the dual\n"
+"result for images:\n"
+"\n"
+"§1\n"
+"\n"
+"Applying the composed function directly gives the same result as\n"
+"applying §2 first, then applying §3 to the output.\n"
+"\n"
+"**The proof exercises nested destructuring**: The backward direction\n"
+"requires destructuring TWO levels of image membership. If\n"
+"§4, there exists §5 with §6, and\n"
+"within that, there exists §7 with §8. The pattern\n"
+"§9 handles both levels at once.\n"
+"\n"
+"**Proof plan**:\n"
+"1. §10 then §11\n"
+"2. **Forward**: Destructure §12 membership, then construct\n"
+"   nested image membership in §13\n"
+"3. **Backward**: Nested destructuring, then construct §14\n"
+"   membership directly"
+msgstr ""
+
 #: Game.Levels.PreimageWorld.L11_PreimageIndexedUnion
 msgid "Preimage distributes over indexed union."
 msgstr ""
@@ -396,6 +534,11 @@ msgstr ""
 #: Game.Levels.SetOpsWorld.L02_IntersectionMembership
 msgid "Prove §0. Recall that §1 means there exists §2\n"
 "with §3. Provide the witness: §4."
+msgstr ""
+
+#. §0: `constructor`
+#: Game.Levels.ImageWorld.L09_IntersectionCounterexample
+msgid "Use §0 to split into the two parts."
 msgstr ""
 
 #. §0: `use 3`
@@ -448,13 +591,22 @@ msgid "Now §0. Extract the index witness:\n"
 "§1."
 msgstr ""
 
-#: Game.Levels.SubsetWorld.L09_NonArithSubset
-msgid "If p implies q pointwise, then the set defined by p is a subset of the set defined by q."
+#. §0: `f x ∈ f '' s`
+#. §1: `x`
+#. §2: `hs : x ∈ s`
+#: Game.Levels.ImageWorld.L08_ImageInterSubset
+#: Game.Levels.ImageWorld.L08_ImageInterSubset
+#: Game.Levels.ImageWorld.L10_ImageComposition
+msgid "Prove §0. The witness is §1 with §2."
 msgstr ""
 
 #: Game.Levels.SubsetWorld.L10_ExtIntro
 msgid "A conjunction with a weaker condition is equivalent to the\n"
 "stronger condition alone."
+msgstr ""
+
+#: Game.Levels.SubsetWorld.L09_NonArithSubset
+msgid "If p implies q pointwise, then the set defined by p is a subset of the set defined by q."
 msgstr ""
 
 #. §0: `5 % 3 = 2`
@@ -463,6 +615,59 @@ msgstr ""
 #: Game.Levels.IndexedOpsWorld.L01_IndexedUnion
 msgid "The goal is now a set membership that unfolds to §0.\n"
 "Use §1 to make this explicit, then §2."
+msgstr ""
+
+#. §0: `f '' s ⊆ t ↔ s ⊆ f ⁻¹' t`
+#. §1: `s`
+#. §2: `t`
+#. §3: `s`
+#. §4: `t`
+#. §5: `f x ∈ t`
+#. §6: `f '' s ⊆ t`
+#. §7: `Set.image_subset_iff`
+#. §8: `s ⊆ f ⁻¹' t`
+#. §9: `x ∈ s`
+#. §10: `f x ∈ f '' s`
+#. §11: `⟨x, hx, rfl⟩`
+#. §12: `y ∈ f '' s`
+#. §13: `x ∈ s`
+#. §14: `L : P → Q`
+#. §15: `R : Q → P`
+#. §16: `L a ≤ b ↔ a ≤ R b`
+#. §17: `a, b`
+#. §18: `L = f ''`
+#. §19: `R = f ⁻¹'`
+#. §20: `⊆`
+#. §21: `Set.image_subset_iff`
+#: Game.Levels.ImageWorld.L13_GaloisConnection
+msgid "You proved §0 -- the Galois connection!\n"
+"\n"
+"**Why this matters**: The Galois connection lets you switch between\n"
+"two viewpoints:\n"
+"- **Image viewpoint**: \"every output from §1 lands in §2\"\n"
+"- **Preimage viewpoint**: \"every element of §3 maps into §4\"\n"
+"\n"
+"The preimage viewpoint is often simpler because preimage membership\n"
+"is just §5 -- no existential, no witness. So when you need\n"
+"to prove §6, you can rewrite with §7\n"
+"to get the easier goal §8.\n"
+"\n"
+"**The proof structure**:\n"
+"- **Forward**: Start with §9, build §10 (construct\n"
+"  the witness §11), then apply the subset hypothesis\n"
+"- **Backward**: Start with §12, destructure to get §13,\n"
+"  then apply the subset hypothesis directly (no construction needed!)\n"
+"\n"
+"The backward direction is shorter because preimage is simpler than image.\n"
+"\n"
+"**The general definition**: Two monotone functions §14 and\n"
+"§15 between ordered sets form a **Galois connection** when\n"
+"§16 for all §17. Here §18 (image) and\n"
+"§19 (preimage), with §20 as the order. This pattern appears\n"
+"whenever two operations are \"adjoint\" to each other -- you will\n"
+"study Galois connections formally in Orders and Lattices.\n"
+"\n"
+"The library name is §21."
 msgstr ""
 
 #. §0: `Set.prod_nonempty_iff`
@@ -505,6 +710,13 @@ msgid "Unpack the indexed union with §0, extract\n"
 "the witness, then convert the goal with §1."
 msgstr ""
 
+#. §0: `Set.image_empty`
+#. §1: `f '' ∅ = ∅`
+#: Game.Levels.ImageWorld.L04_ImageEmpty
+msgid "§0 states §1. The image of the empty\n"
+"set is empty -- no inputs means no outputs."
+msgstr ""
+
 #. §0: `s ⊆ s`
 #. §1: `x ∈ s`
 #. §2: `s ⊆ s`
@@ -523,6 +735,24 @@ msgid "The proof of §0 is the identity function on membership: take the\n"
 "\n"
 "The library name for this fact is §5 (or §6\n"
 "in the order-theoretic form)."
+msgstr ""
+
+#. §0: `y ∈ f '' ...`
+#. §1: `x`
+#. §2: `x = a`
+#. §3: `f x = y`
+#. §4: `rintro ⟨x, hx, rfl⟩`
+#: Game.Levels.ImageWorld.L05_ImageSingleton
+msgid "**Forward**: §0 means there exists some §1 with\n"
+"§2 and §3. Use §4 to destructure."
+msgstr ""
+
+#. §0: `f x ∈ f '' s`
+#. §1: `g (f x) = g (f x)`
+#. §2: `constructor`
+#: Game.Levels.ImageWorld.L10_ImageComposition
+msgid "The goal splits into §0 and §1.\n"
+"Use §2 to split."
 msgstr ""
 
 #. §0: `sdiff_sdiff_eq_self`
@@ -598,6 +828,11 @@ msgid "§0 is a type with no elements — no constructors at all.\n"
 "principle of explosion for propositions."
 msgstr ""
 
+#. §0: `g (f x) = g (f x)`
+#: Game.Levels.ImageWorld.L10_ImageComposition
+msgid "Prove §0."
+msgstr ""
+
 #. §0: `intro hx`
 #. §1: `rw [Set.mem_preimage] at hx`
 #. §2: `rw [Set.mem_iUnion] at hx`
@@ -617,6 +852,15 @@ msgstr ""
 #: Game.Levels.PsetSets.L09_IndexedSubset
 msgid "Build §0 with §1. Extract §2\n"
 "from the indexed intersection hypothesis."
+msgstr ""
+
+#: Game.Levels.ImageWorld.L03_RintroRcases
+msgid "If y is 3*x for some x < 4, then y < 12."
+msgstr ""
+
+#: Game.Levels.ImageWorld.L20_Boss
+msgid "The image-preimage roundtrip is the identity when the target\n"
+"is contained in the range."
 msgstr ""
 
 #. §0: `obtain ⟨x, hx⟩ := h`
@@ -712,8 +956,29 @@ msgid "You have §0 and §1. Apply §2\n"
 "§5."
 msgstr ""
 
+#. §0: `hfx : (fun n => 2 * n) x = y`
+#. §1: `Even y`
+#. §2: `y = 2 * x`
+#. §3: `y`
+#. §4: `2 * x`
+#. §5: `rw [← hfx]`
+#: Game.Levels.ImageWorld.L02_DestructuringImage
+msgid "Now §0. The goal is §1. Since\n"
+"§2, rewrite to replace §3 with §4 using §5."
+msgstr ""
+
 #: Game.Levels.IndexedOpsWorld.L17_IUnionEqualsUniv
 msgid "Indexed Union Equals Univ"
+msgstr ""
+
+#. §0: `Set.image_univ`
+#. §1: `f '' Set.univ = Set.range f`
+#: Game.Levels.ImageWorld.L12_ImageUnivRange
+msgid "§0 states §1.\n"
+"The image of the universal set is the range of the function.\n"
+"\n"
+"## When to use it\n"
+"When you need to convert between image-of-everything and range."
 msgstr ""
 
 #. §0: `constructor`
@@ -760,6 +1025,49 @@ msgid "You now know all four set operations:\n"
 "the subsets of any type form an abelian group (with identity §15).\n"
 "We will not prove this in this course, but it is a fascinating\n"
 "structural fact worth knowing."
+msgstr ""
+
+#. §0: `use 3`
+#. §1: `x = 3`
+#. §2: `constructor`
+#. §3: `3 < 5`
+#. §4: `3 + 1 = 4`
+#. §5: `3 ∈ f ⁻¹' t`
+#. §6: `f 3 ∈ t`
+#. §7: `4 ∈ f '' s`
+#. §8: `x`
+#. §9: `x ∈ s`
+#. §10: `f x = 4`
+#. §11: `use`
+#. §12: `∃ x, P x`
+#. §13: `use e`
+#. §14: `x := e`
+#. §15: `P e`
+#. §16: `use`
+#. §17: `Even 4`
+#. §18: `use 3`
+#. §19: `f '' s`
+#. §20: `''`
+#: Game.Levels.ImageWorld.L01_ImageMembership
+msgid "You proved your first image membership! The proof was:\n"
+"\n"
+"1. **Exhibit**: §0 -- provide the witness §1\n"
+"2. **Split**: §2 -- separate membership from equation\n"
+"3. **Verify membership**: §3 ✓\n"
+"4. **Verify equation**: §4 ✓\n"
+"\n"
+"**The key contrast with preimage**: In Preimage World, §5\n"
+"just meant §6 -- a single membership check, no construction.\n"
+"Image membership §7 requires CONSTRUCTING a witness: you\n"
+"must name a specific §8, prove §9, and prove §10. The\n"
+"existential makes image proofs heavier than preimage proofs.\n"
+"\n"
+"**The §11 tactic**: When the goal is §12, §13 substitutes\n"
+"§14 and leaves §15 as the remaining goal. You saw §16 in Set\n"
+"World for proving §17. Here it works the same way: §18\n"
+"provides the existential witness.\n"
+"\n"
+"The notation §19 is typed §20 (two single quotes)."
 msgstr ""
 
 #. §0: `s \\ (s \\ t) = s ∩ t`
@@ -912,6 +1220,27 @@ msgid "You proved monotonicity of indexed union. The proof pattern is:\n"
 "In ordinary math: \"If §2, then §3 for\n"
 "some §4. Since §5, we have §6. Therefore\n"
 "§7.\""
+msgstr ""
+
+#. §0: `2 * r = y`
+#. §1: `y`
+#. §2: `show 2 * r = y`
+#. §3: `omega`
+#: Game.Levels.ImageWorld.L11_SetRange
+msgid "The goal is §0 (the function applied to the witness\n"
+"equals §1). Use §2 to make this explicit, then §3."
+msgstr ""
+
+#. §0: `use f x`
+#. §1: `constructor`
+#. §2: `exact ⟨x, hx, rfl⟩`
+#. §3: `rfl`
+#. §4: `exact ⟨f x, ⟨x, hx, rfl⟩, rfl⟩`
+#: Game.Levels.ImageWorld.L10_ImageComposition
+msgid "§0 then §1,\n"
+"§2, §3.\n"
+"\n"
+"Or in one step: §4."
 msgstr ""
 
 #. §0: `hx : x ∈ (s ∩ t)ᶜ`
@@ -1197,6 +1526,40 @@ msgstr ""
 msgid "De Morgan for Indexed Unions"
 msgstr ""
 
+#. §0: `apply Set.image_subset_iff.mpr`
+#. §1: `intro x hx`
+#. §2: `exact hx`
+#. §3: ```
+#. rintro y ⟨x, hx, rfl⟩
+#. exact hx
+#. ```
+#. §4: `f '' (f ⁻¹' t) ⊆ t`
+#. §5: `f '' s ⊆ t ↔ s ⊆ f ⁻¹' t`
+#: Game.Levels.ImageWorld.L17_GapFromGalois
+msgid "The proof was just three steps:\n"
+"1. §0 -- Galois connection\n"
+"2. §1 -- take an element\n"
+"3. §2 -- reflexivity\n"
+"\n"
+"Compare with the direct proof (Level 14):\n"
+"§3\n"
+"\n"
+"Both proofs are short, but the Galois proof is more illuminating:\n"
+"it shows WHY §4 holds. The Galois connection\n"
+"reduces it to a trivially true statement. No witnesses, no\n"
+"existentials, no destructuring -- just one apply.\n"
+"\n"
+"**The unifying principle**: In Level 16, you proved monotonicity\n"
+"from the Galois connection. Here, you proved the image-preimage\n"
+"gap from the same Galois connection. Both results are free\n"
+"corollaries of the adjunction §5.\n"
+"\n"
+"This is a general pattern in mathematics: once you establish an\n"
+"adjunction (Galois connection) between two operations, many\n"
+"individual results become trivial consequences. The adjunction\n"
+"is the deep fact; the results are surface phenomena."
+msgstr ""
+
 #: Game.Levels.SubsetWorld.L04_EmptySubset
 msgid "The empty set is a subset of any set."
 msgstr ""
@@ -1285,6 +1648,11 @@ msgid "§0 states §1 —\n"
 "After §6, you get an §7 — use §8 to provide\n"
 "the witness. Do not confuse with §9/§10 (which are for binary\n"
 "§11 / §12)."
+msgstr ""
+
+#: Game.Levels.ImageWorld.L20_Boss
+msgid "**⊆ direction**: This is Level 13 again. Destructure the\n"
+"image membership and the preimage hypothesis gives you the answer."
 msgstr ""
 
 #: Game.Levels.SetWorld.L03_NonMembership
@@ -1385,8 +1753,22 @@ msgid "The goal is §0. Use §1 to\n"
 "convert to §2."
 msgstr ""
 
+#. §0: `Set.Nonempty.image`
+#. §1: `s`
+#. §2: `f '' s`
+#: Game.Levels.ImageWorld.L18_NonemptinessTransfer
+msgid "§0 states that if §1 is nonempty, then §2\n"
+"is nonempty. Image preserves nonemptiness unconditionally.\n"
+"\n"
+"Disabled to force manual witness construction."
+msgstr ""
+
 #: Game.Levels.SetWorld.L07_UniversalSet
 msgid "Everything is in Set.univ"
+msgstr ""
+
+#: Game.Levels.ImageWorld.L06_ImageMonotonicity
+msgid "Image Preserves Subsets"
 msgstr ""
 
 #. §0: `x ∈ s`
@@ -1562,6 +1944,10 @@ msgid "**Backward**: Same structure — unpack, find the witness,\n"
 "reassemble."
 msgstr ""
 
+#: Game.Levels.ImageWorld.L17_GapFromGalois
+msgid "The Image-Preimage Gap from the Galois Connection"
+msgstr ""
+
 #. §0: `x ∈ s`
 #. §1: `s : Set α`
 #. §2: `s`
@@ -1630,6 +2016,15 @@ msgstr ""
 
 #: Game.Levels.PsetSets.L07_NestedDifference
 msgid "Subtracting a difference recovers the intersection."
+msgstr ""
+
+#. §0: `use 3`
+#. §1: `3`
+#. §2: `3 + 1 = 4`
+#. §3: `constructor`
+#: Game.Levels.ImageWorld.L01_ImageMembership
+msgid "After §0, the goal is a conjunction: §1 is in the source\n"
+"set AND §2. Use §3 to split."
 msgstr ""
 
 #. §0: `f : α → β`
@@ -1703,6 +2098,14 @@ msgid "# Preimage World\n"
 "Indexed Operations World."
 msgstr ""
 
+#. §0: `exact ⟨0, rfl, rfl⟩`
+#. §1: `0 = 0`
+#. §2: `f 0 = 0`
+#: Game.Levels.ImageWorld.L09_IntersectionCounterexample
+msgid "§0 -- witness 0, membership\n"
+"§1, and equation §2."
+msgstr ""
+
 #. §0: `inf_compl_eq_bot`
 #. §1: `a ⊓ aᶜ = ⊥`
 #: Game.Levels.SetOpsWorld.L09_ComplementLaw
@@ -1752,6 +2155,21 @@ msgstr ""
 #: Game.Levels.IndexedOpsWorld.L19_DeMorganInter
 msgid "The goal is §0. Use §1 to introduce\n"
 "the index."
+msgstr ""
+
+#. §0: `y ∈ f '' s ∪ f '' t`
+#. §1: `intro hy`
+#. §2: `cases hy with | inl h | inr h`
+#. §3: `rcases`
+#. §4: `intro hy`
+#. §5: `rcases hy with ⟨x, hx, rfl⟩ | ⟨x, hx, rfl⟩`
+#: Game.Levels.ImageWorld.L07_ImageUnion
+msgid "**Backward**: §0 is a disjunction. Use\n"
+"§1 then §2 to split.\n"
+"\n"
+"**Alternative**: §3 can split the disjunction AND destructure\n"
+"each image membership in one step:\n"
+"§4 then §5."
 msgstr ""
 
 #. §0: `Set.inter_union_cancel_left`
@@ -1892,6 +2310,36 @@ msgid "§0 states §1 — the indexed\n"
 "intersection is contained in each member of the family."
 msgstr ""
 
+#. §0: `f '' Set.univ = Set.range f`
+#. §1: `rintro ⟨x, hx, rfl⟩`
+#. §2: `rintro ⟨x, rfl⟩`
+#. §3: `∃ x, f x = y`
+#. §4: `∃ x ∈ s, f x = y`
+#. §5: `Set.mem_univ`
+#. §6: `Set.mem_univ x : x ∈ Set.univ`
+#. §7: `⟨x, rfl⟩`
+#. §8: `⟨x, Set.mem_univ x, rfl⟩`
+#. §9: `Set.image_univ`
+#: Game.Levels.ImageWorld.L12_ImageUnivRange
+msgid "You proved §0 -- the range is the image\n"
+"of everything!\n"
+"\n"
+"**Image vs Range destructuring**: Notice the pattern difference:\n"
+"- Image: §1 -- three components (witness,\n"
+"  membership, equation)\n"
+"- Range: §2 -- two components (witness, equation)\n"
+"\n"
+"Range drops the source membership because §3 has no\n"
+"set constraint, while §4 does.\n"
+"\n"
+"**§5**: The proof §6 says\n"
+"everything is in the universal set. This is the bridge from range\n"
+"back to image -- range membership §7 becomes image membership\n"
+"§8 by adding the trivial membership proof.\n"
+"\n"
+"The library name is §9."
+msgstr ""
+
 #. §0: `change P at h`
 #. §1: `h`
 #. §2: `P`
@@ -2026,6 +2474,23 @@ msgid "You proved your first **proper subset**! The structure was:\n"
 "equivalent — by antisymmetry (Level 13), §24,\n"
 "so §25 when §26 is known, and conversely. Both\n"
 "definitions capture the same idea: strict containment with no equality."
+msgstr ""
+
+#. §0: `x : α`
+#. §1: `hx : x ∈ s`
+#. §2: `f x ∈ f '' t`
+#. §3: `∃ z ∈ t, f z = f x`
+#. §4: `x`
+#. §5: `h : s ⊆ t`
+#. §6: `h hx : x ∈ t`
+#. §7: `exact ⟨x, h hx, rfl⟩`
+#: Game.Levels.ImageWorld.L06_ImageMonotonicity
+msgid "You have §0 and §1. The goal is §2,\n"
+"meaning §3.\n"
+"\n"
+"The witness is §4 itself. Since §5, we have §6.\n"
+"Use §7 to provide the witness, membership, and\n"
+"equation in one step."
 msgstr ""
 
 #. §0: `exact h hx`
@@ -2238,6 +2703,15 @@ msgstr ""
 msgid "Monotonicity of Indexed Union"
 msgstr ""
 
+#. §0: `3`
+#. §1: `3 < 5`
+#. §2: `show 3 < 5`
+#. §3: `omega`
+#: Game.Levels.ImageWorld.L01_ImageMembership
+msgid "The goal asks whether §0 is in the source set. This unfolds\n"
+"to §1. Use §2 to make this explicit, then §3."
+msgstr ""
+
 #. §0: `hxt : x ∈ t`
 #. §1: `ht`
 #. §2: `have hle := ht hxt`
@@ -2437,6 +2911,30 @@ msgid "**Forward direction**: Assume §0 and prove\n"
 "§3."
 msgstr ""
 
+#. §0: `Even (2 * x)`
+#. §1: `∃ r, 2 * x = r + r`
+#. §2: `x`
+#. §3: `use x`
+#. §4: `omega`
+#: Game.Levels.ImageWorld.L11_SetRange
+msgid "Now §0 means §1. The witness\n"
+"is §2. Use §3 then §4."
+msgstr ""
+
+#. §0: `Set.mem_image_of_mem f h`
+#. §1: `h : a ∈ s`
+#. §2: `f a ∈ f '' s`
+#. §3: `use`
+#. §4: `exact ⟨x, hx, rfl⟩`
+#: Game.Metadata
+msgid "§0 states that if §1, then\n"
+"§2. It directly constructs image membership from source\n"
+"membership.\n"
+"\n"
+"Disabled in image levels to force the learner to construct the\n"
+"witness manually using §3 and §4."
+msgstr ""
+
 #. §0: $A \\subseteq B$
 #. §1: $B \\subseteq C$
 #. §2: $A \\subseteq C$
@@ -2484,6 +2982,21 @@ msgid "# Chaining Subsets\n"
 "§20 gives §21. Then §22.\n"
 "\n"
 "Try the backward approach — it is shorter and builds your §23 skills."
+msgstr ""
+
+#. §0: `y ∈ f '' Set.univ`
+#. §1: `∃ x ∈ Set.univ, f x = y`
+#. §2: `x`
+#. §3: `Set.univ`
+#. §4: `rintro ⟨x, _, rfl⟩`
+#. §5: `_`
+#. §6: `x ∈ Set.univ`
+#: Game.Levels.ImageWorld.L12_ImageUnivRange
+msgid "**Forward**: §0 means §1.\n"
+"Since every §2 is in §3, the source membership is trivial.\n"
+"\n"
+"Use §4 -- the §5 discards the trivial\n"
+"§6 proof."
 msgstr ""
 
 #: Game.Levels.SubsetWorld.L02_ChangeTactic
@@ -2567,6 +3080,15 @@ msgid "You proved §0. Both directions\n"
 "The library name is §20."
 msgstr ""
 
+#. §0: `use x`
+#. §1: `hx : x ∈ s`
+#. §2: `f x = f x`
+#. §3: `rfl`
+#: Game.Levels.ImageWorld.L15_PreimageImageGap
+msgid "Alternatively: §0 (Lean automatically\n"
+"verifies §1 and §2 by §3)."
+msgstr ""
+
 #. §0: `x ∈ s ∩ sᶜ`
 #. §1: `False`
 #. §2: `intro hx`
@@ -2574,6 +3096,14 @@ msgstr ""
 #: Game.Levels.SetOpsWorld.L09_ComplementLaw
 msgid "Given §0, derive §1. Start with §2,\n"
 "then use §3 to extract both components."
+msgstr ""
+
+#. §0: `Set.image_mono`
+#. §1: `s ⊆ t`
+#. §2: `f '' s ⊆ f '' t`
+#: Game.Levels.ImageWorld.L08_ImageInterSubset
+msgid "§0 states that if §1 then §2.\n"
+"Image is monotone. Disabled to force manual proof."
 msgstr ""
 
 #. §0: `a ∈ s`
@@ -2586,6 +3116,13 @@ msgid "You have §0 and §1. The goal is\n"
 "§2, which means §3.\n"
 "\n"
 "Provide the pair as witness: §4."
+msgstr ""
+
+#. §0: `intro hy`
+#. §1: `contradiction`
+#. §2: `exact hy.elim`
+#: Game.Levels.ImageWorld.L04_ImageEmpty
+msgid "§0 then §1 or §2."
 msgstr ""
 
 #. §0: `left`
@@ -2602,6 +3139,63 @@ msgstr ""
 
 #: Game.Levels.SetOpsWorld.L17_Boss
 msgid "Boss: Distributivity"
+msgstr ""
+
+#. §0: `hx : x ∈ ...`
+#. §1: `x < 4`
+#. §2: `omega`
+#. §3: `have h : x < 4 := hx`
+#: Game.Levels.ImageWorld.L03_RintroRcases
+msgid "Now §0 contains §1 but §2 cannot see through\n"
+"set membership notation. Use §3 to extract the\n"
+"arithmetic fact."
+msgstr ""
+
+#. §0: `rintro`
+#. §1: `intro`
+#. §2: `rfl`
+#. §3: ```
+#. rintro ⟨x, hx, rfl⟩      -- existential + conjunction + substitution
+#. rintro (h | h)             -- disjunction (two cases)
+#. rintro ⟨h₁, h₂⟩           -- conjunction
+#. rintro x ⟨a, ha, rfl⟩     -- introduce variable then destructure
+#. ```
+#. §4: `\\<`
+#. §5: `\\>`
+#. §6: `∀`
+#. §7: `→`
+#. §8: `rintro ⟨x, hx, rfl⟩`
+#. §9: `intro hy`
+#. §10: `obtain ⟨x, hx, hfx⟩ := hy`
+#. §11: `rw [← hfx]`
+#. §12: ```
+#. -- Goal: ∀ y, y ∈ f '' s → P y
+#. rintro y ⟨x, hx, rfl⟩
+#. -- x : α, hx : x ∈ s, Goal: P (f x)
+#. ```
+#. §13: `rfl`
+#: Game.Metadata
+msgid "§0 combines §1 with pattern matching in one step.\n"
+"The §2 pattern automatically substitutes equations.\n"
+"\n"
+"## Syntax\n"
+"§3\n"
+"\n"
+"## Angle bracket input\n"
+"Type ⟨ as §4 and ⟩ as §5 in the editor.\n"
+"\n"
+"## When to use it\n"
+"When the goal starts with §6 or §7 and you want to immediately\n"
+"destructure the introduced hypothesis. Especially useful for image\n"
+"membership: §8 replaces §9 +\n"
+"§10 + §11.\n"
+"\n"
+"## Example\n"
+"§12\n"
+"\n"
+"## Warning\n"
+"The §13 pattern substitutes a variable everywhere. Make sure\n"
+"the variable you are eliminating is the one you intend."
 msgstr ""
 
 #. §0: `by_contra h`
@@ -2662,6 +3256,50 @@ msgstr ""
 msgid "§0 then\n"
 "§1 then §2 then\n"
 "§3 then §4."
+msgstr ""
+
+#. §0: `f '' (f ⁻¹' t) ⊆ t`
+#. §1: `f '' s ⊆ t ↔ s ⊆ f ⁻¹' t`
+#. §2: `s := f ⁻¹' t`
+#. §3: `f '' (f ⁻¹' t) ⊆ t`
+#. §4: `f ⁻¹' t ⊆ f ⁻¹' t`
+#. §5: `f ⁻¹' t ⊆ f ⁻¹' t`
+#. §6: `rintro`
+#. §7: `rcases`
+#. §8: `obtain`
+#. §9: `cases`
+#. §10: `apply Set.image_subset_iff.mpr`
+#. §11: `f ⁻¹' t ⊆ f ⁻¹' t`
+#. §12: `intro x hx`
+#. §13: `exact hx`
+#: Game.Levels.ImageWorld.L17_GapFromGalois
+msgid "# Re-Deriving the Image-Preimage Gap\n"
+"\n"
+"In Level 16, you re-derived image monotonicity from the Galois\n"
+"connection. The conclusion hinted that the same technique also\n"
+"re-derives the image-preimage gap §0 (Level 14).\n"
+"\n"
+"Now you will carry out this derivation yourself.\n"
+"\n"
+"The idea is beautiful in its simplicity:\n"
+"1. The Galois connection says §1. With\n"
+"   §2, showing §3 reduces to\n"
+"   §4.\n"
+"2. But §5 is trivially true -- any set is a\n"
+"   subset of itself!\n"
+"\n"
+"Two key results of this world -- monotonicity (Level 16) and the\n"
+"image-preimage gap (this level) -- are both immediate consequences\n"
+"of the Galois connection. The adjunction is the engine; individual\n"
+"results are free corollaries.\n"
+"\n"
+"**Important**: As in Level 16, §6, §7, §8, and\n"
+"§9 are disabled. You must use the Galois connection.\n"
+"\n"
+"**Proof plan**:\n"
+"1. §10 -- apply the backward direction\n"
+"   of the Galois connection\n"
+"2. Close §11 with §12 then §13"
 msgstr ""
 
 #. §0: `change ¬(x ∈ ⋃ i, s i)`
@@ -2725,6 +3363,19 @@ msgid "# Bounded Indexed Unions\n"
 "extra obligation of proving the index is in bounds."
 msgstr ""
 
+#. §0: `hy : y = f a`
+#. §1: `rw [hy]`
+#. §2: `y`
+#. §3: `f a`
+#: Game.Levels.ImageWorld.L05_ImageSingleton
+msgid "§0. Rewrite with §1 to replace §2\n"
+"with §3 in the goal."
+msgstr ""
+
+#: Game.Levels.ImageWorld.L08_ImageInterSubset
+msgid "Image Only ⊆ for Intersection"
+msgstr ""
+
 #: Game.Levels.PsetSets.L17_IndexedDifference
 msgid "Unpack the indexed union and destructure the difference."
 msgstr ""
@@ -2735,6 +3386,15 @@ msgstr ""
 #: Game.Levels.SubsetWorld.L08_SubsetTrans
 msgid "Now the goal is §0. Use §1 to reduce it to\n"
 "§2."
+msgstr ""
+
+#. §0: `hy : y ∈ f '' s`
+#. §1: `x ∈ s`
+#. §2: `f x = y`
+#. §3: `obtain ⟨x, hx, rfl⟩ := hy`
+#: Game.Levels.ImageWorld.L19_NonemptinessConverse
+msgid "§0 means there exists §1 with §2.\n"
+"Destructure with §3."
 msgstr ""
 
 #. §0: `ext`
@@ -2870,11 +3530,41 @@ msgstr ""
 #: Game.Levels.PreimageWorld.L16_Boss
 #: Game.Levels.PreimageWorld.L16_Boss
 #: Game.Levels.PreimageWorld.L16_Boss
+#: Game.Levels.ImageWorld.L03_RintroRcases
+#: Game.Levels.ImageWorld.L05_ImageSingleton
+#: Game.Levels.ImageWorld.L08_ImageInterSubset
+#: Game.Levels.ImageWorld.L08_ImageInterSubset
+#: Game.Levels.ImageWorld.L10_ImageComposition
+#: Game.Levels.ImageWorld.L10_ImageComposition
+#: Game.Levels.ImageWorld.L12_ImageUnivRange
+#: Game.Levels.ImageWorld.L12_ImageUnivRange
+#: Game.Levels.ImageWorld.L13_GaloisConnection
+#: Game.Levels.ImageWorld.L14_ImagePreimageGap
+#: Game.Levels.ImageWorld.L16_MonoFromGalois
+#: Game.Levels.ImageWorld.L19_NonemptinessConverse
+#: Game.Levels.ImageWorld.L20_Boss
 msgid "§0"
 msgstr ""
 
 #: Game.Levels.SetOpsWorld.L02_IntersectionMembership
 msgid "4 is both even and less than 10."
+msgstr ""
+
+#: Game.Levels.ImageWorld.L16_MonoFromGalois
+msgid "Monotonicity from the Galois Connection"
+msgstr ""
+
+#. §0: `g (f x) ∈ g '' (f '' s)`
+#. §1: `f '' s`
+#. §2: `g (f x)`
+#. §3: `g`
+#. §4: `f x`
+#. §5: `use f x`
+#: Game.Levels.ImageWorld.L10_ImageComposition
+msgid "The goal is §0. You need to provide\n"
+"a witness in §1 that maps to §2 under §3.\n"
+"\n"
+"The witness is §4. Use §5 to provide it."
 msgstr ""
 
 #. §0: $$\\texttt{Set } \\alpha = \\alpha \\to \\texttt{Prop}$$
@@ -2986,6 +3676,15 @@ msgstr ""
 msgid "Absorption Law"
 msgstr ""
 
+#. §0: `hx : x ∈ s ∩ t`
+#. §1: `obtain ⟨hs, ht⟩ := hx`
+#. §2: `hs : x ∈ s`
+#. §3: `ht : x ∈ t`
+#: Game.Levels.ImageWorld.L08_ImageInterSubset
+msgid "§0 is a conjunction. Destructure it with\n"
+"§1 to get §2 and §3."
+msgstr ""
+
 #. §0: `hns : x ∈ sᶜ`
 #. §1: `x ∉ s`
 #. §2: `hs : x ∈ s`
@@ -2996,8 +3695,57 @@ msgid "§0 (= §1) and §2. Contradiction:\n"
 "§3."
 msgstr ""
 
+#. §0: `f '' s ⊆ f '' t`
+#. §1: ```
+#. rintro y ⟨x, hx, rfl⟩
+#. exact ⟨x, h hx, rfl⟩
+#. ```
+#. §2: ```
+#. rw [Set.image_subset_iff]
+#. intro x hx
+#. apply Set.subset_preimage_image
+#. exact h hx
+#. ```
+#. §3: `f '' (f ⁻¹' t) ⊆ t`
+#: Game.Levels.ImageWorld.L16_MonoFromGalois
+msgid "You re-derived §0 from the Galois connection, without\n"
+"ever touching a witness or destructuring an image membership!\n"
+"\n"
+"Compare the two proofs:\n"
+"\n"
+"**Direct proof (Level 6)**:\n"
+"§1\n"
+"This works at the element level: find the witness, upgrade its\n"
+"membership, repackage.\n"
+"\n"
+"**Galois proof (this level)**:\n"
+"§2\n"
+"This works at the structural level: convert to preimage form,\n"
+"then chain two known subset relationships.\n"
+"\n"
+"**Why this matters**: The Galois proof generalizes. ANY pair of\n"
+"operations related by a Galois connection (adjunction) automatically\n"
+"inherits monotonicity. This principle appears throughout mathematics:\n"
+"- Image/preimage of sets\n"
+"- Direct image/inverse image of sheaves\n"
+"- Left/right adjoints in category theory\n"
+"\n"
+"The Galois connection is the engine; monotonicity is a free corollary.\n"
+"\n"
+"**Next**: Can the Galois connection also re-derive the image-preimage\n"
+"gap §3 (Level 14)? In the next level, you will\n"
+"find out by doing the derivation yourself."
+msgstr ""
+
 #: Game.Levels.SubsetWorld.L13_SetNonEquality
 msgid "Disproving Set Equality"
+msgstr ""
+
+#. §0: `y ∈ ∅`
+#. §1: `intro hy`
+#: Game.Levels.ImageWorld.L04_ImageEmpty
+msgid "**Backward**: If §0, that is itself a contradiction.\n"
+"Use §1 to assume it."
 msgstr ""
 
 #. §0: $$s \\subseteq s \\cup t$$
@@ -3020,6 +3768,18 @@ msgid "# s ⊆ s ∪ t\n"
 "**Your task**: Prove this formally. After §3, the goal\n"
 "is §4. Since this is a disjunction, use §5 to select\n"
 "the left side, then close with §6."
+msgstr ""
+
+#. §0: `f x ∈ f '' Set.univ`
+#. §1: `x`
+#. §2: `Set.mem_univ x`
+#. §3: `Set.univ`
+#. §4: `f x = f x`
+#. §5: `rfl`
+#: Game.Levels.ImageWorld.L12_ImageUnivRange
+msgid "The goal is §0. Build the image membership:\n"
+"the witness is §1, the source membership is §2\n"
+"(everything is in §3), and §4 by §5."
 msgstr ""
 
 #: Game.Levels.PreimageWorld.L09_PreimageUnion
@@ -3046,10 +3806,57 @@ msgid "§0 states\n"
 "§1."
 msgstr ""
 
+#. §0: `f : α → β`
+#. §1: $$\\text{range}(f) = \\{y \\mid \\exists\\, x,\\; f(x) = y\\}$$
+#. §2: `Set.range f`
+#. §3: $$y \\in \\text{range}(f) \\;\\;\\Longleftrightarrow\\;\\; \\exists\\, x,\\; f(x) = y$$
+#. §4: `Set.mem_range`
+#. §5: `Set.range f = f '' Set.univ`
+#. §6: `Set.range (fun n : ℕ => 2 * n) = {n | Even n}`
+#. §7: `ext y`
+#. §8: `constructor`
+#. §9: `rintro ⟨x, rfl⟩`
+#. §10: `x`
+#. §11: `y = 2 * x`
+#. §12: `Even (2 * x)`
+#. §13: `use x; omega`
+#. §14: `intro hy`
+#. §15: `hy : Even y`
+#: Game.Levels.ImageWorld.L11_SetRange
+msgid "# The Range of a Function\n"
+"\n"
+"The **range** of a function §0 is the set of ALL outputs:\n"
+"\n"
+"§1\n"
+"\n"
+"In Lean, this is §2. The membership rule is:\n"
+"\n"
+"§3\n"
+"\n"
+"This is §4. Notice it is just like image membership\n"
+"but WITHOUT the source set constraint. Equivalently,\n"
+"§5 -- the image of the universal set.\n"
+"\n"
+"**Your task**: Prove that the range of the doubling function is\n"
+"exactly the set of even numbers:\n"
+"§6.\n"
+"\n"
+"**Proof plan**:\n"
+"1. §7 then §8\n"
+"2. **Forward**: §9 gives §10 and substitutes §11.\n"
+"   Prove §12 with §13.\n"
+"3. **Backward**: §14 gets §15. Destructure the\n"
+"   existential to find the witness, then construct range membership."
+msgstr ""
+
 #. §0: `ext x`
 #: Game.Levels.SetOpsWorld.L13_DeMorgan
 msgid "The goal is a set equality. Use §0 to reduce it to a\n"
 "membership biconditional."
+msgstr ""
+
+#: Game.Levels.ImageWorld.L12_ImageUnivRange
+msgid "Image of Everything is the Range"
 msgstr ""
 
 #. §0: `cases hx`
@@ -3100,6 +3907,14 @@ msgid "# Boss: Intersection Distributes over Union\n"
 "moves you have practiced. Take it one step at a time."
 msgstr ""
 
+#. §0: `Set.image_mono`
+#. §1: `s ⊆ t`
+#. §2: `f '' s ⊆ f '' t`
+#: Game.Levels.ImageWorld.L06_ImageMonotonicity
+msgid "§0 states that if §1 then §2.\n"
+"Image is monotone: bigger input set implies bigger output set."
+msgstr ""
+
 #: Game.Levels.IndexedOpsWorld.L19_DeMorganInter
 msgid "De Morgan's law: the complement of an indexed intersection is the\n"
 "indexed union of complements."
@@ -3137,6 +3952,28 @@ msgid "You used §0 to convert a negated disjunction into a conjunction\n"
 "§10 using §11, §12, and case analysis."
 msgstr ""
 
+#. §0: `hx0`
+#. §1: `x = 0`
+#. §2: `hx1`
+#. §3: `x = 1`
+#. §4: `have h0 : x = 0 := hx0`
+#. §5: `have h1 : x = 1 := hx1`
+#. §6: `omega`
+#: Game.Levels.ImageWorld.L09_IntersectionCounterexample
+msgid "After destructuring, §0 is definitionally\n"
+"§1 and §2 is definitionally §3. Extract with\n"
+"§4 and §5, then §6."
+msgstr ""
+
+#. §0: `hx : x ∈ s ∩ t`
+#. §1: `obtain ⟨hs, ht⟩ := hx`
+#. §2: `constructor`
+#: Game.Levels.ImageWorld.L08_ImageInterSubset
+msgid "After destructuring, §0. Use\n"
+"§1 to split, then build both sides with\n"
+"§2."
+msgstr ""
+
 #. §0: `h : ¬ ∃ i, x ∈ (s i)ᶜ`
 #. §1: `False`
 #. §2: `hx : x ∈ (⋂ i, s i)ᶜ`
@@ -3152,6 +3989,41 @@ msgid "Now §0 and the goal is §1.\n"
 "\n"
 "To reach §4, show that §5 after all — contradicting\n"
 "§6. Use §7 to change the goal to §8."
+msgstr ""
+
+#. §0: `s ⊆ t`
+#. §1: `f '' s ⊆ f '' t`
+#. §2: `y ∈ f '' s`
+#. §3: `x ∈ s`
+#. §4: `f x = y`
+#. §5: `s ⊆ t`
+#. §6: `x ∈ t`
+#. §7: `x`
+#. §8: `y ∈ f '' t`
+#. §9: `rintro`
+#. §10: `f '' s ⊆ f '' t`
+#. §11: `∀ y, y ∈ f '' s → y ∈ f '' t`
+#. §12: `rintro y ⟨x, hx, rfl⟩`
+#. §13: `rintro y ⟨x, hx, rfl⟩`
+#. §14: `y`
+#. §15: `x`
+#: Game.Levels.ImageWorld.L06_ImageMonotonicity
+msgid "# Image Is Monotone\n"
+"\n"
+"If §0, then §1. In words: a bigger input set\n"
+"produces a bigger output set. This is **monotonicity** of image.\n"
+"\n"
+"Why? If §2, there exists §3 with §4. Since\n"
+"§5, we have §6. So the SAME witness §7 proves §8.\n"
+"\n"
+"This is your first abstract image proof. It is also your first\n"
+"chance to use §9 on a subset proof. The subset goal\n"
+"§10 means §11, so\n"
+"§12 destructures the image membership.\n"
+"\n"
+"**Proof plan**:\n"
+"1. §13 -- introduce §14 and destructure\n"
+"2. Construct the new image membership using the SAME witness §15"
 msgstr ""
 
 #. §0: `fin_cases h`
@@ -3266,6 +4138,24 @@ msgid "Congratulations — you have completed the **Sets Problem Set**!\n"
 "the fundamental asymmetry between them. Preimages preserve ALL set\n"
 "operations; images only preserve unions. The membership-to-logic\n"
 "reduction you have mastered is exactly what those proofs require."
+msgstr ""
+
+#: Game.Levels.ImageWorld.L20_Boss
+msgid "Boss: Closing the Image-Preimage Gap"
+msgstr ""
+
+#. §0: `y ∈ Set.range (fun n => 2 * n)`
+#. §1: `∃ x, 2 * x = y`
+#. §2: `rintro ⟨x, rfl⟩`
+#. §3: `x`
+#. §4: `y = 2 * x`
+#: Game.Levels.ImageWorld.L11_SetRange
+msgid "**Forward**: §0 means\n"
+"§1. Use §2 to get §3 and\n"
+"substitute §4.\n"
+"\n"
+"Note: range membership has only TWO components (witness and\n"
+"equation), not three like image membership."
 msgstr ""
 
 #. §0: `s ×ˢ t`
@@ -3879,6 +4769,10 @@ msgid "§0 handles the linear arithmetic:\n"
 "§1 is always even, so it can never equal 3."
 msgstr ""
 
+#: Game.Levels.ImageWorld.L16_MonoFromGalois
+msgid "Image monotonicity re-derived from the Galois connection."
+msgstr ""
+
 #. §0: `hs : x ∈ s`
 #. §1: `x ∈ t ∪ s`
 #. §2: `right`
@@ -3952,6 +4846,10 @@ msgstr ""
 msgid "§0 states §1 (lattice meet projection)."
 msgstr ""
 
+#: Game.Levels.ImageWorld.L07_ImageUnion
+msgid "Image Preserves Union"
+msgstr ""
+
 #. §0: `obtain ⟨hs, htu⟩ := hx`
 #. §1: `cases htu with | inl ht | inr hu`
 #. §2: `left`
@@ -3965,6 +4863,14 @@ msgid "§0 then\n"
 "In each case, use §2/§3 + §4 + §5."
 msgstr ""
 
+#. §0: `constructor`
+#. §1: `0 ∈ f '' s`
+#. §2: `0 ∈ f '' t`
+#: Game.Levels.ImageWorld.L09_IntersectionCounterexample
+msgid "The goal is a conjunction (intersection membership). Use\n"
+"§0 again to split into §1 and §2."
+msgstr ""
+
 #. §0: `rw [Set.mem_iInter]`
 #. §1: `∀ i, x ∈ t i`
 #: Game.Levels.IndexedOpsWorld.L06_MonotonIInter
@@ -3974,6 +4880,14 @@ msgstr ""
 
 #: Game.Levels.IndexedOpsWorld.L21_BoundedIntegration
 msgid "If u is nonempty, the bounded intersection is inside the bounded union."
+msgstr ""
+
+#. §0: `f x ∈ Set.range f`
+#. §1: `∃ z, f z = f x`
+#. §2: `x`
+#: Game.Levels.ImageWorld.L12_ImageUnivRange
+msgid "The goal is §0, which means §1.\n"
+"The witness is §2 itself."
 msgstr ""
 
 #. §0: `(h x).2`
@@ -3988,6 +4902,10 @@ msgstr ""
 msgid "Now §0 and §1. Case-split on the union."
 msgstr ""
 
+#: Game.Levels.ImageWorld.L19_NonemptinessConverse
+msgid "If f '' s is nonempty, then s is nonempty."
+msgstr ""
+
 #. §0: `h : ¬(x ∈ sᶜ ∪ tᶜ)`
 #. §1: `x ∉ s`
 #. §2: `x ∉ t`
@@ -3998,6 +4916,14 @@ msgstr ""
 msgid "§0 says neither §1 nor §2 holds.\n"
 "Use §3 to make the logical structure\n"
 "visible, then §4 to convert to §5."
+msgstr ""
+
+#. §0: `h : Set.Nonempty (f '' s)`
+#. §1: `y ∈ f '' s`
+#. §2: `obtain ⟨y, hy⟩ := h`
+#: Game.Levels.ImageWorld.L19_NonemptinessConverse
+msgid "§0 means there exists §1.\n"
+"Destructure with §2 to get a witness."
 msgstr ""
 
 #. §0: `Set.Nonempty.snd`
@@ -4168,6 +5094,56 @@ msgid "§0 destructures the\n"
 "existential. After this, you will have §1 and §2."
 msgstr ""
 
+#. §0: `Set.Nonempty s → Set.Nonempty (f '' s)`
+#. §1: `obtain ⟨x, hx⟩ := h`
+#. §2: `exact ⟨f x, x, hx, rfl⟩`
+#. §3: `ext`
+#. §4: `constructor`
+#. §5: `f '' s`
+#. §6: `s`
+#. §7: `f '' s`
+#. §8: `x ∈ s`
+#. §9: `s`
+#. §10: `x`
+#. §11: `Set.Nonempty s ↔
+#. Set.Nonempty (f '' s)`
+#. §12: `t`
+#. §13: `f ⁻¹' t`
+#. §14: `s`
+#. §15: `f`
+#. §16: `Set.Nonempty.image`
+#: Game.Levels.ImageWorld.L18_NonemptinessTransfer
+msgid "You proved §0 -- image\n"
+"preserves nonemptiness.\n"
+"\n"
+"The proof was just two steps:\n"
+"1. §1 -- extract the witness\n"
+"2. §2 -- repackage it as image membership\n"
+"\n"
+"**A different proof shape**: This is NOT an §3/§4 proof\n"
+"like the set equality and subset proofs you have been doing. Instead,\n"
+"it is a direct existential construction: get an element, transform it,\n"
+"show the result is in the image.\n"
+"\n"
+"**The converse also holds**: If §5 is nonempty, then §6 must\n"
+"be nonempty. Why? Any element of §7 has a witness §8\n"
+"(by definition of image membership), so §9 contains at least §10.\n"
+"This means nonemptiness gives a biconditional: §11. Unlike intersection (where only ⊆ held),\n"
+"nonemptiness transfers in both directions unconditionally.\n"
+"\n"
+"**Contrast with preimage**: Preimage ALSO preserves nonemptiness\n"
+"(if §12 is nonempty and intersects the range, then §13 is\n"
+"nonempty), but that requires additional conditions. Image preserves\n"
+"nonemptiness unconditionally -- because every element of §14 has an\n"
+"output under §15.\n"
+"\n"
+"**Boss preparation**: The boss combines image membership construction,\n"
+"destructuring, range reasoning, and preimage unfolding. This level\n"
+"practices the existential construction skill in a new context.\n"
+"\n"
+"The library name is §16."
+msgstr ""
+
 #. §0: `exact (h x).2 hx`
 #. §1: `(h x).2`
 #: Game.Levels.SubsetWorld.L17_ExtFromAntisymm
@@ -4278,6 +5254,11 @@ msgid "§0, written §1, is the **preimage** of §2\n"
 "confuse with §15 (image), which is a set of OUTPUTS."
 msgstr ""
 
+#. §0: `constructor`
+#: Game.Levels.ImageWorld.L13_GaloisConnection
+msgid "Use §0 to split the biconditional."
+msgstr ""
+
 #. §0: `Set α`
 #. §1: `α`
 #. §2: `Set α`
@@ -4371,6 +5352,12 @@ msgid "You proved that §0 — the bounded\n"
 "§14 (witnessing the union with §15).\""
 msgstr ""
 
+#. §0: `y = f a`
+#. §1: `intro hy`
+#: Game.Levels.ImageWorld.L05_ImageSingleton
+msgid "**Backward**: §0. Use §1 to get this fact."
+msgstr ""
+
 #. §0: ```
 #. rw [Set.mem_iUnion]   -- convert ⋃ to ∃
 #. use witness           -- provide the index
@@ -4458,6 +5445,59 @@ msgid "# De Morgan's Law for Indexed Intersections\n"
 "\n"
 "The backward direction is constructive and follows the same pattern as\n"
 "the previous level."
+msgstr ""
+
+#. §0: $$f^{-1}(s \\cap t) = f^{-1}(s) \\cap f^{-1}(t)$$
+#. §1: $$f(s \\cap t) \\subseteq f(s) \\cap f(t)$$
+#. §2: `x ∈ s ∩ t`
+#. §3: `x ∈ s`
+#. §4: `x ∈ t`
+#. §5: `x`
+#. §6: `f x`
+#. §7: `f '' s`
+#. §8: `f '' t`
+#. §9: `f(n) = 0`
+#. §10: `s = {0}`
+#. §11: `t = {1}`
+#. §12: `f '' s ∩ f '' t = {0} ∩ {0} = {0}`
+#. §13: `f '' (s ∩ t) = f '' ∅ = ∅`
+#. §14: `rintro y ⟨x, hx, rfl⟩`
+#. §15: `hx : x ∈ s ∩ t`
+#. §16: `hs : x ∈ s`
+#. §17: `ht : x ∈ t`
+#. §18: `f x ∈ f '' s`
+#. §19: `f x ∈ f '' t`
+#: Game.Levels.ImageWorld.L08_ImageInterSubset
+msgid "# The Asymmetry: Image Does NOT Preserve Intersection\n"
+"\n"
+"Here is the critical asymmetry between image and preimage.\n"
+"Preimage preserves intersection as an EQUALITY:\n"
+"\n"
+"§0\n"
+"\n"
+"For image, we only get a SUBSET:\n"
+"\n"
+"§1\n"
+"\n"
+"The ⊆ direction is easy: if §2, then §3 AND §4,\n"
+"so the same witness §5 places §6 in both §7 and §8.\n"
+"\n"
+"But equality can FAIL. Consider §9 (constant function),\n"
+"§10, §11:\n"
+"- §12 (nonempty!)\n"
+"- §13 (empty!)\n"
+"\n"
+"The intersection of the images can be strictly larger than the image\n"
+"of the intersection. The constant function \"collapses\" distinct\n"
+"inputs to the same output, creating phantom intersections.\n"
+"\n"
+"**Your task**: Prove the ⊆ direction. This is a subset proof, not\n"
+"a set equality.\n"
+"\n"
+"**Proof plan**:\n"
+"1. §14 -- destructure image of intersection\n"
+"2. Destructure §15 into §16 and §17\n"
+"3. Build the conjunction: §18 and §19"
 msgstr ""
 
 #. §0: `Set.mem_iInter`
@@ -4576,9 +5616,24 @@ msgid "The membership unfolds to §0 — a conjunction.\n"
 "Use §1 to split it into two goals."
 msgstr ""
 
+#. §0: `hx : x ∈ s`
+#. §1: `f x ∈ t`
+#. §2: `h : s ⊆ f ⁻¹' t`
+#. §3: `h hx : x ∈ f ⁻¹' t`
+#. §4: `f x ∈ t`
+#: Game.Levels.ImageWorld.L13_GaloisConnection
+msgid "Now §0 and the goal is §1.\n"
+"Since §2, we have §3,\n"
+"which is definitionally §4."
+msgstr ""
+
 #: Game.Levels.SubsetWorld.L11_ExtPractice
 msgid "Assume membership in the left set. Then unwrap both sides\n"
 "and use arithmetic."
+msgstr ""
+
+#: Game.Levels.ImageWorld.L05_ImageSingleton
+msgid "The image of a singleton is the singleton of the image."
 msgstr ""
 
 #. §0: `use 2`
@@ -4844,6 +5899,126 @@ msgid "# sᶜᶜ = s\n"
 "   Introduce the negation and apply it to §16."
 msgstr ""
 
+#. §0: `f : α → β`
+#. §1: `s : Set α`
+#. §2: `s`
+#. §3: `f`
+#. §4: `s`
+#. §5: $$f(s) = \\{y \\mid \\exists\\, x \\in s,\\; f(x) = y\\}$$
+#. §6: `f '' s`
+#. §7: `''`
+#. §8: `y ∈ f '' s`
+#. §9: `x ∈ s`
+#. §10: `f x = y`
+#. §11: `x ∈ f ⁻¹' t ↔ f x ∈ t`
+#. §12: `∧`
+#. §13: `∨`
+#. §14: `¬`
+#. §15: `∃`
+#. §16: `∧`
+#. §17: `¬`
+#. §18: `rintro`
+#. §19: `rcases`
+#. §20: `f '' ∅ = ∅`
+#. §21: `f '' {a} = {f a}`
+#. §22: `Set.range`
+#. §23: `f '' Set.univ = Set.range f`
+#. §24: `f '' s ⊆ t ↔ s ⊆ f ⁻¹' t`
+#. §25: `f '' (f ⁻¹' t) = t`
+#. §26: `t`
+#. §27: `f`
+#. §28: `f '' s`
+#. §29: `''`
+#. §30: `s`
+#. §31: `f`
+#. §32: `rintro`
+#. §33: `rcases`
+#. §34: `obtain`
+#. §35: `obtain ⟨x, hx, rfl⟩ := hy`
+#: Game.Levels.ImageWorld
+msgid "# Image World\n"
+"\n"
+"You have mastered preimages -- pulling sets back through functions. Now you\n"
+"will study the dual operation: **images** -- pushing sets forward.\n"
+"\n"
+"Given a function §0 and a set §1 (a set of inputs),\n"
+"the **image** of §2 under §3 is the set of all outputs that come from\n"
+"inputs in §4:\n"
+"\n"
+"§5\n"
+"\n"
+"In Lean, this is written §6 (type §7).\n"
+"\n"
+"**The critical difference from preimage**: Image membership involves an\n"
+"**existential**. To prove §8, you must **exhibit a witness** --\n"
+"an input §9 such that §10. Preimage membership was just\n"
+"function application (§11 -- no witness needed).\n"
+"Image membership requires a construction.\n"
+"\n"
+"This existential has far-reaching consequences:\n"
+"- Image preserves union: **yes** (equality)\n"
+"- Image preserves intersection: **no** (only ⊆, not =)\n"
+"- Image preserves complement: **no**\n"
+"\n"
+"Compare with preimage, which preserves ALL set operations. The\n"
+"difference comes down to logic: preimage uses §12, §13, §14 which\n"
+"commute with function application. Image uses §15, which does NOT\n"
+"commute with §16 or §17.\n"
+"\n"
+"By the end of this world, you will:\n"
+"- Prove image membership by exhibiting witnesses\n"
+"- Learn §18 and §19 -- power tools for pattern matching\n"
+"- Prove §20 -- the vacuous extremal case\n"
+"- Prove §21 -- the simplest image\n"
+"- Prove image preserves union but NOT intersection\n"
+"- See a concrete counterexample for intersection equality\n"
+"- Prove image distributes over function composition\n"
+"- Learn §22 -- the image of everything\n"
+"- Prove that §23\n"
+"- Prove the Galois connection: §24\n"
+"- Explore the image-preimage gaps and when they close\n"
+"- Re-derive monotonicity AND the image-preimage gap from the Galois connection\n"
+"- Prove image preserves nonemptiness (both directions)\n"
+"\n"
+"The boss asks you to prove that §25 when every element\n"
+"of §26 is in the range of §27 -- the image-preimage gap closes with a\n"
+"surjectivity condition.\n"
+"\n"
+"**New notation**: §28 (typed §29) -- the image of §30 under §31.\n"
+"\n"
+"**New tactics**: §32 and §33 -- pattern-matching introduction\n"
+"and case analysis. You will also use §34 (from Set World) extensively\n"
+"with a new pattern: §35.\n"
+"\n"
+"**Prerequisites**: Set World, Subset World, Set Operations World,\n"
+"Preimage World."
+msgstr ""
+
+#. §0: `a`
+#. §1: `rfl`
+#. §2: `rfl`
+#. §3: `a`
+#. §4: `f`
+#: Game.Levels.ImageWorld.L05_ImageSingleton
+msgid "You proved that the image of a singleton is the singleton of the\n"
+"image!\n"
+"\n"
+"This is the simplest concrete instance of the image definition.\n"
+"The witness is always §0, the membership proof is always §1,\n"
+"and the equation is always §2. No choices, no case analysis --\n"
+"just the pure existential witness pattern in its most basic form.\n"
+"\n"
+"**Pattern check**: Compare with Level 1 where you proved a specific\n"
+"element was in an image. Here the witness was obvious (§3), but\n"
+"the proof structure was identical: provide the witness, prove\n"
+"membership in the source set, prove the equation.\n"
+"\n"
+"**Foreshadowing**: Singleton images appear in injectivity proofs.\n"
+"If §4 is injective and the images of two singletons are equal,\n"
+"then the singletons themselves must be equal. The singleton case\n"
+"connects images to the element-level behavior of functions."
+msgstr ""
+
 #. §0: `by_contra h`
 #. §1: `h : x ∉ s`
 #. §2: `x ∈ sᶜ`
@@ -4851,6 +6026,20 @@ msgstr ""
 #: Game.Levels.SetOpsWorld.L16_DoubleComplement
 msgid "Use §0 — this gives §1 (= §2)\n"
 "and changes the goal to §3."
+msgstr ""
+
+#. §0: `h hy`
+#. §1: `y ∈ Set.range f`
+#. §2: `∃ x, f x = y`
+#. §3: `obtain ⟨x, rfl⟩ := h hy`
+#. §4: `x`
+#. §5: `y = f x`
+#: Game.Levels.ImageWorld.L20_Boss
+msgid "Apply the surjectivity hypothesis: §0 gives\n"
+"§1, which means §2.\n"
+"\n"
+"Use §3 to get the witness §4 and\n"
+"substitute §5."
 msgstr ""
 
 #. §0: $$f^{-1}(s \\cap t) = f^{-1}(s) \\cap f^{-1}(t)$$
@@ -5012,6 +6201,48 @@ msgid "Use §0 to convert the indexed\n"
 "intersection to a universal statement."
 msgstr ""
 
+#. §0: `obtain ⟨x, hx, hfx⟩ := hy`
+#. §1: `x : ℕ`
+#. §2: `hx : x < 5`
+#. §3: `hfx : 2 * x = y`
+#. §4: `rw [← hfx]`
+#. §5: `y`
+#. §6: `2 * x`
+#. §7: `use x; omega`
+#. §8: `2 * x`
+#. §9: `h : y ∈ f '' s`
+#. §10: `obtain ⟨x, hx, hfx⟩ := h`
+#. §11: `x`
+#. §12: `hx : x ∈ s`
+#. §13: `hfx : f x = y`
+#. §14: `rintro`
+#. §15: `intro`
+#. §16: `obtain`
+#. §17: `rfl`
+#: Game.Levels.ImageWorld.L02_DestructuringImage
+msgid "You destructured an image hypothesis with\n"
+"§0:\n"
+"\n"
+"- §1 -- the preimage witness\n"
+"- §2 -- membership in the source set\n"
+"- §3 -- the mapping equation\n"
+"\n"
+"Then §4 replaced §5 with §6 in the goal, and\n"
+"§7 proved that §8 is even.\n"
+"\n"
+"**The image destructuring pattern**: Every time you have a hypothesis\n"
+"§9, use §10 to extract:\n"
+"1. The preimage witness §11\n"
+"2. Its membership proof §12\n"
+"3. The mapping equation §13\n"
+"\n"
+"This pattern is central to image proofs. You will use it constantly.\n"
+"\n"
+"**Foreshadowing**: In the next level, you will learn §14 -- a\n"
+"power tool that combines §15 and §16 in a single step, with\n"
+"an even more powerful feature: automatic substitution via §17."
+msgstr ""
+
 #. §0: `∅ : Set α`
 #. §1: `fun _ => False`
 #. §2: `False`
@@ -5056,6 +6287,10 @@ msgid "# The Empty Set\n"
 "**Your task**: Prove the statement step by step."
 msgstr ""
 
+#: Game.Levels.ImageWorld.L10_ImageComposition
+msgid "Image distributes over function composition."
+msgstr ""
+
 #. §0: `x < 3 ∧ x < 5`
 #. §1: `constructor`
 #. §2: `x < 3`
@@ -5087,14 +6322,49 @@ msgid "The goal involves §0. Use §1 to convert\n"
 "to a subset relation."
 msgstr ""
 
-#: Game.Levels.SubsetWorld.L11_ExtPractice
-msgid "The set of naturals at most 2 equals the set of naturals less than 3."
-msgstr ""
-
 #. §0: `sup_inf_left`
 #. §1: `a ⊔ b ⊓ c = (a ⊔ b) ⊓ (a ⊔ c)`
 #: Game.Levels.PsetSets.L03_DistributivitySubset
 msgid "§0 is the lattice dual: §1."
+msgstr ""
+
+#: Game.Levels.SubsetWorld.L11_ExtPractice
+msgid "The set of naturals at most 2 equals the set of naturals less than 3."
+msgstr ""
+
+#. §0: `Set.image_subset_iff`
+#. §1: `f '' s ⊆ t ↔ s ⊆ f ⁻¹' t`
+#. §2: `s`
+#. §3: `t`
+#. §4: `s`
+#. §5: `t`
+#. §6: ```
+#. rw [Set.image_subset_iff]    -- convert f '' s ⊆ t to s ⊆ f ⁻¹' t
+#. ```
+#. §7: `f '' s ⊆ t`
+#. §8: `s ⊆ f ⁻¹' t`
+#: Game.Levels.ImageWorld.L13_GaloisConnection
+msgid "§0 states §1.\n"
+"This is the Galois connection between image and preimage: the image\n"
+"of §2 fits inside §3 if and only if §4 is contained in the\n"
+"preimage of §5.\n"
+"\n"
+"## Syntax\n"
+"§6\n"
+"\n"
+"## When to use it\n"
+"When you have a goal of the form §7 and want to work with\n"
+"the simpler preimage form §8 instead."
+msgstr ""
+
+#. §0: `rw [Set.image_subset_iff]`
+#. §1: `f '' s ⊆ f '' t`
+#. §2: `s ⊆ f ⁻¹' (f '' t)`
+#: Game.Levels.ImageWorld.L16_MonoFromGalois
+msgid "Use §0 to convert the goal from\n"
+"§1 to the equivalent §2.\n"
+"\n"
+"This uses the Galois connection from Level 13."
 msgstr ""
 
 #. §0: `0 ∈ (fun _ => 7) ⁻¹' ...`
@@ -5240,6 +6510,23 @@ msgid "The proof pattern for distributing §0 into §1:\n"
 "simpler — try it on paper."
 msgstr ""
 
+#. §0: `hy : Even y`
+#. §1: `obtain ⟨r, hr⟩ := hy`
+#. §2: `r`
+#. §3: `hr : y = r + r`
+#: Game.Levels.ImageWorld.L11_SetRange
+msgid "Destructure §0 with §1\n"
+"to get the witness §2 and equation §3."
+msgstr ""
+
+#. §0: `hx : x ∈ s ∪ t`
+#. §1: `x ∈ s ∨ x ∈ t`
+#. §2: `cases hx with | inl hs | inr ht`
+#: Game.Levels.ImageWorld.L07_ImageUnion
+msgid "§0 is a disjunction (§1). Use\n"
+"§2 to split into cases."
+msgstr ""
+
 #: Game.Levels.PreimageWorld.L14_PreimageComposition
 msgid "Preimage reverses function composition."
 msgstr ""
@@ -5276,13 +6563,104 @@ msgstr ""
 msgid "If s ⊆ t then f ⁻¹' s ⊆ f ⁻¹' t."
 msgstr ""
 
+#. §0: `Or.inr h`
+#. §1: `P ∨ Q`
+#. §2: `h : Q`
+#. §3: `hx : x ∈ t`
+#. §4: `Or.inr hx : x ∈ s ∨ x ∈ t`
+#. §5: `x ∈ s ∪ t`
+#. §6: ```
+#. -- hx : x ∈ t, Goal: ∃ z ∈ s ∪ t, f z = f x
+#. exact ⟨x, Or.inr hx, rfl⟩
+#. ```
+#. §7: `right`
+#. §8: `exact hx`
+#: Game.Metadata
+msgid "§0 constructs a proof of §1 from a proof §2.\n"
+"It chooses the RIGHT disjunct.\n"
+"\n"
+"## When to use it\n"
+"When building anonymous constructors for unions: if §3,\n"
+"then §4 (equivalently §5).\n"
+"\n"
+"## Example\n"
+"§6\n"
+"\n"
+"## Alternative\n"
+"The §7 tactic followed by §8 achieves the same result."
+msgstr ""
+
 #: Game.Levels.SetOpsWorld.L07_IntersectionCommutativity
 msgid "Intersection Commutativity"
+msgstr ""
+
+#. §0: `Set.image_preimage_subset`
+#. §1: `f '' (f ⁻¹' t) ⊆ t`
+#: Game.Levels.ImageWorld.L17_GapFromGalois
+msgid "§0 states §1. Applying\n"
+"the function to the preimage gives back a subset of the original.\n"
+"Disabled here to force re-derivation from the Galois connection."
+msgstr ""
+
+#. §0: `s ⊆ t → f '' s ⊆ f '' t`
+#. §1: `Set.image_subset_iff`
+#. §2: `f '' s ⊆ f '' t`
+#. §3: `s ⊆ f ⁻¹' (f '' t)`
+#. §4: `Set.subset_preimage_image`
+#. §5: `t ⊆ f ⁻¹' (f '' t)`
+#. §6: `s ⊆ t`
+#. §7: `t ⊆ f ⁻¹' (f '' t)`
+#. §8: `s ⊆ f ⁻¹' (f '' t)`
+#. §9: `rintro`
+#. §10: `rcases`
+#. §11: `obtain`
+#. §12: `rw [Set.image_subset_iff]`
+#. §13: `intro x hx`
+#. §14: `s`
+#. §15: `apply Set.subset_preimage_image`
+#. §16: `t`
+#. §17: `exact h hx`
+#: Game.Levels.ImageWorld.L16_MonoFromGalois
+msgid "# Re-Deriving Monotonicity\n"
+"\n"
+"In Level 6, you proved image monotonicity directly:\n"
+"§0. The proof was two steps: destructure,\n"
+"then reconstruct with an updated membership proof.\n"
+"\n"
+"Now you will prove the SAME result using a completely different method:\n"
+"the **Galois connection** (Level 13) combined with the\n"
+"**preimage-image embedding** (Level 15).\n"
+"\n"
+"The idea:\n"
+"1. By the Galois connection (§1), showing\n"
+"   §2 is equivalent to showing §3.\n"
+"2. By the preimage-image embedding (§4),\n"
+"   we know §5.\n"
+"3. Since §6 and §7, transitivity gives\n"
+"   §8.\n"
+"\n"
+"This is a general principle: **Galois connections (adjunctions)\n"
+"automatically imply monotonicity**. You do not need to touch\n"
+"witnesses at all -- the abstract machinery does the work.\n"
+"\n"
+"**Important**: In this level, §9, §10, and §11 are\n"
+"disabled. You cannot destructure image membership directly -- you\n"
+"MUST use the Galois connection approach.\n"
+"\n"
+"**Proof plan**:\n"
+"1. §12 -- convert to the preimage form\n"
+"2. §13 -- take an element of §14\n"
+"3. §15 -- reduce to membership in §16\n"
+"4. §17 -- use the subset hypothesis"
 msgstr ""
 
 #. §0: `rw [Set.mem_preimage] at hx`
 #: Game.Levels.PreimageWorld.L11_PreimageIndexedUnion
 msgid "Unwrap the preimage: §0."
+msgstr ""
+
+#: Game.Levels.ImageWorld.L14_ImagePreimageGap
+msgid "The Image-Preimage Gap"
 msgstr ""
 
 #: Game.Levels.PsetSets.L15_SubsetViaDifference
@@ -5361,6 +6739,12 @@ msgid "You have now proved both directions of the equivalence:\n"
 "The axiom of extensionality and the antisymmetry of §23 are logically\n"
 "interchangeable — use whichever is more convenient for the problem\n"
 "at hand."
+msgstr ""
+
+#. §0: `ext y`
+#. §1: `constructor`
+#: Game.Levels.ImageWorld.L11_SetRange
+msgid "Start with §0 then §1 as usual."
 msgstr ""
 
 #. §0: `s ×ˢ t`
@@ -5557,6 +6941,42 @@ msgid "You just used a subset hypothesis as a function for the first time!\n"
 "such applications in the next levels."
 msgstr ""
 
+#. §0: `f '' ∅ = ∅`
+#. §1: `∅`
+#. §2: `False`
+#. §3: `∃ x ∈ ∅, P x`
+#. §4: `P`
+#. §5: `x`
+#. §6: `∅`
+#. §7: `f '' ∅ = ∅`
+#. §8: `f '' ∅ = ∅`
+#. §9: `f '' Set.univ = Set.range f`
+#. §10: `f ⁻¹' ∅ = ∅`
+#. §11: `f ⁻¹' Set.univ = Set.univ`
+#. §12: `Set.image_empty`
+#: Game.Levels.ImageWorld.L04_ImageEmpty
+msgid "You proved §0 -- the image of nothing is nothing.\n"
+"\n"
+"Both directions are trivially true because membership in §1 is\n"
+"always §2. There are no witnesses in the empty set, so the\n"
+"existential in image membership is vacuously false.\n"
+"\n"
+"**The vacuous existential**: §3 is always false\n"
+"regardless of §4, because there is no §5 in §6. This is the\n"
+"foundational reason why §7.\n"
+"\n"
+"**Extremal cases**: Image sends the two extreme sets to:\n"
+"- §8 (this level)\n"
+"- §9 (Level 12)\n"
+"\n"
+"Compare with preimage: §10 and §11.\n"
+"Image of everything depends on the function (its range), while\n"
+"preimage of everything is always everything. Another manifestation\n"
+"of the image-preimage asymmetry.\n"
+"\n"
+"The library name is §12."
+msgstr ""
+
 #. §0: `hx : ¬(∃ i, x ∈ s i)`
 #. §1: `push_neg at hx`
 #. §2: `¬∃`
@@ -5576,6 +6996,12 @@ msgstr ""
 #. §0: `ext x`
 #: Game.Levels.SubsetWorld.L12_AbstractExt
 msgid "Use §0 to reduce to a membership biconditional."
+msgstr ""
+
+#. §0: `hy : y ∈ ∅`
+#. §1: `False`
+#: Game.Levels.ImageWorld.L04_ImageEmpty
+msgid "§0 is §1. This is a contradiction."
 msgstr ""
 
 #. §0: `f ⁻¹' sᶜ = (f ⁻¹' s)ᶜ`
@@ -5627,6 +7053,13 @@ msgid "You proved §0. The proof was §1\n"
 "It preserves meets (§23), joins (§24), and complements (§25).\n"
 "\n"
 "The library name is §26."
+msgstr ""
+
+#. §0: `Set.image_union`
+#. §1: `f '' (s ∪ t) = f '' s ∪ f '' t`
+#: Game.Levels.ImageWorld.L07_ImageUnion
+msgid "§0 states §1.\n"
+"Image distributes over union."
 msgstr ""
 
 #. §0: `intro x hx`
@@ -5804,6 +7237,14 @@ msgstr ""
 #: Game.Levels.SubsetWorld.L15_ProperSubset
 msgid "§0 says §1 is in the left set, i.e., §2. Unwrap\n"
 "and derive contradiction."
+msgstr ""
+
+#. §0: `Set.image_preimage_eq`
+#. §1: `f`
+#. §2: `f '' (f ⁻¹' s) = s`
+#: Game.Levels.ImageWorld.L20_Boss
+msgid "§0 states that for surjective §1,\n"
+"§2. Disabled to prevent boss bypass."
 msgstr ""
 
 #: Game.Levels.SetWorld.L09_Boss
@@ -6040,6 +7481,10 @@ msgid "# Subsets: The ⊆ Relation\n"
 "4. §22 — derive §23 from §24"
 msgstr ""
 
+#: Game.Levels.ImageWorld.L15_PreimageImageGap
+msgid "The Preimage-Image Gap"
+msgstr ""
+
 #. §0: `h`
 #. §1: `have h4 : (4 : ℕ) < 5 := by omega`
 #. §2: `4 ∈ (the left set)`
@@ -6072,6 +7517,50 @@ msgstr ""
 #. §1: `a ≤ c → b ≤ c → a ⊔ b ≤ c`
 #: Game.Levels.PsetSets.L01_UnivComplement
 msgid "§0 states §1 (lattice join bound)."
+msgstr ""
+
+#. §0: `s`
+#. §1: `f '' s`
+#. §2: `f '' s`
+#. §3: `y ∈ f '' s`
+#. §4: `x ∈ s`
+#. §5: `f x = y`
+#. §6: `x ∈ s`
+#. §7: `s`
+#. §8: `Set.Nonempty s ↔
+#. Set.Nonempty (f '' s)`
+#. §9: `obtain ⟨y, hy⟩ := h`
+#. §10: `obtain ⟨x, hx, rfl⟩ := hy`
+#. §11: `exact ⟨x, hx⟩`
+#. §12: `x`
+#: Game.Levels.ImageWorld.L19_NonemptinessConverse
+msgid "# If the Image is Nonempty, So is the Source\n"
+"\n"
+"In Level 18, you proved that if §0 is nonempty, then §1 is\n"
+"nonempty. The conclusion mentioned that the converse also holds.\n"
+"Now you will prove it.\n"
+"\n"
+"If §2 is nonempty, there exists some §3. By image\n"
+"membership, there exists §4 with §5. In particular,\n"
+"§6, so §7 is nonempty.\n"
+"\n"
+"This completes the biconditional: §8. Nonemptiness transfers in both directions\n"
+"unconditionally.\n"
+"\n"
+"**Proof plan**:\n"
+"1. §9 -- extract a witness from image nonemptiness\n"
+"2. §10 -- destructure image membership\n"
+"3. §11 -- the source set contains §12"
+msgstr ""
+
+#. §0: `r`
+#. §1: `hr : y = r + r`
+#. §2: `use r`
+#. §3: `show 2 * r = y`
+#. §4: `omega`
+#: Game.Levels.ImageWorld.L11_SetRange
+msgid "After obtaining §0 and §1,\n"
+"use §2, §3, §4."
 msgstr ""
 
 #. §0: `s ∪ (s ∩ t) = s`
@@ -6119,6 +7608,15 @@ msgid "You proved the absorption law §0.\n"
 "- Absorption: §21"
 msgstr ""
 
+#. §0: `hx : x ∈ s`
+#. §1: `Set.Nonempty s`
+#. §2: `s`
+#. §3: `x`
+#: Game.Levels.ImageWorld.L19_NonemptinessConverse
+msgid "Now §0. The goal is §1, which means\n"
+"there exists some element in §2. The witness is §3."
+msgstr ""
+
 #. §0: `hx : ∀ (i : ι), x ∈ s i`
 #. §1: `x ∈ s j`
 #. §2: `hx`
@@ -6136,6 +7634,49 @@ msgstr ""
 #: Game.Levels.PsetSets.L08_NonemptyProduct
 msgid "Key move: §0 splits §1, then each\n"
 "component is a witness for §2."
+msgstr ""
+
+#. §0: $$f(s) \\subseteq t \\;\\;\\Longleftrightarrow\\;\\; s \\subseteq f^{-1}(t)$$
+#. §1: `s`
+#. §2: `t`
+#. §3: `s`
+#. §4: `t`
+#. §5: `constructor`
+#. §6: `↔`
+#. §7: `f '' s ⊆ t → s ⊆ f ⁻¹' t`
+#. §8: `x ∈ s`
+#. §9: `h`
+#. §10: `f x ∈ f '' s`
+#. §11: `f x ∈ t`
+#. §12: `x ∈ f ⁻¹' t`
+#. §13: `s ⊆ f ⁻¹' t → f '' s ⊆ t`
+#. §14: `y ∈ f '' s`
+#. §15: `x ∈ s`
+#. §16: `h`
+#. §17: `f x ∈ t`
+#: Game.Levels.ImageWorld.L13_GaloisConnection
+msgid "# Image-Subset ↔ Subset-Preimage\n"
+"\n"
+"Here is one of the most useful equivalences connecting image and\n"
+"preimage:\n"
+"\n"
+"§0\n"
+"\n"
+"This says: \"the image of §1 fits inside §2\" is the same as\n"
+"\"every element of §3 maps into §4.\" Both viewpoints describe\n"
+"the same condition, but the preimage viewpoint is often easier to\n"
+"work with (because preimage membership is just function application).\n"
+"\n"
+"This equivalence is called a **Galois connection** between image\n"
+"and preimage. It is the fundamental bridge connecting the two\n"
+"operations.\n"
+"\n"
+"**Proof plan**:\n"
+"1. §5 to split the §6\n"
+"2. **Forward** (§7): Take §8, apply\n"
+"   §9 to §10, get §11 (which is §12)\n"
+"3. **Backward** (§13): Take §14,\n"
+"   destructure to get §15, apply §16 to get §17"
 msgstr ""
 
 #. §0: `k.val ≤ 10`
@@ -6157,6 +7698,30 @@ msgstr ""
 msgid "Nonemptiness"
 msgstr ""
 
+#. §0: `Set.mem_range`
+#. §1: `y ∈ Set.range f ↔ ∃ x, f x = y`
+#. §2: `y`
+#. §3: ```
+#. rw [Set.mem_range]         -- on the goal
+#. rw [Set.mem_range] at h    -- on a hypothesis
+#. ```
+#. §4: `y ∈ Set.range f`
+#. §5: `∃ x, f x = y`
+#. §6: `rintro ⟨x, rfl⟩`
+#. §7: `obtain ⟨x, rfl⟩`
+#: Game.Levels.ImageWorld.L11_SetRange
+msgid "§0 states §1 --\n"
+"membership in the range means there is some input that maps to §2.\n"
+"\n"
+"## Syntax\n"
+"§3\n"
+"\n"
+"## When to use it\n"
+"When you need to convert between §4 and the explicit\n"
+"existential §5. Often you can work directly with\n"
+"§6 or §7 instead."
+msgstr ""
+
 #. §0: `hx`
 #. §1: `obtain ⟨hs, ht⟩ := hx`
 #: Game.Levels.PreimageWorld.L08_PreimageIntersection
@@ -6172,6 +7737,13 @@ msgstr ""
 #: Game.Levels.PsetSets.L10_RangeForeshadow
 msgid "Key move: §0 then\n"
 "provide the witness with the equality reversed."
+msgstr ""
+
+#. §0: `use x`
+#. §1: `Even`
+#. §2: `omega`
+#: Game.Levels.ImageWorld.L02_DestructuringImage
+msgid "Now use §0 to provide the witness for §1, then §2."
 msgstr ""
 
 #. §0: `exact le_of_lt hx`
@@ -6398,6 +7970,51 @@ msgid "**Backward**: Given §0, prove §1. Start with\n"
 "§2 as usual for a subset proof."
 msgstr ""
 
+#. §0: `s`
+#. §1: `f '' s`
+#. §2: `f ⁻¹' (f '' s)`
+#. §3: `s`
+#. §4: `s`
+#. §5: $$s \\subseteq f^{-1}(f(s))$$
+#. §6: `x ∈ s`
+#. §7: `f x ∈ f '' s`
+#. §8: `x`
+#. §9: `x ∈ f ⁻¹' (f '' s)`
+#. §10: `s`
+#. §11: `f x₁ = f x₂`
+#. §12: `x₁ ∈ s`
+#. §13: `x₂ ∉ s`
+#. §14: `x₂`
+#. §15: `f ⁻¹' (f '' s)`
+#. §16: `x₂ ∉ s`
+#. §17: `intro x hx`
+#. §18: `f x ∈ f '' s`
+#. §19: `⟨x, hx, rfl⟩`
+#: Game.Levels.ImageWorld.L15_PreimageImageGap
+msgid "# Pulling Back Then Pushing Forward: s ⊆ f ⁻¹' (f '' s)\n"
+"\n"
+"Now the other direction: start with a set §0 of inputs, push it\n"
+"forward to get §1, then pull back to get §2.\n"
+"Do you recover §3?\n"
+"\n"
+"You get AT LEAST §4 -- as a subset:\n"
+"\n"
+"§5\n"
+"\n"
+"The proof is direct: if §6, then §7 (using §8\n"
+"as the witness), so §9.\n"
+"\n"
+"But equality can fail! The preimage of the image can be LARGER than\n"
+"§10. If §11 for §12 and §13, then §14 is\n"
+"in §15 even though §16.\n"
+"\n"
+"**Your task**: Prove the ⊆ direction.\n"
+"\n"
+"**Proof plan**:\n"
+"1. §17 -- start the subset proof\n"
+"2. Construct image membership: §18 using witness §19"
+msgstr ""
+
 #. §0: `∅`
 #. §1: `Set.univ`
 #. §2: $$s \\subseteq s$$
@@ -6473,6 +8090,13 @@ msgstr ""
 msgid "Destructure §0 with §1."
 msgstr ""
 
+#. §0: `f x ∈ f '' s`
+#. §1: `x`
+#. §2: `hx : x ∈ s`
+#: Game.Levels.ImageWorld.L13_GaloisConnection
+msgid "Now prove §0. The witness is §1 with §2."
+msgstr ""
+
 #. §0: `x ∈ s`
 #. §1: `x ∈ id ⁻¹' s`
 #: Game.Levels.PreimageWorld.L13_PreimageIdentity
@@ -6488,6 +8112,12 @@ msgid "§0 states that indexed intersection is monotone:\n"
 "if §1 then §2."
 msgstr ""
 
+#. §0: `hs : x ∈ s`
+#. §1: `hu : x ∈ u`
+#: Game.Levels.PsetSets.L03_DistributivitySubset
+msgid "§0 and §1. Build the left side of the union."
+msgstr ""
+
 #. §0: `aesop`
 #: Game.Metadata
 msgid "§0 is a general-purpose automation tactic that combines\n"
@@ -6496,10 +8126,8 @@ msgid "§0 is a general-purpose automation tactic that combines\n"
 "Disabled to force manual proof construction."
 msgstr ""
 
-#. §0: `hs : x ∈ s`
-#. §1: `hu : x ∈ u`
-#: Game.Levels.PsetSets.L03_DistributivitySubset
-msgid "§0 and §1. Build the left side of the union."
+#: Game.Levels.ImageWorld.L07_ImageUnion
+msgid "Image distributes over union."
 msgstr ""
 
 #. §0: `omega`
@@ -6549,6 +8177,10 @@ msgid "# Problem Set: Level 15\n"
 "do you need to show? The two directions have different proof structures."
 msgstr ""
 
+#: Game.Levels.ImageWorld.L12_ImageUnivRange
+msgid "The image of the universal set is the range."
+msgstr ""
+
 #. §0: `constructor`
 #. §1: `↔`
 #: Game.Levels.SubsetWorld.L11_ExtPractice
@@ -6592,6 +8224,10 @@ msgid "You performed case analysis on a union hypothesis for the first time!\n"
 "(§13). You will do exactly this in the next level."
 msgstr ""
 
+#: Game.Levels.ImageWorld.L01_ImageMembership
+msgid "4 is in the image because 3 maps to 4 under n ↦ n + 1."
+msgstr ""
+
 #. §0: `f ⁻¹' s ∩ (f ⁻¹' t)ᶜ`
 #. §1: `f ⁻¹' s \\ f ⁻¹' t`
 #. §2: `s \\ t = s ∩ tᶜ`
@@ -6600,6 +8236,15 @@ msgstr ""
 msgid "Almost done! The left side is §0 and\n"
 "the right side is §1. Since §2,\n"
 "one more §3 converts the right side to match."
+msgstr ""
+
+#. §0: `f a ∈ f '' ...`
+#. §1: `a`
+#. §2: `a = a`
+#. §3: `f a = f a`
+#: Game.Levels.ImageWorld.L05_ImageSingleton
+msgid "Now the goal is §0. The witness is §1:\n"
+"it satisfies §2 (membership) and §3 (equation)."
 msgstr ""
 
 #: Game.Levels.IndexedOpsWorld
@@ -6624,6 +8269,16 @@ msgstr ""
 
 #: Game.Levels.PsetSets.L15_SubsetViaDifference
 msgid "Subset is characterized by empty set difference."
+msgstr ""
+
+#. §0: `rintro ⟨x, hx, rfl⟩`
+#. §1: `hx : x ∈ ∅`
+#. §2: `False`
+#. §3: `contradiction`
+#. §4: `exact hx.elim`
+#: Game.Levels.ImageWorld.L04_ImageEmpty
+msgid "After §0, §1\n"
+"which is §2. Use §3 or §4."
 msgstr ""
 
 #. §0: `Set.inter_subset_left`
@@ -6651,6 +8306,15 @@ msgstr ""
 #: Game.Levels.IndexedOpsWorld.L09_VacuousIntersection
 msgid "§0 then §1 — an element of\n"
 "§2 can prove anything, because it cannot exist."
+msgstr ""
+
+#. §0: `Even y`
+#. §1: `∃ r, y = r + r`
+#. §2: `intro hy`
+#. §3: `obtain ⟨r, hr⟩ := hy`
+#: Game.Levels.ImageWorld.L11_SetRange
+msgid "**Backward**: §0 means §1. Use\n"
+"§2 then §3 to get the witness."
 msgstr ""
 
 #. §0: `¬(x ∈ ⋃ i, s i)`
@@ -6728,6 +8392,25 @@ msgid "Use §0 to introduce the element and the membership\n"
 "assumption, just as in Level 1."
 msgstr ""
 
+#. §0: `x ∈ f ⁻¹' (f '' t)`
+#. §1: `f x ∈ f '' t`
+#. §2: `Set.subset_preimage_image f t : t ⊆ f ⁻¹' (f '' t)`
+#. §3: `apply Set.subset_preimage_image`
+#. §4: `x ∈ t`
+#: Game.Levels.ImageWorld.L16_MonoFromGalois
+msgid "The goal is §0, which is §1.\n"
+"\n"
+"From Level 15, you know §2.\n"
+"Use §3 to reduce the goal to §4."
+msgstr ""
+
+#. §0: `ext y`
+#. §1: `constructor`
+#: Game.Levels.ImageWorld.L04_ImageEmpty
+#: Game.Levels.ImageWorld.L05_ImageSingleton
+msgid "Start with §0 then §1 as usual for set equality."
+msgstr ""
+
 #. §0: `ht`
 #. §1: `obtain ⟨b, hb⟩ := ht`
 #: Game.Levels.IndexedOpsWorld.L20_NonemptyProduct
@@ -6770,6 +8453,12 @@ msgid "Use §0 to convert the goal to\n"
 "§1."
 msgstr ""
 
+#. §0: `contradiction`
+#. §1: `exact hx.elim`
+#: Game.Levels.ImageWorld.L04_ImageEmpty
+msgid "§0 or §1."
+msgstr ""
+
 #. §0: `intro hst`
 #. §1: `exact hst.2 ht`
 #. §2: `hst`
@@ -6797,6 +8486,108 @@ msgstr ""
 #: Game.Levels.SubsetWorld.L08_SubsetTrans
 msgid "§0 proves §1 for any preorder.\n"
 "For sets, §2 is §3, so this is transitivity of subset inclusion."
+msgstr ""
+
+#. §0: `f '' (s ∩ t) ⊆ f '' s ∩ f '' t`
+#. §1: `f '' s ∩ f '' t ⊆ f '' (s ∩ t)`
+#. §2: `x₁ ∈ s`
+#. §3: `x₂ ∈ t`
+#. §4: `f x₁ = f x₂ = y`
+#. §5: `x ∈ s ∩ t`
+#. §6: `f x = y`
+#. §7: `x₁`
+#. §8: `x₂`
+#. §9: `s ∩ t`
+#. §10: `f(n) = 0`
+#. §11: `s = \\{0\\}`
+#. §12: `t = \\{1\\}`
+#. §13: `0 ∈ f '' s`
+#. §14: `0 ∈ s`
+#. §15: `f 0 = 0`
+#. §16: `0 ∈ f '' t`
+#. §17: `1 ∈ t`
+#. §18: `f 1 = 0`
+#. §19: `0 ∈ f '' s ∩ f '' t`
+#. §20: `s ∩ t = ∅`
+#. §21: `f '' (s ∩ t) = ∅`
+#. §22: `0`
+#. §23: `1`
+#. §24: `x`
+#. §25: `s ∩ t`
+#. §26: `x ∈ s`
+#. §27: `x ∈ t`
+#. §28: `f '' s`
+#. §29: `f '' t`
+#. §30: `f`
+#. §31: `f x₁ = f x₂ → x₁ = x₂`
+#. §32: `y ∈ f '' s ↔ ∃ x ∈ s, f x = y`
+#. §33: `∃ x, (P x ∨ Q x)`
+#. §34: `(∃ x, P x) ∨ (∃ x, Q x)`
+#. §35: `∃ x, (P x ∧ Q x)`
+#. §36: `(∃ x, P x) ∧ (∃ x, Q x)`
+#. §37: `∪`
+#. §38: `∃`
+#. §39: `∨`
+#. §40: `∩`
+#. §41: `∃`
+#. §42: `∧`
+#. §43: `ᶜ`
+#. §44: `∃`
+#. §45: `¬`
+#. §46: `∃ x, ¬P x`
+#. §47: `¬(∃ x, P x)`
+#. §48: `f`
+#. §49: `Set.image_inter_subset`
+#: Game.Levels.ImageWorld.L08_ImageInterSubset
+msgid "You proved §0. Notice: only ⊆, not =.\n"
+"\n"
+"**Why equality fails**: The reverse inclusion §1\n"
+"would require: given witnesses §2 and §3 with\n"
+"§4, finding some §5 with §6.\n"
+"But §7 and §8 might be DIFFERENT elements! There is no reason\n"
+"that either one is in §9.\n"
+"\n"
+"**The constant function counterexample**: Let §10, §11,\n"
+"§12:\n"
+"- §13 (witness: §14 and §15)\n"
+"- §16 (witness: §17 and §18)\n"
+"- So §19\n"
+"- But §20, so §21\n"
+"\n"
+"The problem is that the witnesses are DIFFERENT (§22 vs §23). The\n"
+"constant function collapses distinct inputs, creating intersections\n"
+"in the image that do not correspond to intersections in the domain.\n"
+"\n"
+"**The witness transfer pattern**: Once again, the proof re-uses the\n"
+"SAME witness §24 from §25. Since §26 AND §27, the same\n"
+"witness works for both §28 and §29 simultaneously.\n"
+"\n"
+"**When does equality hold?** If §30 is INJECTIVE, then the witnesses\n"
+"must be the same (§31), and equality holds.\n"
+"You will prove this in Injective World.\n"
+"\n"
+"**The quantifier logic**: Why does union work but intersection fail?\n"
+"Image membership is existential: §32.\n"
+"For union, the existential distributes: §33 is\n"
+"equivalent to §34. One witness suffices\n"
+"either way. For intersection, the existential does NOT distribute:\n"
+"§35 implies §36, but NOT\n"
+"the reverse -- the two existential witnesses might be different\n"
+"elements. This is exactly the gap you just proved.\n"
+"\n"
+"**Updated scoreboard**:\n"
+"\n"
+"| Operation | Preimage | Image | Why? |\n"
+"|---|---|---|---|\n"
+"| §37 (union) | = | = | §38 distributes over §39 |\n"
+"| §40 (intersection) | = | only ⊆ | §41 does NOT distribute over §42 |\n"
+"| §43 (complement) | = | no relation | §44 does not commute with §45 in either direction: §46 neither implies nor is implied by §47 when §48 is not injective |\n"
+"\n"
+"The library name is §49."
+msgstr ""
+
+#: Game.Levels.ImageWorld.L09_IntersectionCounterexample
+msgid "Seeing the Intersection Gap"
 msgstr ""
 
 #: Game.Levels.SetOpsWorld.L09_ComplementLaw
@@ -6827,6 +8618,17 @@ msgid "You have §0. The goal is §1. Since\n"
 "§2, use §3 then §4."
 msgstr ""
 
+#. §0: `s ⊆ f ⁻¹' (f '' t)`
+#. §1: `s`
+#. §2: `f '' t`
+#. §3: `intro x hx`
+#: Game.Levels.ImageWorld.L16_MonoFromGalois
+msgid "The goal is now §0. You need to show every\n"
+"element of §1 is in the preimage of §2.\n"
+"\n"
+"Use §3 to take an element."
+msgstr ""
+
 #: Game
 msgid "# Functions & Relations\n"
 "\n"
@@ -6845,11 +8647,34 @@ msgstr ""
 msgid "§0 states §1 (propositional dual De Morgan)."
 msgstr ""
 
+#. §0: `rw [← hfx]`
+#. §1: `Even (2 * x)`
+#. §2: `show Even (2 * x)`
+#. §3: `use x`
+#. §4: `omega`
+#: Game.Levels.ImageWorld.L02_DestructuringImage
+msgid "§0 changes the goal to §1.\n"
+"Then §2 to simplify, §3, and §4 finishes."
+msgstr ""
+
+#: Game.Levels.ImageWorld.L14_ImagePreimageGap
+msgid "Pushing forward a preimage gives a subset of the original."
+msgstr ""
+
 #. §0: `obtain`
 #. §1: `rw [Set.mem_iUnion]`
 #: Game.Levels.PsetSets.L17_IndexedDifference
 msgid "Key move: §0 destructures the set difference,\n"
 "then §1 converts the union to an existential."
+msgstr ""
+
+#. §0: `h : Set.Nonempty s`
+#. §1: `∃ x, x ∈ s`
+#. §2: `obtain ⟨x, hx⟩ := h`
+#. §3: `x ∈ s`
+#: Game.Levels.ImageWorld.L18_NonemptinessTransfer
+msgid "§0 means §1. Destructure it\n"
+"with §2 to get a witness §3."
 msgstr ""
 
 #. §0: `x ∈ s \\ t`
@@ -6911,8 +8736,62 @@ msgstr ""
 msgid "10 is not in the preimage because 10 + 1 = 11, which is not less than 5."
 msgstr ""
 
+#. §0: `apply Set.image_subset_iff.mpr`
+#. §1: `intro x hx`
+#. §2: `exact hx`
+#: Game.Levels.ImageWorld.L17_GapFromGalois
+msgid "§0 then\n"
+"§1 and §2."
+msgstr ""
+
 #: Game.Levels.IndexedOpsWorld.L10_VacuousUnion
 msgid "The union over an empty index type is the empty set."
+msgstr ""
+
+#. §0: $$f(\\emptyset) = \\emptyset$$
+#. §1: `f '' s`
+#. §2: `y`
+#. §3: `x \\in s`
+#. §4: `f x = y`
+#. §5: `s = \\emptyset`
+#. §6: `\\exists x \\in \\emptyset, P(x)`
+#. §7: `x`
+#. §8: `\\emptyset`
+#. §9: `P`
+#. §10: `f '' Set.univ = Set.range f`
+#. §11: `\\emptyset`
+#. §12: `\\emptyset`
+#. §13: `Set.univ`
+#. §14: `Set.range f`
+#. §15: `ext y`
+#. §16: `constructor`
+#. §17: `y \\in f '' \\emptyset`
+#. §18: `x \\in \\emptyset`
+#. §19: `y \\in \\emptyset`
+#: Game.Levels.ImageWorld.L04_ImageEmpty
+msgid "# The Image of Nothing is Nothing\n"
+"\n"
+"Before diving into abstract structural results, let us handle the\n"
+"simplest boundary case: the image of the empty set.\n"
+"\n"
+"§0\n"
+"\n"
+"Why? The image §1 consists of all §2 such that there EXISTS\n"
+"some §3 with §4. If §5, there are NO\n"
+"elements to serve as witnesses. No witnesses means no image members.\n"
+"\n"
+"This is the vacuous case of the existential: §6\n"
+"is always false, because there is no §7 in §8 to satisfy §9.\n"
+"\n"
+"Compare with the other extremal case §10\n"
+"(which you will prove in Level 12). Image sends §11 to\n"
+"§12 and §13 to §14.\n"
+"\n"
+"**Proof plan**:\n"
+"1. §15 then §16\n"
+"2. **Forward**: Destructure §17 -- the source\n"
+"   membership §18 is a contradiction\n"
+"3. **Backward**: §19 is itself a contradiction"
 msgstr ""
 
 #. §0: `x ∈ (s i)ᶜ`
@@ -6954,6 +8833,16 @@ msgid "The proof is three lines: §0, §1, §2. Each\n"
 "\n"
 "The library names are §7 and\n"
 "§8 (for §9)."
+msgstr ""
+
+#: Game.Levels.ImageWorld.L02_DestructuringImage
+msgid "If y is the double of some n < 5, then y is even."
+msgstr ""
+
+#. §0: `omega`
+#. §1: `2 * x = x + x`
+#: Game.Levels.ImageWorld.L02_DestructuringImage
+msgid "§0 closes the arithmetic goal §1."
 msgstr ""
 
 #. §0: `3 ∈ {n | Even n}ᶜ`
@@ -7004,6 +8893,46 @@ msgid "You proved §0 using the exact same technique as\n"
 "in the next level."
 msgstr ""
 
+#. §0: `Set.Nonempty (f '' s) → Set.Nonempty s`
+#. §1: `Set.Nonempty s ↔ Set.Nonempty (f '' s)`
+#. §2: `y ∈ f '' s`
+#. §3: `x ∈ s`
+#. §4: `s`
+#. §5: `Set.Nonempty (f ⁻¹' t)`
+#. §6: `Set.Nonempty t`
+#. §7: `x ∈ f ⁻¹' t`
+#. §8: `f x ∈ t`
+#. §9: `Set.Nonempty t`
+#. §10: `Set.Nonempty (f ⁻¹' t)`
+#. §11: `t`
+#. §12: `f`
+#. §13: `f ⁻¹' t = ∅`
+#. §14: `t`
+#. §15: `t`
+#. §16: `Set.range f`
+#: Game.Levels.ImageWorld.L19_NonemptinessConverse
+msgid "You proved §0 -- the converse\n"
+"of Level 18.\n"
+"\n"
+"Together with Level 18, this gives the full biconditional:\n"
+"§1.\n"
+"\n"
+"**The proof pattern**: Nonemptiness of the image gives a witness\n"
+"§2. Image membership gives a preimage §3. So §4\n"
+"has an element.\n"
+"\n"
+"**Compare with preimage**: Does §5 imply\n"
+"§6? YES -- if §7, then §8.\n"
+"But does §9 imply §10? NOT\n"
+"necessarily! If no element of §11 is in the range of §12, then\n"
+"§13 even though §14 is nonempty. So nonemptiness\n"
+"of preimage requires the additional condition that §15 intersects\n"
+"§16.\n"
+"\n"
+"**Boss preparation**: The boss combines image construction,\n"
+"destructuring, range reasoning, and preimage unfolding."
+msgstr ""
+
 #: Game.Levels.PsetSets.L12_CounterexamplePowerset
 msgid "Counterexample: Powerset of Union"
 msgstr ""
@@ -7039,6 +8968,94 @@ msgstr ""
 msgid "§0 then §1.\n"
 "In each case, apply the relevant complement hypothesis to derive\n"
 "§2."
+msgstr ""
+
+#. §0: `s ⊆ t → f '' s ⊆ f '' t`
+#. §1: `rintro y ⟨x, hx, rfl⟩`
+#. §2: `exact ⟨x, h hx, rfl⟩`
+#. §3: ```
+#. rintro y ⟨x, hx, rfl⟩   -- get the witness
+#. exact ⟨x, ..., rfl⟩      -- repackage it
+#. ```
+#. §4: `...`
+#. §5: `hx`
+#. §6: `h`
+#. §7: `exact ⟨x, hx, rfl⟩`
+#. §8: `∃ z, z ∈ t ∧ f z = f x`
+#. §9: `x`
+#. §10: `hx`
+#. §11: `rfl`
+#. §12: `f x = f x`
+#. §13: `use x; constructor; exact hx; rfl`
+#. §14: `x ∈ s`
+#. §15: `f '' t`
+#. §16: `hx : x ∈ s`
+#. §17: `h hx : x ∈ t`
+#. §18: `f '' s ⊆ f '' t`
+#. §19: `s ⊆ t`
+#. §20: `f(n) = 0`
+#. §21: `f '' s = f '' t = {0}`
+#. §22: `s`
+#. §23: `t`
+#. §24: `f '' s ⊆ f '' t`
+#. §25: `s ⊆ t`
+#. §26: `Set.mem_image_of_mem`
+#. §27: `exact Set.mem_image_of_mem f (h hx)`
+#. §28: `exact ⟨x, h hx, rfl⟩`
+#. §29: `exact h hx`
+#. §30: `exact ⟨x, h hx, rfl⟩`
+#. §31: `Set.image_mono`
+#: Game.Levels.ImageWorld.L06_ImageMonotonicity
+msgid "You proved image monotonicity: §0.\n"
+"\n"
+"The proof was just two steps:\n"
+"1. §1 -- destructure image membership\n"
+"2. §2 -- reconstruct with updated membership\n"
+"\n"
+"**The image proof idiom**: This two-step pattern -- destructure then\n"
+"reconstruct -- is the core idiom for image proofs:\n"
+"\n"
+"§3\n"
+"\n"
+"You modify what goes in the §4 (here: upgrading §5 via §6),\n"
+"but the structure stays the same. You will see this pattern in every\n"
+"image proof in this world.\n"
+"\n"
+"**Anonymous constructors for images**: §7 constructs\n"
+"§8 by providing:\n"
+"- §9 as the witness\n"
+"- §10 for membership\n"
+"- §11 for the equation §12\n"
+"\n"
+"This is the compact way to build image membership. You can also use\n"
+"§13 for the same effect.\n"
+"\n"
+"**The witness transfer pattern**: Notice how the proof works: you\n"
+"destructure to get a witness §14, then RE-USE the same witness\n"
+"to build membership in §15. The witness transfers between sets\n"
+"-- only its membership proof changes (from §16 to\n"
+"§17). This pattern recurs throughout Image World: the\n"
+"same element serves as witness in both the deconstruction and\n"
+"reconstruction. Watch for it in Levels 6, 7, and beyond.\n"
+"\n"
+"**Does the converse hold?** If §18, must §19? No!\n"
+"Consider the constant function §20. Then §21\n"
+"for any nonempty §22 and §23, so §24 is trivially true\n"
+"regardless of whether §25. Injectivity is needed for the converse\n"
+"-- you will explore this in Injective World.\n"
+"\n"
+"**Why §26 is disabled**: In library code, you would\n"
+"write §27 to construct image membership\n"
+"in one step. We disable it so you learn the witness construction\n"
+"§28 -- understanding HOW image membership is built\n"
+"is essential for the proofs ahead.\n"
+"\n"
+"**Comparison with preimage monotonicity** (Preimage World Level 5):\n"
+"preimage monotonicity was §29 -- one step! Image monotonicity\n"
+"needs §30 -- the existential witness adds overhead.\n"
+"This is the tax of the existential.\n"
+"\n"
+"The library name is §31."
 msgstr ""
 
 #. §0: `x ∈ ∅`
@@ -7132,9 +9149,59 @@ msgid "Key move: §0 then\n"
 "§3 (which is §4). Close with §5."
 msgstr ""
 
+#: Game.Levels.ImageWorld.L01_ImageMembership
+msgid "What is an Image?"
+msgstr ""
+
 #. §0: `x ∈ ⋃ i, s i`
 #: Game.Levels.IndexedOpsWorld.L23_Boss
 msgid "Prove §0. Rewrite and provide the witness."
+msgstr ""
+
+#. §0: `Set.range f`
+#. §1: `f`
+#. §2: `Set.univ`
+#. §3: $$\\text{range}(f) = f(\\text{univ})$$
+#. §4: `f '' Set.univ = Set.range f`
+#. §5: `f`
+#. §6: `Set.univ`
+#. §7: `ext y`
+#. §8: `constructor`
+#. §9: `rintro ⟨x, _, rfl⟩`
+#. §10: `x ∈ Set.univ`
+#. §11: `_`
+#. §12: `exact ⟨x, rfl⟩`
+#. §13: `rintro ⟨x, rfl⟩`
+#. §14: `Set.mem_univ x`
+#. §15: `Set.mem_univ x`
+#. §16: `x ∈ Set.univ`
+#: Game.Levels.ImageWorld.L12_ImageUnivRange
+msgid "# Connecting Image and Range\n"
+"\n"
+"In Level 11, you learned that §0 is the set of all outputs\n"
+"of §1. There is a direct connection to image: the range IS the image\n"
+"of the universal set §2 (the set of ALL inputs):\n"
+"\n"
+"§3\n"
+"\n"
+"In Lean: §4.\n"
+"\n"
+"This makes intuitive sense: the range is what you get when you apply\n"
+"§5 to everything -- and §6 IS everything.\n"
+"\n"
+"**Your task**: Prove this equality.\n"
+"\n"
+"**Proof plan**:\n"
+"1. §7 then §8\n"
+"2. **Forward**: §9 -- destructure image membership.\n"
+"   The source membership §10 is trivially true, so discard\n"
+"   it with §11. Build range membership with §12.\n"
+"3. **Backward**: §13 -- destructure range membership.\n"
+"   Build image membership with the universal membership\n"
+"   §14.\n"
+"\n"
+"**New fact**: §15 proves §16 -- everything\n"
+"is in the universal set."
 msgstr ""
 
 #. §0: `constructor`
@@ -7276,6 +9343,18 @@ msgid "# Universals Pass Through Too\n"
 "   §11 to expose the §12, then hand back"
 msgstr ""
 
+#. §0: `rintro`
+#. §1: `hx : x ∈ f ⁻¹' t`
+#. §2: `x ∈ f ⁻¹' t`
+#. §3: `f x ∈ t`
+#. §4: `f x ∈ t`
+#. §5: `hx`
+#: Game.Levels.ImageWorld.L14_ImagePreimageGap
+msgid "After §0, you have §1. Recall from\n"
+"Preimage World that §2 is definitionally §3.\n"
+"The goal is §4. So §5 IS the goal!"
+msgstr ""
+
 #. §0: `s \\ t = s ∩ tᶜ`
 #. §1: `x ∈ s \\ t`
 #. §2: `x ∈ s ∧ x ∉ t`
@@ -7310,6 +9389,15 @@ msgid "# s \\\\ t = s ∩ tᶜ\n"
 "4. **Backward**: same structure in reverse"
 msgstr ""
 
+#. §0: `hs : x ∈ s`
+#. §1: `f x ∈ f '' s ∪ f '' t`
+#. §2: `left`
+#. §3: `f '' s`
+#: Game.Levels.ImageWorld.L07_ImageUnion
+msgid "§0. The goal is §1. Use\n"
+"§2 to target §3, then construct the image membership."
+msgstr ""
+
 #: Game.Levels.PsetSets.L14_ComplementOfDifference
 msgid "Complement of Difference"
 msgstr ""
@@ -7323,6 +9411,11 @@ msgstr ""
 msgid "You have §0 (i.e., §1)\n"
 "and §2. Derive a contradiction by showing §3\n"
 "IS in the union: §4."
+msgstr ""
+
+#: Game.Levels.ImageWorld.L09_IntersectionCounterexample
+msgid "The constant function demonstrates that image of intersection\n"
+"can be strictly smaller than intersection of images."
 msgstr ""
 
 #. §0: `s j`
@@ -7351,6 +9444,24 @@ msgid "# The Converse: Union Nonempty Implies Some Member Nonempty\n"
 "\n"
 "**Your task**: Given that §5 is nonempty, produce an index\n"
 "§6 such that §7 is nonempty."
+msgstr ""
+
+#. §0: `y ∈ (g ∘ f) '' s`
+#. §1: `rintro ⟨x, hx, rfl⟩`
+#. §2: `x ∈ s`
+#. §3: `y = (g ∘ f) x = g (f x)`
+#: Game.Levels.ImageWorld.L10_ImageComposition
+msgid "**Forward**: Destructure §0 with\n"
+"§1. This gives §2 and §3."
+msgstr ""
+
+#. §0: `Set.image_subset`
+#. §1: `s ⊆ t → f '' s ⊆ f '' t`
+#. §2: `Set.image_mono`
+#: Game.Levels.ImageWorld.L08_ImageInterSubset
+msgid "§0 states §1 (same as\n"
+"§2 but with a different argument order). Disabled to\n"
+"force manual proof."
 msgstr ""
 
 #. §0: `exact h`
@@ -7529,6 +9640,14 @@ msgstr ""
 msgid "Partition Identity"
 msgstr ""
 
+#. §0: `mono`
+#: Game.Metadata
+msgid "§0 attempts to prove monotonicity goals by automatically applying\n"
+"relevant monotonicity lemmas.\n"
+"\n"
+"Disabled to prevent one-shot solutions to subset and image problems."
+msgstr ""
+
 #. §0: `h : Set.Nonempty (⋃ i, s i)`
 #. §1: `∃ x, x ∈ ⋃ i, s i`
 #. §2: `obtain ⟨x, hx⟩ := h`
@@ -7553,6 +9672,20 @@ msgstr ""
 #: Game.Levels.SetWorld.L05_NonMembershipExistential
 msgid "Now §0 but 3 is odd — no natural number §1\n"
 "satisfies this. §2 sees this contradiction and closes the goal."
+msgstr ""
+
+#. §0: `x : α`
+#. §1: `hx : x ∈ s`
+#. §2: `Set.Nonempty (f '' s)`
+#. §3: `∃ y, y ∈ f '' s`
+#. §4: `f x`
+#. §5: `f '' s`
+#. §6: `x ∈ s`
+#: Game.Levels.ImageWorld.L18_NonemptinessTransfer
+msgid "Now you have §0 and §1. The goal is\n"
+"§2, which means §3.\n"
+"\n"
+"The witness is §4. It is in §5 because §6."
 msgstr ""
 
 #. §0: `s = \\{0\\}`
@@ -7588,6 +9721,17 @@ msgid "You disproved the claim that powerset distributes over union!\n"
 "\n"
 "This is the same disprove-by-counterexample pattern from Subset\n"
 "World, now applied to a richer mathematical statement."
+msgstr ""
+
+#. §0: `rintro ⟨x, hx, rfl⟩`
+#. §1: `hx : x = a`
+#. §2: `f x = f a`
+#. §3: `show f x = f a`
+#. §4: `rw [hx]`
+#: Game.Levels.ImageWorld.L05_ImageSingleton
+msgid "After §0, you have\n"
+"§1 and the goal is §2.\n"
+"Use §3 then §4."
 msgstr ""
 
 #. §0: `{n : ℕ | n ≤ 2}`
@@ -7872,6 +10016,15 @@ msgid "Key move: §0 then\n"
 "§1 then §2."
 msgstr ""
 
+#. §0: `Set.image_subset`
+#. §1: `s ⊆ t → f '' s ⊆ f '' t`
+#. §2: `Set.image_mono`
+#: Game.Levels.ImageWorld.L16_MonoFromGalois
+msgid "§0 states §1 (same as\n"
+"§2 but with a different argument order). Disabled to\n"
+"force the Galois connection derivation."
+msgstr ""
+
 #. §0: `himp_eq`
 #. §1: `x ⇨ y = y ⊔ xᶜ`
 #: Game.Levels.PsetSets.L14_ComplementOfDifference
@@ -8062,6 +10215,10 @@ msgid "The hypothesis says §0 and the goal is §1. The library\n"
 "§3. Use §4."
 msgstr ""
 
+#: Game.Levels.ImageWorld.L13_GaloisConnection
+msgid "The Galois Connection"
+msgstr ""
+
 #. §0: `hx`
 #. §1: `x ∉ s ∧ x ∉ t`
 #. §2: `x ∈ sᶜ ∩ tᶜ`
@@ -8142,6 +10299,33 @@ msgid "Case-split on the union. In both cases (§0 or\n"
 "§1), §2 follows."
 msgstr ""
 
+#. §0: `Or.inl h`
+#. §1: `P ∨ Q`
+#. §2: `h : P`
+#. §3: `hx : x ∈ s`
+#. §4: `Or.inl hx : x ∈ s ∨ x ∈ t`
+#. §5: `x ∈ s ∪ t`
+#. §6: ```
+#. -- hx : x ∈ s, Goal: ∃ z ∈ s ∪ t, f z = f x
+#. exact ⟨x, Or.inl hx, rfl⟩
+#. ```
+#. §7: `left`
+#. §8: `exact hx`
+#: Game.Metadata
+msgid "§0 constructs a proof of §1 from a proof §2.\n"
+"It chooses the LEFT disjunct.\n"
+"\n"
+"## When to use it\n"
+"When building anonymous constructors for unions: if §3,\n"
+"then §4 (equivalently §5).\n"
+"\n"
+"## Example\n"
+"§6\n"
+"\n"
+"## Alternative\n"
+"The §7 tactic followed by §8 achieves the same result."
+msgstr ""
+
 #: Game.Levels.PreimageWorld.L13_PreimageIdentity
 msgid "Preimage Under the Identity"
 msgstr ""
@@ -8170,10 +10354,6 @@ msgid "You proved that nonemptiness propagates from a member to the union.\n"
 "prove this in the next level."
 msgstr ""
 
-#: GameServer.RpcHandlers
-msgid "level completed! 🎉"
-msgstr ""
-
 #. §0: `hx`
 #. §1: `x`
 #. §2: `p x`
@@ -8190,6 +10370,10 @@ msgid "Now §0 says §1 is in the left set, which is definitionally\n"
 "§2. The goal says §3 is in the right set, which is definitionally\n"
 "§4. The hypothesis §5 says §6 — applied to §7\n"
 "and §8, it gives exactly §9. Use §10."
+msgstr ""
+
+#: GameServer.RpcHandlers
+msgid "level completed! 🎉"
 msgstr ""
 
 #. §0: `hx : x ∈ sᶜ ∪ tᶜ`
@@ -8420,6 +10604,51 @@ msgid "# Problem Set: Level 7\n"
 "nested context."
 msgstr ""
 
+#: Game.Levels.ImageWorld.L18_NonemptinessTransfer
+msgid "Image Preserves Nonemptiness"
+msgstr ""
+
+#. §0: `obtain ⟨x, hx⟩ := h`
+#. §1: `h`
+#. §2: `rcases`
+#. §3: ```
+#. obtain ⟨x, hx⟩ := h              -- existential
+#. obtain ⟨h₁, h₂⟩ := h             -- conjunction
+#. obtain ⟨x, hx, rfl⟩ := h         -- with substitution
+#. ```
+#. §4: `∃`
+#. §5: `∧`
+#. §6: `rcases`
+#. §7: `|`
+#. §8: ```
+#. -- hy : y ∈ f '' s
+#. obtain ⟨x, hx, hfx⟩ := hy
+#. -- x : α, hx : x ∈ s, hfx : f x = y
+#. ```
+#. §9: `rfl`
+#. §10: `obtain ⟨x, hx, rfl⟩ := hy`
+#. §11: `y`
+#. §12: `f x`
+#: Game.Metadata
+msgid "§0 destructures hypothesis §1 into components\n"
+"using the same pattern syntax as §2.\n"
+"\n"
+"## Syntax\n"
+"§3\n"
+"\n"
+"## When to use it\n"
+"When you have a hypothesis with structure (§4, §5) and want to\n"
+"extract its components. Like §6, but does not support §7\n"
+"for disjunctions.\n"
+"\n"
+"## Example\n"
+"§8\n"
+"\n"
+"## Tip\n"
+"Use §9 inside the pattern to substitute equations automatically:\n"
+"§10 replaces §11 with §12 everywhere."
+msgstr ""
+
 #. §0: `intro u hu`
 #. §1: `u`
 #: Game.Levels.PsetSets.L13_PowersetUnionSubset
@@ -8441,6 +10670,14 @@ msgstr ""
 #: Game.Levels.IndexedOpsWorld.L23_Boss
 msgid "You have §0 and §1. The goal is\n"
 "§2. Use §3 to split into two parts."
+msgstr ""
+
+#. §0: `∃ x, 2 * x = y`
+#. §1: `r`
+#. §2: `use r`
+#: Game.Levels.ImageWorld.L11_SetRange
+msgid "Now build range membership: you need §0.\n"
+"The witness is §1. Use §2."
 msgstr ""
 
 #: Game.Levels.SubsetWorld.L02_ChangeTactic
@@ -8479,6 +10716,62 @@ msgstr ""
 #: Game.Levels.IndexedOpsWorld.L21_BoundedIntegration
 msgid "Now convert the goal: §0 to get\n"
 "§1."
+msgstr ""
+
+#. §0: `x ∈ f ⁻¹' t`
+#. §1: `f x ∈ t`
+#. §2: `s`
+#. §3: `f`
+#. §4: $$f(s) = \\{y \\mid \\exists\\, x \\in s,\\; f(x) = y\\}$$
+#. §5: `f '' s`
+#. §6: `''`
+#. §7: $$y \\in f\\;'' s \\;\\;\\Longleftrightarrow\\;\\; \\exists\\, x \\in s,\\; f(x) = y$$
+#. §8: `Set.mem_image`
+#. §9: `x`
+#. §10: `s`
+#. §11: `y`
+#. §12: `n ↦ n + 1`
+#. §13: `n = 3`
+#. §14: `3 ∈ s`
+#. §15: `3 < 5`
+#. §16: `3 + 1 = 4`
+#. §17: `use 3`
+#. §18: `constructor`
+#. §19: `3 < 5`
+#. §20: `show`
+#. §21: `omega`
+#. §22: `3 + 1 = 4`
+#. §23: `rfl`
+#: Game.Levels.ImageWorld.L01_ImageMembership
+msgid "# Images: Pushing Sets Forward Through Functions\n"
+"\n"
+"In Preimage World, you pulled sets **backward** through functions:\n"
+"§0 meant §1 -- just function application.\n"
+"\n"
+"Now you will push sets **forward**. The **image** of a set §2\n"
+"under §3 is:\n"
+"\n"
+"§4\n"
+"\n"
+"In Lean, this is written §5 (type §6). The membership rule is:\n"
+"\n"
+"§7\n"
+"\n"
+"This is §8. Notice the **existential**: to prove something\n"
+"is in the image, you must **exhibit a witness** -- a specific input §9\n"
+"in §10 that maps to §11. This is fundamentally different from preimage,\n"
+"which had no existential.\n"
+"\n"
+"**Your task**: Prove that 4 is in the image of the set of natural numbers\n"
+"less than 5, under the function §12.\n"
+"\n"
+"The witness is §13, because §14 (since §15) and §16.\n"
+"\n"
+"**Proof plan**:\n"
+"1. §17 -- provide the witness\n"
+"2. §18 -- split the conjunction (membership + equation)\n"
+"3. Prove §19 with §20 and §21\n"
+"4. Prove §22 with §23"
 msgstr ""
 
 #. §0: `hs : Set.Nonempty s`
@@ -8532,6 +10825,21 @@ msgid "# s ∩ sᶜ = ∅\n"
 "2. **Forward**: §12, then §13 to get\n"
 "   §14 and §15. Apply §16 to §17.\n"
 "3. **Backward**: §18 — but §19, so use §20."
+msgstr ""
+
+#. §0: `f '' s ⊆ f '' t`
+#. §1: `y`
+#. §2: `s`
+#. §3: `y`
+#. §4: `t`
+#. §5: `rintro y ⟨x, hx, rfl⟩`
+#. §6: `y`
+#: Game.Levels.ImageWorld.L06_ImageMonotonicity
+msgid "The goal is §0. This means: for every §1 in the\n"
+"image of §2, show §3 is in the image of §4.\n"
+"\n"
+"Use §5 to introduce §6 and destructure the\n"
+"image membership hypothesis."
 msgstr ""
 
 #. §0: `change`
@@ -8662,6 +10970,13 @@ msgid "You proved preimage monotonicity: bigger target set → bigger preimage.\
 "§11.\"\n"
 "\n"
 "The library name for this fact is §12."
+msgstr ""
+
+#. §0: `Even (2 * x)`
+#. §1: `show Even (2 * x)`
+#: Game.Levels.ImageWorld.L11_SetRange
+msgid "The goal says §0 but Lean internally has the function\n"
+"form. Use §1 to make it explicit."
 msgstr ""
 
 #. §0: $$(\\bigcup_i s_i)^c = \\bigcap_i (s_i)^c$$
@@ -8854,6 +11169,15 @@ msgstr ""
 msgid "§0 states §1 (propositional commutativity of ∧)."
 msgstr ""
 
+#. §0: `intro h x hx`
+#. §1: `apply h`
+#. §2: `f x ∈ f '' s`
+#. §3: `exact ⟨x, hx, rfl⟩`
+#: Game.Levels.ImageWorld.L13_GaloisConnection
+msgid "After §0, use §1 to reduce\n"
+"the goal to §2, then §3."
+msgstr ""
+
 #. §0: `hx : x ∈ s ∩ t`
 #. §1: `x ∈ s ∧ x ∈ t`
 #. §2: `x ∈ s`
@@ -8862,6 +11186,47 @@ msgstr ""
 msgid "§0 is definitionally §1.\n"
 "You need §2, which is the left component.\n"
 "Use §3 to extract it."
+msgstr ""
+
+#. §0: `Set.image f s`
+#. §1: `f '' s`
+#. §2: `s`
+#. §3: `f`
+#. §4: `s`
+#. §5: $$f(s) = \\{y \\mid \\exists\\, x \\in s,\\; f(x) = y\\}$$
+#. §6: `y ∈ f '' s ↔ ∃ x, x ∈ s ∧ f x = y`
+#. §7: `Set.mem_image`
+#. §8: ```
+#. f '' s      -- image of s under f (type '')
+#. ```
+#. §9: `f`
+#. §10: `s`
+#. §11: `f n = n + 1`
+#. §12: `f '' {n | n < 3} = {1, 2, 3}`
+#. §13: `f '' s`
+#. §14: `Set β`
+#. §15: `f ⁻¹' t`
+#: Game.Levels.ImageWorld.L01_ImageMembership
+msgid "§0, written §1, is the **image** of §2\n"
+"under §3 -- the set of all outputs produced by inputs in §4:\n"
+"\n"
+"§5\n"
+"\n"
+"## Membership rule\n"
+"§6 (this is §7)\n"
+"\n"
+"## Syntax\n"
+"§8\n"
+"\n"
+"## When to use it\n"
+"When you want to talk about which outputs of §9 come from inputs in §10.\n"
+"\n"
+"## Example\n"
+"If §11, then §12.\n"
+"\n"
+"## Warning\n"
+"§13 is a set of OUTPUTS (type §14), not inputs. Do not\n"
+"confuse with §15 (preimage), which is a set of INPUTS."
 msgstr ""
 
 #. §0: `ext x`
@@ -8958,6 +11323,17 @@ msgid "# Set.Nonempty\n"
 "**Your task**: Prove that the set of even natural numbers is nonempty."
 msgstr ""
 
+#. §0: `exact ⟨f x, x, hx, rfl⟩`
+#. §1: `⟨f x, ...⟩`
+#. §2: `x, hx, rfl`
+#. §3: `f x ∈ f '' s`
+#: Game.Levels.ImageWorld.L18_NonemptinessTransfer
+msgid "§0\n"
+"\n"
+"The outer §1 provides the nonemptiness witness.\n"
+"The inner §2 proves §3."
+msgstr ""
+
 #. §0: `∀`
 #. §1: ```
 #. intro x hx
@@ -9027,6 +11403,20 @@ msgid "You proved the partition identity §0. This says\n"
 "§8 lets you think in terms of subsets (\"everything in §9 is\n"
 "in the union\" and \"everything in the union is in §10\"), which is\n"
 "sometimes more natural."
+msgstr ""
+
+#. §0: `h : f '' s ⊆ t`
+#. §1: `s ⊆ f ⁻¹' t`
+#. §2: `x ∈ s`
+#. §3: `x ∈ f ⁻¹' t`
+#. §4: `f x ∈ t`
+#. §5: `intro h x hx`
+#: Game.Levels.ImageWorld.L13_GaloisConnection
+msgid "**Forward**: Assume §0. You need to show\n"
+"§1, which means: for every §2, prove §3\n"
+"(i.e., §4).\n"
+"\n"
+"Use §5."
 msgstr ""
 
 #. §0: `Set.univ`
@@ -9104,6 +11494,15 @@ msgid "§0 closes the goal by finding a contradiction among the\n"
 "is impossible, even though §9 cannot."
 msgstr ""
 
+#. §0: `Set.image_preimage_eq_of_subset`
+#. §1: `s ⊆ Set.range f`
+#. §2: `f '' (f ⁻¹' s) = s`
+#: Game.Levels.ImageWorld.L20_Boss
+msgid "§0 states that if §1,\n"
+"then §2. This is exactly the boss statement --\n"
+"disabled to force manual proof."
+msgstr ""
+
 #: Game.Levels.PsetSets.L11_PowersetIntersection
 msgid "Powerset of Intersection"
 msgstr ""
@@ -9168,6 +11567,47 @@ msgid "The forward direction is trivial: everything is in §0.\n"
 "Note: §2 is disabled in this course, so it cannot close this\n"
 "for you. The explicit tool is §3, which proves\n"
 "§4 for any §5."
+msgstr ""
+
+#. §0: `s`
+#. §1: `a`
+#. §2: `s`
+#. §3: `f`
+#. §4: `f a`
+#. §5: $$f(\\{a\\}) = \\{f(a)\\}$$
+#. §6: `a`
+#. §7: `rfl`
+#. §8: `ext y`
+#. §9: `constructor`
+#. §10: `y ∈ f '' s`
+#. §11: `x ∈ s`
+#. §12: `x = a`
+#. §13: `y = f a`
+#. §14: `y = f a`
+#. §15: `a`
+#: Game.Levels.ImageWorld.L05_ImageSingleton
+msgid "# The Simplest Image: One Element In, One Element Out\n"
+"\n"
+"Before tackling abstract structural results, let us ground the image\n"
+"definition on the absolute simplest case: the image of a **singleton\n"
+"set**.\n"
+"\n"
+"If §0 contains only elements equal to §1, then the image of §2\n"
+"under §3 contains only elements equal to §4.\n"
+"\n"
+"§5\n"
+"\n"
+"This is almost obvious, but the proof exercises the same witness\n"
+"construction and destructuring patterns you have been learning --\n"
+"on a case where the witness is always §6 and the membership\n"
+"proof is always §7. Think of it as a warm-up before the abstract\n"
+"proofs ahead.\n"
+"\n"
+"**Proof plan**:\n"
+"1. §8 then §9\n"
+"2. **Forward**: Destructure §10. The witness satisfies\n"
+"   §11, which means §12. Substitute to get §13.\n"
+"3. **Backward**: §14 means we can provide witness §15."
 msgstr ""
 
 #. §0: `s`
@@ -9247,6 +11687,14 @@ msgstr ""
 msgid "Key move: §0 splits\n"
 "the two cases. In each case, use §1 to expose the existential goal,\n"
 "§2, then §3 the appropriate witness, then §4."
+msgstr ""
+
+#. §0: `f ⁻¹' t ⊆ f ⁻¹' t`
+#. §1: `intro x hx`
+#. §2: `exact hx`
+#: Game.Levels.ImageWorld.L17_GapFromGalois
+msgid "The goal is now §0. Any set is a subset\n"
+"of itself! Use §1 then §2."
 msgstr ""
 
 #. §0: `∪`
@@ -9334,6 +11782,18 @@ msgstr ""
 #: Game.Levels.PreimageWorld.L08_PreimageIntersection
 msgid "**Forward**: §0 means §1,\n"
 "which is §2. Destructure with §3."
+msgstr ""
+
+#. §0: `y ∈ f '' ∅`
+#. §1: `x ∈ ∅`
+#. §2: `f x = y`
+#. §3: `∅`
+#. §4: `rintro ⟨x, hx, rfl⟩`
+#: Game.Levels.ImageWorld.L04_ImageEmpty
+msgid "**Forward**: If §0, there exists §1 with\n"
+"§2. But nothing is in §3!\n"
+"\n"
+"Use §4 to destructure the image membership."
 msgstr ""
 
 #: Game.Levels.SetOpsWorld.L01_UnionMembership
@@ -9519,6 +11979,75 @@ msgstr ""
 msgid "Subset World"
 msgstr ""
 
+#. §0: `rintro y ⟨x, hx, rfl⟩`
+#. §1: `omega`
+#. §2: `rintro`
+#. §3: `rintro y`
+#. §4: `y : ℕ`
+#. §5: `intro y`
+#. §6: `rintro ⟨x, hx, rfl⟩`
+#. §7: `obtain`
+#. §8: `rfl`
+#. §9: `3 * x = y`
+#. §10: `y`
+#. §11: `3 * x`
+#. §12: `rcases`
+#. §13: `hy : y ∈ f '' s`
+#. §14: `rcases hy with ⟨x, hx, rfl⟩`
+#. §15: `rintro`
+#. §16: `rcases`
+#. §17: `rintro ⟨x, hx, rfl⟩`
+#. §18: `f '' s ⊆ t`
+#. §19: `rcases h with ⟨x, hx, rfl⟩`
+#. §20: `h`
+#. §21: `obtain ⟨x, hx, rfl⟩ := h`
+#. §22: `rcases`
+#. §23: `rfl`
+#. §24: `rintro ⟨x, hx, rfl⟩`
+#. §25: `show`
+#. §26: `show 3 * x < 12`
+#. §27: `omega`
+#. §28: `rfl`
+#. §29: `rintro`
+#. §30: `show`
+#. §31: `omega`
+#: Game.Levels.ImageWorld.L03_RintroRcases
+msgid "Two steps: §0 then §1. Compare with the\n"
+"four-step proof from Level 2!\n"
+"\n"
+"**How §2 works**:\n"
+"- §3 introduces §4 (like §5)\n"
+"- §6 destructures the hypothesis (like §7)\n"
+"- The §8 pattern consumes the equation §9 and replaces\n"
+"  §10 with §11 everywhere\n"
+"\n"
+"All of this happens in one tactic step.\n"
+"\n"
+"**§12 -- the hypothesis version**: If you already have a hypothesis\n"
+"§13 in your context, use §14\n"
+"to destructure it. Same pattern syntax, different starting point:\n"
+"- §15 introduces from the goal\n"
+"- §16 destructures an existing hypothesis\n"
+"\n"
+"**When to use which**:\n"
+"- §17 -- when the hypothesis is in the goal\n"
+"  (e.g., subset proofs §18)\n"
+"- §19 -- when §20 is already in context\n"
+"- §21 -- equivalent to §22 for\n"
+"  non-disjunctive patterns (you already know this one!)\n"
+"\n"
+"The §23 trick is invaluable for image proofs. You will use\n"
+"§24 in nearly every image-related proof from now on.\n"
+"\n"
+"**The §25 strategy**: In this proof (and in Level 2), you used\n"
+"§26 to make Lean's internal goal match the form that\n"
+"§27 can handle. This is a general technique: when §28 substitution\n"
+"or §29 leaves the goal in an opaque form (e.g., function application\n"
+"not yet reduced), use §30 to restate the goal in readable arithmetic\n"
+"form. You will see this pattern recur whenever §31 needs to see\n"
+"through set-builder or function notation."
+msgstr ""
+
 #. §0: `h`
 #: Game.Levels.PsetSets.L12_CounterexamplePowerset
 msgid "Apply §0 to the two singleton sets to get\n"
@@ -9674,6 +12203,20 @@ msgid "The goal is §0. You know §1, which says\n"
 "goal to §5."
 msgstr ""
 
+#. §0: `intro x hx`
+#. §1: `x ∈ f ⁻¹' (f '' s)`
+#. §2: `f x ∈ f '' s`
+#. §3: `exact ⟨x, hx, rfl⟩`
+#: Game.Levels.ImageWorld.L15_PreimageImageGap
+msgid "After §0, the goal is\n"
+"§1, which is §2. Construct the\n"
+"image membership: §3."
+msgstr ""
+
+#: Game.Levels.ImageWorld.L10_ImageComposition
+msgid "Image Under Composition"
+msgstr ""
+
 #. §0: `Set.empty_subset s`
 #. §1: `∅ ⊆ s`
 #. §2: `s`
@@ -9690,6 +12233,23 @@ msgstr ""
 #: Game.Levels.SetOpsWorld.L03_ComplementMembership
 msgid "§0 says §1, meaning there exists §2 with §3.\n"
 "Destructure with §4."
+msgstr ""
+
+#. §0: `t`
+#. §1: `t`
+#. §2: $$s = (s \\cap t) \\cup (s \\setminus t)$$
+#: Game.Levels.PsetSets.L04_PartitionEquality
+msgid "# Problem Set: Level 4\n"
+"\n"
+"Prove the **partition identity**: every set equals the union of its\n"
+"part inside §0 and its part outside §1:\n"
+"\n"
+"§2\n"
+"\n"
+"Think about what tools you have for proving set equality, and why\n"
+"one approach might be more natural than the other here. For the\n"
+"forward direction, consider what information you need to choose a side\n"
+"of the union."
 msgstr ""
 
 #. §0: `apply e`
@@ -9710,23 +12270,6 @@ msgid "§0 reduces the goal by applying §1, leaving any\n"
 "## When to use it\n"
 "When the goal matches the conclusion of some known fact §3.\n"
 "After §4, the remaining goals are the premises of §5."
-msgstr ""
-
-#. §0: `t`
-#. §1: `t`
-#. §2: $$s = (s \\cap t) \\cup (s \\setminus t)$$
-#: Game.Levels.PsetSets.L04_PartitionEquality
-msgid "# Problem Set: Level 4\n"
-"\n"
-"Prove the **partition identity**: every set equals the union of its\n"
-"part inside §0 and its part outside §1:\n"
-"\n"
-"§2\n"
-"\n"
-"Think about what tools you have for proving set equality, and why\n"
-"one approach might be more natural than the other here. For the\n"
-"forward direction, consider what information you need to choose a side\n"
-"of the union."
 msgstr ""
 
 #. §0: `f ⁻¹' ∅ = ∅`
@@ -9777,6 +12320,47 @@ msgstr ""
 
 #: Game.Levels.PreimageWorld.L12_PreimageIndexedIntersection
 msgid "**Backward**: Same structure — unpack, hand back."
+msgstr ""
+
+#. §0: `f '' (s ∩ t) ⊆ f '' s ∩ f '' t`
+#. §1: `f(n) = 0`
+#. §2: `s = {0}`
+#. §3: `t = {1}`
+#. §4: `s ∩ t = ∅`
+#. §5: `f '' (s ∩ t) = f '' ∅ = ∅`
+#. §6: `f '' s = {0}`
+#. §7: `f '' t = {0}`
+#. §8: `f '' s ∩ f '' t = {0}`
+#. §9: `0`
+#. §10: `f '' s ∩ f '' t`
+#. §11: `0 ∈ s`
+#. §12: `1 ∈ t`
+#. §13: `f '' (s ∩ t)`
+#. §14: `s ∩ t`
+#. §15: `0 ∈ f '' s ∩ f '' t`
+#. §16: `0 ∉ f '' (s ∩ t)`
+#: Game.Levels.ImageWorld.L09_IntersectionCounterexample
+msgid "# A Counterexample: Image Does NOT Preserve Intersection\n"
+"\n"
+"In Level 8, you proved §0 and read\n"
+"about why equality can fail. Now you will SEE it fail.\n"
+"\n"
+"Consider the **constant function** §1 (sending every natural\n"
+"number to 0), with §2 and §3:\n"
+"\n"
+"- §4 (0 ≠ 1, so nothing is in both)\n"
+"- §5\n"
+"- But §6 and §7, so §8\n"
+"\n"
+"The element §9 is in §10 (witnessed by §11 and\n"
+"§12 -- DIFFERENT witnesses!) but NOT in §13 (because\n"
+"§14 is empty).\n"
+"\n"
+"**Your task**: Prove BOTH facts:\n"
+"1. §15 (the intersection of images is nonempty)\n"
+"2. §16 (the image of intersection IS empty)\n"
+"\n"
+"This is a concrete demonstration that the ⊆ in Level 8 is STRICT."
 msgstr ""
 
 #. §0: `intro x hx`
@@ -9917,6 +12501,24 @@ msgid "§0 creates §1\n"
 "from §2. Then §3 unwraps the goal and §4 closes it."
 msgstr ""
 
+#. §0: `use 3`
+#. §1: `constructor`
+#. §2: `show 3 < 5; omega`
+#. §3: `rfl`
+#: Game.Levels.ImageWorld.L01_ImageMembership
+msgid "§0 provides the witness. Then §1\n"
+"to split, §2 for the first part, §3 for the second."
+msgstr ""
+
+#. §0: `rfl`
+#. §1: `y = 3 * x`
+#. §2: `3 * x < 12`
+#. §3: `show 3 * x < 12`
+#: Game.Levels.ImageWorld.L03_RintroRcases
+msgid "The §0 pattern substituted §1, so the goal is now\n"
+"§2. Use §3 to make this explicit to Lean."
+msgstr ""
+
 #. §0: `x ∈ (⋃ i, s i)ᶜ`
 #. §1: `x ∉ ⋃ i, s i`
 #. §2: `change`
@@ -9942,10 +12544,30 @@ msgstr ""
 msgid "§0 and §1. Unpack the union."
 msgstr ""
 
+#. §0: `hx : x ∈ ∅`
+#. §1: `∅`
+#. §2: `x ∈ ∅`
+#. §3: `False`
+#: Game.Levels.ImageWorld.L04_ImageEmpty
+msgid "You have §0. Since §1 is the set with no\n"
+"elements, §2 is definitionally §3. This is a contradiction!"
+msgstr ""
+
+#. §0: `rintro y ⟨x, hx, rfl⟩`
+#: Game.Levels.ImageWorld.L14_ImagePreimageGap
+msgid "Use §0 to destructure the image membership."
+msgstr ""
+
 #. §0: `ext x`
 #: Game.Levels.SetOpsWorld.L11_UnionCommutativity
 #: Game.Levels.PreimageWorld.L06_PreimageEmpty
 msgid "Start with §0 to reduce to element-wise membership."
+msgstr ""
+
+#. §0: `h : y ∈ f '' s`
+#. §1: `obtain ⟨x, hx, rfl⟩ := h`
+#: Game.Levels.ImageWorld.L07_ImageUnion
+msgid "§0. Destructure with §1."
 msgstr ""
 
 #: Game.Levels.PreimageWorld.L10_PreimageComplement
@@ -10034,6 +12656,15 @@ msgid "# Subset World\n"
 "- §22 — unwrap a hypothesis to a definitionally equal form\n"
 "- §23 — reduce set equality to element-wise membership\n"
 "- §24 — derive equality from mutual subsets"
+msgstr ""
+
+#. §0: `apply Set.image_subset_iff.mpr`
+#. §1: `f '' (f ⁻¹' t) ⊆ t`
+#. §2: `f ⁻¹' t ⊆ f ⁻¹' t`
+#: Game.Levels.ImageWorld.L17_GapFromGalois
+msgid "Use §0 to apply the backward\n"
+"direction of the Galois connection. This transforms the goal\n"
+"§1 into §2."
 msgstr ""
 
 #. §0: `have h3 := hq 3 h`
@@ -10204,6 +12835,10 @@ msgstr ""
 msgid "Universal Set and Complement"
 msgstr ""
 
+#: Game.Levels.ImageWorld.L03_RintroRcases
+msgid "The rintro Power Tool"
+msgstr ""
+
 #. §0: `h5 : 3 < 3`
 #. §1: `omega`
 #. §2: `False`
@@ -10294,6 +12929,16 @@ msgid "**Forward**: §0 means §1 and\n"
 "Start with §5 then §6."
 msgstr ""
 
+#. §0: `Set.subset_preimage_image`
+#. §1: `s ⊆ f ⁻¹' (f '' s)`
+#. §2: `s`
+#: Game.Levels.ImageWorld.L15_PreimageImageGap
+#: Game.Levels.ImageWorld.L20_Boss
+msgid "§0 states §1. Every\n"
+"element of §2 is in the preimage of the image -- the preimage-image\n"
+"roundtrip never loses elements, but it may gain extras."
+msgstr ""
+
 #. §0: `3 ∈ (fun n => n + 1) ⁻¹' ...`
 #. §1: `(fun n => n + 1) 3 ∈ ...`
 #. §2: `3 + 1 < 5`
@@ -10302,6 +12947,28 @@ msgstr ""
 msgid "The goal says §0. By the definition\n"
 "of preimage, this means §1, which is\n"
 "§2. Use §3 to make this explicit."
+msgstr ""
+
+#. §0: `rintro y ⟨x, hx, rfl⟩`
+#. §1: `y`
+#. §2: `y = 3 * x`
+#. §3: `x : ℕ`
+#. §4: `hx : x < 4`
+#. §5: `3 * x < 12`
+#: Game.Levels.ImageWorld.L03_RintroRcases
+msgid "Use §0 to introduce §1, destructure the\n"
+"image membership, and substitute §2 in one step.\n"
+"\n"
+"After this single tactic, you will have §3, §4,\n"
+"and the goal will be §5."
+msgstr ""
+
+#. §0: `Set.image_mono`
+#. §1: `s ⊆ t`
+#. §2: `f '' s ⊆ f '' t`
+#: Game.Levels.ImageWorld.L16_MonoFromGalois
+msgid "§0 states that if §1 then §2.\n"
+"Disabled here to force the Galois connection re-derivation."
 msgstr ""
 
 #. §0: `h : x ∉ s`
@@ -10420,6 +13087,32 @@ msgstr ""
 #. §1: `exact hx`
 #: Game.Levels.PreimageWorld.L12_PreimageIndexedIntersection
 msgid "Now §0 on the goal, then §1."
+msgstr ""
+
+#. §0: `x ∈ f ⁻¹' t`
+#. §1: `f x ∈ t`
+#. §2: `h : f '' s ⊆ t`
+#. §3: `f x ∈ f '' s`
+#. §4: `h`
+#. §5: `f x ∈ t`
+#. §6: `apply h`
+#. §7: `f x ∈ f '' s`
+#: Game.Levels.ImageWorld.L13_GaloisConnection
+msgid "The goal is §0, which is definitionally §1.\n"
+"You know §2, so if you can show §3,\n"
+"then §4 will give you §5.\n"
+"\n"
+"Use §6 to reduce the goal to §7."
+msgstr ""
+
+#. §0: `hx : x ∈ f ⁻¹' t`
+#. §1: `f x ∈ t`
+#. §2: `f x ∈ t`
+#. §3: `exact hx`
+#: Game.Levels.ImageWorld.L14_ImagePreimageGap
+msgid "After destructuring, §0,\n"
+"which is definitionally §1. And the goal is §2.\n"
+"So §3 closes the proof."
 msgstr ""
 
 #: Game.Levels.PsetSets.L04_PartitionEquality
@@ -10594,6 +13287,14 @@ msgid "**Backward**: destructure the intersection hypothesis\n"
 "and reassemble."
 msgstr ""
 
+#. §0: `rintro ⟨x, hx, rfl⟩`
+#. §1: `hx`
+#. §2: `cases hx with | inl hs | inr ht`
+#: Game.Levels.ImageWorld.L07_ImageUnion
+msgid "After §0, case-split on\n"
+"§1 with §2."
+msgstr ""
+
 #: Game.Levels.SetOpsWorld.L11_UnionCommutativity
 msgid "Union is commutative."
 msgstr ""
@@ -10758,6 +13459,9 @@ msgstr ""
 #: Game.Levels.PreimageWorld.L12_PreimageIndexedIntersection
 #: Game.Levels.PreimageWorld.L13_PreimageIdentity
 #: Game.Levels.PreimageWorld.L14_PreimageComposition
+#: Game.Levels.ImageWorld.L10_ImageComposition
+#: Game.Levels.ImageWorld.L12_ImageUnivRange
+#: Game.Levels.ImageWorld.L20_Boss
 msgid "Start with §0 then §1."
 msgstr ""
 
@@ -10776,6 +13480,54 @@ msgstr ""
 
 #: Game.Levels.SetOpsWorld.L17_Boss
 msgid "Intersection distributes over union."
+msgstr ""
+
+#. §0: `rintro y ⟨x, hx, rfl⟩`
+#. §1: `show 3 * x < 12`
+#. §2: `have h : x < 4 := hx`
+#. §3: `omega`
+#: Game.Levels.ImageWorld.L03_RintroRcases
+#: Game.Levels.ImageWorld.L11_SetRange
+#: Game.Levels.ImageWorld.L16_MonoFromGalois
+msgid "§0 then §1,\n"
+"§2, §3."
+msgstr ""
+
+#. §0: `use x`
+#. §1: `constructor`
+#. §2: `exact h hx`
+#. §3: `rfl`
+#: Game.Levels.ImageWorld.L06_ImageMonotonicity
+msgid "Alternatively, step by step: §0,\n"
+"§1, §2, §3."
+msgstr ""
+
+#. §0: `hx0 : x ∈ (n | n = 0)`
+#. §1: `x = 0`
+#. §2: `hx1 : x ∈ (n | n = 1)`
+#. §3: `x = 1`
+#. §4: `have`
+#: Game.Levels.ImageWorld.L09_IntersectionCounterexample
+msgid "You have §0 (which is §1) and\n"
+"§2 (which is §3). These are\n"
+"contradictory! Extract the equalities with §4."
+msgstr ""
+
+#. §0: `y ∈ f '' (s ∪ t)`
+#. §1: `x ∈ s ∪ t`
+#. §2: `f x = y`
+#. §3: `rintro ⟨x, hx, rfl⟩`
+#: Game.Levels.ImageWorld.L07_ImageUnion
+msgid "**Forward**: §0 means there exists §1\n"
+"with §2. Use §3 to destructure."
+msgstr ""
+
+#. §0: `Set.image_preimage_eq_inter_range`
+#. §1: `f '' (f ⁻¹' s) = s ∩ Set.range f`
+#: Game.Levels.ImageWorld.L20_Boss
+#: Game.Levels.ImageWorld.L20_Boss
+msgid "§0 states\n"
+"§1. Disabled to prevent boss bypass."
 msgstr ""
 
 #: Game.Levels.PsetSets.L11_PowersetIntersection
@@ -10864,6 +13616,21 @@ msgstr ""
 
 #: Game.Levels.PreimageWorld.L10_PreimageComplement
 msgid "Preimage Preserves Complement"
+msgstr ""
+
+#. §0: `0 ∉ f '' (... ∩ ...)`
+#. §1: `0 ∈ f '' (... ∩ ...) → False`
+#. §2: `rintro ⟨x, ⟨hx0, hx1⟩, _⟩`
+#. §3: `x`
+#. §4: `hx0 : x ∈ (n | n = 0)`
+#. §5: `hx1 : x ∈ (n | n = 1)`
+#: Game.Levels.ImageWorld.L09_IntersectionCounterexample
+msgid "The goal is §0, which means\n"
+"§1.\n"
+"\n"
+"Use §2 to assume it IS in the image\n"
+"and destructure: §3 is the witness, §4 and\n"
+"§5."
 msgstr ""
 
 #. §0: `Even 2`
@@ -11038,6 +13805,14 @@ msgid "The goal is §0. Rewrite to a universal:\n"
 "§1."
 msgstr ""
 
+#. §0: `hx : x ∈ f ⁻¹' t`
+#. §1: `f x ∈ t`
+#. §2: `f x ∈ t`
+#: Game.Levels.ImageWorld.L20_Boss
+msgid "§0 is definitionally §1. The goal\n"
+"is §2."
+msgstr ""
+
 #. §0: `rw [Set.mem_preimage]`
 #. §1: `rw [Set.mem_iUnion]`
 #. §2: `exact ⟨i, hi⟩`
@@ -11100,6 +13875,7 @@ msgid "Goal: §0. Same pattern, but use §1 for the backward\n"
 msgstr ""
 
 #: Game.Levels.IndexedOpsWorld.L14_NonemptyConverse
+#: Game.Levels.ImageWorld.L19_NonemptinessConverse
 msgid "Nonemptiness Converse"
 msgstr ""
 
@@ -11132,6 +13908,13 @@ msgstr ""
 #: Game.Levels.IndexedOpsWorld.L20_NonemptyProduct
 msgid "The goal is §0. You have both pieces. Close with\n"
 "§1 or use §2."
+msgstr ""
+
+#. §0: `0 ∈ (fun _ => 0) '' (n | n = 1)`
+#. §1: `n = 1`
+#: Game.Levels.ImageWorld.L09_IntersectionCounterexample
+msgid "Now prove §0. The witness\n"
+"here is §1 -- a DIFFERENT element than before!"
 msgstr ""
 
 #. §0: `Set.compl_union`
@@ -11175,6 +13958,40 @@ msgid "You proved membership in a cartesian product. The pattern is:\n"
 "\n"
 "In ordinary math: \"§6\n"
 "because §7 is even and §8.\""
+msgstr ""
+
+#. §0: `Set.range (fun n => 2 * n) = {n | Even n}`
+#. §1: `Set.range f`
+#. §2: `f '' Set.univ`
+#. §3: `∃ x, f x = y`
+#. §4: `∃ x, x ∈ s ∧ f x = y`
+#. §5: `rintro ⟨x, rfl⟩`
+#. §6: `⟨x, rfl⟩`
+#. §7: `⟨x, hx, rfl⟩`
+#. §8: `rfl`
+#. §9: `y = f x`
+#. §10: `f`
+#. §11: `Set.range f = Set.univ`
+#. §12: `Set.mem_range`
+#: Game.Levels.ImageWorld.L11_SetRange
+msgid "You proved §0.\n"
+"\n"
+"**Range vs Image**: §1 is the same as §2 --\n"
+"the image of the universal set. Range membership has the simpler form\n"
+"§3 (no source set constraint), while image membership\n"
+"is §4.\n"
+"\n"
+"**The §5 pattern for range**: Since range membership\n"
+"has only two components (witness + equation), the destructuring\n"
+"pattern is §6 instead of §7. The §8\n"
+"substitutes §9 just as before.\n"
+"\n"
+"**Where range appears**: Range is fundamental to surjectivity.\n"
+"A function §10 is **surjective** if §11 -- every\n"
+"element of the codomain is in the range. You will explore this in\n"
+"Surjective World.\n"
+"\n"
+"The library name is §12."
 msgstr ""
 
 #. §0: `sᶜᶜ = s`
@@ -11223,6 +14040,46 @@ msgid "§0 then §1.\n"
 "In each case, use §2/§3 then §4."
 msgstr ""
 
+#. §0: `Set.range f`
+#. §1: `Set.range f`
+#. §2: `f`
+#. §3: $$\\text{range}(f) = \\{y \\mid \\exists\\, x,\\; f(x) = y\\}$$
+#. §4: `y ∈ Set.range f ↔ ∃ x, f x = y`
+#. §5: `Set.mem_range`
+#. §6: `Set.range f = f '' Set.univ`
+#. §7: ```
+#. Set.range f      -- the range of f
+#. ```
+#. §8: `f`
+#. §9: `Set.range (fun n : ℕ => 2 * n) = {n | Even n}`
+#: Game.Levels.ImageWorld.L11_SetRange
+msgid "§0, written §1, is the **range** of §2 --\n"
+"the set of all outputs:\n"
+"\n"
+"§3\n"
+"\n"
+"## Membership rule\n"
+"§4 (this is §5)\n"
+"\n"
+"## Connection to image\n"
+"§6\n"
+"\n"
+"## Syntax\n"
+"§7\n"
+"\n"
+"## When to use it\n"
+"When you want to talk about the set of all possible outputs of §8,\n"
+"without restricting to a particular input set.\n"
+"\n"
+"## Example\n"
+"§9 -- the range of\n"
+"the doubling function is the even numbers."
+msgstr ""
+
+#: Game.Levels.ImageWorld.L15_PreimageImageGap
+msgid "Every element of s maps to a value in f '' s."
+msgstr ""
+
 #. §0: `hst : x ∈ s ∩ t`
 #. §1: `obtain ⟨hs, ht⟩ := hst`
 #: Game.Levels.SetOpsWorld.L17_Boss
@@ -11246,6 +14103,50 @@ msgstr ""
 #. §1: `k = 2`
 #: Game.Levels.IndexedOpsWorld.L01_IndexedUnion
 msgid "§0 provides the witness §1."
+msgstr ""
+
+#. §0: `rintro y ⟨x, hx, rfl⟩`
+#. §1: `exact hx`
+#. §2: `hx : x ∈ f ⁻¹' t`
+#. §3: `f x ∈ t`
+#. §4: `t ⊆ f '' (f ⁻¹' t)`
+#. §5: `y ∈ t`
+#. §6: `x`
+#. §7: `f x = y`
+#. §8: `y`
+#. §9: `f`
+#. §10: `y`
+#. §11: `t`
+#. §12: `f`
+#. §13: `t ⊆ Set.range f`
+#. §14: `f`
+#. §15: `Set.range f = Set.univ`
+#. §16: `t ⊆ Set.range f`
+#. §17: `t`
+#. §18: `f '' (f ⁻¹' t) = t`
+#. §19: `Set.image_preimage_subset`
+#: Game.Levels.ImageWorld.L14_ImagePreimageGap
+msgid "The proof was just two steps:\n"
+"1. §0\n"
+"2. §1\n"
+"\n"
+"That is because §2 IS §3 by definition.\n"
+"The preimage membership unfolds directly to the goal.\n"
+"\n"
+"**Why equality fails**: The reverse inclusion §4\n"
+"requires: for every §5, find §6 with §7. But §8\n"
+"might not be in the range of §9! If no input maps to §10, there\n"
+"is no witness.\n"
+"\n"
+"**When does equality hold?** If every element of §11 IS in the range\n"
+"of §12 -- i.e., if §13. In the boss level, you will\n"
+"prove this equality under exactly this condition.\n"
+"\n"
+"**Foreshadowing**: If §14 is surjective (§15),\n"
+"then §16 holds automatically for every §17, and\n"
+"§18 always.\n"
+"\n"
+"The library name is §19."
 msgstr ""
 
 #. §0: `native_decide`
@@ -11303,6 +14204,54 @@ msgstr ""
 #. §0: `hs`
 #: Game.Levels.PsetSets.L07_NestedDifference
 msgid "§0 gives the first component directly."
+msgstr ""
+
+#. §0: `(g ∘ f) '' s = g '' (f '' s)`
+#. §1: `rintro ⟨z, ⟨x, hx, rfl⟩, rfl⟩`
+#. §2: `rintro ⟨x, hx, rfl⟩`
+#. §3: `⟨f x, ⟨x, hx, rfl⟩, rfl⟩`
+#. §4: `f x ∈ f '' s`
+#. §5: `⟨x, hx, rfl⟩`
+#. §6: `(g ∘ f) ⁻¹' u = f ⁻¹' (g ⁻¹' u)`
+#. §7: `f`
+#. §8: `g`
+#. §9: `f`
+#. §10: `g`
+#. §11: `(g ∘ f) '' s = g '' (f '' s)`
+#. §12: `f`
+#. §13: `g`
+#. §14: `(g ∘ f) ⁻¹' u = f ⁻¹' (g ⁻¹' u)`
+#. §15: `g`
+#. §16: `f`
+#. §17: `Set.image_comp`
+#: Game.Levels.ImageWorld.L10_ImageComposition
+msgid "You proved §0 -- image distributes\n"
+"over composition!\n"
+"\n"
+"**The nested destructuring pattern**: The backward direction used\n"
+"§1 to peel off two layers of image\n"
+"membership at once. This is a natural extension of the single-layer\n"
+"§2 pattern you have been using.\n"
+"\n"
+"**Forward direction -- building nested images**: The forward direction\n"
+"required §3 -- an image membership proof\n"
+"INSIDE another image membership proof. The outer witness is §4,\n"
+"proved by the inner anonymous constructor §5.\n"
+"\n"
+"**Dual to preimage composition**: Compare with §6\n"
+"from Preimage World. Both say composition distributes, but preimage\n"
+"reverses the order (§7 then §8 on the right) while image preserves\n"
+"it (§9 then §10 on both sides).\n"
+"\n"
+"**Vocabulary**: This order-preservation vs order-reversal has standard\n"
+"names. Image is **covariant**: it preserves the composition order\n"
+"(§11 -- §12 first, then §13, on both sides).\n"
+"Preimage is **contravariant**: it reverses the order\n"
+"(§14 -- §15 first on the left, §16 first\n"
+"on the right). These terms will reappear in later courses whenever\n"
+"operations interact with composition.\n"
+"\n"
+"The library name is §17."
 msgstr ""
 
 #. §0: `obtain`
@@ -11432,12 +14381,6 @@ msgid "Use §0 to unfold the set membership and\n"
 "non-membership. This reveals the arithmetic content."
 msgstr ""
 
-#. §0: `Or.comm`
-#. §1: `a ∨ b ↔ b ∨ a`
-#: Game.Levels.SetOpsWorld.L10_UnionCaseAnalysis
-msgid "§0 states §1 (propositional commutativity of ∨)."
-msgstr ""
-
 #. §0: `omega`
 #. §1: `exact h x hx`
 #. §2: `intro x hx`
@@ -11474,6 +14417,12 @@ msgid "No §0! The closing move was §1 — applying a hypothesis.\n"
 "\n"
 "This table will keep growing as you encounter more types of predicates\n"
 "throughout the course."
+msgstr ""
+
+#. §0: `Or.comm`
+#. §1: `a ∨ b ↔ b ∨ a`
+#: Game.Levels.SetOpsWorld.L10_UnionCaseAnalysis
+msgid "§0 states §1 (propositional commutativity of ∨)."
 msgstr ""
 
 #. §0: `sup_iInf_eq`
@@ -11694,6 +14643,13 @@ msgid "# Integrating Nonemptiness and Cartesian Products\n"
 "combination."
 msgstr ""
 
+#. §0: `x ∈ t`
+#. §1: `h : s ⊆ t`
+#. §2: `hx : x ∈ s`
+#: Game.Levels.ImageWorld.L16_MonoFromGalois
+msgid "The goal is §0. You have §1 and §2."
+msgstr ""
+
 #. §0: `.2`
 #: Game.Levels.PsetSets.L11_PowersetIntersection
 msgid "Same pattern — convert to subset, then extract §0."
@@ -11712,6 +14668,13 @@ msgid "**Backward direction**: You have §0, which is impossible\n"
 "disguise, so §2 closes the goal."
 msgstr ""
 
+#. §0: `f x ∈ f '' s ∧ f x ∈ f '' t`
+#. §1: `constructor`
+#: Game.Levels.ImageWorld.L08_ImageInterSubset
+msgid "Now build the intersection of images: you need\n"
+"§0. Use §1 to split."
+msgstr ""
+
 #. §0: `x ∈ ⋂ i, (s i)ᶜ`
 #. §1: `∀ i, x ∉ s i`
 #. §2: `x ∈ (⋃ i, s i)ᶜ`
@@ -11725,6 +14688,22 @@ msgid "**Backward direction**: You have §0, which\n"
 "Start with §4."
 msgstr ""
 
+#. §0: `Set.image_preimage_subset`
+#. §1: `f '' (f ⁻¹' t) ⊆ t`
+#: Game.Levels.ImageWorld.L14_ImagePreimageGap
+#: Game.Levels.ImageWorld.L20_Boss
+msgid "§0 states §1. Applying\n"
+"the function to the preimage gives back a subset of the original."
+msgstr ""
+
+#. §0: `0 ∈ (fun _ => 0) '' ...`
+#. §1: `f '' (n | n = 0)`
+#. §2: `n = 0`
+#: Game.Levels.ImageWorld.L09_IntersectionCounterexample
+msgid "Prove §0 by providing a witness.\n"
+"The witness for §1 is §2."
+msgstr ""
+
 #. §0: `3 < 5`
 #. §1: `show 3 < 5`
 #. §2: `omega`
@@ -11735,6 +14714,14 @@ msgstr ""
 
 #: Game.Levels.PreimageWorld.L15_RewriteComposition
 msgid "Composing Library Results"
+msgstr ""
+
+#. §0: `Set.image_inter_subset`
+#. §1: `f '' (s ∩ t) ⊆ f '' s ∩ f '' t`
+#: Game.Levels.ImageWorld.L08_ImageInterSubset
+msgid "§0 states\n"
+"§1. Image of intersection is contained\n"
+"in intersection of images, but equality may fail."
 msgstr ""
 
 #. §0: `compl_sdiff`
@@ -11909,8 +14896,49 @@ msgstr ""
 msgid "Start with §0 as always for a §1 proof."
 msgstr ""
 
+#. §0: `rcases h with pattern`
+#. §1: `h`
+#. §2: `rintro`
+#. §3: `|`
+#. §4: ```
+#. rcases h with ⟨x, hx⟩           -- existential
+#. rcases h with ⟨h₁, h₂⟩          -- conjunction
+#. rcases h with h₁ | h₂            -- disjunction (creates two goals)
+#. rcases h with ⟨x, hx, rfl⟩      -- with substitution
+#. rcases h with ⟨x, hx⟩ | ⟨y, hy⟩ -- nested disjunction
+#. ```
+#. §5: `∃`
+#. §6: `∧`
+#. §7: `∨`
+#. §8: `obtain`
+#. §9: `rcases`
+#. §10: ```
+#. -- h : y ∈ f '' s ∪ f '' t
+#. rcases h with ⟨x, hx, rfl⟩ | ⟨x, hx, rfl⟩
+#. -- Two goals: one for f '' s, one for f '' t
+#. ```
+#: Game.Metadata
+msgid "§0 destructures hypothesis §1 using the\n"
+"same pattern syntax as §2. It supports disjunctions via §3.\n"
+"\n"
+"## Syntax\n"
+"§4\n"
+"\n"
+"## When to use it\n"
+"When you have a hypothesis with structure (§5, §6, §7) and want\n"
+"to destructure it. For non-disjunctive patterns, §8 works\n"
+"the same way. The advantage of §9 is disjunction support.\n"
+"\n"
+"## Example\n"
+"§10"
+msgstr ""
+
 #: Game.Levels.SubsetWorld.L08_SubsetTrans
 msgid "Subset inclusion is transitive."
+msgstr ""
+
+#: Game.Levels.ImageWorld.L02_DestructuringImage
+msgid "Destructuring Image Membership"
 msgstr ""
 
 #. §0: `h : x < 3`
@@ -11924,6 +14952,53 @@ msgstr ""
 #: Game.Levels.IndexedOpsWorld.L20_NonemptyProduct
 msgid "§0 states that the product of two nonempty sets\n"
 "is nonempty."
+msgstr ""
+
+#. §0: `0 ∈ f '' s ∩ f '' t`
+#. §1: `0 ∈ s`
+#. §2: `0 ∈ f '' s`
+#. §3: `1 ∈ t`
+#. §4: `0 ∈ f '' t`
+#. §5: `0 ∉ f '' (s ∩ t)`
+#. §6: `s`
+#. §7: `t`
+#. §8: `s ∩ t`
+#. §9: `0`
+#. §10: `1`
+#. §11: `f`
+#. §12: `f x₁ = f x₂ = 0`
+#. §13: `x₁ = x₂`
+#. §14: `f '' (s ∩ t) = f '' s ∩ f '' t`
+#. §15: `f`
+#: Game.Levels.ImageWorld.L09_IntersectionCounterexample
+msgid "You have now SEEN the intersection gap in action!\n"
+"\n"
+"The key observation: §0 has TWO DIFFERENT witnesses:\n"
+"- §1 witnesses §2\n"
+"- §3 witnesses §4\n"
+"\n"
+"But §5 because ANY single witness would need to be\n"
+"in BOTH §6 and §7 -- and §8 is empty.\n"
+"\n"
+"**The root cause**: The constant function collapses §9 and §10 to\n"
+"the same output. The intersection of images uses different witnesses\n"
+"for the same output, while the image of intersection demands a single\n"
+"witness that works for both sets.\n"
+"\n"
+"**The injectivity connection**: If §11 were injective, the two\n"
+"witnesses would have to be equal (since §12 would\n"
+"imply §13). So injectivity prevents this kind of phantom\n"
+"intersection. You will prove §14 for\n"
+"injective §15 in a later world."
+msgstr ""
+
+#. §0: `x`
+#. §1: `s ∪ t`
+#. §2: `hx : x ∈ s`
+#. §3: `Or.inl hx`
+#: Game.Levels.ImageWorld.L07_ImageUnion
+msgid "Now provide the witness §0 in the image of §1.\n"
+"Since §2, the union membership is §3."
 msgstr ""
 
 #. §0: `x ∈ s i`
@@ -12315,6 +15390,24 @@ msgid "The goal involves §0. Use §1 to convert\n"
 "to a conjunction: §2."
 msgstr ""
 
+#. §0: `y ∈ t`
+#. §1: `y ∈ f '' (f ⁻¹' t)`
+#. §2: `h : t ⊆ Set.range f`
+#. §3: `y ∈ t`
+#. §4: `h hy : y ∈ Set.range f`
+#. §5: `∃ x, f x = y`
+#. §6: `intro hy`
+#. §7: `hy : y ∈ t`
+#: Game.Levels.ImageWorld.L20_Boss
+msgid "**⊇ direction**: This is the new part. You have §0 and\n"
+"need §1.\n"
+"\n"
+"The hypothesis §2 gives you a preimage: since\n"
+"§3, we have §4, meaning §5.\n"
+"\n"
+"Use §6 to get §7."
+msgstr ""
+
 #: Game.Levels.SetOpsWorld.L10_UnionCaseAnalysis
 msgid "Case Analysis on Unions"
 msgstr ""
@@ -12426,6 +15519,10 @@ msgstr ""
 #: Game.Levels.PsetSets.L03_DistributivitySubset
 msgid "Key move: §0 splits the intersection\n"
 "hypothesis, then §1 splits the union."
+msgstr ""
+
+#: Game.Levels.ImageWorld.L04_ImageEmpty
+msgid "The image of the empty set is empty."
 msgstr ""
 
 #. §0: `x`
@@ -12543,6 +15640,12 @@ msgid "The goal is an intersection membership, which means a conjunction.\n"
 "Use §0 to split it into two goals: §1 and §2."
 msgstr ""
 
+#. §0: `ext y`
+#. §1: `constructor`
+#: Game.Levels.ImageWorld.L07_ImageUnion
+msgid "Start with §0 then §1 as in every set equality proof."
+msgstr ""
+
 #. §0: `u ∈ 𝒫 s`
 #. §1: `rw [Set.mem_powerset_iff]`
 #. §2: `u ⊆ s`
@@ -12594,6 +15697,14 @@ msgstr ""
 #: Game.Levels.PreimageWorld.L13_PreimageIdentity
 #: Game.Levels.PreimageWorld.L14_PreimageComposition
 #: Game.Levels.PreimageWorld.L14_PreimageComposition
+#: Game.Levels.ImageWorld.L01_ImageMembership
+#: Game.Levels.ImageWorld.L05_ImageSingleton
+#: Game.Levels.ImageWorld.L07_ImageUnion
+#: Game.Levels.ImageWorld.L07_ImageUnion
+#: Game.Levels.ImageWorld.L12_ImageUnivRange
+#: Game.Levels.ImageWorld.L16_MonoFromGalois
+#: Game.Levels.ImageWorld.L17_GapFromGalois
+#: Game.Levels.ImageWorld.L20_Boss
 msgid "§0 then §1."
 msgstr ""
 
@@ -12638,6 +15749,10 @@ msgid "The goal is now §0. You need to\n"
 "provide two things: the witness index and the proof it is in §1.\n"
 "\n"
 "Use §2 to provide the index, then §3 to prove §4."
+msgstr ""
+
+#: Game.Levels.ImageWorld.L11_SetRange
+msgid "Set.range: The Image of Everything"
 msgstr ""
 
 #. §0: `Even 3 → False`
@@ -12725,6 +15840,10 @@ msgstr ""
 msgid "§0 — zero is even."
 msgstr ""
 
+#: Game.Levels.SetWorld.L02_SetBuilder
+msgid "Set Builder Notation"
+msgstr ""
+
 #. §0: `ht : x ∈ t`
 #. §1: `x ∈ t ∪ s`
 #. §2: `t`
@@ -12735,8 +15854,24 @@ msgid "You have §0 and need §1. Since\n"
 "§2 is the LEFT operand of §3, use §4."
 msgstr ""
 
-#: Game.Levels.SetWorld.L02_SetBuilder
-msgid "Set Builder Notation"
+#. §0: `y ∈ g '' (f '' s)`
+#. §1: `z ∈ f '' s`
+#. §2: `g z = y`
+#. §3: `x ∈ s`
+#. §4: `f x = z`
+#. §5: `rintro ⟨z, ⟨x, hx, rfl⟩, rfl⟩`
+#. §6: `x ∈ s`
+#. §7: `z = f x`
+#. §8: `y = g (f x)`
+#: Game.Levels.ImageWorld.L10_ImageComposition
+msgid "**Backward**: §0 has TWO levels of\n"
+"existential: there exists §1 with §2, and\n"
+"there exists §3 with §4.\n"
+"\n"
+"Use nested destructuring:\n"
+"§5\n"
+"\n"
+"This gives §6 and substitutes both §7 and §8."
 msgstr ""
 
 #: Game.Levels.IndexedOpsWorld.L18_DeMorganUnion
@@ -12974,11 +16109,21 @@ msgstr ""
 msgid "Deriving Antisymmetry from Extensionality"
 msgstr ""
 
+#: Game.Levels.ImageWorld.L04_ImageEmpty
+msgid "Image of the Empty Set"
+msgstr ""
+
 #. §0: `hx : ¬(x ∈ s ∨ x ∈ t)`
 #. §1: `push_neg at hx`
 #: Game.Levels.SetOpsWorld.L12_PushNeg
 msgid "Now §0. Use §1 to\n"
 "convert the negated disjunction to a conjunction of negations."
+msgstr ""
+
+#. §0: `s ⊆ f ⁻¹' (f '' s)`
+#. §1: `intro x hx`
+#: Game.Levels.ImageWorld.L15_PreimageImageGap
+msgid "The goal is §0. Start with §1."
 msgstr ""
 
 #. §0: `hr : 3 = r + r`
@@ -13052,6 +16197,14 @@ msgid "# Fibers: Preimage of a Single Point\n"
 "3. Second part: §15 then §16"
 msgstr ""
 
+#. §0: `intro hy`
+#. §1: `rw [hy]`
+#. §2: `exact ⟨a, rfl, rfl⟩`
+#: Game.Levels.ImageWorld.L05_ImageSingleton
+msgid "§0 then §1,\n"
+"§2."
+msgstr ""
+
 #. §0: `assumption`
 #. §1: ```
 #. assumption
@@ -13065,6 +16218,14 @@ msgid "§0 closes the goal if a hypothesis in the context has\n"
 "\n"
 "## When to use it\n"
 "When a hypothesis matches the goal."
+msgstr ""
+
+#. §0: `gcongr`
+#: Game.Metadata
+msgid "§0 proves goals using generalized congruence — it applies\n"
+"congruence and monotonicity lemmas to reduce inequalities and subset goals.\n"
+"\n"
+"Disabled to prevent one-shot solutions to subset and image problems."
 msgstr ""
 
 #. §0: `x ∈ t`
@@ -13110,6 +16271,85 @@ msgstr ""
 #: Game.Levels.SetOpsWorld.L11_UnionCommutativity
 msgid "This is the same argument as Level 10. Case-split on the union\n"
 "and swap sides."
+msgstr ""
+
+#. §0: `f '' (s ∪ t) = f '' s ∪ f '' t`
+#. §1: `∈ s ∨ ∈ t`
+#. §2: `∈ f '' s ∨ ∈ f '' t`
+#. §3: `Or.inl`
+#. §4: `Or.inr`
+#. §5: `x`
+#. §6: `x ∈ s ∪ t`
+#. §7: `x ∈ s`
+#. §8: `x ∈ t`
+#. §9: `x ∈ s`
+#. §10: `x ∈ t`
+#. §11: `Or.inl hx`
+#. §12: `Or.inr hx`
+#. §13: `x ∈ s ∪ t`
+#. §14: `rcases`
+#. §15: `rcases hy with ⟨x, hx, rfl⟩ | ⟨x, hx, rfl⟩`
+#. §16: `|`
+#. §17: `rcases`
+#. §18: `∨`
+#. §19: `⟨...⟩`
+#. §20: `∃`
+#. §21: `∧`
+#. §22: `Or.inl`
+#. §23: `Or.inr`
+#. §24: `Or.inl hx`
+#. §25: `Or.inr hx`
+#. §26: `left; exact hx`
+#. §27: `right; exact hx`
+#. §28: `∃`
+#. §29: `∨`
+#. §30: `∃ x, (P x ∨ Q x)`
+#. §31: `(∃ x, P x) ∨ (∃ x, Q x)`
+#. §32: `∨`
+#. §33: `∃`
+#. §34: `∪`
+#. §35: `∩`
+#. §36: `Set.image_union`
+#: Game.Levels.ImageWorld.L07_ImageUnion
+msgid "You proved §0. Image distributes over\n"
+"union!\n"
+"\n"
+"The key moves:\n"
+"- **Forward**: Destructure image of union, case-split on §1,\n"
+"  place the same witness in the correct image\n"
+"- **Backward**: Case-split on §2, destructure\n"
+"  each image membership, repackage with §3/§4\n"
+"\n"
+"**The witness transfer pattern again**: Both directions re-use the\n"
+"SAME witness §5 -- you destructure to find it, then repackage it\n"
+"with updated membership. In the forward direction, §6\n"
+"becomes §7 or §8. In the backward direction, §9\n"
+"or §10 becomes §11 or §12 for §13.\n"
+"\n"
+"**§14 on disjunctions**: The backward direction could also be\n"
+"done with §15, which\n"
+"splits the union of images AND destructures each image membership\n"
+"in one step. The §16 in §17 handles §18, just as §19\n"
+"handles §20 and §21.\n"
+"\n"
+"**§22 and §23**: When building anonymous constructors for\n"
+"unions, §24 injects into the left side and §25 into\n"
+"the right. The alternative is §26 / §27.\n"
+"\n"
+"**Why this works**: §28 distributes over §29. If §30,\n"
+"then §31, and vice versa. The union is §32\n"
+"at the predicate level, and image is §33 at the membership level.\n"
+"\n"
+"**Scoreboard**:\n"
+"\n"
+"| Operation | Preimage | Image |\n"
+"|---|---|---|\n"
+"| §34 (union) | ✓ equality | ✓ equality |\n"
+"| §35 (intersection) | ✓ equality | ? |\n"
+"\n"
+"Next: What about intersection?\n"
+"\n"
+"The library name is §36."
 msgstr ""
 
 #. §0: `(s \\ t)ᶜ = sᶜ ∪ t`
@@ -13230,6 +16470,46 @@ msgid "Key sequence: §0 then\n"
 "§3 then §4 then §5."
 msgstr ""
 
+#. §0: $$f(s \\cup t) = f(s) \\cup f(t)$$
+#. §1: `∃`
+#. §2: `y ∈ f '' (s ∪ t)`
+#. §3: `x ∈ s ∪ t`
+#. §4: `f x = y`
+#. §5: `x ∈ s ∨ x ∈ t`
+#. §6: `x`
+#. §7: `y`
+#. §8: `f '' s`
+#. §9: `f '' t`
+#. §10: `f ⁻¹' (s ∪ t) = f ⁻¹' s ∪ f ⁻¹' t`
+#. §11: `∨`
+#. §12: `∃`
+#. §13: `∨`
+#. §14: `ext y`
+#. §15: `constructor`
+#: Game.Levels.ImageWorld.L07_ImageUnion
+msgid "# Image Distributes Over Union\n"
+"\n"
+"Here is the first major structural result for images:\n"
+"\n"
+"§0\n"
+"\n"
+"Why does this work? Image involves §1, and existentials distribute\n"
+"over disjunction. If §2, there exists §3\n"
+"with §4. Since §5, the SAME witness §6 places\n"
+"§7 in either §8 or §9.\n"
+"\n"
+"Compare with preimage: §10 also\n"
+"held, because §11 passes through function application. Image preserves\n"
+"union for a different reason: §12 distributes over §13.\n"
+"\n"
+"**Proof plan**:\n"
+"1. §14 then §15 -- standard set equality structure\n"
+"2. **Forward**: destructure image of union, case-split on membership,\n"
+"   place the witness in the correct image\n"
+"3. **Backward**: case-split on the union of images, destructure each\n"
+"   case, repackage with union membership"
+msgstr ""
+
 #: Game.Levels.PreimageWorld.L05_PreimageMonotonicity
 msgid "Preimage Preserves Subsets"
 msgstr ""
@@ -13307,6 +16587,24 @@ msgstr ""
 msgid "Boss: De Morgan for Indexed Unions"
 msgstr ""
 
+#. §0: `x ∈ f ⁻¹' (f '' s)`
+#. §1: `f x ∈ f '' s`
+#. §2: `s`
+#. §3: `f x`
+#. §4: `x`
+#. §5: `exact ⟨x, hx, rfl⟩`
+#: Game.Levels.ImageWorld.L15_PreimageImageGap
+msgid "The goal is §0. By preimage membership,\n"
+"this means §1. You need to show there exists some\n"
+"element in §2 that maps to §3.\n"
+"\n"
+"The witness is §4 itself! Use §5."
+msgstr ""
+
+#: Game.Levels.ImageWorld.L13_GaloisConnection
+msgid "The Galois connection between image and preimage."
+msgstr ""
+
 #. §0: `hx`
 #. §1: `x < 3 ∧ x < 5`
 #. §2: `exact hx.1`
@@ -13374,11 +16672,25 @@ msgid "§0 is the lattice version of indexed intersection/union\n"
 "distributivity."
 msgstr ""
 
+#. §0: `rintro y ⟨x, hx, rfl⟩`
+#: Game.Levels.ImageWorld.L08_ImageInterSubset
+msgid "This is a subset proof. Use §0 to\n"
+"introduce and destructure the image membership."
+msgstr ""
+
 #. §0: `not_or`
 #. §1: `¬(a ∨ b) ↔ ¬a ∧ ¬b`
 #: Game.Levels.SetOpsWorld.L12_PushNeg
 #: Game.Levels.SetOpsWorld.L13_DeMorgan
 msgid "§0 states §1 (propositional De Morgan)."
+msgstr ""
+
+#. §0: `exact ⟨1, rfl, rfl⟩`
+#. §1: `1 = 1`
+#. §2: `f 1 = 0`
+#: Game.Levels.ImageWorld.L09_IntersectionCounterexample
+msgid "§0 -- witness 1, membership\n"
+"§1, and equation §2."
 msgstr ""
 
 #. §0: $$f^{-1}(s \\cup t) = f^{-1}(s) \\cup f^{-1}(t)$$
@@ -13489,6 +16801,20 @@ msgid "# The push_neg Tactic\n"
 "complements of compound sets."
 msgstr ""
 
+#. §0: `hy : y ∈ (fun n => 2 * n) '' ...`
+#. §1: `x`
+#. §2: `2 * x = y`
+#. §3: `obtain ⟨x, hx, hfx⟩ := hy`
+#. §4: `\\<`
+#. §5: `\\>`
+#: Game.Levels.ImageWorld.L02_DestructuringImage
+msgid "You have §0. This means\n"
+"there exists some §1 in the source set such that §2.\n"
+"Destructure with §3.\n"
+"\n"
+"Remember the angle brackets: type ⟨ as §4 and ⟩ as §5."
+msgstr ""
+
 #. §0: `x : α`
 #. §1: `hx : x ∈ s j`
 #. §2: `Set.Nonempty (⋃ i, s i)`
@@ -13545,6 +16871,16 @@ msgid "**Forward direction**: You have §0, which\n"
 "exactly what §5 does under the hood for indexed operations.\n"
 "\n"
 "Start with §6 to assume the complement membership."
+msgstr ""
+
+#. §0: `hy`
+#. §1: `obtain ⟨x, hx, rfl⟩ := hy`
+#. §2: `f x ∈ t`
+#. §3: `exact h hx`
+#: Game.Levels.ImageWorld.L13_GaloisConnection
+msgid "After destructuring §0 with\n"
+"§1, the goal becomes §2.\n"
+"Then §3."
 msgstr ""
 
 #. §0: `s j ⊆ ⋃ i, s i`
@@ -13608,6 +16944,17 @@ msgstr ""
 msgid "Indexed intersection distributes over union."
 msgstr ""
 
+#. §0: `rintro y ⟨x, hx, rfl⟩`
+#. §1: `exact ⟨x, h hx, rfl⟩`
+#: Game.Levels.ImageWorld.L06_ImageMonotonicity
+#: Game.Levels.ImageWorld.L07_ImageUnion
+#: Game.Levels.ImageWorld.L12_ImageUnivRange
+#: Game.Levels.ImageWorld.L18_NonemptinessTransfer
+#: Game.Levels.ImageWorld.L20_Boss
+msgid "§0 then\n"
+"§1."
+msgstr ""
+
 #. §0: `hu : u ⊆ s ∩ t`
 #. §1: `constructor`
 #. §2: `u ∈ 𝒫 s`
@@ -13615,6 +16962,53 @@ msgstr ""
 #: Game.Levels.PsetSets.L11_PowersetIntersection
 msgid "Now §0. Use §1 to split the goal\n"
 "into §2 and §3."
+msgstr ""
+
+#. §0: `f '' (f ⁻¹' t) ⊆ t`
+#. §1: `t`
+#. §2: `f`
+#. §3: $$t \\subseteq \\text{range}(f) \\;\\;\\Longrightarrow\\;\\; f(f^{-1}(t)) = t$$
+#. §4: `h : t ⊆ Set.range f`
+#. §5: `y ∈ t`
+#. §6: `x`
+#. §7: `f x = y`
+#. §8: `ext`
+#. §9: `constructor`
+#. §10: `rintro ⟨x, hx, rfl⟩`
+#. §11: `exact ⟨x, ..., rfl⟩`
+#. §12: `ext y`
+#. §13: `constructor`
+#. §14: `y ∈ t`
+#. §15: `h hy`
+#. §16: `x`
+#. §17: `f x = y`
+#: Game.Levels.ImageWorld.L20_Boss
+msgid "# Boss: f '' (f ⁻¹' t) = t When t ⊆ range f\n"
+"\n"
+"In Level 14, you proved §0 -- the ⊆ direction\n"
+"always holds. Now you will prove the full EQUALITY, under the\n"
+"condition that every element of §1 is in the range of §2:\n"
+"\n"
+"§3\n"
+"\n"
+"The hypothesis §4 says: for every §5,\n"
+"there exists some §6 with §7. This is exactly the\n"
+"surjectivity condition needed to close the gap.\n"
+"\n"
+"The proof combines several skills from this world:\n"
+"- §8 for set equality (Subset World)\n"
+"- §9 for biconditional (baseline)\n"
+"- Image membership destructuring with §10 (L03)\n"
+"- Image membership construction with §11 (L06)\n"
+"- Range membership destructuring (L11)\n"
+"- Preimage membership unfolding (Preimage World)\n"
+"\n"
+"**Proof plan**:\n"
+"1. §12 then §13\n"
+"2. **⊆ direction**: Destructure image membership, use preimage\n"
+"   hypothesis directly (same as Level 14)\n"
+"3. **⊇ direction**: From §14, use surjectivity §15 to get\n"
+"   §16 with §17, then build image membership"
 msgstr ""
 
 #. §0: `x ∈ ⋂ i, (s i ∪ t)`
@@ -13893,6 +17287,13 @@ msgid "Destructure §0 to get the two complement\n"
 "memberships: §1."
 msgstr ""
 
+#. §0: `Set.image_preimage_eq_iff`
+#. §1: `f '' (f ⁻¹' s) = s`
+#: Game.Levels.ImageWorld.L20_Boss
+msgid "§0 characterizes when §1\n"
+"holds. Disabled to prevent boss bypass."
+msgstr ""
+
 #. §0: `x ∉ s \\ t`
 #. §1: `(x ∈ s ∧ x ∉ t) → False`
 #. §2: `intro hst`
@@ -13986,6 +17387,44 @@ msgid "**Backward**: In both cases (§0 or §1),\n"
 "§2 is the first component."
 msgstr ""
 
+#. §0: `3 + 1 = 4`
+#. §1: `rfl`
+#: Game.Levels.ImageWorld.L01_ImageMembership
+msgid "The goal is §0, which is true by computation.\n"
+"Use §1."
+msgstr ""
+
+#. §0: `s`
+#. §1: `f '' s`
+#. §2: `s`
+#. §3: `f`
+#. §4: `f '' s`
+#. §5: `Set.Nonempty s`
+#. §6: `∃ x, x ∈ s`
+#. §7: `ext`
+#. §8: `constructor`
+#. §9: `obtain ⟨x, hx⟩ := h`
+#. §10: `Set.Nonempty s`
+#. §11: `Set.Nonempty (f '' s)`
+#. §12: `f x`
+#: Game.Levels.ImageWorld.L18_NonemptinessTransfer
+msgid "# Nonemptiness Transfers Through Images\n"
+"\n"
+"If a set §0 is nonempty, then its image §1 is also nonempty.\n"
+"This is intuitively obvious: if there is an element in §2, applying\n"
+"§3 to it produces an element in §4.\n"
+"\n"
+"In Lean, §5 means §6 -- there exists at\n"
+"least one element. The proof pattern is different from the subset\n"
+"and equality proofs you have been doing: instead of §7/§8,\n"
+"you destructure the nonemptiness hypothesis to get a witness, then\n"
+"build image membership from that witness.\n"
+"\n"
+"**Proof plan**:\n"
+"1. §9 -- extract the witness from §10\n"
+"2. Construct §11 using §12 as the witness"
+msgstr ""
+
 #. §0: `ext x`
 #: Game.Levels.IndexedOpsWorld.L09_VacuousIntersection
 #: Game.Levels.IndexedOpsWorld.L10_VacuousUnion
@@ -14007,6 +17446,18 @@ msgstr ""
 
 #: Game.Levels.PreimageWorld.L08_PreimageIntersection
 msgid "Preimage Preserves Intersection"
+msgstr ""
+
+#. §0: `exact ⟨x, Or.inl hx, rfl⟩`
+#. §1: `use x`
+#. §2: `constructor`
+#. §3: `left; exact hx`
+#. §4: `rfl`
+#: Game.Levels.ImageWorld.L07_ImageUnion
+msgid "§0\n"
+"\n"
+"Or step by step: §1, §2,\n"
+"§3, §4."
 msgstr ""
 
 #. §0: `rw [Set.mem_iUnion] at hx`
@@ -14124,6 +17575,8 @@ msgstr ""
 #. §1: `push_neg at hx`
 #. §2: `exact hx`
 #: Game.Levels.SetOpsWorld.L13_DeMorgan
+#: Game.Levels.ImageWorld.L09_IntersectionCounterexample
+#: Game.Levels.ImageWorld.L19_NonemptinessConverse
 msgid "§0 then\n"
 "§1 then §2."
 msgstr ""
@@ -14228,6 +17681,13 @@ msgid "The backward direction is the interesting one. You need to show\n"
 "then §2 to convert the goal to §3."
 msgstr ""
 
+#. §0: `hy : y ∈ f '' s`
+#. §1: `obtain ⟨x, hx, rfl⟩ := hy`
+#: Game.Levels.ImageWorld.L13_GaloisConnection
+msgid "Destructure §0 with\n"
+"§1."
+msgstr ""
+
 #. §0: `x ∈ sᶜ ∪ t`
 #. §1: `x ∈ (s \\ t)ᶜ`
 #. §2: `¬(x ∈ s ∧ x ∉ t)`
@@ -14238,17 +17698,17 @@ msgid "**Backward**: Given §0, prove §1,\n"
 "§3 and find a contradiction."
 msgstr ""
 
+#. §0: `apply Set.Subset.antisymm`
+#: Game.Levels.PsetSets.L04_PartitionEquality
+msgid "Use §0 to prove equality from two\n"
+"subset inclusions."
+msgstr ""
+
 #. §0: `x ∈ t`
 #. §1: `ht : x ∈ t`
 #: Game.Levels.SetOpsWorld.L07_IntersectionCommutativity
 #: Game.Levels.SetOpsWorld.L07_IntersectionCommutativity
 msgid "The goal is §0. You have §1."
-msgstr ""
-
-#. §0: `apply Set.Subset.antisymm`
-#: Game.Levels.PsetSets.L04_PartitionEquality
-msgid "Use §0 to prove equality from two\n"
-"subset inclusions."
 msgstr ""
 
 #. §0: `ext`
@@ -14355,6 +17815,15 @@ msgid "# Problem Set: Level 6\n"
 "proof structures. One needs classical reasoning; the other does not."
 msgstr ""
 
+#. §0: `y ∈ Set.range f`
+#. §1: `∃ x, f x = y`
+#. §2: `rintro ⟨x, rfl⟩`
+#: Game.Levels.ImageWorld.L12_ImageUnivRange
+msgid "**Backward**: §0 means §1.\n"
+"Use §2 to destructure -- note the simpler pattern\n"
+"(two components, not three) since range has no source set."
+msgstr ""
+
 #. §0: `obtain ⟨i, hsi, ht⟩ := hx`
 #. §1: `i : ι`
 #. §2: `hsi : x ∈ s i`
@@ -14403,6 +17872,10 @@ msgid "This is a set equality. Start with §0 to reduce to\n"
 "a membership biconditional."
 msgstr ""
 
+#: Game.Levels.ImageWorld
+msgid "Image World"
+msgstr ""
+
 #. §0: `show 3 < 10`
 #. §1: `omega`
 #: Game.Levels.SetOpsWorld.L04_SetDifference
@@ -14416,6 +17889,10 @@ msgstr ""
 #: Game.Levels.SubsetWorld.L16_AntisymmFromExt
 #: Game.Levels.SubsetWorld.L16_AntisymmFromExt
 msgid "§0 applied to §1 gives §2. Use §3."
+msgstr ""
+
+#: Game.Levels.ImageWorld.L05_ImageSingleton
+msgid "Image of a Singleton"
 msgstr ""
 
 #. §0: `hu`
@@ -14659,6 +18136,12 @@ msgstr ""
 msgid "Preimage Preserves Indexed Intersection"
 msgstr ""
 
+#. §0: `obtain ⟨x, hx, rfl⟩ := h`
+#: Game.Levels.ImageWorld.L07_ImageUnion
+msgid "In each case, destructure the image membership\n"
+"with §0, then build the image of the union."
+msgstr ""
+
 #. §0: `f ⁻¹' tᶜ`
 #. §1: `rw [Set.preimage_compl]`
 #: Game.Levels.PreimageWorld.L15_RewriteComposition
@@ -14672,6 +18155,11 @@ msgstr ""
 #: Game.Levels.IndexedOpsWorld.L22_IInterDistrib
 msgid "Now §0. Use §1 to\n"
 "split into two cases."
+msgstr ""
+
+#. §0: `h : y ∈ f '' t`
+#: Game.Levels.ImageWorld.L07_ImageUnion
+msgid "§0. Destructure and repackage symmetrically."
 msgstr ""
 
 #. §0: `∉`
@@ -14772,6 +18260,117 @@ msgstr ""
 #: Game.Levels.IndexedOpsWorld.L21_BoundedIntegration
 msgid "The goal is a double existential. You need an index in §0 — you\n"
 "have §1 with §2. Provide the witness: §3."
+msgstr ""
+
+#: Game.Levels.ImageWorld.L11_SetRange
+msgid "The range of the doubling function is exactly the even numbers."
+msgstr ""
+
+#. §0: ```
+#. rintro ⟨x, hx, rfl⟩
+#. exact hx
+#. ```
+#. §1: ```
+#. intro hy
+#. obtain ⟨x, rfl⟩ := h hy
+#. exact ⟨x, hy, rfl⟩
+#. ```
+#. §2: `h : t ⊆ Set.range f`
+#. §3: `t`
+#. §4: `x`
+#. §5: `f x = y`
+#. §6: `f '' ∅ = ∅`
+#. §7: `Set.image_empty`
+#. §8: `f '' (singleton a) = (singleton (f a))`
+#. §9: `s ⊆ t → f '' s ⊆ f '' t`
+#. §10: `Set.image_mono`
+#. §11: `f '' (s ∪ t) = f '' s ∪ f '' t`
+#. §12: `Set.image_union`
+#. §13: `f '' (s ∩ t) ⊆ f '' s ∩ f '' t`
+#. §14: `Set.image_inter_subset`
+#. §15: `(g ∘ f) '' s = g '' (f '' s)`
+#. §16: `Set.image_comp`
+#. §17: `f '' Set.univ = Set.range f`
+#. §18: `Set.image_univ`
+#. §19: `f '' s ⊆ t ↔ s ⊆ f ⁻¹' t`
+#. §20: `Set.image_subset_iff`
+#. §21: `f '' (f ⁻¹' t) ⊆ t`
+#. §22: `Set.image_preimage_subset`
+#. §23: `s ⊆ f ⁻¹' (f '' s)`
+#. §24: `Set.subset_preimage_image`
+#. §25: `Set.image_mono`
+#. §26: `Set.image_preimage_subset`
+#. §27: `Set.Nonempty s → Set.Nonempty (f '' s)`
+#. §28: `Set.Nonempty.image`
+#. §29: `Set.Nonempty (f '' s) → Set.Nonempty s`
+#. §30: `∪`
+#. §31: `∩`
+#. §32: `ᶜ`
+#. §33: `f ⁻¹' (f '' s) ⊇ s`
+#. §34: `f '' (f ⁻¹' t) ⊆ t`
+#: Game.Levels.ImageWorld.L20_Boss
+msgid "Congratulations -- you completed **Image World**!\n"
+"\n"
+"The boss proof combined every skill from this world:\n"
+"\n"
+"**⊆ direction** (Level 14 revisited):\n"
+"§0\n"
+"\n"
+"**⊇ direction** (new -- uses surjectivity):\n"
+"§1\n"
+"\n"
+"The key insight in the ⊇ direction: the hypothesis §2\n"
+"gives you a PREIMAGE for every element of §3. Once you have a preimage\n"
+"§4 with §5, building the image membership is straightforward.\n"
+"This is the witness transfer pattern from L06, applied in a new context:\n"
+"the witness comes from the surjectivity hypothesis instead of a subset\n"
+"hypothesis.\n"
+"\n"
+"## The Complete Image Library\n"
+"\n"
+"| Level | Statement | Library name |\n"
+"|---|---|---|\n"
+"| L04 | §6 | §7 |\n"
+"| L05 | §8 | (image of singleton) |\n"
+"| L06 | §9 | §10 |\n"
+"| L07 | §11 | §12 |\n"
+"| L08 | §13 | §14 |\n"
+"| L10 | §15 | §16 |\n"
+"| L12 | §17 | §18 |\n"
+"| L13 | §19 | §20 |\n"
+"| L14 | §21 | §22 |\n"
+"| L15 | §23 | §24 |\n"
+"| L16 | Monotonicity from Galois connection | (re-derives §25) |\n"
+"| L17 | Image-preimage gap from Galois | (re-derives §26) |\n"
+"| L18 | §27 | §28 |\n"
+"| L19 | §29 | (converse) |\n"
+"\n"
+"## The Central Asymmetry\n"
+"\n"
+"| Property | Preimage | Image |\n"
+"|---|---|---|\n"
+"| Preserves §30 | ✓ (equality) | ✓ (equality) |\n"
+"| Preserves §31 | ✓ (equality) | Only ⊆ |\n"
+"| Preserves §32 | ✓ (equality) | No |\n"
+"| Roundtrip with inverse | §33 | §34 |\n"
+"| Roundtrip = identity | Requires injectivity | Requires surjectivity |\n"
+"\n"
+"The structural reason: preimage involves only universal quantification\n"
+"and logical connectives, which commute with everything. Image involves\n"
+"an existential, which only commutes with disjunction -- not with\n"
+"conjunction or negation.\n"
+"\n"
+"**Monotonicity from the Galois connection (L16)**: In Level 16, you\n"
+"re-derived image monotonicity (L06) from the Galois connection (L13)\n"
+"and the preimage-image embedding (L15). In Level 17, you re-derived\n"
+"the image-preimage gap (L14) from the same Galois connection. This demonstrated that\n"
+"adjunctions automatically imply monotonicity -- a deep structural\n"
+"principle.\n"
+"\n"
+"**Looking ahead**: In the problem set (PsetImgPreimg), you will\n"
+"practice these results on fresh problems. Then in Injective World\n"
+"and Surjective World, you will explore when the gaps close and when\n"
+"the ⊆ for intersection becomes an equality."
 msgstr ""
 
 #. §0: ```
@@ -15037,6 +18636,56 @@ msgid "The goal is §0. You need §1 to derive this —\n"
 "to unwrap, then §4."
 msgstr ""
 
+#. §0: `Set.mem_image`
+#. §1: `y ∈ f '' s ↔ ∃ x, x ∈ s ∧ f x = y`
+#. §2: `s`
+#. §3: `y`
+#. §4: ```
+#. rw [Set.mem_image]         -- on the goal
+#. rw [Set.mem_image] at h    -- on a hypothesis
+#. ```
+#. §5: `y ∈ f '' s`
+#. §6: `∃ x, x ∈ s ∧ f x = y`
+#. §7: `use`
+#. §8: `obtain`
+#. §9: ```
+#. -- Goal: y ∈ f '' s
+#. use x            -- provide the witness
+#. constructor      -- split into x ∈ s and f x = y
+#. ```
+#: Game.Levels.ImageWorld.L01_ImageMembership
+msgid "§0 states §1 --\n"
+"membership in an image means there exists an input in §2 that maps\n"
+"to §3.\n"
+"\n"
+"## Syntax\n"
+"§4\n"
+"\n"
+"## When to use it\n"
+"When you need to convert between §5 and the explicit\n"
+"existential form §6. Often you can work with\n"
+"image membership directly via §7 (to construct) or §8 (to\n"
+"destructure) without rewriting.\n"
+"\n"
+"## Example\n"
+"§9"
+msgstr ""
+
+#. §0: `4 ∈ (fun n => n + 1) '' ...`
+#. §1: `x`
+#. §2: `x + 1 = 4`
+#. §3: `x = 3`
+#. §4: `use 3`
+#: Game.Levels.ImageWorld.L01_ImageMembership
+msgid "The goal says §0. By the definition\n"
+"of image, this means there exists some §1 in the set with\n"
+"§2. The witness is §3. Use §4."
+msgstr ""
+
+#: Game.Levels.ImageWorld.L08_ImageInterSubset
+msgid "Image of intersection is a subset of intersection of images."
+msgstr ""
+
 #. §0: $(\\bigcap_i s_i)^c = \\bigcup_i (s_i)^c$
 #. §1: $(\\bigcup_i s_i)^c = \\bigcap_i (s_i)^c$
 #. §2: $\\neg\\exists \\iff \\forall\\neg$
@@ -15114,6 +18763,12 @@ msgid "# Problem Set: Level 11\n"
 "powerset membership and subset relations."
 msgstr ""
 
+#. §0: `ht : x ∈ t`
+#. §1: `hu : x ∈ u`
+#: Game.Levels.PsetSets.L03_DistributivitySubset
+msgid "§0 and §1. Build the right side."
+msgstr ""
+
 #. §0: `x ∈ s`
 #. §1: `x ∈ t`
 #. §2: `h1 : s ⊆ t`
@@ -15125,12 +18780,6 @@ msgstr ""
 msgid "The forward direction: assume §0 and show §1.\n"
 "The hypothesis §2 is a function from §3 to §4.\n"
 "Use §5 then §6."
-msgstr ""
-
-#. §0: `ht : x ∈ t`
-#. §1: `hu : x ∈ u`
-#: Game.Levels.PsetSets.L03_DistributivitySubset
-msgid "§0 and §1. Build the right side."
 msgstr ""
 
 #. §0: `x ∈ id ⁻¹' s`
@@ -15170,6 +18819,14 @@ msgid "Now §0 and §1. Case-split on the\n"
 "union: §2."
 msgstr ""
 
+#. §0: `ht : x ∈ t`
+#. §1: `right`
+#. §2: `f '' t`
+#: Game.Levels.ImageWorld.L07_ImageUnion
+msgid "§0. Use §1 to target §2, then\n"
+"construct the image membership."
+msgstr ""
+
 #. §0: `norm_num`
 #: Game.Metadata
 msgid "§0 evaluates numerical expressions and closes arithmetic\n"
@@ -15180,6 +18837,10 @@ msgstr ""
 
 #: Game.Levels.SetWorld.L01_WelcomeToSets
 msgid "Welcome to Sets"
+msgstr ""
+
+#: Game.Levels.ImageWorld.L17_GapFromGalois
+msgid "The image-preimage gap re-derived from the Galois connection."
 msgstr ""
 
 #. §0: `h3 : Even 3`
@@ -15226,6 +18887,13 @@ msgid "# Vacuous Truth: ∅ ⊆ s\n"
 "**Proof plan**:\n"
 "1. §12 — assume some §13\n"
 "2. §14 — §15 is impossible, so anything follows"
+msgstr ""
+
+#. §0: `Even (2 * x)`
+#. §1: `show Even (2 * x)`
+#: Game.Levels.ImageWorld.L02_DestructuringImage
+msgid "The goal looks like §0 but Lean internally still has\n"
+"the function form. Use §1 to make it explicit."
 msgstr ""
 
 #. §0: `rw [h]`
@@ -15365,6 +19033,52 @@ msgstr ""
 #: Game.Levels.IndexedOpsWorld.L05_MonotonIUnion
 msgid "You have §0 and §1. The goal is\n"
 "§2. Rewrite to an existential and reuse the same index."
+msgstr ""
+
+#. §0: `t`
+#. §1: `f ⁻¹' t`
+#. §2: `t`
+#. §3: `f '' (f ⁻¹' t)`
+#. §4: `t`
+#. §5: $$f(f^{-1}(t)) \\subseteq t$$
+#. §6: `y ∈ f '' (f ⁻¹' t)`
+#. §7: `x ∈ f ⁻¹' t`
+#. §8: `f x = y`
+#. §9: `x ∈ f ⁻¹' t`
+#. §10: `f x ∈ t`
+#. §11: `y = f x`
+#. §12: `y ∈ t`
+#. §13: `t`
+#. §14: `f`
+#. §15: `f '' (f ⁻¹' t)`
+#. §16: `rintro y ⟨x, hx, rfl⟩`
+#. §17: `hx`
+#: Game.Levels.ImageWorld.L14_ImagePreimageGap
+msgid "# Applying f Then Pulling Back: f '' (f ⁻¹' t) ⊆ t\n"
+"\n"
+"What happens when you take a preimage and then push it forward?\n"
+"\n"
+"Starting with a set §0 of outputs, §1 collects all inputs\n"
+"that map into §2. Then §3 pushes those inputs\n"
+"forward again. Do you get §4 back?\n"
+"\n"
+"Almost -- but only a SUBSET:\n"
+"\n"
+"§5\n"
+"\n"
+"The ⊆ direction is immediate: if §6, there exists\n"
+"§7 with §8. Since §9 means §10,\n"
+"and §11, we get §12.\n"
+"\n"
+"But equality can fail! Elements of §13 that are NOT in the range of\n"
+"§14 get \"lost\" -- there is no input that maps to them, so they\n"
+"cannot appear in §15.\n"
+"\n"
+"**Your task**: Prove the ⊆ direction.\n"
+"\n"
+"**Proof plan**:\n"
+"1. §16 -- destructure image membership\n"
+"2. §17 is already the answer!"
 msgstr ""
 
 #. §0: `cases hx with | inl hinter | inr ht`
@@ -15686,6 +19400,18 @@ msgid "§0 then §1.\n"
 "witness is §5, since §6."
 msgstr ""
 
+#. §0: `hx : x = a`
+#. §1: `f x = f a`
+#. §2: `show f x = f a`
+#. §3: `rw [hx]`
+#. §4: `a`
+#. §5: `x`
+#: Game.Levels.ImageWorld.L05_ImageSingleton
+msgid "You have §0 (membership in the singleton) and the\n"
+"goal is §1. Use §2 to make this explicit,\n"
+"then §3 to substitute §4 for §5."
+msgstr ""
+
 #. §0: `s ∪ t`
 #. §1: `\\cup`
 #. §2: `\\union`
@@ -15722,6 +19448,18 @@ msgid "§0 (typed §1 or §2) is the **union** of sets §3 and §4.\n"
 "## Warning\n"
 "You must **choose** a side: §16 or §17. You cannot prove both\n"
 "and let Lean pick — you must commit to one."
+msgstr ""
+
+#. §0: `g (f x) ∈ g '' (f '' s)`
+#. §1: `exact ⟨f x, ⟨x, hx, rfl⟩, rfl⟩`
+#. §2: `⟨x, hx, rfl⟩`
+#. §3: `f x ∈ f '' s`
+#: Game.Levels.ImageWorld.L10_ImageComposition
+msgid "After destructuring, the goal is\n"
+"§0. Build the nested image:\n"
+"§1.\n"
+"\n"
+"The inner part §2 proves §3."
 msgstr ""
 
 #. §0: `s \\ t`
@@ -15867,6 +19605,16 @@ msgid "This case says the union of singletons is a subset of the\n"
 "have to equal 1 — contradiction."
 msgstr ""
 
+#. §0: `x ∈ s`
+#. §1: `g (f x) ∈ (g ∘ f) '' s`
+#. §2: `(g ∘ f) x = g (f x)`
+#. §3: `x`
+#: Game.Levels.ImageWorld.L10_ImageComposition
+msgid "After nested destructuring, §0 and the goal is\n"
+"§1. Since §2, the\n"
+"witness is just §3."
+msgstr ""
+
 #. §0: `x ∈ sᶜ`
 #. §1: `x ∉ s`
 #. §2: `x ∈ Set.univ ∧ x ∉ s`
@@ -15874,6 +19622,15 @@ msgstr ""
 #: Game.Levels.PsetSets.L01_UnivComplement
 msgid "**Backward**: §0 means §1. You need\n"
 "§2. The first part uses §3."
+msgstr ""
+
+#. §0: `h : s ⊆ f ⁻¹' t`
+#. §1: `f '' s ⊆ t`
+#. §2: `intro y hy`
+#. §3: `hy`
+#: Game.Levels.ImageWorld.L13_GaloisConnection
+msgid "**Backward**: Assume §0. You need to show\n"
+"§1. Use §2 then destructure §3."
 msgstr ""
 
 #: Game.Levels.SetOpsWorld.L04_SetDifference
@@ -16052,6 +19809,48 @@ msgid "# Problem Set: Level 2\n"
 "need to find the correct witness §5 for each case."
 msgstr ""
 
+#. §0: `y ∈ f '' s`
+#. §1: `hy : y ∈ f '' s`
+#. §2: `∃ x, x ∈ s ∧ f x = y`
+#. §3: `obtain`
+#. §4: ```
+#. obtain ⟨x, hx, hfx⟩ := hy
+#. ```
+#. §5: `x : α`
+#. §6: `hx : x ∈ s`
+#. §7: `x`
+#. §8: `s`
+#. §9: `hfx : f x = y`
+#. §10: `x`
+#. §11: `y`
+#. §12: `∃`
+#. §13: `∧`
+#. §14: `⟨x, hx, hfx⟩`
+#. §15: `y`
+#. §16: `y`
+#: Game.Levels.ImageWorld.L02_DestructuringImage
+msgid "# Working With Image Hypotheses\n"
+"\n"
+"In Level 1, you CONSTRUCTED image membership -- exhibiting a witness\n"
+"to prove §0. Now you will DESTRUCTURE an image hypothesis.\n"
+"\n"
+"If you know §1, this encodes §2.\n"
+"Use §3 to extract the components:\n"
+"\n"
+"§4\n"
+"\n"
+"This gives you:\n"
+"- §5 -- the preimage witness\n"
+"- §6 -- proof that §7 is in §8\n"
+"- §9 -- the equation connecting §10 to §11\n"
+"\n"
+"This is **nested destructuring**: the §12 gives a pair, and the §13\n"
+"inside gives another pair. The pattern §14 flattens both.\n"
+"\n"
+"**Your task**: If §15 is in the image of the \"double\" function on\n"
+"numbers less than 5, prove that §16 is even."
+msgstr ""
+
 #. §0: ```
 #. rw [Set.mem_powerset_iff]   -- convert 𝒫 to ⊆
 #. intro x hx                  -- start the subset proof
@@ -16094,6 +19893,10 @@ msgstr ""
 #: Game.Levels.PreimageWorld.L11_PreimageIndexedUnion
 msgid "Now §0. Expose the existential:\n"
 "§1."
+msgstr ""
+
+#: Game.Levels.ImageWorld.L18_NonemptinessTransfer
+msgid "If s is nonempty, then f '' s is nonempty."
 msgstr ""
 
 #: Game.Levels.PreimageWorld.L03_PreimageNonInjective
@@ -16143,9 +19946,80 @@ msgid "# When ⊆ Fails: Proving ¬(s ⊆ t)\n"
 "4. Unwrap and derive contradiction — §16 is false"
 msgstr ""
 
+#. §0: `hy : f x ∈ t`
+#. §1: `y ∈ t`
+#. §2: `y = f x`
+#. §3: `f x ∈ f '' (f ⁻¹' t)`
+#. §4: `x`
+#. §5: `x ∈ f ⁻¹' t`
+#. §6: `f x ∈ t`
+#. §7: `hy`
+#: Game.Levels.ImageWorld.L20_Boss
+msgid "After substitution, §0 (was §1, now\n"
+"§2). The goal is §3.\n"
+"\n"
+"Build the image membership: the witness is §4, and §5\n"
+"is §6 which is §7."
+msgstr ""
+
 #: Game.Levels.SubsetWorld.L13_SetNonEquality
 msgid "The set of numbers less than 3 is not equal to the set of\n"
 "numbers less than 5."
+msgstr ""
+
+#: Game.Levels.ImageWorld.L06_ImageMonotonicity
+msgid "If s ⊆ t then f '' s ⊆ f '' t."
+msgstr ""
+
+#. §0: `intro x hx`
+#. §1: `exact ⟨x, hx, rfl⟩`
+#. §2: `f ⁻¹' (f '' s) ⊆ s`
+#. §3: `f x ∈ f '' s`
+#. §4: `x ∈ s`
+#. §5: `f x ∈ f '' s`
+#. §6: `x' ∈ s`
+#. §7: `f x' = f x`
+#. §8: `f`
+#. §9: `x'`
+#. §10: `x`
+#. §11: `x`
+#. §12: `s`
+#. §13: `f`
+#. §14: `f x' = f x`
+#. §15: `x' = x`
+#. §16: `x' ∈ s`
+#. §17: `x ∈ s`
+#. §18: `f '' (f ⁻¹' t) ⊆ t`
+#. §19: `t`
+#. §20: `s ⊆ f ⁻¹' (f '' s)`
+#. §21: `f`
+#. §22: `f`
+#. §23: `Set.subset_preimage_image`
+#: Game.Levels.ImageWorld.L15_PreimageImageGap
+msgid "The proof was just §0 then §1.\n"
+"Constructing image membership with the same element you started with.\n"
+"\n"
+"**Why equality fails**: The reverse §2 would\n"
+"require: if §3, then §4. But §5 only\n"
+"means there exists SOME §6 with §7. If §8 is not\n"
+"injective, §9 might differ from §10, and §11 might not be in §12.\n"
+"\n"
+"**When does equality hold?** If §13 is INJECTIVE: §14\n"
+"implies §15, so §16 gives §17. You will prove this\n"
+"in the problem set.\n"
+"\n"
+"**Summary of the two gaps**:\n"
+"\n"
+"| Statement | Holds? | Equality requires |\n"
+"|---|---|---|\n"
+"| §18 | Always | Surjectivity onto §19 |\n"
+"| §20 | Always | Injectivity of §21 |\n"
+"\n"
+"The image-preimage gap and the preimage-image gap are controlled by\n"
+"different properties of §22. This asymmetry is one of the central\n"
+"insights of this course.\n"
+"\n"
+"The library name is §23."
 msgstr ""
 
 #. §0: `rw [Set.preimage_inter]`
@@ -16195,4 +20069,13 @@ msgid "§0 proves §1 from §2 — strict inequality\n"
 "\n"
 "## When to use it\n"
 "When you have §4 and need §5."
+msgstr ""
+
+#. §0: `obtain ⟨x, hx, hfx⟩ := hy`
+#. §1: `x : ℕ`
+#. §2: `hx : x < 5`
+#. §3: `hfx : 2 * x = y`
+#: Game.Levels.ImageWorld.L02_DestructuringImage
+msgid "§0 gives you\n"
+"§1, §2, and §3."
 msgstr ""

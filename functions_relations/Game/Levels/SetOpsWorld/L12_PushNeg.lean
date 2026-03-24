@@ -120,6 +120,7 @@ membership (`sᶜ` = `¬`).
 TacticDoc push_neg
 
 NewTactic push_neg
+NewTheorem Or.inl Or.inr
 
 /-- `Set.compl_union` states `(s ∪ t)ᶜ = sᶜ ∩ tᶜ` (De Morgan). -/
 TheoremDoc Set.compl_union as "Set.compl_union" in "Set"
