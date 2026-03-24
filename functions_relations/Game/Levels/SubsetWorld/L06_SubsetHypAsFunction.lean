@@ -59,6 +59,13 @@ the expression `h hx` is a proof of `x ∈ t`.
 | `hx` | `x ∈ s` | \"x is in s\" |
 | `h hx` | `x ∈ t` | \"therefore x is in t\" |
 
+**Under the hood**: `s ⊆ t` has the type `∀ x, x ∈ s → x ∈ t` —
+which IS a function type. When you write `h hx`, you are doing
+ordinary function application: feeding a membership proof to a
+function that converts membership proofs. This is not a special rule
+for subsets — it is the same Curry-Howard correspondence you saw in
+Set World, where membership itself is function application.
+
 This pattern — applying a subset hypothesis to a membership proof —
 is the fundamental way to *use* subset facts. You will chain multiple
 such applications in the next levels.

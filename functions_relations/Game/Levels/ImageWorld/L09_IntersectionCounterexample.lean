@@ -92,6 +92,13 @@ witnesses would have to be equal (since `f x₁ = f x₂ = 0` would
 imply `x₁ = x₂`). So injectivity prevents this kind of phantom
 intersection. You will prove `f '' (s ∩ t) = f '' s ∩ f '' t` for
 injective `f` in a later world.
+
+**Complement fails too**: The same existential-vs-universal issue
+means image does not preserve complement either: `f '' sᶜ` and
+`(f '' s)ᶜ` have no inclusion in either direction in general. Preimage
+preserves complement exactly (`f ⁻¹' sᶜ = (f ⁻¹' s)ᶜ`) because
+negation commutes with function application, but image's existential
+does not commute with negation.
 "
 
 DisabledTactic trivial decide native_decide simp aesop simp_all tauto norm_num linarith mono gcongr

@@ -317,13 +317,19 @@ Each level isolates one dominant lesson. The novelty budget is strict: at most o
 
 **Promise**: Transfer and retrieval for image/preimage moves on fresh problems.
 
-**Level sketch**:
-- L01: Prove `f '' ∅ = ∅` from scratch. No witnesses to exhibit.
-- L02: Prove `f '' s ⊆ f '' t` from `s ⊆ t` (monotonicity of image).
-- L03: Prove `f ⁻¹' (⋃ i, s i) = ⋃ i, f ⁻¹' (s i)`. Preimage distributes over indexed union.
-- L04: Prove `f '' (⋂ i, s i) ⊆ ⋂ i, f '' (s i)`. Image only ⊆ for indexed intersection.
-- L05: Concrete computation: compute `Nat.succ '' {0, 1, 2}` and `Nat.succ ⁻¹' {0}`. The preimage of `{0}` is `∅` (foreshadows: succ is injective but not surjective).
-- L06 (Boss): Prove that `f ⁻¹' (f '' s) = s` given `Function.Injective f`. Requires injectivity hypothesis, image witness destructuring, and preimage unfolding.
+**Level sketch** (10 levels):
+- L01: Prove `f '' s ⊆ Set.range f`. Image subset of range (warmup).
+- L02: Compute `Nat.succ '' {n | n < 3} = {m | 0 < m ∧ m ≤ 3}`. Concrete image computation grounding abstraction.
+- L03: Prove `f '' (s ∩ f ⁻¹' t) = f '' s ∩ t`. Combining image and preimage.
+- L04: Prove `f '' (⋂ i, s i) ⊆ ⋂ i, f '' (s i)`. Indexed intersection (only ⊆).
+- L05: Prove `f '' (⋃ i, s i) = ⋃ i, f '' (s i)`. Indexed union (equality!).
+- L06: Prove `f '' s \ f '' t ⊆ f '' (s \ t)`. Set difference needs contradiction reasoning.
+- L07: Prove `hinj → f '' s ∩ f '' t ⊆ f '' (s ∩ t)`. Introduces `Function.Injective` and the witness collapse pattern.
+- L08: Prove `hinj → ⋂ i, f '' (s i) ⊆ f '' (⋂ i, s i)`. Indexed witness collapse.
+- L09: Prove `hinj → f '' (s \ t) = f '' s \ f '' t`. Witness collapse + contradiction.
+- L10 (Boss): Prove `hinj → f ⁻¹' (f '' s) = s`. Full integration of all skills.
+
+**Inventory changes**: `NewDefinition Function.Injective` in L07 (first encountered here, fully taught in W09).
 
 **Dependencies**: W06, W07
 
@@ -1006,7 +1012,7 @@ Each core item from the coverage map is mapped to its five coverage stages (I=in
 
 | Item | I | S | R | G | T |
 |------|---|---|---|---|---|
-| `Function.Injective` | W09 | W09 | W12 | W09 boss | W12, W28 |
+| `Function.Injective` | W08 | W09 | W12 | W09 boss | W08, W12, W28 |
 | `Function.Surjective` | W10 | W10 | W12 | W10 boss | W12, W28 |
 | `Function.Bijective` | W11 | W11 | W12 | W11 boss | W12, W24 |
 | `Function.LeftInverse` | W09 | W09 | W12 | W11 | W12 |
@@ -1121,7 +1127,8 @@ Each core item from the coverage map is mapped to its five coverage stages (I=in
 | `Set.iUnion`, `Set.iInter`, `Set.prod`, `Set.Nonempty`, `Set.powerset` | W04 | Indexed ops | Set |
 | `Set.preimage`, `Set.mem_preimage` | W06 | Preimage | Set |
 | `Set.image`, `Set.range`, `Set.mem_image`, `image_subset_iff` | W07 | Image | Set |
-| `Function.Injective`, `Function.LeftInverse` | W09 | Injectivity | Function |
+| `Function.Injective` | W08 | Bridge pset (first encountered) | Set |
+| `Function.Injective`, `Function.LeftInverse` | W09 | Injectivity (fully taught) | Function |
 | `Function.Surjective`, `Function.RightInverse` | W10 | Surjectivity | Function |
 | `Function.Bijective` | W11 | Bijectivity | Function |
 | `Set.MapsTo`, `Set.InjOn`, `Set.SurjOn`, `Set.BijOn`, `Set.EqOn` | W13 | Restricted functions | Function |
@@ -1146,7 +1153,7 @@ Each core item from the coverage map is mapped to its five coverage stages (I=in
 | W05 boss | De Morgan for indexed unions | `ext`, `push_neg`, `mem_iUnion`, `mem_iInter`, complement | W01–W04 all |
 | W06 boss | `f ⁻¹' (s \ t) = f ⁻¹' s \ f ⁻¹' t` | Preimage + difference + ext | W06 L01–L06 |
 | W07 boss | `f '' (f ⁻¹' t) = t` given surjectivity condition | Image witness, preimage unfold, surjectivity use | W06–W07 all |
-| W08 boss | `f ⁻¹' (f '' s) = s` given injectivity | Injectivity + image witness + preimage | W06–W07 all |
+| W08 boss | `f ⁻¹' (f '' s) = s` given injectivity | Injectivity + witness collapse + image witness + preimage | W06–W08 L01–L09 |
 | W09 boss | Direct injectivity proof + extraction from composition | `intro a b hab`, algebra, composition reasoning | W09 L01–L06 |
 | W10 boss | `Surjective (g ∘ f)` + `Injective g` → `Surjective f` | Witness production, extraction, combining hypotheses | W09–W10 |
 | W11 boss | Bijection from two-sided inverse | Left inv → inj, right inv → surj, combine | W09–W11 |

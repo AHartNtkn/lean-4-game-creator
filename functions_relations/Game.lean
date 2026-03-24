@@ -7,6 +7,7 @@ import Game.Levels.IndexedOpsWorld
 import Game.Levels.PsetSets
 import Game.Levels.PreimageWorld
 import Game.Levels.ImageWorld
+import Game.Levels.PsetImgPreimg
 
 Title "Functions & Relations"
 Introduction
@@ -47,5 +48,9 @@ Dependency SetWorld → ImageWorld
 Dependency SubsetWorld → ImageWorld
 Dependency SetOpsWorld → ImageWorld
 Dependency PreimageWorld → ImageWorld
+
+-- PsetImgPreimg depends on PreimageWorld and ImageWorld (W06, W07 → W08)
+Dependency PreimageWorld → PsetImgPreimg
+Dependency ImageWorld → PsetImgPreimg
 
 MakeGame

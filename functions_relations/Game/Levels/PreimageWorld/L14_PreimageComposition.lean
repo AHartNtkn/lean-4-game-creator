@@ -81,6 +81,13 @@ and it reverses the order of function composition. Every preservation
 result you proved in this world — for `∩`, `∪`, `ᶜ`, `⋃`, `⋂`,
 `\\` — follows from this single structural fact.
 
+**The deepest way to see it**: Since `Set α = α → Prop`, a set IS a
+predicate. Preimage is just composition: `x ∈ f ⁻¹' t` is the same
+as `(t . f) x`. Every preservation result in this world reduces to
+the fact that logical connectives (`∧`, `∨`, `¬`, `∀`, `∃`)
+distribute over function composition. Preimage preserves everything
+because composition preserves everything.
+
 The library name is `Set.preimage_comp`.
 
 **Foreshadowing**: In the Injective and Surjective Worlds, you will

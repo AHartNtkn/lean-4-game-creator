@@ -577,3 +577,33 @@ rcases h with ⟨x, hx, rfl⟩ | ⟨x, hx, rfl⟩
 ```
 -/
 TacticDoc rcases
+
+/-- `Nonempty α` is a typeclass asserting that the type `α` has at
+least one element. It is a `Prop`-valued wrapper around existence.
+
+## Syntax
+```
+[Nonempty ι]          -- as a typeclass argument
+‹Nonempty ι›          -- access the instance in a proof
+obtain ⟨i₀⟩ := ‹Nonempty ι›  -- extract a concrete element
+```
+
+## The `‹...›` notation
+The French quotes `‹T›` mean "find an instance of type `T` in the
+context." When `[Nonempty ι]` is a typeclass argument, `‹Nonempty ι›`
+retrieves it, and `obtain ⟨i₀⟩ := ‹Nonempty ι›` extracts a concrete
+element `i₀ : ι`.
+
+## Difference from `Set.Nonempty`
+- `Nonempty ι` says the TYPE `ι` has at least one element
+- `Set.Nonempty s` says the SET `s` has at least one element (`∃ x, x ∈ s`)
+
+These are different concepts. `Nonempty ι` is about the type itself,
+not about a particular set of elements.
+
+## When to use it
+When a result needs the index type to have at least one element
+(e.g., indexed intersections — you need at least one index to
+extract a concrete witness).
+-/
+DefinitionDoc Nonempty as "Nonempty"

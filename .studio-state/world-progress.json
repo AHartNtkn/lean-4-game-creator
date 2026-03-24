@@ -6,6 +6,7 @@
     "IndexedOpsWorld",
     "PsetSets",
     "PreimageWorld",
-    "ImageWorld"
+    "ImageWorld",
+    "PsetImgPreimg"
   ]
 }

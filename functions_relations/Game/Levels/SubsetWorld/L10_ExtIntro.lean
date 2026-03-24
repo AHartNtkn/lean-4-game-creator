@@ -108,11 +108,13 @@ constructor    -- split the ↔ into → and ←
 · ...          -- prove the backward direction
 ```
 
-**Why `ext` works**: `ext` applies the **extensionality** axiom for
-sets: two sets are equal if and only if they have the same elements.
-This converts a single equation into universally quantified membership
-equivalences — exactly the type of claim you can prove element by
-element.
+**Why `ext` works**: Since `Set α = α → Prop`, two sets are equal when
+they are equal as functions. The `ext` tactic applies **function
+extensionality**: two functions are equal when they agree on all inputs.
+For sets, \"agreeing on all inputs\" means having the same membership
+predicate — which is exactly `∀ x, x ∈ s ↔ x ∈ t`. So set
+extensionality is not an extra axiom — it IS function extensionality
+applied to predicates.
 
 In ordinary math, this proof would read: \"We show the sets are equal
 by double inclusion. If $n < 3$ and $n < 5$, then certainly $n < 3$.
